@@ -1,0 +1,84 @@
+/* Menú lateral */
+
+.menuNavegacion {
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    line-height: 18px;
+    color: #fff;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.menuNavegacion .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuNavegacion .menu ul{
+    top: 5px;
+}
+
+.menuNavegacion .menu li {
+    width: 30px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;    
+    border: 1px solid var(--Off);
+    border-radius: 0 10px 10px 0;
+    background: var(--fondo01);
+    overflow: hidden;
+    cursor: pointer;    
+    transition: all 0.3s ease;
+}
+
+.menuNavegacion .menu li:hover {
+    border: 1px solid var(--OnActivo);
+    box-shadow: 2px 1px 5px 1px var(--luzOn);
+    background: var(--fondo03);
+}
+
+.menuNavegacion .menu li a {
+    width: 100%;
+    display: flex;
+    align-items: center;   
+    font-size: 0.7vw;
+    color: var(--OnActivo);
+    text-decoration: none;
+    padding: 1px 1px;    
+}
+
+.menuNavegacion .menu li a:hover {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+}
+
+.menuNavegacion .menu li .icon {
+    font-size: 20px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.menuNavegacion .menu li .label {
+    opacity: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.menuNavegacion .menu li .label {
+    display: inline; /* O block, según el diseño deseado */
+    opacity: 1; /* Asegura que sea visible */
+    white-space: nowrap; /* Evita que el texto se corte */
+    overflow: visible; /* Evita que se oculte el contenido */
+    margin-left: 10px;
+}
+
+.menuNavegacion .menu li:hover {
+    width: 90%;
+}

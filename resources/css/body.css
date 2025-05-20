@@ -1,0 +1,79 @@
+/*==== Cuerpo Principal ====*/
+#h2 {
+    position: relative;
+	top: 50px;
+    text-align: center;
+    color: var(--OnActivo);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px var(--Off);
+    transition: color 0.3s ease;
+}
+
+#appsContenedor {
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.boton {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    margin: 50px;
+    padding: 15px;
+    border: 2px solid var(--Off);
+    border-radius: 15px;
+    background: var(--fondo03);
+    box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.boton.deshabilitado, .boton.deshabilitado a{
+    pointer-events: none;
+    background: var(--fondoOff09);
+    opacity: 0.5;
+}
+
+.boton:hover {
+    border: 2px solid var(--OnActivo);
+    background: var(--fondoO3);
+    box-shadow: 1px 1px 10px 2px var(--OnActivo);
+    transform: translateY(-5px);
+}
+
+.boton img {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+    border-radius: 15px;
+    border: 1px solid var(--Off);
+    box-shadow: 1px 1px 5px var(--OnPasivo);
+    transition: all 0.3s ease;
+}
+
+.boton:hover img {
+    border: 2px solid var(--OnActivo);
+    box-shadow: 0px 0px 15px var(--OnActivo);
+}
+
+.boton p {
+    font-weight: normal;
+    font-size: 10px;
+    color: var(--OnPasivo);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.boton:hover p {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+}
+
+.boton a {
+    text-decoration: none;
+}
+
+
+

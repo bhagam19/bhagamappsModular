@@ -1,0 +1,28 @@
+:root {
+    --imagenFondo: url('../img/fondo_chatgpt.jpg'); /* Fondo claro con una textura sutil */
+    --luzOn: #4CAF50; /* Verde claro y brillante para interacciones y botones destacados */
+    --OnActivo: #1E1E1E; /* Gris oscuro para elementos activos */
+    --OnPasivo: #4E4E4E; /* Gris suave para estados pasivos */
+    --Off: #B0B0B0; /* Gris claro para estados inactivos */
+    --RojoOnActivo: #F44336; /* Rojo vivo para alertas y mensajes importantes */
+    --RojoOnPasivo: #FF7043; /* Rojo suave para alertas pasivas */
+    --RojoOff: #D32F2F; /* Rojo apagado para estados inactivos */
+    --fondo: #FAFAFA; /* Fondo blanco suave para un aspecto limpio y fresco */
+    --fondo01: rgba(76, 175, 80, 0.1); /* Verde translúcido suave */
+    --fondo03: rgba(76, 175, 80, 0.3); /* Verde translúcido medio */
+    --fondo05: rgba(76, 175, 80, 0.5); /* Verde translúcido fuerte */
+    --fondo07: rgba(76, 175, 80, 0.7); /* Verde translúcido casi opaco */
+    --fondo09: rgba(76, 175, 80, 0.9); /* Verde translúcido opaco */
+    --fondo10: rgba(76, 175, 80, 1); /* Verde sólido */
+    --fondoOff01: rgba(204, 207, 113, 0.1); /* Negro translúcido suave para contraste */
+    --fondoOff03: rgba(204, 207, 113, 0.3); /* Negro translúcido medio */
+    --fondoOff05: rgba(204, 207, 113, 0.5); /* Negro translúcido fuerte */
+    --fondoOff07: rgba(204, 207, 113, 0.7); /* Negro translúcido casi opaco */
+    --fondoOff09: rgba(204, 207, 113, 0.9); /* Negro translúcido opaco */
+    --fondoOff10: rgba(204, 207, 113, 1); /* Negro sólido */
+    --colorPrincipal: #4CAF50; /* Verde brillante como color principal */
+    --colorSecundario: #2C3E50; /* Gris oscuro para acentos secundarios */
+    --colorFondo: #FAFAFA; /* Fondo blanco suave para un diseño limpio */
+    --colorTexto: #212121; /* Gris oscuro para el texto, más suave que blanco */
+    --font: 'Merriweather', serif;    
+}

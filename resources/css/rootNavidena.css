@@ -1,0 +1,28 @@
+:root {
+    --imagenFondo: url('../img/navidad.jpg'); /* Fondo con temática navideña */
+    --luzOn: #FFD700; /* Dorado brillante para efectos activos */
+    --OnActivo: #0c0c0c; /* Blanco marfil para texto o elementos activos */
+    --OnPasivo: #2e4b2e; /* Verde claro para estados pasivos */
+    --Off: #C0C0C0; /* Gris claro apagado */
+    --RojoOnActivo: #FF0000; /* Rojo vibrante para estados activos */
+    --RojoOnPasivo: #B22222; /* Rojo ladrillo para estados pasivos */
+    --RojoOff: #8B0000; /* Rojo oscuro apagado */
+    --fondo: #F5F5DC; /* Beige cálido como fondo general */
+    --fondo01: rgba(255, 0, 0, 0.1); /* Rojo translúcido tenue */
+    --fondo03: rgba(255, 0, 0, 0.3); /* Rojo translúcido medio */
+    --fondo05: rgba(255, 0, 0, 0.5); /* Rojo translúcido fuerte, inactivo */
+    --fondo07: rgba(255, 0, 0, 0.7); /* Rojo translúcido casi opaco */
+    --fondo09: rgba(255, 0, 0, 0.9); /* Rojo translúcido opaco */
+    --fondo10: rgba(255, 0, 0, 1); /* Rojo sólido */
+    --fondoOff01: rgba(34, 139, 34, 0.1); /* Verde translúcido tenue */
+    --fondoOff03: rgba(34, 139, 34, 0.3); /* Verde translúcido medio */
+    --fondoOff05: rgba(34, 139, 34, 0.5); /* Verde translúcido fuerte, inactivo */
+    --fondoOff07: rgba(34, 139, 34, 0.7); /* Verde translúcido casi opaco */
+    --fondoOff09: rgba(34, 139, 34, 0.9); /* Verde translúcido opaco */
+    --fondoOff10: rgba(34, 139, 34, 1); /* Verde sólido */
+    --colorPrincipal: #228B22; /* Verde bosque para encabezados o detalles principales */
+    --colorSecundario: #B22222; /* Rojo ladrillo para detalles secundarios */
+    --colorFondo: #1C1C1C; /* Fondo oscuro, como noche navideña */
+    --colorTexto: #FFFFFF; /* Blanco puro para texto */
+    --font: 'Mountains of Christmas', serif;
+}

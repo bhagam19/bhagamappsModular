@@ -1,0 +1,87 @@
+@media screen and (max-width: 768px){
+
+    #appsFormulario{
+        width: 80%;
+        height: 400px;
+        font-size: 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 50px;
+        background-color: var(--fondoOff09);
+        padding: 30px;
+    }
+
+    .appsFormularioLogin {
+        top: -550px; /* Inicialmente fuera de la pantalla */
+        right: 2px;
+        transition: top 0.3s ease-in-out; /* Animación suave */
+    }
+
+    .appsFormularioLogin.mostrar{
+        top: 200px;
+    }
+
+    #appsFormulario form {
+        flex: 1;
+    }
+
+    #appsFormulario label{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #appsFormulario input, #appsFormulario button{
+        width: 90%;
+        height: 50px;
+        font-size: 4vw; 
+        margin: 20px;
+    }
+
+    #appsFormulario .btnLogin{
+        font-size: 4vw;
+        font-family: var(--future);
+    }
+
+    /*==== Formulario Datos Usuario ====*/
+
+    .appsFormularioDatosUsuario {
+        top: -550px; /* Inicialmente fuera de la pantalla */
+    }
+
+    .appsFormularioDatosUsuario.mostrar{
+        top: 60px;
+    }
+
+    #appsSesionLogedIn{
+        position: fixed;
+        top: 10px;
+        right:5px;
+        border-radius: 50px;
+        
+    }
+    
+    .datosPersonales{
+        display: flex;
+        flex-direction: column;
+        background: var(--fondoOff10);
+        font-size: 4vw;
+    }
+
+    .datosPersonales div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .datosPersonales div strong{
+       color: white;
+    }
+
+    .datosPersonales div span{
+        position: relative;
+        left: 40px;
+    }
+
+
+}

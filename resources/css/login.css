@@ -1,0 +1,180 @@
+/*==== Formularios Login ====*/
+#appsFormulario {
+    position: absolute;
+    width: 250px;
+    padding: 20px;
+    color: var(--OnPasivo);
+    background-color: var(--fondoOff07);
+    box-shadow: 0px 4px 10px var(--luzOn);
+    border-radius: 5px;
+    border: 1px solid var(--OnActivo);
+    z-index: 4;
+    transition: all 0.3s ease-in-out; /* Transición para todos los estados */
+}
+
+.appsFormularioLogin {
+    top: -250px; /* Inicialmente fuera de la pantalla */
+    right: 2px;
+    transition: top 0.3s ease-in-out; /* Animación suave */
+}
+
+.oculto {
+    display: none; /* Para ocultar el formulario */
+}
+
+.appsFormularioLogin.mostrar {
+    top: 0px; /* Desciende a la vista */
+}
+
+#appsFormulario form {
+    display: flex;
+    flex-direction: column;
+}
+
+#appsFormulario input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid var(--OnPasivo);
+    border-radius: 8px 0;
+    background: var(--fondo03);
+    color: var(--OnPasivo);
+    font-weight: normal;
+    font-size: 0.8vw;
+    transition: all 0.2s ease; /* Suaviza los cambios al enfocarse */
+}
+
+#appsFormulario input:focus {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+    border-color: var(--OnActivo);
+    box-shadow: 0 1px 10px var(--OnActivo) inset, 0 0 8px var(--luzOn);
+    background: var(--fondo01);
+    outline: none;
+}
+
+#appsFormulario button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#appsFormulario button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#appsFormulario:hover {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+    border: 1px solid var(--OnActivo);
+    box-shadow: 0px 0px 25px 0px var(--OnActivo);
+    background: var(--fondoOff09);
+}
+
+#appsFormulario .btnLogin {
+    left: 30px;
+    color: var(--OnPasivo);
+    font-weight: normal;
+    font-size: 0.8vw;
+    border: 1px solid var(--OnPasivo);
+    border-radius: 8px 0;
+    background: var(--fondo03);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#appsFormulario .btnLogin:hover {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+    border-color: var(--OnActivo);
+    box-shadow: 0 1px 10px var(--OnActivo) inset, 0 0 8px var(--luzOn);
+}
+
+/*==== Formularios LoggedIn ====*/
+
+.appsFormularioDatosUsuario {
+    top: -350px; /* Inicialmente fuera de la pantalla */
+    right: 2px;
+    transition: top 0.3s ease-in-out; /* Animación suave */
+}
+
+.oculto {
+    display: block;
+}
+
+
+.appsFormularioDatosUsuario.mostrar {
+    top: 0px; /* Desciende a la vista */
+}
+
+.datosPersonales {
+    border-bottom: 1px solid gray;
+    margin: 10px 0px;
+    padding: 10px 0px;
+}
+
+.sesionImgInside {
+    margin: auto;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.appsFormularioDatosUsuario .etiqueta {
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+.appsFormularioDatosUsuario .datos {
+    font-weight: normal;
+    font-style: italic;
+}
+
+.appsFormularioDatosUsuario .btn {
+    width: auto;
+    left: 30px;
+    color: var(--OnPasivo);
+    font-weight: normal;
+    font-size: 0.8vw;
+    text-align: center;
+    border: 1px solid var(--OnPasivo);
+    border-radius: 5px;
+    background: var(--fondo03);
+    cursor: pointer;
+    padding: 0px 5px;
+    transition: all 0.3s ease;
+}
+
+.appsFormularioDatosUsuario .btn:hover {
+    font-weight: bold;
+    color: var(--OnActivo);
+    text-shadow: 10px var(--OnActivo);
+    border: 1px solid var(--OnActivo);
+    box-shadow: 2px 1px 5px 1px var(--luzOn);
+    background: var(--fondo01);        
+}
+
+.appsFormularioNuevaContrasena {
+    top: 231px;
+    right: 192px;
+}
+
+.appsFormularioNuevaContrasena #contrasenaCheckList {
+    position: absolute;
+    visibility: hidden;
+    top: 70px;
+    left: -210px;
+    padding: 10px;
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--OnActivo);
+    border-radius: 15px 0;
+    border: 1px solid var(--OnActivo);
+    box-shadow: 0 1px 10px var(--OnActivo) inset, 0 0 8px var(--luzOn);
+    border: 1px solid var(--OnActivo);
+    box-shadow: 0px 0px 25px 0px var(--OnActivo);
+    background: var(--fondoOff09);    
+}

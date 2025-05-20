@@ -1,0 +1,28 @@
+:root {
+    --imagenFondo: url('../img/fondo_empresa.jpg'); /* Fondo sutil y profesional */
+    --luzOn: #0066CC; /* Azul corporativo brillante para interacciones */
+    --OnActivo: #004080; /* Azul oscuro para elementos activos */
+    --OnPasivo: #99CCFF; /* Azul claro para estados pasivos */
+    --Off: #CCCCCC; /* Gris claro para estados apagados */
+    --RojoOnActivo: #CC3333; /* Rojo oscuro para destacar elementos críticos */
+    --RojoOnPasivo: #FF6666; /* Rojo suave para estados pasivos o alertas */
+    --RojoOff: #E6B3B3; /* Rojo apagado para estados inactivos */
+    --fondo: #F2F2F2; /* Fondo gris suave y neutro para un aspecto limpio */
+    --fondo01: rgba(0, 102, 204, 0.1); /* Azul corporativo translúcido */
+    --fondo03: rgba(0, 102, 204, 0.3); /* Azul corporativo translúcido medio */
+    --fondo05: rgba(0, 102, 204, 0.5); /* Azul corporativo translúcido fuerte */
+    --fondo07: rgba(0, 102, 204, 0.7); /* Azul corporativo translúcido casi opaco */
+    --fondo09: rgba(0, 102, 204, 0.9); /* Azul corporativo translúcido opaco */
+    --fondo10: rgba(0, 102, 204, 1); /* Azul corporativo sólido */
+    --fondoOff01: rgba(204, 204, 204, 0.1); /* Gris claro translúcido suave */
+    --fondoOff03: rgba(204, 204, 204, 0.3); /* Gris claro translúcido medio */
+    --fondoOff05: rgba(204, 204, 204, 0.5); /* Gris claro translúcido fuerte */
+    --fondoOff07: rgba(204, 204, 204, 0.7); /* Gris claro translúcido casi opaco */
+    --fondoOff09: rgba(204, 204, 204, 0.9); /* Gris claro translúcido opaco */
+    --fondoOff10: rgba(204, 204, 204, 1); /* Gris claro sólido */
+    --colorPrincipal: #0066CC; /* Azul corporativo, dominante */
+    --colorSecundario: #333333; /* Gris oscuro para texto secundario */
+    --colorFondo: #F2F2F2; /* Fondo claro neutro */
+    --colorTexto: #2F2F2F; /* Gris oscuro para texto principal */
+    --font: 'Open Sans', sans-serif; 
+}

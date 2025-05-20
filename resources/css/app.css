@@ -1,0 +1,27 @@
+@import './plantillaGral.css';
+@import './header.css';
+@import './footer.css';
+@import './body.css';
+@import './responsiveHeader.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+.editable-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .editable-desktop {
+        display: none;
+    }
+
+    .editable-mobile {
+        display: inline-block;
+    }
+}

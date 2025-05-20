@@ -1,0 +1,34 @@
+:root {
+    --imagenFondo: url('../img/fondo.jpg');
+    --luzOn: #00b5e2;
+    --OnActivo: #abe2f8;
+    --OnPasivo: #80c0fc;
+    --Off: #5e71aa;
+    --RojoOnActivo: #ff3b30;
+    --RojoOnPasivo: #d80202;
+    --RojoOff: #960404;
+    --fondo: #1c1c1c;
+    --fondo01: rgba(117, 208, 250, 0.1);
+    --fondo03: rgba(117, 208, 250, 0.3);
+    --fondo05: rgba(117, 208, 250, 0.5); 
+    --fondo07: rgba(117, 208, 250, 0.7);
+    --fondo09: rgba(117, 208, 250, 0.9); 
+    --fondo10: rgba(117, 208, 250, 1);
+    --fondoOff01: rgba(15, 25, 44, 0.1);
+    --fondoOff03: rgba(15, 25, 44, 0.3);
+    --fondoOff05: rgba(15, 25, 44, 0.5); 
+    --fondoOff07: rgba(15, 25, 44, 0.7);
+    --fondoOff09: rgba(15, 25, 44, 0.9); 
+    --fondoOff10: rgba(15, 25, 44, 1);
+    --colorPrincipal: #00b5e2; 
+    --colorSecundario: #ff6f00; 
+    --colorFondo: #1c1c1c; 
+    --colorTexto: #ffffff; 
+	--font1: jarvis1;
+	--font2: jarvis2;
+	--future: future;
+	--futurama: futurama;
+	--digital:digital;
+	--digitalix:digitalix;
+    --font: 'Orbitron', sans-serif;
+}

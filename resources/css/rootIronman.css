@@ -1,0 +1,28 @@
+:root {
+    --imagenFondo: url('../img/ironman.jpg'); /* Fondo con temática de Iron Man */
+    --luzOn: #00FFFF; /* Azul brillante, inspirado en el reactor ARC */
+    --OnActivo: #FFD700; /* Dorado metálico para elementos activos */
+    --OnPasivo: #D3D3D3; /* Plata ligera para estados pasivos */
+    --Off: #2F2F2F; /* Gris oscuro para estados apagados */
+    --RojoOnActivo: #ff0000e7; /* Rojo anaranjado intenso, inspirado en la armadura */
+    --RojoOnPasivo: #B22222; /* Rojo oscuro para estados menos prominentes */
+    --RojoOff: #8B0000; /* Rojo apagado para estados inactivos */
+    --fondo: #1C1C1C; /* Negro suave para el fondo principal */
+    --fondo01: rgba(255, 0, 0, 0.1); /* Rojo translúcido suave */
+    --fondo03: rgba(255, 0, 0, 0.3); /* Rojo translúcido medio */
+    --fondo05: rgba(255, 0, 0, 0.5); /* Rojo translúcido fuerte, inactivo */
+    --fondo07: rgba(255, 0, 0, 0.7); /* Rojo translúcido casi opaco */
+    --fondo09: rgba(255, 0, 0, 0.9); /* Rojo translúcido opaco */
+    --fondo10: rgba(255, 0, 0, 1); /* Rojo sólido brillante */
+    --fondoOff01: rgba(47, 47, 47, 0.1); /* Gris oscuro translúcido suave */
+    --fondoOff03: rgba(47, 47, 47, 0.3); /* Gris oscuro translúcido medio */
+    --fondoOff05: rgba(47, 47, 47, 0.5); /* Gris oscuro translúcido fuerte, inactivo */
+    --fondoOff07: rgba(47, 47, 47, 0.7); /* Gris oscuro translúcido casi opaco */
+    --fondoOff09: rgba(47, 47, 47, 0.9); /* Gris oscuro translúcido opaco */
+    --fondoOff10: rgba(47, 47, 47, 1); /* Gris oscuro sólido */
+    --colorPrincipal: #FF4500; /* Rojo intenso, como base principal */
+    --colorSecundario: #FFD700; /* Dorado metálico para detalles destacados */
+    --colorFondo: #101010; /* Negro profundo, fondo complementario */
+    --colorTexto: #E0E0E0; /* Gris claro para texto legible */
+    --font: 'Exo 2', sans-serif;
+}

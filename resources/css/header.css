@@ -1,0 +1,171 @@
+#appsEncabezadoGral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--Off);
+    box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.2);
+    background: var(--fondo01);
+    transition: all 0.3s ease;
+    z-index: 3;
+    user-select: none;
+}
+
+#appsEncabezadoGral:hover {
+    background: var(--fondo03);
+    border: var(--OnActivo);
+    box-shadow: 0px 4px 15px var(--luzOn);
+}
+
+.appsName{
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo del contenedor del menú */
+.appsBtnMenu {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    display: none;
+}
+ 
+  /* Líneas del menú */
+.appsBtnMenu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--Off); /* Color de las líneas */
+    border-radius: 2px; /* Bordes redondeados */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#appsEncabezadoGral:hover .appsBtnMenu span{
+    background-color: var(--OnActivo);    
+    box-shadow: 0px 0px 15px var(--luzOn);
+}
+
+.appsBtnMenu:hover span{
+    transform: rotate(180deg);
+}
+  
+  /* Cambio de estado (por ejemplo, para un menú abierto) */
+.appsBtnMenu.open span:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+}
+  
+.appsBtnMenu.open span:nth-child(2) {
+    opacity: 0;
+}
+  
+.appsBtnMenu.open span:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+.appsBtnMenu img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 0px 15px var(--luzOn);
+}
+
+.appsBtnMenu:hover img {
+    transform: rotate(180deg);
+	box-shadow: 0px 0px 15px var(--luzOn);
+}
+
+/* Logo */
+.appsLogo {
+    padding: 0 30px;
+}
+
+.appsLogo img {
+    height: 50px;
+    width: 50px;
+    transition: transform 1s ease;
+}
+
+#appsEncabezadoGral:hover .appsLogo img {
+    transform: scale(1.1);
+}
+
+/* Título de la Cinta */
+.appsTituloCinta {
+    padding: 0 20px;
+    font-weight: bold;
+    color: var(--RojoOnPasivo); /* Color base */
+    text-align: center;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#appsEncabezadoGral:hover .appsTituloCinta {
+    color: var(--RojoOnActivo);
+    text-shadow: 0px 0px 10px var(--RojoOnActivo);
+}
+
+/* Contenido de la Cinta */
+.appsContenidoCinta {
+    font-weight: normal;
+    color: var(--OnPasivo); /* Color base */
+    text-align: center;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    margin: 0 50px 0 0;
+}
+
+#appsEncabezadoGral:hover .appsContenidoCinta {
+    color: var(--OnActivo); /* Cambié a un color más visible */
+    text-shadow: 0px 0px 10px var(--OnActivo);
+}
+
+.appsContenidoCinta ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.appsContenidoCinta li {
+    margin: 0 5%;
+    padding: 0 100px;
+}
+
+.appsContenidoCinta li a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--RojoOnPasivo); /* Color base */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#appsEncabezadoGral:hover .appsContenidoCinta li a {
+    color: var(--RojoOnActivo); /* Cambié a un color más visible */
+    text-shadow: 0px 0px 10px var(--RojoOnActivo);
+}
+
+/* Botón de Inicio de Sesión */
+.appsInicioSesionCinta {
+    margin: 5px;
+    padding: 5px 15px;
+    text-align: center;
+    color: var(--OnPasivo);
+    font-weight: bold;
+    border: 2px solid var(--OnPasivo);
+    border-radius: 15px;
+    background: var(--fondoOff09);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.appsInicioSesionCinta:hover {
+    color: var(--OnActivo);
+    text-shadow: 0px 0px 10px var(--luzOn);
+    border-color: var(--luzOn);
+    box-shadow: 0px 4px 15px var(--luzOn);
+    background: var(--fondo03);
+}

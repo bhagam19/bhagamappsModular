@@ -1,0 +1,53 @@
+@media screen and (max-width: 768px) {
+
+    /* Estilo general para botones */
+
+    #h2 {
+        top: 300px;
+    }
+
+    #appsContenedor {
+        top: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative; /* Asegura que 'top' funcione correctamente */
+        user-select: none;
+    }
+
+    .boton {
+        width: 96%;
+        height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        user-select: none;
+    }
+
+    /* Enlaces dentro de botones */
+    .boton a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    /* Imágenes dentro de botones */
+    .boton img {
+        height: 90px;
+        width: 90px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px #ebe6ec;
+        user-select: none;
+    }
+
+    /* Texto dentro de botones */
+    .boton p {
+        margin: 0;
+        padding-left: 25px;
+        flex-grow: 1;
+        color: black;
+        font-weight: normal;
+        font-size: 1.5em; /* Ajuste para pantallas pequeñas */
+        text-align: left;
+    }
+}

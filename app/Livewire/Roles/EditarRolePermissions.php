@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Livewire\Roles;
+
+use Livewire\Component;
+use App\Models\Role;
+use App\Models\Permission;
+
+class EditarRolePermissions extends Component
+{
+    public $role;
+    public $groupedPermissions = [];
+    public $selectedPermissions = [];
+
+    public function mount(Role $role)
+    {
+        $this->role = $role;
+        $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
+
+        // Agrupar permisos por prefijo (categoría)
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            $group = lcfirst($permission->categoria); // Ej: "Usuarios" → "usuarios"
+            $this->groupedPermissions[$group][] = $permission;
+        }
+    }
+
+    public function save()
+    {
+        $this->validate([
+            'selectedPermissions' => 'array',
+            'selectedPermissions.*' => 'exists:permissions,id',
+        ]);
+
+        $this->role->permissions()->sync($this->selectedPermissions);
+        session()->flash('message', 'Permisos actualizados correctamente.');
+        return redirect()->route('admin.roles.index');
+    }
+
+    public function render()
+    {
+        return view('livewire.roles.editar-role-permissions')
+         ->layout('layouts.app'); 
+    }
+}
