@@ -8,33 +8,33 @@ AWSTATS DATA FILE 7.6 (build 20161204)
 # update).
 BEGIN_MAP 28
 POS_GENERAL 1997                
-POS_TIME 2680                
-POS_VISITOR 18552               
-POS_DAY 22793               
-POS_DOMAIN 3600                
-POS_LOGIN 3834                
-POS_ROBOT 3989                
-POS_WORMS 4533                
-POS_EMAILSENDER 4664                
-POS_EMAILRECEIVER 4807                
-POS_SESSION 23127               
-POS_SIDER 23336               
-POS_FILETYPES 4942                
-POS_DOWNLOADS 5689                
-POS_OS 5954                
-POS_BROWSER 6219                
-POS_SCREENSIZE 7432                
-POS_UNKNOWNREFERER 7506                
-POS_UNKNOWNREFERERBROWSER 7775                
-POS_ORIGIN 7891                
-POS_SEREFERRALS 8033                
-POS_PAGEREFS 8177                
-POS_SEARCHWORDS 8325                
-POS_KEYWORDS 8477                
-POS_MISC 2341                
-POS_ERRORS 8536                
-POS_CLUSTER 3690                
-POS_SIDER_404 8764                
+POS_TIME 2681                
+POS_VISITOR 18650               
+POS_DAY 23091               
+POS_DOMAIN 3604                
+POS_LOGIN 3838                
+POS_ROBOT 3993                
+POS_WORMS 4566                
+POS_EMAILSENDER 4697                
+POS_EMAILRECEIVER 4840                
+POS_SESSION 23457               
+POS_SIDER 23666               
+POS_FILETYPES 4975                
+POS_DOWNLOADS 5722                
+POS_OS 5987                
+POS_BROWSER 6252                
+POS_SCREENSIZE 7526                
+POS_UNKNOWNREFERER 7600                
+POS_UNKNOWNREFERERBROWSER 7869                
+POS_ORIGIN 7985                
+POS_SEREFERRALS 8127                
+POS_PAGEREFS 8271                
+POS_SEARCHWORDS 8419                
+POS_KEYWORDS 8571                
+POS_MISC 2342                
+POS_ERRORS 8630                
+POS_CLUSTER 3694                
+POS_SIDER_404 8858                
 END_MAP
 
 # LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
@@ -46,53 +46,53 @@ END_MAP
 # MonthHostsKnown   = Number of hosts known
 # MonthHostsUnKnown = Number of hosts unknown
 BEGIN_GENERAL 8
-LastLine 20250520024616 4001 1028360 5873957450259
+LastLine 20250521020603 4587 1175282 19424340484479
 FirstTime 20250511035820
-LastTime 20250520024613
-LastUpdate 20250520033004 0 0 0 0 0
-TotalVisits 151                 
-TotalUnique 103                 
+LastTime 20250521015919
+LastUpdate 20250521033003 0 0 0 0 0
+TotalVisits 166                 
+TotalUnique 108                 
 MonthHostsKnown 0                   
-MonthHostsUnknown 106                 
+MonthHostsUnknown 111                 
 END_GENERAL
 
 # Misc ID - Pages - Hits - Bandwidth
 BEGIN_MISC 10
+JavascriptDisabled 0 0 0
 FlashSupport 0 0 0
 RealPlayerSupport 0 0 0
-WindowsMediaPlayerSupport 0 0 0
-DirectorSupport 0 0 0
-JavascriptDisabled 0 0 0
-QuickTimeSupport 0 0 0
 JavaEnabled 0 0 0
 TotalMisc 0 0 0
-AddToFavourites 0 1026 0
+AddToFavourites 0 1027 0
+WindowsMediaPlayerSupport 0 0 0
 PDFSupport 0 0 0
+QuickTimeSupport 0 0 0
+DirectorSupport 0 0 0
 END_MISC
 
 # Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
 BEGIN_TIME 24
-0 206 538 24445789 49 432 8985845
-1 391 707 28919748 244 1409 11222059
-2 22 57 1864120 211 310 633530
-3 18 56 158558 145 168 133857
-4 38 38 313116 131 134 425473
-5 42 46 424856 243 328 339572
-6 51 100 3256388 81 116 146078
-7 71 104 2261993 196 223 126934
-8 13 40 1847921 70 83 61086
-9 6 10 370871 152 158 172698
-10 28 28 42899 136 158 397587
-11 14 29 839468 124 138 105466
-12 13 17 394160 139 150 202560
+0 240 626 28343491 58 461 9143775
+1 395 721 29994923 244 1423 11315386
+2 22 57 1864120 212 311 644213
+3 18 56 158558 146 169 144540
+4 38 38 313116 133 136 446839
+5 42 46 424856 246 331 361109
+6 51 100 3256388 84 119 161273
+7 72 105 2267612 197 224 137617
+8 13 40 1847921 72 85 82452
+9 6 10 370871 153 159 183381
+10 29 29 46265 139 161 420848
+11 22 58 2425042 127 146 143715
+12 21 37 1221650 145 170 318707
 13 24 25 160946 50 59 94485
 14 36 59 1631243 50 67 82489
-15 738 877 18775861 294 370 8370667
-16 491 846 31753237 200 452 2936219
-17 65 175 10894898 105 173 22701611
-18 147 312 16642204 442 702 33617487
-19 222 413 17980106 228 392 17729411
-20 360 991 54057403 293 634 11314996
+15 739 883 19226350 295 371 8381350
+16 491 846 31753237 201 453 3168369
+17 70 193 11914514 109 182 23606506
+18 229 457 23884077 468 790 42363815
+19 244 446 18761018 229 407 17824701
+20 367 1014 55213482 294 640 11349111
 21 672 1711 105586344 130 473 19538162
 22 454 1025 51600361 199 471 40041063
 23 192 570 26135238 74 207 11853999
@@ -101,7 +101,7 @@ END_TIME
 # Domain - Pages - Hits - Bandwidth
 # The 10 first Pages must be first (order not required for others)
 BEGIN_DOMAIN 1
-ip 4314 8774 400357728
+ip 4487 9152 418401623
 END_DOMAIN
 
 # Cluster ID - Pages - Hits - Bandwidth
@@ -115,7 +115,7 @@ END_LOGIN
 
 # Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
 # The 10 first Hits must be first (order not required for others)
-BEGIN_ROBOT 11
+BEGIN_ROBOT 12
 Googlebot/ 603 619589 20250516225227 3
 bingbot/ 38 90141 20250515165406 1
 DotBot/ 23 82686 20250514153345 3
@@ -124,9 +124,10 @@ AhrefsBot/ 9 111037 20250519173121 2
 MJ12bot/ 5 19939 20250518221831 0
 link 3 7092 20250511142014 0
 (firefox/)([0-9]\.|[0-1][0]\.) 3 6887 20250519091309 0
-bot[\s_+:,\.\;\/\\-] 2 15390 20250514000316 1
 unknown 2 535 20250514150056 2
+bot[\s_+:,\.\;\/\\-] 2 15390 20250514000316 1
 custo 1 6487 20250517004243 0
+curl 1 5627 20250520113459 0
 END_ROBOT
 
 # Worm ID - Hits - Bandwidth - Last visit
@@ -146,138 +147,141 @@ END_EMAILRECEIVER
 
 # Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
 BEGIN_FILETYPES 41
-yaml 3 8108 0 0
+png 559 125589039 0 0
 backup 5 9130 0 0
-8 1 511 0 0
-js 2362 78821225 0 0
-old 1 511 0 0
-cfg 1 511 0 0
-dist 1 511 0 0
-pyo 1 511 0 0
-json 14 53179 0 0
-2 1 511 0 0
-css 1493 63837299 0 0
-bak 5 9130 0 0
-woff2 402 31090723 0 0
-phpd 1 511 0 0
-Unknown 1706 15487491 0 0
-sample 1 511 0 0
 stage 1 511 0 0
-php3 1 511 0 0
-log 6 9641 0 0
-cust 1 511 0 0
-php 1583 5493703 0 0
-prod 2 7597 0 0
-c 1 511 0 0
-gz 1 511 0 0
-svg 5 17949 0 0
-swp 1 511 0 0
-py 19 55734 0 0
-conf 3 1533 0 0
-local 3 8108 0 0
-cache 1 511 0 0
-b 1 511 0 0
-map 480 81408598 0 0
-yml 42 100362 0 0
-ico 40 3927560 0 0
-png 534 119489910 0 0
-csproj 1 511 0 0
+cfg 1 511 0 0
 env 18 35498 0 0
-txt 2 4617 0 0
+svg 5 17949 0 0
+sample 1 511 0 0
+ico 48 4713072 0 0
+pyo 1 511 0 0
+2 1 511 0 0
+b 1 511 0 0
+py 19 55734 0 0
 html 9 22640 0 0
+8 1 511 0 0
+swp 1 511 0 0
+json 14 53179 0 0
+php 1600 5571709 0 0
+bak 5 9130 0 0
+map 483 81919469 0 0
+woff2 419 32435015 0 0
+prod 2 7597 0 0
+css 1561 66589743 0 0
+js 2466 82241002 0 0
+cust 1 511 0 0
+csproj 1 511 0 0
+php3 1 511 0 0
+old 1 511 0 0
+conf 3 1533 0 0
+log 6 9641 0 0
+yaml 3 8108 0 0
+txt 2 4617 0 0
 xml 17 440687 0 0
+dist 1 511 0 0
+gz 1 511 0 0
+yml 42 100362 0 0
+Unknown 1842 18541355 0 0
 save 4 8619 0 0
+phpd 1 511 0 0
+c 1 511 0 0
+cache 1 511 0 0
+local 3 8108 0 0
 END_FILETYPES
 
 # Downloads - Hits - Bandwidth
 BEGIN_DOWNLOADS 7
 /logs/aws/ses.log 2 0 1022
 /storage/logs/laravel.log 2 0 7597
+/wp-config.backup.txt 1 0 511
 /wp-config.php.gz 1 0 511
 /storage/test.txt 1 0 4106
-/var/log/cloud-init-output.log 1 0 511
-/wp-config.backup.txt 1 0 511
 /var/log/nginx/error.log 1 0 511
+/var/log/cloud-init-output.log 1 0 511
 END_DOWNLOADS
 
 # OS ID - Hits
 BEGIN_OS ID - Hits - Pages 15
-macosx11 1 1
-linux 103 66
 Unknown 10 9
-win8 1 1
-unix 1 1
-linuxubuntu 1 1
-macosx 31 20
-macosx5 2 2
 winxp 6 6
-win10 7031 3622
-symbian 2 2
-linuxandroid 1537 535
-ios_iphone 29 29
+unix 1 1
+win8 1 1
+macosx 32 21
+linuxandroid 1647 588
 win7 7 7
+symbian 2 2
+macosx11 1 1
+macosx5 2 2
+ios_iphone 29 29
+linux 105 67
+win10 7296 3740
 macosx10 12 12
+linuxubuntu 1 1
 END_OS
 
 # Browser ID - Hits - Pages
-BEGIN_BROWSER 57
-chrome121.0.0.0 21 12
-chrome123.0.0.0 6 2
-chrome91.0.4472.124 1226 1217
-msie11.0 1 1
-safari10.0 1 1
-chrome52.0.2424.98 1 1
-chrome102.0.0.0 1 1
-chrome135.0.0.0 8 6
-chrome45.0.2454.85 4 4
-safari13.0.3 25 25
-safari4.0 2 2
-firefox136.0 1 1
-chrome53.0.2785.97 4 4
-chrome136.0.0.0 7269 2865
-mozilla 3 2
-chrome133.0.0.0 2 2
-chrome101.0.4951.41 3 3
-chrome116.0.0.0 1 1
-firefox134.0 9 9
-chrome15.0.874.120 1 1
-chrome132.0.0.0 2 2
-Unknown 5 5
-chrome45.0.2454.94 2 2
-safari9.0.2 1 1
-firefox126.0 2 2
-chrome28.0.1500.94 1 1
-netscape5.0 4 3
-chrome88.0.4240.193 38 22
-chrome99.0.4844.84 1 1
-chrome96.0.4664.110 1 1
-chrome4.0.249.0 2 2
-firefox32.0 1 1
-chrome81.0.4044.92 1 1
-iphone 1 1
-chrome76.0.3809.111 2 2
-chrome124.0.0.0 3 3
-opera85.0.4341.22 4 4
-chrome52.0.2743.116 12 12
-chrome74.0.3729.169 20 20
-chrome130.0.0.0 7 2
-chrome59.0.3071.125 25 18
-chrome100.0.4896.75 2 2
-chrome99.0.4844.74 1 1
-opera60.0.3255.70 1 1
-chrome92.0.4515.162 1 1
-opera10.10 5 5
-safari 3 3
-chrome19.0.1084.9 2 2
+BEGIN_BROWSER 60
+chrome136.0.0.0 7637 3030
 chrome58.0.3029.110 3 3
-opera12.00 2 2
-chrome57.0.2987.133 2 2
-chrome19.0.1061.1 1 1
-chrome87.0.4280.88 3 1
+chrome132.0.0.0 2 2
+chrome4.0.249.0 2 2
+chrome59.0.3071.125 29 22
+chrome88.0.4240.193 38 22
 firefox11.0 6 6
-chrome104.0.0.0 10 10
+chrome101.0.4951.41 3 3
+safari4.0 2 2
+chrome45.0.2454.94 2 2
+chrome91.0.4472.124 1226 1217
+chrome116.0.0.0 1 1
+chrome100.0.4896.75 2 2
+chrome102.0.0.0 1 1
+chrome19.0.1061.1 1 1
+chrome105.0.0.0 2 1
+chrome92.0.4515.162 1 1
+chrome15.0.874.120 1 1
+mozilla 3 2
+chrome74.0.3729.169 20 20
+chrome99.0.4844.84 1 1
+chrome135.0.0.0 10 7
 chrome81.0.4044.129 6 6
+firefox126.0 2 2
+chrome76.0.3809.111 2 2
+chrome19.0.1084.9 2 2
+chrome81.0.4044.92 1 1
+firefox134.0 9 9
+firefox136.0 1 1
+chrome99.0.4844.74 1 1
+chrome52.0.2743.116 12 12
+chrome57.0.2987.133 2 2
+iphone 1 1
+safari10.0 1 1
+opera60.0.3255.70 1 1
+chrome96.0.4664.110 1 1
 safari2.0.1 2 2
+safari13.0.3 25 25
+chrome53.0.2785.97 4 4
+chrome87.0.4280.88 3 1
+chrome52.0.2424.98 1 1
+opera12.00 2 2
+chrome121.0.0.0 21 12
+Unknown 5 5
+chrome104.0.0.0 10 10
+chrome45.0.2454.85 4 4
+chrome28.0.1500.94 1 1
+chrome110.0.0.0 1 1
+msie11.0 1 1
+safari 3 3
+chrome130.0.0.0 7 2
+opera85.0.4341.22 4 4
+opera10.10 5 5
+chrome134.0.0.0 1 1
+netscape5.0 4 3
+firefox32.0 1 1
+safari9.0.2 1 1
+chrome124.0.0.0 3 3
+chrome133.0.0.0 2 2
+chrome123.0.0.0 6 2
 END_BROWSER
 
 # Screen size - Hits
@@ -286,8 +290,8 @@ END_SCREENSIZE
 
 # Unknown referer OS - Last visit date
 BEGIN_UNKNOWNREFERER 3
-Go-http-client/1.1 20250513210641
 Mozilla/5.0_(compatible;_CensysInspect/1.1;__https://about.censys.io/) 20250519220328
+Go-http-client/1.1 20250513210641
 Mozilla/5.0_researchscan.comsys.rwth-aachen.de 20250514092752
 END_UNKNOWNREFERER
 
@@ -298,11 +302,11 @@ END_UNKNOWNREFERERBROWSER
 
 # Origin - Pages - Hits 
 BEGIN_ORIGIN 6
-From0 2270 2309
+From0 2292 2332
 From1 0 0
 From2 0 0
 From3 0 0
-From4 2044 6465
+From4 2195 6820
 From5 0 0
 END_ORIGIN
 
@@ -327,427 +331,432 @@ END_KEYWORDS
 
 # Errors - Hits - Bandwidth
 BEGIN_ERRORS 11
-403 673 3608271
-419 5 41794
-504 26 10762
-302 149 325569
-500 456 164679358
-499 13 0
-301 21 55438
+500 482 174305162
+301 25 65794
 405 3 2363765
-404 4324 18347776
-502 14 7326
+504 26 10762
+404 4441 19229767
+403 674 3616433
+499 13 0
 503 2 5899
+502 14 7326
+419 5 41794
+302 165 367584
 END_ERRORS
 
 # URL with 404 errors - Hits - Last URL referrer
 BEGIN_SIDER_404 290
-/favicons/apple-icon-72x72.png 3 https://bhagamapps.com/admin
-/public/css/login.css 104 https://bhagamapps.com/
-/static/js/2.ca066a4b.chunk.js 2 -
-/debugger.php 2 -
-/2020/wp-includes/wlwmanifest.xml 2 -
-/SvS/index.php 1 -
-/SvS/mostrarTablasenBD.php 1 -
-/inventarioApp/principal/00-principal.php 533 -
-/public/css/responsiveMenu.css 104 https://bhagamapps.com/
-/karma.conf.json 1 -
-/favicons/android-icon-192x192.png 86 https://bhagamapps.com/admin/roles/1/editar-permisos
-/DkusHdof 1 -
-//website/wp-includes/wlwmanifest.xml 1 -
-/public/css/body.css 104 https://bhagamapps.com/
-/app/init.php 1 -
-/favicons/apple-icon-180x180.png 3 https://bhagamapps.com/admin
-/etc/ssl/private/server.key 1 -
-/admin/users 6 https://bhagamapps.com/admin/grupos
-/sito/wp-includes/wlwmanifest.xml 3 -
-/public/css/header.css 2 https://bhagamapps.com/
-/wp-config.php.bak 2 -
-/bootstrap.php 1 -
-/inventarioApp/pincipal/corregirCodificacion.php 2 -
-/EvPAv 1 -
-/controller/api/post.js 2 -
-/backup.tar.gz 1 -
-/s/63e2234313e2632313e2434313/_/ 1 -
-/inventarioApp/art/inventApp.png 9 -
-//shop/wp-includes/wlwmanifest.xml 1 -
-/img/aIcon.png 99 https://bhagamapps.com/
-/_profiler/empty/search/results 2 -
-/app/assets/javascripts/application.js 1 -
-/public/css/plantillaGral.css 12 https://bhagamapps.com/
-/static/js/main.141b0494.js 2 -
-/inventarioApp/bdMantenimiento/00-mantenimiento.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/ftpsync.settings 2 -
-/static/app.js 1 -
-/admin/config.php 1 -
-/inventarioApp/bdUsuarios/00-usuarios.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/info.php 9 -
+/public/js/login.js 100 https://bhagamapps.com/
 /js/script.js 1 -
-/src/js/index.js 1 -
-/helper.js 2 -
-/swagger.js 2 -
-/admin/controllers/merchant.js 2 -
+/info 2 -
+/shared/config/config.js 2 -
+/sito/wp-includes/wlwmanifest.xml 3 -
+/admin/config.php 1 -
 /SvS 2 -
-/favicons/apple-icon-152x152.png 3 https://bhagamapps.com/admin
+//news/wp-includes/wlwmanifest.xml 1 -
+/inventarioApp/ 10 -
+/lara/info.php 6 -
+/server 1 -
+//test/wp-includes/wlwmanifest.xml 1 -
+/inventarioApp/bdCategorias/00-categoriasBienes.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
 /evalDoc/public/admin 1 -
-/wp-content/plugins/litespeed-cache/readme.txt 1 -
-/application.ini 1 -
-/config.xml 1 -
-/application.properties 2 -
-/favicons/favicon-16x16.png 87 https://bhagamapps.com/admin/roles/1/editar-permisos
-/wp2/wp-includes/wlwmanifest.xml 3 -
-/sites/all/libraries/elfinder/src/connectors/php/connector.php 1 -
-/favicons/apple-icon-76x76.png 4 https://bhagamapps.com/admin
-/public/scripts.js 1 -
-/backup.sql 1 -
-/server.js 2 -
-/conexion/instalacion.css 1 http://bhagamapps.com/inventarioApp/01-instalacion.php
-/favicons/apple-icon-57x57.png 4 https://bhagamapps.com/admin
-/api/config.js 2 -
-/settings.py 3 -
-/secrets/aws_ses.env 2 -
-/public/css/responsiveBotons.css 104 https://bhagamapps.com/
-/aws/credentials 2 -
-/aws_credentials.json 1 -
-/inventarioApp/principal/00-principal.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/config/local.yml 2 -
-/config.js 2 -
-/wp-includes/ID3/license.txt 2 -
-/contact/ 1 -
-/target=%22_blank%22 2 -
-/favicons/apple-icon-114x114.png 4 https://bhagamapps.com/admin
-/inventarioApp/bdBienes/00-bienes.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/eduinclusivareact 1 -
-//appsArt/aIcon.png 26 -
-/backup.zip 1 -
-/server.php 1 -
-/public_html/inventarioApp/principal/00-principal.css 1 -
-/.json 2 -
-/public/css/responsiveHeader.css 104 https://bhagamapps.com/
-/config/production.json 1 -
-/js/twint_ch.js 3 -
-/register/ 1 -
-/inventarioApp/bdDependencias/00-dependencias.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/config.php 4 -
-/api/db.php 1 -
-/test/wp-includes/wlwmanifest.xml 5 -
+/helpers/utility.js 2 -
+/JMproyects/JmLobby.html 3 -
+/partner/config/config.js 2 -
+/public/js/main.js 2 -
 /aws.yml 1 -
-/_phpinfo.php 2 -
-/dump.sql 1 -
-/public/js/menu.js 100 https://bhagamapps.com/
-/config.json 2 -
-/_profiler/info 1 -
-/public/js/selectorTemas.js 100 https://bhagamapps.com/
-/favicon.png 1 -
-/client/main.js 1 -
-/opt/aws/ses.env 2 -
-/server-info.php 6 -
-/lara/phpinfo.php 6 -
+/cms/wp-includes/wlwmanifest.xml 5 -
+/helper.js 2 -
+/wp/wp-includes/wlwmanifest.xml 5 -
+/config.js 2 -
+/xampp/phpinfo.php 2 -
 /connect.php 1 -
-/2019/wp-includes/wlwmanifest.xml 5 -
-//wordpress/wp-includes/wlwmanifest.xml 1 -
-//wp-includes/wlwmanifest.xml 1 -
-/api/app.js 1 -
-/js/main.js 3 -
-/test.php 10 -
-/admin 1 -
-/website/wp-includes/wlwmanifest.xml 3 -
-/favicons/apple-icon-60x60.png 3 https://bhagamapps.com/admin
-/dashboard/phpinfo.php 2 -
-/constants.ts 1 -
-//2018/wp-includes/wlwmanifest.xml 1 -
-//vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 2 -
-/inventarioApp/conexion/instalacion.css 3 http://bhagamapps.com/inventarioApp/01-instalacion.php
-/shop/wp-includes/wlwmanifest.xml 5 -
+/.json 2 -
+/logs/aws/ses.log 2 -
+/actuator/env 1 -
+/inventarioApp/art/atras.svg 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/wp-config.php 2 -
+/register/ 1 -
+/favicons/apple-icon-120x120.png 7 https://bhagamapps.com/admin
+/_profiler/info 1 -
+/static/app.js 1 -
+/server/s3.js 2 -
+/inventarioApp/corregirCodificacion.php 2 -
+/bk 1 -
+/admin/users 6 https://bhagamapps.com/admin/grupos
+/art/inventApp.png 20 -
 /main 1 -
-/mytest/astech_robot.js 2 -
-/debug/default/view 1 -
+/admin/index.php 1 -
+/config.xml 1 -
+/s3.js 2 -
 /public/css/responsiveLogin.css 104 https://bhagamapps.com/
-/config/constants.js 2 -
-/appsArt/mal.png 1 -
-/aws.yaml 1 -
-/secured/phpinfo.php 2 -
+/vendor/autoload.php 1 -
+/public/scripts.js 1 -
+/api/index.php 1 -
+/cloud-config.yml 1 -
 /site/wp-includes/wlwmanifest.xml 5 -
+/inventarioApp/principal/00-principal.php 548 -
+/new 1 -
+/appsArt/mal.png 1 -
+/bootstrap.php 1 -
+//wordpress/wp-includes/wlwmanifest.xml 1 -
+/phpinfo 3 -
+/inventarioApp/conexion/instalacion.css 3 http://bhagamapps.com/inventarioApp/01-instalacion.php
+//site/wp-includes/wlwmanifest.xml 1 -
+/env.backup 2 -
+/user/config/config.js 2 -
+/aws/credentials 2 -
+/app/assets/javascripts/application.js 1 -
+/backup 1 -
+/debug/default/view 1 -
+/favicons/android-icon-192x192.png 101 https://bhagamapps.com/admin/roles/1/editar-permisos
+//media/wp-includes/wlwmanifest.xml 1 -
+/public/js/app.js 1 -
+/mytest/astech_robot.js 2 -
+/js/twint_ch.js 3 -
 /index.html 2 -
 /2018/wp-includes/wlwmanifest.xml 3 -
-/inventarioApp 22 -
-/media/wp-includes/wlwmanifest.xml 3 -
-/phpinfo.php 12 -
-/controller/admin/post.js 2 -
-/opt/aws/sns.env 2 -
-/inventarioApp/art/atras.svg 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/robots.txt 56 -
-/apis/controllers/users.js 2 -
-/inventarioApp/bdEstadodelBien/00-estadodelBien.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/gatsby-config.js 2 -
-/helper/EmailHelper.js 2 -
-/wp 1 -
-/configs/routes-4aug.js 2 -
-/telescope/requests 1 -
-/wordpress/wp-includes/wlwmanifest.xml 5 -
-/user/controllers/index.js 2 -
-/xmlrpc.php 12 -
-/news/wp-includes/wlwmanifest.xml 3 -
-/app.js 2 -
-/public/admin 1 -
-/admin/server_info.php 2 -
-/old 1 -
-/hardhat.config.js 2 -
-//2019/wp-includes/wlwmanifest.xml 1 -
-/wp-admin/setup-config.php 2 -
-/ads.txt 2 -
-//cms/wp-includes/wlwmanifest.xml 1 -
-/database.sql 1 -
-/server/s3.js 2 -
-/static/js/main.e85f7a37.js 2 -
-/sitemap.txt 2 -
-/auth.json 2 -
-/favicons/manifest.json 15 https://bhagamapps.com/admin/permissions
-/test 2 -
-/wp/wp-includes/wlwmanifest.xml 5 -
-/s3.js 2 -
-/public/css/responsiveFooter.css 104 https://bhagamapps.com/
-/send_mail.php 1 -
-/main.js 2 -
-/v2/_catalog 1 -
-/home 6 https://bhagamapps.com/admin
-/feed 1 -
-/admin/index.php 1 -
-/aicon.ico 1 -
-//web/wp-includes/wlwmanifest.xml 1 -
-/apis/config/config.js 2 -
-/favicons/apple-icon-120x120.png 3 https://bhagamapps.com/admin
-/configs/routes.js 2 -
-//wp2/wp-includes/wlwmanifest.xml 1 -
-/partner/config/config.js 2 -
-/public/css/rootJarvis.css 12 https://bhagamapps.com/
-/resources/js/app.js 1 -
-/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application 1 -
-/favicons/favicon-32x32.png 87 https://bhagamapps.com/admin/roles/1/editar-permisos
-/public/css/footer.css 104 https://bhagamapps.com/
-//wp1/wp-includes/wlwmanifest.xml 1 -
-/inventarioApp/art/menu.svg 15 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-//vendor/phpunit/phpunit/src/Util/PHP/kill.php 2 -
-/inventarioApp/bdUbicaciones/00-ubicaciones.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/public/js/main.js 2 -
-/assets/js/main.js 1 -
-/scripts/app.js 1 -
-/web.config 1 -
-/public/css/menu.css 104 https://bhagamapps.com/
-/web/wp-includes/wlwmanifest.xml 5 -
-/db/schema.rb 1 -
-/login.action 1 -
-/wp1/wp-includes/wlwmanifest.xml 5 -
-//site/wp-includes/wlwmanifest.xml 1 -
-/api/config.env 2 -
-/server/config/database.js 2 -
-/inventarioApp/bdCategorias/00-categoriasBienes.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/public/js/general.js 100 https://bhagamapps.com/
-/wordpress 1 -
-/server_info.php 2 -
-/inventarioApp/corregirCodificacion.php 2 -
-/dist/app.js 1 -
-/_profiler/phpinfo 6 -
-/_all_dbs 1 -
-/inventarioApp/principal/00-principal.css 20 -
-/2021/wp-includes/wlwmanifest.xml 2 -
-/appsArt/aIcon.png 2 -
-/_profiler/phpinfo/info.php 2 -
-/vendor/adminlte/dist/img/aIcon.png 2 https://bhagamapps.com/admin/users
-/inventarioApp/bdAlmacenamiento/00-almacenamientos.js 15 -
-/config.yml 1 -
-/api/index.php 1 -
-/.vscode/sftp.json 1 -
-/aws_credentials.js 1 -
-/cms/wp-includes/wlwmanifest.xml 5 -
-/wp-config.php 2 -
-/js/vendor.js 1 -
-/database_backup.sql 1 -
-/inventarioApp/jquery/jquery.min.js 16 -
-/admin/controllers/partner.js 2 -
-/configs/application.ini 1 -
-//wp/wp-includes/wlwmanifest.xml 1 -
-/php_info.php 2 -
-/user_secrets.yml 1 -
-/art/inventApp.png 20 -
-/db.php 1 -
-/laravel/info.php 2 -
-/docker-compose.yml 3 -
-/favicons/favicon-96x96.png 87 https://bhagamapps.com/admin/roles/1/editar-permisos
-//sito/wp-includes/wlwmanifest.xml 1 -
-/user/config/config.js 2 -
-/actuator/env 1 -
-/config/storage.yml 2 -
-/secrets.json 1 -
-/phpinfo 3 -
-/inventarioApp/ 10 -
-/js/lkk_ch.js 3 -
-/prueba 1 -
-/config.yaml 1 -
-/_profiler/phpinfo/phpinfo.php 2 -
-/vendor/autoload.php 1 -
-/inventarioApp/art/escudo.png 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
-/shared/config/config.js 2 -
-/cloud/Scraper.js 2 -
-//blog/wp-includes/wlwmanifest.xml 1 -
-/server.key 1 -
-/cloud-config.yml 1 -
-/@vite/env 1 -
-/JMproyects/JmLobby.html 3 -
-/logs/aws/ses.log 2 -
-/wp-includes/wlwmanifest.xml 3 -
-/public/js/app.js 1 -
-/index.php 861 -
-/elfinder/php/connector.minimal.php 4 -
-/debug.php 2 -
-/about 1 -
-/customer/send_mail.php 1 -
-/api/shared/config/config.env 1 -
-/xampp/phpinfo.php 2 -
-/scripts/config.php 1 -
-/bk 1 -
+/test/wp-includes/wlwmanifest.xml 5 -
 //xmlrpc.php 1 -
-/scripts/main.js 1 -
-/new 1 -
-/favicons/apple-icon-144x144.png 3 https://bhagamapps.com/admin
-//test/wp-includes/wlwmanifest.xml 1 -
-/ 255 -
-/backup 1 -
-/feed/ 2 -
-/server-status 1 -
-/bhagamapps.com 1 -
-/blog/wp-includes/wlwmanifest.xml 5 -
-/info 2 -
-/img/usuario.svg 10 https://bhagamapps.com/
-/env.backup 2 -
-//media/wp-includes/wlwmanifest.xml 1 -
-/bc 1 -
-/scripts/nodemailer.js 2 -
-/public/js/login.js 100 https://bhagamapps.com/
-//news/wp-includes/wlwmanifest.xml 1 -
+/static/js/main.e85f7a37.js 2 -
+/wp-content/plugins/litespeed-cache/readme.txt 1 -
+/aws_credentials.json 1 -
+/server.php 1 -
+/login.action 1 -
+/2019/wp-includes/wlwmanifest.xml 5 -
+/conexion/instalacion.css 1 http://bhagamapps.com/inventarioApp/01-instalacion.php
 /_vti_pvt/service.pwd 1 -
-/controllers/settings.js 2 -
-/auth.php 1 -
-/server 1 -
+/favicons/apple-icon-72x72.png 7 https://bhagamapps.com/admin
+/shop/wp-includes/wlwmanifest.xml 5 -
+/database.sql 1 -
+/public/css/footer.css 104 https://bhagamapps.com/
+/elfinder/php/connector.minimal.php 4 -
+/public/js/selectorTemas.js 100 https://bhagamapps.com/
+/inventarioApp/art/menu.svg 15 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/feed/ 2 -
+/_profiler/empty/search/results 2 -
+/public/css/responsiveHeader.css 104 https://bhagamapps.com/
+/admin/server_info.php 2 -
+/public/admin 1 -
+/application.properties 2 -
+/index.php 861 -
+/lara/phpinfo.php 6 -
+/target=%22_blank%22 2 -
+/src/js/index.js 1 -
+/public/css/responsiveFooter.css 104 https://bhagamapps.com/
+/web.config 1 -
+/server-info.php 6 -
+/aws.yaml 1 -
+//vendor/phpunit/phpunit/src/Util/PHP/kill.php 2 -
+/_profiler/phpinfo/info.php 2 -
+/sites/all/libraries/elfinder/src/connectors/php/connector.php 1 -
+/js/lkk_ch.js 3 -
+/debugger.php 2 -
+/img/aIcon.png 99 https://bhagamapps.com/
+/backup.tar.gz 1 -
+/dashboard/phpinfo.php 2 -
+/customer/send_mail.php 1 -
+/public/css/header.css 2 https://bhagamapps.com/
+/bhagamapps.com 2 -
+/inventarioApp/bdUbicaciones/00-ubicaciones.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/public/js/general.js 100 https://bhagamapps.com/
+/SvS/index.php 1 -
+/server/config/database.js 2 -
+/favicons/apple-icon-114x114.png 8 https://bhagamapps.com/admin
+//wp/wp-includes/wlwmanifest.xml 1 -
+/js/vendor.js 1 -
+/inventarioApp 26 -
+/backup.zip 1 -
+/configs/routes-4aug.js 2 -
+/eduinclusivareact 1 -
+/inventarioApp/principal/00-principal.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
 /index.js 2 -
-/lara/info.php 6 -
-/helpers/utility.js 2 -
+/info.php 9 -
+/wp1/wp-includes/wlwmanifest.xml 5 -
+/favicons/apple-icon-152x152.png 7 https://bhagamapps.com/admin
+/@vite/env 1 -
+/user_secrets.yml 1 -
+/controllers/settings.js 2 -
+/s/63e2234313e2632313e2434313/_/ 1 -
+/database_backup.sql 1 -
+/dump.sql 1 -
+//shop/wp-includes/wlwmanifest.xml 1 -
+/public/css/menu.css 104 https://bhagamapps.com/
+/scripts/nodemailer.js 2 -
+/config.php 4 -
+/secrets/aws_ses.env 2 -
+/wp-admin/setup-config.php 2 -
+/scripts/app.js 1 -
+/aws_credentials.js 1 -
+/server-status 1 -
+/about 1 -
+/favicon.png 1 -
+/blog/wp-includes/wlwmanifest.xml 5 -
+/inventarioApp/art/escudo.png 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/web/wp-includes/wlwmanifest.xml 5 -
+/config.yaml 1 -
+/config/production.json 1 -
+//2018/wp-includes/wlwmanifest.xml 1 -
+/robots.txt 56 -
+/config/local.yml 2 -
+/inventarioApp/bdAlmacenamiento/00-almacenamientos.js 15 -
+/wp-includes/wlwmanifest.xml 3 -
+/auth.php 1 -
+/inventarioApp/art/inventApp.png 9 -
+/wordpress 1 -
+/xmlrpc.php 12 -
+/debug.php 2 -
+/.vscode/sftp.json 1 -
+/phpinfo.php 12 -
+/inventarioApp/bdUsuarios/00-usuarios.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/app.js 2 -
+/old 1 -
+/admin/controllers/partner.js 2 -
+//wp2/wp-includes/wlwmanifest.xml 1 -
+/api/config.env 2 -
+/secured/phpinfo.php 2 -
+/DkusHdof 1 -
+/_profiler/phpinfo/phpinfo.php 2 -
+/hardhat.config.js 2 -
+/favicons/apple-icon-60x60.png 7 https://bhagamapps.com/admin
+/wp-config.php.bak 2 -
+/scripts/main.js 1 -
+/api/app.js 1 -
+/favicons/apple-icon-57x57.png 8 https://bhagamapps.com/admin
+/config.json 2 -
+/config/constants.js 2 -
+/img/usuario.svg 10 https://bhagamapps.com/
+/inventarioApp/bdEstadodelBien/00-estadodelBien.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+//sito/wp-includes/wlwmanifest.xml 1 -
+/favicons/manifest.json 16 https://bhagamapps.com/admin/permissions
+/_profiler/phpinfo 6 -
+/server.key 1 -
+/swagger.js 2 -
+//wp1/wp-includes/wlwmanifest.xml 1 -
+/static/js/2.ca066a4b.chunk.js 2 -
+/constants.ts 1 -
+/test.php 10 -
+/feed 1 -
+/apis/controllers/users.js 2 -
+/wp 1 -
+/send_mail.php 1 -
+/app/init.php 1 -
+//cms/wp-includes/wlwmanifest.xml 1 -
+/SvS/mostrarTablasenBD.php 1 -
+/favicons/favicon-96x96.png 102 https://bhagamapps.com/admin/roles/1/editar-permisos
+/inventarioApp/principal/00-principal.css 20 -
+/inventarioApp/jquery/jquery.min.js 16 -
+/v2/_catalog 1 -
+/vendor/adminlte/dist/img/aIcon.png 2 https://bhagamapps.com/admin/users
+/apis/config/config.js 2 -
+/inventarioApp/bdBienes/00-bienes.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/public_html/inventarioApp/principal/00-principal.css 1 -
+/config/storage.yml 2 -
+/ftpsync.settings 2 -
+/_phpinfo.php 2 -
+/inventarioApp/bdDependencias/00-dependencias.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/static/js/main.141b0494.js 2 -
+/public/css/plantillaGral.css 12 https://bhagamapps.com/
+/cloud/Scraper.js 2 -
+//appsArt/aIcon.png 26 -
+/2021/wp-includes/wlwmanifest.xml 2 -
+/auth.json 2 -
+//2019/wp-includes/wlwmanifest.xml 1 -
+/wp2/wp-includes/wlwmanifest.xml 3 -
+/admin 1 -
+/favicons/apple-icon-180x180.png 7 https://bhagamapps.com/admin
+/api/db.php 1 -
+/docker-compose.yml 3 -
+/test 2 -
+/dist/app.js 1 -
+/secrets.json 1 -
+/controller/admin/post.js 2 -
+/wordpress/wp-includes/wlwmanifest.xml 5 -
+/favicons/favicon-32x32.png 102 https://bhagamapps.com/admin/roles/1/editar-permisos
+/inventarioApp/pincipal/corregirCodificacion.php 2 -
+//web/wp-includes/wlwmanifest.xml 1 -
+/public/css/responsiveMenu.css 104 https://bhagamapps.com/
+/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application 1 -
+/2020/wp-includes/wlwmanifest.xml 2 -
+/db/schema.rb 1 -
+/website/wp-includes/wlwmanifest.xml 3 -
+//website/wp-includes/wlwmanifest.xml 1 -
+/settings.py 3 -
+/application.ini 1 -
+/etc/ssl/private/server.key 1 -
+/api/config.js 2 -
+/backup.sql 1 -
+/favicons/apple-icon-76x76.png 8 https://bhagamapps.com/admin
+/bc 1 -
+/scripts/config.php 1 -
+/wp-includes/ID3/license.txt 2 -
+/favicons/favicon-16x16.png 102 https://bhagamapps.com/admin/roles/1/editar-permisos
+/gatsby-config.js 2 -
+//vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 2 -
+/prueba 1 -
+/admin/controllers/merchant.js 2 -
+/public/css/responsiveBotons.css 104 https://bhagamapps.com/
+/home 6 https://bhagamapps.com/admin
+/server.js 2 -
+/aicon.ico 1 -
+/db.php 1 -
+/EvPAv 1 -
+/js/main.js 3 -
+/karma.conf.json 1 -
+/inventarioApp/bdMantenimiento/00-mantenimiento.js 14 http://bhagamapps.com/inventarioApp/principal/00-principal.php
+/public/js/menu.js 100 https://bhagamapps.com/
+/_all_dbs 1 -
+/main.js 2 -
+/contact/ 1 -
+/configs/application.ini 1 -
+/ 255 -
+/configs/routes.js 2 -
+/opt/aws/ses.env 2 -
+/news/wp-includes/wlwmanifest.xml 3 -
+//blog/wp-includes/wlwmanifest.xml 1 -
+/assets/js/main.js 1 -
+/public/css/rootJarvis.css 12 https://bhagamapps.com/
+/helper/EmailHelper.js 2 -
+/favicons/apple-icon-144x144.png 7 https://bhagamapps.com/admin
+/resources/js/app.js 1 -
+/server_info.php 2 -
+/controller/api/post.js 2 -
+/client/main.js 1 -
+/user/controllers/index.js 2 -
+/public/css/body.css 104 https://bhagamapps.com/
+/media/wp-includes/wlwmanifest.xml 3 -
+//wp-includes/wlwmanifest.xml 1 -
+/sitemap.txt 2 -
+/php_info.php 2 -
+/appsArt/aIcon.png 2 -
+/opt/aws/sns.env 2 -
+/laravel/info.php 2 -
+/ads.txt 2 -
+/config.yml 1 -
+/api/shared/config/config.env 1 -
+/public/css/login.css 104 https://bhagamapps.com/
+/telescope/requests 1 -
 END_SIDER_404
 
 # Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
 # [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
 # The 10 first Hits must be first (order not required for others)
-BEGIN_VISITOR 106
-38.252.157.69 2518 6486 363837512 20250519220811
+BEGIN_VISITOR 111
+38.252.157.69 2652 6758 376818943 20250521015450 20250521004717 /admin/users
 154.83.103.107 851 857 855096 20250514160303
 154.83.103.179 254 255 2038350 20250514014435
-186.121.20.61 149 362 18727349 20250519221116
+186.121.20.61 165 410 21155465 20250521001151
 154.83.103.111 112 114 76458 20250514151354
 190.69.45.24 61 104 353762 20250514224128
 190.130.99.7 46 104 3427544 20250517020836
 151.242.63.216 39 39 57640 20250514102724
+38.252.157.70 31 73 2821091 20250520113509
 190.130.101.251 29 56 1247243 20250518224217
-38.252.157.70 23 49 1686143 20250516083921
-74.125.210.106 2 2 6715 20250516225641
-44.204.200.210 2 2 17578 20250515211836
-5.161.204.20 1 1 1754 20250511035821
-66.249.83.76 0 2 23392 
-191.156.36.129 3 7 172897 20250518015507
-74.125.210.107 1 1 3358 20250515004442
-66.249.83.132 0 1 77180 
-71.6.134.235 2 2 15198 20250518134829
-54.219.189.176 2 2 56181 20250514034907
-137.226.113.44 2 2 1268 20250514092752
-193.160.101.200 1 1 516 20250513210641
-49.232.151.112 2 2 1268 20250514101615
-54.219.194.105 2 2 3097 20250514101022
-49.7.227.204 4 4 16394 20250514163828
-66.249.83.44 1 1 3371 20250518224100
-3.142.12.100 5 14 332538 20250520020418 20250520020410 /register
-13.52.177.255 2 2 56181 20250514004211
-159.223.161.133 1 1 12295 20250515033112
-66.102.8.110 1 1 3367 20250518202515
-179.43.128.106 2 2 21094 20250515225741
-5.135.58.207 2 2 56181 20250514001601
-49.51.47.100 2 2 1268 20250514115629
-104.248.49.156 1 2 101092 20250519050657
-74.125.210.96 2 2 16608 20250514050003
-94.102.49.123 1 1 757 20250514123449
-31.56.56.153 6 6 3327 20250514153853
-162.62.132.25 2 2 15609 20250514051907
-66.249.83.77 1 1 3368 20250519214847
-66.249.83.5 1 1 3355 20250515120510
-172.207.175.98 20 20 1780 20250514154152
-51.79.53.114 22 38 1067439 20250514010958
-196.251.85.138 2 2 3097 20250514064241
-191.156.3.160 6 17 744384 20250516171837
-43.153.73.200 2 2 1268 20250514060101
-13.57.206.154 2 2 3097 20250514131810
-66.249.83.4 1 1 3370 20250519215159
-93.174.93.114 1 1 757 20250514131036
-191.156.39.8 1 5 352730 20250518073507
-185.253.99.195 1 1 516 20250513203821
-54.84.37.185 1 6 450491 20250519012438
-66.249.83.130 0 1 16696 
-163.61.72.36 2 2 1268 20250514151801
-45.138.100.172 4 4 1572 20250513214947
-121.4.97.180 2 2 1268 20250514065929
-35.215.105.65 3 3 2025 20250514150056
-13.59.152.253 7 7 54474 20250513232823
-91.196.152.153 1 1 28670 20250514002713
 162.142.125.36 1 1 12295 20250516161623
-43.159.128.247 2 2 1268 20250514122702
-203.2.64.59 1 1 3849 20250511133519
+91.196.152.153 1 1 28670 20250514002713
 194.163.152.77 2 2 21082 20250516025224
-66.249.83.42 1 1 3374 20250519213455
-98.82.13.47 1 1 12293 20250516203702
-66.249.83.110 3 4 20939 20250516171759
-78.153.140.222 3 3 16873 20250519091309
-138.197.151.59 1 1 3849 20250511132723
-147.182.150.176 1 1 12295 20250515052604
-66.249.83.78 2 3 83906 20250519230505
-74.125.210.109 3 3 1548 20250513210520
-190.130.102.197 3 12 672062 20250519230501
-146.190.235.62 1 1 3006 20250517010915
-154.28.229.243 1 1 1754 20250511035821
-167.94.146.62 1 2 101096 20250519220328
-44.192.97.248 2 2 17582 20250515211836
-93.123.109.35 1 1 8518 20250515131222
-91.196.152.59 1 1 28670 20250514003719
-94.191.43.82 2 2 15390 20250514033557
-191.156.36.87 1 5 352730 20250518072011
-120.71.59.24 2 2 1268 20250514133429
-5.135.58.204 2 2 56181 20250514001919
-91.196.152.49 1 1 28670 20250514002625
-45.95.162.8 1 1 516 20250513204003
-86.104.252.57 1 2 26609 20250518174824
-45.92.19.139 1 3 100287 20250518140808
-66.249.83.109 1 2 18231 20250515004319
-45.38.44.252 2 6 197065 20250520024613 20250520024613 /
-191.156.6.118 20 46 1528690 20250515120857
+66.249.83.76 0 2 23392 
+104.248.49.156 1 2 101092 20250519050657
 3.236.219.167 1 1 12293 20250516160231
-170.106.140.110 2 2 1268 20250514053957
-54.177.180.60 2 2 3097 20250514064918
-84.239.18.68 1 1 516 20250513210344
-172.233.62.72 1 1 1754 20250511035823
-35.92.216.194 2 2 17580 20250516120651
-74.125.210.97 1 1 8304 20250514050005
-123.160.223.73 1 1 2903 20250518140807
-138.68.141.26 1 1 8789 20250515144928
-164.92.244.132 2 2 4877 20250511035826
 206.189.122.255 1 2 104598 20250519133653
-66.249.83.131 1 1 3372 20250519230505
-43.153.67.21 2 2 1268 20250514053412
+5.135.58.207 2 2 56181 20250514001601
+66.249.83.78 2 3 83906 20250519230505
+13.57.206.154 2 2 3097 20250514131810
+43.153.73.200 2 2 1268 20250514060101
+161.35.56.94 1 2 101092 20250521015919 20250521015919 /
 54.183.200.207 2 2 3097 20250514162126
-89.248.171.23 4 4 2536 20250514131026
-191.156.41.113 5 16 672876 20250518015415
-91.196.152.158 2 2 56181 20250514002954
-66.249.83.108 2 2 6731 20250518202600
+74.125.210.109 3 3 1548 20250513210520
+84.239.18.68 1 1 516 20250513210344
+74.125.210.97 1 1 8304 20250514050005
+54.84.37.185 1 6 450491 20250519012438
+191.156.36.87 1 5 352730 20250518072011
+66.249.83.131 1 1 3372 20250519230505
+44.192.97.248 2 2 17582 20250515211836
+94.191.43.82 2 2 15390 20250514033557
+138.197.151.59 1 1 3849 20250511132723
+74.125.210.107 1 1 3358 20250515004442
+154.28.229.243 1 1 1754 20250511035821
+138.68.141.26 1 1 8789 20250515144928
+43.153.67.21 2 2 1268 20250514053412
 196.251.73.83 2 2 24586 20250516104600
+5.133.192.140 1 2 101090 20250521001150
+71.6.134.235 2 2 15198 20250518134829
+66.249.83.110 4 5 24314 20250521004801
+66.249.83.42 1 1 3374 20250519213455
+66.249.83.130 0 1 16696 
+45.92.19.139 1 3 100287 20250518140808
+44.204.200.210 2 2 17578 20250515211836
+196.251.85.138 2 2 3097 20250514064241
+159.223.161.133 1 1 12295 20250515033112
+123.160.223.73 1 1 2903 20250518140807
+203.2.64.59 1 1 3849 20250511133519
+91.196.152.158 2 2 56181 20250514002954
+74.125.210.106 2 2 6715 20250516225641
+98.82.13.47 1 1 12293 20250516203702
+54.219.194.105 2 2 3097 20250514101022
+45.95.162.8 1 1 516 20250513204003
+54.177.180.60 2 2 3097 20250514064918
+163.61.72.36 2 2 1268 20250514151801
+66.249.83.5 1 1 3355 20250515120510
+93.123.109.35 1 1 8518 20250515131222
+147.182.150.176 1 1 12295 20250515052604
+191.156.36.129 3 7 172897 20250518015507
+3.142.12.100 5 14 332538 20250520020418
+179.43.128.106 2 2 21094 20250515225741
+172.233.62.72 1 1 1754 20250511035823
+45.38.44.252 2 6 197065 20250520024613
+120.71.59.24 2 2 1268 20250514133429
+35.94.214.44 1 1 5619 20250520071358
+193.160.101.200 1 1 516 20250513210641
+51.79.53.114 22 38 1067439 20250514010958
+172.207.175.98 20 20 1780 20250514154152
+167.94.146.62 1 2 101096 20250519220328
+66.249.83.77 1 1 3368 20250519214847
+31.56.56.153 6 6 3327 20250514153853
+91.196.152.59 1 1 28670 20250514003719
+191.156.3.160 6 17 744384 20250516171837
+5.135.58.204 2 2 56181 20250514001919
+78.153.140.222 3 3 16873 20250519091309
+13.52.177.255 2 2 56181 20250514004211
+137.226.113.44 2 2 1268 20250514092752
+93.174.93.114 1 1 757 20250514131036
+94.102.49.123 1 1 757 20250514123449
+93.159.230.85 1 1 2903 20250520121744
+191.156.6.118 20 46 1528690 20250515120857
+35.92.216.194 2 2 17580 20250516120651
+49.51.47.100 2 2 1268 20250514115629
+86.104.252.57 1 2 26609 20250518174824
+190.130.102.197 9 30 1493275 20250520122015
+162.62.132.25 2 2 15609 20250514051907
+91.196.152.49 1 1 28670 20250514002625
+74.125.210.96 2 2 16608 20250514050003
+170.106.140.110 2 2 1268 20250514053957
+66.249.83.44 1 1 3371 20250518224100
+45.138.100.172 4 4 1572 20250513214947
+35.215.105.65 3 3 2025 20250514150056
+66.249.83.4 1 1 3370 20250519215159
+66.249.83.108 2 2 6731 20250518202600
+49.232.151.112 2 2 1268 20250514101615
+13.59.152.253 7 7 54474 20250513232823
+66.249.83.132 0 1 77180 
+66.249.83.109 4 5 28347 20250521004757
+49.7.227.204 4 4 16394 20250514163828
+89.248.171.23 4 4 2536 20250514131026
+185.253.99.195 1 1 516 20250513203821
+5.161.204.20 1 1 1754 20250511035821
+191.156.39.8 1 5 352730 20250518073507
+164.92.244.132 2 2 4877 20250511035826
+190.130.102.213 1 6 453992 20250520110853
+121.4.97.180 2 2 1268 20250514065929
+43.159.128.247 2 2 1268 20250514122702
+54.219.189.176 2 2 56181 20250514034907
+66.102.8.110 1 1 3367 20250518202515
+146.190.235.62 1 1 3006 20250517010915
+191.156.41.113 5 16 672876 20250518015415
 END_VISITOR
 
 # Date - Pages - Hits - Bandwidth - Visits
-BEGIN_DAY 10
+BEGIN_DAY 11
 20250511 53 91 173391 9
 20250512 10 10 64954 2
 20250513 149 149 185779 10
@@ -757,243 +766,245 @@ BEGIN_DAY 10
 20250517 147 498 28930818 3
 20250518 659 1730 105973695 15
 20250519 452 1099 54071431 15
-20250520 6 17 432821 2
+20250520 141 293 13503839 11
+20250521 38 102 4972877 6
 END_DAY
 
 # Session range - Number of visits
 BEGIN_SESSION 7
+1h+ 11
 30mn-1h 11
-5mn-15mn 7
+0s-30s 122
+15mn-30mn 4
 30s-2mn 6
-2mn-5mn 1
-1h+ 10
-0s-30s 111
-15mn-30mn 3
+2mn-5mn 2
+5mn-15mn 8
 END_SESSION
 
 # URL - Pages - Bandwidth - Entry - Exit
 # The 10 first Pages must be first (order not required for others)
-BEGIN_SIDER 222
-/ 1241 5087276 104 79
-/livewire/update 448 5232562 0 5
-/admin/users 411 4900165 3 8
-/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 401 31076868 0 2
-/admin/roles 205 1994971 0 1
-/vendor/bootstrap/js/bootstrap.bundle.min.js.map 160 13432720 0 1
-/vendor/adminlte/dist/css/adminlte.min.css.map 160 62885734 0 0
-/vendor/adminlte/dist/js/adminlte.min.js.map 160 5090144 0 0
-/login 112 382161 36 26
-/admin 104 424563 1 2
-/lara/phpinfo.php 8 5072 0 0
-/config/config.json 2 7597 0 0
-/php-info.php 2 1268 0 0
-/config.json 2 7597 0 0
-/server-info.php 6 3804 0 0
-/opt/aws/ses.env 2 1022 0 0
-/dashboard/phpinfo.php 4 2536 0 0
-/test.php 6 53048 1 1
-/service/email_service.py 2 7597 0 0
-/appsettings.json 2 7597 0 0
-/admin/roles/4/editar-permisos 2 12052 0 0
-/wp-config.php.staging 1 511 0 0
-/admin/users/create 13 60030 0 0
-/test_phpinfo3.php 2 1268 0 0
-/api/v1/proxy 3 8108 0 0
-/my_env/newsletter.py 2 7597 0 0
-/bin 1 511 0 0
-/aws.yml 3 8108 0 0
-/_phpinfo.php 4 2536 0 0
-/admin/grupos 14 64518 0 1
-/wp-config.php_new 1 511 0 0
-/live_env 2 7597 0 0
-/dashboard 78 544911 0 3
-/admin.php 2 1268 0 0
-/phpinfo.php 8 5072 0 0
-/wp-config.swp 1 511 0 0
-/swagger.json 2 7597 0 0
-/wp-config.php.sample 1 511 0 0
-/configs/development.yml 1 511 0 0
-/bin/ 1 511 0 0
-/phpinfo2.php 2 1268 0 0
-/wp 1 0 0 0
-/wp-config.production 1 511 0 0
-/secured/phpinfo.php 2 1268 0 0
-/test4.php 2 1268 0 0
-/main 1 0 0 0
-/admin/infophp.php 2 1268 0 0
-/dashboard/admin/phpinfo.php 2 1268 0 0
-/testphpinfo.php 2 1268 0 0
-/webdav/phpinfo.php 2 1268 0 0
-/debug/default/view 3 8108 0 0
-/api/config/config.yml 3 8108 0 0
-/index.php/login 3 14821 0 2
-/test_info2.php 2 1268 0 0
-/wp-config.staging 1 511 0 0
-/wp-config.php.c 1 511 0 0
-/sendgrid.env 1 511 0 0
-/api/objects/codes.php.save 3 8108 0 0
-/wp-config.phpd 1 511 0 0
-/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 1 13855 0 0
-/wp-config.php.8 1 511 0 0
-/sms.py 2 7597 0 0
-/wp-config.php.bak 4 8619 0 0
-/env.development.local 1 511 0 0
-/PHPConf.php 2 1268 0 0
-/wp-config.b 1 511 0 0
-/secrets.yml 1 511 0 0
-/api/v2/proxy 3 8108 0 0
-/vstats/2025-05/ 2 11508 0 1
-/app_dev.php/_profiler/phpinfo 3 8108 0 0
-/admin/roles/1/editar-permisos 20 120070 0 0
-/configs/s3_config.json 2 7597 0 0
-/webdav/phpinfo 1 511 0 0
-/inventarioApp/principal/00-principal.php 73 129099 4 3
-/wp-config.dist 1 511 0 0
-/config/parameters.yml 3 8108 0 0
-/internal/api 2 7597 0 0
-/config/settings.prod 2 7597 0 0
-/information 1 511 0 0
-/admin/users-l 16 98440 0 0
-/forgot-password 6 20498 0 0
-//current/phpinfo.php 2 1268 0 0
-/etc/apache2/mods-enabled/ 1 511 0 0
-/karma.conf.json 2 7597 0 0
-/aws/credentials 5 9130 0 0
-/dev.php 2 1268 0 0
-/secrets/aws_ses.env 2 1022 0 0
-/user/profile 22 210079 0 0
-/settings.py 4 8619 0 0
-/config/application.yml 3 8108 0 0
-/phpinfo.php3 1 511 0 0
-/info/phpinfo.php 2 1268 0 0
-/vstats/ 2 1734 1 0
-/config/local.yml 4 8619 0 0
-/admin/internal/api 3 8108 0 0
-/admin/permissions 61 782470 1 3
-/my_env/chakaash.py 3 8108 0 0
-/php.php 2 1268 0 0
-/php-info 1 511 0 0
-/phpinfo/php-details.php 2 1268 0 0
-/internal/proxy 2 7597 0 0
-/admin/proxy 3 8108 0 0
-/info.php 11 14390 0 0
+BEGIN_SIDER 223
+/ 1258 5165282 113 86
+/livewire/update 500 6908280 0 5
+/admin/users 432 5773181 3 9
+/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 418 32421160 0 3
+/admin/roles 223 2194647 0 1
+/vendor/adminlte/dist/css/adminlte.min.css.map 161 63281078 0 0
+/vendor/bootstrap/js/bootstrap.bundle.min.js.map 161 13516565 0 1
+/vendor/adminlte/dist/js/adminlte.min.js.map 161 5121826 0 0
+/login 125 426103 42 30
+/admin 114 466156 1 2
 /wp-config.cfg 1 511 0 0
-/backend/config/default.yml 3 8108 0 0
-/app/config/parameters.yml 3 8108 0 0
-/application.properties 5 9130 0 0
-/api/proxy 3 8108 0 0
-//info.php 2 1268 0 0
-/wp-config.bak 1 511 0 0
-/_profiler/phpinfo/phpinfo.php 4 2536 0 0
-/config/storage.yml 4 8619 0 0
-/latest/meta-data 3 8108 0 0
-/phpinfo 5 9130 0 0
-/webdav/info.php 2 1268 0 0
-/inventarioApp/ 52 84822 0 6
-/wp-config.php_old2014 1 511 0 0
-/admin/phpinfo.php 2 1268 0 0
-/phpsysinfo/phpsysinfo.php 2 1268 0 0
-/latest/user-data 3 8108 0 0
-/docker-compose.yml 2 1022 0 2
-/php_info.php 2 1268 0 0
-/laravel/info.php 2 1268 0 0
-/bhagamapps/public 4 1080 0 0
-/latest/meta-data/iam/security-credentials/ 3 8108 0 0
-/config/aws.yml 2 7597 0 0
-/wp-config.sublime-project 1 511 0 0
-/bc 1 0 0 0
-/admin/grupos/create 4 18624 0 0
-/info 1 511 0 0
-/main.yml 3 8108 0 0
-/etc/named.conf 1 511 0 0
-/wp-config.cache 1 511 0 0
-/env.backup 4 8619 0 0
-/dep.php 2 1268 0 0
-/wp-config.stage 1 511 0 0
-/root/infophp 1 511 0 0
-/p.php 2 1268 0 0
-/lara/info.php 8 5072 0 0
-/proxy 2 7597 0 0
-/admin/roles/3/editar-permisos 20 120768 0 0
-/config/sendgrid.php 2 1268 0 0
-/metadata/computeMetadata/v1 2 7597 0 0
-/api/shared/config/config.env 3 8108 0 0
-/xampp/phpinfo.php 2 1268 0 0
-/phpinfo3.php 2 1268 0 0
-/.env.php 4 2536 0 0
-/aws-secret.yaml 3 8108 0 0
-/api/shared/config.env 3 8108 0 0
-/wp-config.backup 1 511 0 0
-/information.php 2 1268 0 0
-/backend/config/development.yml 3 8108 0 0
-/backup 1 0 0 0
-/admin/roles/7/editar-permisos 2 12057 0 0
-/linusadmin-phpinfo.php 2 1268 0 0
-/new 1 0 0 0
-/bk 1 0 0 0
-/src/main/resources/application-dev.yml 1 511 0 0
-/wp-config.save 1 511 0 0
-/auth/bigquery 1 511 0 0
-/scripts/phpinfo.php 2 1268 0 0
-/info1.php 2 1268 0 0
-/config/settings.json 2 7597 0 0
-/xampp/info.php 2 1268 0 0
-/info/info.php 2 1268 0 0
-/home 1 0 0 1
-/admin/roles/2/editar-permisos 14 84582 0 0
-//server/phpinfo.php 2 1268 0 0
-/inf.php 2 1268 0 0
-/redis-*.conf 1 511 0 0
-/register 40 146854 0 1
-//help/info.php 2 1268 0 0
-/inventarioApp/01-instalacion.php 30 19501 0 0
+/apache/i.php 2 1268 0 0
+/tools/phpinfo.php 2 1268 0 0
 /phpinformation 1 511 0 0
-/app/config.yml 1 511 0 0
-/phpinfo/phpinfo.php 2 1268 0 0
-/wp-config.old.old 1 511 0 0
-/old 1 0 0 0
+/viewinfo.php 2 1268 0 0
+/testphpinfo 1 511 0 0
+/p.php 2 1268 0 0
+/config/settings.json 2 7597 0 0
+/wp-config.php_new 1 511 0 0
+/wp-config.stage 1 511 0 0
+/wp-config.save 1 511 0 0
+/wp-config.php.c 1 511 0 0
+/.env.php 4 2536 0 0
+/admin/roles/7/editar-permisos 2 12057 0 0
+/config/settings.local 2 7597 0 0
+/wp-config.backup 1 511 0 0
 /admin/server_info.php 4 2536 0 0
 /wp-config.php-original 1 511 0 0
-/config/settings.local 2 7597 0 0
-/etc/nginx/snippets/self-signed-example.com.conf 1 511 0 0
-/phptest.php 2 1268 0 0
-/gists/cache 1 511 0 0
-/my_env/palash.py 3 8108 0 0
-/testphpinfo 1 511 0 0
-/test_info.php 2 1268 0 0
-/_profiler/phpinfo 5 9130 0 0
-/tools/phpinfo.php 2 1268 0 0
-/wp-config 3 8108 0 0
-/computeMetadata/v1 3 8108 0 0
+/admin/phpinfo.php 2 1268 0 0
+/xampp/info.php 2 1268 0 0
+/wp-config.phpd 1 511 0 0
+/info2.php 2 1268 0 0
+/api/proxy 3 8108 0 0
+/admin/config 3 8108 0 0
+/backend/config/default.yml 3 8108 0 0
+/sendgrid.env 1 511 0 0
+/server-info.php 6 3804 0 0
+/admin/users-l 16 98440 0 0
+/my_env/chakaash.py 3 8108 0 0
+/application.properties 5 9130 0 0
+/scripts/phpinfo.php 2 1268 0 0
+/linusadmin-phpinfo.php 2 1268 0 0
+/user/profile 23 219677 0 0
+/admin/internal/api 3 8108 0 0
+/lara/phpinfo.php 8 5072 0 0
+/pinfo.php 2 1268 0 0
+/dashboard/phpinfo.php 4 2536 0 0
+/wp-config.sublime-project 1 511 0 0
+/_profiler/phpinfo/info.php 4 2536 0 0
+/phpinfo2.php 2 1268 0 0
 /developer.php 2 1268 0 0
 /google-cloud-sdk/lib/googlecloudsdk/gcloud.pyo 1 511 0 0
-/app.py 3 8108 0 0
-/server_info.php 2 1268 0 0
-/inventarioApp/corregirCodificacion.php 6 1329 0 0
-/wordpress 1 0 0 0
-//service/phpinfo.php 2 1268 0 0
-/server-info 2 7597 0 0
-/computeMetadata/v1beta1 2 7597 0 0
-/_profiler/phpinfo/info.php 4 2536 0 0
-/wp-config.cust 1 511 0 0
-/phpversion.php 2 1268 0 0
-/info2.php 2 1268 0 0
-/inventarioApp/principal/corregirCodificacion.php 2 1064 0 0
+/etc/named.conf 1 511 0 0
+/my_env/newsletter.py 2 7597 0 0
+/inventarioApp/01-instalacion.php 30 19501 0 0
+/wp-config.php.8 1 511 0 0
+/wp-config.bak 1 511 0 0
+/etc/apache2/mods-enabled/ 1 511 0 0
+/live_env 2 7597 0 0
+/computeMetadata/v1 3 8108 0 0
+/wp-config 3 8108 0 0
+/admin/roles/6/editar-permisos 1 6027 0 0
+/register 40 146854 0 2
+/webdav/phpinfo.php 2 1268 0 0
+/information 1 511 0 0
+/admin/grupos 14 64518 0 1
+/wp-config.production 1 511 0 0
+//help/info.php 2 1268 0 0
+/service/email_service.py 2 7597 0 0
+/info.php 11 14390 0 0
+/admin/users/create 13 60030 0 0
+/admin/grupos/create 4 18624 0 0
+/info 1 511 0 0
+/latest/user-data 3 8108 0 0
+/admin/permissions 68 908554 1 4
+/config/parameters.yml 3 8108 0 0
+/inventarioApp/ 52 84822 0 6
+/config/config.json 2 7597 0 0
+/aws.yml 3 8108 0 0
+/index.php/login 3 14821 0 2
+/proxy 2 7597 0 0
+/lara/info.php 8 5072 0 0
 /index.php/register 8 37425 0 1
+/webdav/info.php 2 1268 0 0
+/xampp/phpinfo.php 2 1268 0 0
+/my_env/palash.py 3 8108 0 0
+/config/aws.yml 2 7597 0 0
+/metadata/computeMetadata/v1 2 7597 0 0
+/wp-config.cust 1 511 0 0
+/auth/bigquery 1 511 0 0
+/app/config/parameters.yml 3 8108 0 0
+/inventarioApp/principal/corregirCodificacion.php 2 1064 0 0
+/forgot-password 6 20498 0 0
+/phpinfo/phpinfo.php 2 1268 0 0
 //helper/phpinfo.php 2 1268 0 0
-/admin/config 3 8108 0 0
-/i.php 2 1268 0 0
-/wp-content/themes/twentyfourteen/archive.php 2 1268 0 0
+/wp-config.cache 1 511 0 0
+/inventarioApp/corregirCodificacion.php 6 1329 0 0
+/bk 1 0 0 0
+/test_info2.php 2 1268 0 0
+/api/v1/proxy 3 8108 0 0
+/php-info 1 511 0 0
+/secrets.yml 1 511 0 0
 /vstats/nav.html 2 2002 0 0
-/viewinfo.php 2 1268 0 0
-/admin/phpinfo 1 511 0 0
+/aws-secret.yaml 3 8108 0 0
+/dep.php 2 1268 0 0
+/main 1 0 0 0
+/etc/nginx/snippets/self-signed-example.com.conf 1 511 0 0
+/test_phpinfo3.php 2 1268 0 0
 /config.env 2 7597 0 0
-/wp-config.php.2 1 511 0 0
-/api/config.env 5 9130 0 0
-/apache/i.php 2 1268 0 0
-/wp-config.php.csproj 1 511 0 0
-/infophp.php 2 1268 0 0
+//service/phpinfo.php 2 1268 0 0
+/phpinfo 5 9130 0 0
+/configs/s3_config.json 2 7597 0 0
+/sms.py 2 7597 0 0
+/inventarioApp/principal/00-principal.php 73 129099 4 3
+/new 1 0 0 0
+/latest/meta-data/iam/security-credentials/ 3 8108 0 0
+/backup 1 0 0 0
+/phptest.php 2 1268 0 0
+/dev.php 2 1268 0 0
+/computeMetadata/v1beta1 2 7597 0 0
+/debug/default/view 3 8108 0 0
+/env.backup 4 8619 0 0
+/test_info.php 2 1268 0 0
+/aws/credentials 5 9130 0 0
+/admin/proxy 3 8108 0 0
+/bhagamapps/public 4 1080 0 0
 /getcpuutil.php-bakworking 2 7597 0 0
-/pinfo.php 2 1268 0 0
+/_phpinfo.php 4 2536 0 0
+/api/objects/codes.php.save 3 8108 0 0
+/phpversion.php 2 1268 0 0
+/docker-compose.yml 2 1022 0 2
+/app_dev.php/_profiler/phpinfo 3 8108 0 0
+/wp-config.php_old2014 1 511 0 0
+/wp-config.php.staging 1 511 0 0
+/settings.py 4 8619 0 0
+/bc 1 0 0 0
+/wp-config.php.sample 1 511 0 0
+/phpinfo3.php 2 1268 0 0
+/home 1 0 0 1
+/wp-config.b 1 511 0 0
+/wp-config.php.csproj 1 511 0 0
+/src/main/resources/application-dev.yml 1 511 0 0
+/vstats/ 2 1734 1 0
+//server/phpinfo.php 2 1268 0 0
+/config/application.yml 3 8108 0 0
+/webdav/phpinfo 1 511 0 0
+/wp-content/themes/twentyfourteen/archive.php 2 1268 0 0
+/infophp.php 2 1268 0 0
+/info1.php 2 1268 0 0
+/bin 1 511 0 0
 /backend/config/settings.yml 2 7597 0 0
+/karma.conf.json 2 7597 0 0
+/redis-*.conf 1 511 0 0
+/env.development.local 1 511 0 0
+/backend/config/development.yml 3 8108 0 0
+/appsettings.json 2 7597 0 0
+/opt/aws/ses.env 2 1022 0 0
+/wp-config.php.2 1 511 0 0
+/php-info.php 2 1268 0 0
+//info.php 2 1268 0 0
+/php_info.php 2 1268 0 0
+/laravel/info.php 2 1268 0 0
+/server_info.php 2 1268 0 0
+/api/config/config.yml 3 8108 0 0
+/app/config.yml 1 511 0 0
+/latest/meta-data 3 8108 0 0
+/api/shared/config/config.env 3 8108 0 0
+/info/phpinfo.php 2 1268 0 0
+/dashboard 83 571258 0 3
+/secrets/aws_ses.env 2 1022 0 0
+/wp-config.swp 1 511 0 0
+/wp-config.dist 1 511 0 0
+/test4.php 2 1268 0 0
+/admin/roles/4/editar-permisos 2 12052 0 0
+/dashboard/admin/phpinfo.php 2 1268 0 0
+/gists/cache 1 511 0 0
+/root/infophp 1 511 0 0
+/config/sendgrid.php 2 1268 0 0
+/main.yml 3 8108 0 0
+/phpinfo.php3 1 511 0 0
+/testphpinfo.php 2 1268 0 0
+/admin/infophp.php 2 1268 0 0
+/app.py 3 8108 0 0
+/swagger.json 2 7597 0 0
+/internal/proxy 2 7597 0 0
+/i.php 2 1268 0 0
+/info/info.php 2 1268 0 0
+/wordpress 1 0 0 0
+/config/local.yml 4 8619 0 0
+/bin/ 1 511 0 0
+/PHPConf.php 2 1268 0 0
+/phpinfo.php 8 5072 0 0
+/wp-config.php.bak 4 8619 0 0
+/api/shared/config.env 3 8108 0 0
+/inf.php 2 1268 0 0
+/wp-config.old.old 1 511 0 0
+/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 1 13855 0 0
+/old 1 0 0 0
+/server-info 2 7597 0 0
+/api/config.env 5 9130 0 0
+/secured/phpinfo.php 2 1268 0 0
+/phpsysinfo/phpsysinfo.php 2 1268 0 0
+/admin/phpinfo 1 511 0 0
+/_profiler/phpinfo/phpinfo.php 4 2536 0 0
+/admin.php 2 1268 0 0
+/api/v2/proxy 3 8108 0 0
+/config.json 2 7597 0 0
+/php.php 2 1268 0 0
+/test.php 6 53048 1 1
+/vstats/2025-05/ 2 11508 0 1
+/configs/development.yml 1 511 0 0
+/wp 1 0 0 0
+/admin/roles/2/editar-permisos 19 114827 0 0
+/wp-config.staging 1 511 0 0
+/_profiler/phpinfo 5 9130 0 0
+/internal/api 2 7597 0 0
+/config/settings.prod 2 7597 0 0
+/config/storage.yml 4 8619 0 0
+/admin/roles/1/editar-permisos 21 129625 0 0
+/admin/roles/3/editar-permisos 22 132831 0 0
+/phpinfo/php-details.php 2 1268 0 0
+/information.php 2 1268 0 0
+//current/phpinfo.php 2 1268 0 0
 END_SIDER

@@ -357,7 +357,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Ver Grupos',
-                    'route' => 'admin.grupos.index', // <-- tu ruta aquí
+                    'route' => '', // <-- tu ruta aquí
                     'icon' => 'fas fa-chalkboard',
                 ],
                 [
