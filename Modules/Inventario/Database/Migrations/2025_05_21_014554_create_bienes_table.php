@@ -14,18 +14,17 @@ return new class extends Migration
         Schema::create('bienes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100)->nullable();
-            $table->string('detalle', 400)->nullable();
+            $table->integer('cantidad')->nullable();
             $table->string('serie', 40)->nullable();
             $table->string('origen', 40)->nullable();
             $table->date('fechaAdquisicion')->nullable();
             $table->float('precio')->nullable();
-            $table->integer('cantidad')->nullable();
-            $table->foreignId('categoria_id')->constrained('categorias');
-            $table->foreignId('dependencia_id')->constrained('dependencias');
-            $table->foreignId('usuario_id')->constrained('users');
-            $table->foreignId('almacenamiento_id')->constrained('almacenamientos');
-            $table->foreignId('estado_id')->constrained('estados');
-            $table->foreignId('mantenimiento_id')->constrained('mantenimientos');
+            $table->foreignId('usuario_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null');
+            $table->foreignId('dependencia_id')->nullable()->constrained('dependencias')->onDelete('set null');
+            $table->foreignId('almacenamiento_id')->nullable()->constrained('almacenamientos')->onDelete('set null');
+            $table->foreignId('estado_id')->nullable()->constrained('estados')->onDelete('set null');
+            $table->foreignId('mantenimiento_id')->nullable()->constrained('mantenimientos')->onDelete('set null');
             $table->string('observaciones', 200)->nullable();
             $table->softDeletes();
             $table->timestamps();

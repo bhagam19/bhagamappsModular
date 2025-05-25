@@ -12,14 +12,14 @@ class Dependencia extends Model
     protected $table = 'dependencias';
 
     protected $fillable = [
-        'nom_dependencias',
-        'cod_ubicacion',
+        'nombre',
+        'ubicacion_id',
         'usuario_id',
     ];
 
     public function ubicacion()
     {
-        return $this->belongsTo(Ubicacion::class, 'cod_ubicacion');
+        return $this->belongsTo(Ubicacion::class, 'ubicacion_id');
     }
 
     public function usuario()
@@ -29,6 +29,6 @@ class Dependencia extends Model
 
     public function bienes()
     {
-        return $this->hasMany(Bien::class, 'cod_dependencias');
+        return $this->hasMany(Bien::class, 'dependencia_id');
     }
 }
