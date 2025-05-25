@@ -1,23 +1,53 @@
-/.phpunit.cache
+# Laravel
+/vendor
 /node_modules
-/public/build
-/public/hot
 /public/storage
 /storage/*.key
-/storage/pail
-/vendor
-.env
-.env.backup
-.env.production
+/storage/app/public
+/storage/debugbar
+/storage/framework
+/storage/logs
+/.phpunit.result.cache
+.phpunit.cache
 .phpactor.json
-.phpunit.result.cache
+.env
+.env.*
 Homestead.json
 Homestead.yaml
+
+# Laravel Mix / Vite
+/public/build
+/public/hot
+/public/mix-manifest.json
+/public/css/
+/public/js/
+/public/vendor/
+
+# Laravel IDE Helper
+/_ide_helper.php
+/_ide_helper_models.php
+.phpstorm.meta.php
+
+# Tests
+/tests/Browser/screenshots/
+/tests/Browser/console/
+
+# Editor / entorno
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+
+# Logs y errores
 npm-debug.log
 yarn-error.log
+
+# Composer auth (opcional)
 /auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+
+# Modular extra
+Modules/*/vendor/
+
+# Archivos generados
+/stats/
