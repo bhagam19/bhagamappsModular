@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use League\Csv\Reader;
 use SplFileObject;
 
-class EstadoDelBienSeeder extends Seeder
+class EstadosSeeder extends Seeder
 {
     public function run(): void
     {

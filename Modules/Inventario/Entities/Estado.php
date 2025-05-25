@@ -5,16 +5,16 @@ namespace Modules\Inventario\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CategoriaDeBien extends Model
+class Estado extends Model
 {
     use HasFactory;
 
-    protected $table = 'categorias_de_bienes';
+    protected $table = 'estados';
 
-    protected $fillable = ['nom_categoria'];
+    protected $fillable = ['nombre'];
 
     public function bienes()
     {
-        return $this->hasMany(Bien::class, 'cod_categoria');
+        return $this->hasMany(Bien::class, 'estado_id');
     }
 }

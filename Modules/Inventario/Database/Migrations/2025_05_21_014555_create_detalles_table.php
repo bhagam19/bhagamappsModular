@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('detalles', function (Blueprint $table) {
             $table->id();
-            $table->string('car_especial', 40)->nullable();
-            $table->string('tamano', 40)->nullable();
-            $table->string('material', 40)->nullable();
-            $table->string('color', 40)->nullable();
-            $table->string('marca', 40)->nullable();
-            $table->string('otra', 40)->nullable();
+            $table->foreignId('bien_id')->constrained('bienes')->onDelete('cascade'); // clave foránea
+            $table->string('car_especial', 255)->nullable();
+            $table->string('tamano', 255)->nullable();
+            $table->string('material', 255)->nullable();
+            $table->string('color', 255)->nullable();
+            $table->string('marca', 255)->nullable();
+            $table->string('otra', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detalles_de_bienes');
+        Schema::dropIfExists('detalles');
     }
 };

@@ -14,7 +14,6 @@ class Bien extends Model
 
     protected $fillable = [
         'nombre',
-        'detalle',
         'serie',
         'origen',
         'fechaAdquisicion',
@@ -33,14 +32,19 @@ class Bien extends Model
 
     // Relaciones
 
+    public function detalle()
+    {
+        return $this->hasOne(Detalle::class, 'bien_id');
+    }
+
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id'); // Ajusta el nombre de la columna si es distinto
-    }
+        return $this->belongsTo(User::class, 'usuario_id');
+    }    
 
     public function categoria()
     {
-        return $this->belongsTo(CategoriaDeBien::class, 'categoria_id');
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 
     public function dependencia()
@@ -55,7 +59,7 @@ class Bien extends Model
 
     public function estado()
     {
-        return $this->belongsTo(EstadoDelBien::class, 'estado_id');
+        return $this->belongsTo(Estado::class, 'estado_id');
     }
 
     public function mantenimiento()
@@ -63,7 +67,7 @@ class Bien extends Model
         return $this->belongsTo(Mantenimiento::class, 'mantenimiento_id');
     }
 
-    public function responsable()
+    public function responsables()
     {
         return $this->hasMany(BienResponsable::class);
     }
@@ -81,12 +85,7 @@ class Bien extends Model
     public function imagenes()
     {
         return $this->hasMany(BienImagen::class);
-    }
-
-    public function detalle()
-    {
-        return $this->hasOne(DetalleDeBien::class);
-    }
+    }    
 
     public function mantenimientosProgramados()
     {

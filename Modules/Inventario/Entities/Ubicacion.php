@@ -11,10 +11,10 @@ class Ubicacion extends Model
 
     protected $table = 'ubicaciones';
 
-    protected $fillable = ['nom_ubicacion'];
+    protected $fillable = ['nombre'];
 
     public function dependencias()
     {
-        return $this->hasMany(Dependencia::class, 'cod_ubicacion');
+        return $this->hasMany(Dependencia::class, 'ubicacion_id');
     }
 }

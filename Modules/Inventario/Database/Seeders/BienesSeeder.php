@@ -27,7 +27,6 @@ class BienesSeeder extends Seeder
                 DB::table('bienes')->insert([
                     'id' => $data['codBien'],
                     'nombre' => $data['nomBien'],
-                    'detalle' => $data['detalleDelBien'], // CORREGIDO
                     'serie' => $data['serieDelBien'],     // CORREGIDO
                     'origen' => $data['origenDelBien'],   // CORREGIDO
                     'fechaAdquisicion' => ($data['fechaAdquisicion'] === '0000-00-00' || empty($data['fechaAdquisicion'])) ? null : $data['fechaAdquisicion'],

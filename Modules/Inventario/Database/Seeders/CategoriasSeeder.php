@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use League\Csv\Reader;
 use SplFileObject;
 
-class CategoriasDeBienesSeeder extends Seeder
+class CategoriasSeeder extends Seeder
 {
     public function run(): void
     {
