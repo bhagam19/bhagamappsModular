@@ -26,7 +26,7 @@ class DependenciasSeeder extends Seeder
 
             DB::table('dependencias')->insert([
                 'id' => $data['codDependencias'],
-                'nom_dependencias' => $data['nomDependencias'],
+                'nombre' => $data['nomDependencias'],
                 'ubicacion_id' => $data['codUbicacion'],
                 'usuario_id' => $data['usuarioID'],
                 'created_at' => now(),

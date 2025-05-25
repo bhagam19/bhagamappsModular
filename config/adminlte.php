@@ -352,6 +352,91 @@ return [
         ],
 
         [
+            'text' => 'Inventario',
+            'icon' => 'fas fa-boxes',
+            'submenu' => [
+                [
+                    'text' => 'Bienes',
+                    'icon' => 'fas fa-box text-info',
+                    'route' => 'admin.bienes.index',
+                    'active' => ['inventario/bienes*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Almacenamiento',
+                    'icon' => 'fas fa-warehouse text-secondary',
+                    'route' => '',
+                    'active' => ['inventario/almacenamiento*'],
+                    'classes' => 'text-primary font-weight-bold',
+                ],
+                [
+                    'text' => 'Ubicaciones',
+                    'icon' => 'fas fa-map-marker-alt text-success',
+                    'route' => '',
+                    'active' => ['inventario/ubicaciones*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Dependencias',
+                    'icon' => 'fas fa-building text-info',
+                    'route' => '',
+                    'active' => ['inventario/dependencias*'],
+                    'classes' => 'text-primary font-weight-bold',
+                ],
+                [
+                    'text' => 'Categorías',
+                    'icon' => 'fas fa-tags text-warning',
+                    'route' => '',
+                    'active' => ['inventario/categorias*'],
+                    'classes' => 'text-primary font-weight-bold',
+                ],
+                [
+                    'text' => 'Estado del Bien',
+                    'icon' => 'fas fa-check-circle text-success',
+                    'route' => '',
+                    'active' => ['inventario/estados*'],
+                    'classes' => 'text-primary font-weight-bold',
+                ],
+                [
+                    'text' => 'Pendientes de Aprobación',
+                    'icon' => 'fas fa-hourglass-half text-warning',
+                    'route' => '',
+                    'active' => ['inventario/aprobacion*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Historial de Modificaciones',
+                    'icon' => 'fas fa-history text-secondary',
+                    'route' => '',
+                    'active' => ['inventario/historial-modificaciones*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Historial de Ubicaciones',
+                    'icon' => 'fas fa-map-marker-alt text-success',
+                    'route' => '',
+                    'active' => ['inventario/historial-ubicaciones*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Responsables',
+                    'icon' => 'fas fa-user-check text-info',
+                    'route' => '',
+                    'active' => ['inventario/responsables*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+                [
+                    'text' => 'Mantenimientos Programados',
+                    'icon' => 'fas fa-tools text-danger',
+                    'route' => '',
+                    'active' => ['inventario/mantenimientos*'],
+                    'classes' => 'text-primary font-weight-bold', 
+                ],
+            ],
+        ],
+
+
+        [
             'text' => 'Grupos',
             'icon' => 'fas fa-layer-group',
             'submenu' => [
@@ -417,32 +502,7 @@ return [
             ],
         ],
 
-        [
-            'text' => 'Inventario',
-            'icon' => 'fas fa-boxes',
-            'submenu' => [
-                [
-                    'text' => 'Bienes',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-cube',
-                ],
-                [
-                    'text' => 'Categorías',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-tags',
-                ],
-                [
-                    'text' => 'Dependencias',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-building',
-                ],
-                [
-                    'text' => 'Estados',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-clipboard-check',
-                ],
-            ],
-        ],
+        
     ],
 
 

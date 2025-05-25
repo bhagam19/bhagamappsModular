@@ -8,6 +8,16 @@ use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
+use Livewire\Livewire;
+use Modules\Inventario\Livewire\Bienes\BienesIndex;
+use Modules\Inventario\Livewire\Bienes\EditarNombreBien;
+use Modules\Inventario\Livewire\Bienes\EditarDetalleBien;
+use Modules\Inventario\Livewire\Bienes\EditarSerieBien;
+use Modules\Inventario\Livewire\Bienes\EditarOrigenBien;
+use Modules\Inventario\Livewire\Bienes\EditarFechaAdquisicionBien;
+use Modules\Inventario\Livewire\Bienes\EditarPrecioBien;
+use Modules\Inventario\Livewire\Bienes\EditarCantidadBien;
+
 class InventarioServiceProvider extends ServiceProvider
 {
     use PathNamespace;
@@ -27,6 +37,16 @@ class InventarioServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'Database/Migrations'));
+
+        Livewire::component('bienes.bienes-index', BienesIndex::class);
+        Livewire::component('bienes.editar-nombre-bien', EditarNombreBien::class);
+        Livewire::component('bienes.editar-detalle-bien', EditarDetalleBien::class);
+        Livewire::component('bienes.editar-serie-bien', EditarSerieBien::class);
+        Livewire::component('bienes.editar-origen-bien', EditarOrigenBien::class);
+        Livewire::component('bienes.editar-fechaAdquisicion-bien', EditarFechaAdquisicionBien::class);
+        Livewire::component('bienes.editar-precio-bien', EditarPrecioBien::class);
+        Livewire::component('bienes.editar-cantidad-bien', EditarCantidadBien::class);
+
     }
 
     /**

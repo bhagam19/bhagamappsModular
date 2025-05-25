@@ -13,25 +13,25 @@ class UbicacionesSeeder extends Seeder
         DB::table('ubicaciones')->insert([
             [
                 'id' => 1,
-                'nom_ubicacion' => 'Salón',
+                'nombre' => 'Salón',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 2,
-                'nom_ubicacion' => 'Oficina',
+                'nombre' => 'Oficina',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 3,
-                'nom_ubicacion' => 'Departamento',
+                'nombre' => 'Departamento',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 4,
-                'nom_ubicacion' => 'Otro Lugar',
+                'nombre' => 'Otro Lugar',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

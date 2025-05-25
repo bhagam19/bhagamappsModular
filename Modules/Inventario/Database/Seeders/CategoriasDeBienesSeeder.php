@@ -25,9 +25,9 @@ class CategoriasDeBienesSeeder extends Seeder
                 }
                 $data = array_combine($headers, $row);
 
-                DB::table('categorias_de_bienes')->insert([
+                DB::table('categorias')->insert([
                     'id' => $data['codCategoria'],
-                    'nom_categoria' => $data['nomCategoria'],
+                    'nombre' => $data['nomCategoria'],
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

@@ -4,6 +4,7 @@ namespace Modules\Users\Livewire\Permissions;
 
 use Livewire\Component;
 use Modules\Users\Models\Permission;
+use Illuminate\Support\Str;
 
 class PermissionsIndex extends Component
 {

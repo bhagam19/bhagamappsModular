@@ -11,8 +11,7 @@ class DetallesDeBienesSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('detalles_de_bienes')->delete();
-        
+                
         $file = new SplFileObject(__DIR__.'/data/detallesDeBienes.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
@@ -26,7 +25,7 @@ class DetallesDeBienesSeeder extends Seeder
                 }
                 $data = array_combine($headers, $row);
 
-                DB::table('detalles_de_bienes')->insert([
+                DB::table('detalles')->insert([
                     'car_especial' => $data['carEsp'],
                     'tamano' => $data['tamano'],
                     'material' => $data['material'],

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dependencias', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_dependencias', 50);
+            $table->string('nombre', 50);
             $table->foreignId('ubicacion_id')->constrained('ubicaciones');
             $table->foreignId('usuario_id')->constrained('users');
             $table->timestamps();

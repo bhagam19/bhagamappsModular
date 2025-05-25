@@ -10,8 +10,7 @@ class BienesSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('bienes')->delete();
-        
+                
         $file = new SplFileObject(__DIR__.'/data/bienes.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
@@ -27,19 +26,19 @@ class BienesSeeder extends Seeder
 
                 DB::table('bienes')->insert([
                     'id' => $data['codBien'],
-                    'nom_bien' => $data['nomBien'],
-                    'detalle_del_bien' => $data['detalleDelBien'], // CORREGIDO
-                    'serie_del_bien' => $data['serieDelBien'],     // CORREGIDO
-                    'origen_del_bien' => $data['origenDelBien'],   // CORREGIDO
-                    'fecha_adquisicion' => ($data['fechaAdquisicion'] === '0000-00-00' || empty($data['fechaAdquisicion'])) ? null : $data['fechaAdquisicion'],
+                    'nombre' => $data['nomBien'],
+                    'detalle' => $data['detalleDelBien'], // CORREGIDO
+                    'serie' => $data['serieDelBien'],     // CORREGIDO
+                    'origen' => $data['origenDelBien'],   // CORREGIDO
+                    'fechaAdquisicion' => ($data['fechaAdquisicion'] === '0000-00-00' || empty($data['fechaAdquisicion'])) ? null : $data['fechaAdquisicion'],
                     'precio' => $data['precio'],
-                    'cant_bien' => $data['cantBien'],              // CORREGIDO
-                    'cod_categoria' => $data['codCategoria'],      // CORREGIDO
-                    'cod_dependencias' => $data['codDependencias'],// CORREGIDO
+                    'cantidad' => $data['cantBien'],              // CORREGIDO
+                    'categoria_id' => $data['codCategoria'],      // CORREGIDO
+                    'dependencia_id' => $data['codDependencias'],// CORREGIDO
                     'usuario_id' => $data['usuarioID'],
-                    'cod_almacenamiento' => $data['codAlmacenamiento'], // CORREGIDO
-                    'cod_estado' => $data['codEstado'],            // CORREGIDO
-                    'cod_mantenimiento' => $data['codMantenimiento'], // CORREGIDO
+                    'almacenamiento_id' => $data['codAlmacenamiento'], // CORREGIDO
+                    'estado_id' => $data['codEstado'],            // CORREGIDO
+                    'mantenimiento_id' => $data['codMantenimiento'], // CORREGIDO
                     'observaciones' => $data['observaciones'],
                     'created_at' => now(),
                     'updated_at' => now(),

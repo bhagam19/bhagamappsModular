@@ -6,53 +6,61 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Modules\Users\Models\User;
+
 class Bien extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'nom_bien',
-        'detalle_del_bien',
-        'serie_del_bien',
-        'origen_del_bien',
-        'fecha_adquisicion',
+        'nombre',
+        'detalle',
+        'serie',
+        'origen',
+        'fechaAdquisicion',
         'precio',
-        'cant_bien',
-        'cod_categoria',
-        'cod_dependencias',
+        'cantidad',
+        'categoria_id',
+        'dependencias_id',
         'usuario_id',
-        'cod_almacenamiento',
-        'cod_estado',
-        'cod_mantenimiento',
+        'almacenamiento_id',
+        'estado_id',
+        'mantenimiento_id',
         'observaciones',
     ];
 
     protected $table = 'bienes';
 
     // Relaciones
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id'); // Ajusta el nombre de la columna si es distinto
+    }
+
     public function categoria()
     {
-        return $this->belongsTo(CategoriaDeBien::class, 'cod_categoria');
+        return $this->belongsTo(CategoriaDeBien::class, 'categoria_id');
     }
 
     public function dependencia()
     {
-        return $this->belongsTo(Dependencia::class, 'cod_dependencias');
+        return $this->belongsTo(Dependencia::class, 'dependencias_id');
     }
 
     public function almacenamiento()
     {
-        return $this->belongsTo(Almacenamiento::class, 'cod_almacenamiento');
+        return $this->belongsTo(Almacenamiento::class, 'almacenamiento_id');
     }
 
     public function estado()
     {
-        return $this->belongsTo(EstadoDelBien::class, 'cod_estado');
+        return $this->belongsTo(EstadoDelBien::class, 'estado_id');
     }
 
     public function mantenimiento()
     {
-        return $this->belongsTo(Mantenimiento::class, 'cod_mantenimiento');
+        return $this->belongsTo(Mantenimiento::class, 'mantenimiento_id');
     }
 
     public function responsable()

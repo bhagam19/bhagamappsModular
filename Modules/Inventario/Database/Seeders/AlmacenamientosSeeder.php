@@ -12,13 +12,13 @@ class AlmacenamientosSeeder extends Seeder
         DB::table('almacenamientos')->insert([
             [
                 'id' => 1,
-                'nom_almacenamiento' => 'En Uso',
+                'nombre' => 'En Uso',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 2,
-                'nom_almacenamiento' => 'Almacenado',
+                'nombre' => 'Almacenado',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

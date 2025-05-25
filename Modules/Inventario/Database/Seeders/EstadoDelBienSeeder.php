@@ -11,28 +11,28 @@ class EstadoDelBienSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('estado_del_bien')->insert([
+        DB::table('estados')->insert([
             [
                 'id' => 1,
-                'nom_estado' => 'Nuevo',
+                'nombre' => 'Nuevo',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 2,
-                'nom_estado' => 'Bueno',
+                'nombre' => 'Bueno',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 3,
-                'nom_estado' => 'Regular',
+                'nombre' => 'Regular',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 4,
-                'nom_estado' => 'Malo',
+                'nombre' => 'Malo',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

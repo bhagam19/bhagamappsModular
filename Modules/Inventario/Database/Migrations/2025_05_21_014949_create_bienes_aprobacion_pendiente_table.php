@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('bienes_aprobacion_pendiente', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_bien', 100)->nullable();
-            $table->string('detalle_del_bien', 400)->nullable();
-            $table->string('serie_del_bien', 40)->nullable();
-            $table->string('origen_del_bien', 40)->nullable();
-            $table->date('fecha_adquisicion')->nullable();
+            $table->string('nombre', 100)->nullable();
+            $table->string('detalle', 400)->nullable();
+            $table->string('serie', 40)->nullable();
+            $table->string('origen', 40)->nullable();
+            $table->date('fechaAdquisicion')->nullable();
             $table->float('precio')->nullable();
-            $table->integer('cant_bien')->nullable();
-            $table->foreignId('cod_categoria')->nullable()->constrained('categorias_de_bienes');
-            $table->foreignId('cod_dependencias')->nullable()->constrained('dependencias');
+            $table->integer('cantidad')->nullable();
+            $table->foreignId('categoria_id')->nullable()->constrained('categorias');
+            $table->foreignId('dependencia_id')->nullable()->constrained('dependencias');
             $table->foreignId('usuario_id')->nullable()->constrained('users');
-            $table->foreignId('cod_almacenamiento')->nullable()->constrained('almacenamientos');
-            $table->foreignId('cod_estado')->nullable()->constrained('estado_del_bien');
-            $table->foreignId('cod_mantenimiento')->nullable()->constrained('mantenimientos');
+            $table->foreignId('almacenamiento_id')->nullable()->constrained('almacenamientos');
+            $table->foreignId('estado_id')->nullable()->constrained('estados');
+            $table->foreignId('mantenimiento_id')->nullable()->constrained('mantenimientos');
             $table->string('observaciones', 200)->nullable();
             $table->timestamps();
         });
