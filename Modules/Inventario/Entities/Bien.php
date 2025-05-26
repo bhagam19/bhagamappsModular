@@ -20,7 +20,8 @@ class Bien extends Model
         'precio',
         'cantidad',
         'categoria_id',
-        'dependencias_id',
+        'dependencia_id',
+        'ubicacion_id',
         'usuario_id',
         'almacenamiento_id',
         'estado_id',
@@ -49,7 +50,7 @@ class Bien extends Model
 
     public function dependencia()
     {
-        return $this->belongsTo(Dependencia::class, 'dependencias_id');
+        return $this->belongsTo(Dependencia::class, 'dependencia_id');
     }
 
     public function almacenamiento()
@@ -91,4 +92,46 @@ class Bien extends Model
     {
         return $this->hasMany(MantenimientoProgramado::class);
     }
+
+    public function getDisplayValue($key)
+    {
+        $value = $this->$key;
+
+        // Si es nulo
+        if (is_null($value)) {
+            return '—';
+        }
+
+        // Si el campo es precio, mostrar como pesos colombianos
+        // Formato especial para el campo "precio"
+        if ($key === 'precio' && is_numeric($value)) {
+            return '$' . number_format((float) $value, 0, ',', '.');
+        }
+
+        // Si es una fecha (Carbon)
+        if ($value instanceof \Carbon\Carbon) {
+            return $value->format('d/m/Y');
+        }
+
+        // Si es un modelo relacionado
+        if ($value instanceof \Illuminate\Database\Eloquent\Model) {
+            return $value->nombre
+                ?? $value->name
+                ?? (method_exists($value, '__toString') ? (string)$value : $value->getKey());
+        }
+
+        // Si es un objeto genérico
+        if (is_object($value)) {
+            return method_exists($value, '__toString') ? (string)$value : '—';
+        }
+
+        // Si es un array
+        if (is_array($value)) {
+            return implode(', ', $value);
+        }
+
+        // Todo lo demás
+        return (string) $value;
+    }
+
 }

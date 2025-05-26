@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => false,
-    'use_full_favicon' => true,
+    'use_ico_only' => true,
+    'use_full_favicon' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -311,10 +311,6 @@ return [
         ],
 
         // Sidebar items
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
 
         [
             'text' => 'Panel de Control',
