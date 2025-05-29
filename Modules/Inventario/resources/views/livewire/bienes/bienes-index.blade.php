@@ -73,87 +73,7 @@
         </div>
     @endif    
 
-    {{-- Botón para mostrar formulario (móvil) --}}
-    @if(auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-block d-md-none mb-3">
-            <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse" data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
-                Agregar Bien
-            </button>
-        </div>
-    @endif
-
-    {{-- Botón para mostrar formulario (escritorio) --}}
-    @if(auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-none d-md-block mb-3">
-            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
-                Agregar Bien
-            </button>
-        </div>
-    @endif
-
-    {{-- Formulario de creación (igual para móvil y escritorio) --}}
-    @if(auth()->user()->hasPermission('crear-bienes'))
-        <div class="collapse" id="formCreateBien">
-            <form wire:submit.prevent="store" class="form-row align-items-end mb-4" novalidate>
-                @php
-                    $fields = [
-                        ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
-                        ['model' => 'detalle', 'placeholder' => 'Detalle', 'type' => 'text'],
-                        ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
-                        ['model' => 'serie', 'placeholder' => 'Serie', 'type' => 'text'],
-                        ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
-                        ['model' => 'fechaAdquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
-                        ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],                        
-                        ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
-                    ];
-
-                    $selectFields = [
-                        ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
-                        ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
-                     // ['model' => 'usuario_id', 'label' => 'Usuario', 'options' => $usuarios ?? []],
-                        ['model' => 'almacenamiento_id', 'label' => 'Almacenamiento', 'options' => $almacenamientos ?? []],
-                        ['model' => 'estado_id', 'label' => 'Estado', 'options' => $estados ?? []],
-                        ['model' => 'mantenimiento_id', 'label' => 'Mantenimiento', 'options' => $mantenimientos ?? []],
-                    ];
-                @endphp
-
-                @foreach ($fields as $field)
-                    <div class="form-group col-md-3">
-                        <input
-                            type="{{ $field['type'] }}"
-                            wire:model="{{ $field['model'] }}"
-                            placeholder="{{ $field['placeholder'] }}"
-                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror"
-                        >
-                        @error($field['model'])
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                @endforeach
-
-                @foreach ($selectFields as $field)
-                    <div class="form-group col-md-3">
-                        <select
-                            wire:model="{{ $field['model'] }}"
-                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror"
-                        >
-                            <option value="">{{ $field['label'] }}</option>
-                            @foreach($field['options'] as $item)
-                                <option value="{{ $item->id }}">{{ $item->nombre ?? $item->descripcion ?? $item->nombre_completo ?? 'Sin nombre' }}</option>
-                            @endforeach
-                        </select>
-                        @error($field['model'])
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                @endforeach
-
-                <div class="form-group col-md-auto">
-                    <button type="submit" class="btn btn-primary btn-sm">Crear</button>
-                </div>
-            </form>
-        </div>
-    @endif        
+         
 
     {{-- Botón para mostrar filtros y búsqueda en móvil --}}
     <div class="d-block d-md-none mb-3">
@@ -244,6 +164,97 @@
                     </button>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    {{-- Botón para mostrar formulario  Agregar Bien (móvil) --}}
+    @if(auth()->user()->hasPermission('crear-bienes'))
+        <div class="d-block d-md-none mb-3">
+            <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse" data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
+                Agregar Bien
+            </button>
+        </div>
+    @endif
+
+    {{-- Botón para mostrar formulario Agregar Bien (escritorio) --}}
+    @if(auth()->user()->hasPermission('crear-bienes'))
+        <div class="d-none d-md-block mb-3">
+            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
+                Agregar Bien
+            </button>
+        </div>
+    @endif
+
+    {{-- Formulario de creación (igual para móvil y escritorio) --}}
+    @if(auth()->user()->hasPermission('crear-bienes'))
+        <div class="collapse" id="formCreateBien">
+            <form wire:submit.prevent="store" class="form-row align-items-end mb-4" novalidate>
+                @php
+                    $fields = [
+                        ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
+                        ['model' => 'detalle', 'placeholder' => 'Detalle', 'type' => 'text'],
+                        ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
+                        ['model' => 'serie', 'placeholder' => 'Serie', 'type' => 'text'],
+                        ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
+                        ['model' => 'fechaAdquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
+                        ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],                        
+                        ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
+                    ];
+
+                    $selectFields = [
+                        ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
+                        ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
+                     // ['model' => 'usuario_id', 'label' => 'Usuario', 'options' => $usuarios ?? []],
+                        ['model' => 'almacenamiento_id', 'label' => 'Almacenamiento', 'options' => $almacenamientos ?? []],
+                        ['model' => 'estado_id', 'label' => 'Estado', 'options' => $estados ?? []],
+                        ['model' => 'mantenimiento_id', 'label' => 'Mantenimiento', 'options' => $mantenimientos ?? []],
+                    ];
+                @endphp
+
+                @foreach ($fields as $field)
+                    <div class="form-group col-md-2">
+                        <input
+                            type="{{ $field['type'] }}"
+                            wire:model="{{ $field['model'] }}"
+                            placeholder="{{ $field['placeholder'] }}"
+                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror"
+                        >
+                        @error($field['model'])
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endforeach
+
+                @foreach ($selectFields as $field)
+                    <div class="form-group col-md-2">
+                        <select
+                            wire:model="{{ $field['model'] }}"
+                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror"
+                        >
+                            <option value="">{{ $field['label'] }}</option>
+                            @foreach($field['options'] as $item)
+                                <option value="{{ $item->id }}">{{ $item->nombre ?? $item->descripcion ?? $item->nombre_completo ?? 'Sin nombre' }}</option>
+                            @endforeach
+                        </select>
+                        @error($field['model'])
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endforeach
+
+                <div class="form-group col-md-auto">
+                    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                </div>
+            </form>
+        </div>
+    @endif   
+
+    {{-- Paginación --}}
+    <div class="mt-3">
+        <div class="d-md-block d-flex overflow-auto">
+            <div class="mx-auto">
+                {{ $bienes->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
@@ -403,22 +414,29 @@
                     >
                         <span>{{ $bien->id }}. {{ $bien->nombre }}</span>
 
+                        @if($estadoNombre === 'malo')
+                            <i class="fas fa-exclamation-circle text-warning ml-1" title="Estado: Malo"></i>
+                        @elseif($estadoNombre === 'regular')
+                            <i class="fas fa-exclamation-triangle text-white ml-1" title="Estado: Regular"></i>
+                        @endif
+
                         @php
                             $badgeClass = match(true) {
-                                $bien->cantidad === 0 => 'badge-success',
-                                $bien->cantidad < 5 => 'badge-success',
-                                default => 'badge-success',
+                                $bien->cantidad === 0 => 'badge-primary',
+                                $bien->cantidad < 5 => 'badge-primary',
+                                default => 'badge-primary',
                             };
                         @endphp
-                        <span class="ml-auto mr-2 badge {{ $badgeClass }} badge-pill">{{ $bien->cantidad }}</span>
-
+                        <span class="ml-auto mr-2 badge {{ $badgeClass }} badge-pill">
+                            <i class="fas fa-cubes mr-1"></i> {{ $bien->cantidad }}</span>
+                            
                         @if(auth()->user()?->hasPermission('eliminar-bienes'))
                             <button
                                 wire:click.stop="$emit('confirmDelete', {{ $bien->id }})"
-                                class="btn btn-sm btn-danger ml-auto"
+                                class="btn btn-sm btn-danger"
                                 aria-label="Eliminar bien {{ $bien->nombre }}"
                             >
-                                Eliminar
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         @endif
                     </div>

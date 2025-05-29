@@ -75,7 +75,7 @@
                     wire:click="$set('editando', true)" 
                     class="btn btn-sm btn-outline-primary d-md-none"
                 >
-                    Editar
+                    Modificar
                 </button>
             @endif
         </div>
