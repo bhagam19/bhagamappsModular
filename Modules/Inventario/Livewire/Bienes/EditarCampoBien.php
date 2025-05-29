@@ -3,7 +3,16 @@
 namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
-use Modules\Inventario\Entities\Bien;
+use Modules\Users\Models\User;
+use Modules\Inventario\Entities\{
+    Bien,
+    Estado,
+    Almacenamiento,
+    Mantenimiento,
+    Dependencia,
+    Ubicacion,
+    Categoria
+};
 
 class EditarCampoBien extends Component
 {
@@ -61,16 +70,16 @@ class EditarCampoBien extends Component
     protected function cargarOpciones(string $campo): array
     {
         return match ($campo) {
-            'categoria_id' => \Modules\Inventario\Entities\Categoria::orderBy('nombre')
+            'categoria_id' => Categoria::orderBy('nombre')
                 ->get()
                 ->mapWithKeys(fn ($c) => [$c->id => $c->nombre])
                 ->toArray(),
-            'estado_id' => \Modules\Inventario\Entities\Estado::pluck('nombre', 'id')->toArray(),
-            'ubicacion_id' => \Modules\Inventario\Entities\Ubicacion::pluck('nombre', 'id')->toArray(),
-            'dependencia_id' => \Modules\Inventario\Entities\Dependencia::pluck('nombre', 'id')->toArray(),
-            'almacenamiento_id' => \Modules\Inventario\Entities\Almacenamiento::pluck('nombre', 'id')->toArray(),
-            'mantenimiento_id' => \Modules\Inventario\Entities\Mantenimiento::pluck('nombre', 'id')->toArray(),
-            'usuario_id' => \Modules\Users\Models\User::orderBy('nombres')
+            'estado_id' => Estado::pluck('nombre', 'id')->toArray(),
+            'ubicacion_id' => Ubicacion::pluck('nombre', 'id')->toArray(),
+            'dependencia_id' => Dependencia::pluck('nombre', 'id')->toArray(),
+            'almacenamiento_id' => Almacenamiento::pluck('nombre', 'id')->toArray(),
+            'mantenimiento_id' => Mantenimiento::pluck('nombre', 'id')->toArray(),
+            'usuario_id' => User::orderBy('nombres')
                 ->orderBy('apellidos')
                 ->get()
                 ->mapWithKeys(function ($user) {
@@ -95,9 +104,57 @@ class EditarCampoBien extends Component
         $this->validate($rules);
 
         $this->bien->{$this->campo} = $this->valor;
+
+        // Si el campo editado es estado_id
+        if ($this->campo === 'estado_id') {
+            $estado = Estado::find($this->valor);
+            if ($estado) {
+                $nombreEstado = strtolower($estado->nombre);
+
+                if ($nombreEstado === 'malo') {
+                    // Mantenimiento: Dado de Baja
+                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['dado de baja'])->first();
+                    if ($mantenimiento) {
+                        $this->bien->mantenimiento_id = $mantenimiento->id;
+                    }
+                    // Almacenamiento: almacenado
+                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['almacenado'])->first();
+                    if ($almacenamiento) {
+                        $this->bien->almacenamiento_id = $almacenamiento->id;
+                    }
+                } elseif (in_array($nombreEstado, ['regular'])) {
+                    // Mantenimiento: En Mora
+                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['en mora'])->first();
+                    if ($mantenimiento) {
+                        $this->bien->mantenimiento_id = $mantenimiento->id;
+                    }
+                    // Almacenamiento: En uso
+                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->first();
+                    if ($almacenamiento) {
+                        $this->bien->almacenamiento_id = $almacenamiento->id;
+                    }
+                } elseif (in_array($nombreEstado, ['bueno', 'nuevo'])) {
+                    // Mantenimiento: Al Día
+                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['al día'])->first();
+                    if ($mantenimiento) {
+                        $this->bien->mantenimiento_id = $mantenimiento->id;
+                    }
+                    // Almacenamiento: En uso
+                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->first();
+                    if ($almacenamiento) {
+                        $this->bien->almacenamiento_id = $almacenamiento->id;
+                    }
+                }
+            }
+        }
+
+
         $this->bien->save();
+        $this->bien->refresh();
+        $this->valor = $this->bien->{$this->campo};
 
         $this->editando = false;
+        $this->dispatch('bienActualizado');
         session()->flash('message', 'Campo actualizado correctamente.');
     }
 

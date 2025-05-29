@@ -4,16 +4,12 @@ namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 use Modules\Users\Models\User;
-
-use Modules\Inventario\Entities\Bien;
-use Modules\Inventario\Entities\Categoria;
-use Modules\Inventario\Entities\Dependencia;
-use Modules\Inventario\Entities\Ubicacion;
-use Modules\Inventario\Entities\Almacenamiento;
-use Modules\Inventario\Entities\Estado;
-use Modules\Inventario\Entities\Mantenimiento;
+use Modules\Inventario\Entities\{
+    Bien, Categoria, Dependencia, Ubicacion, Almacenamiento, Estado, Mantenimiento
+};
 
 class BienesIndex extends Component
 {
@@ -28,40 +24,16 @@ class BienesIndex extends Component
     public string $sortDirection = 'asc';
 
     // --- Filtros ---
-    public $filtroUsuario;
-    public $filtroCategoria;
-    public $filtroDependencia;
-    public $filtroEstado;
+    public $filtroNombre, $filtroUsuario, $filtroCategoria, $filtroDependencia, $filtroEstado;
 
     // --- Campos del bien ---
     public $nombre, $detalle, $serie, $origen, $fechaAdquisicion, $precio, $cantidad;
     public $categoria_id, $dependencia_id, $usuario_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
-    public $categorias;
-    public $dependencias;
-    public $usuarios;
-    public $estados;
-    public $almacenamientos;
-    public $mantenimientos;
 
-    // --- Query string ---
-    protected $queryString = [
-        'perPage' => ['except' => 25],
-        'filtroUsuario' => ['except' => null],
-        'filtroCategoria' => ['except' => null],
-        'filtroDependencia' => ['except' => null],
-        'filtroEstado' => ['except' => null],
-    ];
+    // --- Catálogos cargados ---
+    public $categorias, $dependencias, $usuarios, $estados, $almacenamientos, $mantenimientos;
 
-    public function sortBy($field)
-    {
-        if ($this->sortField === $field) {
-            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            $this->sortField = $field;
-            $this->sortDirection = 'asc';
-        }
-    }
-
+    // --- Columnas de tabla ---
     public $availableColumns = [
         
         'nombre' => 'Nombre del Bien',
@@ -90,12 +62,11 @@ class BienesIndex extends Component
     ];
 
     public $visibleColumns = [
-        'nombre', 'cantidad', 'detalle', 'usuario_id', 
+        'nombre', 'cantidad', 'detalle', 
         
-        'categoria_id', 
+        'categoria_id',        
         
-        'dependencia_id', 
-        'ubicacion_id',
+        'dependencia_id', 'usuario_id', 
         
         'origen', 'fechaAdquisicion', 'precio', 
         
@@ -104,46 +75,121 @@ class BienesIndex extends Component
         'observaciones'
     ];
 
+    // --- Query string para filtros ---
+    protected $queryString = [
+        'perPage' => ['except' => 25],
+        'filtroUsuario' => ['except' => null],
+        'filtroCategoria' => ['except' => null],
+        'filtroDependencia' => ['except' => null],
+        'filtroEstado' => ['except' => null],
+    ];
+
+    // ------------------ Ciclo de vida ------------------ //
+
     public function mount()
     {
-        if (!auth()->user()->hasPermission('ver-bienes')) {
-            abort(403);
-        }
+        abort_unless(auth()->user()->hasPermission('ver-bienes'), 403);
 
-        // Si no hay filtros, carga todos los catálogos
-        if (!$this->filtroUsuario && !$this->filtroCategoria && !$this->filtroDependencia && !$this->filtroEstado) {
-            $this->usuarios = User::all();
-            $this->categorias = Categoria::all();
-            $this->dependencias = Dependencia::all();
-            $this->estados = Estado::all();
-        } else {
-            $this->actualizarOpcionesFiltros();
-        }
+        $this->hayFiltrosActivos() ? $this->actualizarOpcionesFiltros() : $this->cargarCatalogos();
     }
 
-    public function updatingPerPage()
+    // ------------------ Métodos auxiliares ------------------ //
+
+    private function hayFiltrosActivos(): bool
     {
-        $this->resetPage(); // Reinicia la página al cambiar la cantidad
+        return $this->filtroUsuario || $this->filtroCategoria || $this->filtroDependencia || $this->filtroEstado;
     }
+
+    private function cargarCatalogos()
+    {
+        $user = auth()->user();
+
+        if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
+            // Todos los valores para administradores y rector
+            $this->usuarios = User::orderBy('nombres')->orderBy('apellidos')->get();
+            $this->categorias = Categoria::orderBy('nombre')->get();
+            $this->dependencias = Dependencia::orderBy('nombre')->get();
+            $this->estados = Estado::all();
+            $this->mantenimientos = Mantenimiento::all();
+            $this->almacenamientos = Almacenamiento::all();
+        } else {
+            // Solo valores asociados a los bienes del usuario
+            $bienes = Bien::where('usuario_id', $user->id)->get();
+
+            $this->usuarios = User::where('id', $user->id)->orderBy('nombres')->orderBy('apellidos')->get();
+            $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
+            $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
+            $this->estados = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
+            $this->mantenimientos = Mantenimiento::whereIn('id', $bienes->pluck('mantenimiento_id')->unique())->get();
+            $this->almacenamientos = Almacenamiento::whereIn('id', $bienes->pluck('almacenamiento_id')->unique())->get();
+        }
+    }
+
+    public function actualizarOpcionesFiltros()
+    {
+        $query = Bien::query();
+
+        foreach (['dependencia', 'categoria', 'estado', 'usuario'] as $campo) {
+            $valor = $this->{'filtro' . ucfirst($campo)};
+            if ($valor) {
+                $query->where("{$campo}_id", $valor);
+            }
+        }
+
+        $bienes = $query->get();
+
+        // Actualizar catálogos según los bienes filtrados
+        $this->usuarios = User::whereIn('id', $bienes->pluck('usuario_id')->unique())->orderBy('nombres')->orderBy('apellidos')->get();
+        $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
+        $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
+        $this->estados = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
+
+        // Validar filtros activos
+        foreach (['usuario', 'categoria', 'dependencia', 'estado'] as $campo) {
+            $filtro = "filtro" . ucfirst($campo);
+            if ($this->$filtro && !$this->{Str::plural($campo)}->pluck('id')->contains($this->$filtro)) {
+                $this->$filtro = null;
+            }
+        }
+    }
+
+    // ------------------ Interacción con tabla ------------------ //
+
+    public function sortBy($field)
+    {
+        $this->sortDirection = $this->sortField === $field
+            ? ($this->sortDirection === 'asc' ? 'desc' : 'asc')
+            : 'asc';
+
+        $this->sortField = $field;
+    }
+
+    public function updatingPerPage() { $this->resetPage(); }
 
     public function toggleColumn($column)
     {
-        if (in_array($column, $this->visibleColumns)) {
-            $this->visibleColumns = array_values(array_filter(
-                $this->visibleColumns,
-                fn($col) => $col !== $column
-            ));
-        } else {
-            $this->visibleColumns[] = $column;
-        }
+        $this->visibleColumns = in_array($column, $this->visibleColumns)
+            ? array_values(array_filter($this->visibleColumns, fn($col) => $col !== $column))
+            : [...$this->visibleColumns, $column];
     }
+
+    public function limpiarFiltros()
+    {
+        $this->reset([
+            'filtroUsuario',
+            'filtroCategoria',
+            'filtroDependencia',
+            'filtroEstado',
+        ]);
+        $this->resetPage();
+        $this->cargarCatalogos();
+    }
+
+    // ------------------ CRUD ------------------ //
 
     public function store()
     {
-        if (!auth()->user()->hasPermission('crear-bienes')) {
-            session()->flash('error', 'No tienes permiso para crear bienes.');
-            return;
-        }
+        abort_unless(auth()->user()->can('crear-bienes'), 403);
 
         $this->validate([
             'nombre' => 'required|string|max:100',
@@ -162,22 +208,11 @@ class BienesIndex extends Component
             'observaciones' => 'nullable|string|max:255',
         ]);
 
-        Bien::create([
-            'nombre' => $this->nombre,
-            'detalle' => $this->detalle,
-            'serie' => $this->serie,
-            'origen' => $this->origen,
-            'fechaAdquisicion' => $this->fechaAdquisicion,
-            'precio' => $this->precio,
-            'cantidad' => $this->cantidad,
-            'categoria_id' => $this->categoria_id,
-            'dependencia_id' => $this->dependencia_id,
-            'usuario_id' => $this->usuario_id,
-            'almacenamiento_id' => $this->almacenamiento_id,
-            'estado_id' => $this->estado_id,
-            'mantenimiento_id' => $this->mantenimiento_id,
-            'observaciones' => $this->observaciones,
-        ]);
+        Bien::create($this->only([
+            'nombre', 'detalle', 'serie', 'origen', 'fechaAdquisicion', 'precio',
+            'cantidad', 'categoria_id', 'dependencia_id', 'usuario_id',
+            'almacenamiento_id', 'estado_id', 'mantenimiento_id', 'observaciones'
+        ]));
 
         session()->flash('message', 'Bien creado exitosamente.');
         $this->resetInput();
@@ -185,10 +220,7 @@ class BienesIndex extends Component
 
     public function delete($id)
     {
-        if (!auth()->user()->hasPermission('eliminar-bienes')) {
-            session()->flash('error', 'No tienes permiso para eliminar bienes.');
-            return;
-        }
+        abort_unless(auth()->user()->can('eliminar-bienes'), 403);
 
         Bien::findOrFail($id)->delete();
         session()->flash('message', 'Bien eliminado exitosamente.');
@@ -196,158 +228,77 @@ class BienesIndex extends Component
 
     public function resetInput()
     {
-        $this->nombre = '';
-        $this->detalle = '';
-        $this->serie = '';
-        $this->origen = '';
-        $this->fechaAdquisicion = null;
-        $this->precio = null;
-        $this->cantidad = null;
-        $this->categoria_id = null;
-        $this->dependencia_id = null;
-        $this->usuario_id = null;
-        $this->almacenamiento_id = null;
-        $this->estado_id = null;
-        $this->mantenimiento_id = null;
-        $this->observaciones = '';
+        foreach ([
+            'nombre', 'detalle', 'serie', 'origen', 'fechaAdquisicion',
+            'precio', 'cantidad', 'categoria_id', 'dependencia_id', 'usuario_id',
+            'almacenamiento_id', 'estado_id', 'mantenimiento_id', 'observaciones'
+        ] as $campo) {
+            $this->$campo = null;
+        }
 
         $this->verTodos = false;
     }
 
-    public function limpiarFiltros()
-    {
-        $this->reset([
-            'filtroUsuario',
-            'filtroCategoria',
-            'filtroDependencia',
-            'filtroEstado',
-        ]);
+    // ------------------ Reactividad de filtros ------------------ //
 
-        $this->resetPage();
-    }
+    public function updatedFiltroUsuario()     { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroCategoria()   { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroDependencia() { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroEstado()      { $this->actualizarOpcionesFiltros(); }
 
-    public function updatedFiltroDependencia($value)
-    {
-        $this->actualizarOpcionesFiltros();
-    }
+    // ------------------ Render ------------------ //
 
-    public function updatedFiltroCategoria($value)
-    {
-        $this->actualizarOpcionesFiltros();
-    }
-
-    public function updatedFiltroEstado($value)
-    {
-        $this->actualizarOpcionesFiltros();
-    }
-
-    public function updatedFiltroUsuario($value)
-    {
-        $this->actualizarOpcionesFiltros();
-    }
-
-    public function actualizarOpcionesFiltros()
-    {
-        $query = Bien::query();
-
-        if ($this->filtroDependencia) {
-            $query->where('dependencia_id', $this->filtroDependencia);
-        }
-
-        if ($this->filtroCategoria) {
-            $query->where('categoria_id', $this->filtroCategoria);
-        }
-
-        if ($this->filtroEstado) {
-            $query->where('estado_id', $this->filtroEstado);
-        }
-
-        if ($this->filtroUsuario) {
-            $query->where('usuario_id', $this->filtroUsuario);
-        }
-
-        $bienesFiltrados = $query->get();
-
-        // Extrae valores únicos para los filtros relacionados
-        $this->usuarios = User::whereIn('id', $bienesFiltrados->pluck('usuario_id')->unique())->get();
-        $this->categorias = Categoria::whereIn('id', $bienesFiltrados->pluck('categoria_id')->unique())->get();
-        $this->dependencias = Dependencia::whereIn('id', $bienesFiltrados->pluck('dependencia_id')->unique())->get();
-        $this->estados = Estado::whereIn('id', $bienesFiltrados->pluck('estado_id')->unique())->get();
-
-        if ($this->filtroUsuario && !$this->usuarios->pluck('id')->contains($this->filtroUsuario)) {
-            $this->filtroUsuario = null;
-        }
-
-        if ($this->filtroCategoria && !$this->categorias->pluck('id')->contains($this->filtroCategoria)) {
-            $this->filtroCategoria = null;
-        }
-
-        if ($this->filtroDependencia && !$this->dependencias->pluck('id')->contains($this->filtroDependencia)) {
-            $this->filtroDependencia = null;
-        }
-
-        if ($this->filtroEstado && !$this->estados->pluck('id')->contains($this->filtroEstado)) {
-            $this->filtroEstado = null;
-        }
-
-    }
+    protected $listeners = ['bienActualizado' => 'render'];
 
     public function render()
     {
+        $this->cargarCatalogos();
+
         $user = auth()->user();
 
         $bienesQuery = Bien::with([
-            'categoria',
-            'dependencia',
-            'usuario',
-            'almacenamiento',
-            'estado',
-            'mantenimiento'
+            'categoria', 'dependencia', 'usuario',
+            'almacenamiento', 'estado', 'mantenimiento'
         ]);
-
-        // Reglas de visibilidad
+        
+        // Filtros de visibilidad por rol
         if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
-            // No se aplica ningún filtro, ve todos los bienes
+            // Todos los bienes
         } elseif ($user->hasRole('Coordinador')) {
             if (!$this->verTodos) {
-                $bienesQuery->where('usuario_id', $user->id);
+                $bienesQuery->where('usuario_id', $user->id)
+                ->orderBy('dependencia_id')
+                ->orderBy('nombre', 'asc'); // Orden alfabético por nombre
             }
         } else {
-            // Cualquier otro usuario ve solo sus bienes
-            $bienesQuery->where('usuario_id', $user->id);
-        }
+            $bienesQuery->where('usuario_id', $user->id)
+            ->orderBy('dependencia_id')
+            ->orderBy('nombre', 'asc'); // Orden alfabético por nombre
+        }        
 
-        // Filtros combinados
+        // Aplicar filtros
         $bienesQuery
             ->when($this->filtroUsuario, fn($q) => $q->where('usuario_id', $this->filtroUsuario))
             ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
-            ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado));
-
-        $bienesQuery->orderBy($this->sortField, $this->sortDirection);
-
+            ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
+            ->orderBy($this->sortField, $this->sortDirection);
+        
         $bienes = $bienesQuery->paginate($this->perPage);
 
-        // Catálogos
-        $almacenamientos = Almacenamiento::all();
-        $estados = Estado::all();
-        $mantenimientos = Mantenimiento::all();
-
-        $categorias = $this->categorias;
-        $dependencias = $this->dependencias;
-        $usuarios = $this->usuarios;
-
-        return view('inventario::livewire.bienes.bienes-index', compact(
-            'bienes',
-            'categorias',
-            'dependencias',
-            'usuarios',
-            'almacenamientos',
-            'estados',
-            'mantenimientos'
-        ))->layout('layouts.app');
+        //dd($bienes->toArray())
+        
+        return view('inventario::livewire.bienes.bienes-index', [
+            'bienes' => $bienes,
+            'categorias' => $this->categorias,
+            'dependencias' => $this->dependencias,
+            'usuarios' => $this->usuarios,
+            'almacenamientos' => $this->almacenamientos,
+            'estados' => $this->estados,
+            'mantenimientos' => $this->mantenimientos,
+        ])->layout('layouts.app');
+        
     }
-
-
 }
+
  

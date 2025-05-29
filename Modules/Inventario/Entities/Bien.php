@@ -95,6 +95,23 @@ class Bien extends Model
 
     public function getDisplayValue($key)
     {
+        // Mapeo de campos a relaciones y atributos representativos
+        $relaciones = [
+            'usuario_id'        => ['rel' => 'usuario',        'campo' => fn($u) => $u?->nombres . ' ' . $u?->apellidos],
+            'categoria_id'      => ['rel' => 'categoria',      'campo' => fn($c) => $c?->nombre],
+            'dependencia_id'    => ['rel' => 'dependencia',    'campo' => fn($d) => $d?->nombre],
+            'almacenamiento_id' => ['rel' => 'almacenamiento', 'campo' => fn($a) => $a?->nombre],
+            'estado_id'         => ['rel' => 'estado',         'campo' => fn($e) => $e?->nombre],
+            'mantenimiento_id'  => ['rel' => 'mantenimiento',  'campo' => fn($m) => $m?->nombre],
+        ];
+
+        // Si es un campo de relación, retorna el valor representativo
+        if (array_key_exists($key, $relaciones)) {
+            $rel = $relaciones[$key]['rel'];
+            $campo = $relaciones[$key]['campo'];
+            return $campo($this->$rel) ?? '—';
+        }
+
         $value = $this->$key;
 
         // Si es nulo
@@ -103,7 +120,6 @@ class Bien extends Model
         }
 
         // Si el campo es precio, mostrar como pesos colombianos
-        // Formato especial para el campo "precio"
         if ($key === 'precio' && is_numeric($value)) {
             return '$' . number_format((float) $value, 0, ',', '.');
         }

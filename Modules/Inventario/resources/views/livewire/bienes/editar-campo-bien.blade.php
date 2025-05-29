@@ -51,21 +51,21 @@
                     'pr-md-3' => $esNumerico,
                 ])
                 @style([
-                    'padding-right: 7rem' => $esNumerico,
+                    'padding-right: 11rem' => $esNumerico,
                     'cursor: pointer'
                 ])
                 ondblclick="@this.set('editando', true)"
             >
                 @if ($tipo === 'select' && isset($opciones[$valor]))
-                    {{ $opciones[$valor] }}
+                    <i class="fas fa-edit fa-xs text-primary d-none d-md-inline"></i></i> {{ $opciones[$valor] }}
                 @elseif ($tipo === 'date' && $valor)
-                    {{ \Carbon\Carbon::parse($valor)->format('d/m/Y') }}
+                    <i class="fas fa-edit fa-xs text-primary d-none d-md-inline"></i></i> {{ \Carbon\Carbon::parse($valor)->format('d/m/Y') }}
                 @elseif (is_null($valor) || $valor === '')
-                    <span class="text-muted fst-italic">Sin valor</span>
+                    <i class="fas fa-edit fa-xs text-primary d-none d-md-inline"></i></i> <span class="text-muted fst-italic">Sin valor</span>
                 @elseif ($campo === 'precio')
-                    {{ '$' . number_format((float) $valor, 0, ',', '.') }}
+                    {{ '$' . number_format((float) $valor, 0, ',', '.') }} <i class="fas fa-edit fa-xs text-primary d-none d-md-inline"></i>
                 @else
-                    {{ $valor }}
+                    <i class="fas fa-edit fa-xs text-primary d-none d-md-inline"></i></i> {{ $valor }}
                 @endif
             </span>
 

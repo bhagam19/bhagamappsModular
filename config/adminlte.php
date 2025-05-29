@@ -313,7 +313,7 @@ return [
         // Sidebar items
 
         [
-            'text' => 'Panel de Control',
+            'text' => 'Inicio',
             'route' => 'admin.index', // <-- tu ruta aquí
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
@@ -321,6 +321,7 @@ return [
         [
             'text' => 'Gestión de Accesos',
             'icon' => 'fas fa-users-cog',
+            'can' => 'admin.users',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
@@ -435,6 +436,7 @@ return [
         [
             'text' => 'Grupos',
             'icon' => 'fas fa-layer-group',
+            'can' => 'admin.grupos',
             'submenu' => [
                 [
                     'text' => 'Ver Grupos',
@@ -457,6 +459,7 @@ return [
         [
             'text' => 'Evaluación Docente',
             'icon' => 'fas fa-poll',
+            'can' => 'admin.evaldoc',
             'submenu' => [
                 [
                     'text' => 'Encuestas',
@@ -484,6 +487,7 @@ return [
         [
             'text' => 'Biblioteca',
             'icon' => 'fas fa-book',
+            'can' => 'admin.biblioteca',
             'submenu' => [
                 [
                     'text' => 'Libros',

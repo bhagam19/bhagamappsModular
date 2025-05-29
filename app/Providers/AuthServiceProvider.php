@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Modules\Users\Models\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,23 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin.users', function ($user) {        
+        return $user instanceof User
+                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+        });
+
+        Gate::define('admin.grupos', function ($user) {        
+        return $user instanceof User
+                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+        });
+
+        Gate::define('admin.evaldoc', function ($user) {        
+        return $user instanceof User
+                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+        });
+        Gate::define('admin.biblioteca', function ($user) {        
+        return $user instanceof User
+                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+        });
     }
 }

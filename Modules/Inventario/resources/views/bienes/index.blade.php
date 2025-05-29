@@ -3,7 +3,7 @@
 @section('title', 'Inventario')
 
 @section('content_header')
-    <h1>Listado de Bienes</h1>
+    
 @endsection
 
 @section('content')

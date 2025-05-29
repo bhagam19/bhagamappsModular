@@ -113,4 +113,26 @@ class User extends Authenticatable
         return false;
     }
 
+    public function adminlte_desc()
+    {
+        // Retorna descripción, por ejemplo el email
+        return $this->email;
+    }
+
+    public function adminlte_profile_url()
+    {
+        // Retorna la URL que usarás para mostrar el perfil del usuario
+        // Si no tienes ruta, puedes devolver null o la ruta de logout para evitar errores
+
+        return route('profile.show'); // Cambia 'profile.show' por la ruta real de perfil
+    }
+
+    public function adminlte_image()
+    {
+        return $this->avatar
+            ? asset('storage/' . $this->avatar)
+            : asset('images/default-avatar.png');
+    }
+
+
 }
