@@ -16,14 +16,42 @@
         @yield('content_top_nav_left')
     </ul>    
 
+    <style>
+        .appsContenidoCinta {
+            font-weight: normal;
+            color: var(--OnPasivo); /* Color base */
+            text-align: center;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            margin: 0 50px 0 0;
+        }
+
+        .appsContenidoCinta ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .appsContenidoCinta li {
+            margin: 0 5%;
+            padding: 0 100px;
+        }
+
+        .appsContenidoCinta li a {
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--RojoOnPasivo); /* Color base */
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+    </style>   
     
+    {{--@include('dashboard_personal.header') --}}
 
     {{-- Navbar right links --}}
     <ul class="navbar-nav ml-auto">
         {{-- Custom right links --}}
-        @yield('content_top_nav_right')
-
-        
+        @yield('content_top_nav_right')      
 
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')

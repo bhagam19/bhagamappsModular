@@ -25,17 +25,16 @@
     </div>
 
     {{-- Formulario de creación de permiso--}}
+    @php
+        $fields = [
+            ['model' => 'nombre', 'placeholder' => 'Nombre', 'type' => 'text'],
+            ['model' => 'descripcion', 'placeholder' => 'Descripción', 'type' => 'text'],
+        ];
+    @endphp
+
     <div class="collapse d-md-block" id="formCreatePermission">
         <form wire:submit.prevent="store" class="d-flex flex-column flex-md-row flex-wrap align-items-md-center mb-4" novalidate>
-            @php
-                $fields = [
-                    ['model' => 'nombre', 'placeholder' => 'Nombre', 'type' => 'text'],
-                    ['model' => 'descripcion', 'placeholder' => 'Descripción', 'type' => 'text'],
-                ];
-
-                $categorias = ['usuarios', 'roles', 'permisos']; // categorías disponibles
-            @endphp
-
+            
             @foreach ($fields as $field)
                 <div class="form-group mr-md-2 flex-grow-1" style="min-width: 120px;">
                     <input 
@@ -52,27 +51,43 @@
                 </div>
             @endforeach
 
-            {{-- Campo de categoría --}}
+            {{-- Select de categoría --}}
             <div class="form-group mr-md-2 flex-grow-1" style="min-width: 120px;">
                 <select 
-                    wire:model="categoria" 
+                    wire:model.lazy="categoria" 
                     class="form-control form-control-sm @error('categoria') is-invalid @enderror"
                     aria-label="Categoría"
                 >
-                    <option value="">Categoría</option>
+                    <option value="">Selecciona una Categoría</option>
                     @foreach($categorias as $cat)
                         <option value="{{ $cat }}">{{ ucfirst($cat) }}</option>
                     @endforeach
+                    <option value="otra">Otra</option>
                 </select>
-                @error('categoria')
-                    <div class="invalid-feedback d-block">{{ $message }}</div>
-                @enderror
             </div>
+
+            {{-- Input para nueva categoría (condicional) --}}
+            @if($categoria === 'otra')
+                <div class="form-group mr-md-2 flex-grow-1" style="min-width: 120px;">
+                    <input 
+                        type="text"
+                        wire:model.lazy="nuevaCategoria"
+                        placeholder="Nueva categoría"
+                        class="form-control form-control-sm @error('nuevaCategoria') is-invalid @enderror"
+                        aria-label="Nueva categoría"
+                        autocomplete="off"
+                    >
+                    @error('nuevaCategoria')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+            @endif
 
             <button type="submit" class="btn btn-primary btn-sm mt-2 mt-md-0">Crear</button>
         </form>
     </div>
 
+    {{ $permissions->links() }}
 
     <p>Para editar, doble click en el campo que desee modificar.</p>
     
@@ -179,6 +194,8 @@
             @endif
         </div>
     </div>
+
+    {{ $permissions->links() }}
 
 
 </div>

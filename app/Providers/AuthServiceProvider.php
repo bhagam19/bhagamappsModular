@@ -24,9 +24,57 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('admin.users', function ($user) {        
+        Gate::define('guest-only', fn($user = null) => $user === null);
+
+        Gate::define('usuarios.users', function ($user) {        
         return $user instanceof User
                 && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+        });
+
+        // Define permisos para el módulo de inventario
+
+        Gate::define('ver-bienes', function ($user) {
+                return $user->hasPermission('ver-bienes');
+        });
+        
+        Gate::define('ver-almacenamiento', function ($user) {
+                return $user->hasPermission('ver-almacenamiento');
+        });
+
+        Gate::define('ver-ubicaciones', function ($user) {
+                return $user->hasPermission('ver-ubicaciones');
+        });
+
+        Gate::define('ver-dependencias', function ($user) {
+                return $user->hasPermission('ver-dependencias');
+        });
+
+        Gate::define('ver-categorias-bienes', function ($user) {
+                return $user->hasPermission('ver-categorias-bienes');
+        });
+
+        Gate::define('ver-estados', function ($user) {
+                return $user->hasPermission('ver-estados');
+        });
+
+        Gate::define('ver-pendientes-aprobacion', function ($user) {
+                return $user->hasPermission('ver-pendientes-aprobacion');
+        });
+
+        Gate::define('ver-historial-modificaciones', function ($user) {
+                return $user->hasPermission('ver-historial-modificaciones');
+        });
+
+        Gate::define('ver-historial-ubicaciones', function ($user) {
+                return $user->hasPermission('ver-historial-ubicaciones');
+        });
+
+        Gate::define('ver-responsables', function ($user) {
+                return $user->hasPermission('ver-responsables');
+        });
+
+        Gate::define('ver-mantenimientos-programados', function ($user) {
+                return $user->hasPermission('ver-mantenimientos-programados');
         });
 
         Gate::define('admin.grupos', function ($user) {        

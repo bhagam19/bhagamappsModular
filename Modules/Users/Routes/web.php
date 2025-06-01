@@ -8,10 +8,10 @@ use Modules\Users\Models\Role;
 use Modules\Users\Livewire\Permissions\PermissionsIndex; // Asegúrate de que esta ruta sea correcta
 use Livewire\Livewire;
 
-Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {
-    Route::resource('users', UserController::class)->names('admin.users');
-    Route::resource('roles', RoleController::class)->names('admin.roles');
-    Route::resource('permissions', PermissionController::class)->names('admin.permissions');
+Route::middleware(['web', 'auth'])->prefix('usuarios')->group(function () {
+    Route::resource('users', UserController::class)->names('usuarios.users');
+    Route::resource('roles', RoleController::class)->names('usuarios.roles');
+    Route::resource('permissions', PermissionController::class)->names('usuarios.permissions');
 
     Route::get('/roles/{role}/editar-permisos', function (Role $role) {
         return view('users::roles.permissions-role', compact('role'));
@@ -19,7 +19,7 @@ Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {
 
     // Redirige a una vista donde se usará el componente Livewire
     Route::get('/permisos', function () {
-        return view('admin.permissions.index');
+        return view('usuarios.permissions.index');
     })->name('permisos.index');
 });
 

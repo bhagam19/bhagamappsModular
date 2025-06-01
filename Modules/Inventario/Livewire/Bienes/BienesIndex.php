@@ -249,6 +249,12 @@ class BienesIndex extends Component
     // ------------------ Render ------------------ //
 
     protected $listeners = ['bienActualizado' => 'render'];
+    
+    public function recargarBien($bienId)
+    {
+        $this->resetPage(); // útil si estás usando paginación
+
+    }
 
     public function render()
     {
@@ -257,7 +263,7 @@ class BienesIndex extends Component
         $user = auth()->user();
 
         $bienesQuery = Bien::with([
-            'categoria', 'dependencia', 'usuario',
+            'detalle', 'categoria', 'dependencia', 'usuario',
             'almacenamiento', 'estado', 'mantenimiento'
         ]);
         
@@ -285,8 +291,6 @@ class BienesIndex extends Component
             ->orderBy($this->sortField, $this->sortDirection);
         
         $bienes = $bienesQuery->paginate($this->perPage);
-
-        //dd($bienes->toArray())
         
         return view('inventario::livewire.bienes.bienes-index', [
             'bienes' => $bienes,

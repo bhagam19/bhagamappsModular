@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Panel Administración -',
+    'title_prefix' => 'BhagamApps -',
     'title_postfix' => '',
 
     /*
@@ -137,7 +137,7 @@ return [
     'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
-    'usermenu_desc' => false,
+    'usermenu_desc' => true,
     'usermenu_profile_url' => false,
 
     /*
@@ -155,8 +155,8 @@ return [
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => null,
+    'layout_fixed_navbar' => true,
+    'layout_fixed_footer' => true,
     'layout_dark_mode' => null,
 
     /*
@@ -263,7 +263,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => 'profile',
     'disable_darkmode_routes' => false,
 
     /*
@@ -309,24 +309,30 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'text' => 'Iniciar Sesión',
+            'url'  => 'login',
+            'icon' => 'fas fa-sign-in-alt',
+            'topnav_right' => true, // Para moverlo a la derecha
+            'can' => 'guest-only',
+        ],
 
         // Sidebar items
-
         [
             'text' => 'Inicio',
-            'route' => 'admin.index', // <-- tu ruta aquí
+            'route' => 'admin.index', 
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         
         [
             'text' => 'Gestión de Accesos',
             'icon' => 'fas fa-users-cog',
-            'can' => 'admin.users',
+            'can' => 'usuarios.users',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
                     'icon' => 'fas fa-user text-info',
-                    'route' => 'admin.users.index',
+                    'route' => 'usuarios.users.index',
                     'active' => ['admin/users*'],
                     'classes' => 'text-primary font-weight-bold', 
                     
@@ -334,14 +340,14 @@ return [
                 [
                     'text' => 'Roles',
                     'icon' => 'fas fa-user-shield text-info',
-                    'route' => 'admin.roles.index', // Ajusta si tienes otra ruta
+                    'route' => 'usuarios.roles.index', // Ajusta si tienes otra ruta
                     'active' => ['admin/roles*'],
                     'classes' => 'text-primary font-weight-bold', 
                 ],
                 [
                     'text' => 'Permisos',
                     'icon' => 'fas fa-key text-info',
-                    'route' => 'admin.permissions.index', // Ajusta si es necesario
+                    'route' => 'usuarios.permissions.index', // Ajusta si es necesario
                     'active' => ['admin/permissions*'],
                     'classes' => 'text-primary font-weight-bold', 
                 ],
@@ -355,9 +361,10 @@ return [
                 [
                     'text' => 'Bienes',
                     'icon' => 'fas fa-box text-info',
-                    'route' => 'admin.bienes.index',
+                    'route' => 'inventario.bienes.index',
                     'active' => ['inventario/bienes*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-bienes',
                 ],
                 [
                     'text' => 'Almacenamiento',
@@ -365,6 +372,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/almacenamiento*'],
                     'classes' => 'text-primary font-weight-bold',
+                    'can' => 'ver-almacenamiento',
                 ],
                 [
                     'text' => 'Ubicaciones',
@@ -372,6 +380,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/ubicaciones*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-ubicaciones',
                 ],
                 [
                     'text' => 'Dependencias',
@@ -379,6 +388,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/dependencias*'],
                     'classes' => 'text-primary font-weight-bold',
+                    'can' => 'ver-dependencias',
                 ],
                 [
                     'text' => 'Categorías',
@@ -386,6 +396,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/categorias*'],
                     'classes' => 'text-primary font-weight-bold',
+                    'can' => 'ver-categorias-bienes',
                 ],
                 [
                     'text' => 'Estado del Bien',
@@ -393,6 +404,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/estados*'],
                     'classes' => 'text-primary font-weight-bold',
+                    'can' => 'ver-estados',
                 ],
                 [
                     'text' => 'Pendientes de Aprobación',
@@ -400,6 +412,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/aprobacion*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-pendientes-aprobacion',
                 ],
                 [
                     'text' => 'Historial de Modificaciones',
@@ -407,6 +420,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/historial-modificaciones*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-historial-modificaciones',
                 ],
                 [
                     'text' => 'Historial de Ubicaciones',
@@ -414,6 +428,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/historial-ubicaciones*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-historial-ubicaciones',
                 ],
                 [
                     'text' => 'Responsables',
@@ -421,6 +436,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/responsables*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-responsables',
                 ],
                 [
                     'text' => 'Mantenimientos Programados',
@@ -428,6 +444,7 @@ return [
                     'route' => '',
                     'active' => ['inventario/mantenimientos*'],
                     'classes' => 'text-primary font-weight-bold', 
+                    'can' => 'ver-mantenimientos-programados',
                 ],
             ],
         ],

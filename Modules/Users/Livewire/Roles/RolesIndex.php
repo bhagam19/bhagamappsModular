@@ -36,6 +36,9 @@ class RolesIndex extends Component
     public function mount()
     {
         $this->roles = Role::all();
+        if (!auth()->user()->hasPermission('ver-roles')) {
+            abort(403);
+        }
     }
 
     public function store()

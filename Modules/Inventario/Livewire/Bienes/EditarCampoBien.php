@@ -148,17 +148,12 @@ class EditarCampoBien extends Component
             }
         }
 
-
-        $this->bien->save();
-        $this->bien->refresh();
-        $this->valor = $this->bien->{$this->campo};
-
-        $this->editando = false;
-        $this->dispatch('bienActualizado');
-        session()->flash('message', 'Campo actualizado correctamente.');
-    }
-
-    
+        $this->bien->save();                                                    // Guarda en BD        
+        $this->valor = $this->bien->{$this->campo};                             // 3. Actualiza el valor mostrado con el dato real             
+        $this->editando = false;                                                // 4. Sale del modo edición
+        $this->dispatch('bienActualizado', $this->bien->id);            // 5. Notifica al componente padre u otros listeners
+        session()->flash('message', 'Campo actualizado correctamente.');        // 6. Muestra mensaje flash (si aplica)
+    }    
 
     public function render()
     {

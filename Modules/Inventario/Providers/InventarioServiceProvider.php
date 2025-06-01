@@ -10,15 +10,14 @@ use RecursiveIteratorIterator;
 
 use Livewire\Livewire;
 use Modules\Inventario\Livewire\Bienes\BienesIndex;
-
 use Modules\Inventario\Livewire\Bienes\EditarCampoBien;
+use Modules\Inventario\Livewire\Bienes\EditarDetalleBien;
 
 class InventarioServiceProvider extends ServiceProvider
 {
     use PathNamespace;
 
     protected string $name = 'Inventario';
-
     protected string $nameLower = 'inventario';
 
     /**
@@ -34,8 +33,8 @@ class InventarioServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->name, 'Database/Migrations'));
 
         Livewire::component('bienes.bienes-index', BienesIndex::class);
-
         Livewire::component('bienes.editar-campo-bien', EditarCampoBien::class);
+        Livewire::component('bienes.editar-detalle-bien', EditarDetalleBien::class);
     }
 
     /**

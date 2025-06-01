@@ -4,36 +4,52 @@ namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
 use Modules\Inventario\Entities\Bien;
+use Modules\Inventario\Entities\Detalle;
+use Illuminate\Support\Arr;
 
 class EditarDetalleBien extends Component
 {
-    public Bien $bien;
-    public $detalle;
-    public $editando = false;
+    public $bienId;
+    public $editandoDetalle = false;
+    public $detalle = [];
 
-    public function mount(Bien $bien)
+    public function toggleEdit()
     {
-        $this->bien = $bien;
-        $this->detalle = $bien->detalle;
-        $this->editando = false; 
+        $this->editandoDetalle = !$this->editandoDetalle;
     }
 
-    public function editar()
+    protected $rules = [
+        'detalle.car_especial' => 'nullable|string|max:255',
+        'detalle.marca'        => 'nullable|string|max:255',
+        'detalle.color'        => 'nullable|string|max:255',
+        'detalle.tamano'       => 'nullable|string|max:255',
+        'detalle.material'     => 'nullable|string|max:255',
+        'detalle.otra'         => 'nullable|string|max:255',
+    ];
+
+    public function mount($bienId)
     {
-        if (!auth()->user()?->hasPermission('editar-usuarios')) {
-            abort(403);
-        }
-        $this->editando = true;
+        $this->bienId = $bienId; // <--- Agrega esta línea
+        $bien = Bien::with('detalle')->findOrFail($bienId);
+        $this->detalle = Arr::only(optional($bien->detalle)->toArray() ?? [], [
+            'car_especial', 'marca', 'color', 'tamano', 'material', 'otra'
+        ]);
     }
 
-    public function guardar()
+    public function actualizar()
     {
-        // Guardamos el nuevo título y desactivamos el modo edición
-        $this->bien->detalle = $this->detalle;
-        $this->bien->save();
-        $this->editando = false;
-    }
+        $this->validate();
 
+        $detalle = Detalle::firstOrNew(['bien_id' => $this->bienId]);
+        $detalle->fill($this->detalle);
+        $detalle->save();
+        $detalle->refresh();        
+        $this->dispatch('bienActualizado', $detalle->id); 
+        $this->toggleEdit();       
+
+        session()->flash('mensaje', 'Detalles actualizados.');
+    }
+    
     public function render()
     {
         return view('inventario::livewire.bienes.editar-detalle-bien');
