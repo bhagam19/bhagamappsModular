@@ -26,16 +26,3 @@ Route::middleware(['web', 'auth'])->prefix('usuarios')->group(function () {
 // Puedes registrar el componente Livewire así si quieres usarlo en Blade:
 Livewire::component('permissions.index', PermissionsIndex::class);
 
-
-/*
-Route::resource('users', UserController::class)->names('admin.users');
-Route::resource('roles', RoleController::class)->names('admin.roles');
-Route::resource('permissions', PermissionController::class)->names('admin.permissions');
-
-use App\Models\Role;
-Route::get('/roles/{role}/editar-permisos', function (Role $role) {
-    return view('admin.roles.permissions-role', compact('role'));
-})->middleware('auth')->name('roles.editar-permisos');
-
-Route::get('/permisos', \App\Livewire\Permissions\PermissionsIndex::class)->middleware(['auth'])->name('permisos.index');
-*/

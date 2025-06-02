@@ -9,6 +9,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use Modules\Inventario\Entities\Bien;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -132,6 +134,11 @@ class User extends Authenticatable
         return $this->avatar
             ? asset('storage/' . $this->avatar)
             : asset('images/default-avatar.png');
+    }
+
+    public function bienes()
+    {
+        return $this->hasMany(Bien::class, 'usuario_id');
     }
 
 

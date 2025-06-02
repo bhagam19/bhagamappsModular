@@ -3,6 +3,7 @@
 namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Notification;
 use Modules\Users\Models\User;
 use Modules\Inventario\Entities\{
     Bien,
@@ -11,8 +12,11 @@ use Modules\Inventario\Entities\{
     Mantenimiento,
     Dependencia,
     Ubicacion,
-    Categoria
+    Categoria,
+    BienAprobacionPendiente
 };
+use Modules\Inventario\Notifications\CambioBienPendiente;
+
 
 class EditarCampoBien extends Component
 {
@@ -37,7 +41,6 @@ class EditarCampoBien extends Component
         $this->opciones = $this->tipo === 'select'
             ? ($opciones ?: $this->cargarOpciones($campo))
             : [];
-
     }
 
     protected function inferirTipo(string $campo): string
@@ -72,7 +75,7 @@ class EditarCampoBien extends Component
         return match ($campo) {
             'categoria_id' => Categoria::orderBy('nombre')
                 ->get()
-                ->mapWithKeys(fn ($c) => [$c->id => $c->nombre])
+                ->mapWithKeys(fn($c) => [$c->id => $c->nombre])
                 ->toArray(),
             'estado_id' => Estado::pluck('nombre', 'id')->toArray(),
             'ubicacion_id' => Ubicacion::pluck('nombre', 'id')->toArray(),
@@ -90,10 +93,8 @@ class EditarCampoBien extends Component
         };
     }
 
-
     public function actualizar()
     {
-        // Si el campo es select o number, puedes aplicar otras validaciones
         $rules = match ($this->tipo) {
             'number' => ['valor' => 'nullable|numeric'],
             'date' => ['valor' => 'nullable|date'],
@@ -103,57 +104,89 @@ class EditarCampoBien extends Component
 
         $this->validate($rules);
 
-        $this->bien->{$this->campo} = $this->valor;
+        $usuario = User::find(auth()->id());
+        $valorActual = $this->bien->{$this->campo};
 
-        // Si el campo editado es estado_id
-        if ($this->campo === 'estado_id') {
-            $estado = Estado::find($this->valor);
-            if ($estado) {
-                $nombreEstado = strtolower($estado->nombre);
+        // Si no hubo cambios reales, salir
+        if ($valorActual == $this->valor) {
+            $this->editando = false;
+            return;
+        }
 
-                if ($nombreEstado === 'malo') {
-                    // Mantenimiento: Dado de Baja
-                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['dado de baja'])->first();
-                    if ($mantenimiento) {
-                        $this->bien->mantenimiento_id = $mantenimiento->id;
-                    }
-                    // Almacenamiento: almacenado
-                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['almacenado'])->first();
-                    if ($almacenamiento) {
-                        $this->bien->almacenamiento_id = $almacenamiento->id;
-                    }
-                } elseif (in_array($nombreEstado, ['regular'])) {
-                    // Mantenimiento: En Mora
-                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['en mora'])->first();
-                    if ($mantenimiento) {
-                        $this->bien->mantenimiento_id = $mantenimiento->id;
-                    }
-                    // Almacenamiento: En uso
-                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->first();
-                    if ($almacenamiento) {
-                        $this->bien->almacenamiento_id = $almacenamiento->id;
-                    }
-                } elseif (in_array($nombreEstado, ['bueno', 'nuevo'])) {
-                    // Mantenimiento: Al Día
-                    $mantenimiento = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['al día'])->first();
-                    if ($mantenimiento) {
-                        $this->bien->mantenimiento_id = $mantenimiento->id;
-                    }
-                    // Almacenamiento: En uso
-                    $almacenamiento = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->first();
-                    if ($almacenamiento) {
-                        $this->bien->almacenamiento_id = $almacenamiento->id;
+        // Si tiene rol autorizado, guardar directamente
+        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+            $this->bien->{$this->campo} = $this->valor;
+
+            // Lógica especial para estado_id
+            if ($this->campo === 'estado_id') {
+                $estado = Estado::find($this->valor);
+                if ($estado) {
+                    $nombreEstado = strtolower($estado->nombre);
+
+                    if ($nombreEstado === 'malo') {
+                        $this->bien->mantenimiento_id = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['dado de baja'])->value('id');
+                        $this->bien->almacenamiento_id = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['almacenado'])->value('id');
+                    } elseif ($nombreEstado === 'regular') {
+                        $this->bien->mantenimiento_id = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['en mora'])->value('id');
+                        $this->bien->almacenamiento_id = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->value('id');
+                    } elseif (in_array($nombreEstado, ['bueno', 'nuevo'])) {
+                        $this->bien->mantenimiento_id = Mantenimiento::whereRaw('LOWER(nombre) = ?', ['al día'])->value('id');
+                        $this->bien->almacenamiento_id = Almacenamiento::whereRaw('LOWER(nombre) = ?', ['en uso'])->value('id');
                     }
                 }
             }
+
+            $this->bien->save();
+            $this->valor = $this->bien->{$this->campo};
+            $this->editando = false;
+            $this->dispatch('bienActualizado', $this->bien->id);
+            session()->flash('message', 'Campo actualizado correctamente.');
+            return;
         }
 
-        $this->bien->save();                                                    // Guarda en BD        
-        $this->valor = $this->bien->{$this->campo};                             // 3. Actualiza el valor mostrado con el dato real             
-        $this->editando = false;                                                // 4. Sale del modo edición
-        $this->dispatch('bienActualizado', $this->bien->id);            // 5. Notifica al componente padre u otros listeners
-        session()->flash('message', 'Campo actualizado correctamente.');        // 6. Muestra mensaje flash (si aplica)
-    }    
+        // Usuario sin permiso → guardar solicitud pendiente
+        $yaExiste = BienAprobacionPendiente::where('bien_id', $this->bien->id)
+            ->where('campo', $this->campo)
+            ->where('estado', 'pendiente')
+            ->exists();
+
+        if ($yaExiste) {
+            session()->flash('warning', 'Ya hay un cambio pendiente para este campo.');
+            $this->editando = false;
+            return;
+        }
+
+        BienAprobacionPendiente::create([
+            'bien_id' => $this->bien->id,
+            'tipo_objeto' => 'bien',
+            'campo' => $this->campo,
+            'valor_anterior' => $valorActual,
+            'valor_nuevo' => $this->valor,
+            'usuario_id' => $usuario->id,
+            'estado' => 'pendiente',
+        ]);
+
+        // Enviar notificación a administradores y rector
+        $usuariosDestino = User::whereHas('roles', function ($query) {
+            $query->whereIn('name', ['Administrador', 'Rector']);
+        })->get();
+        
+        $cambio = BienAprobacionPendiente::create([
+            'bien_id' => $this->bien->id,
+            'tipo_objeto' => 'bien',
+            'campo' => $this->campo,
+            'valor_anterior' => $valorActual,
+            'valor_nuevo' => $this->valor,
+            'usuario_id' => $usuario->id,
+            'estado' => 'pendiente',
+        ]);
+        
+
+        Notification::send($usuariosDestino, new CambioBienPendiente($cambio));
+
+        $this->editando = false;
+        session()->flash('info', 'El cambio fue enviado para aprobación.');
+    }
 
     public function render()
     {

@@ -9,9 +9,14 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
 use Livewire\Livewire;
+use Illuminate\Support\Facades\File;
+/*
 use Modules\Inventario\Livewire\Bienes\BienesIndex;
 use Modules\Inventario\Livewire\Bienes\EditarCampoBien;
 use Modules\Inventario\Livewire\Bienes\EditarDetalleBien;
+use Modules\Inventario\Livewire\Notifications\Notificaciones;
+use Modules\Inventario\Livewire\Notifications\NotificacionesIcono;
+*/
 
 class InventarioServiceProvider extends ServiceProvider
 {
@@ -24,7 +29,7 @@ class InventarioServiceProvider extends ServiceProvider
      * Boot the application events.
      */
     public function boot(): void
-    {
+    {                
         $this->registerCommands();
         $this->registerCommandSchedules();
         $this->registerTranslations();
@@ -32,9 +37,49 @@ class InventarioServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'Database/Migrations'));
 
+        $namespace = 'Modules\\Inventario\\Livewire';
+
+        $path = module_path('Inventario', 'Livewire');
+
+        if (!File::exists($path)) {
+            return;
+        }
+
+        $components = File::allFiles($path);
+
+        foreach ($components as $component) {
+            $relativePath = $component->getRelativePathname();
+
+            $class = $namespace . '\\' . str_replace(['/', '.php'], ['\\', ''], $relativePath);
+
+            $folder = str_replace(['/', '\\'], '.', dirname($relativePath));
+            if ($folder === '.' || $folder === '') {
+                $folder = null;
+            } else {
+                $folder = strtolower($folder);
+            }
+
+            $filename = pathinfo($relativePath, PATHINFO_FILENAME);
+
+            $aliasName = $this->kebabCase($filename);
+
+            $alias = $folder ? $folder . '.' . $aliasName : $aliasName;
+
+            Livewire::component($alias, $class);
+        } 
+
+        /*
         Livewire::component('bienes.bienes-index', BienesIndex::class);
         Livewire::component('bienes.editar-campo-bien', EditarCampoBien::class);
         Livewire::component('bienes.editar-detalle-bien', EditarDetalleBien::class);
+        Livewire::component('notifications.notificaciones', Notificaciones::class);
+        Livewire::component('notifications.notificaciones-icono', NotificacionesIcono::class);
+        */
+    }
+
+    private function kebabCase(string $string): string
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
     }
 
     /**

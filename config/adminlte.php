@@ -367,6 +367,14 @@ return [
                     'can' => 'ver-bienes',
                 ],
                 [
+                    'text' => 'Acta de Entrega',
+                    'icon' => 'fas fa-file-signature text-success',  // icono más adecuado para acta/entrega
+                    'route' => 'inventario.actas.index',            // ruta nueva, por ejemplo
+                    'active' => ['actas/acta-entrega*'],                // activa para rutas que empiecen con inventario/actas
+                    'classes' => 'text-success font-weight-bold',     // clases para resaltarlo en verde
+                    'can' => 'ver-acta-entrega',                       // permiso específico para ver actas
+                ],
+                [
                     'text' => 'Almacenamiento',
                     'icon' => 'fas fa-warehouse text-secondary',
                     'route' => '',

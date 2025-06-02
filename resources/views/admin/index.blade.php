@@ -2,7 +2,7 @@
 
 @section('title', 'Administrador')
 
-@section('content_header')    
+@section('content_header')
     <h1>Panel de Administración</h1>
 @stop
 
@@ -16,5 +16,7 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+        console.log("Hi, I'm using the Laravel-AdminLTE package!");
+    </script>
 @stop

@@ -3,39 +3,30 @@
 namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Users\Models\User;
+use Modules\Inventario\Entities\Bien;
 
 class BienAprobacionPendiente extends Model
 {
-    use HasFactory;
-
     protected $table = 'bienes_aprobacion_pendiente';
 
     protected $fillable = [
         'bien_id',
-        'nom_bien',
-        'detalle_del_bien',
-        'serie_del_bien',
-        'origen_del_bien',
-        'fecha_adquisicion',
-        'precio',
-        'cant_bien',
-        'cod_categoria',
-        'cod_dependencias',
+        'tipo_objeto',
+        'campo',
+        'valor_anterior',
+        'valor_nuevo',
         'usuario_id',
-        'cod_almacenamiento',
-        'cod_estado',
-        'cod_mantenimiento',
-        'observaciones'
+        'estado',
     ];
 
     public function bien()
     {
-        return $this->belongsTo(Bien::class, 'bien_id');
+        return $this->belongsTo(Bien::class);
     }
 
     public function usuario()
     {
-        return $this->belongsTo(\Modules\Users\Entities\User::class, 'usuario_id');
+        return $this->belongsTo(User::class);
     }
 }
