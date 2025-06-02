@@ -22,3 +22,4 @@ window.temas = {
 
 import './selectorTemas.js'
 import './bootstrap';
+import './imprimir-acta.js';

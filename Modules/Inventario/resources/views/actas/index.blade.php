@@ -20,3 +20,7 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+    @vite('resources/js/app.js')
+@endsection

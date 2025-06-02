@@ -1,178 +1,140 @@
-<div id="acta-entrega" class="p-6 bg-white text-black w-3/4 font-arial">
+<div class="mb-4" style="height: 100vh; display: flex; flex-direction: column;">
 
-    <style>
-        /* Encabezado del Acta */
-        .font-arial {
-            font-family: Arial, sans-serif !important;
-            font-size: 24px !important;
-        }
+    <!-- Barra fija arriba -->
+    <div class="d-flex align-items-center mb-1 sticky-top bg-white py-2 shadow" style="z-index: 1020; top: 0;">
+        @if ($mostrarSelector)
+            <span class="text-muted mr-3">Selecciona un usuario:</span>
 
-        .img-escudo {
-            position: relative;
-            width: 150px;
-            height: 150px;
-        }
+            <select wire:model.lazy="userId" id="userId" class="custom-select custom-select-sm mr-3"
+                style="width: 180px;">
+                <option value="">-- Usuarios --</option>
+                @foreach ($users as $u)
+                    <option value="{{ $u->id }}">{{ $u->nombres }} {{ $u->apellidos }}</option>
+                @endforeach
+            </select>
+        @endif
 
-        #separadorColores hr:nth-child(1) {
-            background-color: #013801;
-            height: 1mm;
-        }
+        <span class="text-muted mr-2">Ítems por página:</span>
+        <input type="number" wire:model.lazy="itemsPorPagina" min="1" max="100"
+            class="form-control form-control-sm mr-3" style="width: 80px;">
 
-        #separadorColores hr:nth-child(2) {
-            background-color: white;
-            height: 1mm;
-        }
-
-        #separadorColores hr:nth-child(3) {
-            background-color: #01018a;
-            height: 1mm;
-        }
-    </style>
-
-    {{-- Selección de usuario --}}
-    <div id="encabezadoGenerarActa" class="d-flex justify-content-end align-items-center mb-3">
-
-        <span class="text-muted mr-3">Selecciona un usuario:</span>
-
-        <select wire:model.lazy="userId" id="userId" class="custom-select custom-select-sm mr-3" style="width: 180px;">
-            <option value="">-- Usuarios --</option>
-            @foreach ($users as $u)
-                <option value="{{ $u->id }}">{{ $u->nombres }} {{ $u->apellidos }}</option>
-            @endforeach
-        </select>
-
-        @php
-            $pgActa = 1; // Número de página del acta
-            $miFecha = \Carbon\Carbon::now()->locale('es')->isoFormat('DD [de] MMMM [de] YYYY'); // Fecha actual en formato dd-mm-YYYY
-            $nombreCompleto = $user ? mb_strtoupper($user->nombres . ' ' . $user->apellidos, 'UTF-8') : '';
-        @endphp
-
-        <span class="text-muted mr-3">|</span>
-
-        <button title="Imprimir Acta" onclick="imprimir()" class="btn btn-link text-success p-0"
-            style="font-size: 1.25rem;">
-            <i class="fas fa-print"></i>
-        </button>
-
+        @if ($userId)
+            <span class="text-muted mr-3">|</span>
+            <button title="Imprimir Acta" onclick="imprimir()" class="btn btn-link text-success p-0"
+                style="font-size: 1.25rem;">
+                <i class="fas fa-print"></i>
+                Click para descargar o imprimir el Acta
+            </button>
+        @endif
     </div>
 
-    @if ($user)
-        <div class="bg-white text-black w-3/4 mx-auto p-6 border border-gray-300 rounded-lg shadow-lg"
-            style="padding: 3cm;">
+    <!-- Contenedor scrollable -->
+    <div class="contenedor-general overflow-auto">
 
-            {{-- Encabezado --}}
-            <div id="d-flex align-items-center justify-content-center w-3/4 mx-auto">
+        @if ($contenidoActa)
+            <style>
+                .contenedor-acta {
+                    page-break-after: always;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 1cm 2cm !important;
+                    padding: 1cm 2cm !important;
+                    font-family: 'Helvetica', Times, serif;
+                    font-size: 11pt;
+                    max-width: 900px;
+                    min-height: 1200px;
+                }
 
-                <div class="row align-items-center">
-                    <div class="col-2 text-center">
-                        <img class="img-escudo img-fluid" src="{{ asset('vendor/adminlte/dist/img/escudo.png') }}"
-                            alt="Escudo" />
-                    </div>
-                    <div class="col-10 font-arial">
-                        <h4 class="text-center mb-2 font-weight-bold">INSTITUCIÓN EDUCATIVA ENTRERRÍOS</h4>
-                        <h5 class="text-justify mb-2">
-                            Constituida y autorizados sus estudios por Resolución Departamental 1490 del 20 de febrero
-                            de 2003 y mediante la cual se le concede <span class="font-weight-bold">Reconocimiento de
-                                Carácter Oficial</span>; autorizados sus estudios para Educación Formal de Adultos por
-                            Resolución
-                            12339 del 13 de junio de 2006; y aclaradas sus jornadas y modelos por Resolución
-                            Departamental S201500286893 del 1 de julio de 2015.
-                        </h5>
-                        <h6 class="text-right mb-0 font-weight-bold">DANE 105264000013 - NIT 811044496-0</h6>
-                    </div>
-                </div>
+                .contenido-principal {
+                    flex: 1 0 auto;
+                }
+
+                /* Aquí tus estilos para la página del acta */
+                .img-escudo {
+                    position: relative;
+                    width: 90px;
+                    height: 90px;
+                }
+
+                /* Separadores de colores */
+                .linea-verde {
+                    background-color: #013801;
+                    height: 0.8mm;
+                    border: none;
+                    margin: 0;
+                }
+
+                .linea-blanca {
+                    background-color: white;
+                    height: 0.8mm;
+                    border: none;
+                    margin: 0;
+                }
+
+                .linea-azul {
+                    background-color: #01018a;
+                    height: 0.8mm;
+                    border: none;
+                    margin: 0;
+                }
+
+                @media print {
+                    body * {
+                        visibility: hidden;
+                    }
+
+                    .contenedor-acta {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    .contenedor-acta,
+                    .contenedor-acta * {
+                        visibility: visible;
+                    }
+
+                    .contenido-principal {
+                        flex: 1 0 auto;
+                    }
+
+                    /* Aquí tus estilos para la página del acta */
+                    .img-escudo {
+                        position: relative;
+                        width: 90px;
+                        height: 90px;
+                    }
+
+                    /* Separadores de colores */
+                    .linea-verde {
+                        background-color: #013801;
+                        height: 0.8mm;
+                        border: none;
+                        margin: 0;
+                    }
+
+                    .linea-blanca {
+                        background-color: white;
+                        height: 0.8mm;
+                        border: none;
+                        margin: 0;
+                    }
+
+                    .linea-azul {
+                        background-color: #01018a;
+                        height: 0.8mm;
+                        border: none;
+                        margin: 0;
+                    }
+                }
+            </style>
+
+            {!! $contenidoActa !!}
+        @elseif ($userId)
+            <div class="alert alert-warning">
+                No hay bienes para este usuario.
             </div>
+        @endif
 
-            <div id="separadorColores" class="w-3/4 mx-auto my-2">
-                <hr class="my-0" />
-                <hr class="my-0" />
-                <hr class="my-0" />
-            </div>
-
-            {{-- Cuerpo --}}
-            <div class="mb-4 px-3">
-                <h4 class="text-center font-weight-bold pt-3 pb-1">
-                    ACTA DE ENTREGA DE INVENTARIO - {{ $nombreCompleto }} - PÁGINA {{ $pgActa }}
-                </h4>
-
-                <p class="text-left font-arial pb-2 pt-2">
-                    Entrerríos, {{ $miFecha }}
-                </p>
-
-                <p class="text-justify pb-2 pt-2">
-                    El Rector de la IE Entrerríos hace entrega del siguiente inventario al docente
-                    <span class="font-weight-bold">{{ $nombreCompleto }}</span>, identificado con <span
-                        class="font-weight-bold">CC. {{ number_format($user->userID, 0, ',', '.') }}</span>.
-                </p>
-            </div>
-
-            {{-- Tabla de bienes asignados --}}
-            <table class="table table-bordered table-sm table-striped">
-                <thead>
-                    <tr>
-                        <th>Bien</th>
-                        <th>Detalle</th>
-                        <th>Cant</th>
-                        <th>Estado</th>
-                        <th>Dependencia</th>
-                        <th>Observaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($bienes as $bien)
-                        <tr>
-                            <td>{{ $bien->nombre }}</td>
-                            <td>
-                                @if ($bien->detalle)
-                                    <small class="d-block mt-1 text-muted">
-                                        {{ collect([
-                                            $bien->detalle->car_especial,
-                                            $bien->detalle->marca,
-                                            $bien->detalle->color,
-                                            $bien->detalle->tamano,
-                                            $bien->detalle->material,
-                                            $bien->detalle->otra,
-                                        ])->filter()->implode(' | ') }}
-                                    </small>
-                                @endif
-                            </td>
-                            <td>{{ $bien->cantidad }}</td>
-                            <td>{{ ucfirst($bien->estado->nombre) }}</td>
-                            <td>{{ $bien->dependencia->nombre }}</td>
-                            <td>{{ $bien->observaciones }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center">No se encontraron bienes asignados.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-
-            </table>
-
-
-
-
-
-            {{-- Pie de página --}}
-            <footer id="piedePaginaActa" class="mt-6 text-center text-gray-700 text-sm">
-                <div class="mb-2">
-                    <hr class="border-t-2 border-green-700" />
-                    <hr class="border-t border-white -mt-2" />
-                    <hr class="border-t-2 border-blue-900 -mt-3" />
-                </div>
-                <h4 class="font-semibold mb-1">"MÁS QUE ENSEÑAR ES FORMAR"</h4>
-                <p>
-                    Institución Educativa Entrerríos || Entrerríos, Antioquia || Dirección: Carrera 14 No. 10 –
-                    17<br />
-                    Teléfonos: 8670153 - 3135784406<br />
-                    Correo: <a href="mailto:ieentrerrios@yahoo.es"
-                        class="text-blue-600 underline">ieentrerrios@yahoo.es</a>
-                    ||
-                    Sitio Web: <a href="https://sites.google.com/view/ieentrerrios" target="_blank"
-                        class="text-blue-600 underline">ieentrerrios</a>
-                </p>
-            </footer>
-    @endif
-
-</div>
+    </div>
