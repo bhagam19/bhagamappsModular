@@ -25,7 +25,7 @@ class Notificaciones extends Component
 
     public function cargarCambiosPendientes()
     {
-        $this->cambiosPendientes = BienAprobacionPendiente::with('usuario')
+        $this->cambiosPendientes = BienAprobacionPendiente::with('user')
             ->where('estado', 'pendiente')
             ->get();
     }

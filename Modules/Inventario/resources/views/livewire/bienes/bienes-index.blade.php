@@ -62,12 +62,12 @@
         }
 
         .bg-regular {
-            background-color: rgb(240, 147, 85) !important;
+            background-color: rgb(233, 171, 129) !important;
             color: rgb(0, 0, 0) !important;
         }
 
         .bg-malo {
-            background-color: rgb(243, 76, 76) !important;
+            background-color: rgb(223, 131, 131) !important;
             color: rgb(0, 0, 0) !important;
         }
     </style>
@@ -428,6 +428,9 @@
         <div id="accordionMobileBienes">
             @forelse($bienes as $bien)
                 @php
+
+                    $camposPendientes = $bien->camposPendientesPorUsuario(auth()->id());
+
                     $estadoNombre = strtolower($bien->estado->nombre ?? '');
                     $cardClass = match ($estadoNombre) {
                         'regular' => 'border-warning bg-regular',
@@ -449,7 +452,14 @@
                     <div class="card-header p-2 d-flex align-items-center" @click="{{ $toggleOpen }}"
                         @keydown.enter.prevent="{{ $toggleOpen }}" @keydown.space.prevent="{{ $toggleOpen }}"
                         tabindex="0" role="button">
-                        <span>{{ $bien->id }}. {{ $bien->nombre }}</span>
+                        <span>
+                            {{ $bien->id }}. {{ $bien->nombre }}
+
+                            @if ($bien->tieneCambiosPendientesDelUsuario())
+                                <i class="fas fa-hourglass-half text-info ml-1"
+                                    title="Tienes cambios pendientes en este bien"></i>
+                            @endif
+                        </span>
 
                         {{-- Icono de estado --}}
                         @if ($estadoNombre === 'malo')

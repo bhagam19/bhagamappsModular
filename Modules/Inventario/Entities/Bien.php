@@ -5,6 +5,7 @@ namespace Modules\Inventario\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 
 use Modules\Users\Models\User;
 
@@ -149,5 +150,35 @@ class Bien extends Model
         // Todo lo demás
         return (string) $value;
     }
+
+    public function cambiosPendientes()
+    {
+        return $this->hasMany(BienAprobacionPendiente::class);
+    }
+
+    public function tieneCambiosPendientesDelUsuario()
+    {
+        $user = Auth::user();
+
+        $query = $this->cambiosPendientes();
+
+        // Si NO es administrador ni rector, filtrar por usuario_id
+        if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
+            $query->where('usuario_id', $user->id);
+        }
+
+        return $query->exists();
+    }
+
+    public function camposPendientesPorUsuario($usuarioId)
+    {
+        return $this->cambiosPendientes()
+            ->where('usuario_id', $usuarioId)
+            ->where('estado', 'pendiente') // Ajusta según cómo guardes el estado
+            ->pluck('campo')
+            ->unique()
+            ->toArray();
+    }
+
 
 }

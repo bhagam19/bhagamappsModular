@@ -56,6 +56,11 @@
                     @endif
                 </span>
 
+                @if ($this->campoTieneCambioPendiente())
+                    <i class="fas fa-hourglass-half text-info ml-1"
+                        title="Este campo tiene un cambio pendiente de aprobación"></i>
+                @endif
+
             </div>
 
             {{-- Botón editar visible solo en móvil --}}

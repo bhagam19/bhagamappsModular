@@ -64,9 +64,9 @@
                                                     data-target="#collapse{{ $index }}" aria-expanded="false"
                                                     aria-controls="collapse{{ $index }}"
                                                     style="width: 100%; text-align: left;">
-                                                    Bien ID: {{ $cambio->bien_id }} - Campo:
-                                                    {{ ucfirst($cambio->campo) }} - Nuevo valor: <span
-                                                        class="text-primary">{{ $cambio->valor_nuevo }}</span>
+                                                    Bien Id: {{ $cambio->bien_id }} | {{ $cambio->bien->nombre }} |
+                                                    {{ ucfirst($cambio->campo_nombre) }} | Nuevo valor: <span
+                                                        class="text-primary">{{ $cambio->valor_nuevo_nombre }}</span>
                                                 </button>
                                                 <small class="text-muted d-none d-md-block ml-2">
                                                     {{ $cambio->created_at->format('d/m/Y H:i') }}
@@ -78,11 +78,16 @@
                                             aria-labelledby="heading{{ $index }}">
                                             <div class="card-body py-2 px-3">
                                                 <p><strong>Propuesto por:</strong>
-                                                    {{ $cambio->usuario->name ?? 'Desconocido' }}</p>
+                                                    {{ $cambio->usuario->nombre_completo ?? 'Desconocido' }}</p>
+                                                <p><strong>Bien:</strong>
+                                                    {{ $cambio->bien->nombre ?? 'N/A' }}</p>
+                                                <p><strong>Campo:</strong>
+                                                    {{ ucfirst($cambio->campo_nombre) ?? 'N/A' }}</p>
                                                 <p><strong>Valor anterior:</strong>
-                                                    {{ $cambio->valor_anterior ?? 'N/A' }}</p>
+                                                    {{ $cambio->valor_anterior_nombre ?? 'N/A' }}</p>
                                                 <p><strong>Valor nuevo:</strong> <span
-                                                        class="text-primary">{{ $cambio->valor_nuevo }}</span></p>
+                                                        class="text-primary">{{ $cambio->valor_nuevo_nombre }}</span>
+                                                </p>
                                                 <p><strong>Fecha de creación:</strong>
                                                     {{ $cambio->created_at->format('d/m/Y H:i') }}</p>
 

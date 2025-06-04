@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inventario\Notifications;
+namespace Modules\Inventario\Livewire\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -35,9 +35,9 @@ class CambioBienPendiente extends Notification
             'campo'         => $this->cambio->campo,
             'valor_nuevo'   => $this->cambio->valor_nuevo,
             'valor_anterior'=> $this->cambio->valor_anterior,
-            'usuario'       => $this->cambio->usuario->name ?? 'Usuario desconocido',
+            'usuario'       => $this->cambio->user->nombres ?? 'Usuario desconocido',
             'cambio_id'     => $this->cambio->id,
-            'url'           => route('inventario.cambios-pendientes.index'), // Ajusta si ya tienes una vista
+            'url'           => route('inventario.cambios-pendientes'), // Ajusta si ya tienes una vista
         ];
     }
 }

@@ -11,7 +11,7 @@ class NotificacionesDropdown extends Component
 
     public function mount()
     {
-        $this->cambiosPendientes = BienAprobacionPendiente::with('usuario')->latest()->get();
+        $this->cambiosPendientes = BienAprobacionPendiente::with('user')->latest()->get();
     }
 
     public function render()

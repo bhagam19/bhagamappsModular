@@ -65,7 +65,7 @@
                                             data-parent="#accordionIndividual">
                                             <div class="card-body py-2 px-3">
                                                 <p><strong>Propuesto por:</strong>
-                                                    {{ $cambio->usuario->name ?? 'Desconocido' }}</p>
+                                                    {{ $cambio->user->nombres ?? 'Desconocido' }}</p>
                                                 <p><strong>Valor anterior:</strong>
                                                     {{ $cambio->valor_anterior ?? 'N/A' }}</p>
                                                 <p><strong>Valor nuevo:</strong> <span

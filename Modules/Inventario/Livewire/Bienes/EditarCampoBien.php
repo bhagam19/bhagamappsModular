@@ -15,14 +15,15 @@ use Modules\Inventario\Entities\{
     Categoria,
     BienAprobacionPendiente
 };
-use Modules\Inventario\Notifications\CambioBienPendiente;
-
+use Modules\Inventario\Livewire\Notifications\CambioBienPendiente;
 
 class EditarCampoBien extends Component
 {
     public Bien $bien;
+    public $bienId;
     public string $campo;
     public $valor;
+    
 
     public bool $editando = false;
 
@@ -145,6 +146,7 @@ class EditarCampoBien extends Component
         }
 
         // Usuario sin permiso → guardar solicitud pendiente
+        // Verificar si ya existe un cambio pendiente para este campo
         $yaExiste = BienAprobacionPendiente::where('bien_id', $this->bien->id)
             ->where('campo', $this->campo)
             ->where('estado', 'pendiente')
@@ -156,7 +158,8 @@ class EditarCampoBien extends Component
             return;
         }
 
-        BienAprobacionPendiente::create([
+        // Crear el cambio pendiente UNA sola vez
+        $cambio = BienAprobacionPendiente::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'bien',
             'campo' => $this->campo,
@@ -167,25 +170,30 @@ class EditarCampoBien extends Component
         ]);
 
         // Enviar notificación a administradores y rector
-        $usuariosDestino = User::whereHas('roles', function ($query) {
-            $query->whereIn('name', ['Administrador', 'Rector']);
+        $usuariosDestino = User::whereHas('role', function ($query) {
+            $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
         
-        $cambio = BienAprobacionPendiente::create([
-            'bien_id' => $this->bien->id,
-            'tipo_objeto' => 'bien',
-            'campo' => $this->campo,
-            'valor_anterior' => $valorActual,
-            'valor_nuevo' => $this->valor,
-            'usuario_id' => $usuario->id,
-            'estado' => 'pendiente',
-        ]);
-        
-
         Notification::send($usuariosDestino, new CambioBienPendiente($cambio));
 
         $this->editando = false;
         session()->flash('info', 'El cambio fue enviado para aprobación.');
+    }
+
+    public function campoTieneCambioPendiente(): bool
+    {
+        $user = auth()->user();
+
+        $query = BienAprobacionPendiente::where('bien_id', $this->bienId)
+            ->where('campo', $this->campo)
+            ->where('estado', 'pendiente');
+
+        // Verifica si el usuario tiene el rol adecuado
+        if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
+            $query->where('usuario_id', $user->id);
+        }
+
+        return $query->exists();
     }
 
     public function render()
