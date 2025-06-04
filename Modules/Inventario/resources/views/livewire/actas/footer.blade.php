@@ -1,20 +1,27 @@
 {{-- Pie de página --}}
-<footer class="footer-acta text-center">
+<footer style="text-align: center; font-family: 'Helvetica', Times, serif;">
 
     {{-- Separador de colores --}}
-    <div id="separadorColores" class="separador-colores my-2 mx-auto w-100">
-        <hr class="linea-verde" />
-        <hr class="linea-blanca" />
-        <hr class="linea-azul" />
+    <div id="separadorColores"
+        style="margin-top: 0.5rem; margin-bottom: 0.5rem; margin-left: auto; margin-right: auto; width: 100%;">
+        <hr style="background-color: #013801; height: 0.8mm; border: none; margin: 0;" />
+        <hr style="background-color: white; height: 0.8mm; border: none; margin: 0;" />
+        <hr style="background-color: #01018a; height: 0.8mm; border: none; margin: 0;" />
     </div>
 
-    <p class="mb-2 font-weight-bold" style="font-size: 12px;">"MÁS QUE ENSEÑAR ES FORMAR"</p>
-    <p style="font-size: 12px;">
-        Institución Educativa Entrerríos || Entrerríos, Antioquia || Dirección: Carrera 14 No. 10 - 17 ||
-        Teléfonos: 8670153 - 3135784406<br />
-        Correo electrónico: <a href="mailto:rectoriaiee@entrerrios.edu.co"
-            class="text-blue-600 underline">rectoriaiee@entrerrios.edu.co</a> || Sitio Web: <a
-            href="https://sites.google.com/view/ieentrerrios" target="_blank"
-            class="text-blue-600 underline">https://sites.google.com/view/ieentrerrios</a>
+    <p style="margin-bottom: 0.5rem; font-weight: 700; font-size: 12px;">
+        "MÁS QUE ENSEÑAR ES FORMAR"
+    </p>
+    <p style="font-size: 12px; margin-top: 0;">
+        Institución Educativa Entrerríos || Entrerríos, Antioquia || Dirección: Carrera 14 No. 10 - 17 ||Teléfonos:
+        8670153 - 3135784406<br />
+        Correo electrónico:
+        <a href="mailto:rectoriaiee@entrerrios.edu.co" style="color: #2563eb; text-decoration: underline;">
+            rectoriaeiee@entrerrios.edu.co
+        </a> || Sitio Web:
+        <a href="https://sites.google.com/view/ieentrerrios" target="_blank"
+            style="color: #2563eb; text-decoration: underline;">
+            https://sites.google.com/view/ieentrerrios
+        </a>
     </p>
 </footer>

@@ -16,7 +16,7 @@ class ActaEntregaIndex extends Component
     public $nombreCompleto;
     public $miFecha;
     public $contenidoActa;
-    public int $itemsPorPagina=10;
+    public int $itemsPorPagina=20;
 
     public bool $mostrarSelector = false;
 

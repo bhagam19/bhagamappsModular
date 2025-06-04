@@ -19,7 +19,6 @@ class ActaPrinter
      */
     public static function renderActaPaginada($bienes, $user, $nombreCompleto, $fecha, $itemsPorPagina)
     {
-        // Aseguramos que sea una colección
         $bienes = $bienes instanceof Collection ? $bienes : collect([]);
 
         $html = '';
@@ -29,9 +28,35 @@ class ActaPrinter
         foreach ($paginas as $i => $bienesPagina) {
             $pagina = $i + 1;
 
-            // Comenzamos el contenedor de una página
-            $htmlPagina = '<div class="contenedor-acta bg-white shadow rounded border">
-                                <div class="contenido-principal flex-grow-1 flex-column">';
+            // Primer div: contenedor-acta (página completa)
+            $htmlPagina = '<div class="contenedor-acta" style="
+                background-color: white;
+                border: 1px solid #ddd;
+                margin: 1cm 2cm;
+                padding: 1cm 2cm;
+                font-family: Helvetica, Times, serif;
+                font-size: 11pt;
+                max-width: 900px;
+                min-height: 1150px;
+                page-break-after: always;
+                page-break-inside: avoid;
+                break-after: page;
+                display: block;
+            ">';
+
+            // Segundo div: contenido-principal
+            $htmlPagina .= '<div class="contenido-principal" style="
+                display: block;
+            ">';
+            
+            // Tercer div
+            $htmlPagina .= '<div style="
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                break-after: page;
+                display: block;
+                width: 100%;
+            ">';
 
             // Encabezado (siempre)
             $htmlPagina .= View::make('inventario::livewire.actas.encabezado', [
@@ -63,16 +88,18 @@ class ActaPrinter
                 ])->render();
             }
 
-            // Footer (siempre)            
+            // Footer (siempre)
             $htmlPagina .= View::make('inventario::livewire.actas.footer')->render();
 
-            // Cerramos el contenedor de la página
-            $htmlPagina .= '</div></div>';
+            // Cerramos los divs
+            $htmlPagina .= '</div></div></div>';
 
-            // Acumulamos la página
             $html .= $htmlPagina;
         }
 
         return $html;
     }
+
+
+
 }
