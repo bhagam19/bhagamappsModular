@@ -8,6 +8,7 @@
 
 @section('content')
     <p>Bienvenido al panel de Administración.</p>
+    @include('apps::index', ['apps' => $apps])
 @stop
 
 @section('css')

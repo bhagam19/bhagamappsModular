@@ -10,6 +10,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use Modules\Inventario\Entities\Bien;
+use Modules\Apps\Entities\App;
 
 class User extends Authenticatable
 {
@@ -82,7 +83,7 @@ class User extends Authenticatable
     /**
      * Relación muchos a uno con el modelo Role.
      */
-   public function role()
+    public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
@@ -141,5 +142,8 @@ class User extends Authenticatable
         return $this->hasMany(Bien::class, 'usuario_id');
     }
 
-
+    public function apps()
+    {
+        return $this->belongsToMany(App::class, 'app_user', 'user_id', 'app_id');
+    }
 }

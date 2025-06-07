@@ -21,7 +21,7 @@ class PermissionsIndex extends Component
 
     public function mount()
     {
-        
+
         if (!auth()->user()->hasPermission('ver-permisos')) {
             return redirect()->route('ppal.index');
         }
