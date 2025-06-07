@@ -320,7 +320,7 @@ return [
         // Sidebar items
         [
             'text' => 'Inicio',
-            'route' => 'admin.index', 
+            'route' => 'ppal.index', 
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         
