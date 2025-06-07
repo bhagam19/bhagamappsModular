@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('origen', 40)->nullable();
             $table->date('fechaAdquisicion')->nullable();
             $table->float('precio')->nullable();
-            $table->foreignId('usuario_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null');
             $table->foreignId('dependencia_id')->nullable()->constrained('dependencias')->onDelete('set null');
             $table->foreignId('almacenamiento_id')->nullable()->constrained('almacenamientos')->onDelete('set null');

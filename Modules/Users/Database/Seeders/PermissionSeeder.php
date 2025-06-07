@@ -4,11 +4,12 @@ namespace Modules\Users\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Modules\Users\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $permissions = [
             'usuarios' => [
@@ -30,16 +31,37 @@ class PermissionSeeder extends Seeder
                 'editar permisos' => 'Permite modificar el nombre, descripción o categoría de un permiso.',
                 'eliminar permisos' => 'Permite eliminar un permiso del sistema permanentemente.',
             ],
+            'bienes' => [
+                'ver bienes' => 'Permite visualizar la lista de todos los bienes registrados en el sistema.',
+                'crear bienes' => 'Permite registrar un nuevo bien en el sistema.',
+                'editar bienes' => 'Permite modificar la información de un bien existente.',
+                'eliminar bienes' => 'Permite eliminar bienes del sistema de forma permanente.',
+                'aprobar bienes' => 'Permite aprobar o rechazar bienes que están pendientes de revisión.',
+                'ver historial bienes' => 'Permite consultar el historial de modificaciones y ubicaciones de los bienes.',
+                'asignar responsables a bienes' => 'Permite asignar o cambiar los custodios o responsables de un bien.',
+                'ver imagenes de bienes' => 'Permite visualizar la galería de imágenes asociadas a un bien.',
+            ],
+            'aprobaciones pendientes' => [
+                'ver aprobaciones pendientes bienes' => 'Permite visualizar la lista de bienes o modificaciones que están pendientes de aprobación.',
+                'aprobar pendientes bienes' => 'Permite aprobar o rechazar las modificaciones o nuevos bienes que están pendientes.',
+                'editar aprobaciones pendientes bienes' => 'Permite modificar la información relacionada con una aprobación pendiente antes de su resolución.',
+                'eliminar aprobaciones pendientes bienes' => 'Permite eliminar registros de aprobaciones pendientes del sistema.',
+            ],
+            'actas de entrega' => [
+                'ver actas de entrega' => 'Permite visualizar las actas de entrega generadas en el sistema.',
+            ],
         ];
 
-        foreach ($permissions as $categoria => $perms) {
-            foreach ($perms as $nombre => $descripcion) {
-                Permission::firstOrCreate(
+        foreach ($permissions as $categoria => $permisos) {
+            foreach ($permisos as $nombre => $descripcion) {
+                DB::table('permissions')->updateOrInsert(
                     ['nombre' => $nombre],
                     [
+                        'slug' => Str::slug($nombre, '-'),
                         'descripcion' => $descripcion,
-                        'categoria' => ucfirst($categoria),
-                        'slug' => Str::slug($nombre),
+                        'categoria' => $categoria,
+                        'created_at' => now(),
+                        'updated_at' => now(),
                     ]
                 );
             }

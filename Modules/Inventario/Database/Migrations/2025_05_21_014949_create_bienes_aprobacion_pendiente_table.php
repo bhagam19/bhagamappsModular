@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('campo'); // campo que se modificó
             $table->text('valor_anterior')->nullable();
             $table->text('valor_nuevo')->nullable();
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('dependencia_id')->constrained('dependencias')->onDelete('cascade');
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->timestamps();
         });

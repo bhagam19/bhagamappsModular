@@ -10,6 +10,14 @@ class RolesIndex extends Component
     public $roles;
     public $nombre, $descripcion;
 
+    public function mount()
+    {
+        $this->roles = Role::all();
+        if (!auth()->user()->hasPermission('ver-roles')) {
+            return redirect()->route('ppal.index');
+        }
+    }
+
     public function render()
     {
         return view('users::livewire.roles.roles-index')
@@ -33,13 +41,7 @@ class RolesIndex extends Component
         }
     }    
 
-    public function mount()
-    {
-        $this->roles = Role::all();
-        if (!auth()->user()->hasPermission('ver-roles')) {
-            abort(403);
-        }
-    }
+    
 
     public function store()
     {

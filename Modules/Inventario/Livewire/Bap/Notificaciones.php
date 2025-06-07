@@ -5,6 +5,7 @@ namespace Modules\Inventario\Livewire\Notifications;
 use Livewire\Component;
 use Modules\Users\Models\User;
 use Modules\Inventario\Entities\BienAprobacionPendiente;
+use Modules\Inventario\Entities\HistorialModificacionBien;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -25,7 +26,7 @@ class Notificaciones extends Component
 
     public function cargarCambiosPendientes()
     {
-        $this->cambiosPendientes = BienAprobacionPendiente::with('user')
+        $this->cambiosPendientes = BienAprobacionPendiente::with('user', 'bien')
             ->where('estado', 'pendiente')
             ->get();
     }
@@ -35,20 +36,43 @@ class Notificaciones extends Component
         $this->authorize('aprobar-cambios-bienes');
 
         $cambio = BienAprobacionPendiente::findOrFail($id);
-        
-        // Aquí va la lógica para aplicar el cambio a la tabla bienes o detalles
-        // Por ejemplo:
         $bien = $cambio->bien;
-        if ($bien) {
+
+        if (!$bien) {
+            $this->dispatch('mensaje-error', ['mensaje' => 'Bien no encontrado.']);
+            return;
+        }
+
+        DB::beginTransaction();
+
+        try {
+            // Aplica el nuevo valor
             $bien->{$cambio->campo} = $cambio->valor_nuevo;
             $bien->save();
-        }
-        
-        $cambio->estado = 'aprobado';
-        $cambio->save();
 
-        $this->cargarCambiosPendientes();
-        $this->dispatchBrowserEvent('mensaje-exito', ['mensaje' => 'Cambio aprobado correctamente.']);
+            // Guarda en historial
+            HistorialModificacionBien::create([
+                'bien_id' => $bien->id,
+                'campo_modificado' => $cambio->campo,
+                'valor_anterior' => $cambio->valor_anterior,
+                'valor_nuevo' => $cambio->valor_nuevo,
+                'modificado_por' => auth()->id(),
+            ]);
+
+            // Cambia estado a aprobado
+            $cambio->estado = 'aprobado';
+            $cambio->save();
+
+            DB::commit();
+
+            $this->cargarCambiosPendientes();
+            $this->dispatch('mensaje-exito', ['mensaje' => 'Cambio aprobado correctamente.']);
+
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            report($e);
+            $this->dispatch('mensaje-error', ['mensaje' => 'Error al aprobar el cambio.']);
+        }
     }
 
     public function rechazarCambio($id)
@@ -60,7 +84,7 @@ class Notificaciones extends Component
         $cambio->save();
 
         $this->cargarCambiosPendientes();
-        $this->dispatchBrowserEvent('mensaje-exito', ['mensaje' => 'Cambio rechazado correctamente.']);
+        $this->dispatch('mensaje-exito', ['mensaje' => 'Cambio rechazado correctamente.']);
     }
 
     public function render()

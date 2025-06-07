@@ -15,7 +15,7 @@ use Modules\Inventario\Entities\{
     Categoria,
     BienAprobacionPendiente
 };
-use Modules\Inventario\Livewire\Notifications\CambioBienPendiente;
+use Modules\Inventario\Livewire\Bap\BapIndex;
 
 class EditarCampoBien extends Component
 {
@@ -159,7 +159,7 @@ class EditarCampoBien extends Component
         }
 
         // Crear el cambio pendiente UNA sola vez
-        $cambio = BienAprobacionPendiente::create([
+        $aprobacionPendiente = BienAprobacionPendiente::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'bien',
             'campo' => $this->campo,
@@ -174,13 +174,13 @@ class EditarCampoBien extends Component
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
         
-        Notification::send($usuariosDestino, new CambioBienPendiente($cambio));
+        Notification::send($usuariosDestino, new CambioBienPendiente($aprobacionPendiente));
 
         $this->editando = false;
         session()->flash('info', 'El cambio fue enviado para aprobación.');
     }
 
-    public function campoTieneCambioPendiente(): bool
+    public function campoTieneAprobacionPendiente(): bool
     {
         $user = auth()->user();
 
@@ -190,7 +190,7 @@ class EditarCampoBien extends Component
 
         // Verifica si el usuario tiene el rol adecuado
         if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
-            $query->where('usuario_id', $user->id);
+            $query->where('dependencia_id', $user->dependencia_id);
         }
 
         return $query->exists();

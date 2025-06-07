@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            @livewire('bienes.bienes-index')
+            @livewire('bap.bap-index')
         </div>
     </div>
 @endsection

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return view('ppal.index');
 })->name('inicio');
 
 Route::middleware([
@@ -23,7 +23,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', function () {
-        return view('admin.index');
+        return view('ppal.index');
     })->name('inicio');
 });
 

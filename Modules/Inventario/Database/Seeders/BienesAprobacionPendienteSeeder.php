@@ -3,25 +3,21 @@
 namespace Modules\Inventario\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Modules\Inventario\Entities\Bien;
 use Modules\Inventario\Entities\BienAprobacionPendiente;
-use Modules\Users\Models\User;
 
 class BienesAprobacionPendienteSeeder extends Seeder
 {
     public function run()
     {
-         $faker = Faker::create();
-        // Asegúrate de tener usuarios y bienes creados antes
-        $usuario = User::whereNotIn('role_id', ['Administrador', 'Rector'])->inRandomOrder()->first();
-        $bien = Bien::inRandomOrder()->first();
+        $faker = Faker::create();
 
-        if (!$usuario || !$bien) {
-            $this->command->warn("No hay usuarios o bienes disponibles para poblar bienes_aprobacion_pendiente.");
+        // Obtener un bien con dependencia asociada
+        $bien = Bien::whereNotNull('dependencia_id')->inRandomOrder()->first();
+
+        if (!$bien) {
+            $this->command->warn("No hay bienes con dependencia disponible para poblar bienes_aprobacion_pendiente.");
             return;
         }
 
@@ -50,7 +46,7 @@ class BienesAprobacionPendienteSeeder extends Seeder
                 'campo' => $cambio['campo'],
                 'valor_anterior' => $cambio['valor_anterior'],
                 'valor_nuevo' => $cambio['valor_nuevo'],
-                'usuario_id' => $usuario->id,
+                'dependencia_id' => $bien->dependencia_id, // Asignar dependencia del bien
                 'estado' => 'pendiente',
                 'created_at' => now(),
                 'updated_at' => now(),

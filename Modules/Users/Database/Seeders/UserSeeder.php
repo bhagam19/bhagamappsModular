@@ -34,20 +34,39 @@ class UserSeeder extends Seeder
             }
             $data = array_combine($headers, $row);
 
+            // Iniciales de todos los nombres
+            $inicialNombres = collect(explode(' ', trim($data['nombres'])))
+                ->filter() // elimina posibles espacios vacíos
+                ->map(fn($nombre) => Str::substr($nombre, 0, 1))
+                ->join('');
+
+            // Iniciales de todos los apellidos
+            $inicialApellidos = collect(explode(' ', trim($data['apellidos'])))
+                ->filter()
+                ->map(fn($apellido) => Str::substr($apellido, 0, 1))
+                ->join('');
+
+            // Últimos 4 del documento
+            $ultimos4 = substr(preg_replace('/\D/', '', $data['userID']), -4);
+
+            // Construir contraseña: ej. "alrh1234@IEE"
+            $clave = strtolower($inicialNombres . $inicialApellidos) . $ultimos4 . '@IEE';
+
             DB::table('users')->insert([
                 'id' => $data['id'],
                 'nombres' => $data['nombres'],
-                'apellidos' => $data['apellidos'],                
+                'apellidos' => $data['apellidos'],
                 'userID' => $data['userID'],
                 'email' => $data['email'],
                 'email_verified_at' => now(),
-                'password' => Hash::make('inventApp123*'),
+                'password' => Hash::make($clave),
                 'role_id' => $data['role_id'],
                 'current_team_id' => null,
                 'profile_photo_path' => null,
                 'remember_token' => Str::random(10),
-            ]);               
+            ]);
         }
+
 
         
         /*
@@ -75,7 +94,7 @@ class UserSeeder extends Seeder
                 'apellidos' => 'Ruiz Hernández',
                 'email' => 'dorianrodrigo@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('Asdf123*'),
+                'password' => Hash::make('drrh1707@IEE'),
                 'role_id' => $roles['Coordinador'],
                 'current_team_id' => null,
                 'profile_photo_path' => null,

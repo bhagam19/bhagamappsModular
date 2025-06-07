@@ -38,11 +38,7 @@ class Bien extends Model
     {
         return $this->hasOne(Detalle::class, 'bien_id');
     }
-
-    public function usuario()
-    {
-        return $this->belongsTo(User::class, 'usuario_id');
-    }    
+    
 
     public function categoria()
     {
@@ -151,29 +147,29 @@ class Bien extends Model
         return (string) $value;
     }
 
-    public function cambiosPendientes()
+    public function aprobacionesPendientes()
     {
         return $this->hasMany(BienAprobacionPendiente::class);
     }
 
-    public function tieneCambiosPendientesDelUsuario()
+    public function tieneAprobacionesPendientesDependencia()
     {
         $user = Auth::user();
 
-        $query = $this->cambiosPendientes();
+        $query = $this->aprobacionesPendientes();
 
         // Si NO es administrador ni rector, filtrar por usuario_id
         if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
-            $query->where('usuario_id', $user->id);
+            $query->where('dependencia_id', $user->dependencia_id);
         }
 
         return $query->exists();
     }
 
-    public function camposPendientesPorUsuario($usuarioId)
+    public function camposPendientesPorUsuario($dependenciaId)
     {
-        return $this->cambiosPendientes()
-            ->where('usuario_id', $usuarioId)
+        return $this->aprobacionesPendientes()
+            ->where('dependencia_id', $dependenciaId)
             ->where('estado', 'pendiente') // Ajusta según cómo guardes el estado
             ->pluck('campo')
             ->unique()

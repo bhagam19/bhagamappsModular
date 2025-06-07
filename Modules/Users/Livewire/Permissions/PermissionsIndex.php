@@ -21,8 +21,9 @@ class PermissionsIndex extends Component
 
     public function mount()
     {
+        
         if (!auth()->user()->hasPermission('ver-permisos')) {
-            abort(403);
+            return redirect()->route('ppal.index');
         }
 
         // Cargar categorías únicas

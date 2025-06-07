@@ -28,7 +28,7 @@ class UsersIndex extends Component
     public function mount()
     {
         if (!auth()->user()->hasPermission('ver-usuarios')) {
-            abort(403);
+            return redirect()->route('ppal.index');
         }
     }
 

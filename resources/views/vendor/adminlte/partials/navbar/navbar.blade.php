@@ -69,16 +69,10 @@
 
             @if ($esAdmin)
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#" title="Cambios pendientes">
-                        <i class="fas fa-bell"></i>
-                        @livewire('notifications.notificaciones-icono')
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                        style="width: 380px; max-height: 70vh; overflow-y: auto;">
-                        @livewire('notifications.notificaciones-dropdown') {{-- Contenido del dropdown --}}
-                    </div>
+                    @livewire('bap.notificaciones-dropdown')
                 </li>
             @endif
+
         @endauth
 
         {{-- User menu link --}}

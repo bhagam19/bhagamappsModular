@@ -72,18 +72,6 @@
         }
     </style>
 
-    {{-- Dependencias a cargo del usuario (compacto, alineado a la derecha, parte superior) --}}
-    @if (!$user->hasRole('Administrador') && !$user->hasRole('Rector') && isset($dependencias) && $dependencias->count())
-        <div class="d-flex justify-content-end mb-2">
-            <div class="bg-light border rounded px-3 py-2 text-right shadow-sm" style="font-size: 1rem;">
-                <div class="font-weight-bold mb-2">Dependencias a tu cargo:</div>
-                @foreach ($dependencias as $dep)
-                    <div class="badge badge-custom d-block mb-1">{{ $dep->nombre }}</div>
-                @endforeach
-            </div>
-        </div>
-    @endif
-
     {{-- Mensaje de sesión --}}
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -94,7 +82,7 @@
         </div>
     @endif
 
-    {{-- Botón para mostrar filtros y búsqueda en móvil --}}
+    {{-- Mostrar filtros (Movil) --}}
     <div class="d-block d-md-none mb-3">
         <button class="btn btn-outline-secondary btn-sm btn-block" type="button" data-toggle="collapse"
             data-target="#filtrosMobile" aria-expanded="false" aria-controls="filtrosMobile">
@@ -102,9 +90,8 @@
         </button>
     </div>
 
-    {{-- filtros y búsqueda en escritorio --}}
-    <div class="collapse d-md-block" id="filtrosMobile">
-
+    {{-- Filtros colapsable (Movil) --}}
+    <div class="collapse d-md-none" id="filtrosMobile">
         <div class="card shadow-sm mb-4">
             <div class="card-body">
 
@@ -118,30 +105,15 @@
                     </div>
                 @endif
 
-                {{-- Barra superior: Buscar y cantidad por página --}}
-                <div class="row align-items-center mb-3">
-                    <div class="col-md-6">
-                        <input type="text" wire:model.lazy="filtroNombre" class="form-control"
-                            placeholder="🔍 Buscar por nombre...">
-                    </div>
-
-                    <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <label class="mr-2 mb-0">Mostrar</label>
-                        <select wire:model.lazy="perPage" class="form-control w-auto">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                        <span class="ml-2">registros</span>
-                    </div>
+                {{-- Barra superior: Buscar --}}
+                <div class="mb-3">
+                    <input type="text" wire:model.lazy="filtroNombre" class="form-control"
+                        placeholder="🔍 Buscar por nombre...">
                 </div>
 
                 {{-- Filtros adicionales --}}
-                <div class="row mb-3">
-
-                    <div class="col-md-3">
+                <div class="d-flex flex-wrap gap-2 align-items-end mb-3">
+                    <div class="flex-fill" style="min-width: 200px;">
                         <select wire:model.lazy="filtroUsuario" class="form-control">
                             <option value="">Filtrar por usuario</option>
                             @foreach ($usuarios as $usuario)
@@ -151,16 +123,16 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="flex-fill" style="min-width: 200px;">
                         <select wire:model.lazy="filtroCategoria" class="form-control">
-                            <option value="">Filtrar por categoria</option>
+                            <option value="">Filtrar por categoría</option>
                             @foreach ($categorias as $categoria)
                                 <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="flex-fill" style="min-width: 200px;">
                         <select wire:model.lazy="filtroDependencia" class="form-control">
                             <option value="">Filtrar por dependencia</option>
                             @foreach ($dependencias as $dep)
@@ -169,7 +141,7 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="flex-fill" style="min-width: 200px;">
                         <select wire:model.lazy="filtroEstado" class="form-control">
                             <option value="">Filtrar por estado</option>
                             @foreach ($estados as $estado)
@@ -177,20 +149,19 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
 
-                {{-- Botón limpiar --}}
-                <div class="text-right">
-                    <button wire:click="limpiarFiltros" class="btn btn-sm btn-outline-secondary">
-                        <i class="fas fa-eraser"></i> Limpiar filtros
-                    </button>
+                    <div>
+                        <button wire:click="limpiarFiltros" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-eraser"></i> Limpiar filtros
+                        </button>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    {{-- Botón para mostrar formulario  Agregar Bien (móvil) --}}
+    {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div class="d-block d-md-none mb-3">
             <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse"
@@ -200,17 +171,48 @@
         </div>
     @endif
 
-    {{-- Botón para mostrar formulario Agregar Bien (escritorio) --}}
+    {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-none d-md-block mb-3">
-            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#formCreateBien"
-                aria-expanded="false" aria-controls="formCreateBien">
-                Agregar Bien
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-3 flex-wrap">
+
+            <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button"
+                data-bs-toggle="collapse" data-bs-target="#formCreateBien" aria-expanded="false"
+                aria-controls="formCreateBien">
+                <i class="fas fa-plus"></i> Agregar Bien
             </button>
+
+            <div class="d-flex align-items-center px-3 py-2 rounded bg-light border text-muted small"
+                style="gap: 4rem; justify-content: space-between; min-width: 320px;">
+                <div class="d-flex align-items-center" style="gap: 1.5rem;">
+                    <span style="margin-left: 1rem;">{{ $bienes->total() }} registros</span>
+                </div>
+                <div class="d-flex align-items-center" style="gap: 1.5rem;">
+                    <span style="margin-left: 1rem;">{{ $this->cantidadTotalFiltrada }} total bienes</span>
+                </div>
+            </div>
+
+            @php
+                $totalCambios = $cambiosPendientes->count();
+                $hayCambios = $totalCambios > 0;
+                $btnClass = $hayCambios ? 'btn-danger' : 'btn-success';
+                $mensaje = $hayCambios
+                    ? "Tiene <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span> modificaciones pendientes"
+                    : 'No hay modificaciones pendientes';
+            @endphp
+
+            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes'))
+                <a href="{{ route('inventario.bap') }}"
+                    class="btn {{ $btnClass }} btn-sm d-flex align-items-center gap-1" role="button"
+                    aria-label="Ver modificaciones pendientes">
+                    <i class="fas fa-bell"></i>
+                    <span>{!! $mensaje !!}</span>
+                </a>
+            @endif
+
         </div>
     @endif
 
-    {{-- Formulario de creación (igual para móvil y escritorio) --}}
+    {{-- Formulario de creación (Móvil y Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div class="collapse" id="formCreateBien">
             <form wire:submit.prevent="store" class="form-row align-items-end mb-4" novalidate>
@@ -275,46 +277,166 @@
         </div>
     @endif
 
-    {{-- Paginación --}}
-    <div class="mt-3">
-        <div class="d-md-block d-flex overflow-auto">
-            <div class="mx-auto">
+    {{-- Paginación, Dependencias y Cantidades --}}
+    <div class="mt-1 d-flex justify-content-between flex-wrap">
+
+        {{-- Izquierda: Dependencias y Cantidades --}}
+        <div class="d-flex flex-column" style="max-width: 400px; min-width: 320px;">
+
+            {{-- Dependencias --}}
+            @if (!$user->hasRole('Administrador') && !$user->hasRole('Rector') && isset($dependencias) && $dependencias->count())
+                <div class="bg-light border rounded px-3 py-2 text-left shadow-sm mb-2" style="font-size: 1rem;">
+                    <div class="font-weight-bold mb-2">Dependencias a tu cargo:</div>
+                    @foreach ($dependencias as $dep)
+                        <div class="badge badge-custom d-block mb-1">{{ $dep->nombre }}</div>
+                    @endforeach
+                </div>
+
+                {{-- Cantidades --}}
+                <div class="d-flex align-items-center px-3 py-2 rounded bg-light text-muted small"
+                    style="gap: 4rem; justify-content: flex-start;">
+                    <div>{{ $bienes->total() }} registros</div>
+                    <div>{{ $this->cantidadTotalFiltrada }} total bienes</div>
+                </div>
+            @endif
+
+        </div>
+
+        {{-- Derecha: Selector y Paginación --}}
+        <div class="d-flex flex-column align-items-end">
+
+            {{-- Selector --}}
+            <div class="d-flex align-items-center mb-2">
+                <label class="mr-2 mb-0">Mostrar</label>
+                <select wire:model.lazy="perPage" class="form-control form-control-sm w-auto">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <span class="ml-2">registros</span>
+            </div>
+
+            {{-- Paginación --}}
+            <div>
                 {{ $bienes->links('pagination::bootstrap-4') }}
             </div>
         </div>
+
     </div>
 
     {{-- Tabla para escritorio --}}
     <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;">
         <table class="table table-striped table-sm table-hover w-100 mb-0">
-            <thead class="thead-dark">
+            <thead>
+                {{-- Fila de filtros --}}
                 <tr>
-                    {{-- Columna 1 fija: ID --}}
+                    {{-- Celda con badge "Filtros" --}}
+                    <th style="position: sticky; top: 0; left: 0; background: white; z-index: 11; ">
+                        <div class="d-flex flex-column align-items-stretch gap-2">
+                            <span class="badge bg-primary text-center">Filtros</span>
+
+                            <button wire:click="limpiarFiltros" class="btn btn-outline-secondary btn-sm w-100"
+                                title="Limpiar filtros">
+                                <i class="fas fa-eraser me-1"></i>
+                            </button>
+                        </div>
+                    </th>
+
+                    {{-- Filtro por nombre --}}
+                    <th style="position: sticky; top: 0; background: white; min-width: 250px;">
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="text" wire:model.lazy="filtroNombre"
+                                class="form-control form-control-sm flex-grow-1" placeholder="Buscar por nombre" />
+
+                            <button wire:click="filtroNombre" class="btn btn-sm btn-primary" title="Buscar">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </th>
+
+                    {{-- Resto de filtros basados en columnas --}}
+                    @foreach ($visibleColumns as $index => $column)
+                        @php
+                            $isSticky = $index < 1;
+                            $left = 30 + $index * 150;
+                            $styles = 'position: sticky; top: 0; background: white;';
+                            if ($isSticky) {
+                                $styles .= " left: {$left}px; z-index: 11;";
+                            }
+                        @endphp
+                        <th style="{{ $styles }}">
+                            @switch($column)
+                                @case('usuario_id')
+                                    <select wire:model.lazy="filtroUsuario" class="form-control form-control-sm">
+                                        <option value="">Todos</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">
+                                                {{ $usuario->nombres }} {{ $usuario->apellidos }}</option>
+                                        @endforeach
+                                    </select>
+                                @break
+
+                                @case('categoria_id')
+                                    <select wire:model.lazy="filtroCategoria" class="form-control form-control-sm">
+                                        <option value="">Todas</option>
+                                        @foreach ($categorias as $categoria)
+                                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                @break
+
+                                @case('dependencia_id')
+                                    <select wire:model.lazy="filtroDependencia" class="form-control form-control-sm">
+                                        <option value="">Todas</option>
+                                        @foreach ($dependencias as $dep)
+                                            <option value="{{ $dep->id }}">{{ $dep->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                @break
+
+                                @case('estado_id')
+                                    <select wire:model.lazy="filtroEstado" class="form-control form-control-sm">
+                                        <option value="">Todos</option>
+                                        @foreach ($estados as $estado)
+                                            <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                @break
+
+                                @default
+                                    {{-- Celda vacía si no aplica filtro --}}
+                                    &nbsp;
+                            @endswitch
+                        </th>
+                    @endforeach
+
+                </tr>
+
+                {{-- Fila de encabezados --}}
+                <tr class="thead-dark">
                     <th wire:click="sortBy('id')"
-                        style="cursor: pointer; position: sticky; top: 0; left: 0; background-color:rgb(18, 48, 78); z-index: 11;">
+                        style="cursor: pointer; position: sticky; top: 60px; left: 0; background-color: rgb(18, 48, 78); z-index: 11;">
                         ID
                         @if ($sortField === 'id')
                             {{ $sortDirection === 'asc' ? '▲' : '▼' }}
                         @endif
                     </th>
 
-                    {{-- Columnas dinámicas --}}
+                    <th style="position: sticky; top: 60px; background-color: rgb(18, 48, 78);">Nombre</th>
+
                     @foreach ($visibleColumns as $index => $column)
                         @php
-                            $left = 30 + $index * 150; // Ajusta según el ancho de cada columna
-                            $isSticky = $index < 1; // Solo las dos primeras columnas visibles también serán sticky (junto con ID = 3 totales)
+                            $left = 30 + $index * 150;
+                            $isSticky = $index < 1;
+                            $styles =
+                                'cursor: pointer; position: sticky; top: 60px; background-color: rgb(18, 48, 78);';
+                            if ($isSticky) {
+                                $styles .= " left: {$left}px; z-index: 12;";
+                            }
                         @endphp
-                        <th class="col-separator" wire:click="sortBy('{{ $column }}')"
-                            style="cursor: pointer;
-                                @if ($isSticky) position: sticky;
-                                    top: 0;
-                                    left: {{ $left }}px;
-                                    z-index: 12;
-                                    background-color: rgb(18, 48, 78);
-                                @else
-                                    position: sticky;
-                                    top: 0;
-                                    background-color: rgb(18, 48, 78); @endif">
+                        <th wire:click="sortBy('{{ $column }}')" style="{{ $styles }}">
                             {{ ucfirst(str_replace('_', ' ', preg_replace('/_id$/', '', $column))) }}
                             @if ($sortField === $column)
                                 {{ $sortDirection === 'asc' ? '▲' : '▼' }}
@@ -322,9 +444,10 @@
                         </th>
                     @endforeach
 
-                    <th style="position: sticky; top: 0; background-color: #343a40; z-index: 9;">Acciones</th>
+                    <th style="position: sticky; top: 60px; background-color: #343a40; z-index: 9;">Acciones</th>
                 </tr>
             </thead>
+
             <tbody>
                 @forelse ($bienes as $bien)
                     @php
@@ -341,6 +464,22 @@
                         {{-- Columna 1 sticky --}}
                         <td style="position: sticky; left: 0; background-color: white; z-index: 5;">
                             {{ $bien->id }}
+                        </td>
+
+                        {{-- Columna Nombre (fija) --}}
+                        <td>
+                            @if (auth()->user()?->hasPermission('editar-bienes'))
+                                @livewire(
+                                    'bienes.editar-campo-bien',
+                                    [
+                                        'bienId' => $bien->id,
+                                        'campo' => 'nombre',
+                                    ],
+                                    key("bien-{$bien->id}-nombre")
+                                )
+                            @else
+                                {{ $bien->nombre }}
+                            @endif
                         </td>
 
                         {{-- Columnas dinámicas --}}
@@ -386,6 +525,10 @@
                                 @else
                                     @if ($column === 'ubicacion_id')
                                         {{ $bien->dependencia->ubicacion->nombre ?? 'Sin ubicación' }}
+                                    @elseif ($column === 'usuario_id')
+                                        <span class="px-2 small text-muted editable-desktop d-none d-sm-inline">
+                                            {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
+                                        </span>
                                     @elseif (auth()->user()?->hasPermission('editar-bienes'))
                                         @livewire(
                                             'bienes.editar-campo-bien',
@@ -393,7 +536,7 @@
                                                 'bienId' => $bien->id,
                                                 'campo' => $column,
                                             ],
-                                            key("bien-{$column}-{$bien->id}-{$bien->updated_at}")
+                                            key("bien-{$bien->id}-{$column}")
                                         )
                                     @else
                                         {{ $bien->getDisplayValue($column) }}
@@ -455,7 +598,7 @@
                         <span>
                             {{ $bien->id }}. {{ $bien->nombre }}
 
-                            @if ($bien->tieneCambiosPendientesDelUsuario())
+                            @if ($bien->tieneAprobacionesPendientesDependencia())
                                 <i class="fas fa-hourglass-half text-info ml-1"
                                     title="Tienes cambios pendientes en este bien"></i>
                             @endif
@@ -483,7 +626,7 @@
                     </div>
 
                     {{-- Cuerpo del acordeón --}}
-                    <div x-show="{{ $isOpen }}" x-collapse class="card-body p-2">
+                    <div class="card-body p-2" :class="{ 'd-none': openId !== {{ $bien->id }} }">
                         @foreach ($availableColumns as $key => $label)
                             @continue(!in_array($key, $visibleColumns) || empty($key))
 
@@ -511,6 +654,19 @@
                                             @endif
                                         @endif
                                     </div>
+                                @elseif ($key === 'usuario_id')
+                                    <div
+                                        class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">
+                                        <div class="text-truncate me-2" style="white-space: nowrap;">
+                                            <span
+                                                class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
+                                                {{ $label }}:
+                                            </span>
+                                            <small class="mt-1 text-muted">
+                                                {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
+                                            </small>
+                                        </div>
+                                    </div>
                                 @else
                                     @if (auth()->user()?->hasPermission('editar-bienes'))
                                         @livewire(
@@ -519,7 +675,7 @@
                                                 'bienId' => $bien->id,
                                                 'campo' => $key,
                                             ],
-                                            key("mobile-bien-{$key}-{$bien->id}")
+                                            key("mobile-bien-{$bien->id}-{$key}")
                                         )
                                     @else
                                         {{ $bien->getDisplayValue($key) ?? '—' }}

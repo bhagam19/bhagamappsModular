@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- ✅ Ícono del sitio -->
-        <link rel="icon" href="{{ asset('aIcon.ico') }}" type="image/x-icon">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        {{-- Carga de estilos y scripts comunes --}}
-        @include('dashboard_personal.css-js')
+    <!-- ✅ Ícono del sitio -->
+    <link rel="icon" href="{{ asset('aIcon.ico') }}" type="image/x-icon">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- Carga de estilos y scripts comunes --}}
+    @include('dashboard_personal.css-js')
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        @livewireScripts
-    </body>
+    <!-- Styles -->
+    @livewireStyles
+</head>
+
+<body>
+    <div class="font-sans text-gray-900 antialiased">
+        {{ $slot }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    @livewireScripts
+</body>
+
 </html>

@@ -52,10 +52,17 @@ class RoleSeeder extends Seeder
             $rector->permissions()->sync($permisos);
         }
 
-        // Obtener solo los permisos de la categoría 'usuarios' y asignarlos al coordinador
-        $permisosUsuarios = Permission::where('categoria', 'usuarios')->pluck('id');
-        if ($permisosUsuarios->isNotEmpty()) {
-            $coordinador->permissions()->sync($permisosUsuarios);
+        // Obtener solo los permisos de la categoría 'usuarios' y 'bienes' y asignarlos al coordinador
+        $permisos = Permission::whereIn('categoria', ['usuarios', 'bienes'])->pluck('id');
+        if ($permisos->isNotEmpty()) {
+            $coordinador->permissions()->sync($permisos);
+        }
+
+        // Obtener solo los permisos de la categoría 'bienes' y asignarlos a docentes y auxiliares
+        $permisos = Permission::whereIn('categoria', ['bienes'])->pluck('id');
+        if ($permisos->isNotEmpty()) {
+            $docente->permissions()->sync($permisos);
+            $auxiliar->permissions()->sync($permisos);
         }
     }
 }

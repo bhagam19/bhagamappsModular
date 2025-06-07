@@ -34,7 +34,6 @@ class BienesSeeder extends Seeder
                     'cantidad' => $data['cantBien'],              // CORREGIDO
                     'categoria_id' => $data['codCategoria'],      // CORREGIDO
                     'dependencia_id' => $data['codDependencias'],// CORREGIDO
-                    'usuario_id' => $data['usuarioID'],
                     'almacenamiento_id' => $data['codAlmacenamiento'], // CORREGIDO
                     'estado_id' => $data['codEstado'],            // CORREGIDO
                     'mantenimiento_id' => $data['codMantenimiento'], // CORREGIDO
