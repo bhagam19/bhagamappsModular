@@ -7,7 +7,6 @@
     }
 
     #appsContenedor {
-        top: 400px;
         display: flex;
         flex-wrap: wrap;
         position: relative; /* Asegura que 'top' funcione correctamente */
@@ -15,11 +14,20 @@
     }
 
     .boton {
-        width: 96%;
+        width: 100%;
         height: 100px;
         margin: 5px;
         border-radius: 5px;
         user-select: none;
+        display: inline-block;
+        
+        text-align: center;
+        
+        
+        border: 2px solid #0a0e46;        
+        background: #bfc3f8;
+        box-shadow: 0px 0px 10px rgba(51, 79, 88, 0.2);
+        transition: all 0.3s ease;
     }
 
     /* Enlaces dentro de botones */

@@ -320,10 +320,10 @@ return [
         // Sidebar items
         [
             'text' => 'Inicio',
-            'route' => 'ppal.index', 
+            'route' => 'ppal.index',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
-        
+
         [
             'text' => 'Gestión de Accesos',
             'icon' => 'fas fa-users-cog',
@@ -334,22 +334,22 @@ return [
                     'icon' => 'fas fa-user text-info',
                     'route' => 'usuarios.users.index',
                     'active' => ['admin/users*'],
-                    'classes' => 'text-primary font-weight-bold', 
-                    
+                    'classes' => 'text-primary font-weight-bold',
+
                 ],
                 [
                     'text' => 'Roles',
                     'icon' => 'fas fa-user-shield text-info',
                     'route' => 'usuarios.roles.index', // Ajusta si tienes otra ruta
                     'active' => ['admin/roles*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                 ],
                 [
                     'text' => 'Permisos',
                     'icon' => 'fas fa-key text-info',
                     'route' => 'usuarios.permissions.index', // Ajusta si es necesario
                     'active' => ['admin/permissions*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                 ],
             ],
         ],
@@ -363,7 +363,7 @@ return [
                     'icon' => 'fas fa-box text-info',
                     'route' => 'inventario.bienes.index',
                     'active' => ['inventario/bienes*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-bienes',
                 ],
                 [
@@ -387,7 +387,7 @@ return [
                     'icon' => 'fas fa-map-marker-alt text-success',
                     'route' => '',
                     'active' => ['inventario/ubicaciones*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-ubicaciones',
                 ],
                 [
@@ -419,7 +419,7 @@ return [
                     'icon' => 'fas fa-hourglass-half text-warning',
                     'route' => '',
                     'active' => ['inventario/aprobacion*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-pendientes-aprobacion',
                 ],
                 [
@@ -427,7 +427,7 @@ return [
                     'icon' => 'fas fa-history text-secondary',
                     'route' => '',
                     'active' => ['inventario/historial-modificaciones*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-historial-modificaciones',
                 ],
                 [
@@ -435,7 +435,7 @@ return [
                     'icon' => 'fas fa-map-marker-alt text-success',
                     'route' => '',
                     'active' => ['inventario/historial-ubicaciones*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-historial-ubicaciones',
                 ],
                 [
@@ -443,7 +443,7 @@ return [
                     'icon' => 'fas fa-user-check text-info',
                     'route' => '',
                     'active' => ['inventario/responsables*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-responsables',
                 ],
                 [
@@ -451,7 +451,7 @@ return [
                     'icon' => 'fas fa-tools text-danger',
                     'route' => '',
                     'active' => ['inventario/mantenimientos*'],
-                    'classes' => 'text-primary font-weight-bold', 
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-mantenimientos-programados',
                 ],
             ],
@@ -527,7 +527,7 @@ return [
             ],
         ],
 
-        
+
     ],
 
 

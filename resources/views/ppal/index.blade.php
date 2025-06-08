@@ -3,18 +3,18 @@
 @section('title', 'Administrador')
 
 @section('content_header')
-    <h1>Panel de Administración</h1>
+    <h1>INICIO</h1>
 @stop
 
 @section('content')
-    <p>Bienvenido al panel de Administración.</p>
+    <p>Aplicaciones</p>
     @include('apps::index', ['apps' => $apps])
 @stop
 
-@section('css')
-    {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
+@push('css')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@endpush
+
 
 @section('js')
     <script>

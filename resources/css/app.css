@@ -1,8 +1,9 @@
 @import './plantillaGral.css';
 @import './header.css';
 @import './footer.css';
-@import './body.css';
 @import './responsiveHeader.css';
+@import url('./body.css') screen and (min-width: 768px);
+@import url('./responsiveBotons.css') screen and (max-width: 767px);
 
 @tailwind base;
 @tailwind components;

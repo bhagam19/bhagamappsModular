@@ -12,7 +12,7 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('descripcion')->nullable();
-            $table->foreignId('aplicacion_id')->constrained()->onDelete('cascade');
+            $table->foreignId('app_id')->constrained('apps')->onDelete('cascade');
             $table->timestamps();
         });
     }

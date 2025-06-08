@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('ruta');
             $table->string('imagen')->nullable();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable(); 
             $table->boolean('habilitada')->default(true);
             $table->timestamps();
         });

@@ -20,9 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-
-            // Relaciones
-            $table->foreignId('role_id')->constrained()->onDelete('restrict'); // Asocia al rol
+            $table->foreignId('role_id')->constrained('roles')->onDelete('restrict'); // Asocia al rol
             $table->foreignId('current_team_id')->nullable(); // Jetstream
             $table->string('profile_photo_path', 2048)->nullable(); // Jetstream
 

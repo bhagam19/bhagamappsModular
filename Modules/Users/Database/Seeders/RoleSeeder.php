@@ -5,17 +5,17 @@ namespace Modules\Users\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Users\Models\Role;
 use Modules\Users\Models\Permission;
-use Modules\Apps\Entities\Aplicacion; // Asumiendo que este modelo existe
+use Modules\Apps\Entities\App; 
 
 class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        // Obtener la aplicación 'usuarios' para asignar el aplicacion_id
-        $aplicacion = Aplicacion::where('slug', 'usuarios')->first();
+        
+        $app = App::where('nombre', 'users')->first();
 
-        if (!$aplicacion) {
-            $this->command->error("No se encontró la aplicación con slug 'usuarios'. Crea la aplicación antes de correr este seeder.");
+        if (!$app) {
+            $this->command->error("No se encontró la aplicación con nombre 'users'. Crea la aplicación antes de correr este seeder.");
             return;
         }
 
@@ -31,17 +31,17 @@ class RoleSeeder extends Seeder
 
         foreach ($roles as $rolData) {
             $rol = Role::updateOrCreate(
-                ['nombre' => $rolData['nombre'], 'aplicacion_id' => $aplicacion->id],
+                ['nombre' => $rolData['nombre'], 'app_id' => $app->id],
                 ['descripcion' => $rolData['descripcion']]
             );
         }
 
-        // Obtener los roles ya creados (con aplicacion_id)
-        $admin = Role::where('nombre', 'Administrador')->where('aplicacion_id', $aplicacion->id)->first();
-        $rector = Role::where('nombre', 'Rector')->where('aplicacion_id', $aplicacion->id)->first();
-        $coordinador = Role::where('nombre', 'Coordinador')->where('aplicacion_id', $aplicacion->id)->first();
-        $docente = Role::where('nombre', 'Docente')->where('aplicacion_id', $aplicacion->id)->first();
-        $auxiliar = Role::where('nombre', 'Auxiliar')->where('aplicacion_id', $aplicacion->id)->first();
+        // Obtener los roles ya creados (con app_id)
+        $admin = Role::where('nombre', 'Administrador')->where('app_id', $app->id)->first();
+        $rector = Role::where('nombre', 'Rector')->where('app_id', $app->id)->first();
+        $coordinador = Role::where('nombre', 'Coordinador')->where('app_id', $app->id)->first();
+        $docente = Role::where('nombre', 'Docente')->where('app_id', $app->id)->first();
+        $auxiliar = Role::where('nombre', 'Auxiliar')->where('app_id', $app->id)->first();
 
         // Asignar permisos si existen
         $permisos = Permission::pluck('id');

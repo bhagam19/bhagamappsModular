@@ -1,16 +1,18 @@
 <?php
 
-namespace Modules\Apps\Database\Seeders;
+namespace Modules\Apps\database\seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Apps\Entities\Aplicacion;
+use Modules\Apps\Entities\App;
 
 class AppSeeder extends Seeder
 {
     public function run(): void
     {
         $apps = [
-            ["Inventario", "inventario", "inventario.png", 1],
+            ["Users", "usuarios/users", "users.png", 1],
+            ["Inventario", "inventario/bienes", "inventario.png", 1],
+            ["App", "app", "apps.png", 1],
             ["Biblioteca", "biblioteca", "biblioteca.png", 1],
             ["SINAI vs SIMAT", "SvS", "SvS.png", 0],
             ["Planeador", "planeador", "planeador.png", 0],
@@ -23,11 +25,11 @@ class AppSeeder extends Seeder
         ];
 
         foreach ($apps as [$nombre, $ruta, $imagen, $habilitada]) {
-            Aplicacion::create([
+            App::create([
                 'nombre' => $nombre,
                 'ruta' => '/' . $ruta,
                 'imagen' => "vendor/adminlte/dist/img/Apps/{$imagen}",
-                'usuario_id' => 1, // Ajusta si necesitas relacionarlo dinámicamente
+                'user_id' => 1, 
                 'habilitada' => $habilitada,
             ]);
         }
