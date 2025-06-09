@@ -37,8 +37,8 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasPermission('ver-bienes');
         });
 
-        Gate::define('ver-acta-entrega', function ($user) {
-                return $user->hasPermission('ver-acta-entrega');
+        Gate::define('ver-actas-de-entrega', function ($user) {
+                return $user->hasPermission('ver-actas-de-entrega');
         });
         
         Gate::define('ver-almacenamiento', function ($user) {
@@ -61,8 +61,8 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasPermission('ver-estados');
         });
 
-        Gate::define('ver-pendientes-aprobacion', function ($user) {
-                return $user->hasPermission('ver-pendientes-aprobacion');
+        Gate::define('ver-aprobaciones-pendientes-bienes', function ($user) {
+                return $user->hasPermission('ver-aprobaciones-pendientes-bienes');
         });
 
         Gate::define('ver-historial-modificaciones', function ($user) {

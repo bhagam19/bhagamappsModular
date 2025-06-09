@@ -22,7 +22,7 @@ class ActaEntregaIndex extends Component
 
     public function mount()
     {
-        abort_unless(auth()->user()->hasPermission('ver-acta-entrega'), 403);
+        abort_unless(auth()->user()->hasPermission('ver-actas-de-entrega'), 403);
 
         $this->bienes = collect();
         $this->contenidoActa = null;

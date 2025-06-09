@@ -372,7 +372,7 @@ return [
                     'route' => 'inventario.actas.index',            // ruta nueva, por ejemplo
                     'active' => ['actas/acta-entrega*'],                // activa para rutas que empiecen con inventario/actas
                     'classes' => 'text-success font-weight-bold',     // clases para resaltarlo en verde
-                    'can' => 'ver-acta-entrega',                       // permiso específico para ver actas
+                    'can' => 'ver-actas-de-entrega',                       // permiso específico para ver actas
                 ],
                 [
                     'text' => 'Almacenamiento',

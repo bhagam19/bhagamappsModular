@@ -7,6 +7,7 @@ use Modules\Users\Models\User;
 use Modules\Inventario\Entities\Bien;
 use Modules\Inventario\Entities\Estado;
 use Modules\Inventario\Entities\Categoria;
+use Modules\Inventario\Entities\Dependencia;
 
 class BienAprobacionPendiente extends Model
 {
@@ -18,7 +19,7 @@ class BienAprobacionPendiente extends Model
         'campo',
         'valor_anterior',
         'valor_nuevo',
-        'usuario_id',
+        'dependencia_id',
         'estado',
     ];
 
@@ -29,7 +30,17 @@ class BienAprobacionPendiente extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function dependencia()
+    {
+        return $this->belongsTo(Dependencia::class, 'dependencia_id');
+    }
+
+    public function usuarioResponsable()
+    {
+        return $this->dependencia ? $this->dependencia->usuario : null;
     }
 
     public function obtenerNombreValor($campo, $valor)
@@ -38,6 +49,7 @@ class BienAprobacionPendiente extends Model
         return match ($campo) {
             'estado_id' => Estado::find($valor)?->nombre ?? $valor,
             'categoria_id' => Categoria::find($valor)?->nombre ?? $valor,
+            'dependencia_id' => Dependencia::find($valor)?->nombre ?? $valor,
             default => $valor,
         };
         

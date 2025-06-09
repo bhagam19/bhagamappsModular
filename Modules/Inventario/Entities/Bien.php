@@ -149,32 +149,37 @@ class Bien extends Model
 
     public function aprobacionesPendientes()
     {
-        return $this->hasMany(BienAprobacionPendiente::class);
+        return $this->hasMany(BienAprobacionPendiente::class, 'bien_id');
     }
 
-    public function tieneAprobacionesPendientesDependencia()
+     public function tieneCambiosPendientes()
     {
-        $user = Auth::user();
+        return $this->aprobacionesPendientes()->exists();
+    }
 
-        $query = $this->aprobacionesPendientes();
-
-        // Si NO es administrador ni rector, filtrar por usuario_id
-        if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
-            $query->where('dependencia_id', $user->dependencia_id);
+    public function tieneAprobacionesPendientesDependencia($user): bool
+    {
+        if (in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
+            return $this->aprobacionesPendientes()->where('estado', 'pendiente')->exists();
         }
 
-        return $query->exists();
+        $dependenciaIds = $user->dependencias->pluck('id');
+        if ($dependenciaIds->isEmpty()) return false;
+
+        return $this->aprobacionesPendientes()
+            ->where('estado', 'pendiente')
+            ->whereIn('dependencia_id', $dependenciaIds)
+            ->exists();
     }
 
-    public function camposPendientesPorUsuario($dependenciaId)
-    {
+
+    public function camposPendientesPorDependencias($dependenciaIds)
+    {        
         return $this->aprobacionesPendientes()
-            ->where('dependencia_id', $dependenciaId)
-            ->where('estado', 'pendiente') // Ajusta según cómo guardes el estado
+            ->whereIn('dependencia_id', $dependenciaIds)
+            ->where('estado', 'pendiente')
             ->pluck('campo')
             ->unique()
             ->toArray();
     }
-
-
 }
