@@ -32,7 +32,7 @@ class BienesIndex extends Component
     public $categoria_id, $dependencia_id, $usuario_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
 
     // --- Catálogos cargados ---
-    public $categorias, $dependencias, $usuarios, $estados, $almacenamientos, $mantenimientos;
+    public $categorias, $dependencias, $usuarios, $estados, $almacenamientos, $mantenimientos;    
 
     private array $ordenBase = [
         'nombre', 'cantidad', 'detalle',
@@ -354,8 +354,6 @@ class BienesIndex extends Component
         return $query->sum('cantidad');
     }
 
-
-
     // ------------------ Render ------------------ //
 
     protected $listeners = ['bienActualizado' => 'recargarBien']; 
@@ -371,11 +369,12 @@ class BienesIndex extends Component
 
         $bienesQuery = Bien::with([
             'detalle', 'categoria', 'dependencia.usuario',
-            'almacenamiento', 'estado', 'mantenimiento'
+            'almacenamiento', 'estado', 'mantenimiento',
+            'aprobacionesPendientes'
         ]);
 
         if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
-            // Todos los bienes, sin filtro
+            // Todos los bienes
         } elseif ($user->hasRole('Coordinador')) {
             if (!$this->verTodos) {
                 $bienesQuery->whereHas('dependencia', function($query) use ($user) {
@@ -405,16 +404,18 @@ class BienesIndex extends Component
 
         $bienesQuery->orderBy($this->sortField, $this->sortDirection);
 
-        $bienes = $bienesQuery->paginate($this->perPage);
-
-        $cambiosPendientes = BienAprobacionPendiente::all();
-
+        $bienes = $bienesQuery->paginate($this->perPage);        
+        
+        // Enriquecer bienes paginados con campos pendientes
+        $dependenciaIds = $user->dependencias->pluck('id');
+        
+        foreach ($bienes as $bien) {
+            $bien->camposPendientes = $bien->camposPendientesPorDependencias($dependenciaIds);            
+        }
+        
         return view('inventario::livewire.bienes.bienes-index', [
             'bienes' => $bienes,
-            'cambiosPendientes' => $cambiosPendientes,
+            'camposPendientes' => $bien->camposPendientesPorDependencias($dependenciaIds),
         ]);
     }
-
-
-
 }

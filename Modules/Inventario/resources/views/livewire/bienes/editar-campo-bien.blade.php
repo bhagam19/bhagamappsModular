@@ -25,41 +25,40 @@
                     {{ \Illuminate\Support\Str::headline(str_replace('_id', '', $campo)) }}:
                 </span>
 
-                {{-- Texto editable con doble click para escritorio --}}
-                <span class="px-2 small text-dark editable-desktop d-none d-sm-inline"
-                    ondblclick="@this.set('editando', true)" style="cursor: pointer;">
-                    @if ($tipo === 'select' && isset($opciones[$valor]))
-                        {{ $opciones[$valor] }}
-                    @elseif ($tipo === 'date' && $valor)
-                        {{ \Carbon\Carbon::parse($valor)->format('d/m/Y') }}
-                    @elseif (is_null($valor) || $valor === '')
-                        <span class="text-muted fst-italic"> </span>
-                    @elseif ($campo === 'precio')
-                        {{ '$' . number_format((float) $valor, 0, ',', '.') }}
+                {{-- Texto editable con doble click para escritorio --}}                
+                @php
+                    $cambioPendiente = $this->campoTieneAprobacionPendiente();
+                    $valorMostrar = $cambioPendiente->valor_nuevo ?? $valor;
+                @endphp
+
+                <span class="px-2 small text-dark" style="cursor: pointer">
+                    {{-- Icono si hay cambio pendiente --}}
+                    @if ($cambioPendiente)
+                        <span class="badge badge-info ms-2 font-weight-bold"  title="Valor anterior: {{ $valor }}">
+                            → 
+                            @if ($tipo === 'select' && isset($opciones[$valorMostrar]))
+                                {{ $opciones[$valorMostrar] }}
+                            @elseif ($tipo === 'date' && $valorMostrar)
+                                {{ \Carbon\Carbon::parse($valorMostrar)->format('d/m/Y') }}
+                            @elseif ($campo === 'precio')
+                                {{ '$' . number_format((float) $valorMostrar, 0, ',', '.') }}
+                            @else
+                                {{ $valorMostrar }}
+                            @endif
+                            <i class="fas fa-hourglass-half ms-1"></i>
+                        </span>
                     @else
-                        {{ $valor }}
+                        @if ($tipo === 'select' && isset($opciones[$valor]))
+                            {{ $opciones[$valor] }}
+                        @elseif ($tipo === 'date' && $valor)
+                            {{ \Carbon\Carbon::parse($valor)->format('d/m/Y') }}
+                        @elseif ($campo === 'precio')
+                            {{ '$' . number_format((float) $valor, 0, ',', '.') }}
+                        @else
+                            {{ $valor }}
+                        @endif
                     @endif
                 </span>
-
-                {{-- Texto no editable para móvil --}}
-                <span class="px-2 small text-dark d-sm-none">
-                    @if ($tipo === 'select' && isset($opciones[$valor]))
-                        {{ $opciones[$valor] }}
-                    @elseif ($tipo === 'date' && $valor)
-                        {{ \Carbon\Carbon::parse($valor)->format('d/m/Y') }}
-                    @elseif (is_null($valor) || $valor === '')
-                        <span class="text-muted fst-italic"> </span>
-                    @elseif ($campo === 'precio')
-                        {{ '$' . number_format((float) $valor, 0, ',', '.') }}
-                    @else
-                        {{ $valor }}
-                    @endif
-                </span>
-
-                @if ($this->campoTieneAprobacionPendiente())
-                    <i class="fas fa-hourglass-half text-info ml-1"
-                        title="Este campo tiene un cambio pendiente de aprobación"></i>
-                @endif
 
             </div>
 

@@ -20,7 +20,7 @@ class BapIndex extends Component
 
     public function mount()
     {
-        if (!auth()->user()->hasPermission('ver-aprobaciones-pendientes')) {
+        if (!auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes')) {
             return redirect()->route('inventario.bienes.index');
         }
     }

@@ -58,7 +58,7 @@
                     <th style="position: sticky; top: 0; background-color:#12304e;">Campo</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Valor anterior</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Valor nuevo</th>
-                    <th style="position: sticky; top: 0; background-color:#12304e;">Usuario</th>
+                    <th style="position: sticky; top: 0; background-color:#12304e;">Dependencia</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Estado</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Acciones</th>
                 </tr>
@@ -72,7 +72,7 @@
                         <td>{{ ucfirst($aprobacion->campo) }}</td>
                         <td>{{ $aprobacion->valor_anterior }}</td>
                         <td>{{ $aprobacion->valor_nuevo }}</td>
-                        <td>{{ $aprobacion->user->nombre_completo ?? '—' }}</td>
+                        <td>{{ $aprobacion->dependencia->nombre ?? '—' }}</td>
                         <td>
                             <span
                                 class="badge 
@@ -85,12 +85,11 @@
                             </span>
                         </td>
                         <td>
-                            @if ($user->hasPermission('aprobar-pendientes-bienes'))
+                            @if ($user->hasPermission('ver-aprobaciones-pendientes-bienes'))
                                 <button wire:click="aprobar({{ $aprobacion->id }})" class="btn btn-sm btn-success">
                                     Aprobar
                                 </button>
-                            @endif
-                            @if ($user->hasPermission('aprobar-pendientes-bienes'))
+                            
                                 <button wire:click="rechazar({{ $aprobacion->id }})" class="btn btn-sm btn-danger">
                                     Rechazar
                                 </button>

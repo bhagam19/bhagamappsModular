@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Modules\Inventario\Entities\Bien;
 use Modules\Apps\Entities\App;
+use Modules\Inventario\Entities\Dependencia;
 
 class User extends Authenticatable
 {
@@ -87,6 +88,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+
+    public function dependencias()
+{
+    return $this->hasMany(Dependencia::class, 'usuario_id');
+}
 
     /**
      * Verifica si el usuario tiene un rol específico por nombre.

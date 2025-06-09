@@ -83,7 +83,7 @@
     @endif
 
     {{-- Mostrar filtros (Movil) --}}
-    <div class="d-block d-md-none mb-3">
+    <div class="d-block d-md-none mb-1">
         <button class="btn btn-outline-secondary btn-sm btn-block" type="button" data-toggle="collapse"
             data-target="#filtrosMobile" aria-expanded="false" aria-controls="filtrosMobile">
             <i class="fas fa-filter"></i> Mostrar filtros y búsqueda
@@ -92,7 +92,7 @@
 
     {{-- Filtros colapsable (Movil) --}}
     <div class="collapse d-md-none" id="filtrosMobile">
-        <div class="card shadow-sm mb-4">
+        <div class="card shadow-sm mb-1">
             <div class="card-body">
 
                 {{-- Botón solo para rector --}}
@@ -106,13 +106,13 @@
                 @endif
 
                 {{-- Barra superior: Buscar --}}
-                <div class="mb-3">
+                <div class="mb-1">
                     <input type="text" wire:model.lazy="filtroNombre" class="form-control"
                         placeholder="🔍 Buscar por nombre...">
                 </div>
 
                 {{-- Filtros adicionales --}}
-                <div class="d-flex flex-wrap gap-2 align-items-end mb-3">
+                <div class="d-flex flex-wrap gap-1 align-items-end mb-1">
                     <div class="flex-fill" style="min-width: 200px;">
                         <select wire:model.lazy="filtroUsuario" class="form-control">
                             <option value="">Filtrar por usuario</option>
@@ -150,7 +150,7 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div class="mt-1">
                         <button wire:click="limpiarFiltros" class="btn btn-outline-secondary btn-sm">
                             <i class="fas fa-eraser"></i> Limpiar filtros
                         </button>
@@ -163,7 +163,7 @@
 
     {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-block d-md-none mb-3">
+        <div class="d-block d-md-none mb-1">
             <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse"
                 data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
                 Agregar Bien
@@ -173,26 +173,29 @@
 
     {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-3 flex-wrap">
+        <div
+            class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
 
-            <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button"
-                data-bs-toggle="collapse" data-bs-target="#formCreateBien" aria-expanded="false"
-                aria-controls="formCreateBien">
+            {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
+            <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button" data-toggle="collapse"
+                data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
                 <i class="fas fa-plus"></i> Agregar Bien
             </button>
 
-            <div class="d-flex align-items-center px-3 py-2 rounded bg-light border text-muted small"
+            {{-- Contador registro y bienes (Escritorio) --}}
+            <div class="d-flex align-items-center px-1 py-1 rounded bg-light border text-muted small"
                 style="gap: 4rem; justify-content: space-between; min-width: 320px;">
-                <div class="d-flex align-items-center" style="gap: 1.5rem;">
+                <div class="d-flex align-items-center" style="gap: 1rem;">
                     <span style="margin-left: 1rem;">{{ $bienes->total() }} registros</span>
                 </div>
-                <div class="d-flex align-items-center" style="gap: 1.5rem;">
+                <div class="d-flex align-items-center" style="gap: 1rem;">
                     <span style="margin-left: 1rem;">{{ $this->cantidadTotalFiltrada }} total bienes</span>
                 </div>
             </div>
 
+            {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
             @php
-                $totalCambios = $cambiosPendientes->count();
+                $totalCambios = count($camposPendientes);
                 $hayCambios = $totalCambios > 0;
                 $btnClass = $hayCambios ? 'btn-danger' : 'btn-success';
                 $mensaje = $hayCambios
@@ -200,7 +203,7 @@
                     : 'No hay modificaciones pendientes';
             @endphp
 
-            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes'))
+            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
                 <a href="{{ route('inventario.bap') }}"
                     class="btn {{ $btnClass }} btn-sm d-flex align-items-center gap-1" role="button"
                     aria-label="Ver modificaciones pendientes">
@@ -212,10 +215,10 @@
         </div>
     @endif
 
-    {{-- Formulario de creación (Móvil y Escritorio) --}}
+    {{-- Formulario Agregar bien (Móvil y Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div class="collapse" id="formCreateBien">
-            <form wire:submit.prevent="store" class="form-row align-items-end mb-4" novalidate>
+            <form wire:submit.prevent="store" class="form-row align-items-end mb-1" novalidate>
                 @php
                     $fields = [
                         ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
@@ -231,7 +234,6 @@
                     $selectFields = [
                         ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
                         ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
-                        // ['model' => 'usuario_id', 'label' => 'Usuario', 'options' => $usuarios ?? []],
                         [
                             'model' => 'almacenamiento_id',
                             'label' => 'Almacenamiento',
@@ -303,7 +305,7 @@
         </div>
 
         {{-- Derecha: Selector y Paginación --}}
-        <div class="d-flex flex-column align-items-end">
+        <div class="table-responsive d-flex flex-column align-items-start">
 
             {{-- Selector --}}
             <div class="d-flex align-items-center mb-2">
@@ -318,9 +320,11 @@
                 <span class="ml-2">registros</span>
             </div>
 
-            {{-- Paginación --}}
-            <div>
-                {{ $bienes->links('pagination::bootstrap-4') }}
+            {{-- Paginación con scroll horizontal --}}
+            <div class="w-100 overflow-auto">
+                <div class="d-inline-block">
+                    {{ $bienes->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
 
@@ -568,11 +572,9 @@
 
     {{-- Vista móvil: acordeón con Alpine.js --}}
     <div class="d-block d-md-none" x-data="{ openId: null }">
-        <div id="accordionMobileBienes">
+        <div id="accordionMobileBienes">            
             @forelse($bienes as $bien)
-                @php
-
-                    $camposPendientes = $bien->camposPendientesPorUsuario(auth()->id());
+                @php          
 
                     $estadoNombre = strtolower($bien->estado->nombre ?? '');
                     $cardClass = match ($estadoNombre) {
@@ -592,37 +594,43 @@
 
                 <div class="card mb-2 {{ $cardClass }}">
                     {{-- Encabezado --}}
-                    <div class="card-header p-2 d-flex align-items-center" @click="{{ $toggleOpen }}"
-                        @keydown.enter.prevent="{{ $toggleOpen }}" @keydown.space.prevent="{{ $toggleOpen }}"
+                    <div class="card-header d-flex align-items-center justify-content-between p-2 w-100"
+                        @click="{{ $toggleOpen }}"
+                        @keydown.enter.prevent="{{ $toggleOpen }}"
+                        @keydown.space.prevent="{{ $toggleOpen }}"
                         tabindex="0" role="button">
-                        <span>
-                            {{ $bien->id }}. {{ $bien->nombre }}
 
-                            @if ($bien->tieneAprobacionesPendientesDependencia())
-                                <i class="fas fa-hourglass-half text-info ml-1"
-                                    title="Tienes cambios pendientes en este bien"></i>
+                        {{-- Izquierda: nombre + icono de cambios + icono de estado --}}
+                        <div class="d-flex align-items-center flex-grow-1 flex-wrap">
+                            <span class="text-truncate">
+                                {{ $bien->id }}. {{ $bien->nombre }}
+
+                                @if ($bien->tieneCambiosPendientes())
+                                    <i class="fas fa-hourglass-half text-info ms-1"
+                                        title="Tienes cambios pendientes en este bien"></i>
+                                @endif
+                            </span>
+
+                            @if ($estadoNombre === 'malo')
+                                <i class="fas fa-exclamation-circle text-warning ms-2" title="Estado: Malo"></i>
+                            @elseif($estadoNombre === 'regular')
+                                <i class="fas fa-exclamation-triangle text-white ms-2" title="Estado: Regular"></i>
                             @endif
-                        </span>
+                        </div>
 
-                        {{-- Icono de estado --}}
-                        @if ($estadoNombre === 'malo')
-                            <i class="fas fa-exclamation-circle text-warning ml-1" title="Estado: Malo"></i>
-                        @elseif($estadoNombre === 'regular')
-                            <i class="fas fa-exclamation-triangle text-white ml-1" title="Estado: Regular"></i>
-                        @endif
+                        {{-- Derecha: cantidad + botón eliminar --}}
+                        <div class="d-flex align-items-center flex-shrink-0 ms-auto">
+                            <span class="me-2 badge {{ $badgeClass }} badge-pill">
+                                <i class="fas fa-cubes me-1"></i> {{ $bien->cantidad }}
+                            </span>
 
-                        {{-- Cantidad --}}
-                        <span class="ml-auto mr-2 badge {{ $badgeClass }} badge-pill">
-                            <i class="fas fa-cubes mr-1"></i> {{ $bien->cantidad }}
-                        </span>
-
-                        {{-- Botón eliminar --}}
-                        @if (auth()->user()?->hasPermission('eliminar-bienes'))
-                            <button wire:click.stop="$dispatch('confirmDelete', {{ $bien->id }})"
-                                class="btn btn-sm btn-danger" aria-label="Eliminar bien {{ $bien->nombre }}">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        @endif
+                            @if (auth()->user()?->hasPermission('eliminar-bienes'))
+                                <button wire:click.stop="$dispatch('confirmDelete', {{ $bien->id }})"
+                                    class="btn btn-sm btn-danger" aria-label="Eliminar bien {{ $bien->nombre }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            @endif
+                        </div>
                     </div>
 
                     {{-- Cuerpo del acordeón --}}
@@ -674,6 +682,7 @@
                                             [
                                                 'bienId' => $bien->id,
                                                 'campo' => $key,
+                                                'camposPendientes' => $camposPendientes,
                                             ],
                                             key("mobile-bien-{$bien->id}-{$key}")
                                         )
@@ -690,6 +699,7 @@
             @endforelse
         </div>
     </div>
+
 
     {{-- Paginación --}}
     <div class="mt-3">

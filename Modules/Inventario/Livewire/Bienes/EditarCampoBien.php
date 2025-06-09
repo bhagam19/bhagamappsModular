@@ -16,6 +16,7 @@ use Modules\Inventario\Entities\{
     BienAprobacionPendiente
 };
 use Modules\Inventario\Livewire\Bap\BapIndex;
+use Modules\Inventario\Livewire\Bap\NotificacionBap;
 
 class EditarCampoBien extends Component
 {
@@ -157,15 +158,15 @@ class EditarCampoBien extends Component
             $this->editando = false;
             return;
         }
-
+        
         // Crear el cambio pendiente UNA sola vez
         $aprobacionPendiente = BienAprobacionPendiente::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'bien',
             'campo' => $this->campo,
             'valor_anterior' => $valorActual,
-            'valor_nuevo' => $this->valor,
-            'usuario_id' => $usuario->id,
+            'valor_nuevo' => $this->valor,            
+            'dependencia_id' => $this->bien->dependencia_id,
             'estado' => 'pendiente',
         ]);
 
@@ -174,13 +175,13 @@ class EditarCampoBien extends Component
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
         
-        Notification::send($usuariosDestino, new CambioBienPendiente($aprobacionPendiente));
+        Notification::send($usuariosDestino, new NotificacionBap($aprobacionPendiente));
 
         $this->editando = false;
         session()->flash('info', 'El cambio fue enviado para aprobación.');
     }
 
-    public function campoTieneAprobacionPendiente(): bool
+    public function campoTieneAprobacionPendiente()
     {
         $user = auth()->user();
 
@@ -190,10 +191,13 @@ class EditarCampoBien extends Component
 
         // Verifica si el usuario tiene el rol adecuado
         if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
-            $query->where('dependencia_id', $user->dependencia_id);
+            $dependenciaIds = $user->dependencias->pluck('id');
+            if ($dependenciaIds->isEmpty()) return null;
+
+            $query->whereIn('dependencia_id', $dependenciaIds);
         }
 
-        return $query->exists();
+        return $query->first();
     }
 
     public function render()
