@@ -90,9 +90,9 @@ class User extends Authenticatable
     }
 
     public function dependencias()
-{
-    return $this->hasMany(Dependencia::class, 'usuario_id');
-}
+    {
+        return $this->hasMany(Dependencia::class, 'usuario_id');
+    }
 
     /**
      * Verifica si el usuario tiene un rol específico por nombre.

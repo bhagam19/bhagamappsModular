@@ -15,7 +15,6 @@ use Modules\Inventario\Entities\{
     Categoria,
     BienAprobacionPendiente
 };
-use Modules\Inventario\Livewire\Bap\BapIndex;
 use Modules\Inventario\Livewire\Bap\NotificacionBap;
 
 class EditarCampoBien extends Component
@@ -24,7 +23,7 @@ class EditarCampoBien extends Component
     public $bienId;
     public string $campo;
     public $valor;
-    
+
 
     public bool $editando = false;
 
@@ -33,13 +32,12 @@ class EditarCampoBien extends Component
 
     public function mount(int $bienId, string $campo, ?string $tipo = null, array $opciones = [])
     {
+
         $this->bien = Bien::findOrFail($bienId);
+
         $this->campo = $campo;
-
         $this->valor = $this->bien->$campo;
-
         $this->tipo = $tipo ?? $this->inferirTipo($campo);
-
         $this->opciones = $this->tipo === 'select'
             ? ($opciones ?: $this->cargarOpciones($campo))
             : [];
@@ -106,7 +104,12 @@ class EditarCampoBien extends Component
 
         $this->validate($rules);
 
-        $usuario = User::find(auth()->id());
+        $usuario = auth()->user();
+
+        if (!$usuario->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
+            return redirect()->route('inventario.bienes.index');
+        }
+
         $valorActual = $this->bien->{$this->campo};
 
         // Si no hubo cambios reales, salir
@@ -141,7 +144,7 @@ class EditarCampoBien extends Component
             $this->bien->save();
             $this->valor = $this->bien->{$this->campo};
             $this->editando = false;
-            $this->dispatch('bienActualizado', $this->bien->id);
+            $this->dispatch('bienActualizado');
             session()->flash('message', 'Campo actualizado correctamente.');
             return;
         }
@@ -158,14 +161,14 @@ class EditarCampoBien extends Component
             $this->editando = false;
             return;
         }
-        
+
         // Crear el cambio pendiente UNA sola vez
         $aprobacionPendiente = BienAprobacionPendiente::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'bien',
             'campo' => $this->campo,
             'valor_anterior' => $valorActual,
-            'valor_nuevo' => $this->valor,            
+            'valor_nuevo' => $this->valor,
             'dependencia_id' => $this->bien->dependencia_id,
             'estado' => 'pendiente',
         ]);
@@ -174,7 +177,7 @@ class EditarCampoBien extends Component
         $usuariosDestino = User::whereHas('role', function ($query) {
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
-        
+
         Notification::send($usuariosDestino, new NotificacionBap($aprobacionPendiente));
 
         $this->editando = false;

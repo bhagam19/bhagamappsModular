@@ -172,6 +172,15 @@
     @endif
 
     {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
+    @php
+        $totalCambios = \Modules\Inventario\Entities\BienAprobacionPendiente::where('estado', 'pendiente')->count();
+        $hayCambios = $totalCambios > 0;
+        $btnClass = $hayCambios ? 'btn-danger' : 'btn-success';
+        $mensaje = $hayCambios
+            ? "Tiene <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span> modificaciones pendientes"
+            : 'No hay modificaciones pendientes';
+    @endphp
+
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
@@ -194,15 +203,6 @@
             </div>
 
             {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
-            @php
-                $totalCambios = count($camposPendientes);
-                $hayCambios = $totalCambios > 0;
-                $btnClass = $hayCambios ? 'btn-danger' : 'btn-success';
-                $mensaje = $hayCambios
-                    ? "Tiene <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span> modificaciones pendientes"
-                    : 'No hay modificaciones pendientes';
-            @endphp
-
             @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
                 <a href="{{ route('inventario.bap') }}"
                     class="btn {{ $btnClass }} btn-sm d-flex align-items-center gap-1" role="button"
@@ -211,8 +211,20 @@
                     <span>{!! $mensaje !!}</span>
                 </a>
             @endif
-
         </div>
+        <div>
+            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
+                <a href="{{ route('inventario.bap') }}"
+                    class="btn {{ $btnClass }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                    role="button" aria-label="Ver modificaciones pendientes (móvil)">
+                    <i class="fas fa-bell"></i>
+                    @if ($hayCambios)
+                        <span>{!! $mensaje !!}</span>
+                    @endif
+                </a>
+            @endif
+        </div>
+
     @endif
 
     {{-- Formulario Agregar bien (Móvil y Escritorio) --}}
@@ -428,9 +440,17 @@
                         @endif
                     </th>
 
-                    <th style="position: sticky; top: 60px; background-color: rgb(18, 48, 78);">Nombre</th>
-
+                    <th wire:click="sortBy('nombre')"
+                        style="cursor: pointer; position: sticky; top: 60px; background-color: rgb(18, 48, 78);">
+                        Nombre
+                        @if ($sortField === 'nombre')
+                            {{ $sortDirection === 'asc' ? '▲' : '▼' }}
+                        @endif
+                    </th>
                     @foreach ($visibleColumns as $index => $column)
+                        @if ($column === 'nombre')
+                            @continue
+                        @endif
                         @php
                             $left = 30 + $index * 150;
                             $isSticky = $index < 1;
@@ -488,6 +508,9 @@
 
                         {{-- Columnas dinámicas --}}
                         @foreach ($visibleColumns as $index => $column)
+                            @if ($column === 'nombre')
+                                @continue
+                            @endif
                             @php
                                 $left = 30 + $index * 150;
                                 $isSticky = $index < 1;
@@ -502,29 +525,20 @@
                                     z-index: 4; @endif
                             ">
                                 @if ($column === 'detalle')
-                                    @if ($bien->detalle)
-                                        <small>
-                                            @if ($bien->detalle->car_especial)
-                                                {{ $bien->detalle->car_especial }} |
-                                            @endif
-                                            @if ($bien->detalle->marca)
-                                                {{ $bien->detalle->marca }} |
-                                            @endif
-                                            @if ($bien->detalle->color)
-                                                {{ $bien->detalle->color }} |
-                                            @endif
-                                            @if ($bien->detalle->tamano)
-                                                {{ $bien->detalle->tamano }} |
-                                            @endif
-                                            @if ($bien->detalle->material)
-                                                {{ $bien->detalle->material }} |
-                                            @endif
-                                            @if ($bien->detalle->otra)
-                                                {{ $bien->detalle->otra }}
-                                            @endif
-                                        </small>
+                                    @if (auth()->user()?->hasPermission('editar-bienes'))
+                                        @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-escritorio-' . $bien->id))
                                     @else
-                                        —
+                                        @if ($bien->detalle)
+                                            <small>
+                                                @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
+                                                    @if (!empty($bien->detalle->$attr))
+                                                        {{ $bien->detalle->$attr }} |
+                                                    @endif
+                                                @endforeach
+                                            </small>
+                                        @else
+                                            —
+                                        @endif
                                     @endif
                                 @else
                                     @if ($column === 'ubicacion_id')
@@ -570,11 +584,51 @@
         </table>
     </div>
 
+    {{-- Modal Detalles del Bien para escritorio --}}
+    <div class="modal fade" id="modalDetallesBien" tabindex="-1" aria-labelledby="modalDetallesBienLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetallesBienLabel">Editar detalles del bien</h5>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="cerrarModalDetalles()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @livewire('bienes.editar-detalle-bien-modal')
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function abrirModalDetalles(bienId) {
+            // Emitir al componente Livewire para cargar el detalle
+            Livewire.dispatch('cargarDetalle', {
+                bienId: bienId
+            });
+        }
+
+        window.addEventListener('detalleBienCargado', () => {
+            $('#modalDetallesBien').modal('show');
+        });
+
+        function cerrarModalDetalles() {
+            $('#modalDetallesBien').modal('hide');
+        }
+
+        window.addEventListener('cerrar-modal-detalles', () => {
+            $('#modalDetallesBien').modal('hide');
+        });
+    </script>
+
+
     {{-- Vista móvil: acordeón con Alpine.js --}}
     <div class="d-block d-md-none" x-data="{ openId: null }">
-        <div id="accordionMobileBienes">            
+        <div id="accordionMobileBienes">
             @forelse($bienes as $bien)
-                @php          
+                @php
 
                     $estadoNombre = strtolower($bien->estado->nombre ?? '');
                     $cardClass = match ($estadoNombre) {
@@ -595,10 +649,8 @@
                 <div class="card mb-2 {{ $cardClass }}">
                     {{-- Encabezado --}}
                     <div class="card-header d-flex align-items-center justify-content-between p-2 w-100"
-                        @click="{{ $toggleOpen }}"
-                        @keydown.enter.prevent="{{ $toggleOpen }}"
-                        @keydown.space.prevent="{{ $toggleOpen }}"
-                        tabindex="0" role="button">
+                        @click="{{ $toggleOpen }}" @keydown.enter.prevent="{{ $toggleOpen }}"
+                        @keydown.space.prevent="{{ $toggleOpen }}" tabindex="0" role="button">
 
                         {{-- Izquierda: nombre + icono de cambios + icono de estado --}}
                         <div class="d-flex align-items-center flex-grow-1 flex-wrap">
@@ -640,28 +692,21 @@
 
                             <div class="mb-0">
                                 @if ($key === 'detalle')
-                                    <div>
-                                        <span
-                                            class="badge badge-light border border-primary text-muted small px-2 py-1">
-                                            {{ $label }}:
-                                        </span>
-
-                                        @if (auth()->user()?->hasPermission('editar-bienes'))
-                                            @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-' . $bien->id))
+                                    @if (auth()->user()?->hasPermission('editar-bienes'))
+                                        @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-' . $bien->id))
+                                    @else
+                                        @if ($bien->detalle)
+                                            <small class="d-block mt-1 text-muted">
+                                                @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
+                                                    @if (!empty($bien->detalle->$attr))
+                                                        {{ $bien->detalle->$attr }} |
+                                                    @endif
+                                                @endforeach
+                                            </small>
                                         @else
-                                            @if ($bien->detalle)
-                                                <small class="d-block mt-1 text-muted">
-                                                    @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
-                                                        @if (!empty($bien->detalle->$attr))
-                                                            {{ $bien->detalle->$attr }} |
-                                                        @endif
-                                                    @endforeach
-                                                </small>
-                                            @else
-                                                <span class="text-muted fst-italic">Sin detalles</span>
-                                            @endif
+                                            <span class="text-muted fst-italic">Sin detalles</span>
                                         @endif
-                                    </div>
+                                    @endif
                                 @elseif ($key === 'usuario_id')
                                     <div
                                         class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">

@@ -38,7 +38,7 @@ class Bien extends Model
     {
         return $this->hasOne(Detalle::class, 'bien_id');
     }
-    
+
 
     public function categoria()
     {
@@ -83,7 +83,7 @@ class Bien extends Model
     public function imagenes()
     {
         return $this->hasMany(BienImagen::class);
-    }    
+    }
 
     public function mantenimientosProgramados()
     {
@@ -152,31 +152,22 @@ class Bien extends Model
         return $this->hasMany(BienAprobacionPendiente::class, 'bien_id');
     }
 
-     public function tieneCambiosPendientes()
+    public function tieneCambiosPendientes()
     {
         return $this->aprobacionesPendientes()->exists();
     }
 
-    public function tieneAprobacionesPendientesDependencia($user): bool
+    public function tieneAprobacionesPendientes(): bool
     {
-        if (in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
-            return $this->aprobacionesPendientes()->where('estado', 'pendiente')->exists();
-        }
-
-        $dependenciaIds = $user->dependencias->pluck('id');
-        if ($dependenciaIds->isEmpty()) return false;
-
         return $this->aprobacionesPendientes()
             ->where('estado', 'pendiente')
-            ->whereIn('dependencia_id', $dependenciaIds)
             ->exists();
     }
 
 
-    public function camposPendientesPorDependencias($dependenciaIds)
-    {        
+    public function camposPendientes()
+    {
         return $this->aprobacionesPendientes()
-            ->whereIn('dependencia_id', $dependenciaIds)
             ->where('estado', 'pendiente')
             ->pluck('campo')
             ->unique()

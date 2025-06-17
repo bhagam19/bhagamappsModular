@@ -67,7 +67,7 @@ class ActaEntregaIndex extends Component
         if ($this->user) {
             $this->bienes = Bien::with(['detalle', 'estado', 'dependencia'])
                 ->join('dependencias', 'bienes.dependencia_id', '=', 'dependencias.id')
-                ->where('bienes.usuario_id', $this->userId)
+                ->where('dependencias.usuario_id', $this->userId) // ✔️ Aquí filtras por el usuario
                 ->orderBy('dependencias.nombre')
                 ->orderBy('bienes.nombre')
                 ->select('bienes.*')

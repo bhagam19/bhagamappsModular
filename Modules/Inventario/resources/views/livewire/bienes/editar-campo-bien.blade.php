@@ -25,7 +25,7 @@
                     {{ \Illuminate\Support\Str::headline(str_replace('_id', '', $campo)) }}:
                 </span>
 
-                {{-- Texto editable con doble click para escritorio --}}                
+                {{-- Texto editable con doble click para escritorio --}}
                 @php
                     $cambioPendiente = $this->campoTieneAprobacionPendiente();
                     $valorMostrar = $cambioPendiente->valor_nuevo ?? $valor;
@@ -34,8 +34,9 @@
                 <span class="px-2 small text-dark" style="cursor: pointer">
                     {{-- Icono si hay cambio pendiente --}}
                     @if ($cambioPendiente)
-                        <span class="badge badge-info ms-2 font-weight-bold"  title="Valor anterior: {{ $valor }}">
-                            → 
+                        <span class="badge badge-info ms-2 font-weight-bold"
+                            title="Valor anterior: {{ $valor }}">
+                            →
                             @if ($tipo === 'select' && isset($opciones[$valorMostrar]))
                                 {{ $opciones[$valorMostrar] }}
                             @elseif ($tipo === 'date' && $valorMostrar)
@@ -62,13 +63,12 @@
 
             </div>
 
-            {{-- Botón editar visible solo en móvil --}}
+            {{-- Botón editar --}}
             @if (auth()->user()->hasPermission('editar-bienes'))
                 <button wire:click="$set('editando', true)" class="btn btn-sm text-primary p-0 ms-2 ">
                     <i class="fas fa-edit"></i>
                 </button>
             @endif
         </div>
-
     @endif
 </div>
