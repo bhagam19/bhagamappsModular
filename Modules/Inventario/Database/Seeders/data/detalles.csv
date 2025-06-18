@@ -1,0 +1,1413 @@
+"id","bien_id","car_especial","tamano","material","color","marca","otra","created_at","updated_at"
+"1","1","Con 3 Gavetas",NULL,"Metal y madera","Blanco",NULL,NULL,NULL,"2025-06-17 00:38:09"
+"2","2","Con Brazos",," Plástico"," Verde"," Rimax",,NULL,"2025-06-15 14:42:28"
+"3","3","Porta Llaves Madera y Vidrio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"4","4","N/A"," Grande"," N/A"," Blanco y Rojo"," N/A"," N/A",NULL,NULL
+"5","5","Exhibidor de Mecato"," Grande"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"6","6","Exhibidor de Mecato"," Mediano"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"7","7","Enfriador"," Grande"," Metal"," Azul"," N/A"," N/A",NULL,NULL
+"8","8","N/A"," Grande"," Metal"," Roja"," N/A"," N/A",NULL,NULL
+"9","9","Encauchetado 2X10"," 50Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"10","10","3Hp 220Psi"," N/A"," N/A"," Azul"," 3Wz-1522-3S4"," N/A",NULL,NULL
+"11","11",," 100Mt"," Caucho y Lona"," "," "," ",NULL,"2025-06-08 05:00:31"
+"12","12","Con Brazos"," "," Plástico"," Verde"," Rimax"," ",NULL,"2025-06-08 05:01:05"
+"13","13","Interno","Pequeño",NULL,"Negro","Hitronic",NULL,NULL,"2025-06-08 05:01:46"
+"14","14","Sonido 5.1",,," Blanco"," Kalley",,NULL,"2025-06-08 05:02:00"
+"15","15","Sonido 5.1"," N/A"," N/A"," Blanco"," Kalley"," N/A",NULL,NULL
+"16","16","Smart Tv"," 58p"," N/A"," Negro"," Samsung Au7000"," N/A",NULL,NULL
+"17","17","N/A"," 800*600"," N/A"," Blanco"," Epson Power Lite 93 "," Con Base Techo",NULL,NULL
+"18","18","N/A"," 800*600"," N/A"," Blanco"," Epson Power Lite 93 "," Con Base Techo",NULL,NULL
+"19","19","Pequeño Marca Hitronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"20","20","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"21","21","De 8 "" Maxiiu",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"22","22","Tapizada de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"23","23","Maria Mediadora",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"24","24","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"25","25","Metal y Plastico Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"26","26","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"27","27","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"28","28","Marca Epson Blanco",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"29","29","De Metal y Vidrio Colanta Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"30","30","Altavoz Coordinación"," Pequeño",," Negro"," Hi Tronic",,NULL,"2025-06-11 10:38:58"
+"31","31","Maria Mediadora",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"32","32","Gavetas",NULL,"Madera",NULL,NULL,NULL,NULL,"2025-06-11 10:39:31"
+"33","33","Para Video Beam"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"34","34","Docente",NULL,"Plástico y metal","Verde",NULL,NULL,NULL,"2025-06-11 10:40:04"
+"35","35","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"36","36",,"2m","Acrílico","Blanco",NULL,NULL,NULL,"2025-06-11 10:40:33"
+"37","37",,,," Negro"," Optoma"," Con Base Techo",NULL,"2025-06-11 10:40:47"
+"38","38","Colanta",," Metal y vidrio"," Gris",," Puertas Sin Chapas",NULL,"2025-06-11 10:41:15"
+"39","39","Altavoz Coordinación","Pequeño",NULL,NULL,"Hitronic",NULL,NULL,"2025-06-10 04:03:07"
+"41","41",,"8p",NULL,NULL,"Maxlw",NULL,NULL,"2025-06-10 04:05:03"
+"42","42","Maria Mediadora",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"43","43","2 Gavetas",," Madera",,," Sin Llave",NULL,"2025-06-10 04:05:17"
+"44","44","N/A"," N/A"," Negro"," Lenovo"," N/A",NULL,NULL,NULL
+"45","45",,NULL,"Metal y Plástico","Negro",NULL,NULL,NULL,"2025-06-10 04:05:35"
+"46","46","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"47","47",,NULL,NULL,"Blanco","Epson Ex3240","Con Base",NULL,"2025-06-10 04:04:19"
+"48","48","Colanta"," Grande"," Metal y Vidrio",,," Sin Llaves",NULL,"2025-06-10 04:05:54"
+"49","49","De Bandera"," N/A"," Metal"," N/A"," N/A"," N/A",NULL,NULL
+"50","50","De Escudo"," N/A"," Metal"," N/A"," N/A"," N/A",NULL,NULL
+"51","51","Virgen, Banda, IEE, Mpo, Dpto, Nal"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"52","52","N/A"," Grande"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"53","53","Con Cargador"," Grande"," Fibra De Vidrio"," Blanco"," Jimbao"," N/A",NULL,NULL
+"54","54","De Correa"," Pequeño"," Madera"," Negro"," N/A"," N/A",NULL,NULL
+"55","55","De Salsa"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"56","56","Tapizada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"57","57","Merenguera"," N/A"," Fibra De Vidrio"," Negro"," Remo"," Par",NULL,NULL
+"58","58","De Chirimia"," Medianas"," Madera"," Cafe"," Remo"," Par",NULL,NULL
+"59","59","Clarines Soprano"," N/A"," N/A"," N/A"," Sonar"," Muy Viejas",NULL,NULL
+"60","60","Sin Cajones"," Grande"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"61","61","Virgen"," Banda"," IEE"," Mpio"," Dpto"," NAl",NULL,NULL
+"62","62","Metalica de 4 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"63","63","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"64","64","N/A"," Grande"," Aluminio"," Gris"," Águila"," N/A",NULL,NULL
+"65","65","Marco Gris"," Grande"," Aluminio"," Gris"," Inglesa"," Gils ",NULL,NULL
+"66","66","Con Cargador"," N/A"," N/A"," N/A"," Jimbao"," N/A",NULL,NULL
+"67","67","N/A"," 15cm"," Metal"," Dorado"," N/A"," N/A",NULL,NULL
+"68","68","De Cargador"," Grande"," Madera"," N/A"," Jimbao"," N/A",NULL,NULL
+"69","69","De Correa"," Grande"," Madera"," N/A"," Nacional"," N/A",NULL,NULL
+"70","70","Ergonomica Con Brazos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"71","71","En Acrilico 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"72","72","N/A"," 18"," Madera"," N/A"," N/A"," Para Reparar",NULL,NULL
+"73","73","N/A"," N/A"," N/A"," N/A"," N/A"," Completo",NULL,NULL
+"74","74","De Pistones"," N/A"," N/A"," Dorada"," Conductor"," Con Boquilla",NULL,NULL
+"75","75","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"76","76","Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"77","77","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"78","78","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"79","79","Para Televisor Con Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"80","80","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"81","81","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"82","82","En Acrilico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"83","83","Epson",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"84","84","Metal y Vidrio Colanta Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"85","85","N/A"," 4,5Mt"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"86","86","Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"87","87","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"88","88","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"89","89","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"90","90","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"91","91","Sonido 5.1"," N/A"," N/A"," Blanco"," Kalley"," N/A",NULL,NULL
+"92","92","3300 Lumens"," N/A"," N/A"," N/A"," Ecolight"," N/A",NULL,NULL
+"93","93","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"94","94","Altavoz Coordinación","Pequeño",NULL,"Negro","Hitronic",NULL,NULL,"2025-06-10 03:11:36"
+"95","95","O Bafle de 8"" Maxlw",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"96","96","Cientificas Marca Hp",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"97","97","2 Gavetas",NULL,"Madera","Gris",NULL,NULL,NULL,"2025-06-10 03:11:54"
+"98","98","Docente",," Plástico y Metal"," Negro",,,NULL,"2025-06-10 03:12:40"
+"99","99","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"100","100","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"101","101",," 2m"," Acrílico"," Blanco",,,NULL,"2025-06-10 03:13:03"
+"102","102","Con Forro Rojo",,," Negra"," Aprix",,NULL,"2025-06-10 01:08:05"
+"103","103",,,,," Epson",,NULL,"2025-06-10 03:13:13"
+"104","104",,," Metal y Vidrio"," Gris",,"Chapa Mala",NULL,"2025-06-10 03:12:18"
+"105","105","Para Auditorio"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"106","106","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"107","107","Mapa de Colombia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"108","108","En Madera de 2 Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"109","109","Marca Genius Con 5 Bafles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"110","110","Metalica Tapizada Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"111","111","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"112","112","En Acrilico 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"113","113","Marca Epson Power Lite W12",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"114","114","Madera y Vidrio 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"115","115","Para Tenis de Mesa Rodachin",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"116","116","Para Tenis de Mesa Rodachin",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"117","117","Plastica Cuadrada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"118","118","Con Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"119","119","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"120","120","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"121","121","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"122","122","Metal y Vidrio 2 Puertas Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"123","123","N/A"," Pequeño"," Metal"," Gris"," Taotronics"," N/A",NULL,NULL
+"124","124","De 2 Cajones"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"125","125","Con 4 Bafles"," N/A"," N/A"," N/A"," Genius"," N/A",NULL,NULL
+"126","126","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"127","127","Universitaria"," N/A"," Plastico"," Verde"," N/A"," SEDUCA",NULL,NULL
+"128","128","De Docente"," N/A"," Metal Y Plastico"," Negro"," N/A"," N/A",NULL,NULL
+"129","129","N/A"," 2 Mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"130","130","Con Base"," N/A"," N/A"," N/A"," View Sonic"," N/A",NULL,NULL
+"131","131","En Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"132","132","De Tijera de 6 Peldaños",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"133","133","Metalicas Con 4 Sillas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"134","134","Para Computador Logitech",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"135","135","De Escritorio Marca Argon",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"136","136","Mixer Behringer Xenyx 1204",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"137","137","Sonido Ca3000 Pro Audio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"138","138","Madera de 2 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"139","139","Alámbrico"," N/A"," N/A"," N/A"," Shure"," N/A",NULL,NULL
+"140","140","Inalámbrico"," N/A"," N/A"," N/A"," Pro Dj"," N/A",NULL,NULL
+"141","141","Tp Link",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"142","142","N/A"," N/A"," Negro"," Lenovo"," N/A",NULL,NULL,NULL
+"143","143","Ergonomica Con Brazos Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"144","144","Ergonomica Sin Brazos Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"145","145","Power Backs",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"146","146","Star Tec",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"147","147","De 5 Puestos"," N/A"," Metálico"," Gris"," N/A"," (20 Puestos)",NULL,NULL
+"148","148","En Madera Con Cajoneras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"149","149","De Escritorio Intel Pentium View Sonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"150","150","De Escritorio Intel Pentium View Sonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"151","151","De Escritorio Maxitec Hp View Sonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"152","152","Para Modulo Oficina 1 Gaveta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"153","153","Marca Haceb",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"154","154","Marca Behringer",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"155","155","Tapizado Color Verde + Escritorio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"156","156","Haceb Color Beige",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"157","157","Giratoria"," Personal"," Tapizada"," Negra"," N/A"," Con Rodachines",NULL,NULL
+"158","158","Metal y Acrilico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"159","159","Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"160","160","Metalica Tapizada Color Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"161","161","Plasticas Con Brazo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"162","162","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"163","163","Con Brazos"," N/A"," Plástico"," Roja"," Rimax"," N/A",NULL,NULL
+"164","164","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"165","165","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"166","166","En Acrilico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"167","167","Tipo Pizarra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"168","168","N/A"," N/A"," N/A"," N/A"," Tp-Link Ac600"," N/A",NULL,NULL
+"169","169","N/A"," 4,5Mt"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"170","170","N/A"," 15Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"171","171","N/A"," 30Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"172","172","Aa y Aaa"," Pequeño"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"173","173","N/A"," Mediana"," Acero Inoxidable"," Plateado"," N/A"," Cuadrada",NULL,NULL
+"174","174","De Escritorio"," Intel Core I5 Décima Generación"," N/A"," N/A"," Janus"," Con Pantalla y Periféricos",NULL,NULL
+"175","175","Agua Fría y Caliente"," N/A"," N/A"," Blanco"," Kalley"," N/A",NULL,NULL
+"176","176","N/A"," 25Mt"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"177","177","N/A"," N/A"," Jackar"," Blanco"," N/A"," N/A",NULL,NULL
+"178","178","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"179","179","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," N/A"," Compumax",NULL,NULL
+"180","180","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"181","181","CPE",,," Negro"," Compumax",,NULL,"2025-06-10 04:11:17"
+"182","182","8 Puertos"," Pequeño"," N/A"," Negro"," Powets"," N/A",NULL,NULL
+"183","183","Tp Link Inalambrico Tl.Wr94On",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"184","184","Con Forro Rojo"," N/A"," N/A"," Negra"," Aprix"," N/A",NULL,NULL
+"185","185","Con Forro Rojo",,," Negra"," Aprix",,NULL,"2025-06-10 04:09:09"
+"186","186","Smart Tv"," 43p"," N/A"," Negro"," Samsung"," N/A",NULL,NULL
+"187","187","N/A"," 800*600 (Svga)"," N/A"," Blanco"," Epson Power Lite S31 "," N/A",NULL,NULL
+"188","188",," 800*600 (Svga)",," Blanco"," Epson Power Lite S39",,NULL,"2025-06-10 02:47:41"
+"189","189","N/A"," 800*600 (Svga)"," N/A"," Negro"," Epson Power Lite S31 "," N/A",NULL,NULL
+"190","190","De Pared"," N/A"," Madera"," Negro"," N/A"," N/A",NULL,NULL
+"191","191","Madera de 4 Niveles + Cajonera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"192","192","N/A"," 5Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"193","193","Huawei Y5",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"194","194","De Escritorio"," Intel Core I5 Décima Generación"," N/A"," N/A"," Janus"," Con Pantalla y Periféricos",NULL,NULL
+"195","195","De Escritorio"," N/A"," N/A"," Blanco"," Lenovo"," Todo En Uno",NULL,NULL
+"196","196","De Escritorio"," N/A"," N/A"," Negro"," Hp"," Todo En Uno",NULL,NULL
+"197","197","N/A"," N/A"," N/A"," N/A"," Eagle 206"," N/A",NULL,NULL
+"198","198","Color Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"199","199","En L"," Grande"," Madera"," Negro"," N/A"," Con Archivador",NULL,NULL
+"200","200","Metal y Madera de 1 Cajon",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"201","201","Para Rack"," N/A"," Metálico"," N/A"," 7Ru F51"," N/A",NULL,NULL
+"202","202","N/A"," Grande"," Metálico"," N/A"," Bensini"," N/A",NULL,NULL
+"203","203","Multifuncional"," Grande"," N/A"," Blanco"," Bizhub 364 E"," N/A",NULL,NULL
+"204","204","Multifuncional"," Grande"," N/A"," Blanco"," Toshiba E-Studio 3555C"," N/A",NULL,NULL
+"205","205","Trapezoidal Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"206","206","Para Rack "," 8 Puertos"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"207","207","En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"208","208","2 Huecos"," Pequeña"," Metálico"," N/A"," Gipao Gp 05"," N/A",NULL,NULL
+"209","209","Metalico Blanco",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"210","210","8 Puertos"," Pequeño"," N/A"," Negro"," Powets"," N/A",NULL,NULL
+"211","211","N/A"," N/A"," N/A"," N/A"," Magon Ev 3000"," N/A",NULL,NULL
+"212","212","N/A"," N/A"," N/A"," N/A"," Nicomar"," N/A",NULL,NULL
+"213","213","De Pared",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"214","214","Tapizadas y Metalicas Negras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"215","215","Ergonómica"," Personal"," N/A"," Azul Rey"," N/A"," Giratoria",NULL,NULL
+"216","216","Ergonómica"," Personal"," N/A"," Verde"," N/A"," Giratoria",NULL,NULL
+"217","217","Para Rack"," 16 Puertos"," N/A"," N/A"," Gigabit"," N/A",NULL,NULL
+"218","218","Inalámbrico"," N/A"," N/A"," N/A"," Panasonic"," N/A",NULL,NULL
+"219","219","De 4 Cajones"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"220","220","De 4 Niveles"," N/A"," Metálico"," N/A"," N/A"," N/A",NULL,NULL
+"221","221","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"222","222","Pequeño Hi Tronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"223","223","N/A"," 15Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"224","224","Para Video Beam"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"225","225","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"226","226","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"227","227","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"228","228","N/A"," 800*600"," N/A"," Blanco"," Epson Power Lite 93 "," Con Base Techo",NULL,NULL
+"229","229","De 3 Cajones"," N/A"," Metálico"," N/A"," N/A"," N/A",NULL,NULL
+"230","230","De 4 Niveles"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"231","231","Sonido Interno"," Pequeño"," N/A"," Negro"," Rlip"," Mod. Ksb-250",NULL,NULL
+"232","232","De Escritorio"," N/A"," N/A"," Negro"," Intel Core I3 Argón"," N/A",NULL,NULL
+"233","233","2 Cajones A Cada Lado"," Grande"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"234","234","Madera 28 Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"235","235","N/A"," N/A"," N/A"," Negro"," Epson L3110"," N/A",NULL,NULL
+"236","236","Para Computo En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"237","237","N/A"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"238","238","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"239","239","Plasma",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"240","240","N/A"," 2 Mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"241","241","De Escritorio"," N/A"," N/A"," Negro"," Hp"," Todo En Uno",NULL,NULL
+"242","242","Paisaje Oleo En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"243","243","De PC"," Personal"," Madera Y Metal"," Madera","  N/a","  N/a",NULL,NULL
+"244","244","3 Cajones"," Grande"," Madera Y Metal"," Gris"," N/A"," N/A",NULL,NULL
+"245","245","A Color","  N/a","  N/a","  Negro","  Epson  L3150"," N/A",NULL,NULL
+"246","246","Panel Color Verde",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"247","247","3 Puestos"," N/A"," Madera"," Madera"," N/A"," N/A",NULL,NULL
+"248","248","De Madera Movil",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"249","249","3 Puestos"," N/A"," Malla"," Negro"," N/A"," N/A",NULL,NULL
+"250","250","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," M5n0cx02f47319d",NULL,NULL
+"251","251","De 6 Tomas"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"252","252","Con Brazos"," N/A"," Plástico Con Malla"," Negro"," N/A"," Giratoria",NULL,NULL
+"253","253","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"254","254","3 Puestos Azul Rey",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"255","255","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"256","256","De Corcho de 1 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"257","257","N/A"," 2 Mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"258","258","Epson Color Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"259","259","Auxiliar"," Pequeño"," Metal y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"260","260","Dos Gavetas"," Grande"," Metal y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"261","261","N/A"," N/A"," N/A"," Negro"," Epson"," N/A",NULL,NULL
+"262","262","N/A"," N/A"," N/A"," Negra"," N/A"," Giratoria",NULL,NULL
+"263","263","N/A"," N/A"," Metal y Vidrio"," Gris"," N/A"," N/A",NULL,NULL
+"264","264","De 2 Niveles"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"265","265","De Sonido Marca Beheringer",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"266","266","Con Marco de Madera Imagen Paisaje",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"267","267","Flores",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"268","268","Tipo Directorio En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"269","269","De Sonido Spain Cx 8400 Usb",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"270","270","Verdes",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"271","271","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"272","272","N/A"," N/A"," N/A"," N/A"," New Line"," N/A",NULL,NULL
+"273","273","Madera y Cuero",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"274","274","Ergonomica Sin Brazos Giratoria Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"275","275","Acrilico Pequeño",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"276","276","De Metal y Vidrio Con Puertas Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"277","277","N/A"," Pequeño"," N/A"," Negro"," Hitronic"," N/A",NULL,NULL
+"278","278","N/A"," 8p"," N/A"," Negro"," L"," N/A",NULL,NULL
+"279","279","N/A"," N/A"," N/A"," Gris"," Lenovo"," SN PF0GTK0A",NULL,NULL
+"280","280","De Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"281","281","Para Video Beam"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"282","282","N/A"," N/A"," N/A"," N/A"," Unitec"," N/A",NULL,NULL
+"283","283","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"284","284","Universitaria"," N/A"," Plástica y Madera"," Verde"," N/A"," N/A",NULL,NULL
+"285","285","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"286","286","N/A"," N/A"," N/A"," Negro"," Epson Power Lite 531"," Con Base",NULL,NULL
+"287","287","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"288","288","Pequeño Hi Tronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"289","289","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"290","290","Altavoz Coordinación"," Pequeño",,"Negro"," Hitronic",,NULL,"2025-06-10 03:30:49"
+"291","291",,"8p",NULL,"Negro","Maxlin",NULL,NULL,"2025-06-10 03:31:16"
+"292","292","De María Mediadora",,,,,,NULL,"2025-06-10 03:31:27"
+"293","293","De 2 Gavetas",," Madera",,,,NULL,"2025-06-10 03:31:36"
+"294","294","Para Video Beam",,," Blanco",,,NULL,"2025-06-10 03:32:09"
+"295","295","De Docente",," Plástico y Metal"," Negro",,,NULL,"2025-06-10 03:32:33"
+"296","296","Universitarias",," Plástico"," Verde",," Seduca",NULL,"2025-06-10 03:32:46"
+"297","297",," 2m"," Acrílico"," Blanco",,,NULL,"2025-06-10 03:33:26"
+"298","298","Con Base",,," Blanco"," Epson Ex3240",,NULL,"2025-06-10 03:33:36"
+"299","299","Colanta",," Metal y Vidrio"," Gris",,,NULL,"2025-06-10 03:31:55"
+"300","300","Pequeño Marca Yamak",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"301","301","Plasticos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"302","302","De Escritorio Intel Celeron Core 3400 (Monitor Samsung)",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"303","303","De Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"304","304","Metalica de 4 Puestos Colanta Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"305","305","De Metal y Vidrio Colanta Con Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"306","306","Pequeño Hi Tronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"307","307","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"308","308","Con 5 Bafles",NULL,NULL,NULL,"Genius",NULL,NULL,"2025-06-11 10:41:35"
+"309","309","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"310","310","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"311","311","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"312","312","Pizarra","2m",NULL,"Verde",NULL,NULL,NULL,"2025-06-11 10:41:51"
+"313","313","Panasonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"314","314","Sharp",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"315","315","N/A"," 800*600"," N/A"," Blanco"," Epson Power Lite 93"," Con Base Techo",NULL,NULL
+"316","316","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"317","317","Vidrio y Metal 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"318","318","Con logo IEE",NULL,"Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:14:26"
+"319","319","3 Gavetas",NULL,"Metal y Madera","Negro",NULL,NULL,NULL,"2025-06-10 03:14:54"
+"320","320","Para Computadores","Largas","Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:15:10"
+"321","321","SEDUCA"," Lcd 14p",," Negro"," Compumax","Intel Core N4020/Bga",NULL,"2025-06-10 16:31:32"
+"322","322","Antioquia Digital",,," Negro"," Compumax",,NULL,"2025-06-10 16:32:39"
+"323","323","Para Switches",NULL,NULL,"Gris",NULL,NULL,NULL,"2025-06-10 03:18:16"
+"324","324","Para Switches",NULL,NULL,"Negro",NULL,NULL,NULL,"2025-06-10 03:18:30"
+"325","325","De 6 Tomas",,,," Unitec",,NULL,"2025-06-10 03:18:40"
+"326","326","Ergonómica Giratoria",NULL,NULL,"Negra",NULL,NULL,NULL,"2025-06-10 03:19:02"
+"327","327","Sin Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 03:19:13"
+"328","328","Sin Brazos",," Plástico"," Blanco"," Rimax",,NULL,"2025-06-10 03:19:39"
+"329","329","De 24 Puertos",NULL,NULL,NULL,"D-Link Des1024 D",NULL,NULL,"2025-06-10 03:20:04"
+"330","330","De 24 Puertos",NULL,NULL,NULL,"Hp V1410-24",NULL,NULL,"2025-06-10 03:20:15"
+"331","331","De 28 Puertos",NULL,NULL,NULL,"D-Link Des 1210 28P",NULL,NULL,"2025-06-10 03:20:28"
+"332","332",,"2m","Acrílico","Blanco",NULL,NULL,NULL,"2025-06-10 03:20:46"
+"333","333","Onescreen",," Metálico y Plástico"," Negro",," 11 Piezas",NULL,"2025-06-10 03:21:00"
+"334","334","Lcd",,,," Lg",,NULL,"2025-06-10 03:21:12"
+"335","335","Etn - 9130","Grande",NULL,"Negro",NULL,NULL,NULL,"2025-06-10 03:21:38"
+"336","336","Colanta",NULL,"Metal y Vidrio","Gris",NULL,NULL,NULL,"2025-06-10 03:21:57"
+"337","337","Altavoz Coordinación"," Pequeño",," Negro",,,NULL,"2025-06-10 01:29:09"
+"338","338",,," Metal"," Blanco",,,NULL,"2025-06-10 01:31:42"
+"339","339","2 Gavetas",," Madera"," Madera",,"Con chapa",NULL,"2025-06-10 02:43:29"
+"340","340","Antigolpes",," Plástico"," Negro"," Compumax",,NULL,"2025-06-10 02:43:46"
+"341","341","Trapezoidal",," Madera - Metal"," Madera - Negro",,,NULL,"2025-06-10 02:43:57"
+"342","342","Intel Core N4020/Bga"," Lcd 14p"," "," Negro"," Compumax",,NULL,"2025-06-10 02:44:19"
+"343","343","CPE"," ",," Negro"," Compumax",,NULL,"2025-06-10 02:44:45"
+"344","344","De 8 Tomas"," "," "," Blanco"," Powest",,NULL,"2025-06-10 02:45:17"
+"345","345","Escritorio"," "," Plástico - Metal"," Negro"," "," ",NULL,"2025-06-10 02:45:32"
+"346","346","Sin Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 02:45:49"
+"347","347",," 2m","Acrílico"," Blanco",,"Cuadriculado",NULL,"2025-06-10 02:46:37"
+"348","348","Pizarra","2m","Acrilico"," Blanco - Verde",,,NULL,"2025-06-10 02:47:04"
+"349","349","Con Forro Rojo",,," Negra"," Aprix",,NULL,"2025-06-10 02:47:23"
+"350","350","N/A"," N/A"," N/A"," Blanco"," Epson"," N/A",NULL,NULL
+"351","351",,," Metal y Vidrio"," Gris",,,NULL,"2025-06-10 02:48:27"
+"352","352","De Madera 5 Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"353","353","Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"354","354","Antigolpes",," Plástico"," Negro"," Compumax",,NULL,"2025-06-10 04:13:08"
+"355","355","Madera Grandes 2 Metros",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"356","356","Negra Ergonomica Con Rodachines",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"357","357","Marca View Sonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"358","358","De Metal y Vidrio Puertas Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"359","359","Con Puertas "," N/a"," Metal"," Gris"," N/a"," N/a",NULL,NULL
+"360","360","Metal y Vidrio Con Puertas Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"361","361","5 Gavetas",NULL,"Madera",NULL,NULL,NULL,NULL,"2025-06-10 04:14:20"
+"362","362","De 4 Puestos",," Metálico"," Gris",,,NULL,"2025-06-10 04:14:29"
+"363","363","De 4 Puestos",NULL,"Metal","Naranja",NULL,NULL,NULL,"2025-06-10 04:14:51"
+"364","364","4 Puestos",NULL,"Metal","Verde",NULL,NULL,NULL,"2025-06-10 04:15:10"
+"365","365","De 6 Puestos",NULL,"Metal",NULL,NULL,NULL,NULL,"2025-06-10 04:15:21"
+"366","366","Cuadrada",NULL,"Madera y Metal","Negro",NULL,NULL,NULL,"2025-06-10 04:12:34"
+"367","367","Trapezoidal",NULL,NULL,"Blanco",NULL,NULL,NULL,"2025-06-10 04:12:43"
+"368","368","Ergonómica",NULL,NULL,"Negro",NULL,"Con Rodachines",NULL,"2025-06-10 04:10:40"
+"369","369","Con Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 04:09:40"
+"370","370","Con Brazos",," Plástico"," Blanco"," Rimax",,NULL,"2025-06-10 04:09:50"
+"371","371","Con Brazos",," Plástico"," Verde"," Rimax",,NULL,"2025-06-10 04:09:57"
+"372","372","Sin Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 04:10:03"
+"373","373","Sin Brazos",," Plástico"," Blanco"," Rimax",,NULL,"2025-06-10 04:10:09"
+"374","374",,"2m","Acrílico",NULL,NULL,NULL,NULL,"2025-06-10 04:09:25"
+"375","375","Pequeño Maxlin",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"376","376","De 2 Gavetas"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"377","377","8 Puertos"," Pequeño"," N/A"," Negro"," Powets"," N/A",NULL,NULL
+"378","378","De Docente"," N/A"," Plástica Y Metálica"," Negra"," N/A"," N/A",NULL,NULL
+"379","379","Universitaria"," N/A"," Plástico"," Verde"," N/A"," Seduca",NULL,NULL
+"380","380","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"381","381","N/A"," 2 Mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"382","382","N/A"," N/A"," Metal Y Vidrio"," Gris"," N/A"," N/A",NULL,NULL
+"383","383","Para Auditorio"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"384","384","Con Canon Macho y Hembra"," Grande"," N/A"," Negro"," Behringer"," N/A",NULL,NULL
+"385","385","Encauchetado"," 5 Mt"," N/A"," Rojo"," N/A"," N/A",NULL,NULL
+"386","386","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"387","387","Entorchado"," 30 Mt"," N/A"," Negro y Rojo"," N/A"," N/A",NULL,NULL
+"388","388","N/A"," N/A"," N/A"," N/A"," Hixer Xevyx 1622 Fx"," N/A",NULL,NULL
+"389","389","Promocion Bachilleres",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"390","390","De Madera de Una Gaveta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"391","391","Grandes",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"392","392","En Yeso de la Virgen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"393","393","De Computo Madera y Metal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"394","394","Madera Cuadrada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"395","395","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"396","396","N/A"," N/A"," N/A"," N/A"," Pro Dj"," N/A",NULL,NULL
+"397","397","N/A"," 6 Puestos"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"398","398","En Metal y Plastico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"399","399","Plastica y Madera Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"400","400","Plastica y Madera Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"401","401","Plasticas Con Madera Universitarias",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"402","402","Con Brazos"," N/A"," Plástico"," Beige"," Rimax"," N/A",NULL,NULL
+"403","403","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"404","404","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"405","405","De Microfonos Inalambricos Gw9002",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"406","406","Para Video Beam Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"407","407","N/A"," N/A"," N/A"," Blanco"," Epson Power Lite X21"," Con Control",NULL,NULL
+"408","408","Pequeño Marca Hitronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"409","409","6 Puertos"," Pequeño"," N/A"," Negro"," Unitec"," N/A",NULL,NULL
+"410","410","Plastica y Metalica Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"411","411","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"412","412","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"413","413","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"414","414","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"415","415","Pequeño Hi Tronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"416","416","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"417","417","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"418","418","Plastica y Metalica Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"419","419","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"420","420","En Lona",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"421","421","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"422","422","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"423","423","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"424","424","Altavoz","Pequeño",NULL,"Negro","Hitronic",NULL,NULL,"2025-06-09 17:51:54"
+"425","425","CEP",NULL,NULL,"Negro","Compumax","SN26101586",NULL,"2025-06-10 00:17:42"
+"426","426","Para clase","8p",NULL,"Negro","L&L Sound","Sin 1x1",NULL,"2025-06-09 17:53:40"
+"427","427","De 2 Gavetas","Personal","Madera",NULL,NULL,"Sin chapa",NULL,"2025-06-09 17:54:33"
+"428","428","N/A"," N/A"," N/A"," N/A"," Unitec"," N/A",NULL,NULL
+"429","429","Docente",NULL,"Plástico y Metal","Negra",NULL,NULL,NULL,"2025-06-09 17:55:24"
+"430","430","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"431","431",,"2m","Acrílico","Blanco",NULL,NULL,NULL,"2025-06-09 17:56:47"
+"432","432",,,," Negro"," Epson PowerLite S31+",,NULL,"2025-06-10 00:16:27"
+"433","433","Colanta","4 puestos","Metal y vidrio","Gris",NULL,"Puertas inferiores metálicas",NULL,"2025-06-09 18:01:17"
+"434","434","N/A"," Pequeño"," N/A"," Negro"," Hitronic"," En Mal Estado",NULL,NULL
+"435","435","O Cabina de 8"" Marca L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"436","436","2 Gavetas"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"437","437","Personal Docente"," N/A"," Plástico Y Metal"," Negro"," N/A"," N/A",NULL,NULL
+"438","438","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"439","439","N/A"," 2mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"440","440","N/A"," N/A"," N/A"," Negro"," Epson Power Lite S31 "," Con Base",NULL,NULL
+"441","441","N/A"," N/A"," Metal Y Vidrio"," N/A"," N/A"," Donación Colanta",NULL,NULL
+"442","442",," Pequeño",," Negro"," Hitronic",,NULL,"2025-06-10 01:05:34"
+"443","443","2 Gavetas",NULL,"Madera",NULL,NULL,NULL,NULL,"2025-06-10 01:06:28"
+"444","444","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," M5N0CX02F523194",NULL,NULL
+"445","445","Docente",NULL,"Plástico y Metal","Negro",NULL,NULL,NULL,"2025-06-10 01:07:17"
+"446","446","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"447","447","Digital","Grande",NULL,"Gris","One Screen",NULL,NULL,"2025-06-10 00:20:46"
+"448","448",,"2m","Acrílico","Blanco",NULL,NULL,NULL,"2025-06-10 00:22:11"
+"449","449","Colanta","4 puestos","Metal y Vidrio","Gris",NULL,NULL,NULL,"2025-06-10 00:23:08"
+"450","450","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"451","451","Diferentes Pulgadas"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"452","452","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"453","453","De Estrella"," N/A"," N/A"," Negro"," Stanley"," N/A",NULL,NULL
+"454","454","De Pala"," N/A"," N/A"," Azul"," N/A"," N/A",NULL,NULL
+"455","455","De Pala"," N/A"," N/A"," Negro"," Stanley"," N/A",NULL,NULL
+"456","456","Metalica Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"457","457","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"458","458","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"459","459","Una Con Oxido"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"460","460","De Expansion"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"461","461","De Tubo"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"462","462","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"463","463","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"464","464","De Uña"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"465","465","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"466","466","Con Hoja"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"467","467","Con Llave"," N/A"," N/A"," N/A"," Bauker"," N/A",NULL,NULL
+"468","468","De Láminas"," N/A"," N/A"," Naranja"," N/A"," N/A",NULL,NULL
+"469","469","Grande","2m x 40cm","Metal","Gris"," ",,NULL,"2025-06-09 21:26:35"
+"470","470","Altavaoz","Pequeño",NULL,"Negro","Hitronic",NULL,NULL,"2025-06-09 21:27:29"
+"471","471","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"472","472","Docente",NULL,"Plástico y Metal","Negra",NULL,NULL,NULL,"2025-06-09 21:27:57"
+"473","473","Universitaria",NULL,"Plástico y Metal",NULL,NULL,NULL,NULL,"2025-06-09 21:28:19"
+"474","474",,"2m","Acrílico","Blanco",NULL,NULL,NULL,"2025-06-09 21:28:53"
+"475","475","Digital","Grande",NULL,"Gris","One Screen",NULL,NULL,"2025-06-09 21:29:25"
+"477","477","De 4 Niveles"," N/A"," Madera"," N/A"," N/A"," Con Llaves",NULL,NULL
+"478","478","Pequeño Marca Hitronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"479","479","2 Gavetas"," N/A"," Madera"," N/A"," N/A"," Con Llave",NULL,NULL
+"480","480","Plastica y Metalica Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"481","481","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"482","482","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"483","483","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"484","484","Donación Colanta"," N/A"," Metal Y Vidrio"," N/A"," N/A"," Sin Llave",NULL,NULL
+"485","485","Altavoz Coordinación","Pequeño ",NULL,NULL,"L&L Sound",NULL,NULL,"2025-06-10 03:34:51"
+"486","486","De Escritorio",NULL,NULL,"Negro","HP",NULL,NULL,"2025-06-10 03:36:05"
+"487","487","Una Gaveta ",,"Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:37:04"
+"488","488","Extension Retraible",,,,,,NULL,"2025-06-10 03:37:14"
+"489","489","10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"491","491","Para Computadores","Largas",NULL,NULL,NULL,NULL,NULL,"2025-06-10 03:38:10"
+"492","492","Trapezoidal",NULL,"Metal y Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:38:26"
+"493","493",,,,,"Unitec",,NULL,"2025-06-10 03:39:53"
+"494","494","Unipersonal",NULL,"Metal y Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:40:21"
+"495","495","12 Kw",,,," New Line",,NULL,"2025-06-10 03:41:03"
+"496","496",,,,," Makron",,NULL,"2025-06-10 03:41:20"
+"497","497","N/A"," N/A"," N/A"," N/A"," Unitec"," N/A",NULL,NULL
+"498","498","Sin Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 03:49:08"
+"499","499","Sopladora",,,,,,NULL,"2025-06-10 03:47:33"
+"500","500","De 24 Puertos ",NULL,NULL,NULL,"Tp Link Tl-Sfl024 ",NULL,NULL,"2025-06-10 03:36:29"
+"501","501","8 Puertos",,,,,,NULL,"2025-06-10 03:47:50"
+"502","502","De Ventanas",,,,,,NULL,"2025-06-10 03:48:04"
+"504","504","Colanta",NULL,"Metal y Vidrio",NULL,NULL,NULL,NULL,"2025-06-10 03:44:25"
+"505","505","Mp3 Usb Bluetooth"," 8p",," Negro"," Haxlin",,NULL,"2025-06-10 04:06:55"
+"506","506",," 15m",," Negro",,,NULL,"2025-06-10 04:07:06"
+"507","507","Alámbrico"," Personal"," Metálico"," Negro"," Shure"," N/A",NULL,NULL
+"508","508","Pequeño Marca Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"509","509","Madera Pequeña",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"510","510","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"511","511","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"512","512","N/A"," N/A"," Negro"," Hp",,NULL,NULL,NULL
+"513","513","Sin Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"514","514","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"515","515","En Pizarra y Acrilico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"516","516","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"517","517","Marca Logitech Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"518","518","Para Spining Profit",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"519","519","N/A"," 12p"," N/A"," Negro"," Pro Dj"," Mp3 Usb Bluetooth",NULL,NULL
+"520","520","Impermeables",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"521","521","Escritorio "," N/a"," Metetal Madera"," Negro"," N/a"," N/a",NULL,NULL
+"522","522","Multiproposito Marca Fit",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"523","523","Para Abdominales",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"524","524","Para Computo Metal Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"525","525","Metal Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"526","526","Para Sahar Sport Fitness",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"527","527","Color Azul",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"528","528","En Pvc Plastico Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"529","529","Pequeño Marca Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"530","530","Gramera Marca Oweight 500G",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"531","531","Gramera Marca Procet 500G",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"532","534","Niños",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"533","535","Metalica de 5 Puestos Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"534","536","Digital Technika",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"535","537","De Trabajo En Acero Inoxidable Rodachines",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"536","538","Marca Aguila",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"537","539","Marca Premier",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"538","540","Marca Procet",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"539","541","Marca Sogeresa",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"540","542","Monocular Marca 200M",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"541","543","Monocular Marca Sogeresa",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"542","544","Monocular Marca Yj-T",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"543","545","Sin Marca Ce Parte Atrás",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"544","546","Gramera Marca Ohaus 5 Lbs",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"545","547","En Acero Inoxidable Con Tomas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"546","548","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"547","549","En Lona Tela",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"548","550","En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"549","551","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"550","552","Excepcional Desmontable 23 Partes 85 Cm",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"551","554","Madera y Vidrio 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"552","555","Metal y Vidrio 4 Puestos Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"553","556","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"554","557","Metalica 4 Puestos Roja",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"555","558","De Escritorio"," Personal"," N/A"," Negro"," Samsung"," Intel Core",NULL,NULL
+"556","559","Intel Pentium"," SN CNDO4974JZ"," N/A"," N/A"," GRIS OSCURO"," HP Laptop",NULL,NULL
+"557","560","N/A"," N/A"," Plástico Y Metal"," Negra"," N/A"," N/A",NULL,NULL
+"558","561","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"559","562","4 Cuerpos"," Grande"," Metal Y Vidrio"," Blanco"," N/A"," N/A",NULL,NULL
+"560","563","De 4 Niveles"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"561","564","Madera 3 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"562","565","Madera Pequeña",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"563","566","Rimax Azul",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"564","567","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"565","568","Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"566","569","Plastica y Metal Azul",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"567","570","Con Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"568","571","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"569","572","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"570","573","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"571","574","Acrilico Pizarra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"572","575","De Madera 6 Puestos Con Rodachines",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"573","576","Metalica Gris 4 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"574","577","Metalica y Malla Para Voleibol",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"575","578","Tenis de Mesa",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"576","579","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"577","580","Metalica Tapizada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"578","581","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"579","582","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"580","583","Acrilico y Pizarra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"581","584","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"582","585","Pequeño Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"583","586","Para Videobeam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"584","587","N/A"," 15Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"585","588","Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"586","589","Metal y Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"587","590","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"588","591","De 8 Tomas"," N/A"," N/A"," Blanco"," Powest"," N/A",NULL,NULL
+"589","592","Metal y Plastico Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"590","593","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"591","594","Ergonomica Con Brazos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"592","595","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"593","596","Sonido 5.1"," N/A"," N/A"," Blanco"," Kalley"," N/A",NULL,NULL
+"594","597","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"595","598","Metal y Vidrio 3 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"596","599","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"597","600","Pequeño Marca Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"598","601","De 15"" Vitra Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"599","602","Powercom A Plug"," 10Mt"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"600","603","Xlr"," 10Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"601","604","N/A"," 10Mt"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"602","605","Ec"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"603","606","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"604","607","De Madera y Metal 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"605","608","Canon A Canon"," 10Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"606","609","N/A"," 25Mt"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"607","610","Alámbrico"," N/A"," N/A"," N/A"," Sennheiser 835"," N/A",NULL,NULL
+"608","611","Inalámbrico"," N/A"," N/A"," N/A"," Pro Dj Mlh522"," N/A",NULL,NULL
+"609","612","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"610","613","Canon Hembra"," 10Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"611","614","Canon Macho"," 10Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"612","615","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"613","616","Sin Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"614","617","En Acrilico y Pizarra 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"615","618","O Base Para Cabina Activa",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"616","619","Epson Power Lite X21 Blanco",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"617","620","Metal y Vidrio 2 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"618","621","Metal y Vidrio Vertical",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"619","622","De Sonido Grandes Peavey",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"620","623","De Sonido Marca B3",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"621","624","Mediano American Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"622","625","Pequeño L&L Sound Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"623","626","Para Bandera"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"624","627","Para Microfonos Pro Dj",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"625","628","Qsc de 10 O 12",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"626","629","Aa y Aaa"," Pequeño"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"627","630","Con Cpu","  N/a","  N/a","  Negro","  Lg","  N/a",NULL,NULL
+"628","631","De Sonido Beheringer Xenix X2222",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"629","632","De Sonido Ca 3000 Pro Audio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"630","633","De Sonido Makie Pro Fx22",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"631","634","De Sonido Pequeña Behringer Xeny X 1202",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"632","635","De Luces Adj",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"633","636","De Madera Larga 2 Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"634","637","De Madera de 2 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"635","638","Mediano",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"636","639","De Conversion 3D Panasonic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"637","640","Lp 003",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"638","641","O Escritorio de Madera Porta Equipos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"639","642","Redonda de Madera Con Vidrio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"640","643","Alámbrico"," N/A"," N/A"," N/A"," Sennheiser"," N/A",NULL,NULL
+"641","644","Alámbrico"," N/A"," N/A"," N/A"," Shure"," N/A",NULL,NULL
+"642","645","Inalámbrico "," N/A"," N/A"," N/A"," Sennheiser"," N/A",NULL,NULL
+"643","646","Inalámbrico"," N/A"," N/A"," N/A"," Pro Dj"," N/A",NULL,NULL
+"644","647","Inalámbrico"," Personal"," Metálico"," Negro"," Pro Dj"," N/A",NULL,NULL
+"645","648","Samsung",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"646","649","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Gris"," Asus"," N/A",NULL,NULL
+"647","650","N/A"," N/A"," N/A"," N/A"," Star Tec"," N/A",NULL,NULL
+"648","651","Ergonomicas Con Brazos Negras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"649","652","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"650","653","Con Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"651","654","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"652","655","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"653","656","Sin Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"654","657","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"655","658","Sony Dav - T 2140",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"656","659","De Emisoras Fm Sin Marca",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"657","660","Speaker",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"658","661","Power Backs",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"659","662","Star Tec",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"660","663","Epson Power Lite X21 Blanco",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"661","664","De Metal Casillero de 2 Puertas Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"662","665","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"663","666",,,,," Trust Urban",,NULL,"2025-06-10 00:05:15"
+"664","667",," "," Metálica"," Gris",,,NULL,"2025-06-10 00:02:41"
+"665","668","Trapezoidales"," Personal"," Madera",," "," ",NULL,"2025-06-10 00:02:55"
+"666","669","Sin Brazos",," Plástico"," Azul"," Rimax",,NULL,"2025-06-10 00:04:05"
+"667","670","Con Forro Rojo",,," Negra"," Aprix",,NULL,"2025-06-10 00:05:06"
+"668","671","Smart Tv"," 52p",," Negro"," Samsung",,NULL,"2025-06-10 00:05:30"
+"669","672","Pequeño Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"670","673","O Cabina Activa de 8"" Maxiiv",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"671","674","2 Gavetas"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"672","675","N/A"," N/A"," Negro"," Lenovo"," N/A",NULL,NULL,NULL
+"673","676","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"674","677","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"675","678","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"676","679","Con Base"," N/A"," N/A"," Blanco"," Epson Ex 3240"," Sin Control",NULL,NULL
+"677","680","Metal y Vidrio 2 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"678","681","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"679","682","N/A"," Pequeño"," N/A"," Negro"," Hi Tronic"," N/A",NULL,NULL
+"680","683","Mp3 Usb Bluetooth"," 12p"," N/A"," Negro"," Pro Dj"," Con Base",NULL,NULL
+"681","684","2 Gavetas"," N/A"," Madera"," Madera"," N/A"," N/A",NULL,NULL
+"682","685","Colanta"," N/A"," Metal"," Gris "," N/A"," N/A",NULL,NULL
+"683","686","Phoenic Con 4 Bafles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"684","687","N/A"," N/A"," Plástico Y Metal"," Negro"," N/A"," N/A",NULL,NULL
+"685","688","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"686","689","N/A"," 2mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"687","690","Smart TV"," 58p"," N/A"," Negro"," Samsung Au7000"," N/A",NULL,NULL
+"688","691","N/A"," N/A"," N/A"," Blanco"," Epson"," Con Base",NULL,NULL
+"689","692","Colanta"," N/A"," Metal Y Vidrio"," Gris"," N/A"," N/A",NULL,NULL
+"690","693","De Gavetas",,"Madera",,,,NULL,"2025-06-14 17:55:22"
+"691","694","CPE"," N/A"," N/A"," Negro"," Compumax"," Serial 26106473",NULL,NULL
+"692","695","Posters Para Colgar"," Mediano"," Papel de Impresión"," Blanco",,,NULL,"2025-06-10 00:06:24"
+"693","696","De Docente",,"Plástico y metal","Negra",,,NULL,"2025-06-14 17:55:46"
+"694","697","Universitaria",,"Plástico","Verde",,"SEDUCA",NULL,"2025-06-14 17:56:10"
+"695","698",,"2m","Acrílico","Blanco",,,NULL,"2025-06-14 17:56:36"
+"696","699",,"Grande",NULL,"Gris","One Screen",NULL,NULL,"2025-06-15 16:16:22"
+"697","700","Colanta","4 puestos","Metal y vidrio","Gris",,,NULL,"2025-06-14 17:57:10"
+"698","701","De 2 Gavetas"," N/A"," De Madera"," N/A"," N/A"," N/A",NULL,NULL
+"699","702","De Docente"," N/A"," Plástico Y Metal"," Negro"," N/A"," N/A",NULL,NULL
+"700","703","De Docente"," N/A"," Madera"," Negra"," N/A"," Tapizada",NULL,NULL
+"701","704","Universitarias"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"702","705","Con Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"703","706","Sin Brazos"," N/A"," Plástico"," Azul"," Rimax"," N/A",NULL,NULL
+"704","707","N/A"," 2 Mt"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"705","708","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"706","709","N/A"," N/A"," Metal Y Vidrio"," Gris"," Colanta"," N/A",NULL,NULL
+"707","710","Pequeño Pf",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"708","711","Videobeam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"709","712","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"710","713","Plastica y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"711","714","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"712","715","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"713","716","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"714","717","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"715","718","Fotográfica",NULL,NULL,"Negro","Canon As126491",NULL,NULL,"2025-06-10 03:50:42"
+"716","719",," Pequeño",,,,,NULL,"2025-06-10 03:50:53"
+"717","720","Fotografica",,,,,,NULL,"2025-06-10 03:51:06"
+"718","721","Video",,,,,,NULL,"2025-06-10 03:51:16"
+"719","722","De Escritorio",,," Negro"," Phoenik"," Tipo Torre Diseño Gráfico",NULL,"2025-06-10 03:51:25"
+"720","723","Portatil",,,," ",,NULL,"2025-06-10 03:51:51"
+"721","724","2 Gavetas",NULL,"Madera",NULL,NULL,NULL,NULL,"2025-06-10 03:52:03"
+"722","725",," Grande",,,,,NULL,"2025-06-10 03:52:12"
+"723","726",,NULL,"Plástico y Metal","Negro",NULL,NULL,NULL,"2025-06-10 03:52:29"
+"724","727","Con Brazos",," Plástico"," Verde"," Rimax",,NULL,"2025-06-10 03:52:37"
+"725","728","De Video ",NULL,NULL,NULL,"Data Video Ex 500",NULL,NULL,"2025-06-10 03:53:05"
+"726","729","Pizarra","2m",NULL,NULL,NULL,NULL,NULL,"2025-06-10 03:53:15"
+"727","730","Smart Tv"," 43p",,," Samsung",,NULL,"2025-06-10 03:53:23"
+"728","731","Para Camara de Video",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"729","732","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"730","733","Pequeño Hi Tronic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"731","734","De Metal y Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"732","735","De Metal y Madera 3 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"733","736","Madera  y Metal Cuadrada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"734","737","N/A"," N/A"," N/A"," N/A"," Unitec"," N/A",NULL,NULL
+"735","738","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"736","739","Digital One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"737","740","En Acrilico 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"738","741","Ergonomica Sin Brazos Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"739","742","N/A"," N/A"," Metálica"," Gris"," N/A"," N/A",NULL,NULL
+"740","743","Para Video Beam Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"741","744","Tablero Digital "," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"742","745","Pequeño American Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"743","746","Pequeño Marca American Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"744","747","Pequeño Marca L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"745","748","Primeros Auxilios",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"746","749","Circuito Cerrado Vigilancia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"747","750","Circuito Cerrado Vigilancia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"748","751","Circuito Cerrado Vigilancia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"749","752","Circuito Cerrado Vigilancia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"750","753","Circuito Cerrado Vigilancia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"751","754","Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"752","755","Tapizada 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"753","756","Tapizada de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"754","757","Tapizada de Pizarra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"755","758","De Madera Imagen de Plantas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"756","759","Decorativo Floral",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"757","760","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"758","761","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"759","762","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"760","763","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"761","764","Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"762","765","Metalicas Con 4 Sillas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"763","766","Con Malla Para Microfutbol",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"764","767","Metalica Pequeña Microfutbol",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"765","768","Tarima Metalica Con Techo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"766","769","Baloncesto",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"767","770","De Pizarra 1 Mt",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"768","771","De 4 Niveles"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"769","772","Cuadro De Honor"," N/A"," Corcho Y Vidrio"," Madera"," N/A"," N/A",NULL,NULL
+"770","773","De Escritorio"," Gris",NULL,NULL,NULL,NULL,NULL,NULL
+"771","774","A Color"," N/A"," N/A"," Negro"," Epson L220"," N/A",NULL,NULL
+"772","775","Samsung"," Negro",NULL,NULL,NULL,NULL,NULL,NULL
+"773","776","Tipo Cordoben",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"774","777","Intel Core I5-4200M"," N/A"," N/A"," Negro"," HP"," Antioquia Digital (7) 391",NULL,NULL
+"775","778","De Pared",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"776","779","De Plastico y Metal Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"777","780","Con Brazos"," N/A"," Madera"," Cafe"," N/A"," Tapizada En Tela",NULL,NULL
+"778","781","Con Brazos"," N/A"," Plástico"," Negro"," N/A"," Giratoria",NULL,NULL
+"779","782","Sin Brazos"," N/A"," Plástico"," Negro"," N/A"," Giratoria",NULL,NULL
+"780","783","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"781","784","De 28 Puestos"," Grande"," Madera"," Marrón"," N/A"," Para Cuardernos",NULL,NULL
+"782","785","2 Gavetas"," N/A"," Metal Y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"783","786","Fotocopiadora"," Grande"," N/A"," Blanco"," Aricohmp4002"," N/A",NULL,NULL
+"784","787","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"785","788","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"786","789","N/A"," N/A"," Plástico Y Metal"," Verde"," N/A"," N/A",NULL,NULL
+"787","790","5 Cuerpos"," Grande"," Vidrio Templado"," Gris"," N/A"," N/A",NULL,NULL
+"788","791","3 Niveles"," Pequeña"," Metal Y Vidrio"," Azul"," N/A"," N/A",NULL,NULL
+"789","792","Metal y Vidrio de 2 Cuerpos Roja",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"790","793","N/A"," Grande"," Metal"," Beige"," N/A"," N/A",NULL,NULL
+"791","794","Guarda Llaves En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"792","795","Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"793","796","Jardinera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"794","797","Plastica y Metalica Verde",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"795","798","Para Motilar Jardin",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"796","799","Metal y Vidrio 2 Puertas 4 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"797","800","O Biblioteca En Madera 4 Puestos y Cajones",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"798","801","De Sonido Marca American Audio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"799","802","Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"800","803","Metalico Para Camaras Negro",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"801","804","Plastica Metalica Azul",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"802","805","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"803","806","Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"804","807","Metalica de 4 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"805","808","Gris"," Sankey"," Cd y Casetera",NULL,NULL,NULL,NULL,NULL
+"806","809","Computo de Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"807","810","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"808","811","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"809","812","Bipersonales",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"810","813","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"811","814","Madera Tapizada En Cuerina",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"812","815","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"813","816","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"814","817","Metal y Vidrio 2 Cuerpos 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"815","818","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"816","819","Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"817","820","Gemela Con Colchon",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"818","821","Madera y Vidrio Con Puerta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"819","822","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"820","823","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"821","824","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"822","825","Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"823","826","Metalica 5 Niveles Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"824","827","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"825","828","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"826","829","Bipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"827","830","Para Niños Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"828","831","Plastica Metalica Verde Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"829","832","N/a"," Pequeño"," N/a"," N/a"," N/a"," N/a",NULL,NULL
+"830","833","Pizarra de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"831","834","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"832","835","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"833","836","De 4 Niveles"," N/A"," Metálico"," N/A"," N/A"," N/A",NULL,NULL
+"834","837","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"835","838","Madera Larga",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"836","839","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"837","840","Madera de 2 Puertas Tipo Biblioteca",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"838","841","Madera 2 Gavetas"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"839","842","Metal y Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"840","843","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"841","844","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"842","845","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"843","846","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"844","847","Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"845","848","Plastica Para Niños Pequeña",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"846","849","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"847","850","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"848","851","Metal y Vidrio 2 Cuerpos Roja",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"849","852","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"850","853","De 4 Niveles"," N/A"," Metálico"," N/A"," N/A"," N/A",NULL,NULL
+"851","854","Madera Larga",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"852","855","Video Beam Metalica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"853","856","Madera de 2 Puertas Tipo Biblioteca",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"854","857","Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"855","858","1 Gabeta"," N/a"," Metal Madera"," N/a"," N/a"," N/a",NULL,NULL
+"856","859","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"857","860","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"858","861","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"859","862","Madera"," N/a","  En Tela"," N/a"," N/a"," N/a",NULL,NULL
+"860","863","Para Niños"," Pequeña"," Plástica"," N/A"," N/A"," N/A",NULL,NULL
+"861","864","Acrilico de 1Mt",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"862","865","Marca Epson Cx 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"863","866","Metal y Vidrio 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"864","867","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"865","868","N/A"," Pequeña"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"866","869","Exhibidor de Mecato"," Mediano"," Metal"," N/A"," N/A"," N/A",NULL,NULL
+"867","870","N/A"," Grande"," Metal"," Rojo"," N/A"," N/A",NULL,NULL
+"868","871","N/A"," Mediano"," Metal"," Azul"," N/A"," N/A",NULL,NULL
+"869","872","Freidora Con Pipeta"," N/A"," Aluminio"," N/A"," N/A"," N/A",NULL,NULL
+"870","873","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"871","874","N/A"," Pequeña"," Metal y Madera"," Madera"," N/A"," N/A",NULL,NULL
+"872","875","N/A"," Grande"," Metálica"," Roja"," N/A"," N/A",NULL,NULL
+"873","876","N/A"," Pequeña"," Metal y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"874","877","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"875","878","Vitrina de Confites"," Pequeño"," Vidrio"," N/A"," N/A"," N/A",NULL,NULL
+"876","879","Metalica Para Voleibol",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"877","880","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"878","881","Madera de 1 Gaveta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"879","882","Madera Larga",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"880","883","Metalica 3 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"881","884","Metalica de 5 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"882","885","Marca Halda",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"883","886","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"884","887","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"885","888","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"886","889","Niños Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"887","890","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"888","891","Ergonomica Sin Brazos Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"889","892","Donación Colanta"," N/A"," Metal Y Vidrio"," N/A"," N/A"," N/A",NULL,NULL
+"890","893","Con Puertas"," N/A"," Metal Y Vidrio"," Gris"," N/A"," N/A",NULL,NULL
+"891","894","2 Puertas"," N/A"," Metal Y Vidrio"," N/A"," N/A"," 4 Puestos",NULL,NULL
+"892","895","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"893","896","De Madera de 4 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"894","897","Metal y Madera de 1 Gaveta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"895","898","Metalica Gris de 4 Niveles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"896","899","Marca Sankey Pequeña Mp3",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"897","900","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"898","901","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"899","902","Madera Tapizada En Cuerina",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"900","903","Madera y Plasticas"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"901","904","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"902","905","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"903","906","Con Vidrios"," N/A"," Metálico"," Gris"," N/A"," Colanta",NULL,NULL
+"904","907","Pequeño Marca L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"905","908","Marca Samsung",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"906","909","Teatro En Casa Marca Sony Con 4 Bafles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"907","910","Con Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"908","911","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"909","912","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"910","913","Acrilico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"911","914","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"912","915","Para Bandera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"913","916","Antioquia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"914","917","Colombia",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"915","918","Para Bandera"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"916","919","Para Biblia En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"917","920","Maria Mediadora",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"918","922","Tijera de 5 Peldaños",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"919","923","Multiproposito 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"920","924","Vidrio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"921","925","Señor Crucificado En Yeso",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"922","926","Metal 12 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"923","927","De Madera Tipo Junta Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"924","928","Madera Redonda Para Florero",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"925","929","Doble En Cuerina Rojo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"926","930","En Cuerina Rojo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"927","931","Mabe de 250 Litros Beige",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"928","932","De Madera Tapizada En Tela",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"929","933","Madera Tapizada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"930","934","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"931","935","Acrilico de 1Mt",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"932","936","Madera de 3 Puestos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"933","937","Para Televisor Con 2 Cajones Portatil",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"934","938","Imagen Del Señor",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"935","939","Con Cd Marca Sankey",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"936","940","Hp Laserjet Pro 400 M 401 Dw",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"937","941","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"938","942","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"939","943","Portatil Con Conexión Electrica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"940","944","Plastica y Metalica Negra",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"941","945","Smart Tv"," 50"""," N/A"," N/A"," Lg"," N/A",NULL,NULL
+"942","946","Madera de 3 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"943","947","De Sonido Marca Challenger",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"944","948","De 2 Niveles"," N/A"," Metálico"," N/A"," N/A"," N/A",NULL,NULL
+"945","949","De 10"" Marca Db Tecnologies",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"946","950","De Sonido Marca Phoenic 740 Plus",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"947","951","Metal y Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"948","952","Metalico de 2 Puertas 4 Niveles Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"949","953","A Color Epson L 555",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"950","954","Canon 2101",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"951","955","Alámbrico"," N/A"," N/A"," Shure"," N/A"," N/A",NULL,NULL
+"952","956","Plastico y Metal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"953","957","Para Cabina Marca Pro Dj",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"954","958","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"955","959","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"956","960","2 Gavetas"," N/a"," Madera"," N/a"," N/a"," N/a",NULL,NULL
+"957","961","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"958","962","Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"959","963","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"960","964","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"961","965","De Metal y Vidrio 2 Puertas Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"962","966","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"963","967","Metal y Madera Gris Para Computo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"964","968","Para Computo Larga Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"965","969","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"966","970","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"967","971","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"968","972","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"969","973","Para Switch Grande Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"970","974","Para Switch Pequeño Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"971","975","Para Computo Plastica y Metal Verde",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"972","976","Plastica y Metalica Verde Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"973","977","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"974","978","De 24 Puertos Marca Eucore H 924",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"975","979","De 28 Puertos D-Link Des 1210 28P",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"976","980","N/A"," 2 M"," Acrílico"," Blanco"," N/A"," N/A",NULL,NULL
+"977","981","Marca Et.U 9130",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"978","982","Marca New Line",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"979","983","De 4 Cajones"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"980","984","Una Gaveta"," Mediano"," Metal y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"981","985","Multifuncional"," Pequeña"," N/A"," Negro"," Epson L220"," N/A",NULL,NULL
+"982","986","N/A"," N/A"," Metal y Plastico"," N/A"," N/A"," N/A",NULL,NULL
+"983","987","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"984","988","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"985","989","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"986","990","De Madera de 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"987","991","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"988","992","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"989","993","Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"990","994","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"991","995","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"992","996","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"993","997","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"994","998","Para Video Beam Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"995","999","2 Gabetas"," N/a"," Metal Madera"," Gris"," N/a"," N/a",NULL,NULL
+"996","1000","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"997","1001","Metal y Madera"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"998","1002","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"999","1003","Acrilico de 2Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1000","1004","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1001","1005","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1002","1006","Para Video Beam Metalico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1003","1007","De Metal y Madera 1 Gaveta Gris Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1004","1008","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1005","1009","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"1006","1010","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1007","1011","Plastica y Metalica Verde Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1008","1012","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1009","1013","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1010","1014","Con Forro Rojo"," N/A"," N/A"," Negro"," Aprix"," N/A",NULL,NULL
+"1011","1015","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1012","1016","De Metal y Vidrio 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1013","1017","De Metal y Vidrio Colanta Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1014","1018","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1015","1019","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1016","1020","De Madera 3 Gavetas"," N/a"," N/a"," N/a"," N/a"," N/a",NULL,NULL
+"1017","1021","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1018","1022","Intel Celeron Cpu 1005M"," N/A"," Negro"," Lenovo"," N/A",NULL,NULL,NULL
+"1019","1023","Unipersonal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1020","1024","Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1021","1025","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1022","1026","Con Forro Rojo"," N/A"," N/A"," Negro"," Aprix"," N/A",NULL,NULL
+"1023","1027","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1024","1028","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1025","1029","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1026","1030","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1027","1031","Movil En Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1028","1032","De Madera Tipo Biblioteca",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1029","1033","Metal y Madera 3 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1030","1034","Para Portatiles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1031","1035","Para Portatiles",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1032","1036","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1033","1037","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1034","1038","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"1035","1039","En Madera Tapizada En Tela",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1036","1040","Universitaria Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1037","1041","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1038","1042","Digital Marca One Screen",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1039","1043","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1040","1044","Con Forro Rojo"," N/A"," N/A"," Negro"," Aprix"," N/A",NULL,NULL
+"1041","1045","Digital Marca Zt",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1042","1046","Digital Marca Zt",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1043","1047","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1044","1048","De Metal y Vidrio 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1045","1049","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1046","1050","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1047","1051","N/A"," 15Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1048","1052","1 Gaveta"," N/A"," Metálico Y Madera"," Gris"," N/A"," Colanta",NULL,NULL
+"1049","1053","2 Gavetas"," N/A"," Metálico Y Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1050","1054","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1051","1055","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"1052","1056","Plastico y Metal Verde Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1053","1057","Universitaria",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1054","1058","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1055","1059","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1056","1060","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1057","1061","Telon"," Grande"," Lona"," Fondo Blanco"," N/A"," N/A",NULL,NULL
+"1058","1062","Pequeño L&L Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1059","1063","O Gramera de 500 Gramos",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1060","1064","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1061","1065","De Metal y Madera 2 Gavetas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1062","1066","De Metal y Madera Colanta Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1063","1067","Digital Marca Citizon",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1064","1068","De Trabajo de Madera Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1065","1069","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1066","1070","Vidrio"," 1Ml"," Vidrio"," Transparente"," Germany"," N/A",NULL,NULL
+"1067","1071","Marca Eisco",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1068","1072","Marca Premier Donacion Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1069","1073","Pasta"," 160Mm"," Pasta"," Azul"," -"," N/A",NULL,NULL
+"1070","1074","Vidrio"," Mediano"," Vidrio"," Transparente"," -"," N/A",NULL,NULL
+"1071","1075","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"1072","1076","Vidrio"," Mediano"," Vidrio"," Transparente"," -"," N/A",NULL,NULL
+"1073","1077","Completo Femenino",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1074","1078","Completo Hombre",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1075","1079","Vidrio"," 600Ml"," Vidrio"," Transparente"," Brixco"," N/A",NULL,NULL
+"1076","1080","Vidrio"," 600Ml"," Vidrio"," Transparente"," Glassco"," N/A",NULL,NULL
+"1077","1081","Marca Epson Ex 3220",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1078","1082","De Metal y Vidrio Blanca 2 Puertas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1079","1083","Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1080","1084","Marca Phoenic",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1081","1085","Para Video Beam",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1082","1086","Entorchado"," 20 Mt"," N/A"," Negro y Rojo"," N/A"," N/A",NULL,NULL
+"1083","1087","Escritorio"," N/a"," Metal, Madera 2 Gavetas"," Gris"," N/a"," N/a",NULL,NULL
+"1084","1088","Trapezoidal"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1085","1089","Intel Core I5-4200M"," N/A"," Negro"," Hp"," Antioquia Digital",NULL,NULL,NULL
+"1086","1090","Silla "," N/a"," Metal, Plastica"," Negro"," N/a"," N/a",NULL,NULL
+"1087","1091","Universitaria Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1088","1092","Universitaria Plastica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1089","1093","En Acrilico de 2 Mts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1090","1094","Con Forro Rojo"," N/A"," N/A"," Negro"," Aprix"," N/A",NULL,NULL
+"1091","1095","N/A"," 800*600 (Svga)"," N/A"," Blanco"," Epson Power Lite S39"," N/A",NULL,NULL
+"1092","1096","De Metal y Vidrio Colanta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1093","1097","Samsung Mi 2010",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1094","1098","Trapezoidal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1095","1099","Hp Modelo Viejo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1096","1100","Marca Qbeex",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1097","1101","Samsung Modelo Nuevo",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1098","1102","Electrica Grande",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1099","1103","N/A"," Grande"," Metal"," Rojo"," N/A"," N/A",NULL,NULL
+"1100","1104","Electrico 2 Puestos Haceb",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1101","1105","Gas de 2 Puestos Haceb",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1102","1106","Electrica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1103","1107","Microondas Marca Magic Chef",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1104","1108","Marca Oster",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1105","1109","No Frost Marca Mabe 239 Lts",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1106","1110","De Gas de 30 Lbs",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1107","1111","Bipersonal Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1108","1112","Bipersonal Tipo Escritorio",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1109","1113","Metal y Madera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1110","1114","Con Brazos"," N/A"," Plástico"," Verde"," Rimax"," N/A",NULL,NULL
+"1111","1115","Madera y Vidrio Con Puerta",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1112","1116","De Madera Larga",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1113","1117","Cabina Activa de 500 Watt Marca Rp Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1114","1118","O Cabina Activa de 500 Watts Marca Rp Sound",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1115","1119","De Video Tipo Bala Externa",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1116","1120","De Video Tipo Bala Internas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1117","1121","De Video Tipo Varifocal",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1118","1122","De Bronce",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1119","1123","Tapizada",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1120","1128","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1121","1129","De 10 Libras",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1122","1130","Metalica Con 4 Sillas",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1123","1131","De Microfutbol Con Malla Metalica",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1124","1132","Metal y Plastico",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1125","1133","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1126","1134","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1127","1135","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1128","1136","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1129","1137","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1130","1138","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1131","1139","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1132","1140","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1133","1141","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1134","1142","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1135","1143","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1136","1144","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1137","1145","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1138","1146","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1139","1147","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1140","1148","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1141","1149","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1142","1150","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1143","1151","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1144","1152","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1145","1153","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1146","1154","Sin Forro N/A"," N/A"," Negra"," Aprix"," N/A",NULL,NULL,NULL
+"1147","1155","N/A"," 15Mt"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1148","1156","Intel Core N4020/Bga"," Lcd 14p"," N/A"," Negro"," Compumax"," Con Cargador",NULL,NULL
+"1149","1157","CPE",,," Negro"," Compumax",,NULL,"2025-06-10 04:11:07"
+"1150","1158","Marco Negro"," Grande"," Aluminio"," Gris"," Inglesa"," N/A",NULL,NULL
+"1151","1159","Marco Negro"," Grande"," Aluminio"," Negro"," Inglesa"," Cedar",NULL,NULL
+"1152","1160","Clarines Bajo"," N/A"," N/A"," N/A"," N/A"," Muy Viejas",NULL,NULL
+"1153","1161","De Correa"," Pequeño"," Madera"," N/A"," Nacional"," N/A",NULL,NULL
+"1154","1162","De Correa"," Grande"," Madera"," N/A"," Nacional"," Cajas Solas",NULL,NULL
+"1155","1163","Para Practicar"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1156","1164","De Timbal"," 16 THIN"," N/A"," N/A"," SABIAN "," B8X CRASH 41606X",NULL,NULL
+"1157","1165","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1158","1166","CEP"," Versión  De Andrioid",," Negro"," Aprix",,NULL,"2025-06-10 04:08:59"
+"1159","1167",,,," Negro"," Lenovo",,NULL,"2025-06-10 04:13:55"
+"1160","1168","De La Puerta"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1161","1169","N/A"," N/A"," N/A"," N/A"," Truper"," N/A",NULL,NULL
+"1162","1170","En ""V"""," 2mt"," Metálica"," Plateado"," N/A"," N/A",NULL,NULL
+"1163","1171","Con Dos Cajoneras "," N/A"," Metal"," Negro"," N/A"," N/A",NULL,NULL
+"1164","1172","Grande, Dos Puestos "," N/A"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"1165","1173","Plasticas"," N/A"," Pastico, Metal"," Verde"," N/A"," N/A",NULL,NULL
+"1166","1174","Redonda"," N/A"," Metal, Madera"," Gris"," N/A"," Seduca",NULL,NULL
+"1167","1175","Nueva"," N/A"," Metal, Plastico"," Negra"," N/A"," Seduca",NULL,NULL
+"1168","1176","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1169","1177","Pequeño"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1170","1178","Prescolar"," Pequeña"," Pastica"," Diferentes Colores"," N/A"," N/A",NULL,NULL
+"1171","1179","Prescolar"," Pequeña"," Metal, Plastico"," Diferentes Colores"," N/A"," N/A",NULL,NULL
+"1172","1180","Metal"," N/A"," Metal, Plastica"," Naranja"," N/A"," N/A",NULL,NULL
+"1173","1181","Con Vidrios"," Grande"," Metálico"," Rojo"," N/A"," N/A",NULL,NULL
+"1174","1182","Sin Vidrios"," Mediano"," Matálico"," Gris"," N/A"," N/A",NULL,NULL
+"1175","1183","N/A"," N/A"," N/A"," Amarillo"," N/A"," N/A",NULL,NULL
+"1176","1184","Tres Torres, Baja"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1177","1185","N/A"," N/a"," N/a"," N/a"," N/a"," N/a",NULL,NULL
+"1178","1186","N/A"," N/A"," Hierro"," N/A"," N/A"," N/A",NULL,NULL
+"1179","1187","N/A"," N/A"," Metal, Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1180","1188","Jardineras"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1181","1189","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1182","1190","Jardinería"," Pequeño"," N/A"," Amarillo"," N/A"," N/A",NULL,NULL
+"1183","1191","De Pala"," N/A"," N/A"," N/A"," Ranger"," N/A",NULL,NULL
+"1184","1192",,,," Blanco"," Lenovo",,NULL,"2025-06-10 03:32:19"
+"1185","1193","N/A"," Pequeño"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1186","1194","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1187","1195","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1188","1196",,,," Negro",,,NULL,"2025-06-10 03:54:01"
+"1189","1197","N/A"," N/A"," N/A"," Negro"," Galaxi A30"," N/A",NULL,NULL
+"1190","1198",,,," Negro"," Ecotec",,NULL,"2025-06-10 03:38:42"
+"1191","1199",,,," Negro"," Ecotec",,NULL,"2025-06-10 03:48:53"
+"1192","1200","Obturado",,,,,,NULL,"2025-06-10 03:35:01"
+"1193","1201","X10",,,,,,NULL,"2025-06-10 03:39:16"
+"1194","1202",,,,,,,NULL,"2025-06-10 03:40:03"
+"1195","1203",,,,," Bocherini ",,NULL,"2025-06-10 03:36:52"
+"1196","1204","De 10 puestos",,,,,,NULL,"2025-06-10 03:39:37"
+"1197","1205",,"4m",,," Internet Utp",,NULL,"2025-06-10 03:35:16"
+"1198","1206",,,,,,,NULL,"2025-06-10 03:36:40"
+"1199","1207"," 12 kw",,,,"Nwe Line",,NULL,"2025-06-10 03:40:48"
+"1200","1208","CEP",,," Negro"," Compumax",,NULL,"2025-06-10 03:39:02"
+"1201","1209","CEP",,,"Negro","Compumax",,NULL,"2025-06-10 03:35:38"
+"1202","1210","Antigolpes",," Plástico"," Negro"," Compumax",,NULL,"2025-06-10 03:37:56"
+"1203","1211","Universitarias",," Plástica"," Azul",,,NULL,"2025-06-10 03:33:13"
+"1204","1212","Sin Brazos"," N/A"," Plástico"," Blanco"," Rimax"," N/A",NULL,NULL
+"1205","1213","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1206","1214","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1207","1215","De La Puerta Y Principal"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1208","1216","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1209","1217","N/A"," Pequeña"," Plastico"," Roja,verde"," N/A"," N/A",NULL,NULL
+"1210","1218","N/A"," N/A"," Metal"," Negro"," N/A"," N/A",NULL,NULL
+"1211","1219","N/A"," N/A"," N/A"," Gris"," N/A"," N/A",NULL,NULL
+"1212","1220","N/A"," N/A"," N/A"," Verde Con Azul"," N/A"," N/A",NULL,NULL
+"1213","1221","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1214","1222","Para Bandera",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1215","1223","N/A"," N/A"," N/A"," N/A"," Epson Ex 3220"," N/A",NULL,NULL
+"1216","1224","Inalambrico"," N/A"," N/A"," Negro","  Sennheiser "," N/A",NULL,NULL
+"1217","1225","Inalámbrico  "," N/A"," N/A"," Negro"," Pro Dj"," N/A",NULL,NULL
+"1218","1226","Metal, Madera"," N/A"," N/A"," Gris"," N/A"," N/A",NULL,NULL
+"1219","1227","Puertas De Vidrio"," N/A"," N/A"," Rojo Y Blanco"," N/A"," N/A",NULL,NULL
+"1220","1228","N/A"," Pequeña"," N/A"," Rojo Verde"," Rimax"," N/A",NULL,NULL
+"1221","1229","N/A"," N/A"," Metal Y  Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1222","1230","N/A"," Mediana"," Metal Y Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1223","1231","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1224","1232","Redonda"," Pequeña"," Metal, Madera"," Gris "," N/A"," N/A",NULL,NULL
+"1225","1233","Dos Puertas"," N/A"," Metal, Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1226","1234","N/A"," N/A"," Metal, Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1227","1235","Unipersonal "," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1228","1236","N/A"," Pequeño"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"1229","1237","De Correa"," Grande"," Madera"," Negro"," N/A"," N/A",NULL,NULL
+"1230","1238","N/A"," Mediano"," Aluminio"," Plateado"," N/A"," N/A",NULL,NULL
+"1231","1239","Marcha"," N/A"," N/A"," Blanco"," Jbmjb 2412"," N/A",NULL,NULL
+"1232","1240","Cm-Art Merenguera"," N/A"," N/A"," N/A"," Ls-109n11xh14"," N/A",NULL,NULL
+"1233","1241","N/A"," Grande"," Aluminio"," N/A"," N/A"," N/A",NULL,NULL
+"1234","1242","N/A"," 18"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1235","1243","N/A"," 16"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1236","1244","En Reata Grnade"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1237","1245","N/A"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"1238","1246","N/A"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"1239","1247","N/A"," N/A"," N/A"," N/A"," Celestrone 8lcm"," N/A",NULL,NULL
+"1240","1248","N/A"," N/A"," N/A"," N/A"," Mbot"," N/A",NULL,NULL
+"1241","1249","Jardinera"," Grande"," N/A"," Naranja"," Truper"," N/A",NULL,NULL
+"1242","1250","Jardinería"," Pequeña"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1243","1251","Jardinería"," Pequeño"," Plástico"," Negro"," N/A"," N/A",NULL,NULL
+"1244","1252","N/A"," Grande"," N/A"," Amarilla"," Corneta"," N/A",NULL,NULL
+"1245","1253","Jardinería"," Pequeña"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1246","1254","CPE",,," Negro"," Compumax",,NULL,"2025-06-10 04:11:26"
+"1247","1255",,,," Negro",,,NULL,"2025-06-10 04:14:08"
+"1248","1256",,,," Negro",,,NULL,"2025-06-10 01:35:57"
+"1249","1257","Con Forro Rojo"," N/A"," N/A"," Negra"," N/A"," N/A",NULL,NULL
+"1250","1258","N/A"," Pequena"," Madera"," Cafe"," N/A"," N/A",NULL,NULL
+"1251","1259","N/A"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1252","1260","N/a"," N/a"," N/a"," Negro"," Panasonic"," N/a",NULL,NULL
+"1253","1261","N/A"," Grande"," Vidrio Y Meta"," Cafe"," N/A"," N/A",NULL,NULL
+"1254","1262","Redonda"," Grande"," Madera"," Cafe"," N/A"," N/A",NULL,NULL
+"1255","1263","Sin Brazos",," Plástico"," Blanco"," Rimax",,NULL,"2025-06-10 04:10:16"
+"1256","1264","De Emergencia  Rescate"," N/A"," Plastica"," Naranja "," N/A"," N/A",NULL,NULL
+"1257","1265","N/A"," N/A"," Meatal"," Blanco"," N/A"," N/A",NULL,NULL
+"1258","1266","N/A"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1259","1267","Dos Puertas Parte Baja"," N/A"," Madera"," Marron"," N/A"," N/A",NULL,NULL
+"1260","1268","N/A"," N/A"," N/A"," Negra"," N/A"," N/A",NULL,NULL
+"1261","1269","N/A"," N/A"," N/A"," Verde"," N/A"," N/A",NULL,NULL
+"1262","1270","32 Pulgadas"," N/A"," N/A"," Negro"," Kalley"," N/A",NULL,NULL
+"1263","1271","Con Espejo"," Pequeño"," Madera"," Cafe"," N/A"," N/A",NULL,NULL
+"1264","1272","7 Siete Peldaños"," N/A"," Metal"," N/A"," N/A"," N/A",NULL,NULL
+"1265","1273","Por 25 Metros"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1266","1274","Prescolar"," Pequeña"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1267","1275","Hexagonal"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1268","1276","Pequeñas "," N/A"," Plastica"," N/A"," N/A"," N/A",NULL,NULL
+"1269","1277","N/A"," Grande "," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1270","1278","N/A"," N/A"," N/A"," N/A"," Marsupra"," N/A",NULL,NULL
+"1271","1279","2 Puertos"," N/A"," N/A"," Negro"," Teac"," N/A",NULL,NULL
+"1272","1280","Castte "," N/A"," N/A"," Gris"," Sonic"," N/A",NULL,NULL
+"1273","1281","N/A"," N/A"," N/A"," Negro"," Challenger"," N/A",NULL,NULL
+"1274","1282","N/A"," N/A"," N/A"," Negro"," Technic"," N/A",NULL,NULL
+"1275","1283","5 Bables"," N/A"," Plastico"," Negro"," Phohenik"," N/A",NULL,NULL
+"1276","1284","De Computador"," N/A"," N/A"," Gris"," 9bex"," N/A",NULL,NULL
+"1277","1285","N/A"," N/A"," N/A"," Negro"," Hp"," N/A",NULL,NULL
+"1278","1286","N/A"," N/A"," N/A"," Negro"," Aprix"," N/A",NULL,NULL
+"1279","1287","N/A"," N/A"," Metal, Plastica"," N/A"," N/A"," N/A",NULL,NULL
+"1280","1288","N/A"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1281","1289","N/A"," N/A"," N/A"," Gris"," Sankey"," N/A",NULL,NULL
+"1282","1290","N/A"," N/A"," N/A"," Gris"," Sankey"," N/A",NULL,NULL
+"1283","1291","N/A"," N/a"," N/a"," Gris"," Sankey"," N/a",NULL,NULL
+"1284","1292","N/A"," N/a"," N/a"," Gris"," Sankey"," N/a",NULL,NULL
+"1285","1293","N/A"," Pequeños"," N/A"," Gris"," Genius"," N/A",NULL,NULL
+"1286","1294","N/A"," N/A"," N/A"," Gris"," N/A"," N/A",NULL,NULL
+"1287","1295","N/A"," Pequeños"," N/A"," Negro"," Genius"," N/A",NULL,NULL
+"1288","1296","N/A"," N/A"," Metal Plastico"," Gris"," N/A"," N/A",NULL,NULL
+"1289","1297","N/A"," N/A"," Metal Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1290","1298","N/A"," N/A"," Metal Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1291","1299","CPE"," N/A"," N/A"," Negro"," Compumax"," N/A",NULL,NULL
+"1292","1300","N/A"," N/A"," N/A"," Negro"," Hp"," N/A",NULL,NULL
+"1293","1301","N/A"," N/A"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1294","1302","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1295","1303","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1296","1304","N/A"," Metal, Madera"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1297","1305","N/A"," N/A"," Metal, Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1298","1306","N/A"," N/A"," Silla, Plastica"," Verde"," N/A"," N/A",NULL,NULL
+"1299","1307","N/A"," N/A"," Metal, Plastico"," N/A"," N/A"," N/A",NULL,NULL
+"1300","1308","N/A"," N/A"," Madera"," Gris"," N/A"," N/A",NULL,NULL
+"1301","1309","Avisisos Institucionales"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1302","1310","Dos Cuerpos"," N/A"," Metal, Vidrio"," Blanca"," N/A"," N/A",NULL,NULL
+"1303","1311","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1304","1312","N/A"," N/A"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"1305","1313","Dos Puertas "," N/A"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"1306","1314","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1307","1315","N/A"," N/A"," Metal, Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1308","1316","Pequeño"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1309","1317","N/A"," Mediano"," N/A"," N/A"," Challenger"," N/A",NULL,NULL
+"1310","1318","1000w"," N/A"," N/A"," N/A"," Plasma"," N/A",NULL,NULL
+"1311","1319","N/A"," N/A"," N/A"," Negro"," New Line"," N/A",NULL,NULL
+"1312","1320","1000v"," N/A"," N/A"," Negro"," Gammax"," N/A",NULL,NULL
+"1313","1321","1000v"," N/A"," N/A"," N/A"," Gammax"," N/A",NULL,NULL
+"1314","1322","18 Canales"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1315","1323","N/A"," N/A"," N/A"," N/A"," Sonic"," N/A",NULL,NULL
+"1316","1324","N/A"," Pequeña"," N/A"," N/A"," Onivision"," N/A",NULL,NULL
+"1317","1325","N/A"," N/A"," N/A"," Negro"," Hp"," N/A",NULL,NULL
+"1318","1326","N/A"," N/A"," N/A"," Negro"," Viewsonic"," N/A",NULL,NULL
+"1319","1327","N/A"," N/A"," N/A"," Negro"," Toschiba"," N/A",NULL,NULL
+"1320","1328","Electronico 4 Puestos"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1321","1329","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1322","1330","N/A"," N/A"," Negro"," N/A"," Word"," N/A",NULL,NULL
+"1323","1331","De Vigilancia"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1324","1332","N/A"," N/A"," N/A"," N/A"," Hauwei"," N/A",NULL,NULL
+"1325","1333","Computador"," N/A"," N/A"," N/A"," Hp"," N/A",NULL,NULL
+"1326","1334","N/A"," N/A"," N/A"," N/A"," Hp"," N/A",NULL,NULL
+"1327","1335","Madera"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1328","1336","A Gas Con Pipeta"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1329","1337","N/A"," N/A"," Plastico"," N/A"," N/A"," N/A",NULL,NULL
+"1330","1338","N/A"," Grande"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1331","1339","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1332","1340","Cocacola"," N/A"," N/A"," Rojo"," N/A"," N/A",NULL,NULL
+"1333","1341","De Duces"," Pequeña"," Metal Vidrio"," N/A"," N/A"," N/A",NULL,NULL
+"1334","1342","N/A"," N/A"," Metal, Pastico"," N/A"," N/A"," N/A",NULL,NULL
+"1335","1343","Seguridad"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1336","1344","N/A"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1337","1345","Con Llaves"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1338","1346","N/A"," Grande"," Metal"," Gris"," N/A"," Sin Puertas",NULL,NULL
+"1339","1347","2 Cuerpos"," Pequeña"," Metal"," Blanca"," N/A"," N/A",NULL,NULL
+"1340","1348","4 Cajones"," Grande"," Madera"," Gris"," N/A"," Sin Puertas",NULL,NULL
+"1341","1349","3 Cajones"," Grande"," Madera"," Gris"," N/A"," Sin Puertas",NULL,NULL
+"1342","1350","N/A"," Pequeña"," Icopor"," Blanco"," N/A"," N/A",NULL,NULL
+"1343","1351","De Repisa"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"1344","1352","3 Cajones"," Bajito"," Metálico"," Gris"," N/A"," De Hojas",NULL,NULL
+"1345","1353","N/A"," Pequeño"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1346","1354","De Dinero"," N/A"," Metal"," Negra"," N/A"," Con Dos Llaves",NULL,NULL
+"1347","1355","N/A"," N/A"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"1348","1356","De Pared"," Mediano"," Madera"," Marrón"," N/A"," N/A",NULL,NULL
+"1349","1357","Con Maya En Espaldar",,," Blanco"," Colplast",,NULL,"2025-06-10 04:10:58"
+"1350","1358","Plegable"," Grande"," Metal y Plástico"," Blanco,gris",,,NULL,"2025-06-10 04:15:40"
+"1351","1359","N/A"," N/A"," Metal ,madera"," N/A"," N/A"," N/A",NULL,NULL
+"1352","1360","N/A"," N/A"," Metal. Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1353","1361","Colanta"," N/A"," Metal , Pastico "," Verde"," N/A"," N/A",NULL,NULL
+"1354","1362","De Escritorio Co9n Mause"," N/A"," N/A"," N/A"," Viewsonic"," N/A",NULL,NULL
+"1355","1363","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1356","1364","N/A"," N/A"," Meta,platico"," Verde,gris"," N/A"," N/A",NULL,NULL
+"1357","1365","N/A"," N/A"," N/A"," Azul"," N/A"," N/A",NULL,NULL
+"1358","1366","N/A"," Grande"," Mdera"," N/A"," N/A"," N/A",NULL,NULL
+"1359","1367","Sin Brazos",," Blanco",,,,NULL,"2025-06-10 04:09:34"
+"1360","1368","De Escritorio Con Mause Y Cpu"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1361","1369","N/A"," N/A"," N/A"," Azul"," N/A"," N/A",NULL,NULL
+"1362","1370","N/A"," Grande"," Madera"," N/A"," N/A"," N/A",NULL,NULL
+"1363","1371","N/A"," N/A"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1364","1372","Plegable",,," Blanco y Gris",,,NULL,"2025-06-10 04:15:54"
+"1365","1373","Plegable",,," Blanco y Gris",,,NULL,"2025-06-10 04:11:54"
+"1366","1374","Plegable "," Grande"," Plástico y Metal"," Blanco y Gris",,,NULL,"2025-06-10 04:16:13"
+"1367","1375","Plegable "," Grande"," Platico Metal"," Blanco y Gris",,,NULL,"2025-06-10 04:12:10"
+"1368","1376","N/A"," Mediano"," N/A"," Negro"," Ram Tecnologi"," N/A",NULL,NULL
+"1369","1377","N/A"," Mediano"," N/A"," Negro"," Ram Tecnologi"," N/A",NULL,NULL
+"1370","1378","N/A"," N/A"," N/A"," Negro"," Ram Tecnology"," Con Micrófono",NULL,NULL
+"1371","1379","Con Microfono",,," Negro","RAM",,NULL,"2025-06-10 01:31:59"
+"1372","1380",," 8p",," Negro"," RAM"," Con Soporte",NULL,"2025-06-10 00:23:40"
+"1373","1381","N/A"," 8p"," N/A"," Negro"," RAM"," Con Soporte",NULL,NULL
+"1374","1382","4 Niveles"," Mediana"," Vidrio, Metal"," Verde"," N/A"," N/A",NULL,NULL
+"1375","1383","2 Niveles"," Pequeño"," Metal"," Beige"," N/A"," 2 Puertas",NULL,NULL
+"1376","1384","N/A"," Pequeña"," Icopor"," Blanco"," N/A"," N/A",NULL,NULL
+"1377","1385","5 Cuerpos"," Grande"," Vidrio Templado"," Gris"," N/A"," N/A",NULL,NULL
+"1378","1386","4 Cuerpos"," Grande"," Metal Y Vidrio"," Verde"," N/A"," N/A",NULL,NULL
+"1379","1387","7 Puestos"," Grande"," Metal"," Blanco"," N/A"," N/A",NULL,NULL
+"1380","1388","De 18 Puestos"," Grande"," Madera"," Marrón"," N/A"," Para Cuardernos",NULL,NULL
+"1381","1389","N/A"," N/A"," Plástico"," Azul"," N/A"," N/A",NULL,NULL
+"1382","1390","N/A"," 1mt"," Vidrio Templado"," N/A"," N/A"," N/A",NULL,NULL
+"1383","1391","N/A"," 1mt"," Madera"," Blanco"," N/A"," N/A",NULL,NULL
+"1384","1392","N/A"," Grande"," Madera"," Verde"," N/A"," N/A",NULL,NULL
+"1385","1393","N/A"," Mediana"," Madera Y Vidrio"," Café"," N/A"," N/A",NULL,NULL
+"1386","1394","2 Cajones"," Pequeño"," Madera"," Café"," N/A"," N/A",NULL,NULL
+"1387","1395","N/A"," Pequeño"," Madera"," Blanca"," N/A"," N/A",NULL,NULL
+"1388","1396","6 Puertos"," Pequeño"," N/A"," Negro"," N/A"," N/A",NULL,NULL
+"1389","1397","2 Puertos"," Pequeño"," N/A"," Gris"," N/A"," N/A",NULL,NULL
+"1390","1398","N/A"," Pequeño"," N/A"," Blanco"," N/A"," N/A",NULL,NULL
+"1391","1399","N/A"," Pequeño"," Vidrio Y Plástico"," Negra"," Home"," N/A",NULL,NULL
+"1392","1400","N/A"," Oficio"," Metal"," Beige"," N/A"," N/A",NULL,NULL
+"1393","1401","2 Antenas"," N/A"," Plástico"," Negro"," N/A"," N/A",NULL,NULL
+"1394","1402","CPE"," N/A"," N/A"," Negro"," Compumax"," SN 26101968",NULL,NULL
+"1395","1403","Con Forro Rojo"," N/A"," N/A"," Negra"," Aprix"," N/A",NULL,NULL
+"1396","1404","De Mando"," Grande"," Metal"," Gris"," N/A"," N/A",NULL,NULL
+"1397","1405","Universitarias",," Madera",,,,NULL,"2025-06-10 03:32:56"
+"1398","1406","Universitarias",," Plástica"," Beige",,,NULL,"2025-06-10 03:33:04"
+"1399","1407","N/A"," 2mt"," AcrilÃ­co"," Blanco"," N/A"," Con Control",NULL,NULL
+"1400","1408","De 8 Tomas"," N/A"," N/A"," Blanco"," Powest"," N/A",NULL,NULL
+"1401","1409","Sin Brazos"," N/A"," Plástico"," Negro"," N/A"," Giratoria",NULL,NULL
+"1402","1410","De PC"," Personal"," Madera Y Metal"," Madera","  N/a","  N/a",NULL,NULL
+"1403","1411","N/A"," Largo"," N/A"," Negro"," Unitec"," N/A",NULL,NULL
+"1404","1412","Marco Negro"," Infantil"," Aluminio"," Negro"," Tradicional"," Cedar",NULL,NULL
+"1405","1413","N/A"," 25cm"," Metal"," Dorado"," N/A"," N/A",NULL,NULL
+"1406","1414","N/A"," 20cm"," Metal"," Dorado"," N/A"," N/A",NULL,NULL
+"1407","1415","N/A"," 30cm"," Metal"," Dorado"," N/A"," N/A",NULL,NULL
+"1408","1416","Explora"," N/A"," N/A"," N/A"," N/A"," N/A",NULL,NULL
+"1409","1417",,"2m","Madera",NULL,NULL,NULL,NULL,"2025-06-10 04:13:00"
+"1410","1418","De Metal y Vidrio Colanta Gris",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+"1411","1419","CPE"," N/A"," N/A"," Negro"," Compumax"," SN R2A-00278",NULL,NULL
+"1412","1420","CPE"," N/A"," N/A"," Negro"," Compumax"," Sin Serial",NULL,NULL
+"1413","1421",,,,"Negro"," EPSON"," S/N: WDRK7305798",NULL,"2025-06-10 04:08:43"
+"1414","1422",NULL,NULL,NULL,"Blanco","Epson",NULL,NULL,NULL
+"1415","1423","CPE",NULL,NULL,"Negro","Compumax","Estaba en Primaria",NULL,NULL
+"1416","1424","CPE",NULL,NULL,"Negro","Compumax","26101945 (Estaba en Primaria)",NULL,NULL

@@ -4,10 +4,12 @@ namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Users\Models\User;
-use Modules\Inventario\Entities\Bien;
-use Modules\Inventario\Entities\Estado;
-use Modules\Inventario\Entities\Categoria;
-use Modules\Inventario\Entities\Dependencia;
+use Modules\Inventario\Entities\{
+    Bien,
+    Estado,
+    Categoria,
+    Dependencia,
+};
 
 class BienAprobacionPendiente extends Model
 {
@@ -52,7 +54,6 @@ class BienAprobacionPendiente extends Model
             'dependencia_id' => Dependencia::find($valor)?->nombre ?? $valor,
             default => $valor,
         };
-        
     }
 
     public function getValorAnteriorNombreAttribute()
@@ -72,4 +73,33 @@ class BienAprobacionPendiente extends Model
             : $this->campo;
     }
 
+    public function valorAnteriorCategoria()
+    {
+        return $this->belongsTo(Categoria::class, 'valor_anterior');
+    }
+
+    public function valorNuevoCategoria()
+    {
+        return $this->belongsTo(Categoria::class, 'valor_nuevo');
+    }
+
+    public function valorAnteriorDependencia()
+    {
+        return $this->belongsTo(Dependencia::class, 'valor_anterior');
+    }
+
+    public function valorNuevoDependencia()
+    {
+        return $this->belongsTo(Dependencia::class, 'valor_nuevo');
+    }
+
+    public function valorAnteriorEstado()
+    {
+        return $this->belongsTo(Estado::class, 'valor_anterior');
+    }
+
+    public function valorNuevoEstado()
+    {
+        return $this->belongsTo(Estado::class, 'valor_nuevo');
+    }
 }

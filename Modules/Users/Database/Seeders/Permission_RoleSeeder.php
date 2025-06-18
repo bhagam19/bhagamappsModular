@@ -6,12 +6,12 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use SplFileObject;
 
-class PermissionSeeder extends Seeder
+class Permission_RoleSeeder extends Seeder
 {
     public function run(): void
     {
 
-        $file = new SplFileObject(__DIR__ . '/data/permissions.csv');
+        $file = new SplFileObject(__DIR__ . '/data/permission_role.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
         $headers = array_map("trim", str_getcsv($file->fgets()));
@@ -23,12 +23,10 @@ class PermissionSeeder extends Seeder
             }
             $data = array_combine($headers, $row);
 
-            DB::table('permissions')->insert([
+            DB::table('permission_role')->insert([
                 //'id' => $data['id'],
-                'nombre' => $data['nombre'],
-                'slug' => $data['slug'],
-                'descripcion' => $data['descripcion'],
-                'categoria' => $data['categoria'],
+                'role_id' => $data['role_id'],
+                'permission_id' => $data['permission_id'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

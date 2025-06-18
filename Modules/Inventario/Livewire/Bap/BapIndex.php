@@ -1,18 +1,22 @@
 <?php
 
-namespace Modules\Inventario\Livewire\Bap  ;
+namespace Modules\Inventario\Livewire\Bap;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Modules\Inventario\Entities\BienAprobacionPendiente;
-use Modules\Inventario\Entities\HistorialModificacionBien;
+use Modules\Inventario\Entities\{
+    Bien,
+    BienAprobacionPendiente,
+    HistorialModificacionBien,
+    Detalle,
+};
 use Illuminate\Support\Facades\DB;
 
 class BapIndex extends Component
 {
     use WithPagination;
-    
-     // --- Paginación y orden ---
+
+    // --- Paginación y orden ---
     public $perPage = 10;
     protected $paginationTheme = 'bootstrap';
     public string $sortField = 'id';
@@ -29,7 +33,17 @@ class BapIndex extends Component
 
     public function render()
     {
-        $aprobacionesPendientes = BienAprobacionPendiente::with(['bien', 'user'])
+        $aprobacionesPendientes = BienAprobacionPendiente::with([
+            'bien',
+            'user',
+            'valorAnteriorCategoria',
+            'valorNuevoCategoria',
+            'valorAnteriorDependencia',
+            'valorNuevoDependencia',
+            'valorAnteriorEstado',
+            'valorNuevoEstado',
+
+        ])
             ->latest()
             ->paginate($this->perPage);
 
@@ -38,6 +52,8 @@ class BapIndex extends Component
         ]);
     }
 
+
+
     public function sortBy($field)
     {
         $this->sortDirection = $this->sortField === $field
@@ -45,53 +61,99 @@ class BapIndex extends Component
             : 'asc';
 
         $this->sortField = $field;
-    }    
+    }
 
     public function aprobarCambio($id)
     {
-        $cambio = BienAprobacionPendiente::with('bien')->find($id);
+        $cambio = BienAprobacionPendiente::find($id);
 
-        if (!$cambio || !$cambio->bien) {
-            session()->flash('error', 'No se pudo encontrar el bien asociado al cambio.');
+        $bien = Bien::with('dependencia')->find($cambio->bien_id);
+        $usuario = $bien->dependencia->usuario_id;
+
+        if (!$cambio) {
+            $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');
+            $this->dispatch('cambioActualizado');
             return;
         }
 
         DB::beginTransaction();
 
         try {
-            $bien = $cambio->bien;
-            $campo = $cambio->campo;
+            if ($cambio->tipo_objeto === 'bien') {
 
-            if (!array_key_exists($campo, $bien->getAttributes())) {
-                session()->flash('error', "El campo '$campo' no existe en el modelo de Bien.");
-                return;
+                if (!$bien) {
+                    throw new \Exception('No se encontró el bien asociado.');
+                }
+
+                $campo = $cambio->campo;
+
+                if (!array_key_exists($campo, $bien->getAttributes())) {
+                    throw new \Exception("El campo '$campo' no existe en el modelo Bien.");
+                }
+
+                $valorAnterior = $bien->$campo;
+                $bien->$campo = $cambio->valor_nuevo;
+                $bien->save();
+
+                HistorialModificacionBien::create([
+                    'bien_id' => $bien->id,
+                    'tipo_objeto' => 'bien',
+                    'campo_modificado' => $campo,
+                    'valor_anterior' => $valorAnterior,
+                    'valor_nuevo' => $cambio->valor_nuevo,
+                    'usuario_id' => $usuario,               // quien hizo el cambio
+                    'aprobado_por' => auth()->id(),        // quien aprobó el cambio
+                    'fecha_modificacion' => now(),
+                ]);
             }
 
-            $valorAnterior = $bien->$campo;
-            $bien->$campo = $cambio->valor_nuevo;
-            $bien->save();
+            if ($cambio->tipo_objeto === 'detalle') {
+                $detalle = Detalle::firstOrNew(['bien_id' => $cambio->bien_id]);
 
-            HistorialModificacionBien::create([
-                'bien_id' => $bien->id,
-                'campo_modificado' => $campo,
-                'valor_anterior' => $valorAnterior,
-                'valor_nuevo' => $cambio->valor_nuevo,
-                'modificado_por' => auth()->id(),
-            ]);
+                $datos = json_decode($cambio->valor_nuevo, true);
+
+                if (!is_array($datos)) {
+                    throw new \Exception('El valor nuevo no es un JSON válido.');
+                }
+
+                foreach ($datos as $campo => $valorNuevo) {
+                    if (array_key_exists($campo, $detalle->getAttributes())) {
+                        $valorAnterior = $detalle->$campo;
+
+                        // Guardar en el historial de modificaciones
+                        HistorialModificacionBien::create([
+                            'bien_id' => $detalle->bien_id,
+                            'tipo_objeto' => 'detalle',
+                            'campo_modificado' => $campo,
+                            'valor_anterior' => $valorAnterior,
+                            'valor_nuevo' => $valorNuevo,
+                            'usuario_id' => $usuario,
+                            'aprobado_por' => auth()->id(),
+                            'fecha_modificacion' => now(),
+                        ]);
+
+                        // Actualizar el campo
+                        $detalle->$campo = $valorNuevo;
+                    }
+                }
+
+                $detalle->save();
+            }
 
             $cambio->delete();
-
             DB::commit();
 
-            session()->flash('message', 'Cambio aprobado correctamente.');
-            $this->emit('cambioActualizado');
-
+            $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Cambio aprobado correctamente.');
+            $this->dispatch('cambioActualizado');
         } catch (\Throwable $e) {
             DB::rollBack();
             report($e);
-            session()->flash('error', 'Ocurrió un error al aprobar el cambio.');
+            $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'Ocurrió un error al aprobar el cambio.');
+            $this->dispatch('cambioActualizado');
         }
     }
+
+
 
     public function rechazarCambio($id)
     {
@@ -99,18 +161,20 @@ class BapIndex extends Component
             $cambio = BienAprobacionPendiente::find($id);
 
             if (!$cambio) {
-                session()->flash('error', 'El cambio no fue encontrado.');
+                $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');
+                $this->dispatch('cambioActualizado');
                 return;
             }
 
             $cambio->delete();
 
-            session()->flash('message', 'Cambio rechazado correctamente.');
-            $this->emit('cambioActualizado');
+            $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Cambio rechazado correctamente.');
 
+            $this->dispatch('cambioActualizado');
         } catch (\Throwable $e) {
             report($e);
-            session()->flash('error', 'Ocurrió un error al rechazar el cambio.');
+            $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'Ocurrió un error al rechazar el cambio.');
+            $this->dispatch('cambioActualizado');
         }
     }
 }
