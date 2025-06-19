@@ -1,4 +1,4 @@
-"id","nombre","cantidad","serie","origen","fechaAdquisicion","precio","categoria_id","dependencia_id","almacenamiento_id","estado_id","mantenimiento_id","observaciones","deleted_at","created_at","updated_at"
+"id","nombre","cantidad","serie","origen","fecha_adquisicion","precio","categoria_id","dependencia_id","almacenamiento_id","estado_id","mantenimiento_id","observaciones","deleted_at","created_at","updated_at"
 "1","Escritorio","1","0","-","1990-01-01","0","1","1","1","2","1",,NULL,"2025-06-08 01:59:13","2025-06-16 17:13:21"
 "2","Silla Rimax","2","0","-","1990-01-01","10000","5","1","1","2","1",,NULL,"2025-06-08 01:59:13","2025-06-08 01:59:13"
 "3","Vitrina","1","0","-","1990-01-01","0","1","1","1","4","1",,NULL,"2025-06-08 01:59:13","2025-06-08 01:59:13"

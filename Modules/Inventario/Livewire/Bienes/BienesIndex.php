@@ -36,7 +36,7 @@ class BienesIndex extends Component
     public $filtroNombre, $filtroUsuario, $filtroCategoria, $filtroDependencia, $filtroEstado;
 
     // --- Campos del bien ---
-    public $nombre, $detalle, $serie, $origen, $fechaAdquisicion, $precio, $cantidad;
+    public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
     public $categoria_id, $dependencia_id, $usuario_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
 
     // --- Catálogos cargados ---
@@ -53,7 +53,7 @@ class BienesIndex extends Component
         'serie' => 'Serie',
         'ubicacion_id' => 'Ubicación',
         'origen' => 'Origen',
-        'fechaAdquisicion' => 'Fecha de Adquisición',
+        'fecha_adquisicion' => 'Fecha de Adquisición',
         'precio' => 'Precio',
         'estado_id' => 'Estado',
         'mantenimiento_id' => 'Mantenimiento',
@@ -73,7 +73,7 @@ class BienesIndex extends Component
         'dependencia_id',
         'usuario_id',
         'origen',
-        'fechaAdquisicion',
+        'fecha_adquisicion',
         'precio',
         'estado_id',
         'mantenimiento_id',
@@ -112,14 +112,21 @@ class BienesIndex extends Component
             ->toArray();
     }
 
-    private function normalizarTexto($string) {
+    private function normalizarTexto($string)
+    {
         $normalizeChars = [
-            'á' => 'a', 'Á' => 'A',
-            'é' => 'e', 'É' => 'E',
-            'í' => 'i', 'Í' => 'I',
-            'ó' => 'o', 'Ó' => 'O',
-            'ú' => 'u', 'Ú' => 'U',
-            'ñ' => 'n', 'Ñ' => 'N'
+            'á' => 'a',
+            'Á' => 'A',
+            'é' => 'e',
+            'É' => 'E',
+            'í' => 'i',
+            'Í' => 'I',
+            'ó' => 'o',
+            'Ó' => 'O',
+            'ú' => 'u',
+            'Ú' => 'U',
+            'ñ' => 'n',
+            'Ñ' => 'N'
         ];
         return strtr($string, $normalizeChars);
     }
@@ -135,7 +142,7 @@ class BienesIndex extends Component
             'detalle' => 'nullable|string|max:400',
             'serie' => 'nullable|string|max:40',
             'origen' => 'nullable|string|max:40',
-            'fechaAdquisicion' => 'nullable|date',
+            'fecha_adquisicion' => 'nullable|date',
             'precio' => 'nullable|numeric',
             'cantidad' => 'nullable|integer',
             'categoria_id' => 'nullable|exists:categorias,id',
@@ -152,7 +159,7 @@ class BienesIndex extends Component
             'detalle',
             'serie',
             'origen',
-            'fechaAdquisicion',
+            'fecha_adquisicion',
             'precio',
             'cantidad',
             'categoria_id',
@@ -203,7 +210,7 @@ class BienesIndex extends Component
                 'detalle',
                 'serie',
                 'origen',
-                'fechaAdquisicion',
+                'fecha_adquisicion',
                 'precio',
                 'cantidad',
                 'categoria_id',

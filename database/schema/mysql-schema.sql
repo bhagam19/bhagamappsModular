@@ -60,7 +60,7 @@ CREATE TABLE `bienes` (
   `cantidad` int(11) DEFAULT NULL,
   `serie` varchar(40) DEFAULT NULL,
   `origen` varchar(40) DEFAULT NULL,
-  `fechaAdquisicion` date DEFAULT NULL,
+  `fecha_adquisicion` date DEFAULT NULL,
   `precio` double DEFAULT NULL,
   `categoria_id` bigint(20) unsigned DEFAULT NULL,
   `dependencia_id` bigint(20) unsigned DEFAULT NULL,

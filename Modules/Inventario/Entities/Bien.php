@@ -17,7 +17,7 @@ class Bien extends Model
         'nombre',
         'serie',
         'origen',
-        'fechaAdquisicion',
+        'fecha_adquisicion',
         'precio',
         'cantidad',
         'categoria_id',

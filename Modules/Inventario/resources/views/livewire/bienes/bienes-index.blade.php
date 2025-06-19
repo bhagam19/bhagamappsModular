@@ -272,7 +272,7 @@
                         ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
                         ['model' => 'serie', 'placeholder' => 'Serie', 'type' => 'text'],
                         ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
-                        ['model' => 'fechaAdquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
+                        ['model' => 'fecha_adquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
                         ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],
                         ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
                     ];
