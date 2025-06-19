@@ -28,7 +28,7 @@ class HistorialEliminacionesBienesSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 10) as $i) {
-            DB::table('historial_eliminaciones')->insert([
+            DB::table('historial_eliminaciones_bienes')->insert([
                 ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Dañado irreparable', 'created_at' => now(), 'updated_at' => now()],
                 ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Obsoleto', 'created_at' => now(), 'updated_at' => now()],
                 ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Extraviado', 'created_at' => now(), 'updated_at' => now()],
