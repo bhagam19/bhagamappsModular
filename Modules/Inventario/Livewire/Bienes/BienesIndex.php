@@ -193,7 +193,6 @@ class BienesIndex extends Component
         $this->resetPage();
     }
 
-
     public function delete($id)
     {
         abort_unless(auth()->user()->can('eliminar-bienes'), 403);
