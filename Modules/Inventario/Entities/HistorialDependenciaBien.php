@@ -4,19 +4,21 @@ namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Users\Models\User;
 
-class HistorialUbicacionBien extends Model
+class HistorialDependenciaBien extends Model
 {
     use HasFactory;
 
-    protected $table = 'historial_ubicaciones_bienes';
+    protected $table = 'historial_dependencias_bienes';
 
     protected $fillable = [
         'bien_id',
-        'dependencia_id',
-        'usuario_id',
-        'fecha',
-        'observaciones'
+        'dependencia_anterior_id',
+        'dependencia_nueva_id',
+        'usuario_id',        // quien hizo el cambio
+        'aprobado_por',      // quien aprobó el cambio
+        'fecha_modificacion'
     ];
 
     public function bien()
@@ -31,6 +33,6 @@ class HistorialUbicacionBien extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(\Modules\Users\Entities\User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 }

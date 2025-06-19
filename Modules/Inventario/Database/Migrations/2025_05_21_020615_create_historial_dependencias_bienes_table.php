@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historial_ubicaciones_bienes', function (Blueprint $table) {
+        Schema::create('historial_dependencias_bienes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bien_id')->constrained('bienes')->onDelete('cascade');
-            $table->foreignId('ubicacion_anterior_id')->nullable()->constrained('ubicaciones')->nullOnDelete();
-            $table->foreignId('ubicacion_nueva_id')->constrained('ubicaciones')->onDelete('cascade');
+            $table->foreignId('dependencia_anterior_id')->nullable()->constrained('dependencias')->nullOnDelete();
+            $table->foreignId('dependencia_nueva_id')->constrained('dependencias')->onDelete('cascade');
             $table->foreignId('usuario_id')->nullable()->constrained('users')->nullOnDelete(); // quien hizo el cambio
-            $table->timestamp('fecha_cambio')->useCurrent();
+            $table->foreignId('aprobado_por')->nullable()->constrained('users')->nullOnDelete(); // quien aprobó el cambio
+            $table->timestamp('fecha_modificacion')->useCurrent(); // coherente con el código anterior
             $table->timestamps();
         });
     }
