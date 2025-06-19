@@ -99,7 +99,7 @@ class BienesIndex extends Component
 
     public function mount()
     {
-        setlocale(LC_COLLATE, 'es_CO.UTF-8');
+        //setlocale(LC_COLLATE, 'es_CO.UTF-8');
 
         abort_unless(auth()->user()->hasPermission('ver-bienes'), 403);
 
