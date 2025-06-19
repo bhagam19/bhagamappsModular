@@ -32,6 +32,7 @@ class BienesIndex extends Component
     public string $sortDirection = 'asc';
 
     // --- Filtros ---
+    public $listaNombresBienes = [];
     public $filtroNombre, $filtroUsuario, $filtroCategoria, $filtroDependencia, $filtroEstado;
 
     // --- Campos del bien ---
@@ -98,10 +99,29 @@ class BienesIndex extends Component
 
     public function mount()
     {
+        setlocale(LC_COLLATE, 'es_CO.UTF-8');
+
         abort_unless(auth()->user()->hasPermission('ver-bienes'), 403);
 
         $this->visibleColumns = $this->ordenBase;
         $this->cargarCatalogos();
+        $this->listaNombresBienes = Bien::pluck('nombre')
+            ->unique()
+            ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
+            ->values()
+            ->toArray();
+    }
+
+    private function normalizarTexto($string) {
+        $normalizeChars = [
+            'á' => 'a', 'Á' => 'A',
+            'é' => 'e', 'É' => 'E',
+            'í' => 'i', 'Í' => 'I',
+            'ó' => 'o', 'Ó' => 'O',
+            'ú' => 'u', 'Ú' => 'U',
+            'ñ' => 'n', 'Ñ' => 'N'
+        ];
+        return strtr($string, $normalizeChars);
     }
 
     // ------------------ CRUD ------------------ //
@@ -147,6 +167,25 @@ class BienesIndex extends Component
         session()->flash('message', 'Bien creado exitosamente.');
         $this->resetInput();
     }
+
+    public function duplicar($id)
+    {
+        $bien = Bien::with('detalle')->findOrFail($id);
+
+        $nuevoBien = $bien->replicate();
+        $nuevoBien->save();
+
+        if ($bien->detalle) {
+            $nuevoDetalle = $bien->detalle->replicate();
+            $nuevoDetalle->bien_id = $nuevoBien->id;
+            $nuevoDetalle->save();
+        }
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: "Bien duplicado correctamente. ID: {$nuevoBien->id}");
+
+        $this->resetPage();
+    }
+
 
     public function delete($id)
     {
@@ -232,7 +271,7 @@ class BienesIndex extends Component
             ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
             ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
-            ->when($this->filtroNombre, fn($q) => $q->where('nombre', 'like', '%' . $this->filtroNombre . '%'))
+            ->when($this->filtroNombre, fn($q) => $q->where('nombre', $this->filtroNombre))
             ->orderBy($this->sortField, $this->sortDirection);
     }
 

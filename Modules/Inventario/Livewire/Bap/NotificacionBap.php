@@ -10,7 +10,6 @@ use Modules\Inventario\Entities\{
     BienAprobacionPendiente
 };
 
-
 class NotificacionBap extends Notification
 {
     public $aprobacion;

@@ -9,6 +9,7 @@ use Modules\Inventario\Entities\{
     BienAprobacionPendiente,
     HistorialModificacionBien,
     Detalle,
+    HistorialDependenciaBien,
 };
 use Illuminate\Support\Facades\DB;
 
@@ -51,8 +52,6 @@ class BapIndex extends Component
             'aprobacionesPendientes' => $aprobacionesPendientes,
         ]);
     }
-
-
 
     public function sortBy($field)
     {
@@ -105,6 +104,18 @@ class BapIndex extends Component
                     'aprobado_por' => auth()->id(),        // quien aprobó el cambio
                     'fecha_modificacion' => now(),
                 ]);
+
+                // Si el campo modificado es dependencia_id, guardar también en historial_dependencias_bienes
+                if ($campo === 'dependencia_id') {
+                    HistorialDependenciaBien::create([
+                        'bien_id' => $bien->id,
+                        'dependencia_anterior_id' => $valorAnterior,
+                        'dependencia_nueva_id' => $cambio->valor_nuevo,
+                        'usuario_id' => $usuario,               // quien hizo el cambio
+                        'aprobado_por' => auth()->id(),        // quien aprobó el cambio
+                        'fecha_modificacion' => now(),
+                    ]);
+                }
             }
 
             if ($cambio->tipo_objeto === 'detalle') {
@@ -152,8 +163,6 @@ class BapIndex extends Component
             $this->dispatch('cambioActualizado');
         }
     }
-
-
 
     public function rechazarCambio($id)
     {

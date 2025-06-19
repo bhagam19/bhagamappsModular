@@ -34,9 +34,7 @@
             position: sticky;
             top: 0;
             background-color: white;
-            /* o el color de fondo de tu encabezado */
             z-index: 10;
-            /* asegúrate de que quede por encima del contenido */
         }
 
         .sticky-col {
@@ -70,6 +68,19 @@
             background-color: rgb(223, 131, 131) !important;
             color: rgb(0, 0, 0) !important;
         }
+
+        .table-sm td,
+        .table-sm th {
+            padding: 0.05rem 0.3rem !important;
+        }
+
+        .table-sm input.form-control,
+        .table-sm select.form-control {
+            padding: 0.05rem 0.3rem;
+            font-size: 0.8rem;
+            height: calc(1.2em + 0.3rem + 2px);
+            line-height: 0.5;
+        }
     </style>
 
     {{-- Mensaje de sesión --}}
@@ -81,6 +92,29 @@
             </button>
         </div>
     @endif
+
+    {{-- Mensaje de sesión con AlpineJS --}}
+    <div x-data="{ show: false, mensaje: '', tipo: 'success' }" x-show="show" x-transition class="position-fixed top-0 start-50 translate-middle-x mt-1"
+        style="z-index: 9999; width: auto; max-width: 90%;"
+        @mostrar-mensaje.window="
+        mensaje = $event.detail.mensaje; 
+        tipo = $event.detail.tipo ?? 'success'; 
+        show = true; 
+        setTimeout(() => show = false, 10000);
+     ">
+
+        <div :class="{
+            'alert alert-success alert-dismissible fade show': tipo === 'success',
+            'alert alert-danger alert-dismissible fade show': tipo === 'error',
+            'alert alert-warning alert-dismissible fade show': tipo === 'warning'
+        }"
+            role="alert">
+
+            <span x-text="mensaje"></span>
+
+            <button type="button" class="btn-close" @click="show = false" aria-label="Cerrar"></button>
+        </div>
+    </div>
 
     {{-- Mostrar filtros (Movil) --}}
     <div class="d-block d-md-none mb-1">
@@ -348,12 +382,16 @@
             <thead>
                 {{-- Fila de filtros --}}
                 <tr>
-                    {{-- Celda con badge "Filtros" --}}
-                    <th style="position: sticky; top: 0; left: 0; background: white; z-index: 11; ">
-                        <div class="d-flex flex-column align-items-stretch gap-2">
-                            <span class="badge bg-primary text-center">Filtros</span>
 
-                            <button wire:click="limpiarFiltros" class="btn btn-outline-secondary btn-sm w-100"
+                    {{-- Celda con badge "Filtros" --}}
+                    <th style="position: sticky; top: 0; left: 0; background-color: #ffffff; z-index: 11;">
+                        <span class="badge bg-primary text-center p-2">Filtros →</span>
+                    </th>
+
+                    {{-- Botón para limpiar filtros --}}
+                    <th style="position: sticky; top: 0; left: 73px; background: rgb(255, 255, 255); z-index: 11; ">
+                        <div class="d-flex flex-column align-items-stretch gap-2 px-3">
+                            <button wire:click="limpiarFiltros" class="btn btn-outline-primary btn-sm w-100"
                                 title="Limpiar filtros">
                                 <i class="fas fa-eraser me-1"></i>
                             </button>
@@ -361,12 +399,17 @@
                     </th>
 
                     {{-- Filtro por nombre --}}
-                    <th style="position: sticky; top: 0; background: white; min-width: 250px;">
+                    <th
+                        style="position: sticky; top: 0; left: 145px; background: white; z-index: 11; min-width: 250px;">
                         <div class="d-flex align-items-center gap-2">
-                            <input type="text" wire:model.lazy="filtroNombre"
-                                class="form-control form-control-sm flex-grow-1" placeholder="Buscar por nombre" />
+                            <select wire:model.lazy="filtroNombre" class="form-control form-control-sm">
+                                <option value="">Filtrar por bien</option>
+                                @foreach ($listaNombresBienes as $nombre)
+                                    <option value="{{ $nombre }}">{{ $nombre }}</option>
+                                @endforeach
+                            </select>
 
-                            <button wire:click="filtroNombre" class="btn btn-sm btn-primary" title="Buscar">
+                            <button wire:click="$refresh" class="btn btn-sm btn-primary" title="Buscar">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -374,6 +417,9 @@
 
                     {{-- Resto de filtros basados en columnas --}}
                     @foreach ($visibleColumns as $index => $column)
+                        @if ($column === 'nombre')
+                            @continue
+                        @endif
                         @php
                             $isSticky = $index < 1;
                             $left = 30 + $index * 150;
@@ -427,21 +473,22 @@
                             @endswitch
                         </th>
                     @endforeach
-
                 </tr>
 
                 {{-- Fila de encabezados --}}
                 <tr class="thead-dark">
+                    <th style="position: sticky; top: 30px; left: 0; background-color: rgb(18, 48, 78); z-index: 11;">
+                        Acciones
+                    </th>
                     <th wire:click="sortBy('id')"
-                        style="cursor: pointer; position: sticky; top: 60px; left: 0; background-color: rgb(18, 48, 78); z-index: 11;">
+                        style="cursor: pointer; position: sticky; top: 30px; left: 73px; background-color: rgb(18, 48, 78); z-index: 11;">
                         ID
                         @if ($sortField === 'id')
                             {{ $sortDirection === 'asc' ? '▲' : '▼' }}
                         @endif
                     </th>
-
                     <th wire:click="sortBy('nombre')"
-                        style="cursor: pointer; position: sticky; top: 60px; background-color: rgb(18, 48, 78);">
+                        style="cursor: pointer; position: sticky; top: 30px; left: 145px; background-color: rgb(18, 48, 78); z-index: 11;">
                         Nombre
                         @if ($sortField === 'nombre')
                             {{ $sortDirection === 'asc' ? '▲' : '▼' }}
@@ -455,7 +502,7 @@
                             $left = 30 + $index * 150;
                             $isSticky = $index < 1;
                             $styles =
-                                'cursor: pointer; position: sticky; top: 60px; background-color: rgb(18, 48, 78);';
+                                'cursor: pointer; position: sticky; top: 30px; background-color: rgb(18, 48, 78);';
                             if ($isSticky) {
                                 $styles .= " left: {$left}px; z-index: 12;";
                             }
@@ -468,7 +515,7 @@
                         </th>
                     @endforeach
 
-                    <th style="position: sticky; top: 60px; background-color: #343a40; z-index: 9;">Acciones</th>
+
                 </tr>
             </thead>
 
@@ -485,13 +532,29 @@
                     @endphp
 
                     <tr class="hover:bg-blue-100 transition-colors {{ $rowClass }}">
+                        <td style="position: sticky; left: 0; background-color: rgba(255,255,255,0.9); z-index: 5;">
+                            <button x-data @click="duplicarBien('{{ $this->getId() }}', {{ $bien->id }})"
+                                class="btn btn-outline-secondary btn-sm p-1 me-1"
+                                aria-label="Duplicar bien {{ $bien->id }}" title="Duplicar">
+                                <i class="fas fa-copy" style="font-size: 0.8rem;"></i>
+                            </button>
+
+                            <button wire:click="delete({{ $bien->id }})"
+                                class="btn btn-outline-danger btn-sm p-1"
+                                onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
+                                aria-label="Eliminar bien {{ $bien->id }}" title="Eliminar">
+                                <i class="fas fa-trash" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </td>
+
                         {{-- Columna 1 sticky --}}
-                        <td style="position: sticky; left: 0; background-color: white; z-index: 5;">
+                        <td style="position: sticky; left: 73px; background-color: rgba(255,255,255,0.9); z-index: 5;">
                             {{ $bien->id }}
                         </td>
 
                         {{-- Columna Nombre (fija) --}}
-                        <td>
+                        <td
+                            style="position: sticky; left: 145px; background-color: rgba(255,255,255,0.9); z-index: 5;">
                             @if (auth()->user()?->hasPermission('editar-bienes'))
                                 @livewire(
                                     'bienes.editar-campo-bien',
@@ -562,16 +625,6 @@
                                 @endif
                             </td>
                         @endforeach
-
-                        <td>
-                            @if (auth()->user()?->hasPermission('eliminar-bienes'))
-                                <button wire:click="delete({{ $bien->id }})" class="btn btn-sm btn-danger"
-                                    onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
-                                    aria-label="Eliminar bien {{ $bien->id }}">
-                                    Eliminar
-                                </button>
-                            @endif
-                        </td>
                     </tr>
                 @empty
                     <tr>
@@ -583,6 +636,31 @@
             </tbody>
         </table>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function duplicarBien(componentId, id) {
+            Swal.fire({
+                title: '¿Deseas duplicar este bien?',
+                text: 'Escribe "Duplicar" para confirmar:',
+                input: 'text',
+                inputPlaceholder: 'Duplicar',
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: (value) => {
+                    if (value !== 'Duplicar') {
+                        Swal.showValidationMessage('Debes escribir exactamente "Duplicar"');
+                    }
+                    return value;
+                }
+            }).then((result) => {
+                if (result.isConfirmed && result.value === 'Duplicar') {
+                    Livewire.find(componentId).call('duplicar', id);
+                }
+            });
+        }
+    </script>
 
     {{-- Modal Detalles del Bien para escritorio --}}
     <div class="modal fade" id="modalDetallesBien" tabindex="-1" aria-labelledby="modalDetallesBienLabel"
