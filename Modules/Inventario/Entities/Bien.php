@@ -164,7 +164,6 @@ class Bien extends Model
             ->exists();
     }
 
-
     public function camposPendientes()
     {
         return $this->aprobacionesPendientes()
@@ -172,5 +171,10 @@ class Bien extends Model
             ->pluck('campo')
             ->unique()
             ->toArray();
+    }
+
+    public function eliminacionPendiente()
+    {
+        return $this->hasOne(HistorialEliminacionBien::class)->where('estado', 'pendiente');
     }
 }
