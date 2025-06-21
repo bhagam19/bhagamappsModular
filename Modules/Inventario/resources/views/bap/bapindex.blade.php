@@ -8,6 +8,8 @@
 
 @section('content')
 
+    <h3>Bienes Pendientes de Aprobación</h3>
+
     @if (session('info'))
         <div class="alert alert-success">
             <strong>{{ session('info') }}</strong>
