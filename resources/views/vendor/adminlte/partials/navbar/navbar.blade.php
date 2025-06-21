@@ -62,6 +62,7 @@
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
         {{-- Notifications dropdown --}}
+        {{--
         @auth
             @php
                 $esAdmin = auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Rector');
@@ -74,6 +75,7 @@
             @endif
 
         @endauth
+        --}}
 
         {{-- User menu link --}}
         @if (Auth::user())
