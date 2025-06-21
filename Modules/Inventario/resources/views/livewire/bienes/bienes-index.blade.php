@@ -195,34 +195,40 @@
         </div>
     </div>
 
-    {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
-    @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-block d-md-none mb-1">
-            <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse"
-                data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
-                Agregar Bien
-            </button>
-        </div>
-    @endif
-
-    {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
+    {{-- Contador cambios y eliminaciones pendientes --}}
     @php
-        $totalCambios = \Modules\Inventario\Entities\BienAprobacionPendiente::where('estado', 'pendiente')->count();
+        use Modules\Inventario\Entities\BienAprobacionPendiente;
+        use Modules\Inventario\Entities\HistorialEliminacionBien;
+
+        $totalCambios = BienAprobacionPendiente::where('estado', 'pendiente')->count();
+        $totalEliminaciones = HistorialEliminacionBien::where('estado', 'pendiente')->count();
+
         $hayCambios = $totalCambios > 0;
-        $btnClass = $hayCambios ? 'btn-danger' : 'btn-success';
-        $mensaje = $hayCambios
-            ? "Tiene <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span> modificaciones pendientes"
+        $hayEliminaciones = $totalEliminaciones > 0;
+
+        $btnClassCambios = $hayCambios ? 'btn-danger' : 'btn-success';
+        $btnClassEliminaciones = $hayEliminaciones ? 'btn-danger' : 'btn-success';
+
+        $mensajeCambios = $hayCambios
+            ? "Modificaciones pendientes: <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span>"
             : 'No hay modificaciones pendientes';
+
+        $mensajeEliminaciones = $hayEliminaciones
+            ? "Eliminaciones pendientes: <span class='badge bg-warning text-white ms-1'>{$totalEliminaciones}</span>"
+            : 'No hay eliminaciones pendientes';
     @endphp
 
+    {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
+    {{-- Contador registro y bienes (Escritorio) --}}
+    {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
 
             {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
-            <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button" data-toggle="collapse"
-                data-target="#formCreateBien" aria-expanded="false" aria-controls="formCreateBien">
-                <i class="fas fa-plus"></i> Agregar Bien
+            <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button"
+                wire:click="toggleFormulario">
+                <i class="fas fa-plus pr-1"></i> {{ $mostrarFormulario ? 'Ocultar' : 'Agregar Bien' }}
             </button>
 
             {{-- Contador registro y bienes (Escritorio) --}}
@@ -239,89 +245,214 @@
             {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
             @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
                 <a href="{{ route('inventario.bap') }}"
-                    class="btn {{ $btnClass }} btn-sm d-flex align-items-center gap-1" role="button"
+                    class="btn {{ $btnClassCambios }} btn-sm d-flex align-items-center gap-1" role="button"
                     aria-label="Ver modificaciones pendientes">
-                    <i class="fas fa-bell"></i>
-                    <span>{!! $mensaje !!}</span>
+                    <i class="fas fa-bell mr-1"></i>
+                    <span>{!! $mensajeCambios !!}</span>
+                </a>
+            @endif
+
+            {{-- Botón ver-historial-eliminaciones-bienes (Escritorio) --}}
+            @if (auth()->user()->hasPermission('ver-historial-eliminaciones-bienes'))
+                <a href="{{ route('inventario.heb') }}"
+                    class="btn {{ $btnClassEliminaciones }} btn-sm d-flex align-items-center gap-1" role="button"
+                    aria-label="Ver historial de eliminaciones">
+                    <i class="fas fa-bell mr-1"></i>
+                    <span>{!! $mensajeEliminaciones !!}</span>
                 </a>
             @endif
         </div>
+
+        {{-- Botón ver-aprobaciones-pendientes-bienes (Movil) --}}
         <div>
             @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
                 <a href="{{ route('inventario.bap') }}"
-                    class="btn {{ $btnClass }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                    class="btn {{ $btnClassCambios }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
                     role="button" aria-label="Ver modificaciones pendientes (móvil)">
-                    <i class="fas fa-bell"></i>
-                    @if ($hayCambios)
-                        <span>{!! $mensaje !!}</span>
-                    @endif
+                    <i class="fas fa-bell mr-1"></i>
+                    <span>{!! $mensajeCambios !!}</span>
+                </a>
+            @endif
+        </div>
+        {{-- Botón ver-historial-eliminaciones-bienes (Movil) --}}
+        <div>
+            @if (auth()->user()->hasPermission('ver-historial-eliminaciones-bienes'))
+                <a href="{{ route('inventario.heb') }}"
+                    class="btn {{ $btnClassEliminaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                    role="button" aria-label="Ver historial de eliminaciones (móvil)">
+                    <i class="fas fa-bell mr-1"></i>
+                    <span>{!! $mensajeEliminaciones !!}</span>
                 </a>
             @endif
         </div>
 
     @endif
 
+    {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
+    @if (auth()->user()->hasPermission('crear-bienes'))
+        <div class="d-block d-md-none mb-1">
+            <button class="btn btn-primary btn-sm btn-block" type="button" wire:click="toggleFormulario">
+                {{ $mostrarFormulario ? 'Ocultar' : 'Agregar Bien' }}
+            </button>
+        </div>
+    @endif
+
     {{-- Formulario Agregar bien (Móvil y Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="collapse" id="formCreateBien">
-            <form wire:submit.prevent="store" class="form-row align-items-end mb-1" novalidate>
-                @php
-                    $fields = [
-                        ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
-                        ['model' => 'detalle', 'placeholder' => 'Detalle', 'type' => 'text'],
-                        ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
-                        ['model' => 'serie', 'placeholder' => 'Serie', 'type' => 'text'],
-                        ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
-                        ['model' => 'fecha_adquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
-                        ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],
-                        ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
-                    ];
+        <div>
+            @if ($mostrarFormulario)
+                <form wire:submit.prevent="store" class="form-row align-items-end mb-1 rounded"
+                    style="background-color: #d7e7ff;" novalidate>
+                    @php
+                        $fields = [
+                            ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
+                            ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
+                            ['model' => 'serie', 'placeholder' => 'N/Serial (Si Aplica)', 'type' => 'text'],
+                            ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
+                            ['model' => 'fecha_adquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
+                            ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],
+                            ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
+                        ];
 
-                    $selectFields = [
-                        ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
-                        ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
-                        [
-                            'model' => 'almacenamiento_id',
-                            'label' => 'Almacenamiento',
-                            'options' => $almacenamientos ?? [],
-                        ],
-                        ['model' => 'estado_id', 'label' => 'Estado', 'options' => $estados ?? []],
-                        ['model' => 'mantenimiento_id', 'label' => 'Mantenimiento', 'options' => $mantenimientos ?? []],
-                    ];
-                @endphp
+                        $selectFields = [
+                            ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
+                            ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
+                            [
+                                'model' => 'almacenamiento_id',
+                                'label' => 'Almacenamiento',
+                                'options' => $almacenamientos ?? [],
+                            ],
+                            ['model' => 'estado_id', 'label' => 'Estado', 'options' => $estados ?? []],
+                            [
+                                'model' => 'mantenimiento_id',
+                                'label' => 'Mantenimiento',
+                                'options' => $mantenimientos ?? [],
+                            ],
+                        ];
 
-                @foreach ($fields as $field)
-                    <div class="form-group col-md-2">
-                        <input type="{{ $field['type'] }}" wire:model="{{ $field['model'] }}"
-                            placeholder="{{ $field['placeholder'] }}"
-                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror">
-                        @error($field['model'])
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                @endforeach
+                        $detalleFields = [
+                            ['model' => 'car_especial', 'placeholder' => 'Características especiales'],
+                            ['model' => 'marca', 'placeholder' => 'Marca'],
+                            ['model' => 'color', 'placeholder' => 'Color'],
+                            ['model' => 'tamano', 'placeholder' => 'Tamaño'],
+                            ['model' => 'material', 'placeholder' => 'Material'],
+                            ['model' => 'otra', 'placeholder' => 'Otra característica'],
+                        ];
+                    @endphp
 
-                @foreach ($selectFields as $field)
-                    <div class="form-group col-md-2">
-                        <select wire:model="{{ $field['model'] }}"
-                            class="form-control form-control-sm @error($field['model']) is-invalid @enderror">
-                            <option value="">{{ $field['label'] }}</option>
-                            @foreach ($field['options'] as $item)
-                                <option value="{{ $item->id }}">
-                                    {{ $item->nombre ?? ($item->descripcion ?? ($item->nombre_completo ?? 'Sin nombre')) }}
-                                </option>
+                    {{-- Campo especial: Nombre del bien con Select + “Otro” --}}
+                    <div class="form-group col-md-2 mb-1">
+                        <label class="small text-muted">Nombre del bien</label>
+                        <select wire:model.lazy="nombreSeleccionado"
+                            class="form-control form-control-sm @error('nombreSeleccionado') is-invalid @enderror">
+                            <option value="">Nombre del Bien</option>
+                            <option value="otro">Otro (No está en lista)</option>
+                            @foreach ($listaNombresBienes as $nombre)
+                                <option value="{{ $nombre }}">{{ $nombre }}</option>
                             @endforeach
                         </select>
-                        @error($field['model'])
+                        @error('nombreSeleccionado')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                @endforeach
 
-                <div class="form-group col-md-auto">
-                    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                </div>
-            </form>
+                    {{-- Input para nuevo nombre, visible solo si se selecciona “otro” --}}
+                    @if ($nombreSeleccionado === 'otro')
+                        <div class="form-group col-md-2 mb-1">
+                            <label class="small text-muted bg-warning rounded pl-1 pr-1">Nuevo nombre</label>
+                            <input type="text" wire:model="nombreNuevo" placeholder="Ingrese nuevo nombre"
+                                class="form-control bg-warning form-control-sm @error('nombreNuevo') is-invalid @enderror">
+                            @error('nombreNuevo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @endif
+
+                    {{-- Campo especial: Origen del bien con Select + “Otro” --}}
+                    <div class="form-group col-md-2 mb-1">
+                        <label class="small text-muted">Origen del bien</label>
+                        <select wire:model.lazy="origenSeleccionado"
+                            class="form-control form-control-sm @error('origenSeleccionado') is-invalid @enderror">
+                            <option value="">Origen del Bien</option>
+                            <option value="otro">Otro (No está en lista)</option>
+                            @foreach ($listaOrigenesBienes as $origen)
+                                <option value="{{ $origen }}">{{ $origen }}</option>
+                            @endforeach
+                        </select>
+                        @error('origenSeleccionado')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Input para nuevo origen, visible solo si se selecciona “otro” --}}
+                    @if ($origenSeleccionado === 'otro')
+                        <div class="form-group col-md-2 mb-1">
+                            <label class="small text-muted bg-warning rounded pl-1 pr-1">Nuevo origen</label>
+                            <input type="text" wire:model="origenNuevo" placeholder="Ingrese nuevo origen"
+                                class="form-control bg-warning form-control-sm @error('origenNuevo') is-invalid @enderror">
+                            @error('origenNuevo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @endif
+
+                    {{-- Campos individuales --}}
+                    @foreach ($fields as $field)
+                        @if ($field['model'] === 'nombre' || $field['model'] === 'origen')
+                            @continue
+                        @endif
+                        <div class="form-group col-md-2 mb-1">
+                            <input type="{{ $field['type'] }}" wire:model="{{ $field['model'] }}"
+                                placeholder="{{ $field['placeholder'] }}"
+                                class="form-control form-control-sm @error($field['model']) is-invalid @enderror">
+                            @error($field['model'])
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @endforeach
+
+                    {{-- Campos select --}}
+                    @foreach ($selectFields as $field)
+                        <div class="form-group col-md-2 mb-1">
+                            <select wire:model="{{ $field['model'] }}"
+                                class="form-control form-control-sm @error($field['model']) is-invalid @enderror">
+                                <option value="">{{ $field['label'] }}</option>
+                                @foreach ($field['options'] as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->nombre ?? ($item->descripcion ?? ($item->nombre_completo ?? 'Sin nombre')) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error($field['model'])
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @endforeach
+
+                    {{-- Agrupación visual Detalles del Bien --}}
+                    <div class="col-12 mb-1">
+                        <small class="text-muted font-weight-bold">Detalles del Bien</small>
+                        <div class="form-row">
+                            @foreach ($detalleFields as $field)
+                                <div class="form-group col-md-2 mb-1">
+                                    <input type="text" wire:model="detalleBien.{{ $field['model'] }}"
+                                        placeholder="{{ $field['placeholder'] }}"
+                                        class="form-control form-control-sm @error('detalleBien.' . $field['model']) is-invalid @enderror">
+                                    @error('detalleBien.' . $field['model'])
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-auto mb-1">
+                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                    </div>
+                </form>
+
+            @endif
         </div>
     @endif
 
@@ -350,12 +481,12 @@
 
         </div>
 
-        {{-- Derecha: Selector y Paginación --}}
-        <div class="table-responsive d-flex flex-column align-items-start">
+        {{-- Contenedor con Selector (izquierda) y Destacados (derecha) --}}
+        <div class="w-100 d-flex justify-content-between align-items-center flex-wrap mb-2 gap-2">
 
             {{-- Selector --}}
-            <div class="d-flex align-items-center mb-2">
-                <label class="mr-2 mb-0">Mostrar</label>
+            <div class="d-flex align-items-center mb-0 gap-2">
+                <label class="mb-0">Mostrar</label>
                 <select wire:model.lazy="perPage" class="form-control form-control-sm w-auto">
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -363,16 +494,32 @@
                     <option value="50">50</option>
                     <option value="100">100</option>
                 </select>
-                <span class="ml-2">registros</span>
+                <span>registros</span>
             </div>
 
-            {{-- Paginación con scroll horizontal --}}
-            <div class="w-100 overflow-auto">
-                <div class="d-inline-block">
-                    {{ $bienes->links('pagination::bootstrap-4') }}
+            @if ($user->hasRole('Administrador') || $user->hasRole('Rector'))
+                {{-- Bienes destacados (barra horizontal alineada a la derecha) --}}
+                <div class="d-flex align-items-center overflow-auto gap-2 mt-1">
+                    <span class="fw-bold pr-2">Destacados</span>
+                    @foreach ($bienesDestacados as $bien)
+                        <div class="d-flex align-items-center px-2 py-1 rounded border bg-white shadow-sm"
+                            style="white-space: nowrap;">
+                            <span class="text-gray-700 small me-2">{{ $bien->nombre }}:</span>
+                            <span class="text-gray-600 fw-bold small pl-2">{{ $bien->cantidad_total }}</span>
+                        </div>
+                    @endforeach
                 </div>
+            @endif
+
+        </div>
+
+        {{-- Paginación --}}
+        <div class="w-100 overflow-auto">
+            <div class="d-inline-block">
+                {{ $bienes->links('pagination::bootstrap-4') }}
             </div>
         </div>
+
 
     </div>
 
@@ -519,43 +666,86 @@
                 </tr>
             </thead>
 
+            <style>
+                tr.no-hover:hover {
+                    background-color: inherit !important;
+                }
+            </style>
+
             <tbody>
                 @forelse ($bienes as $bien)
                     @php
                         $estadoNombre = strtolower($bien->estado->nombre ?? '');
                         $rowClass = '';
-                        if ($estadoNombre === 'regular') {
-                            $rowClass = 'bg-regular text-dark'; // Naranja
+
+                        if ($bien->eliminacionPendiente) {
+                            $rowClass = 'bg-dark text-muted no-hover'; // Eliminación pendiente → Oscuro + no-hover
+                        } elseif ($estadoNombre === 'regular') {
+                            $rowClass = 'bg-regular text-dark'; // Estado regular → Naranja
                         } elseif ($estadoNombre === 'malo') {
-                            $rowClass = 'bg-malo bg-opacity-25 text-danger'; // Rosado/rojo claro
+                            $rowClass = 'bg-malo bg-opacity-25 text-danger'; // Estado malo → Rosado claro
                         }
                     @endphp
 
-                    <tr class="hover:bg-blue-100 transition-colors {{ $rowClass }}">
-                        <td style="position: sticky; left: 0; background-color: rgba(255,255,255,0.9); z-index: 5;">
-                            <button x-data @click="duplicarBien('{{ $this->getId() }}', {{ $bien->id }})"
-                                class="btn btn-outline-secondary btn-sm p-1 me-1"
-                                aria-label="Duplicar bien {{ $bien->id }}" title="Duplicar">
-                                <i class="fas fa-copy" style="font-size: 0.8rem;"></i>
-                            </button>
+                    <tr class="transition-colors hover:bg-blue-100 {{ $rowClass }}">
 
-                            <button wire:click="delete({{ $bien->id }})"
-                                class="btn btn-outline-danger btn-sm p-1"
-                                onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
-                                aria-label="Eliminar bien {{ $bien->id }}" title="Eliminar">
-                                <i class="fas fa-trash" style="font-size: 0.8rem;"></i>
-                            </button>
+                        {{-- Columna Acciones (fija) --}}
+                        <td @class([
+                            'position-sticky z-50',
+                            'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
+                            'text-muted bg-dark' => $bien->eliminacionPendiente,
+                        ]) style="left: 0;"
+                            title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
+
+                            @if ($bien->eliminacionPendiente)
+                                {{-- 🔒 Versión desactivada (cuando hay solicitud pendiente) --}}
+                                <button class="btn btn-outline-secondary btn-sm p-1 me-1" disabled
+                                    aria-label="Duplicar bien {{ $bien->id }}" title="Duplicar (deshabilitado)">
+                                    <i class="fas fa-copy" style="font-size: 0.8rem;"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-sm p-1 me-1" disabled
+                                    aria-label="Eliminar bien {{ $bien->id }}"
+                                    title="Eliminación solicitada (deshabilitado)">
+                                    <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
+                                </button>
+                            @else
+                                {{-- ✅ Versión funcional (sin solicitud pendiente) --}}
+                                <button x-data @click="duplicarBien('{{ $this->getId() }}', {{ $bien->id }})"
+                                    class="btn btn-outline-secondary btn-sm p-1 me-1"
+                                    aria-label="Duplicar bien {{ $bien->id }}" title="Duplicar">
+                                    <i class="fas fa-copy" style="font-size: 0.8rem;"></i>
+                                </button>
+
+                                <button wire:click="abrirModalEliminacion({{ $bien->id }})"
+                                    class="btn btn-outline-danger btn-sm p-1 me-1"
+                                    aria-label="Solicitar eliminación bien {{ $bien->id }}"
+                                    title="Solicitar eliminación">
+                                    <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
+                                </button>
+                            @endif
                         </td>
 
-                        {{-- Columna 1 sticky --}}
-                        <td style="position: sticky; left: 73px; background-color: rgba(255,255,255,0.9); z-index: 5;">
+                        {{-- Columna Id (fija) --}}
+                        <td @class([
+                            'position-sticky z-50',
+                            'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
+                            'text-muted bg-dark' => $bien->eliminacionPendiente,
+                        ]) style="left: 73px;"
+                            title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
                             {{ $bien->id }}
                         </td>
 
                         {{-- Columna Nombre (fija) --}}
-                        <td
-                            style="position: sticky; left: 145px; background-color: rgba(255,255,255,0.9); z-index: 5;">
-                            @if (auth()->user()?->hasPermission('editar-bienes'))
+                        <td @class([
+                            'position-sticky z-50',
+                            'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
+                            'text-muted bg-dark' => $bien->eliminacionPendiente,
+                        ]) style="left: 145px;"
+                            title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
+
+
+                            @if (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                 @livewire(
                                     'bienes.editar-campo-bien',
                                     [
@@ -567,6 +757,7 @@
                             @else
                                 {{ $bien->nombre }}
                             @endif
+
                         </td>
 
                         {{-- Columnas dinámicas --}}
@@ -578,17 +769,18 @@
                                 $left = 30 + $index * 150;
                                 $isSticky = $index < 1;
                             @endphp
-                            <td class="col-separator"
-                                style="
-                                white-space: nowrap;
-                                min-width: 150px;
-                                @if ($isSticky) position: sticky;
-                                    left: {{ $left }}px;
-                                    background-color: white;
-                                    z-index: 4; @endif
-                            ">
+                            <td @class([
+                                'col-separator',
+                                'position-sticky z-40 bg-white' =>
+                                    $isSticky && !$bien->eliminacionPendiente,
+                                'position-sticky z-40 bg-dark bg-opacity-75 text-light' =>
+                                    $isSticky && $bien->eliminacionPendiente,
+                            ])
+                                style="{{ $isSticky ? 'left: ' . $left . 'px;' : '' }} white-space: nowrap; min-width: 150px;"
+                                title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
+
                                 @if ($column === 'detalle')
-                                    @if (auth()->user()?->hasPermission('editar-bienes'))
+                                    @if (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                         @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-escritorio-' . $bien->id))
                                     @else
                                         @if ($bien->detalle)
@@ -610,7 +802,7 @@
                                         <span class="px-2 small text-muted editable-desktop d-none d-sm-inline">
                                             {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
                                         </span>
-                                    @elseif (auth()->user()?->hasPermission('editar-bienes'))
+                                    @elseif (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                         @livewire(
                                             'bienes.editar-campo-bien',
                                             [
@@ -637,6 +829,224 @@
         </table>
     </div>
 
+    {{-- Vista móvil: acordeón con Alpine.js --}}
+    <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
+        <div id="accordionMobileBienes">
+            @forelse($bienes as $bien)
+                @php
+                    $estadoNombre = strtolower($bien->estado->nombre ?? '');
+                    $cardClass = '';
+
+                    if ($bien->eliminacionPendiente) {
+                        $cardClass = 'border-secondary bg-dark text-muted'; // Eliminación pendiente → gris claro
+                    } elseif ($estadoNombre === 'regular') {
+                        $cardClass = 'border-warning bg-regular';
+                    } elseif ($estadoNombre === 'malo') {
+                        $cardClass = 'border-danger bg-malo';
+                    }
+
+                    $badgeClass = match (true) {
+                        $bien->cantidad === 0, $bien->cantidad < 5 => 'badge-primary',
+                        default => 'badge-primary',
+                    };
+
+                    $isOpen = "openId === {$bien->id}";
+                    $toggleOpen = "{$isOpen} ? openId = null : openId = {$bien->id}";
+                @endphp
+
+                <div class="card mb-2 {{ $cardClass }}"
+                    @if ($bien->eliminacionPendiente) title="Eliminación pendiente de aprobación" @endif>
+
+                    {{-- Encabezado --}}
+                    <div class="card-header d-flex align-items-center justify-content-between p-2 w-100"
+                        @if (!$bien->eliminacionPendiente) @click="{{ $toggleOpen }}" 
+                            @keydown.enter.prevent="{{ $toggleOpen }}"
+                            @keydown.space.prevent="{{ $toggleOpen }}" @endif
+                        tabindex="0" role="button" @class([
+                            'cursor-pointer' => !$bien->eliminacionPendiente,
+                            'opacity-75' => $bien->eliminacionPendiente,
+                        ])>
+
+                        {{-- Izquierda: nombre + icono de cambios + icono de estado --}}
+                        <div class="d-flex align-items-center flex-grow-1 flex-wrap">
+                            <span class="text-truncate">
+                                {{ $bien->id }}. {{ $bien->nombre }}
+
+                                @if ($bien->eliminacionPendiente)
+                                    <i class="fas fa-hourglass-half text-info ms-1 pl-2"></i>
+                                    → <i class="fas fa-trash-alt text-danger ms-2 pl-1"
+                                        title="Eliminación pendiente de aprobación"></i>
+                                @elseif ($bien->tieneCambiosPendientes())
+                                    <i class="fas fa-hourglass-half text-info ms-1 pl-2"
+                                        title="Tienes cambios pendientes en este bien"></i>
+                                @endif
+                            </span>
+
+                            @if ($estadoNombre === 'malo')
+                                <i class="fas fa-exclamation-circle text-white ml-2" title="Estado: Malo"></i>
+                            @elseif($estadoNombre === 'regular')
+                                <i class="fas fa-exclamation-triangle text-white ml-2" title="Estado: Regular"></i>
+                            @endif
+                        </div>
+
+                        {{-- Derecha: cantidad + botón eliminar --}}
+                        <div class="d-flex align-items-center flex-shrink-0 ms-auto">
+                            <span class="me-2 badge {{ $badgeClass }} badge-pill mr-2">
+                                <i class="fas fa-cubes me-1 "></i> {{ $bien->cantidad }}
+                            </span>
+
+                            @if (!$bien->eliminacionPendiente)
+                                <button x-data @click="duplicarBien('{{ $this->getId() }}', {{ $bien->id }})"
+                                    class="btn btn-outline-primary btn-sm p-1 pr-2 pl-2 mr-1 ml-1"
+                                    aria-label="Duplicar bien {{ $bien->id }}" title="Duplicar">
+                                    <i class="fas fa-copy" style="font-size: 0.8rem;"></i>
+                                </button>
+                            @endif
+
+                            @if (auth()->user()?->hasPermission('eliminar-bienes') && !$bien->eliminacionPendiente)
+                                <button wire:click="abrirModalEliminacion({{ $bien->id }})"
+                                    class="btn btn-outline-danger btn-sm p-1 pr-2 pl-2 mr-1 ml-1"
+                                    aria-label="Solicitar eliminación bien {{ $bien->id }}"
+                                    title="Solicitar eliminación">
+                                    <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- Cuerpo del acordeón --}}
+                    {{-- ⚠️ SOLO se renderiza el contenido si NO tiene eliminación pendiente --}}
+                    @unless ($bien->eliminacionPendiente)
+                        <div class="card-body p-2" :class="{ 'd-none': openId !== {{ $bien->id }} }">
+                            @foreach ($availableColumns as $key => $label)
+                                @continue(!in_array($key, $visibleColumns) || empty($key))
+
+                                <div class="mb-0">
+                                    @if ($key === 'detalle')
+                                        @if (auth()->user()?->hasPermission('editar-bienes'))
+                                            @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-' . $bien->id))
+                                        @else
+                                            @if ($bien->detalle)
+                                                <small class="d-block mt-1 text-muted">
+                                                    @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
+                                                        @if (!empty($bien->detalle->$attr))
+                                                            {{ $bien->detalle->$attr }} |
+                                                        @endif
+                                                    @endforeach
+                                                </small>
+                                            @else
+                                                <span class="text-muted fst-italic">Sin detalles</span>
+                                            @endif
+                                        @endif
+                                    @elseif ($key === 'usuario_id')
+                                        <div
+                                            class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">
+                                            <div class="text-truncate me-2" style="white-space: nowrap;">
+                                                <span
+                                                    class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
+                                                    {{ $label }}:
+                                                </span>
+                                                <small class="mt-1 text-muted">
+                                                    {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    @else
+                                        @if (auth()->user()?->hasPermission('editar-bienes'))
+                                            @livewire(
+                                                'bienes.editar-campo-bien',
+                                                [
+                                                    'bienId' => $bien->id,
+                                                    'campo' => $key,
+                                                    'camposPendientes' => $camposPendientes,
+                                                ],
+                                                key("mobile-bien-{$bien->id}-{$key}")
+                                            )
+                                        @else
+                                            {{ $bien->getDisplayValue($key) ?? '—' }}
+                                        @endif
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endunless
+                </div>
+            @empty
+                <p class="text-center text-muted">No hay bienes registrados.</p>
+            @endforelse
+        </div>
+    </div>
+
+    {{-- Paginación --}}
+    <div class="mt-3">
+        <div class="d-md-block d-flex overflow-auto">
+            <div class="mx-auto">
+                {{ $bienes->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Detalles del Bien para escritorio --}}
+    <div class="modal fade" id="modalDetallesBien" tabindex="-1" aria-labelledby="modalDetallesBienLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetallesBienLabel">Editar detalles del bien</h5>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="cerrarModalDetalles()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @livewire('bienes.editar-detalle-bien-modal')
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Eliminar Bien para escritorio - Bootstrap 4 --}}
+    <div wire:ignore.self class="modal fade" id="modalEliminarBien" tabindex="-1"
+        aria-labelledby="modalEliminarBienLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEliminarBienLabel">Solicitar eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <label for="motivo" class="form-label">Motivo:</label>
+                    <select wire:model="motivoSeleccionado" id="motivo" class="form-control">
+                        <option value="">Seleccione un motivo</option>
+                        @foreach ($motivosBase as $motivo)
+                            <option value="{{ (string) $motivo }}">{{ $motivo }}</option>
+                        @endforeach
+                        <option value="otro">Otro...</option>
+                    </select>
+
+                    {{-- Debug temporal --}}
+                    <div class="mt-2 text-muted small">Seleccionado: {{ $motivoSeleccionado }}</div>
+
+                    @if ((string) $motivoSeleccionado === 'otro')
+                        <input type="text" wire:model.defer="motivoNuevo" class="form-control mt-2"
+                            placeholder="Ingrese nuevo motivo" />
+                    @endif
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                    <button wire:click="solicitarEliminacion" type="button"
+                        class="btn btn-danger btn-sm">Solicitar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- Script para manejar la duplicación de bienes --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function duplicarBien(componentId, id) {
@@ -662,24 +1072,22 @@
         }
     </script>
 
-    {{-- Modal Detalles del Bien para escritorio --}}
-    <div class="modal fade" id="modalDetallesBien" tabindex="-1" aria-labelledby="modalDetallesBienLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDetallesBienLabel">Editar detalles del bien</h5>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="cerrarModalDetalles()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @livewire('bienes.editar-detalle-bien-modal')
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- Script para manejar el modal de eliminación de bienes --}}
+    <script>
+        document.addEventListener('abrir-modal-eliminar-bien', () => {
+            $('#modalEliminarBien').modal({
+                backdrop: 'static', // Evita que se cierre al hacer clic afuera
+                keyboard: false // Evita cierre con ESC
+            });
+            $('#modalEliminarBien').modal('show');
+        });
 
+        document.addEventListener('cerrar-modal-eliminar-bien', () => {
+            $('#modalEliminarBien').modal('hide');
+        });
+    </script>
+
+    {{-- Scripts para manejar el modal de detalles del bien --}}
     <script>
         function abrirModalDetalles(bienId) {
             // Emitir al componente Livewire para cargar el detalle
@@ -701,134 +1109,4 @@
         });
     </script>
 
-    {{-- Vista móvil: acordeón con Alpine.js --}}
-    <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
-        <div id="accordionMobileBienes">
-            @forelse($bienes as $bien)
-                @php
-
-                    $estadoNombre = strtolower($bien->estado->nombre ?? '');
-                    $cardClass = match ($estadoNombre) {
-                        'regular' => 'border-warning bg-regular',
-                        'malo' => 'border-danger bg-malo',
-                        default => '',
-                    };
-
-                    $badgeClass = match (true) {
-                        $bien->cantidad === 0, $bien->cantidad < 5 => 'badge-primary',
-                        default => 'badge-primary',
-                    };
-
-                    $isOpen = "openId === {$bien->id}";
-                    $toggleOpen = "{$isOpen} ? openId = null : openId = {$bien->id}";
-                @endphp
-
-                <div class="card mb-2 {{ $cardClass }}">
-                    {{-- Encabezado --}}
-                    <div class="card-header d-flex align-items-center justify-content-between p-2 w-100"
-                        @click="{{ $toggleOpen }}" @keydown.enter.prevent="{{ $toggleOpen }}"
-                        @keydown.space.prevent="{{ $toggleOpen }}" tabindex="0" role="button">
-
-                        {{-- Izquierda: nombre + icono de cambios + icono de estado --}}
-                        <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                            <span class="text-truncate">
-                                {{ $bien->id }}. {{ $bien->nombre }}
-
-                                @if ($bien->tieneCambiosPendientes())
-                                    <i class="fas fa-hourglass-half text-info ms-1"
-                                        title="Tienes cambios pendientes en este bien"></i>
-                                @endif
-                            </span>
-
-                            @if ($estadoNombre === 'malo')
-                                <i class="fas fa-exclamation-circle text-warning ms-2" title="Estado: Malo"></i>
-                            @elseif($estadoNombre === 'regular')
-                                <i class="fas fa-exclamation-triangle text-white ms-2" title="Estado: Regular"></i>
-                            @endif
-                        </div>
-
-                        {{-- Derecha: cantidad + botón eliminar --}}
-                        <div class="d-flex align-items-center flex-shrink-0 ms-auto">
-                            <span class="me-2 badge {{ $badgeClass }} badge-pill">
-                                <i class="fas fa-cubes me-1"></i> {{ $bien->cantidad }}
-                            </span>
-
-                            @if (auth()->user()?->hasPermission('eliminar-bienes'))
-                                <button wire:click.stop="$dispatch('confirmDelete', {{ $bien->id }})"
-                                    class="btn btn-sm btn-danger" aria-label="Eliminar bien {{ $bien->nombre }}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            @endif
-                        </div>
-                    </div>
-
-                    {{-- Cuerpo del acordeón --}}
-                    <div class="card-body p-2" :class="{ 'd-none': openId !== {{ $bien->id }} }">
-                        @foreach ($availableColumns as $key => $label)
-                            @continue(!in_array($key, $visibleColumns) || empty($key))
-
-                            <div class="mb-0">
-                                @if ($key === 'detalle')
-                                    @if (auth()->user()?->hasPermission('editar-bienes'))
-                                        @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-' . $bien->id))
-                                    @else
-                                        @if ($bien->detalle)
-                                            <small class="d-block mt-1 text-muted">
-                                                @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
-                                                    @if (!empty($bien->detalle->$attr))
-                                                        {{ $bien->detalle->$attr }} |
-                                                    @endif
-                                                @endforeach
-                                            </small>
-                                        @else
-                                            <span class="text-muted fst-italic">Sin detalles</span>
-                                        @endif
-                                    @endif
-                                @elseif ($key === 'usuario_id')
-                                    <div
-                                        class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">
-                                        <div class="text-truncate me-2" style="white-space: nowrap;">
-                                            <span
-                                                class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
-                                                {{ $label }}:
-                                            </span>
-                                            <small class="mt-1 text-muted">
-                                                {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
-                                            </small>
-                                        </div>
-                                    </div>
-                                @else
-                                    @if (auth()->user()?->hasPermission('editar-bienes'))
-                                        @livewire(
-                                            'bienes.editar-campo-bien',
-                                            [
-                                                'bienId' => $bien->id,
-                                                'campo' => $key,
-                                                'camposPendientes' => $camposPendientes,
-                                            ],
-                                            key("mobile-bien-{$bien->id}-{$key}")
-                                        )
-                                    @else
-                                        {{ $bien->getDisplayValue($key) ?? '—' }}
-                                    @endif
-                                @endif
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @empty
-                <p class="text-center text-muted">No hay bienes registrados.</p>
-            @endforelse
-        </div>
-    </div>
-
-
-    {{-- Paginación --}}
-    <div class="mt-3">
-        <div class="d-md-block d-flex overflow-auto">
-            <div class="mx-auto">
-                {{ $bienes->links('pagination::bootstrap-4') }}
-            </div>
-        </div>
-    </div>
 </div>

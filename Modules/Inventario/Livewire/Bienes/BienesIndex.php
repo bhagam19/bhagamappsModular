@@ -3,8 +3,10 @@
 namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Notification;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 use Modules\Users\Models\User;
 use Modules\Inventario\Entities\{
@@ -14,8 +16,10 @@ use Modules\Inventario\Entities\{
     Almacenamiento,
     Estado,
     Mantenimiento,
-    BienAprobacionPendiente
+    HistorialEliminacionBien,
+    Detalle
 };
+use Modules\Inventario\Livewire\Heb\NotificacionHeb;
 
 class BienesIndex extends Component
 {
@@ -31,13 +35,27 @@ class BienesIndex extends Component
     public string $sortField = 'id';
     public string $sortDirection = 'asc';
 
+    // --- Bienes destacados ---
+    public $bienesDestacados = [];
+
     // --- Filtros ---
-    public $listaNombresBienes = [];
+    public $nombreSeleccionado = '', $nombreNuevo = '', $listaNombresBienes = [];
+    public $origenSeleccionado = '', $origenNuevo = '', $listaOrigenesBienes = [];
     public $filtroNombre, $filtroUsuario, $filtroCategoria, $filtroDependencia, $filtroEstado;
 
     // --- Campos del bien ---
     public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
     public $categoria_id, $dependencia_id, $usuario_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
+
+    // --- Campos de detalle del bien ---
+    public $detalleBien = [
+        'car_especial' => null,
+        'marca' => null,
+        'color' => null,
+        'tamano' => null,
+        'material' => null,
+        'otra' => null,
+    ];
 
     // --- Catálogos cargados ---
     public $categorias, $dependencias, $usuarios, $estados, $almacenamientos, $mantenimientos;
@@ -80,9 +98,23 @@ class BienesIndex extends Component
         'almacenamiento_id',
         'observaciones'
     ];
+    //--- Eliminación con soft delete ---
+    public $bienId, $motivo, $nuevoMotivo;
+    public $bienSeleccionadoId;
+    public $motivoSeleccionado;
+    public $motivoNuevo;
+    public $motivosBase = [
+        'No existe',
+        'No está en mi inventario',
+        'Duplicado',
+        'Error en el registro original',
+        'Extraviado',
+        'Lo agregué por error',
+    ];
 
     protected $listeners = [
         'bienActualizado' => 'recargarBien',
+        'bienCreado' => '$refresh',
     ];
 
     // --- Query string para filtros ---
@@ -99,9 +131,9 @@ class BienesIndex extends Component
 
     public function mount()
     {
-        //setlocale(LC_COLLATE, 'es_CO.UTF-8');
-
         abort_unless(auth()->user()->hasPermission('ver-bienes'), 403);
+
+        $this->cargarBienesDestacados();
 
         $this->visibleColumns = $this->ordenBase;
         $this->cargarCatalogos();
@@ -110,6 +142,21 @@ class BienesIndex extends Component
             ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
             ->values()
             ->toArray();
+        $this->listaOrigenesBienes = Bien::pluck('origen')
+            ->unique()
+            ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
+            ->values()
+            ->toArray();
+    }
+
+    public function cargarBienesDestacados()
+    {
+        $this->bienesDestacados = DB::table('bienes')
+            ->select('nombre', DB::raw('SUM(cantidad) as cantidad_total'))
+            ->groupBy('nombre')
+            ->orderByDesc('cantidad_total')
+            ->take(5)
+            ->get();
     }
 
     private function normalizarTexto($string)
@@ -133,46 +180,93 @@ class BienesIndex extends Component
 
     // ------------------ CRUD ------------------ //
 
+    public bool $mostrarFormulario = false;
+
+    public function toggleFormulario()
+    {
+        $this->mostrarFormulario = !$this->mostrarFormulario;
+    }
+
     public function store()
     {
-        abort_unless(auth()->user()->can('crear-bienes'), 403);
+        abort_unless(auth()->user()->hasPermission('crear-bienes'), 403);
 
+        // Validación del bien
         $this->validate([
-            'nombre' => 'required|string|max:100',
+            'nombreSeleccionado' => 'required|string|max:100',
+            'nombreNuevo' => 'nullable|string|max:100',
             'detalle' => 'nullable|string|max:400',
             'serie' => 'nullable|string|max:40',
-            'origen' => 'nullable|string|max:40',
+            'origenSeleccionado' => 'required|string|max:100',
+            'origenNuevo' => 'nullable|string|max:100',
             'fecha_adquisicion' => 'nullable|date',
             'precio' => 'nullable|numeric',
             'cantidad' => 'nullable|integer',
             'categoria_id' => 'nullable|exists:categorias,id',
             'dependencia_id' => 'nullable|exists:dependencias,id',
-            'usuario_id' => 'nullable|exists:users,id',
             'almacenamiento_id' => 'nullable|exists:almacenamientos,id',
             'estado_id' => 'nullable|exists:estados,id',
             'mantenimiento_id' => 'nullable|exists:mantenimientos,id',
             'observaciones' => 'nullable|string|max:255',
+
+            // Validación de los detalles
+            'detalleBien.car_especial' => 'nullable|string|max:255',
+            'detalleBien.marca' => 'nullable|string|max:100',
+            'detalleBien.color' => 'nullable|string|max:50',
+            'detalleBien.tamano' => 'nullable|string|max:50',
+            'detalleBien.material' => 'nullable|string|max:100',
+            'detalleBien.otra' => 'nullable|string|max:255',
         ]);
 
-        Bien::create($this->only([
-            'nombre',
-            'detalle',
-            'serie',
-            'origen',
-            'fecha_adquisicion',
-            'precio',
-            'cantidad',
-            'categoria_id',
-            'dependencia_id',
-            'usuario_id',
-            'almacenamiento_id',
-            'estado_id',
-            'mantenimiento_id',
-            'observaciones'
-        ]));
+        // Obtener el nombre final
+        $nombreFinal = $this->nombreSeleccionado === 'otro'
+            ? trim($this->nombreNuevo)
+            : $this->nombreSeleccionado;
+
+        if (empty($nombreFinal)) {
+            $this->addError('nombreSeleccionado', 'Debe seleccionar o ingresar un nombre.');
+            return;
+        }
+
+        // Obtener el origen final
+        $origenFinal = $this->origenSeleccionado === 'otro'
+            ? trim($this->origenNuevo)
+            : $this->origenSeleccionado;
+
+        if (empty($origenFinal)) {
+            $this->addError('origenSeleccionado', 'Debe seleccionar o ingresar un origen.');
+            return;
+        }
+
+        // Crear el bien
+        $bien = Bien::create([
+            'nombre' => $nombreFinal,
+            'serie' => $this->serie,
+            'origen' => $this->origen,
+            'fecha_adquisicion' => $this->fecha_adquisicion,
+            'precio' => $this->precio,
+            'cantidad' => $this->cantidad,
+            'categoria_id' => $this->categoria_id,
+            'dependencia_id' => $this->dependencia_id,
+            'almacenamiento_id' => $this->almacenamiento_id,
+            'estado_id' => $this->estado_id,
+            'mantenimiento_id' => $this->mantenimiento_id,
+            'observaciones' => $this->observaciones,
+        ]);
+
+        logger("Bien creado con ID: " . $bien->id);
+
+        // Guardar el detalle del bien asociado
+        if (!empty(array_filter($this->detalleBien ?? []))) {
+            Detalle::create(array_merge(
+                ['bien_id' => $bien->id],
+                $this->detalleBien
+            ));
+        }
 
         session()->flash('message', 'Bien creado exitosamente.');
         $this->resetInput();
+        $this->mostrarFormulario = false;
     }
 
     public function duplicar($id)
@@ -193,28 +287,113 @@ class BienesIndex extends Component
         $this->resetPage();
     }
 
-    public function delete($id)
+    public function abrirModalEliminacion($bienId)
     {
-        abort_unless(auth()->user()->can('eliminar-bienes'), 403);
+        $this->bienSeleccionadoId = $bienId;
+        $this->motivoSeleccionado = null;
+        $this->motivoNuevo = '';
 
-        Bien::findOrFail($id)->delete();
-        session()->flash('message', 'Bien eliminado exitosamente.');
+        // Motivos desde la base de datos
+        $motivosDB = HistorialEliminacionBien::whereNotNull('motivo')
+            ->where('motivo', '!=', '')
+            ->distinct()
+            ->orderBy('motivo')
+            ->pluck('motivo')
+            ->toArray();
+
+        // 👉 Combina motivos base definidos en la propiedad + base de datos → únicos y sin vacíos
+        $this->motivosBase = array_unique(array_merge($this->motivosBase, $motivosDB));
+
+        $this->dispatch('abrir-modal-eliminar-bien');
+    }
+
+    public function solicitarEliminacion()
+    {
+        $motivoFinal = $this->motivoSeleccionado === 'otro' ? trim($this->motivoNuevo) : $this->motivoSeleccionado;
+
+        logger()->info('Motivo de eliminación:', ['motivo' => $motivoFinal]);
+
+        if (empty($motivoFinal)) {
+            $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'Debe ingresar un motivo.');
+            return;
+        }
+
+        $usuario = auth()->user();
+        $bien = Bien::with('dependencia.usuario')->findOrFail($this->bienSeleccionadoId);
+
+        // Si tiene rol autorizado → eliminar directamente
+        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+            // Registrar en el historial como aprobado
+            HistorialEliminacionBien::create([
+                'bien_id' => $bien->id,
+                'dependencia_id' => $bien->dependencia_id,
+                'usuario_id' => $bien->dependencia->usuario->id,
+                'motivo' => $motivoFinal,
+                'estado' => 'aprobado',
+                'aprobado_por' => $usuario->id,
+                'created_at' => now(),
+            ]);
+
+            // Aplicar soft delete al bien
+            $bien->delete();
+
+            $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'El bien fue eliminado correctamente.');
+            $this->dispatch('cerrar-modal-eliminar-bien');
+            return;
+        }
+
+        // Usuario sin permiso → guardar solicitud pendiente        
+
+        // Verificar si el usuario pertenece a la dependencia del bien
+        if (!$usuario->dependencias->pluck('id')->contains($bien->dependencia_id)) {
+            return redirect()->route('inventario.bienes.index');
+        }
+
+        // Verificar si ya existe una solicitud pendiente para este bien
+        $yaExiste = HistorialEliminacionBien::where('bien_id', $bien->id)
+            ->where('estado', 'pendiente')
+            ->exists();
+
+        if ($yaExiste) {
+            $this->dispatch('mostrar-mensaje', tipo: 'warning', mensaje: 'Ya existe una solicitud pendiente para este bien.');
+            $this->dispatch('cerrar-modal-eliminar-bien');
+            return;
+        }
+
+        // Crear el registro de solicitud pendiente    
+        $solicitud = HistorialEliminacionBien::create([
+            'bien_id' => $bien->id,
+            'dependencia_id' => $bien->dependencia_id,
+            'usuario_id' => $bien->dependencia->usuario->id,
+            'motivo' => $motivoFinal,
+            'estado' => 'pendiente'
+        ]);
+
+        // Enviar notificación a administradores y rector
+        $usuariosDestino = User::whereHas('role', function ($query) {
+            $query->whereIn('nombre', ['Administrador', 'Rector']);
+        })->get();
+
+        Notification::send($usuariosDestino, new NotificacionHeb($solicitud));
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Solicitud de eliminación enviada.');
+        $this->dispatch('cerrar-modal-eliminar-bien');
     }
 
     public function resetInput()
     {
         foreach (
             [
-                'nombre',
-                'detalle',
+                'nombreSeleccionado',
+                'nombreNuevo',
+                'origenSeleccionado',
+                'origenNuevo',
                 'serie',
-                'origen',
                 'fecha_adquisicion',
                 'precio',
                 'cantidad',
                 'categoria_id',
                 'dependencia_id',
-                'usuario_id',
                 'almacenamiento_id',
                 'estado_id',
                 'mantenimiento_id',
@@ -224,6 +403,7 @@ class BienesIndex extends Component
             $this->$campo = null;
         }
 
+        $this->detalleBien = [];
         $this->verTodos = false;
     }
 
