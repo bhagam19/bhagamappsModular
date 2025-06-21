@@ -30,7 +30,14 @@
 
     {{-- Barra superior --}}
     <div class="row align-items-center mb-3">
-        <div class="col-md-6"></div>
+        {{-- Columna izquierda: Botón --}}
+        <div class="col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+            <a href="{{ route('inventario.bienes.index') }}" class="btn btn-primary btn-sm">
+                Ir a Bienes
+            </a>
+        </div>
+
+        {{-- Columna derecha: Selector --}}
         <div class="col-md-6 d-flex justify-content-end align-items-center">
             <label for="perPage" class="mr-2 mb-0">Mostrar</label>
             <select id="perPage" wire:model.lazy="perPage" class="form-control w-auto">
@@ -43,12 +50,7 @@
         </div>
     </div>
 
-    {{-- Paginación superior --}}
-    <div class="mt-3">
-        <div class="d-md-block d-flex overflow-auto">
-            <div class="mx-auto">{{ $solicitudes->links('pagination::bootstrap-4') }}</div>
-        </div>
-    </div>
+
 
     {{-- Tabla escritorio --}}
     <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;" wire:poll.10s>
