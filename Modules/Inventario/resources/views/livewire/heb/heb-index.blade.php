@@ -97,7 +97,7 @@
                             @endif
                         </td>
                         <td>
-                            {{ $solicitud->created_at->format('d/m/Y H:i') }}
+                            {{ $solicitud->updated_at->format('d/m/Y H:i') }}
                         </td>
                         <td>
                             @if ($user->hasPermission('ver-historial-eliminaciones-bienes') && $solicitud->estado === 'pendiente')
