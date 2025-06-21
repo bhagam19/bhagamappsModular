@@ -24,7 +24,7 @@ class HebIndex extends Component
 
     public function mount()
     {
-        if (!auth()->user()->hasPermission('ver-historial-eliminaciones-bienes')) {
+        if (!auth()->user()->hasPermission('gestionar-historial-eliminaciones-bienes')) {
             return redirect()->route('inventario.bienes.index');
         }
     }

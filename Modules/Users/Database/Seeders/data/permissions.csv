@@ -20,7 +20,7 @@
 "19","ver historial bienes","ver-historial-bienes","Permite consultar el historial de modificaciones y ubicaciones de los bienes.","bienes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "20","asignar responsables a bienes","asignar-responsables-a-bienes","Permite asignar o cambiar los custodios o responsables de un bien.","bienes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "21","ver imagenes de bienes","ver-imagenes-de-bienes","Permite visualizar la galería de imágenes asociadas a un bien.","bienes","2025-06-08 01:58:45","2025-06-08 01:58:45"
-"22","ver aprobaciones pendientes bienes","ver-aprobaciones-pendientes-bienes","Permite visualizar la lista de bienes o modificaciones que están pendientes de aprobación.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
+"22","ver aprobaciones pendientes bienes","gestionar-historial-modificaciones-bienes","Permite visualizar la lista de bienes o modificaciones que están pendientes de aprobación.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "23","aprobar pendientes bienes","aprobar-pendientes-bienes","Permite aprobar o rechazar las modificaciones o nuevos bienes que están pendientes.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "24","editar aprobaciones pendientes bienes","editar-aprobaciones-pendientes-bienes","Permite modificar la información relacionada con una aprobación pendiente antes de su resolución.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "25","eliminar aprobaciones pendientes bienes","eliminar-aprobaciones-pendientes-bienes","Permite eliminar registros de aprobaciones pendientes del sistema.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"

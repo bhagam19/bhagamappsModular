@@ -220,7 +220,7 @@
 
     {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
     {{-- Contador registro y bienes (Escritorio) --}}
-    {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
+    {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
@@ -242,8 +242,8 @@
                 </div>
             </div>
 
-            {{-- Botón ver-aprobaciones-pendientes-bienes (Escritorio) --}}
-            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
+            {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
+            @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
                 <a href="{{ route('inventario.bap') }}"
                     class="btn {{ $btnClassCambios }} btn-sm d-flex align-items-center gap-1" role="button"
                     aria-label="Ver modificaciones pendientes">
@@ -252,8 +252,8 @@
                 </a>
             @endif
 
-            {{-- Botón ver-historial-eliminaciones-bienes (Escritorio) --}}
-            @if (auth()->user()->hasPermission('ver-historial-eliminaciones-bienes'))
+            {{-- Botón gestionar-historial-eliminaciones-bienes (Escritorio) --}}
+            @if (auth()->user()->hasPermission('gestionar-historial-eliminaciones-bienes'))
                 <a href="{{ route('inventario.heb') }}"
                     class="btn {{ $btnClassEliminaciones }} btn-sm d-flex align-items-center gap-1" role="button"
                     aria-label="Ver historial de eliminaciones">
@@ -263,9 +263,9 @@
             @endif
         </div>
 
-        {{-- Botón ver-aprobaciones-pendientes-bienes (Movil) --}}
+        {{-- Botón gestionar-historial-modificaciones-bienes (Movil) --}}
         <div>
-            @if (auth()->user()->hasPermission('ver-aprobaciones-pendientes-bienes'))
+            @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
                 <a href="{{ route('inventario.bap') }}"
                     class="btn {{ $btnClassCambios }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
                     role="button" aria-label="Ver modificaciones pendientes (móvil)">
@@ -274,9 +274,9 @@
                 </a>
             @endif
         </div>
-        {{-- Botón ver-historial-eliminaciones-bienes (Movil) --}}
+        {{-- Botón gestionar-historial-eliminaciones-bienes (Movil) --}}
         <div>
-            @if (auth()->user()->hasPermission('ver-historial-eliminaciones-bienes'))
+            @if (auth()->user()->hasPermission('gestionar-historial-eliminaciones-bienes'))
                 <a href="{{ route('inventario.heb') }}"
                     class="btn {{ $btnClassEliminaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
                     role="button" aria-label="Ver historial de eliminaciones (móvil)">

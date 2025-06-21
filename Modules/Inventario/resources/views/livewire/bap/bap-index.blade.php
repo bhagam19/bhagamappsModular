@@ -142,7 +142,7 @@
                             </span>
                         </td>
                         <td>
-                            @if ($user->hasPermission('ver-aprobaciones-pendientes-bienes'))
+                            @if ($user->hasPermission('gestionar-historial-modificaciones-bienes'))
                                 <button wire:click="aprobarCambio({{ $aprobacion->id }})"
                                     class="btn btn-sm btn-success">
                                     Aprobar
@@ -270,7 +270,7 @@
                                 </span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
-                                @if ($user?->hasPermission('ver-aprobaciones-pendientes-bienes'))
+                                @if ($user?->hasPermission('gestionar-historial-modificaciones-bienes'))
                                     <button wire:click="aprobarCambio({{ $aprobacion->id }})"
                                         class="btn btn-sm btn-success w-45 mr-2">Aprobar</button>
 

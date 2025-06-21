@@ -102,7 +102,7 @@
                             {{ $solicitud->updated_at->format('d/m/Y H:i') }}
                         </td>
                         <td>
-                            @if ($user->hasPermission('ver-historial-eliminaciones-bienes') && $solicitud->estado === 'pendiente')
+                            @if ($user->hasPermission('gestionar-historial-eliminaciones-bienes') && $solicitud->estado === 'pendiente')
                                 <button wire:click="aprobarEliminacion({{ $solicitud->id }})"
                                     class="btn btn-sm btn-success">Aprobar</button>
                                 <button wire:click="rechazarEliminacion({{ $solicitud->id }})"
@@ -226,7 +226,7 @@
                         </div>
 
                         {{-- Botones de acción --}}
-                        @if ($user->hasPermission('ver-historial-eliminaciones-bienes'))
+                        @if ($user->hasPermission('gestionar-historial-eliminaciones-bienes'))
                             <div class="d-flex justify-content-center gap-2 mt-2">
                                 {{-- Botones de acción --}}
                                 <button wire:click="aprobarEliminacion({{ $solicitud->id }})"
