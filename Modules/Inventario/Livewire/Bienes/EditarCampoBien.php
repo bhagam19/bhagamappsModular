@@ -104,7 +104,7 @@ class EditarCampoBien extends Component
 
         $this->validate($rules);
 
-        $usuario = auth()->user();        
+        $usuario = auth()->user();
 
         $valorActual = $this->bien->{$this->campo};
 
@@ -117,7 +117,7 @@ class EditarCampoBien extends Component
         // Si tiene rol autorizado, guardar directamente
         if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
             $this->bien->{$this->campo} = $this->valor;
-            
+
             // Lógica especial para estado_id
             if ($this->campo === 'estado_id') {
                 $estado = Estado::find($this->valor);
@@ -147,12 +147,12 @@ class EditarCampoBien extends Component
         }
 
         // Usuario sin permiso → guardar solicitud pendiente
-        
+
         // Verificar si el usuario pertenece a la dependencia del bien
         if (!$usuario->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
             return redirect()->route('inventario.bienes.index');
         }
-        
+
         // Verificar si ya existe un cambio pendiente para este campo
         $yaExiste = BienAprobacionPendiente::where('bien_id', $this->bien->id)
             ->where('campo', $this->campo)

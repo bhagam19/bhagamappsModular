@@ -36,6 +36,7 @@
                     @if ($cambioPendiente)
                         <span class="badge badge-info ms-2 font-weight-bold"
                             title="Valor anterior: {{ $valor }}">
+                            <i class="fas fa-hourglass-half ms-1 mr-1 pt-1 pb-1"></i>
                             →
                             @if ($tipo === 'select' && isset($opciones[$valorMostrar]))
                                 {{ $opciones[$valorMostrar] }}
@@ -46,7 +47,7 @@
                             @else
                                 {{ $valorMostrar }}
                             @endif
-                            <i class="fas fa-hourglass-half ms-1"></i>
+
                         </span>
                     @else
                         @if ($tipo === 'select' && isset($opciones[$valor]))
