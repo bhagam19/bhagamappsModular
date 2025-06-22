@@ -2,7 +2,13 @@
 
 Registro de cambios del proyecto BhagamApps.
 
-## [Inventario-v2.0.0] - 2025-06-22
+## [Inventario-v2.1.0] - 2025-05-28
+### Added
+- Mejora de la vista para docentes con acordeón en filtros.
+- Actualización del flujo de almacenamiento y mantenimiento para bienes en mal estado.
+
+
+## [Inventario-v2.0.0] - 2025-05-25
 ### Added
 - Refactor completo del módulo Inventario bajo arquitectura modular.
 - Reorganización de tablas `bienes`, `detalles`, `categorías` y `estados`.
