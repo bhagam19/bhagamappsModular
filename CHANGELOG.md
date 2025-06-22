@@ -2,6 +2,11 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.3.6] - 2025-06-22
+### Added
+- Encabezados con logo y versión en el módulo Inventario y dashboard.
+- Ordenamiento de bienes para administradores y rectores.
+
 ## [Inventario-v2.3.5] - 2025-06-22
 ### Changed
 - Refactor: eliminación del flujo intermedio con BapController.
