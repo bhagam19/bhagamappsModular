@@ -27,13 +27,13 @@
 
                 {{-- Texto editable con doble click para escritorio --}}
                 @php
-                    $cambioPendiente = $this->campoTieneModificacionPendiente();
-                    $valorMostrar = $cambioPendiente->valor_nuevo ?? $valor;
+                    $modificacionPendiente = $this->campoTieneModificacionPendiente();
+                    $valorMostrar = $modificacionPendiente->valor_nuevo ?? $valor;
                 @endphp
 
                 <span class="px-2 small text-dark" style="cursor: pointer">
-                    {{-- Icono si hay cambio pendiente --}}
-                    @if ($cambioPendiente)
+                    {{-- Icono si hay modificacion pendiente --}}
+                    @if ($modificacionPendiente)
                         <span class="badge badge-info ms-2 font-weight-bold"
                             title="Valor anterior: {{ $valor }}">
                             <i class="fas fa-hourglass-half ms-1 mr-1 pt-1 pb-1"></i>

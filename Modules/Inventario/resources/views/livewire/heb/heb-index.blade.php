@@ -57,8 +57,6 @@
         </div>
     </div>
 
-
-
     {{-- Tabla escritorio --}}
     <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;" wire:poll.10s>
         <table class="table table-striped table-sm table-hover w-100 mb-0">

@@ -116,7 +116,7 @@ class HistorialModificacionBien extends Model
         return $this->belongsTo(Estado::class, 'valor_nuevo');
     }
 
-    public function aprobadoPor()
+    public function aprobador()
     {
         return $this->belongsTo(User::class, 'aprobado_por');
     }

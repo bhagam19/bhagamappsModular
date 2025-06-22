@@ -60,8 +60,6 @@
         </div>
     </div>
 
-
-
     {{-- Tabla escritorio --}}
     <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;" wire:poll.10s>
         <table class="table table-striped table-sm table-hover w-100 mb-0">
@@ -76,10 +74,13 @@
                     <th style="position: sticky; top: 0; background-color:#12304e;">Dependencia</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Usuario</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Estado</th>
+                    <th style="position: sticky; top: 0; background-color:#12304e;">Gestionado por</th>
+                    <th style="position: sticky; top: 0; background-color:#12304e;">Fecha</th>
                     <th style="position: sticky; top: 0; background-color:#12304e;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
+
                 @forelse ($modificacionesPendientes as $modificacion)
                     @php
                         $usuario =
@@ -106,6 +107,20 @@
                                     {{ $modificacion->valorAnteriorEstado->nombre ?? $modificacion->valor_anterior }}
                                 @break
 
+                                @case('detalle')
+                                    @php
+                                        $valores = json_decode($modificacion->valor_anterior, true);
+                                    @endphp
+                                    @if (is_array($valores))
+                                        {!! collect($valores)->map(function ($valor, $campo) {
+                                                return '<span class="badge border border-primary text-primary bg-white">' .
+                                                    Str::headline($campo) .
+                                                    '</span>: ' .
+                                                    e($valor);
+                                            })->implode('<br>') !!}
+                                    @endif
+                                @break
+
                                 @default
                                     {{ $modificacion->valor_anterior }}
                             @endswitch
@@ -124,6 +139,20 @@
                                     {{ $modificacion->valorNuevoEstado->nombre ?? $modificacion->valor_nuevo }}
                                 @break
 
+                                @case('detalle')
+                                    @php
+                                        $valores = json_decode($modificacion->valor_nuevo, true);
+                                    @endphp
+                                    @if (is_array($valores))
+                                        {!! collect($valores)->map(function ($valor, $campo) {
+                                                return '<span class="badge border border-primary text-primary bg-white">' .
+                                                    Str::headline($campo) .
+                                                    '</span>: ' .
+                                                    (trim($valor) !== '' ? e($valor) : '-');
+                                            })->implode('<br>') !!}
+                                    @endif
+                                @break
+
                                 @default
                                     {{ $modificacion->valor_nuevo }}
                             @endswitch
@@ -131,24 +160,37 @@
                         <td>{{ $modificacion->dependencia->nombre ?? '—' }}</td>
                         <td>{{ $usuario ?? '—' }}</td>
                         <td>
-                            <span
-                                class="badge 
-                            {{ $modificacion->estado === 'pendiente'
-                                ? 'badge-warning'
-                                : ($modificacion->estado === 'aprobado'
-                                    ? 'badge-success'
-                                    : 'badge-danger') }}">
+                            @php
+                                $claseEstado = match ($modificacion->estado) {
+                                    'pendiente' => 'badge-warning',
+                                    'aprobada' => 'badge-success',
+                                    'rechazada' => 'badge-danger',
+                                    default => 'badge-secondary', // opcional para estados inesperados
+                                };
+                            @endphp
+
+                            <span class="badge {{ $claseEstado }}">
                                 {{ ucfirst($modificacion->estado) }}
                             </span>
+
+                        </td>
+                        <td>
+                            {{-- Mostrar "aprobado por" solo si no es pendiente --}}
+                            @if ($modificacion->estado !== 'pendiente')
+                                {{ $modificacion->aprobador?->nombre_completo ?? '—' }}
+                            @endif
+                        </td>
+                        <td>
+                            {{ $modificacion->updated_at->format('d/m/Y H:i') }}
                         </td>
                         <td>
                             @if ($user->hasPermission('gestionar-historial-modificaciones-bienes'))
-                                <button wire:click="aprobarCambio({{ $modificacion->id }})"
+                                <button wire:click="aprobarModificacion({{ $modificacion->id }})"
                                     class="btn btn-sm btn-success">
                                     Aprobar
                                 </button>
 
-                                <button wire:click="rechazarCambio({{ $modificacion->id }})"
+                                <button wire:click="rechazarModificacion({{ $modificacion->id }})"
                                     class="btn btn-sm btn-danger">
                                     Rechazar
                                 </button>
@@ -186,6 +228,18 @@
                             </span>
                             <span class="ml-auto badge badge-primary">
                                 {{ ucfirst(str_replace('_id', '', $modificacion->campo)) }}
+                            </span>
+                            @php
+                                $badgeClass = match ($modificacion->estado) {
+                                    'pendiente' => 'badge-warning',
+                                    'aprobada' => 'badge-success',
+                                    'rechazada' => 'badge-danger',
+                                    default => 'badge-secondary', // por si surge otro estado
+                                };
+                            @endphp
+
+                            <span class=" ml-auto badge {{ $badgeClass }} px-2 small text-dark">
+                                {{ ucfirst($modificacion->estado) }}
                             </span>
                         </div>
 
@@ -259,22 +313,25 @@
                                 <span class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
                                     Estado:
                                 </span>
-                                <span
-                                    class="badge 
-                            {{ $modificacion->estado === 'pendiente'
-                                ? 'badge-warning'
-                                : ($modificacion->estado === 'aprobado'
-                                    ? 'badge-success'
-                                    : 'badge-danger') }}">
+                                @php
+                                    $badgeClass = match ($modificacion->estado) {
+                                        'pendiente' => 'badge-warning',
+                                        'aprobada' => 'badge-success',
+                                        'rechazada' => 'badge-danger',
+                                        default => 'badge-secondary', // por si surge otro estado
+                                    };
+                                @endphp
+
+                                <span class=" ml-auto badge {{ $badgeClass }} px-2 small text-dark">
                                     {{ ucfirst($modificacion->estado) }}
                                 </span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
                                 @if ($user?->hasPermission('gestionar-historial-modificaciones-bienes'))
-                                    <button wire:click="aprobarCambio({{ $modificacion->id }})"
+                                    <button wire:click="aprobarModificacion({{ $modificacion->id }})"
                                         class="btn btn-sm btn-success w-45 mr-2">Aprobar</button>
 
-                                    <button wire:click="rechazarCambio({{ $modificacion->id }})"
+                                    <button wire:click="rechazarModificacion({{ $modificacion->id }})"
                                         class="btn btn-sm btn-danger w-45 ml-2">Rechazar</button>
                                 @endif
                             </div>
