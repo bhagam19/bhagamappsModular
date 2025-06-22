@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <h3>Bienes Pendientes de Aprobación</h3>
+    <h3>Historial de Modificaciones de Bienes</h3>
 
     @if (session('info'))
         <div class="alert alert-success">
@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="card-body">
-            @livewire('bap.bap-index')
+            @livewire('hmb.hmb-index')
         </div>
     </div>
 @endsection

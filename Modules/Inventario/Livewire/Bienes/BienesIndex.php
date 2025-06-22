@@ -443,7 +443,7 @@ class BienesIndex extends Component
             'almacenamiento',
             'estado',
             'mantenimiento',
-            'aprobacionesPendientes'
+            'modificacionesPendientes'
         ]);
 
         if ($user->hasRole('Coordinador') && !$this->verTodos) {

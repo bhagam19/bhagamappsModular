@@ -31,22 +31,22 @@
 
     {{-- Barra superior --}}
     <div class="row align-items-center mb-3">
-        <div class="col-md-6">
-            {{-- <input type="text" wire:model.lazy="filtroNombre" class="form-control"
-                placeholder="🔍 Buscar por nombre..."> --}}
+        {{-- Columna izquierda: Botón --}}
+        <div class="col-md-6 d-flex justify-content-start mb-2 mb-md-0">
+            <a href="{{ route('inventario.bienes.index') }}" class="btn btn-primary btn-sm">
+                Ir a Bienes
+            </a>
         </div>
 
+        {{-- Columna derecha: Selector --}}
         <div class="col-md-6 d-flex justify-content-end align-items-center">
             <label for="perPage" class="mr-2 mb-0">Mostrar</label>
-
-            <select id="perPage" name="perPage" wire:model.lazy="perPage" class="form-control w-auto">
+            <select id="perPage" wire:model.lazy="perPage" class="form-control w-auto">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
-                <option value="100">100</option>
             </select>
-
             <span class="ml-2">registros</span>
         </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="mt-3">
         <div class="d-md-block d-flex overflow-auto">
             <div class="mx-auto">
-                {{ $aprobacionesPendientes->links('pagination::bootstrap-4') }}
+                {{ $modificacionesPendientes->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
@@ -80,75 +80,75 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($aprobacionesPendientes as $aprobacion)
+                @forelse ($modificacionesPendientes as $modificacion)
                     @php
                         $usuario =
-                            $aprobacion->dependencia->usuario->nombres .
+                            $modificacion->dependencia->usuario->nombres .
                             ' ' .
-                            $aprobacion->dependencia->usuario->apellidos;
+                            $modificacion->dependencia->usuario->apellidos;
                     @endphp
                     <tr>
-                        <td>{{ $aprobacion->id }}</td>
-                        <td>{{ $aprobacion->bien_id }}</td>
-                        <td>{{ $aprobacion->bien->nombre ?? '—' }}</td>
-                        <td>{{ ucfirst(str_replace('_id', '', $aprobacion->campo)) }}</td>
+                        <td>{{ $modificacion->id }}</td>
+                        <td>{{ $modificacion->bien_id }}</td>
+                        <td>{{ $modificacion->bien->nombre ?? '—' }}</td>
+                        <td>{{ ucfirst(str_replace('_id', '', $modificacion->campo)) }}</td>
                         <td>
-                            @switch($aprobacion->campo)
+                            @switch($modificacion->campo)
                                 @case('categoria_id')
-                                    {{ $aprobacion->valorAnteriorCategoria->nombre ?? $aprobacion->valor_anterior }}
+                                    {{ $modificacion->valorAnteriorCategoria->nombre ?? $modificacion->valor_anterior }}
                                 @break
 
                                 @case('dependencia_id')
-                                    {{ $aprobacion->valorAnteriorDependencia->nombre ?? $aprobacion->valor_anterior }}
+                                    {{ $modificacion->valorAnteriorDependencia->nombre ?? $modificacion->valor_anterior }}
                                 @break
 
                                 @case('estado_id')
-                                    {{ $aprobacion->valorAnteriorEstado->nombre ?? $aprobacion->valor_anterior }}
+                                    {{ $modificacion->valorAnteriorEstado->nombre ?? $modificacion->valor_anterior }}
                                 @break
 
                                 @default
-                                    {{ $aprobacion->valor_anterior }}
+                                    {{ $modificacion->valor_anterior }}
                             @endswitch
                         </td>
                         <td>
-                            @switch($aprobacion->campo)
+                            @switch($modificacion->campo)
                                 @case('categoria_id')
-                                    {{ $aprobacion->valorNuevoCategoria->nombre ?? $aprobacion->valor_nuevo }}
+                                    {{ $modificacion->valorNuevoCategoria->nombre ?? $modificacion->valor_nuevo }}
                                 @break
 
                                 @case('dependencia_id')
-                                    {{ $aprobacion->valorNuevoDependencia->nombre ?? $aprobacion->valor_nuevo }}
+                                    {{ $modificacion->valorNuevoDependencia->nombre ?? $modificacion->valor_nuevo }}
                                 @break
 
                                 @case('estado_id')
-                                    {{ $aprobacion->valorNuevoEstado->nombre ?? $aprobacion->valor_nuevo }}
+                                    {{ $modificacion->valorNuevoEstado->nombre ?? $modificacion->valor_nuevo }}
                                 @break
 
                                 @default
-                                    {{ $aprobacion->valor_nuevo }}
+                                    {{ $modificacion->valor_nuevo }}
                             @endswitch
                         </td>
-                        <td>{{ $aprobacion->dependencia->nombre ?? '—' }}</td>
+                        <td>{{ $modificacion->dependencia->nombre ?? '—' }}</td>
                         <td>{{ $usuario ?? '—' }}</td>
                         <td>
                             <span
                                 class="badge 
-                            {{ $aprobacion->estado === 'pendiente'
+                            {{ $modificacion->estado === 'pendiente'
                                 ? 'badge-warning'
-                                : ($aprobacion->estado === 'aprobado'
+                                : ($modificacion->estado === 'aprobado'
                                     ? 'badge-success'
                                     : 'badge-danger') }}">
-                                {{ ucfirst($aprobacion->estado) }}
+                                {{ ucfirst($modificacion->estado) }}
                             </span>
                         </td>
                         <td>
                             @if ($user->hasPermission('gestionar-historial-modificaciones-bienes'))
-                                <button wire:click="aprobarCambio({{ $aprobacion->id }})"
+                                <button wire:click="aprobarCambio({{ $modificacion->id }})"
                                     class="btn btn-sm btn-success">
                                     Aprobar
                                 </button>
 
-                                <button wire:click="rechazarCambio({{ $aprobacion->id }})"
+                                <button wire:click="rechazarCambio({{ $modificacion->id }})"
                                     class="btn btn-sm btn-danger">
                                     Rechazar
                                 </button>
@@ -167,10 +167,10 @@
         {{-- Vista móvil --}}
         <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.10s>
             <div id="accordionMobilePendientes">
-                @forelse($aprobacionesPendientes as $aprobacion)
+                @forelse($modificacionesPendientes as $modificacion)
                     @php
-                        $isOpen = "openId === {$aprobacion->id}";
-                        $toggleOpen = "{$isOpen} ? openId = null : openId = {$aprobacion->id}";
+                        $isOpen = "openId === {$modificacion->id}";
+                        $toggleOpen = "{$isOpen} ? openId = null : openId = {$modificacion->id}";
                     @endphp
 
                     <div class="card mb-2">
@@ -179,13 +179,13 @@
                             tabindex="0" role="button">
                             <span>
                                 <small class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
-                                    {{ $aprobacion->bien->nombre ?? '—' }}
+                                    {{ $modificacion->bien->nombre ?? '—' }}
                                 </small>
 
-                                <small text-muted ml-2>{{ $aprobacion->dependencia->nombre ?? '—' }}</small>
+                                <small text-muted ml-2>{{ $modificacion->dependencia->nombre ?? '—' }}</small>
                             </span>
                             <span class="ml-auto badge badge-primary">
-                                {{ ucfirst(str_replace('_id', '', $aprobacion->campo)) }}
+                                {{ ucfirst(str_replace('_id', '', $modificacion->campo)) }}
                             </span>
                         </div>
 
@@ -196,7 +196,7 @@
                                     Bien Id:
                                 </span>
                                 <span class="px-2 small text-dark" style="cursor: pointer">
-                                    {{ $aprobacion->bien_id }}
+                                    {{ $modificacion->bien_id }}
                                 </span>
                             </div>
 
@@ -213,21 +213,21 @@
                                     Valor anterior:
                                 </span>
                                 <span class="px-2 small text-dark" style="cursor: pointer">
-                                    @switch($aprobacion->campo)
+                                    @switch($modificacion->campo)
                                         @case('categoria_id')
-                                            {{ $aprobacion->valorAnteriorCategoria->nombre ?? $aprobacion->valor_anterior }}
+                                            {{ $modificacion->valorAnteriorCategoria->nombre ?? $modificacion->valor_anterior }}
                                         @break
 
                                         @case('dependencia_id')
-                                            {{ $aprobacion->valorAnteriorDependencia->nombre ?? $aprobacion->valor_anterior }}
+                                            {{ $modificacion->valorAnteriorDependencia->nombre ?? $modificacion->valor_anterior }}
                                         @break
 
                                         @case('estado_id')
-                                            {{ $aprobacion->valorAnteriorEstado->nombre ?? $aprobacion->valor_anterior }}
+                                            {{ $modificacion->valorAnteriorEstado->nombre ?? $modificacion->valor_anterior }}
                                         @break
 
                                         @default
-                                            {{ $aprobacion->valor_anterior }}
+                                            {{ $modificacion->valor_anterior }}
                                     @endswitch
                                 </span>
                             </div>
@@ -236,21 +236,21 @@
                                     Valor nuevo:
                                 </span>
                                 <span class="px-2 small text-dark" style="cursor: pointer">
-                                    @switch($aprobacion->campo)
+                                    @switch($modificacion->campo)
                                         @case('categoria_id')
-                                            {{ $aprobacion->valorNuevoCategoria->nombre ?? $aprobacion->valor_nuevo }}
+                                            {{ $modificacion->valorNuevoCategoria->nombre ?? $modificacion->valor_nuevo }}
                                         @break
 
                                         @case('dependencia_id')
-                                            {{ $aprobacion->valorNuevoDependencia->nombre ?? $aprobacion->valor_nuevo }}
+                                            {{ $modificacion->valorNuevoDependencia->nombre ?? $modificacion->valor_nuevo }}
                                         @break
 
                                         @case('estado_id')
-                                            {{ $aprobacion->valorNuevoEstado->nombre ?? $aprobacion->valor_nuevo }}
+                                            {{ $modificacion->valorNuevoEstado->nombre ?? $modificacion->valor_nuevo }}
                                         @break
 
                                         @default
-                                            {{ $aprobacion->valor_nuevo }}
+                                            {{ $modificacion->valor_nuevo }}
                                     @endswitch
 
                                 </span>
@@ -261,20 +261,20 @@
                                 </span>
                                 <span
                                     class="badge 
-                            {{ $aprobacion->estado === 'pendiente'
+                            {{ $modificacion->estado === 'pendiente'
                                 ? 'badge-warning'
-                                : ($aprobacion->estado === 'aprobado'
+                                : ($modificacion->estado === 'aprobado'
                                     ? 'badge-success'
                                     : 'badge-danger') }}">
-                                    {{ ucfirst($aprobacion->estado) }}
+                                    {{ ucfirst($modificacion->estado) }}
                                 </span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
                                 @if ($user?->hasPermission('gestionar-historial-modificaciones-bienes'))
-                                    <button wire:click="aprobarCambio({{ $aprobacion->id }})"
+                                    <button wire:click="aprobarCambio({{ $modificacion->id }})"
                                         class="btn btn-sm btn-success w-45 mr-2">Aprobar</button>
 
-                                    <button wire:click="rechazarCambio({{ $aprobacion->id }})"
+                                    <button wire:click="rechazarCambio({{ $modificacion->id }})"
                                         class="btn btn-sm btn-danger w-45 ml-2">Rechazar</button>
                                 @endif
                             </div>
@@ -290,7 +290,7 @@
             <div class="mt-3">
                 <div class="d-md-block d-flex overflow-auto">
                     <div class="mx-auto">
-                        {{ $aprobacionesPendientes->links('pagination::bootstrap-4') }}
+                        {{ $modificacionesPendientes->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

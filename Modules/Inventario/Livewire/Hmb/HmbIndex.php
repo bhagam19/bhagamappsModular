@@ -1,19 +1,18 @@
 <?php
 
-namespace Modules\Inventario\Livewire\Bap;
+namespace Modules\Inventario\Livewire\Hmb;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Inventario\Entities\{
     Bien,
-    BienAprobacionPendiente,
     HistorialModificacionBien,
     Detalle,
     HistorialDependenciaBien,
 };
 use Illuminate\Support\Facades\DB;
 
-class BapIndex extends Component
+class HmbIndex extends Component
 {
     use WithPagination;
 
@@ -34,9 +33,8 @@ class BapIndex extends Component
 
     public function render()
     {
-        $aprobacionesPendientes = BienAprobacionPendiente::with([
+        $modificacionesPendientes = HistorialModificacionBien::with([
             'bien',
-            'user',
             'valorAnteriorCategoria',
             'valorNuevoCategoria',
             'valorAnteriorDependencia',
@@ -48,8 +46,8 @@ class BapIndex extends Component
             ->latest()
             ->paginate($this->perPage);
 
-        return view('inventario::livewire.bap.bap-index', [
-            'aprobacionesPendientes' => $aprobacionesPendientes,
+        return view('inventario::livewire.hmb.hmb-index', [
+            'modificacionesPendientes' => $modificacionesPendientes,
         ]);
     }
 
@@ -64,7 +62,7 @@ class BapIndex extends Component
 
     public function aprobarCambio($id)
     {
-        $cambio = BienAprobacionPendiente::find($id);
+        $cambio = HistorialModificacionBien::find($id);
 
         $bien = Bien::with('dependencia')->find($cambio->bien_id);
         $usuario = $bien->dependencia->usuario_id;
@@ -167,7 +165,7 @@ class BapIndex extends Component
     public function rechazarCambio($id)
     {
         try {
-            $cambio = BienAprobacionPendiente::find($id);
+            $cambio = HistorialModificacionBien::find($id);
 
             if (!$cambio) {
                 $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');

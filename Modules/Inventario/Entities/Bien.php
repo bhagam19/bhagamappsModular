@@ -39,7 +39,6 @@ class Bien extends Model
         return $this->hasOne(Detalle::class, 'bien_id');
     }
 
-
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
@@ -70,9 +69,9 @@ class Bien extends Model
         return $this->hasMany(BienResponsable::class);
     }
 
-    public function historialUbicaciones()
+    public function historialDependencias()
     {
-        return $this->hasMany(HistorialUbicacionBien::class);
+        return $this->hasMany(HistorialDependenciaBien::class);
     }
 
     public function historialModificaciones()
@@ -147,26 +146,21 @@ class Bien extends Model
         return (string) $value;
     }
 
-    public function aprobacionesPendientes()
+    public function modificacionesPendientes()
     {
-        return $this->hasMany(BienAprobacionPendiente::class, 'bien_id');
+        return $this->hasMany(HistorialModificacionBien::class, 'bien_id');
     }
 
-    public function tieneCambiosPendientes()
+    public function tieneModificacionesPendientes(): bool
     {
-        return $this->aprobacionesPendientes()->exists();
-    }
-
-    public function tieneAprobacionesPendientes(): bool
-    {
-        return $this->aprobacionesPendientes()
+        return $this->modificacionesPendientes()
             ->where('estado', 'pendiente')
             ->exists();
     }
 
     public function camposPendientes()
     {
-        return $this->aprobacionesPendientes()
+        return $this->modificacionesPendientes()
             ->where('estado', 'pendiente')
             ->pluck('campo')
             ->unique()

@@ -3,7 +3,7 @@
 namespace Modules\Inventario\Livewire\Notifications;
 
 use Livewire\Component;
-use Modules\Inventario\Entities\BienAprobacionPendiente;
+use Modules\Inventario\Entities\HistorialModificacionBien;
 
 
 class NotificacionesIcono extends Component
@@ -12,7 +12,7 @@ class NotificacionesIcono extends Component
 
     public function mount()
     {
-        $this->total = BienAprobacionPendiente::where('estado', 'pendiente')->count();
+        $this->total = HistorialModificacionBien::where('estado', 'pendiente')->count();
     }
 
     public function render()

@@ -195,22 +195,22 @@
         </div>
     </div>
 
-    {{-- Contador cambios y eliminaciones pendientes --}}
+    {{-- Contador modificaciones y eliminaciones pendientes --}}
     @php
-        use Modules\Inventario\Entities\BienAprobacionPendiente;
+        use Modules\Inventario\Entities\HistorialModificacionBien;
         use Modules\Inventario\Entities\HistorialEliminacionBien;
 
-        $totalCambios = BienAprobacionPendiente::where('estado', 'pendiente')->count();
+        $totalModificaciones = HistorialModificacionBien::where('estado', 'pendiente')->count();
         $totalEliminaciones = HistorialEliminacionBien::where('estado', 'pendiente')->count();
 
-        $hayCambios = $totalCambios > 0;
+        $hayModificaciones = $totalModificaciones > 0;
         $hayEliminaciones = $totalEliminaciones > 0;
 
-        $btnClassCambios = $hayCambios ? 'btn-danger' : 'btn-success';
+        $btnClassModificaciones = $hayModificaciones ? 'btn-danger' : 'btn-success';
         $btnClassEliminaciones = $hayEliminaciones ? 'btn-danger' : 'btn-success';
 
-        $mensajeCambios = $hayCambios
-            ? "Modificaciones pendientes: <span class='badge bg-warning text-dark ms-1'>{$totalCambios}</span>"
+        $mensajeModificaciones = $hayModificaciones
+            ? "Modificaciones pendientes: <span class='badge bg-warning text-dark ms-1'>{$totalModificaciones}</span>"
             : 'No hay modificaciones pendientes';
 
         $mensajeEliminaciones = $hayEliminaciones
@@ -221,6 +221,7 @@
     {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
     {{-- Contador registro y bienes (Escritorio) --}}
     {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
+    {{-- Botón gestionar-historial-eliminaciones-bienes (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
@@ -244,11 +245,11 @@
 
             {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
             @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
-                <a href="{{ route('inventario.bap') }}"
-                    class="btn {{ $btnClassCambios }} btn-sm d-flex align-items-center gap-1" role="button"
-                    aria-label="Ver modificaciones pendientes">
+                <a href="{{ route('inventario.hmb') }}"
+                    class="btn {{ $btnClassModificaciones }} btn-sm d-flex align-items-center gap-1" role="button"
+                    aria-label="Ver historial de modificaciones">
                     <i class="fas fa-bell mr-1"></i>
-                    <span>{!! $mensajeCambios !!}</span>
+                    <span>{!! $mensajeModificaciones !!}</span>
                 </a>
             @endif
 
@@ -266,11 +267,11 @@
         {{-- Botón gestionar-historial-modificaciones-bienes (Movil) --}}
         <div>
             @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
-                <a href="{{ route('inventario.bap') }}"
-                    class="btn {{ $btnClassCambios }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
-                    role="button" aria-label="Ver modificaciones pendientes (móvil)">
+                <a href="{{ route('inventario.hmb') }}"
+                    class="btn {{ $btnClassModificaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                    role="button" aria-label="Ver historial de modificaciones (móvil)">
                     <i class="fas fa-bell mr-1"></i>
-                    <span>{!! $mensajeCambios !!}</span>
+                    <span>{!! $mensajeModificaciones !!}</span>
                 </a>
             @endif
         </div>
@@ -867,7 +868,7 @@
                             'opacity-75' => $bien->eliminacionPendiente,
                         ])>
 
-                        {{-- Izquierda: nombre + icono de cambios + icono de estado --}}
+                        {{-- Izquierda: nombre + icono de modificaciones + icono de estado --}}
                         <div class="d-flex align-items-center flex-grow-1 flex-wrap">
                             <span class="text-truncate">
                                 {{ $bien->id }}. {{ $bien->nombre }}
@@ -876,9 +877,9 @@
                                     <i class="fas fa-hourglass-half text-info ms-1 pl-2"></i>
                                     → <i class="fas fa-trash-alt text-danger ms-2 pl-1"
                                         title="Eliminación pendiente de aprobación"></i>
-                                @elseif ($bien->tieneCambiosPendientes())
+                                @elseif ($bien->tieneModificacionesPendientes())
                                     <i class="fas fa-hourglass-half text-info ms-1 pl-2"
-                                        title="Tienes cambios pendientes en este bien"></i>
+                                        title="Tienes modificaciones pendientes en este bien"></i>
                                 @endif
                             </span>
 

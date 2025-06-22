@@ -33,7 +33,7 @@ class NotificacionHeb extends Notification
         $dependenciaNombre = $dependencia?->nombre ?? 'Dependencia no encontrada';
 
         $bien = $this->solicitud->bien;
-        $bienId = $this->solicitud->bien?->id ?? null;
+        $bienId = $this->solicitud->bien?->id;
         $nombreBien = $bien?->nombre ?? 'Bien no identificado';
 
         return (new MailMessage)

@@ -13,9 +13,9 @@ use Modules\Inventario\Entities\{
     Dependencia,
     Ubicacion,
     Categoria,
-    BienAprobacionPendiente
+    HistorialModificacionBien
 };
-use Modules\Inventario\Livewire\Bap\NotificacionBap;
+use Modules\Inventario\Livewire\Hmb\NotificacionHmb;
 
 class EditarCampoBien extends Component
 {
@@ -138,7 +138,6 @@ class EditarCampoBien extends Component
             }
 
             $this->bien->save();
-            logger()->info('El usuario ' . auth()->user()->nombres . ' actualizo el campo ' . $this->campo . ' del bien ' . $this->bien->id);
             $this->valor = $this->bien->{$this->campo};
             $this->editando = false;
             $this->dispatch('bienActualizado');
@@ -153,20 +152,20 @@ class EditarCampoBien extends Component
             return redirect()->route('inventario.bienes.index');
         }
 
-        // Verificar si ya existe un cambio pendiente para este campo
-        $yaExiste = BienAprobacionPendiente::where('bien_id', $this->bien->id)
+        // Verificar si ya existe una modificación pendiente para este campo
+        $yaExiste = HistorialModificacionBien::where('bien_id', $this->bien->id)
             ->where('campo', $this->campo)
             ->where('estado', 'pendiente')
             ->exists();
 
         if ($yaExiste) {
-            session()->flash('warning', 'Ya hay un cambio pendiente para este campo.');
+            session()->flash('warning', 'Ya hay una modificación pendiente para este campo.');
             $this->editando = false;
             return;
         }
 
-        // Crear el cambio pendiente UNA sola vez
-        $aprobacionPendiente = BienAprobacionPendiente::create([
+        // Crear la modificación pendiente UNA sola vez
+        $modificacionPendiente = HistorialModificacionBien::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'bien',
             'campo' => $this->campo,
@@ -181,17 +180,17 @@ class EditarCampoBien extends Component
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
 
-        Notification::send($usuariosDestino, new NotificacionBap($aprobacionPendiente));
+        Notification::send($usuariosDestino, new NotificacionHmb($modificacionPendiente));
 
         $this->editando = false;
         session()->flash('info', 'El cambio fue enviado para aprobación.');
     }
 
-    public function campoTieneAprobacionPendiente()
+    public function campoTieneModificacionPendiente()
     {
         $user = auth()->user();
 
-        $query = BienAprobacionPendiente::where('bien_id', $this->bienId)
+        $query = HistorialModificacionBien::where('bien_id', $this->bienId)
             ->where('campo', $this->campo)
             ->where('estado', 'pendiente');
 

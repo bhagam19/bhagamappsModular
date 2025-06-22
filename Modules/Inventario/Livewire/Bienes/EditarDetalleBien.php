@@ -7,10 +7,10 @@ use Modules\Users\Models\User;
 use Modules\Inventario\Entities\{
     Bien,
     Detalle,
-    BienAprobacionPendiente
+    HistorialModificacionBien
 };
 use Illuminate\Support\Facades\Notification;
-use Modules\Inventario\Livewire\Bap\NotificacionBap;
+use Modules\Inventario\Livewire\Hmb\NotificacionHmb;
 use Illuminate\Support\Arr;
 
 class EditarDetalleBien extends Component
@@ -81,7 +81,7 @@ class EditarDetalleBien extends Component
         $detalleNuevo = array_merge($detalleActual, $this->detalle);
 
         // Filtrar SOLO los que realmente cambiaron
-        $cambios = [];
+        $modificaciones = [];
         foreach ($detalleNuevo as $campo => $valorNuevo) {
             $valorAnterior = $detalleActual[$campo] ?? null;
 
@@ -91,17 +91,17 @@ class EditarDetalleBien extends Component
 
             // Si cambió, lo agregamos
             if ($valorAnterior != $valorNuevo) {
-                $cambios[$campo] = [
+                $modificaciones[$campo] = [
                     'anterior' => $valorAnterior ?? 'null',
                     'nuevo' => $valorNuevo ?? 'null'
                 ];
             }
         }
 
-        // Si no hay cambios reales, salir
-        if (empty($cambios)) {
+        // Si no hay modificaciones reales, salir
+        if (empty($modificaciones)) {
             $this->toggleEdit();
-            session()->flash('info', 'No hubo cambios reales.');
+            session()->flash('info', 'No hubo modificaciones reales.');
             return;
         }
 
@@ -118,7 +118,7 @@ class EditarDetalleBien extends Component
 
         // Usuario sin permiso → guardar solicitud pendiente
         // Verificar si ya existe un cambio pendiente para este bien y este campo
-        $yaExiste = BienAprobacionPendiente::where('bien_id', $this->bienId)
+        $yaExiste = HistorialModificacionBien::where('bien_id', $this->bienId)
             ->where('tipo_objeto', 'detalle')
             ->where('estado', 'pendiente')
             ->exists();
@@ -130,12 +130,12 @@ class EditarDetalleBien extends Component
         }
 
         // Guardar solicitud pendiente
-        $aprobacionPendiente = BienAprobacionPendiente::create([
+        $modificacionPendiente = HistorialModificacionBien::create([
             'bien_id' => $this->bien->id,
             'tipo_objeto' => 'detalle',
             'campo' => 'detalle',
-            'valor_anterior' => json_encode(array_map(fn($v) => $v['anterior'], $cambios), JSON_UNESCAPED_UNICODE),
-            'valor_nuevo' => json_encode(array_map(fn($v) => $v['nuevo'], $cambios), JSON_UNESCAPED_UNICODE),
+            'valor_anterior' => json_encode(array_map(fn($v) => $v['anterior'], $modificaciones), JSON_UNESCAPED_UNICODE),
+            'valor_nuevo' => json_encode(array_map(fn($v) => $v['nuevo'], $modificaciones), JSON_UNESCAPED_UNICODE),
             'dependencia_id' => $this->bien->dependencia_id,
             'estado' => 'pendiente',
         ]);
@@ -145,17 +145,17 @@ class EditarDetalleBien extends Component
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
 
-        Notification::send($usuariosDestino, new NotificacionBap($aprobacionPendiente));
+        Notification::send($usuariosDestino, new NotificacionHmb($modificacionPendiente));
 
         $this->toggleEdit();
         session()->flash('info', 'El cambio de detalles fue enviado para aprobación.');
     }
 
-    public function detalleTieneAprobacionPendiente()
+    public function detalleTieneModificacionPendiente()
     {
         $user = auth()->user();
 
-        $query = BienAprobacionPendiente::where('bien_id', $this->bienId)
+        $query = HistorialModificacionBien::where('bien_id', $this->bienId)
             ->where('campo', 'detalle')
             ->where('estado', 'pendiente');
 

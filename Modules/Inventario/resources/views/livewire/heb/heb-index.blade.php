@@ -50,6 +50,13 @@
         </div>
     </div>
 
+    {{-- Paginación Superior --}}
+    <div class="mt-3">
+        <div class="d-md-block d-flex overflow-auto">
+            <div class="mx-auto">{{ $solicitudes->links('pagination::bootstrap-4') }}</div>
+        </div>
+    </div>
+
 
 
     {{-- Tabla escritorio --}}

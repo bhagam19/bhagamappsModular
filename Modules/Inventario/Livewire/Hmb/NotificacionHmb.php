@@ -1,22 +1,22 @@
 <?php
 
-namespace Modules\Inventario\Livewire\Bap;
+namespace Modules\Inventario\Livewire\Hmb;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 use Modules\Inventario\Entities\{
     Dependencia,
     Categoria,
-    BienAprobacionPendiente
+    HistorialModificacionBien
 };
 
-class NotificacionBap extends Notification
+class NotificacionHmb extends Notification
 {
-    public $aprobacion;
+    public $modificacion;
 
-    public function __construct(BienAprobacionPendiente $aprobacion)
+    public function __construct(HistorialModificacionBien $modificacion)
     {
-        $this->aprobacion = $aprobacion;
+        $this->modificacion = $modificacion;
     }
 
     public function via($notifiable)
@@ -26,13 +26,14 @@ class NotificacionBap extends Notification
 
     public function toMail($notifiable)
     {
-        $dependencia = $this->aprobacion->dependencia;
+        $dependencia = $this->modificacion->dependencia;
 
         $usuario = $dependencia?->usuario;
         $nombreUsuario = $usuario ? trim("{$usuario->nombres} {$usuario->apellidos}") : 'Usuario desconocido';
         $dependenciaNombre = $dependencia?->nombre ?? 'Dependencia no encontrada';
 
-        $bien = $this->aprobacion->bien;
+        $bien = $this->modificacion->bien;
+        $bienId = $this->modificacion->bien?->id;
         $nombreBien = $bien?->nombre ?? 'Bien no identificado';
 
         $detallesCambios = '';
@@ -42,10 +43,10 @@ class NotificacionBap extends Notification
             'dependencia_id' => Dependencia::class,
         ];
 
-        if ($this->aprobacion->tipo_objeto === 'detalle') {
+        if ($this->modificacion->tipo_objeto === 'detalle') {
             // Cambios en detalles (varios campos)
-            $valorAnterior = json_decode($this->aprobacion->valor_anterior, true) ?? [];
-            $valorNuevo = json_decode($this->aprobacion->valor_nuevo, true) ?? [];
+            $valorAnterior = json_decode($this->modificacion->valor_anterior, true) ?? [];
+            $valorNuevo = json_decode($this->modificacion->valor_nuevo, true) ?? [];
 
             foreach ($valorNuevo as $campo => $valor) {
                 $anterior = $valorAnterior[$campo] ?? 'null';
@@ -53,12 +54,12 @@ class NotificacionBap extends Notification
 
                 $detallesCambios .= "- **" . ucfirst(str_replace('_', ' ', $campo)) . "**: {$anterior} → {$nuevo}\n";
             }
-        } elseif ($this->aprobacion->tipo_objeto === 'bien') {
-            $campo = $this->aprobacion->campo;
+        } elseif ($this->modificacion->tipo_objeto === 'bien') {
+            $campo = $this->modificacion->campo;
             $nombreCampo = ucfirst(str_replace('_', ' ', $campo));
 
-            $anterior = $this->aprobacion->valor_anterior ?? 'null';
-            $nuevo = $this->aprobacion->valor_nuevo ?? 'null';
+            $anterior = $this->modificacion->valor_anterior ?? 'null';
+            $nuevo = $this->modificacion->valor_nuevo ?? 'null';
 
             // Si el campo es select, buscar el nombre correspondiente
             if (array_key_exists($campo, $selectCampos)) {
@@ -77,11 +78,11 @@ class NotificacionBap extends Notification
         return (new MailMessage)
             ->subject("Inventario: Aprobación pendiente de {$nombreUsuario}")
             ->greeting("Hola,")
-            ->line("El usuario **{$nombreUsuario}** ha solicitado un cambio en el bien **{$nombreBien}**.")
+            ->line("El usuario **{$nombreUsuario}** ha solicitado un cambio en el bien **{$nombreBien}** con ID **{$bienId}**.")
             ->line("**Dependencia:** {$dependenciaNombre}")
             ->line("**Cambios solicitados:**")
             ->line($detallesCambios ?: '- Sin cambios detectados')
-            ->action('Revisar solicitud', url('/inventario/bap'))
+            ->action('Revisar solicitud', url('/inventario/h'))
             ->line('Por favor, ingrese al sistema para revisar y aprobar o rechazar el cambio.');
     }
 
@@ -90,11 +91,11 @@ class NotificacionBap extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'bien_id' => $this->aprobacion->bien_id,
-            'campo' => $this->aprobacion->campo,
-            'valor_anterior' => $this->aprobacion->valor_anterior,
-            'valor_nuevo' => $this->aprobacion->valor_nuevo,
-            'usuario' => $this->aprobacion->user->name,
+            'bien_id' => $this->modificacion->bien_id,
+            'campo' => $this->modificacion->campo,
+            'valor_anterior' => $this->modificacion->valor_anterior,
+            'valor_nuevo' => $this->modificacion->valor_nuevo,
+            'usuario' => $this->modificacion->user->name,
         ];
     }
     */

@@ -11,8 +11,10 @@
                     </span>
 
                     @php
-                        $cambioPendiente = $this->detalleTieneAprobacionPendiente();
-                        $valoresNuevos = $cambioPendiente ? json_decode($cambioPendiente->valor_nuevo, true) : [];
+                        $modificacionPendiente = $this->detalleTieneModificacionPendiente();
+                        $valoresNuevos = $modificacionPendiente
+                            ? json_decode($modificacionPendiente->valor_nuevo, true)
+                            : [];
                     @endphp
 
                     @if ($detalle && collect($detalle)->filter()->isNotEmpty())
@@ -21,10 +23,10 @@
                                 @php
                                     $valorActual = $detalle[$attr] ?? null;
                                     $nuevoValor = $valoresNuevos[$attr] ?? $valorActual;
-                                    $hayCambio = array_key_exists($attr, $valoresNuevos);
+                                    $hayModificacion = array_key_exists($attr, $valoresNuevos);
 
                                     // Si hay cambio, determinar el estilo del badge
-                                    $badgeClass = !$hayCambio
+                                    $badgeClass = !$hayModificacion
                                         ? ''
                                         : (empty($nuevoValor)
                                             ? 'bg-danger text-white'
@@ -34,17 +36,17 @@
                                     // → Si eliminando → mostrar *valor anterior* (lo que se va a eliminar)
                                     // → Si modificando → mostrar nuevo valor
                                     $mostrar =
-                                        empty($nuevoValor) && $hayCambio
+                                        empty($nuevoValor) && $hayModificacion
                                             ? $valorActual ?? 'null'
                                             : ($nuevoValor ?:
                                             'null');
                                 @endphp
 
-                                @if (!empty($valorActual) || $hayCambio)
+                                @if (!empty($valorActual) || $hayModificacion)
                                     <span
-                                        @if ($hayCambio) class="badge {{ $badgeClass }}" title="Anterior: {{ $valorActual ?? 'null' }} → Nuevo: {{ empty($nuevoValor) ? 'null' : $nuevoValor }}" @endif>
+                                        @if ($hayModificacion) class="badge {{ $badgeClass }}" title="Anterior: {{ $valorActual ?? 'null' }} → Nuevo: {{ empty($nuevoValor) ? 'null' : $nuevoValor }}" @endif>
                                         {{ $mostrar }}
-                                        @if ($hayCambio)
+                                        @if ($hayModificacion)
                                             <i class="fas fa-hourglass-half ms-1"></i>
                                         @endif
                                     </span> |

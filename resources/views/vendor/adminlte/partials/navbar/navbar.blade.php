@@ -70,7 +70,7 @@
 
             @if ($esAdmin)
                 <li class="nav-item dropdown">
-                    @livewire('bap.notificaciones-dropdown')
+                    @livewire('hmb.notificaciones-dropdown')
                 </li>
             @endif
 

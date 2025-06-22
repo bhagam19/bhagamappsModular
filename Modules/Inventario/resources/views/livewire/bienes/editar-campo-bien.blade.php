@@ -27,7 +27,7 @@
 
                 {{-- Texto editable con doble click para escritorio --}}
                 @php
-                    $cambioPendiente = $this->campoTieneAprobacionPendiente();
+                    $cambioPendiente = $this->campoTieneModificacionPendiente();
                     $valorMostrar = $cambioPendiente->valor_nuevo ?? $valor;
                 @endphp
 

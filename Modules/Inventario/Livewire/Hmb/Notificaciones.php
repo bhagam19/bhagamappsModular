@@ -4,7 +4,7 @@ namespace Modules\Inventario\Livewire\Notifications;
 
 use Livewire\Component;
 use Modules\Users\Models\User;
-use Modules\Inventario\Entities\BienAprobacionPendiente;
+use Modules\Inventario\Entities\HistorialModificacionBien;
 use Modules\Inventario\Entities\HistorialModificacionBien;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -26,7 +26,7 @@ class Notificaciones extends Component
 
     public function cargarCambiosPendientes()
     {
-        $this->cambiosPendientes = BienAprobacionPendiente::with('user', 'bien')
+        $this->cambiosPendientes = HistorialModificacionBien::with('user', 'bien')
             ->where('estado', 'pendiente')
             ->get();
     }
@@ -35,7 +35,7 @@ class Notificaciones extends Component
     {
         $this->authorize('aprobar-cambios-bienes');
 
-        $cambio = BienAprobacionPendiente::findOrFail($id);
+        $cambio = HistorialModificacionBien::findOrFail($id);
         $bien = $cambio->bien;
 
         if (!$bien) {
@@ -67,7 +67,6 @@ class Notificaciones extends Component
 
             $this->cargarCambiosPendientes();
             $this->dispatch('mensaje-exito', ['mensaje' => 'Cambio aprobado correctamente.']);
-
         } catch (\Throwable $e) {
             DB::rollBack();
             report($e);
@@ -79,7 +78,7 @@ class Notificaciones extends Component
     {
         $this->authorize('rechazar-cambios-bienes');
 
-        $cambio = BienAprobacionPendiente::findOrFail($id);
+        $cambio = HistorialModificacionBien::findOrFail($id);
         $cambio->estado = 'rechazado';
         $cambio->save();
 

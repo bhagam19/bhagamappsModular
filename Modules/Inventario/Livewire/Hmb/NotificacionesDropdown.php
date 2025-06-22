@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Inventario\Livewire\Bap;
+namespace Modules\Inventario\Livewire\Hmb;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Inventario\Entities\{
     Bien,
-    BienAprobacionPendiente,
+    HistorialModificacionBien,
     HistorialModificacionBien,
     Detalle,
 };
@@ -22,18 +22,18 @@ class NotificacionesDropdown extends Component
 
     public function render()
     {
-        $aprobacionesPendientes = BienAprobacionPendiente::with(['bien', 'user'])
+        $modificacionesPendientes = HistorialModificacionBien::with(['bien', 'user'])
             ->latest()
             ->paginate($this->perPage);
 
-        return view('inventario::livewire.bap.notificaciones-dropdown', [
-            'aprobacionesPendientes' => $aprobacionesPendientes,
+        return view('inventario::livewire.hmb.notificaciones-dropdown', [
+            'modificacionesPendientes' => $modificacionesPendientes,
         ]);
     }
 
     public function aprobarCambio($id)
     {
-        $cambio = BienAprobacionPendiente::find($id);
+        $cambio = HistorialModificacionBien::find($id);
 
         $bien = Bien::with('dependencia')->find($cambio->bien_id);
         $usuario = $bien->dependencia->usuario_id;
@@ -124,7 +124,7 @@ class NotificacionesDropdown extends Component
     public function rechazarCambio($id)
     {
         try {
-            $cambio = BienAprobacionPendiente::find($id);
+            $cambio = HistorialModificacionBien::find($id);
 
             if (!$cambio) {
                 $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');
