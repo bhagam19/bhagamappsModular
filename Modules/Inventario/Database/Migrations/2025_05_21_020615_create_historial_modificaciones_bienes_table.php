@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('valor_nuevo')->nullable();
             $table->foreignId('dependencia_id')->constrained('dependencias')->onDelete('cascade');
             $table->foreignId('aprobado_por')->nullable()->constrained('users')->nullOnDelete();
-            $table->timestamp('fecha_modificacion')->useCurrent();
             $table->timestamps();
         });
     }

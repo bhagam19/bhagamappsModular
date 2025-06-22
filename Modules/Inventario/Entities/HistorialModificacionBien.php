@@ -15,12 +15,11 @@ class HistorialModificacionBien extends Model
     protected $fillable = [
         'bien_id',
         'tipo_objeto',       // 'bien' o 'detalle'
-        'campo_modificado',  // nombre del campo que se modificó
+        'campo',  // nombre del campo que se modificó
         'valor_anterior',
         'valor_nuevo',
-        'usuario_id',        // quien realizó la modificación
+        'dependencia_id',     // dependencia afectada
         'aprobado_por',      // quien aprobó la modificación
-        'fecha_modificacion',
     ];
 
     protected $casts = [
