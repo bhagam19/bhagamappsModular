@@ -84,6 +84,7 @@ class BienesIndex extends Component
     public $visibleColumns = [];
 
     private array $ordenBase = [
+        'id',
         'nombre',
         'cantidad',
         'detalle',

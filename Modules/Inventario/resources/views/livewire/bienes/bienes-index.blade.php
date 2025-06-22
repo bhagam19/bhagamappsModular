@@ -1,7 +1,12 @@
 <div>
-    @php $user = auth()->user(); @endphp
 
     @php
+        $user = auth()->user();
+
+        $bienesOrdenados =
+            $user->hasRole('Administrador') || $user->hasRole('Rector') ? $bienes : $bienes->sortBy('nombre');
+
+        $contador = 0;
         $ocultarUsuario = !$user->hasRole('Administrador') && !$user->hasRole('Rector');
         $columnasOcultas = ['usuario_id'];
 
@@ -22,6 +27,7 @@
             },
             ARRAY_FILTER_USE_KEY,
         );
+
     @endphp
 
     <style>
@@ -60,7 +66,7 @@
         }
 
         .bg-regular {
-            background-color: rgb(233, 171, 129) !important;
+            background-color: #FFD76A !important;
             color: rgb(0, 0, 0) !important;
         }
 
@@ -833,8 +839,10 @@
     {{-- Vista móvil: acordeón con Alpine.js --}}
     <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
         <div id="accordionMobileBienes">
-            @forelse($bienes as $bien)
+            @forelse($bienesOrdenados as $bien)
+
                 @php
+                    $contador++;
                     $estadoNombre = strtolower($bien->estado->nombre ?? '');
                     $cardClass = '';
 
@@ -855,11 +863,11 @@
                     $toggleOpen = "{$isOpen} ? openId = null : openId = {$bien->id}";
                 @endphp
 
-                <div class="card mb-2 {{ $cardClass }}"
+                <div class="card mb-2 "
                     @if ($bien->eliminacionPendiente) title="Eliminación pendiente de aprobación" @endif>
 
                     {{-- Encabezado --}}
-                    <div class="card-header d-flex align-items-center justify-content-between p-2 w-100"
+                    <div class="card-header {{ $cardClass }} d-flex align-items-center justify-content-between p-2 w-100"
                         @if (!$bien->eliminacionPendiente) @click="{{ $toggleOpen }}" 
                             @keydown.enter.prevent="{{ $toggleOpen }}"
                             @keydown.space.prevent="{{ $toggleOpen }}" @endif
@@ -871,7 +879,7 @@
                         {{-- Izquierda: nombre + icono de modificaciones + icono de estado --}}
                         <div class="d-flex align-items-center flex-grow-1 flex-wrap">
                             <span class="text-truncate">
-                                {{ $bien->id }}. {{ $bien->nombre }}
+                                {{ $contador }}. {{ $bien->nombre }}
 
                                 @if ($bien->eliminacionPendiente)
                                     <i class="fas fa-hourglass-half text-info ms-1 pl-2"></i>
