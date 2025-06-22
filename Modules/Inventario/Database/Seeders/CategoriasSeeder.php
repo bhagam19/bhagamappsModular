@@ -11,8 +11,8 @@ class CategoriasSeeder extends Seeder
 {
     public function run(): void
     {
-               
-        $file = new SplFileObject(__DIR__.'/data/categoriasDeBienes.csv');
+
+        $file = new SplFileObject(__DIR__ . '/data/categorias.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
         $headers = array_map("trim", str_getcsv($file->fgets()));
@@ -26,12 +26,12 @@ class CategoriasSeeder extends Seeder
                 $data = array_combine($headers, $row);
 
                 DB::table('categorias')->insert([
-                    'id' => $data['codCategoria'],
-                    'nombre' => $data['nomCategoria'],
+                    //'id' => $data['id'],
+                    'nombre' => $data['nombre'],
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-            }   
+            }
         }
-    } 
+    }
 }

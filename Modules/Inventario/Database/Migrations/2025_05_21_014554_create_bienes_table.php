@@ -17,16 +17,15 @@ return new class extends Migration
             $table->integer('cantidad')->nullable();
             $table->string('serie', 40)->nullable();
             $table->string('origen', 40)->nullable();
-            $table->date('fechaAdquisicion')->nullable();
-            $table->float('precio')->nullable();
-            $table->foreignId('usuario_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null');
-            $table->foreignId('dependencia_id')->nullable()->constrained('dependencias')->onDelete('set null');
-            $table->foreignId('almacenamiento_id')->nullable()->constrained('almacenamientos')->onDelete('set null');
-            $table->foreignId('estado_id')->nullable()->constrained('estados')->onDelete('set null');
-            $table->foreignId('mantenimiento_id')->nullable()->constrained('mantenimientos')->onDelete('set null');
+            $table->date('fecha_adquisicion')->nullable(); // snake_case recomendado para fechas
+            $table->float('precio', 12, 2)->nullable(); // precisión recomendada para precios
+            $table->foreignId('categoria_id')->nullable()->constrained('categorias')->nullOnDelete();
+            $table->foreignId('dependencia_id')->nullable()->constrained('dependencias')->nullOnDelete();
+            $table->foreignId('almacenamiento_id')->nullable()->constrained('almacenamientos')->nullOnDelete();
+            $table->foreignId('estado_id')->nullable()->constrained('estados')->nullOnDelete();
+            $table->foreignId('mantenimiento_id')->nullable()->constrained('mantenimientos')->nullOnDelete();
             $table->string('observaciones', 200)->nullable();
-            $table->softDeletes();
+            $table->softDeletes(); // columna deleted_at
             $table->timestamps();
         });
     }
@@ -36,6 +35,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('bienes');
+
+        Schema::enableForeignKeyConstraints();
     }
 };

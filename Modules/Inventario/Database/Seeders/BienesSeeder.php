@@ -10,8 +10,8 @@ class BienesSeeder extends Seeder
 {
     public function run(): void
     {
-                
-        $file = new SplFileObject(__DIR__.'/data/bienes.csv');
+
+        $file = new SplFileObject(__DIR__ . '/data/bienes.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
         $headers = array_map("trim", str_getcsv($file->fgets()));
@@ -25,24 +25,24 @@ class BienesSeeder extends Seeder
                 $data = array_combine($headers, $row);
 
                 DB::table('bienes')->insert([
-                    'id' => $data['codBien'],
-                    'nombre' => $data['nomBien'],
-                    'serie' => $data['serieDelBien'],     // CORREGIDO
-                    'origen' => $data['origenDelBien'],   // CORREGIDO
-                    'fechaAdquisicion' => ($data['fechaAdquisicion'] === '0000-00-00' || empty($data['fechaAdquisicion'])) ? null : $data['fechaAdquisicion'],
+                    'id' => $data['id'],
+                    'nombre' => $data['nombre'],
+                    'serie' => $data['serie'],
+                    'origen' => $data['origen'],
+                    'fecha_adquisicion' => (in_array($data['fecha_adquisicion'], ['0000-00-00', '', 'NULL'], true) || is_null($data['fecha_adquisicion']))
+                        ? '2003-02-20'
+                        : $data['fecha_adquisicion'],
                     'precio' => $data['precio'],
-                    'cantidad' => $data['cantBien'],              // CORREGIDO
-                    'categoria_id' => $data['codCategoria'],      // CORREGIDO
-                    'dependencia_id' => $data['codDependencias'],// CORREGIDO
-                    'usuario_id' => $data['usuarioID'],
-                    'almacenamiento_id' => $data['codAlmacenamiento'], // CORREGIDO
-                    'estado_id' => $data['codEstado'],            // CORREGIDO
-                    'mantenimiento_id' => $data['codMantenimiento'], // CORREGIDO
+                    'cantidad' => $data['cantidad'],
+                    'categoria_id' => $data['categoria_id'],
+                    'dependencia_id' => $data['dependencia_id'],
+                    'almacenamiento_id' => $data['almacenamiento_id'],
+                    'estado_id' => $data['estado_id'],
+                    'mantenimiento_id' => $data['mantenimiento_id'],
                     'observaciones' => $data['observaciones'],
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-
             }
         }
     }

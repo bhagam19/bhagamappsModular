@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Modules\Users\Models\User;
 use Modules\Users\Models\Role;
 
 use SplFileObject;
@@ -22,8 +21,8 @@ class UserSeeder extends Seeder
             $this->command->error('Faltan los roles "Rector" y/o "Coordinador". Ejecuta primero RoleSeeder.');
             return;
         }
-        
-        $file = new SplFileObject(__DIR__.'/data/users.csv');
+
+        $file = new SplFileObject(__DIR__ . '/data/users.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
         $headers = array_map("trim", str_getcsv($file->fgets()));
@@ -34,75 +33,37 @@ class UserSeeder extends Seeder
             }
             $data = array_combine($headers, $row);
 
+            // Iniciales de todos los nombres
+            $inicialNombres = collect(explode(' ', trim($data['nombres'])))
+                ->filter() // elimina posibles espacios vacíos
+                ->map(fn($nombre) => Str::substr($nombre, 0, 1))
+                ->join('');
+
+            // Iniciales de todos los apellidos
+            $inicialApellidos = collect(explode(' ', trim($data['apellidos'])))
+                ->filter()
+                ->map(fn($apellido) => Str::substr($apellido, 0, 1))
+                ->join('');
+
+            // Últimos 4 del documento
+            $ultimos4 = substr(preg_replace('/\D/', '', $data['userID']), -4);
+
+            // Construir contraseña: ej. "alrh1234@IEE"
+            $clave = strtolower($inicialNombres . $inicialApellidos) . $ultimos4 . '@IEE';
+
             DB::table('users')->insert([
                 'id' => $data['id'],
                 'nombres' => $data['nombres'],
-                'apellidos' => $data['apellidos'],                
+                'apellidos' => $data['apellidos'],
                 'userID' => $data['userID'],
                 'email' => $data['email'],
                 'email_verified_at' => now(),
-                'password' => Hash::make('inventApp123*'),
+                'password' => Hash::make($clave),
                 'role_id' => $data['role_id'],
                 'current_team_id' => null,
                 'profile_photo_path' => null,
                 'remember_token' => Str::random(10),
-            ]);               
+            ]);
         }
-
-        
-        /*
-        // Usuario 1: Adolfo León (Rector)
-        User::updateOrCreate(
-            ['userID' => '71379517'],
-            [
-                'nombres' => 'Adolfo León',
-                'apellidos' => 'Ruiz Hernández',
-                'email' => 'bhagam19@gmail.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Asdf123*'),
-                'role_id' => $roles['Rector'],
-                'current_team_id' => null,
-                'profile_photo_path' => null,
-                'remember_token' => Str::random(10),
-            ]
-        );
-        */
-        // Usuario 2: Dorian Rodrigo (Coordinador)
-        User::updateOrCreate(
-            ['userID' => '71481707'],
-            [
-                'nombres' => 'Dorian Rodrigo',
-                'apellidos' => 'Ruiz Hernández',
-                'email' => 'dorianrodrigo@gmail.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Asdf123*'),
-                'role_id' => $roles['Coordinador'],
-                'current_team_id' => null,
-                'profile_photo_path' => null,
-                'remember_token' => Str::random(10),
-            ]
-        );
-
-        // Crear 10 usuarios aleatorios
-        /*
-        $roleIds = array_values($roles);
-
-        for ($i = 1; $i <= 150; $i++) {
-            User::updateOrCreate(
-                ['userID' => 'USR' . str_pad($i, 3, '0', STR_PAD_LEFT)],
-                [
-                    'nombres' => fake()->firstName(),
-                    'apellidos' => fake()->lastName(),
-                    'email' => fake()->unique()->safeEmail(),
-                    'email_verified_at' => now(),
-                    'password' => Hash::make('password'),
-                    'role_id' => fake()->randomElement($roleIds),
-                    'current_team_id' => null,
-                    'profile_photo_path' => null,
-                    'remember_token' => Str::random(10),
-                ]
-            );
-        }
-        */
     }
 }

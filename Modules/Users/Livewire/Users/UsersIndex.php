@@ -4,23 +4,31 @@ namespace Modules\Users\Livewire\Users;
 
 use Livewire\Component;
 use Modules\Users\Models\User;
+use Livewire\WithPagination; 
+
 
 class UsersIndex extends Component
 {
-    public $users;
+    use WithPagination;
+
+    //public $users;
     public $nombres, $apellidos, $userID, $role_id, $email, $password;
+    public int $perPage = 25;
+
+    public function updatingPerPage() { $this->resetPage(); }
 
     public function render()
     {
-        $this->users = User::with('role')->get();
-        return view('users::livewire.users.users-index')
-        ->layout('layouts.app');
-    }    
+        $users = User::with('role')->paginate($this->perPage);
+        return view('users::livewire.users.users-index', [
+            'users' => $users
+        ])->layout('layouts.app');
+    }   
 
     public function mount()
     {
         if (!auth()->user()->hasPermission('ver-usuarios')) {
-            abort(403);
+            return redirect()->route('ppal.index');
         }
     }
 

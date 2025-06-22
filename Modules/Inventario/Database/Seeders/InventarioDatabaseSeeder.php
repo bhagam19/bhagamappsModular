@@ -10,7 +10,7 @@ class InventarioDatabaseSeeder extends Seeder
     {
         // Orden recomendado por dependencias entre tablas
         $this->call([
-            AlmacenamientosSeeder::class,           
+            AlmacenamientosSeeder::class,
             CategoriasSeeder::class,
             EstadosSeeder::class,
             MantenimientosSeeder::class,
@@ -18,13 +18,13 @@ class InventarioDatabaseSeeder extends Seeder
             DependenciasSeeder::class,
             BienesSeeder::class,
             DetallesSeeder::class,
-            BienesAprobacionPendienteSeeder::class,
             HistorialModificacionesBienesSeeder::class,
-            HistorialUbicacionesBienesSeeder::class,
-            BienesResponsablesSeeder::class,
+            HistorialDependenciasBienesSeeder::class,
+            HistorialEliminacionesBienesSeeder::class,
             BienesImagenesSeeder::class,
             MantenimientosProgramadosSeeder::class,
-            
+
+
         ]);
     }
 }

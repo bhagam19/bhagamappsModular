@@ -1,0 +1,44 @@
+<?php
+
+namespace Modules\Inventario\Entities;
+
+use Illuminate\Database\Eloquent\Model;
+use Modules\Users\Models\User;
+use Modules\Inventario\Entities\{
+    Bien,
+    Dependencia
+};
+
+class HistorialEliminacionBien extends Model
+{
+    protected $table = 'historial_eliminaciones_bienes';
+
+    protected $fillable = [
+        'bien_id',
+        'dependencia_id',
+        'usuario_id',
+        'aprobado_por',
+        'estado',
+        'motivo'
+    ];
+
+    public function dependencia()
+    {
+        return $this->belongsTo(Dependencia::class, 'dependencia_id');
+    }
+
+    public function bien()
+    {
+        return $this->belongsTo(Bien::class, 'bien_id')->withTrashed();
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
+
+    public function aprobador()
+    {
+        return $this->belongsTo(User::class, 'aprobado_por');
+    }
+}

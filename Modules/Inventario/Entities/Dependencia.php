@@ -4,6 +4,7 @@ namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use \Modules\Users\Models\User;
 
 class Dependencia extends Model
 {
@@ -24,7 +25,7 @@ class Dependencia extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(\Modules\Users\Entities\User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function bienes()

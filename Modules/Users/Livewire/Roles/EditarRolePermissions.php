@@ -34,7 +34,7 @@ class EditarRolePermissions extends Component
 
         $this->role->permissions()->sync($this->selectedPermissions);
         session()->flash('message', 'Permisos actualizados correctamente.');
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('usuarios.roles.index');
     }
 
     public function render()

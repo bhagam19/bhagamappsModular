@@ -9,6 +9,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use Modules\Inventario\Entities\Bien;
+use Modules\Apps\Entities\App;
+use Modules\Inventario\Entities\Dependencia;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -80,9 +84,14 @@ class User extends Authenticatable
     /**
      * Relación muchos a uno con el modelo Role.
      */
-   public function role()
+    public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function dependencias()
+    {
+        return $this->hasMany(Dependencia::class, 'usuario_id');
     }
 
     /**
@@ -113,4 +122,34 @@ class User extends Authenticatable
         return false;
     }
 
+    public function adminlte_desc()
+    {
+        // Retorna descripción, por ejemplo el email
+        return $this->email;
+    }
+
+    public function adminlte_profile_url()
+    {
+        // Retorna la URL que usarás para mostrar el perfil del usuario
+        // Si no tienes ruta, puedes devolver null o la ruta de logout para evitar errores
+
+        return route('profile.show'); // Cambia 'profile.show' por la ruta real de perfil
+    }
+
+    public function adminlte_image()
+    {
+        return $this->avatar
+            ? asset('storage/' . $this->avatar)
+            : asset('images/default-avatar.png');
+    }
+
+    public function bienes()
+    {
+        return $this->hasMany(Bien::class, 'usuario_id');
+    }
+
+    public function apps()
+    {
+        return $this->belongsToMany(App::class, 'app_user', 'user_id', 'app_id');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Ppal\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,17 +13,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('ppal.index');
+})->name('inicio');
+*/
+
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [HomeController::class, 'index'])->name('inicio');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', function () {
+        return view('profile.show');
+    })->name('profile.show');
 });

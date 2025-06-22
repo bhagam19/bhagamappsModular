@@ -3,7 +3,7 @@
 @section('title', 'Inventario')
 
 @section('content_header')
-    <h1>Listado de Bienes</h1>
+    @include('inventario::components.encabezado')
 @endsection
 
 @section('content')
@@ -14,8 +14,8 @@
         </div>
     @endif
 
-    <div class="card">        
-        <div class="card-body"> 
+    <div class="card">
+        <div class="card-body">
             @livewire('bienes.bienes-index')
         </div>
     </div>

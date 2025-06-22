@@ -11,13 +11,13 @@ class DependenciasSeeder extends Seeder
 {
     public function run(): void
     {
-               
-        $file = new SplFileObject(__DIR__.'/data/dependencias.csv');
+
+        $file = new SplFileObject(__DIR__ . '/data/dependencias.csv');
         $file->setFlags(SplFileObject::READ_CSV);
 
         $headers = array_map("trim", str_getcsv($file->fgets()));
 
-        foreach ($file as $row) {           
+        foreach ($file as $row) {
 
             if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
                 continue;
@@ -25,14 +25,13 @@ class DependenciasSeeder extends Seeder
             $data = array_combine($headers, $row);
 
             DB::table('dependencias')->insert([
-                'id' => $data['codDependencias'],
-                'nombre' => $data['nomDependencias'],
-                'ubicacion_id' => $data['codUbicacion'],
-                'usuario_id' => $data['usuarioID'],
+                //'id' => $data['id'],
+                'nombre' => $data['nombre'],
+                'ubicacion_id' => $data['ubicacion_id'],
+                'usuario_id' => $data['usuario_id'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-              
         }
-    } 
+    }
 }

@@ -10,13 +10,18 @@ class HistorialModificacionesBienesSeeder extends Seeder
 {
     public function run(): void
     {
-        $faker = Faker::create();
+        $faker = \Faker\Factory::create();
 
         foreach (range(1, 15) as $i) {
             DB::table('historial_modificaciones_bienes')->insert([
                 'bien_id' => $faker->numberBetween(1, 10),
-                'usuario_id' => 1,
-                'cambios' => json_encode(['detalle' => 'actualización de datos']),
+                'tipo_objeto' => $faker->randomElement(['bien', 'detalle']),
+                'campo_modificado' => $faker->randomElement(['descripcion', 'color', 'marca', 'serial']),
+                'valor_anterior' => $faker->word(),
+                'valor_nuevo' => $faker->word(),
+                'usuario_id' => 1,       // Puedes randomizar si quieres
+                'aprobado_por' => 1,     // Puedes randomizar si quieres
+                'fecha_modificacion' => $faker->dateTimeBetween('-1 years', 'now'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
