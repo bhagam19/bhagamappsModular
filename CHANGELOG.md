@@ -2,6 +2,12 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.3.5] - 2025-06-22
+### Changed
+- Refactor: eliminación del flujo intermedio con BapController.
+- Todo el flujo de aprobaciones se gestiona desde **HmbController**.
+- Ajustes en rutas y vistas asociadas.
+
 ## [Inventario-v2.3.4] - 2025-06-21
 ### Changed
 - Refactor: reemplazo completo de BapController por HmbController.
