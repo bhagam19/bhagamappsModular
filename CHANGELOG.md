@@ -2,11 +2,27 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.3.1] - 2025-06-07
+### Changed
+- Refactor de notificaciones para bienes y aprobaciones pendientes.
+- Reorganización de rutas y control de acceso.
+
+## [Users-v1.1.0] - 2025-06-07
+### Changed
+- Actualización de seeders de roles y permisos.
+- Reasignación de permisos a roles (coordinadores, docentes, auxiliares).
+- Ajustes en rutas de administración de usuarios.
+
+## [BhagamApps-v1.2.0] - 2025-06-07
+### Changed
+- Reorganización del sistema de navegación y rutas generales.
+- Limpieza de vistas antiguas y actualización de vistas administrativas.
+- Refactor del sistema de notificaciones.
+
 ## [Inventario-v2.1.0] - 2025-05-28
 ### Added
 - Mejora de la vista para docentes con acordeón en filtros.
 - Actualización del flujo de almacenamiento y mantenimiento para bienes en mal estado.
-
 
 ## [Inventario-v2.0.0] - 2025-05-25
 ### Added
