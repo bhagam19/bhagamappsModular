@@ -2,6 +2,10 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [App-v1.0.0] - 2025-06-07
+### Added
+- Creación inicial del módulo App como módulo central para la plataforma.
+
 ## [Inventario-v2.3.1] - 2025-06-07
 ### Changed
 - Refactor de notificaciones para bienes y aprobaciones pendientes.
