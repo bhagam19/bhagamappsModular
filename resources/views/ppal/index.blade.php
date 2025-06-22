@@ -1,13 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Administrador')
+@section('title', 'Inicio')
 
 @section('content_header')
-    <h1>INICIO</h1>
+
 @stop
 
 @section('content')
-    <p>Aplicaciones</p>
     @include('apps::index', ['apps' => $apps])
 @stop
 
@@ -20,4 +19,8 @@
     <script>
         console.log("Hi, I'm using the Laravel-AdminLTE package!");
     </script>
+@stop
+
+@section('footer')
+    @include('dashboard_personal.footer')
 @stop

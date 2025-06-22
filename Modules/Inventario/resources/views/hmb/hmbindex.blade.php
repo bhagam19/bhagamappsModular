@@ -3,12 +3,10 @@
 @section('title', 'Inventario')
 
 @section('content_header')
-    @include('inventario::components.encabezado')
+
 @endsection
 
 @section('content')
-
-    <h3>Historial de Modificaciones de Bienes</h3>
 
     @if (session('info'))
         <div class="alert alert-success">
@@ -18,7 +16,13 @@
 
     <div class="card">
         <div class="card-body">
+            <h5 class="border rounded col-12 col-md-4 p-1 shadow-sm bg-white fw-bold">Historial de Modificaciones de Bienes
+            </h5>
             @livewire('hmb.hmb-index')
         </div>
     </div>
+@endsection
+
+@section('footer')
+    @include('inventario::components.footer')
 @endsection

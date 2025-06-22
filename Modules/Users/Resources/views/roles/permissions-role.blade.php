@@ -3,7 +3,7 @@
 @section('title', 'Panel de Administración')
 
 @section('content_header')
-    <h1>Editar Permisos para Roles</h1>
+
 @endsection
 
 @section('content')
@@ -14,9 +14,16 @@
         </div>
     @endif
 
-    <div class="card">        
-        <div class="card-body"> 
+    <div class="card">
+        <div class="card-body">
+            <h5 class="border rounded col-12 col-md-4 p-2 shadow-sm bg-white fw-bold">Editar Permisos para Roles
+                <strong>{{ $role->name }}</strong>
+            </h5>
             @livewire('roles.editar-role-permissions', ['role' => $role])
         </div>
     </div>
+@endsection
+
+@section('footer')
+    @include('users::components.footer')
 @endsection
