@@ -2,6 +2,16 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.3.2] - 2025-06-17
+### Changed
+- Ajustes en el flujo de modificación de detalles de bienes.
+
+
+## [Users-v1.1.1] - 2025-06-08
+### Changed
+- Actualización de nombres de permisos para mejorar consistencia.
+
+
 ## [App-v1.0.0] - 2025-06-07
 ### Added
 - Creación inicial del módulo App como módulo central para la plataforma.
