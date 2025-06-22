@@ -2,15 +2,25 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.3.4] - 2025-06-21
+### Changed
+- Refactor: reemplazo completo de BapController por HmbController.
+- Ajustes en rutas y vistas asociadas.
+- Centralización del flujo de aprobaciones directamente en el Historial de Modificaciones de Bienes.
+
+### Added
+- Añadido historial de dependencias de bienes.
+- Mejoras en interfaz de gestión.
+- Nuevos campos y ajustes en migraciones.
+- Flujo de eliminaciones mejorado.
+
 ## [Inventario-v2.3.2] - 2025-06-17
 ### Changed
 - Ajustes en el flujo de modificación de detalles de bienes.
 
-
 ## [Users-v1.1.1] - 2025-06-08
 ### Changed
 - Actualización de nombres de permisos para mejorar consistencia.
-
 
 ## [App-v1.0.0] - 2025-06-07
 ### Added
