@@ -22,48 +22,50 @@
     box-shadow: 0px 4px 15px var(--luzOn);
 }
 
-.appsName{
+.appsName {
     display: flex;
     align-items: center;
 }
 
 /* Estilo del contenedor del menú */
-.appsBtnMenu {    
+.appsBtnMenu {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     display: none;
 }
- 
-  /* Líneas del menú */
+
+/* Líneas del menú */
 .appsBtnMenu span {
     display: block;
     height: 3px;
     width: 100%;
-    background-color: var(--Off); /* Color de las líneas */
-    border-radius: 2px; /* Bordes redondeados */
+    background-color: var(--Off);
+    /* Color de las líneas */
+    border-radius: 2px;
+    /* Bordes redondeados */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-#appsEncabezadoGral:hover .appsBtnMenu span{
-    background-color: var(--OnActivo);    
+#appsEncabezadoGral:hover .appsBtnMenu span {
+    background-color: var(--OnActivo);
     box-shadow: 0px 0px 15px var(--luzOn);
 }
 
-.appsBtnMenu:hover span{
+.appsBtnMenu:hover span {
     transform: rotate(180deg);
 }
-  
-  /* Cambio de estado (por ejemplo, para un menú abierto) */
+
+/* Cambio de estado (por ejemplo, para un menú abierto) */
 .appsBtnMenu.open span:nth-child(1) {
     transform: translateY(12px) rotate(45deg);
 }
-  
+
 .appsBtnMenu.open span:nth-child(2) {
     opacity: 0;
 }
-  
+
 .appsBtnMenu.open span:nth-child(3) {
     transform: translateY(-12px) rotate(-45deg);
 }
@@ -77,7 +79,7 @@
 
 .appsBtnMenu:hover img {
     transform: rotate(180deg);
-	box-shadow: 0px 0px 15px var(--luzOn);
+    box-shadow: 0px 0px 15px var(--luzOn);
 }
 
 /* Logo */
@@ -99,7 +101,8 @@
 .appsTituloCinta {
     padding: 0 20px;
     font-weight: bold;
-    color: var(--RojoOnPasivo); /* Color base */
+    color: var(--RojoOnPasivo);
+    /* Color base */
     text-align: center;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
@@ -112,14 +115,16 @@
 /* Contenido de la Cinta */
 .appsContenidoCinta {
     font-weight: normal;
-    color: var(--OnPasivo); /* Color base */
+    color: var(--OnPasivo);
+    /* Color base */
     text-align: center;
     transition: color 0.3s ease, text-shadow 0.3s ease;
     margin: 0 50px 0 0;
 }
 
 #appsEncabezadoGral:hover .appsContenidoCinta {
-    color: var(--OnActivo); /* Cambié a un color más visible */
+    color: var(--OnActivo);
+    /* Cambié a un color más visible */
     text-shadow: 0px 0px 10px var(--OnActivo);
 }
 
@@ -139,12 +144,14 @@
 .appsContenidoCinta li a {
     font-weight: bold;
     text-decoration: none;
-    color: var(--RojoOnPasivo); /* Color base */
+    color: var(--RojoOnPasivo);
+    /* Color base */
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 #appsEncabezadoGral:hover .appsContenidoCinta li a {
-    color: var(--RojoOnActivo); /* Cambié a un color más visible */
+    color: var(--RojoOnActivo);
+    /* Cambié a un color más visible */
     text-shadow: 0px 0px 10px var(--RojoOnActivo);
 }
 

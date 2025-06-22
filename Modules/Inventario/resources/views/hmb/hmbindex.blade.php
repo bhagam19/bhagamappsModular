@@ -3,7 +3,7 @@
 @section('title', 'Inventario')
 
 @section('content_header')
-
+    @include('inventario::components.encabezado')
 @endsection
 
 @section('content')
