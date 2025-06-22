@@ -2,6 +2,11 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Users-v1.0.0] - 2025-05-22
+### Added
+- Creación inicial del módulo Users.
+- Gestión de usuarios, roles y permisos.
+
 ## [BhagamApps-v1.1.0] - 2025-05-22
 ### Added
 - Migración a estructura modular.
