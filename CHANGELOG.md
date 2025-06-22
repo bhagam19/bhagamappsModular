@@ -2,6 +2,14 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [Inventario-v2.0.0] - 2025-06-22
+### Added
+- Refactor completo del módulo Inventario bajo arquitectura modular.
+- Reorganización de tablas `bienes`, `detalles`, `categorías` y `estados`.
+- Mejoras en migraciones, rutas y vistas.
+- Configuración de localización en español (zona horaria y Faker).
+
+
 ## [Users-v1.0.0] - 2025-05-22
 ### Added
 - Creación inicial del módulo Users.
