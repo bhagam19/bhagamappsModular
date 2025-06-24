@@ -1,0 +1,1 @@
+Route::get('/{{moduleLower}}/{{nameLower}}', fn () => view('{{moduleLower}}::{{nameLower}}.index'))->name('{{moduleLower}}.{{nameLower}}.index');

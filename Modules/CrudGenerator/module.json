@@ -1,0 +1,11 @@
+{
+    "name": "CrudGenerator",
+    "alias": "crudgenerator",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CrudGenerator\\Providers\\CrudGeneratorServiceProvider"
+    ],
+    "files": []
+}

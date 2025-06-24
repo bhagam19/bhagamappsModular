@@ -354,6 +354,8 @@ return [
             ],
         ],
 
+        // 📌 [crud-generator-menus] Añadir menús aquí
+
         [
             'text' => 'Inventario',
             'icon' => 'fas fa-boxes',
@@ -362,26 +364,21 @@ return [
                     'text' => 'Bienes',
                     'icon' => 'fas fa-box text-info',
                     'route' => 'inventario.bienes.index',
-                    'active' => ['inventario/bienes*'],
+                    'active' => ['inventario/bienes*', 'inventario/actas*'], // activa también para actas
                     'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-bienes',
+                    'submenu' => [
+                        [
+                            'text' => 'Acta de Entrega',
+                            'icon' => 'fas fa-file-signature text-success',
+                            'route' => 'inventario.actas.index',
+                            'active' => ['inventario/actas*'],
+                            'classes' => 'text-success font-weight-bold',
+                            'can' => 'ver-actas-de-entrega',
+                        ],
+                    ],
                 ],
-                [
-                    'text' => 'Acta de Entrega',
-                    'icon' => 'fas fa-file-signature text-success',  // icono más adecuado para acta/entrega
-                    'route' => 'inventario.actas.index',            // ruta nueva, por ejemplo
-                    'active' => ['actas/acta-entrega*'],                // activa para rutas que empiecen con inventario/actas
-                    'classes' => 'text-success font-weight-bold',     // clases para resaltarlo en verde
-                    'can' => 'ver-actas-de-entrega',                       // permiso específico para ver actas
-                ],
-                [
-                    'text' => 'Almacenamiento',
-                    'icon' => 'fas fa-warehouse text-secondary',
-                    'route' => '',
-                    'active' => ['inventario/almacenamiento*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-almacenamiento',
-                ],
+
                 [
                     'text' => 'Ubicaciones',
                     'icon' => 'fas fa-map-marker-alt text-success',

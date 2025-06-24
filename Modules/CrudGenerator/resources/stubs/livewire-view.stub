@@ -1,0 +1,87 @@
+<div>
+    {{-- Mensaje de sesión --}}
+    <div x-data="{ show: false, mensaje: '', tipo: 'success' }" x-show="show" x-transition
+        class="position-fixed top-0 start-50 translate-middle-x mt-1"
+        style="z-index: 9999; width: auto; max-width: 90%;"
+        @mostrar-mensaje.window="
+            mensaje = $event.detail.mensaje; 
+            tipo = $event.detail.tipo ?? 'success'; 
+            show = true; 
+            setTimeout(() => show = false, 5000);
+        ">
+        <div :class="{
+            'alert alert-success alert-dismissible fade show': tipo === 'success',
+            'alert alert-danger alert-dismissible fade show': tipo === 'error',
+            'alert alert-warning alert-dismissible fade show': tipo === 'warning'
+        }" role="alert">
+            <span x-text="mensaje"></span>
+            <button type="button" class="btn-close" @click="show = false" aria-label="Cerrar"></button>
+        </div>
+    </div>
+
+    {{-- Botón Agregar --}}
+    <div class="mb-3">
+        <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button" wire:click="toggleFormulario">
+            <i class="fas fa-plus pr-1"></i> {{ $mostrarFormulario ? 'Ocultar' : 'Agregar' }}
+        </button>
+    </div>
+
+    {{-- Formulario --}}
+    @if ($mostrarFormulario)
+        <form wire:submit.prevent="store" class="form-row align-items-end mb-3 bg-light p-2 rounded" novalidate>
+            @foreach ($columns as $col)
+                <div class="form-group col-md-3 mb-2">
+                    <input type="text" wire:model.defer="form.{{ $col }}" placeholder="{{ ucfirst(str_replace('_', ' ', $col)) }}"
+                        class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                    @error('form.' . $col)
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            @endforeach
+
+            <div class="form-group col-md-auto mb-2">
+                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+            </div>
+        </form>
+    @endif
+
+    {{-- Tabla --}}
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    @foreach ($columns as $col)
+                        <th>{{ ucfirst(str_replace('_', ' ', $col)) }}</th>
+                    @endforeach
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($items as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        @foreach ($columns as $col)
+                            <td>{{ $item->$col }}</td>
+                        @endforeach
+                        <td>
+                            <button wire:click="delete({{ $item->id }})" class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Está seguro de eliminar este registro?')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="{{ count($columns) + 2 }}" class="text-center text-muted">No se encontraron registros.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    {{-- Paginación --}}
+    <div class="mt-2">
+        {{ $items->links('pagination::bootstrap-4') }}
+    </div>
+</div>

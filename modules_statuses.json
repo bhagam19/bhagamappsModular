@@ -1,5 +1,6 @@
 {
     "Users": true,
     "Inventario": true,
-    "Apps": true
+    "Apps": true,
+    "CrudGenerator": true
 }

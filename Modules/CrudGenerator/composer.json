@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/crudgenerator",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CrudGenerator\\": "app/",
+            "Modules\\CrudGenerator\\Database\\Factories\\": "database/factories/",
+            "Modules\\CrudGenerator\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\CrudGenerator\\Tests\\": "tests/"
+        }
+    }
+}

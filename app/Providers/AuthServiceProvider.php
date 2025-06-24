@@ -41,10 +41,6 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('ver-actas-de-entrega');
                 });
 
-                Gate::define('ver-almacenamiento', function ($user) {
-                        return $user->hasPermission('ver-almacenamiento');
-                });
-
                 Gate::define('ver-ubicaciones', function ($user) {
                         return $user->hasPermission('ver-ubicaciones');
                 });
@@ -94,5 +90,7 @@ class AuthServiceProvider extends ServiceProvider
                         return $user instanceof User
                                 && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
                 });
-        }
+
+                // 📌 [crud-generator-gates] Añadir gates aquí
+                }
 }

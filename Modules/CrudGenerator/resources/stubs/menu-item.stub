@@ -1,0 +1,10 @@
+// crud-generator-start:{{nameLower}}
+[
+    'text' => '{{name}}',
+    'icon' => 'fas fa-database text-white',
+    'route' => '{{moduleLower}}.{{nameLower}}.index',
+    'active' => ['{{moduleLower}}/{{nameLower}}*'],
+    'classes' => 'text-white font-weight-bold',
+    'can' => 'ver-{{nameLower}}',
+],
+// crud-generator-end:{{nameLower}}

@@ -1,0 +1,61 @@
+<?php
+
+namespace Modules\{{module}}\Livewire\{{name}};
+
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Support\Str;
+use Modules\{{module}}\Entities\{{name}};
+
+class {{name}}Index extends Component
+{
+    use WithPagination;
+
+    public $perPage = 10;
+    public $mostrarFormulario = false;
+
+    // Atributos del formulario
+    public $form = [];
+
+    protected $rules = [
+        // 'form.campo' => 'required|string|max:255', // Reemplazar por reglas reales
+    ];
+
+    public function toggleFormulario()
+    {
+        $this->mostrarFormulario = !$this->mostrarFormulario;
+        if (!$this->mostrarFormulario) {
+            $this->reset('form');
+        }
+    }
+
+    public function store()
+    {
+        $this->validate();
+
+        {{name}}::create($this->form);
+
+        $this->reset('form', 'mostrarFormulario');
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: '{{name}} creado correctamente.');
+    }
+
+    public function delete($id)
+    {
+        $item = {{name}}::findOrFail($id);
+        $item->delete();
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: '{{name}} eliminado correctamente.');
+    }
+
+    public function render()
+    {
+        $items = {{name}}::paginate($this->perPage);
+        $columns = (new {{name}}())->getFillable();
+
+        return view('{{moduleLower}}::livewire.{{nameLower}}.{{nameLower}}-index', [
+            'items' => $items,
+            'columns' => $columns,
+        ]);
+    }
+}

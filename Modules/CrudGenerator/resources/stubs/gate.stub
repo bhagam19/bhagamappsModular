@@ -1,0 +1,3 @@
+Gate::define('ver-{{nameLower}}', function ($user) {
+    return $user->hasPermission('ver-{{nameLower}}');
+});
