@@ -2,8 +2,7 @@
 
 Registro de cambios del proyecto BhagamApps.
 
-## [BhagamApps-v1.2.0] - 2025-06-23
-## [CrudGenerator-v1.0.0] - 2025-06-23
+## [BhagamApps-v1.2.0] y [CrudGenerator-v1.0.0] - 2025-06-23
 ### Added
 - Implementado módulo `CrudGenerator` para generación automática de CRUDs.
 - Comandos Artisan para crear y limpiar CRUDs generados.
