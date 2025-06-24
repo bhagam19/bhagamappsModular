@@ -2,6 +2,18 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [BhagamApps-v1.2.0] - 2025-06-23
+## [CrudGenerator-v1.0.0] - 2025-06-23
+### Added
+- Implementado módulo `CrudGenerator` para generación automática de CRUDs.
+- Comandos Artisan para crear y limpiar CRUDs generados.
+- Gestión automática de permisos y configuración de AuthServiceProvider.
+- Inclusión dinámica de CRUDs generados en el menú AdminLTE.
+- Rutas web y API configuradas para los CRUDs generados.
+- Componentes Livewire integrados para manejo dinámico de datos.
+- Archivos `stub` editables para vistas, rutas, permisos y menú.
+- Migraciones, seeders y configuración inicial del módulo.
+
 ## [Inventario-v2.3.6] - 2025-06-22
 ### Added
 - Encabezados con logo y versión en el módulo Inventario y dashboard.
