@@ -67,7 +67,7 @@ class HmbIndex extends Component
         logger()->info('Aprobando modificacion con ID: ' . $id);
 
         $bien = Bien::with('dependencia')->find($modificacion->bien_id);
-        $usuario = $bien->dependencia->usuario_id;
+        $user = $bien->dependencia->user_id;
 
         if (!$modificacion) {
             $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'La modificacion no fue encontrada.');

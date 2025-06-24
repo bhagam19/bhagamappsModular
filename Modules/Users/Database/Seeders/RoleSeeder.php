@@ -5,13 +5,13 @@ namespace Modules\Users\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Users\Models\Role;
 use Modules\Users\Models\Permission;
-use Modules\Apps\Entities\App; 
+use Modules\Apps\Entities\App;
 
 class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        
+
         $app = App::where('nombre', 'users')->first();
 
         if (!$app) {
@@ -50,8 +50,8 @@ class RoleSeeder extends Seeder
             $rector->permissions()->sync($permisos);
         }
 
-        // Permisos categoría 'usuarios' y 'bienes' para coordinador
-        $permisos = Permission::whereIn('categoria', ['usuarios', 'bienes'])->pluck('id');
+        // Permisos categoría 'users' y 'bienes' para coordinador
+        $permisos = Permission::whereIn('categoria', ['users', 'bienes'])->pluck('id');
         if ($permisos->isNotEmpty() && $coordinador) {
             $coordinador->permissions()->sync($permisos);
         }

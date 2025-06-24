@@ -14,21 +14,19 @@ class Role extends Model
         'descripcion',
     ];
 
-    // Relación: un rol tiene muchos usuarios
+    // Relación: un rol tiene muchos users
     public function users()
     {
         return $this->hasMany(User::class);
     }
 
     public function permissions()
-{
-    return $this->belongsToMany(Permission::class, 'permission_role', 'role_id', 'permission_id');
-}
+    {
+        return $this->belongsToMany(Permission::class, 'permission_role', 'role_id', 'permission_id');
+    }
 
     public function hasPermission($permissionName)
     {
         return $this->permissions->contains('nombre', $permissionName);
     }
-
-    
 }

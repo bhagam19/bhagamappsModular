@@ -28,9 +28,9 @@ class HistorialModificacionBien extends Model
         return $this->belongsTo(Bien::class, 'bien_id');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function dependencia()
@@ -53,9 +53,9 @@ class HistorialModificacionBien extends Model
         return $this->belongsTo(Almacenamiento::class, 'almacenamiento_id');
     }
 
-    public function usuarioResponsable()
+    public function userResponsable()
     {
-        return $this->dependencia ? $this->dependencia->usuario : null;
+        return $this->dependencia ? $this->dependencia->user : null;
     }
 
     public function obtenerNombreValor($campo, $valor)

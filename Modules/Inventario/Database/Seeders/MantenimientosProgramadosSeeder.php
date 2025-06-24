@@ -16,7 +16,7 @@ class MantenimientosProgramadosSeeder extends Seeder
         foreach (range(1, 10) as $i) {
             DB::table('mantenimientos_programados')->insert([
                 'bien_id' => $i,
-                'usuario_id' => 1,
+                'user_id' => 1,
                 'tipo' => $faker->randomElement(['preventivo', 'correctivo']),
                 'titulo' => $faker->sentence(3),
                 'descripcion' => $faker->paragraph(2),

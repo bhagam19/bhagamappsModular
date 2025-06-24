@@ -31,7 +31,7 @@ class HebIndex extends Component
 
     public function render()
     {
-        $solicitudes = HistorialEliminacionBien::with(['bien', 'usuario', 'dependencia'])
+        $solicitudes = HistorialEliminacionBien::with(['bien', 'user', 'dependencia'])
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate($this->perPage);
 

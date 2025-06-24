@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mantenimientos_programados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bien_id')->constrained('bienes')->onDelete('cascade');
-            $table->foreignId('usuario_id')->nullable()->constrained('users')->nullOnDelete(); // quien lo programó
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete(); // quien lo programó
             $table->string('tipo')->default('preventivo'); // preventivo, correctivo, etc.
             $table->string('titulo');
             $table->text('descripcion')->nullable();

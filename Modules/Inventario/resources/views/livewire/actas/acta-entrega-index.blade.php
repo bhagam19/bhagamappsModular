@@ -7,7 +7,7 @@
 
             <select wire:model.lazy="userId" id="userId" class="custom-select custom-select-sm mr-3"
                 style="width: 180px;">
-                <option value="">-- Usuarios --</option>
+                <option value="">-- Users --</option>
                 @foreach ($users as $u)
                     <option value="{{ $u->id }}">{{ $u->nombres }} {{ $u->apellidos }}</option>
                 @endforeach

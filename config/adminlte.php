@@ -332,7 +332,7 @@ return [
                 [
                     'text' => 'Usuarios',
                     'icon' => 'fas fa-user text-info',
-                    'route' => 'usuarios.users.index',
+                    'route' => 'users.users.index',
                     'active' => ['admin/users*'],
                     'classes' => 'text-primary font-weight-bold',
 
@@ -340,14 +340,14 @@ return [
                 [
                     'text' => 'Roles',
                     'icon' => 'fas fa-user-shield text-info',
-                    'route' => 'usuarios.roles.index', // Ajusta si tienes otra ruta
+                    'route' => 'users.roles.index', // Ajusta si tienes otra ruta
                     'active' => ['admin/roles*'],
                     'classes' => 'text-primary font-weight-bold',
                 ],
                 [
                     'text' => 'Permisos',
                     'icon' => 'fas fa-key text-info',
-                    'route' => 'usuarios.permissions.index', // Ajusta si es necesario
+                    'route' => 'users.permissions.index', // Ajusta si es necesario
                     'active' => ['admin/permissions*'],
                     'classes' => 'text-primary font-weight-bold',
                 ],
@@ -355,8 +355,7 @@ return [
         ],
 
         // 📌 [crud-generator-menus] Añadir menús aquí
-
-        [
+                [
             'text' => 'Inventario',
             'icon' => 'fas fa-boxes',
             'submenu' => [
@@ -364,19 +363,18 @@ return [
                     'text' => 'Bienes',
                     'icon' => 'fas fa-box text-info',
                     'route' => 'inventario.bienes.index',
-                    'active' => ['inventario/bienes*', 'inventario/actas*'], // activa también para actas
+                    'active' => ['inventario/bienes*'], // activa también para actas
                     'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-bienes',
-                    'submenu' => [
-                        [
-                            'text' => 'Acta de Entrega',
-                            'icon' => 'fas fa-file-signature text-success',
-                            'route' => 'inventario.actas.index',
-                            'active' => ['inventario/actas*'],
-                            'classes' => 'text-success font-weight-bold',
-                            'can' => 'ver-actas-de-entrega',
-                        ],
-                    ],
+
+                ],
+                [
+                    'text' => 'Acta de Entrega',
+                    'icon' => 'fas fa-file-signature text-success',
+                    'route' => 'inventario.actas.index',
+                    'active' => ['inventario/actas*'],
+                    'classes' => 'text-success font-weight-bold',
+                    'can' => 'ver-actas-de-entrega',
                 ],
 
                 [

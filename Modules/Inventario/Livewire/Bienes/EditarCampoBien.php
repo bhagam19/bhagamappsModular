@@ -65,7 +65,7 @@ class EditarCampoBien extends Component
             'dependencia_id' => 'dependencias',
             'almacenamiento_id' => 'almacenamientos',
             'mantenimiento_id' => 'mantenimientos',
-            'usuario_id' => 'users',
+            'user_id' => 'users',
             default => 'opciones', // fallback si no se conoce
         };
     }
@@ -82,7 +82,7 @@ class EditarCampoBien extends Component
             'dependencia_id' => Dependencia::pluck('nombre', 'id')->toArray(),
             'almacenamiento_id' => Almacenamiento::pluck('nombre', 'id')->toArray(),
             'mantenimiento_id' => Mantenimiento::pluck('nombre', 'id')->toArray(),
-            'usuario_id' => User::orderBy('nombres')
+            'user_id' => User::orderBy('nombres')
                 ->orderBy('apellidos')
                 ->get()
                 ->mapWithKeys(function ($user) {
@@ -104,7 +104,7 @@ class EditarCampoBien extends Component
 
         $this->validate($rules);
 
-        $usuario = auth()->user();
+        $user = auth()->user();
 
         $valorActual = $this->bien->{$this->campo};
 
@@ -115,7 +115,7 @@ class EditarCampoBien extends Component
         }
 
         // Si tiene rol autorizado, guardar directamente
-        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+        if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
             $this->bien->{$this->campo} = $this->valor;
 
             // Lógica especial para estado_id
@@ -145,10 +145,10 @@ class EditarCampoBien extends Component
             return;
         }
 
-        // Usuario sin permiso → guardar solicitud pendiente
+        // User sin permiso → guardar solicitud pendiente
 
-        // Verificar si el usuario pertenece a la dependencia del bien
-        if (!$usuario->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
+        // Verificar si el user pertenece a la dependencia del bien
+        if (!$user->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
             return redirect()->route('inventario.bienes.index');
         }
 
@@ -176,11 +176,11 @@ class EditarCampoBien extends Component
         ]);
 
         // Enviar notificación a administradores y rector
-        $usuariosDestino = User::whereHas('role', function ($query) {
+        $usersDestino = User::whereHas('role', function ($query) {
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
 
-        Notification::send($usuariosDestino, new NotificacionHmb($modificacionPendiente));
+        Notification::send($usersDestino, new NotificacionHmb($modificacionPendiente));
 
         $this->editando = false;
         session()->flash('info', 'El cambio fue enviado para aprobación.');
@@ -194,7 +194,7 @@ class EditarCampoBien extends Component
             ->where('campo', $this->campo)
             ->where('estado', 'pendiente');
 
-        // Verifica si el usuario tiene el rol adecuado
+        // Verifica si el user tiene el rol adecuado
         if (!in_array($user->role->nombre ?? '', ['Administrador', 'Rector'])) {
             $dependenciaIds = $user->dependencias->pluck('id');
             if ($dependenciaIds->isEmpty()) return null;

@@ -16,7 +16,7 @@ class HistorialEliminacionBien extends Model
     protected $fillable = [
         'bien_id',
         'dependencia_id',
-        'usuario_id',
+        'user_id',
         'aprobado_por',
         'estado',
         'motivo'
@@ -32,9 +32,9 @@ class HistorialEliminacionBien extends Model
         return $this->belongsTo(Bien::class, 'bien_id')->withTrashed();
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function aprobador()

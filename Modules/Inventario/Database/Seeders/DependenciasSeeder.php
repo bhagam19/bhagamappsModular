@@ -28,7 +28,7 @@ class DependenciasSeeder extends Seeder
                 //'id' => $data['id'],
                 'nombre' => $data['nombre'],
                 'ubicacion_id' => $data['ubicacion_id'],
-                'usuario_id' => $data['usuario_id'],
+                'user_id' => $data['user_id'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -20,7 +20,7 @@ class EditarRolePermissions extends Component
         // Agrupar permisos por prefijo (categoría)
         $permissions = Permission::all();
         foreach ($permissions as $permission) {
-            $group = lcfirst($permission->categoria); // Ej: "Usuarios" → "usuarios"
+            $group = lcfirst($permission->categoria); // Ej: "Users" → "users"
             $this->groupedPermissions[$group][] = $permission;
         }
     }
@@ -34,12 +34,12 @@ class EditarRolePermissions extends Component
 
         $this->role->permissions()->sync($this->selectedPermissions);
         session()->flash('message', 'Permisos actualizados correctamente.');
-        return redirect()->route('usuarios.roles.index');
+        return redirect()->route('users.roles.index');
     }
 
     public function render()
     {
         return view('users::livewire.roles.editar-role-permissions')
-         ->layout('layouts.app'); 
+            ->layout('layouts.app');
     }
 }

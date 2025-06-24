@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 50);
             $table->foreignId('ubicacion_id')->constrained('ubicaciones');
-            $table->foreignId('usuario_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

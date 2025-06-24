@@ -66,7 +66,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Retorna el nombre completo del usuario.
+     * Retorna el nombre completo del user.
      */
     public function getNombreCompletoAttribute()
     {
@@ -91,11 +91,11 @@ class User extends Authenticatable
 
     public function dependencias()
     {
-        return $this->hasMany(Dependencia::class, 'usuario_id');
+        return $this->hasMany(Dependencia::class, 'user_id');
     }
 
     /**
-     * Verifica si el usuario tiene un rol específico por nombre.
+     * Verifica si el user tiene un rol específico por nombre.
      */
     public function hasRole($roleNombre)
     {
@@ -130,7 +130,7 @@ class User extends Authenticatable
 
     public function adminlte_profile_url()
     {
-        // Retorna la URL que usarás para mostrar el perfil del usuario
+        // Retorna la URL que usarás para mostrar el perfil del user
         // Si no tienes ruta, puedes devolver null o la ruta de logout para evitar errores
 
         return route('profile.show'); // Cambia 'profile.show' por la ruta real de perfil
@@ -145,7 +145,7 @@ class User extends Authenticatable
 
     public function bienes()
     {
-        return $this->hasMany(Bien::class, 'usuario_id');
+        return $this->hasMany(Bien::class, 'user_id');
     }
 
     public function apps()

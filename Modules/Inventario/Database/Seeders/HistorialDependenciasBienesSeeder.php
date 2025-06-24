@@ -18,7 +18,7 @@ class HistorialDependenciasBienesSeeder extends Seeder
                 'bien_id' => $i,
                 'dependencia_anterior_id' => rand(1, 4), // suponiendo que tienes 4 dependencias
                 'dependencia_nueva_id' => rand(1, 4),
-                'usuario_id' => 1, // quien hizo el cambio
+                'user_id' => 1, // quien hizo el cambio
                 'aprobado_por' => 1, // quien aprobó el cambio
                 'fecha_modificacion' => Carbon::now()->subDays(rand(1, 60)),
                 'created_at' => now(),

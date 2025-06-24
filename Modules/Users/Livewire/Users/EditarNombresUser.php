@@ -15,12 +15,12 @@ class EditarNombresUser extends Component
     {
         $this->user = $user;
         $this->nombres = $user->nombres;
-        $this->editando = false; 
+        $this->editando = false;
     }
 
     public function editar()
     {
-        if (!auth()->user()?->hasPermission('editar-usuarios')) {
+        if (!auth()->user()?->hasPermission('editar-users')) {
             abort(403);
         }
         $this->editando = true;

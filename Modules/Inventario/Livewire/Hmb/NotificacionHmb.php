@@ -28,8 +28,8 @@ class NotificacionHmb extends Notification
     {
         $dependencia = $this->modificacion->dependencia;
 
-        $usuario = $dependencia?->usuario;
-        $nombreUsuario = $usuario ? trim("{$usuario->nombres} {$usuario->apellidos}") : 'Usuario desconocido';
+        $user = $dependencia?->user;
+        $nombreUser = $user ? trim("{$user->nombres} {$user->apellidos}") : 'User desconocido';
         $dependenciaNombre = $dependencia?->nombre ?? 'Dependencia no encontrada';
 
         $bien = $this->modificacion->bien;
@@ -76,9 +76,9 @@ class NotificacionHmb extends Notification
         }
 
         return (new MailMessage)
-            ->subject("Inventario: Aprobación pendiente de {$nombreUsuario}")
+            ->subject("Inventario: Aprobación pendiente de {$nombreUser}")
             ->greeting("Hola,")
-            ->line("El usuario **{$nombreUsuario}** ha solicitado un cambio en el bien **{$nombreBien}** con ID **{$bienId}**.")
+            ->line("El usuario **{$nombreUser}** ha solicitado un cambio en el bien **{$nombreBien}** con ID **{$bienId}**.")
             ->line("**Dependencia:** {$dependenciaNombre}")
             ->line("**Cambios solicitados:**")
             ->line($detallesCambios ?: '- Sin cambios detectados')
@@ -95,7 +95,7 @@ class NotificacionHmb extends Notification
             'campo' => $this->modificacion->campo,
             'valor_anterior' => $this->modificacion->valor_anterior,
             'valor_nuevo' => $this->modificacion->valor_nuevo,
-            'usuario' => $this->modificacion->user->name,
+            'user' => $this->modificacion->user->name,
         ];
     }
     */

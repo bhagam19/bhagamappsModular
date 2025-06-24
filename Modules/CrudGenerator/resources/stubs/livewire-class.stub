@@ -17,6 +17,11 @@ class {{name}}Index extends Component
     // Atributos del formulario
     public $form = [];
 
+    // Puedes personalizar qué campo mostrar de las relaciones
+    protected array $relationFields = [
+        // 'relacion_id' => 'campo', // Ejemplo: 'user_id' => 'nombre_completo'
+    ];
+
     protected $rules = [
         // 'form.campo' => 'required|string|max:255', // Reemplazar por reglas reales
     ];
@@ -48,14 +53,30 @@ class {{name}}Index extends Component
         $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: '{{name}} eliminado correctamente.');
     }
 
+    protected function getColumnValue($item, $column)
+    {
+        if (Str::endsWith($column, '_id')) {
+            $relation = Str::before($column, '_id');
+            $field = $this->relationFields[$column] ?? 'nombre';
+            return optional($item->$relation)->$field ?? '-';
+        }
+
+        return $item->$column;
+    }
+
     public function render()
     {
-        $items = {{name}}::paginate($this->perPage);
+        $items = {{name}}::with($this->getRelationNames())->paginate($this->perPage);
         $columns = (new {{name}}())->getFillable();
 
         return view('{{moduleLower}}::livewire.{{nameLower}}.{{nameLower}}-index', [
             'items' => $items,
             'columns' => $columns,
         ]);
+    }
+
+    protected function getRelationNames()
+    {
+        return array_map(fn($col) => Str::before($col, '_id'), array_filter((new {{name}}())->getFillable(), fn($col) => Str::endsWith($col, '_id')));
     }
 }

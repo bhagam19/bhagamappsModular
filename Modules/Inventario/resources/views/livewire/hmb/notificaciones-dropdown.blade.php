@@ -35,7 +35,7 @@
 
                     <div x-show="openItem === {{ $modificacion->id }}" x-collapse class="px-3 py-2 text-sm">
                         <div><strong>Bien ID:</strong> {{ $modificacion->bien_id }}</div>
-                        <div><strong>Usuario:</strong> {{ $modificacion->dependencia->usuario->nombres ?? '—' }}</div>
+                        <div><strong>Usuario:</strong> {{ $modificacion->dependencia->user->nombres ?? '—' }}</div>
                         <div><strong>Valor anterior:</strong> @switch($modificacion->campo)
                                 @case('categoria_id')
                                     {{ $modificacion->valorAnteriorCategoria->nombre ?? $modificacion->valor_anterior }}

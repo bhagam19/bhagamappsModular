@@ -1,6 +1,6 @@
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
 
-    #appsFormulario{
+    #appsFormulario {
         width: 80%;
         height: 400px;
         font-size: 5vw;
@@ -13,12 +13,14 @@
     }
 
     .appsFormularioLogin {
-        top: -550px; /* Inicialmente fuera de la pantalla */
+        top: -550px;
+        /* Inicialmente fuera de la pantalla */
         right: 2px;
-        transition: top 0.3s ease-in-out; /* Animación suave */
+        transition: top 0.3s ease-in-out;
+        /* Animación suave */
     }
 
-    .appsFormularioLogin.mostrar{
+    .appsFormularioLogin.mostrar {
         top: 200px;
     }
 
@@ -26,59 +28,61 @@
         flex: 1;
     }
 
-    #appsFormulario label{
+    #appsFormulario label {
         width: 100%;
         display: flex;
         justify-content: center;
     }
 
-    #appsFormulario input, #appsFormulario button{
+    #appsFormulario input,
+    #appsFormulario button {
         width: 90%;
         height: 50px;
-        font-size: 4vw; 
+        font-size: 4vw;
         margin: 20px;
     }
 
-    #appsFormulario .btnLogin{
+    #appsFormulario .btnLogin {
         font-size: 4vw;
         font-family: var(--future);
     }
 
-    /*==== Formulario Datos Usuario ====*/
+    /*==== Formulario Datos User ====*/
 
-    .appsFormularioDatosUsuario {
-        top: -550px; /* Inicialmente fuera de la pantalla */
+    .appsFormularioDatosUser {
+        top: -550px;
+        /* Inicialmente fuera de la pantalla */
     }
 
-    .appsFormularioDatosUsuario.mostrar{
+    .appsFormularioDatosUser.mostrar {
         top: 60px;
     }
 
-    #appsSesionLogedIn{
+    #appsSesionLogedIn {
         position: fixed;
         top: 10px;
-        right:5px;
+        right: 5px;
         border-radius: 50px;
-        
+
     }
-    
-    .datosPersonales{
+
+    .datosPersonales {
         display: flex;
         flex-direction: column;
         background: var(--fondoOff10);
         font-size: 4vw;
     }
 
-    .datosPersonales div{
+    .datosPersonales div {
         display: flex;
         flex-direction: column;
     }
 
-    .datosPersonales div strong{
-       color: white;
+    .datosPersonales div strong {
+        color: white;
     }
 
-    .datosPersonales div span{
+    .datosPersonales div span {
         position: relative;
         left: 40px;
     }

@@ -13,9 +13,9 @@ class ActaPDFController
     {
         $user = User::findOrFail($userId);
 
-        $bienes = Bien::with(['detalle', 'estado', 'dependencia', 'usuario'])
-                    ->where('usuario_id', $userId)
-                    ->get();
+        $bienes = Bien::with(['detalle', 'estado', 'dependencia', 'user'])
+            ->where('user_id', $userId)
+            ->get();
 
         $nombreCompleto = mb_strtoupper($user->nombres . ' ' . $user->apellidos, 'UTF-8');
         $miFecha = now()->translatedFormat('d \d\e F \d\e Y');

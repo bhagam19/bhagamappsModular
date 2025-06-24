@@ -16,7 +16,7 @@ class HistorialDependenciaBien extends Model
         'bien_id',
         'dependencia_anterior_id',
         'dependencia_nueva_id',
-        'usuario_id',        // quien hizo el cambio
+        'user_id',        // quien hizo el cambio
         'aprobado_por',      // quien aprobó el cambio
         'fecha_modificacion'
     ];
@@ -31,8 +31,8 @@ class HistorialDependenciaBien extends Model
         return $this->belongsTo(Dependencia::class, 'dependencia_id');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

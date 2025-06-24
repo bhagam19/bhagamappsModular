@@ -81,7 +81,7 @@
                         <td>{{ $solicitud->bien?->id }}</td>
                         <td>{{ $solicitud->bien?->nombre ?? '—' }}</td>
                         <td>{{ $solicitud->dependencia->nombre ?? '—' }}</td>
-                        <td>{{ $solicitud->usuario->nombre_completo ?? '—' }}</td>
+                        <td>{{ $solicitud->user->nombre_completo ?? '—' }}</td>
                         <td>{{ $solicitud->motivo ?? '—' }}</td>
                         <td>
                             @php
@@ -182,7 +182,7 @@
                                 Usuario:
                             </span>
                             <span class="px-2 small text-dark" style="cursor: pointer">
-                                {{ $solicitud->usuario->nombre_completo }}
+                                {{ $solicitud->user->nombre_completo }}
                             </span>
                         </div>
                         <div class="text-truncate me-2" style="white-space: nowrap;">

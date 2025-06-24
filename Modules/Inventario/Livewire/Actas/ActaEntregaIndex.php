@@ -16,7 +16,7 @@ class ActaEntregaIndex extends Component
     public $nombreCompleto;
     public $miFecha;
     public $contenidoActa;
-    public int $itemsPorPagina=20;
+    public int $itemsPorPagina = 20;
 
     public bool $mostrarSelector = false;
 
@@ -28,16 +28,16 @@ class ActaEntregaIndex extends Component
         $this->contenidoActa = null;
         $this->miFecha = now()->translatedFormat('d \d\e F \d\e Y');
 
-        $usuario = auth()->user();
+        $user = auth()->user();
 
-        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+        if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
             $this->mostrarSelector = true;
             $this->users = User::orderBy('nombres')->get();
             $this->userId = null;
         } else {
             $this->mostrarSelector = false;
             $this->users = collect();
-            $this->userId = $usuario->id;
+            $this->userId = $user->id;
         }
 
         // Solo generamos si ya hay un userId
@@ -60,14 +60,14 @@ class ActaEntregaIndex extends Component
 
     public function generarActa()
     {
-        
+
         $this->user = User::find($this->userId);
         $this->miFecha = now()->translatedFormat('d \d\e F \d\e Y');
 
         if ($this->user) {
             $this->bienes = Bien::with(['detalle', 'estado', 'dependencia'])
                 ->join('dependencias', 'bienes.dependencia_id', '=', 'dependencias.id')
-                ->where('dependencias.usuario_id', $this->userId) // ✔️ Aquí filtras por el usuario
+                ->where('dependencias.user_id', $this->userId) // ✔️ Aquí filtras por el user
                 ->orderBy('dependencias.nombre')
                 ->orderBy('bienes.nombre')
                 ->select('bienes.*')

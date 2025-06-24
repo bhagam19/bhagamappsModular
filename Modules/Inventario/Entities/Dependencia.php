@@ -15,7 +15,7 @@ class Dependencia extends Model
     protected $fillable = [
         'nombre',
         'ubicacion_id',
-        'usuario_id',
+        'user_id',
     ];
 
     public function ubicacion()
@@ -23,9 +23,9 @@ class Dependencia extends Model
         return $this->belongsTo(Ubicacion::class, 'ubicacion_id');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function bienes()

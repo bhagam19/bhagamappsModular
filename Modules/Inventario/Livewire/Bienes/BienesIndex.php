@@ -41,11 +41,11 @@ class BienesIndex extends Component
     // --- Filtros ---
     public $nombreSeleccionado = '', $nombreNuevo = '', $listaNombresBienes = [];
     public $origenSeleccionado = '', $origenNuevo = '', $listaOrigenesBienes = [];
-    public $filtroNombre, $filtroUsuario, $filtroCategoria, $filtroDependencia, $filtroEstado;
+    public $filtroNombre, $filtroUser, $filtroCategoria, $filtroDependencia, $filtroEstado;
 
     // --- Campos del bien ---
     public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
-    public $categoria_id, $dependencia_id, $usuario_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
+    public $categoria_id, $dependencia_id, $user_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
 
     // --- Campos de detalle del bien ---
     public $detalleBien = [
@@ -58,7 +58,7 @@ class BienesIndex extends Component
     ];
 
     // --- Catálogos cargados ---
-    public $categorias, $dependencias, $usuarios, $estados, $almacenamientos, $mantenimientos;
+    public $categorias, $dependencias, $users, $estados, $almacenamientos, $mantenimientos;
 
     // --- Columnas de tabla ---
     public $availableColumns = [
@@ -66,7 +66,7 @@ class BienesIndex extends Component
         'cantidad' => 'Cantidad',
         'detalle' => 'Detalle',
         'dependencia_id' => 'Dependencia',
-        'usuario_id' => 'Usuario',
+        'user_id' => 'user',
         'categoria_id' => 'Categoría',
         'serie' => 'Serie',
         'ubicacion_id' => 'Ubicación',
@@ -90,7 +90,7 @@ class BienesIndex extends Component
         'detalle',
         'categoria_id',
         'dependencia_id',
-        'usuario_id',
+        'user_id',
         'origen',
         'fecha_adquisicion',
         'precio',
@@ -122,7 +122,7 @@ class BienesIndex extends Component
     protected $queryString = [
         'perPage' => ['except' => 25],
         'filtroDependencia' => ['except' => null],
-        'filtroUsuario' => ['except' => null],
+        'filtrouser' => ['except' => null],
         'filtroCategoria' => ['except' => null],
         'filtroEstado' => ['except' => null],
         'filtroNombre' => ['except' => null],
@@ -319,19 +319,19 @@ class BienesIndex extends Component
             return;
         }
 
-        $usuario = auth()->user();
-        $bien = Bien::with('dependencia.usuario')->findOrFail($this->bienSeleccionadoId);
+        $user = auth()->user();
+        $bien = Bien::with('dependencia.user')->findOrFail($this->bienSeleccionadoId);
 
         // Si tiene rol autorizado → eliminar directamente
-        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+        if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
             // Registrar en el historial como aprobado
             HistorialEliminacionBien::create([
                 'bien_id' => $bien->id,
                 'dependencia_id' => $bien->dependencia_id,
-                'usuario_id' => $bien->dependencia->usuario->id,
+                'user_id' => $bien->dependencia->user->id,
                 'motivo' => $motivoFinal,
                 'estado' => 'aprobado',
-                'aprobado_por' => $usuario->id,
+                'aprobado_por' => $user->id,
                 'created_at' => now(),
             ]);
 
@@ -343,10 +343,10 @@ class BienesIndex extends Component
             return;
         }
 
-        // Usuario sin permiso → guardar solicitud pendiente        
+        // User sin permiso → guardar solicitud pendiente        
 
         // Verificar si el usuario pertenece a la dependencia del bien
-        if (!$usuario->dependencias->pluck('id')->contains($bien->dependencia_id)) {
+        if (!$user->dependencias->pluck('id')->contains($bien->dependencia_id)) {
             return redirect()->route('inventario.bienes.index');
         }
 
@@ -365,17 +365,17 @@ class BienesIndex extends Component
         $solicitud = HistorialEliminacionBien::create([
             'bien_id' => $bien->id,
             'dependencia_id' => $bien->dependencia_id,
-            'usuario_id' => $bien->dependencia->usuario->id,
+            'user_id' => $bien->dependencia->user->id,
             'motivo' => $motivoFinal,
             'estado' => 'pendiente'
         ]);
 
         // Enviar notificación a administradores y rector
-        $usuariosDestino = User::whereHas('role', function ($query) {
+        $usersDestino = User::whereHas('role', function ($query) {
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
 
-        Notification::send($usuariosDestino, new NotificacionHeb($solicitud));
+        Notification::send($usersDestino, new NotificacionHeb($solicitud));
 
         $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Solicitud de eliminación enviada.');
         $this->dispatch('cerrar-modal-eliminar-bien');
@@ -416,14 +416,14 @@ class BienesIndex extends Component
 
         $dependenciasIds = $user->hasRole('Administrador') || $user->hasRole('Rector')
             ? Dependencia::pluck('id')
-            : Dependencia::where('usuario_id', $user->id)->pluck('id');
+            : Dependencia::where('user_id', $user->id)->pluck('id');
 
         $bienes = Bien::whereIn('dependencia_id', $dependenciasIds)->get();
 
-        $this->usuarios = User::whereIn(
+        $this->users = User::whereIn(
             'id',
             Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())
-                ->pluck('usuario_id')->unique()
+                ->pluck('user_id')->unique()
         )->orderBy('nombres')->orderBy('apellidos')->get();
 
         $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
@@ -440,7 +440,7 @@ class BienesIndex extends Component
         $query = Bien::with([
             'detalle',
             'categoria',
-            'dependencia.usuario',
+            'dependencia.user',
             'almacenamiento',
             'estado',
             'mantenimiento',
@@ -448,13 +448,13 @@ class BienesIndex extends Component
         ]);
 
         if ($user->hasRole('Coordinador') && !$this->verTodos) {
-            $query->whereHas('dependencia', fn($q) => $q->where('usuario_id', $user->id));
+            $query->whereHas('dependencia', fn($q) => $q->where('user_id', $user->id));
         } elseif (!$user->hasRole('Administrador') && !$user->hasRole('Rector')) {
-            $query->whereHas('dependencia', fn($q) => $q->where('usuario_id', $user->id));
+            $query->whereHas('dependencia', fn($q) => $q->where('user_id', $user->id));
         }
 
         return $query
-            ->when($this->filtroUsuario, fn($q) => $q->whereHas('dependencia', fn($sub) => $sub->where('usuario_id', $this->filtroUsuario)))
+            ->when($this->filtroUser, fn($q) => $q->whereHas('dependencia', fn($sub) => $sub->where('user_id', $this->filtroUser)))
             ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
             ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
@@ -466,17 +466,17 @@ class BienesIndex extends Component
     {
         $bienes = $this->filtrarBienesQuery()->get();
 
-        $this->usuarios = User::whereIn(
+        $this->users = User::whereIn(
             'id',
             Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())
-                ->pluck('usuario_id')->unique()
+                ->pluck('user_id')->unique()
         )->orderBy('nombres')->orderBy('apellidos')->get();
 
         $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
         $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
         $this->estados = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
 
-        foreach (['usuario', 'categoria', 'dependencia', 'estado'] as $campo) {
+        foreach (['user', 'categoria', 'dependencia', 'estado'] as $campo) {
             $filtro = "filtro" . ucfirst($campo);
             if ($this->$filtro && !$this->{Str::plural($campo)}->pluck('id')->contains($this->$filtro)) {
                 $this->$filtro = null;
@@ -520,7 +520,7 @@ class BienesIndex extends Component
     public function limpiarFiltros()
     {
         $this->reset([
-            'filtroUsuario',
+            'filtroUser',
             'filtroCategoria',
             'filtroDependencia',
             'filtroEstado',
@@ -532,7 +532,7 @@ class BienesIndex extends Component
 
     // ------------------ Reactividad de filtros ------------------ //
 
-    public function updatedFiltroUsuario()
+    public function updatedFiltroUser()
     {
         $this->resetPage();
         $this->actualizarOpcionesFiltros();

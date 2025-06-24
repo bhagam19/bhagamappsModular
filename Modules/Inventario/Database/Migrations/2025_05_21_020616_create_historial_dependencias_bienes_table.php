@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('bien_id')->constrained('bienes')->onDelete('cascade');
             $table->foreignId('dependencia_anterior_id')->nullable()->constrained('dependencias')->nullOnDelete();
             $table->foreignId('dependencia_nueva_id')->constrained('dependencias')->onDelete('cascade');
-            $table->foreignId('usuario_id')->nullable()->constrained('users')->nullOnDelete(); // quien hizo el cambio
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete(); // quien hizo el cambio
             $table->foreignId('aprobado_por')->nullable()->constrained('users')->nullOnDelete(); // quien aprobó el cambio
             $table->timestamp('fecha_modificacion')->useCurrent(); // coherente con el código anterior
             $table->timestamps();

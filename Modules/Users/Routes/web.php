@@ -10,10 +10,10 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
-Route::middleware(['web', 'auth'])->prefix('usuarios')->group(function () {
-    Route::resource('users', UserController::class)->names('usuarios.users');
-    Route::resource('roles', RoleController::class)->names('usuarios.roles');
-    Route::resource('permissions', PermissionController::class)->names('usuarios.permissions');
+Route::middleware(['web', 'auth'])->prefix('users')->group(function () {
+    Route::resource('users', UserController::class)->names('users.users');
+    Route::resource('roles', RoleController::class)->names('users.roles');
+    Route::resource('permissions', PermissionController::class)->names('users.permissions');
 
     Route::get('/roles/{role}/editar-permisos', function (Role $role) {
         $user = Auth::user();
@@ -27,10 +27,9 @@ Route::middleware(['web', 'auth'])->prefix('usuarios')->group(function () {
 
     // Redirige a una vista donde se usará el componente Livewire
     Route::get('/permisos', function () {
-        return view('usuarios.permissions.index');
+        return view('users.permissions.index');
     })->name('permisos.index');
 });
 
 // Puedes registrar el componente Livewire así si quieres usarlo en Blade:
 Livewire::component('permissions.index', PermissionsIndex::class);
-

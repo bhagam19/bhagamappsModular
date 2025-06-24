@@ -28,8 +28,8 @@ class NotificacionHeb extends Notification
     {
         $dependencia = $this->solicitud->dependencia;
 
-        $usuario = $dependencia?->usuario;
-        $nombreUsuario = $usuario ? trim("{$usuario->nombres} {$usuario->apellidos}") : 'Usuario desconocido';
+        $user = $dependencia?->user;
+        $nombreUser = $user ? trim("{$user->nombres} {$user->apellidos}") : 'User desconocido';
         $dependenciaNombre = $dependencia?->nombre ?? 'Dependencia no encontrada';
 
         $bien = $this->solicitud->bien;
@@ -37,9 +37,9 @@ class NotificacionHeb extends Notification
         $nombreBien = $bien?->nombre ?? 'Bien no identificado';
 
         return (new MailMessage)
-            ->subject("Inventario: Eliminación pendiente de {$nombreUsuario}")
+            ->subject("Inventario: Eliminación pendiente de {$nombreUser}")
             ->greeting("Hola,")
-            ->line("El usuario **{$nombreUsuario}** ha solicitado eliminar el bien **{$nombreBien}** con ID **{$bienId}**.")
+            ->line("El usuario **{$nombreUser}** ha solicitado eliminar el bien **{$nombreBien}** con ID **{$bienId}**.")
             ->line("**Dependencia:** {$dependenciaNombre}")
             ->action('Revisar solicitud', url('/inventario/heb'))
             ->line('Por favor, ingrese al sistema para revisar y aprobar o rechazar el cambio.');
@@ -54,7 +54,7 @@ class NotificacionHeb extends Notification
             'campo' => $this->solicitud->campo,
             'valor_anterior' => $this->solicitud->valor_anterior,
             'valor_nuevo' => $this->solicitud->valor_nuevo,
-            'usuario' => $this->solicitud->user->name,
+            'user' => $this->solicitud->user->name,
         ];
     }
     */

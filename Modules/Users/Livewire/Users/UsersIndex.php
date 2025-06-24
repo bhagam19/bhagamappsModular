@@ -4,7 +4,7 @@ namespace Modules\Users\Livewire\Users;
 
 use Livewire\Component;
 use Modules\Users\Models\User;
-use Livewire\WithPagination; 
+use Livewire\WithPagination;
 
 
 class UsersIndex extends Component
@@ -15,7 +15,10 @@ class UsersIndex extends Component
     public $nombres, $apellidos, $userID, $role_id, $email, $password;
     public int $perPage = 25;
 
-    public function updatingPerPage() { $this->resetPage(); }
+    public function updatingPerPage()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
@@ -23,11 +26,11 @@ class UsersIndex extends Component
         return view('users::livewire.users.users-index', [
             'users' => $users
         ])->layout('layouts.app');
-    }   
+    }
 
     public function mount()
     {
-        if (!auth()->user()->hasPermission('ver-usuarios')) {
+        if (!auth()->user()->hasPermission('ver-users')) {
             return redirect()->route('ppal.index');
         }
     }
@@ -40,7 +43,7 @@ class UsersIndex extends Component
         'email' => 'Email',
     ];
 
-    public $visibleColumns = ['id', 'nombres', 'apellidos', 'rol', 'email','userID'];   
+    public $visibleColumns = ['id', 'nombres', 'apellidos', 'rol', 'email', 'userID'];
 
     public function toggleColumn($column)
     {
@@ -49,13 +52,13 @@ class UsersIndex extends Component
         } else {
             $this->visibleColumns[] = $column;
         }
-    } 
+    }
 
     public function store()
     {
 
-        if (!auth()->user()->hasPermission('crear-usuarios')) {
-            session()->flash('error', 'No tienes permiso para crear usuarios.');
+        if (!auth()->user()->hasPermission('crear-users')) {
+            session()->flash('error', 'No tienes permiso para crear users.');
             return;
         }
 
@@ -87,15 +90,15 @@ class UsersIndex extends Component
         session()->flash('message', 'Usuario creado exitosamente.');
 
         $this->resetInput();
-    }    
+    }
 
     public function delete($id)
     {
-        if (!auth()->user()->hasPermission('eliminar-usuarios')) {
-            session()->flash('error', 'No tienes permiso para eliminar usuarios.');
+        if (!auth()->user()->hasPermission('eliminar-users')) {
+            session()->flash('error', 'No tienes permiso para eliminar users.');
             return;
         }
-        
+
         User::findOrFail($id)->delete();
         session()->flash('message', 'Usuario eliminado exitosamente.');
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bien_id')->constrained('bienes')->cascadeOnDelete();
             $table->foreignId('dependencia_id')->nullable()->constrained('dependencias')->nullOnDelete();
-            $table->foreignId('usuario_id')->constrained('users'); // Usuario que solicita
+            $table->foreignId('user_id')->constrained('users'); // user que solicita
             $table->foreignId('aprobado_por')->nullable()->constrained('users');
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->string('motivo');

@@ -36,7 +36,7 @@ class NotificacionesDropdown extends Component
         $cambio = HistorialModificacionBien::find($id);
 
         $bien = Bien::with('dependencia')->find($cambio->bien_id);
-        $usuario = $bien->dependencia->usuario_id;
+        $user = $bien->dependencia->user_id;
 
         if (!$cambio) {
             $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');
@@ -69,7 +69,7 @@ class NotificacionesDropdown extends Component
                     'campo_modificado' => $campo,
                     'valor_anterior' => $valorAnterior,
                     'valor_nuevo' => $cambio->valor_nuevo,
-                    'usuario_id' => $usuario,               // quien hizo el cambio
+                    'user_id' => $user,               // quien hizo el cambio
                     'aprobado_por' => auth()->id(),        // quien aprobó el cambio
                     'fecha_modificacion' => now(),
                 ]);
@@ -95,7 +95,7 @@ class NotificacionesDropdown extends Component
                             'campo_modificado' => $campo,
                             'valor_anterior' => $valorAnterior,
                             'valor_nuevo' => $valorNuevo,
-                            'usuario_id' => $usuario,
+                            'user_id' => $user,
                             'aprobado_por' => auth()->id(),
                             'fecha_modificacion' => now(),
                         ]);

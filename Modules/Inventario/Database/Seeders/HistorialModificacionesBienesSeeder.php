@@ -19,7 +19,7 @@ class HistorialModificacionesBienesSeeder extends Seeder
                 'campo_modificado' => $faker->randomElement(['descripcion', 'color', 'marca', 'serial']),
                 'valor_anterior' => $faker->word(),
                 'valor_nuevo' => $faker->word(),
-                'usuario_id' => 1,       // Puedes randomizar si quieres
+                'user_id' => 1,       // Puedes randomizar si quieres
                 'aprobado_por' => 1,     // Puedes randomizar si quieres
                 'fecha_modificacion' => $faker->dateTimeBetween('-1 years', 'now'),
                 'created_at' => now(),

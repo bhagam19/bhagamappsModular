@@ -7,16 +7,14 @@
             $user->hasRole('Administrador') || $user->hasRole('Rector') ? $bienes : $bienes->sortBy('nombre');
 
         $contador = 0;
-        $ocultarUsuario = !$user->hasRole('Administrador') && !$user->hasRole('Rector');
-        $columnasOcultas = ['usuario_id'];
+        $ocultarUser = !$user->hasRole('Administrador') && !$user->hasRole('Rector');
+        $columnasOcultas = ['user_id'];
 
         // Filtra columnas visibles
-        $visibleColumns = $ocultarUsuario
-            ? array_values(array_diff($visibleColumns, $columnasOcultas))
-            : $visibleColumns;
+        $visibleColumns = $ocultarUser ? array_values(array_diff($visibleColumns, $columnasOcultas)) : $visibleColumns;
 
         // Filtra columnas disponibles (para móvil)
-        $availableColumns = $ocultarUsuario
+        $availableColumns = $ocultarUser
             ? collect($availableColumns)->except($columnasOcultas)->all()
             : $availableColumns;
 
@@ -154,10 +152,11 @@
                 {{-- Filtros adicionales --}}
                 <div class="d-flex flex-wrap gap-1 align-items-end mb-1">
                     <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.lazy="filtroUsuario" class="form-control">
+                        <select wire:model.lazy="filtroUser" class="form-control">
                             <option value="">Filtrar por usuario</option>
-                            @foreach ($usuarios as $usuario)
-                                <option value="{{ $usuario->id }}">{{ $usuario->nombres }} {{ $usuario->apellidos }}
+                            @foreach ($users as $opcionUser)
+                                <option value="{{ $opcionUser->id }}">{{ $opcionUser->nombres }}
+                                    {{ $opcionUser->apellidos }}
                                 </option>
                             @endforeach
                         </select>
@@ -229,6 +228,7 @@
     {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
     {{-- Botón gestionar-historial-eliminaciones-bienes (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
+
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
 
@@ -463,7 +463,7 @@
         </div>
     @endif
 
-    {{-- Paginación, Dependencias y Cantidades --}}
+    {{-- Paginación, Dependencias a Cargo y Cantidades --}}
     <div class="mt-1 d-flex justify-content-between flex-wrap">
 
         {{-- Izquierda: Dependencias y Cantidades --}}
@@ -584,12 +584,12 @@
                         @endphp
                         <th style="{{ $styles }}">
                             @switch($column)
-                                @case('usuario_id')
-                                    <select wire:model.lazy="filtroUsuario" class="form-control form-control-sm">
+                                @case('user_id')
+                                    <select wire:model.lazy="filtroUser" class="form-control form-control-sm">
                                         <option value="">Todos</option>
-                                        @foreach ($usuarios as $usuario)
-                                            <option value="{{ $usuario->id }}">
-                                                {{ $usuario->nombres }} {{ $usuario->apellidos }}</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">
+                                                {{ $user->nombres }} {{ $user->apellidos }}</option>
                                         @endforeach
                                     </select>
                                 @break
@@ -636,7 +636,7 @@
                     </th>
                     <th wire:click="sortBy('id')"
                         style="cursor: pointer; position: sticky; top: 30px; left: 73px; background-color: rgb(18, 48, 78); z-index: 11;">
-                        ID
+                        No.
                         @if ($sortField === 'id')
                             {{ $sortDirection === 'asc' ? '▲' : '▼' }}
                         @endif
@@ -680,8 +680,9 @@
             </style>
 
             <tbody>
-                @forelse ($bienes as $bien)
+                @forelse ($bienesOrdenados as $bien)
                     @php
+                        $contador++;
                         $estadoNombre = strtolower($bien->estado->nombre ?? '');
                         $rowClass = '';
 
@@ -733,14 +734,14 @@
                             @endif
                         </td>
 
-                        {{-- Columna Id (fija) --}}
+                        {{-- Columna No. (fija) --}}
                         <td @class([
                             'position-sticky z-50',
                             'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
                             'text-muted bg-dark' => $bien->eliminacionPendiente,
                         ]) style="left: 73px;"
                             title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
-                            {{ $bien->id }}
+                            {{ $contador }}
                         </td>
 
                         {{-- Columna Nombre (fija) --}}
@@ -805,9 +806,9 @@
                                 @else
                                     @if ($column === 'ubicacion_id')
                                         {{ $bien->dependencia->ubicacion->nombre ?? 'Sin ubicación' }}
-                                    @elseif ($column === 'usuario_id')
+                                    @elseif ($column === 'user_id')
                                         <span class="px-2 small text-muted editable-desktop d-none d-sm-inline">
-                                            {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
+                                            {{ $bien->dependencia->user->nombre_completo ?? 'Sin responsable' }}
                                         </span>
                                     @elseif (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                         @livewire(
@@ -839,6 +840,10 @@
     {{-- Vista móvil: acordeón con Alpine.js --}}
     <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
         <div id="accordionMobileBienes">
+            @php
+                $contador = 0;
+                //$bienesOrdenados = $bienes->sortBy('nombre');
+            @endphp
             @forelse($bienesOrdenados as $bien)
 
                 @php
@@ -947,7 +952,7 @@
                                                 <span class="text-muted fst-italic">Sin detalles</span>
                                             @endif
                                         @endif
-                                    @elseif ($key === 'usuario_id')
+                                    @elseif ($key === 'user_id')
                                         <div
                                             class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">
                                             <div class="text-truncate me-2" style="white-space: nowrap;">
@@ -956,7 +961,7 @@
                                                     {{ $label }}:
                                                 </span>
                                                 <small class="mt-1 text-muted">
-                                                    {{ $bien->dependencia->usuario->nombre_completo ?? 'Sin responsable' }}
+                                                    {{ $bien->dependencia->user->nombre_completo ?? 'Sin responsable' }}
                                                 </small>
                                             </div>
                                         </div>

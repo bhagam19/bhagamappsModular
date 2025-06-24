@@ -16,7 +16,7 @@ class HistorialEliminacionesBienesSeeder extends Seeder
      * This method generates random data for 10 entries in the
      * historial_dependencias_bienes table, including fields such as
      * bien_id, dependencia_anterior_id, dependencia_nueva_id,
-     * usuario_id, aprobado_por, and fecha_modificacion.
+     * user_id, aprobado_por, and fecha_modificacion.
      * It uses the Faker library to create realistic random data for testing
      * purposes.
      */
@@ -29,9 +29,9 @@ class HistorialEliminacionesBienesSeeder extends Seeder
 
         foreach (range(1, 10) as $i) {
             DB::table('historial_eliminaciones_bienes')->insert([
-                ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Dañado irreparable', 'created_at' => now(), 'updated_at' => now()],
-                ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Obsoleto', 'created_at' => now(), 'updated_at' => now()],
-                ['bien_id' => 1, 'usuario_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Extraviado', 'created_at' => now(), 'updated_at' => now()],
+                ['bien_id' => 1, 'user_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Dañado irreparable', 'created_at' => now(), 'updated_at' => now()],
+                ['bien_id' => 1, 'user_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Obsoleto', 'created_at' => now(), 'updated_at' => now()],
+                ['bien_id' => 1, 'user_id' => 1, 'estado' => 'pendiente', 'motivo' => 'Extraviado', 'created_at' => now(), 'updated_at' => now()],
             ]);
         }
     }

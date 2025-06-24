@@ -10,9 +10,9 @@ class ActaPrinter
     /**
      * Genera el HTML paginado del acta.
      *
-     * @param Collection $bienes Lista de bienes del usuario
-     * @param \App\Models\User $user Usuario seleccionado
-     * @param string $nombreCompleto Nombre completo del usuario
+     * @param Collection $bienes Lista de bienes del user
+     * @param \App\Models\User $user user seleccionado
+     * @param string $nombreCompleto Nombre completo del user
      * @param string $fecha Fecha de emisión
      * @param int $filasPorPagina Cantidad de filas por página
      * @return string HTML generado
@@ -48,7 +48,7 @@ class ActaPrinter
             $htmlPagina .= '<div class="contenido-principal" style="
                 display: block;
             ">';
-            
+
             // Tercer div
             $htmlPagina .= '<div style="
                 page-break-after: avoid;
@@ -99,7 +99,4 @@ class ActaPrinter
 
         return $html;
     }
-
-
-
 }

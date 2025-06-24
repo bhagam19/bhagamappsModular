@@ -83,12 +83,12 @@
 
                 @forelse ($modificacionesPendientes as $modificacion)
                     @php
-                        $usuario =
-                            $modificacion->dependencia->usuario->nombres .
+                        $usuarioDependencia =
+                            $modificacion->dependencia->user->nombres .
                             ' ' .
-                            $modificacion->dependencia->usuario->apellidos;
+                            $modificacion->dependencia->user->apellidos;
                     @endphp
-                    <tr>
+                    <tr class="{{ $modificacion->estado === 'pendiente' ? '' : 'text-muted' }}">
                         <td>{{ $modificacion->id }}</td>
                         <td>{{ $modificacion->bien_id }}</td>
                         <td>{{ $modificacion->bien->nombre ?? '—' }}</td>
@@ -158,7 +158,7 @@
                             @endswitch
                         </td>
                         <td>{{ $modificacion->dependencia->nombre ?? '—' }}</td>
-                        <td>{{ $usuario ?? '—' }}</td>
+                        <td>{{ $usuarioDependencia ?? '—' }}</td>
                         <td>
                             @php
                                 $claseEstado = match ($modificacion->estado) {
@@ -184,7 +184,7 @@
                             {{ $modificacion->updated_at->format('d/m/Y H:i') }}
                         </td>
                         <td>
-                            @if ($user->hasPermission('gestionar-historial-modificaciones-bienes'))
+                            @if ($user->hasPermission('gestionar-historial-modificaciones-bienes') && $modificacion->estado === 'pendiente')
                                 <button wire:click="aprobarModificacion({{ $modificacion->id }})"
                                     class="btn btn-sm btn-success">
                                     Aprobar
@@ -259,7 +259,7 @@
                                     Usuario:
                                 </span>
                                 <span class="px-2 small text-dark" style="cursor: pointer">
-                                    {{ $usuario ?? '—' }}
+                                    {{ $usuarioDependencia ?? '—' }}
                                 </span>
                             </div>
                             <div class="text-truncate me-2" style="white-space: nowrap;">

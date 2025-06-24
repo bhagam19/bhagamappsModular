@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
             $table->boolean('activo')->default(true);
             $table->timestamps();
-            $table->unique(['user_id', 'app_id']); // Evita duplicados para la misma app y usuario
+            $table->unique(['user_id', 'app_id']); // Evita duplicados para la misma app y user
         });
     }
 

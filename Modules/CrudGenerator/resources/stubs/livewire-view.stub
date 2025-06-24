@@ -62,7 +62,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         @foreach ($columns as $col)
-                            <td>{{ $item->$col }}</td>
+                            <td>{{ $this->getColumnValue($item, $col) }}</td>
                         @endforeach
                         <td>
                             <button wire:click="delete({{ $item->id }})" class="btn btn-danger btn-sm"

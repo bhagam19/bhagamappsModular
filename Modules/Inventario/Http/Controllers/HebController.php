@@ -11,7 +11,7 @@ class HebController extends Controller
     public function index()
     {
         // Traer todas las eliminaciones 
-        $eliminaciones = HistorialEliminacionBien::with(['bien', 'usuario', 'dependencia'])
+        $eliminaciones = HistorialEliminacionBien::with(['bien', 'user', 'dependencia'])
             ->orderByDesc('created_at') // Opcional: para ver las más recientes primero
             ->paginate(20);
 

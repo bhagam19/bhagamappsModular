@@ -13,7 +13,7 @@ class BienResponsable extends Model
 
     protected $fillable = [
         'bien_id',
-        'usuario_id',
+        'user_id',
         'observaciones',
         'fecha_asignacion',
         'fecha_retiro'
@@ -24,8 +24,8 @@ class BienResponsable extends Model
         return $this->belongsTo(Bien::class, 'bien_id');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(\Modules\Users\Entities\User::class, 'usuario_id');
+        return $this->belongsTo(\Modules\Users\Entities\User::class, 'user_id');
     }
 }

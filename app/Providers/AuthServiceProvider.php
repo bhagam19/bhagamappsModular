@@ -92,5 +92,5 @@ class AuthServiceProvider extends ServiceProvider
                 });
 
                 // 📌 [crud-generator-gates] Añadir gates aquí
-                }
+}
 }

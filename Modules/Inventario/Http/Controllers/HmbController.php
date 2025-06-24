@@ -11,7 +11,7 @@ class HmbController extends Controller
     public function index()
     {
         // Traer todas las modificaciones de bienes 
-        $modificacion = HistorialModificacionBien::with(['bien', 'usuario', 'dependencia'])
+        $modificacion = HistorialModificacionBien::with(['bien', 'user', 'dependencia'])
             ->orderByDesc('created_at') // Opcional: para ver las más recientes primero
             ->paginate(20);
 

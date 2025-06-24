@@ -37,7 +37,7 @@
     <div class="mb-4">
 
         {{-- BLOQUE 1: Botón móvil + Formulario de creación --}}
-        @if (auth()->user()->hasPermission('crear-usuarios'))
+        @if (auth()->user()->hasPermission('crear-users'))
             {{-- Botón para móviles --}}
             <div class="d-block d-md-none mb-2">
                 <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="collapse"
@@ -140,7 +140,7 @@
         </div>
 
         {{-- BLOQUE 3: Mensaje de ayuda --}}
-        @if (auth()->user()->hasPermission('editar-usuarios'))
+        @if (auth()->user()->hasPermission('editar-users'))
             <div class="text-muted mt-3">
                 <small>Doble click en un campo para editar.</small>
             </div>
@@ -176,7 +176,7 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         @if (in_array('nombres', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-users'))
                                 <td>@livewire('users.editar-nombres-user', ['user' => $user], key('nombres-' . $user->id))</td>
                             @else
                                 <td>{{ $user->nombres }}</td>
@@ -184,7 +184,7 @@
                         @endif
 
                         @if (in_array('apellidos', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-users'))
                                 <td>@livewire('users.editar-apellidos-user', ['user' => $user], key('apellidos-' . $user->id))</td>
                             @else
                                 <td>{{ $user->apellidos }}</td>
@@ -192,7 +192,7 @@
                         @endif
 
                         @if (in_array('userID', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-users'))
                                 <td>@livewire('users.editar-userID-user', ['user' => $user], key('userID-' . $user->id))</td>
                             @else
                                 <td>{{ $user->userID }}</td>
@@ -200,7 +200,7 @@
                         @endif
 
                         @if (in_array('rol', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-users'))
                                 <td>@livewire('users.editar-rol-user', ['user' => $user], key('role-' . $user->id))</td>
                             @else
                                 <td>{{ $user->role->nombre ?? '' }}</td>
@@ -208,7 +208,7 @@
                         @endif
 
                         @if (in_array('email', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-users'))
                                 <td>@livewire('users.editar-email-user', ['user' => $user], key('email-' . $user->id))</td>
                             @else
                                 <td>{{ $user->email }}</td>
@@ -216,7 +216,7 @@
                         @endif
 
                         <td>
-                            @if (auth()->user()->hasPermission('eliminar-usuarios'))
+                            @if (auth()->user()->hasPermission('eliminar-users'))
                                 <button wire:click="delete({{ $user->id }})" class="btn btn-sm btn-danger"
                                     onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
                                     aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
@@ -246,7 +246,7 @@
                         onkeydown="if(event.key === 'Enter' || event.key === ' ') { $('#collapse{{ $user->id }}').collapse('toggle'); event.preventDefault(); }">
                         <span>{{ $user->id }}. {{ $user->nombres }} {{ $user->apellidos }}</span>
 
-                        @if (auth()->user()->hasPermission('eliminar-usuarios'))
+                        @if (auth()->user()->hasPermission('eliminar-users'))
                             <button wire:click.stop="delete({{ $user->id }})" class="btn btn-sm btn-danger ml-auto"
                                 onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
                                 aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">

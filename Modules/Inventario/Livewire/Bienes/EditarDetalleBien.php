@@ -63,9 +63,9 @@ class EditarDetalleBien extends Component
     {
         $this->validate();
 
-        $usuario = auth()->user();
+        $user = auth()->user();
 
-        if (!$usuario->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
+        if (!$user->dependencias->pluck('id')->contains($this->bien->dependencia_id)) {
             return redirect()->route('inventario.bienes.index');
         }
 
@@ -106,7 +106,7 @@ class EditarDetalleBien extends Component
         }
 
         // Si tiene rol autorizado, guardar directamente
-        if ($usuario->hasRole('Administrador') || $usuario->hasRole('Rector')) {
+        if ($user->hasRole('Administrador') || $user->hasRole('Rector')) {
             $detalle->fill($this->detalle);
             $detalle->save();
             $this->toggleEdit();
@@ -116,7 +116,7 @@ class EditarDetalleBien extends Component
             return;
         }
 
-        // Usuario sin permiso → guardar solicitud pendiente
+        // User sin permiso → guardar solicitud pendiente
         // Verificar si ya existe un cambio pendiente para este bien y este campo
         $yaExiste = HistorialModificacionBien::where('bien_id', $this->bienId)
             ->where('tipo_objeto', 'detalle')
@@ -141,11 +141,11 @@ class EditarDetalleBien extends Component
         ]);
 
         // Notificar a administradores y rector
-        $usuariosDestino = User::whereHas('role', function ($query) {
+        $usersDestino = User::whereHas('role', function ($query) {
             $query->whereIn('nombre', ['Administrador', 'Rector']);
         })->get();
 
-        Notification::send($usuariosDestino, new NotificacionHmb($modificacionPendiente));
+        Notification::send($usersDestino, new NotificacionHmb($modificacionPendiente));
 
         $this->toggleEdit();
         session()->flash('info', 'El cambio de detalles fue enviado para aprobación.');

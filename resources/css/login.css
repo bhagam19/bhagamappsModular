@@ -9,21 +9,26 @@
     border-radius: 5px;
     border: 1px solid var(--OnActivo);
     z-index: 4;
-    transition: all 0.3s ease-in-out; /* Transición para todos los estados */
+    transition: all 0.3s ease-in-out;
+    /* Transición para todos los estados */
 }
 
 .appsFormularioLogin {
-    top: -250px; /* Inicialmente fuera de la pantalla */
+    top: -250px;
+    /* Inicialmente fuera de la pantalla */
     right: 2px;
-    transition: top 0.3s ease-in-out; /* Animación suave */
+    transition: top 0.3s ease-in-out;
+    /* Animación suave */
 }
 
 .oculto {
-    display: none; /* Para ocultar el formulario */
+    display: none;
+    /* Para ocultar el formulario */
 }
 
 .appsFormularioLogin.mostrar {
-    top: 0px; /* Desciende a la vista */
+    top: 0px;
+    /* Desciende a la vista */
 }
 
 #appsFormulario form {
@@ -40,7 +45,8 @@
     color: var(--OnPasivo);
     font-weight: normal;
     font-size: 0.8vw;
-    transition: all 0.2s ease; /* Suaviza los cambios al enfocarse */
+    transition: all 0.2s ease;
+    /* Suaviza los cambios al enfocarse */
 }
 
 #appsFormulario input:focus {
@@ -96,10 +102,12 @@
 
 /*==== Formularios LoggedIn ====*/
 
-.appsFormularioDatosUsuario {
-    top: -350px; /* Inicialmente fuera de la pantalla */
+.appsFormularioDatosUser {
+    top: -350px;
+    /* Inicialmente fuera de la pantalla */
     right: 2px;
-    transition: top 0.3s ease-in-out; /* Animación suave */
+    transition: top 0.3s ease-in-out;
+    /* Animación suave */
 }
 
 .oculto {
@@ -107,8 +115,9 @@
 }
 
 
-.appsFormularioDatosUsuario.mostrar {
-    top: 0px; /* Desciende a la vista */
+.appsFormularioDatosUser.mostrar {
+    top: 0px;
+    /* Desciende a la vista */
 }
 
 .datosPersonales {
@@ -124,17 +133,17 @@
     height: 50px;
 }
 
-.appsFormularioDatosUsuario .etiqueta {
+.appsFormularioDatosUser .etiqueta {
     font-weight: bold;
     padding: 10px 0px;
 }
 
-.appsFormularioDatosUsuario .datos {
+.appsFormularioDatosUser .datos {
     font-weight: normal;
     font-style: italic;
 }
 
-.appsFormularioDatosUsuario .btn {
+.appsFormularioDatosUser .btn {
     width: auto;
     left: 30px;
     color: var(--OnPasivo);
@@ -149,13 +158,13 @@
     transition: all 0.3s ease;
 }
 
-.appsFormularioDatosUsuario .btn:hover {
+.appsFormularioDatosUser .btn:hover {
     font-weight: bold;
     color: var(--OnActivo);
     text-shadow: 10px var(--OnActivo);
     border: 1px solid var(--OnActivo);
     box-shadow: 2px 1px 5px 1px var(--luzOn);
-    background: var(--fondo01);        
+    background: var(--fondo01);
 }
 
 .appsFormularioNuevaContrasena {
@@ -176,5 +185,5 @@
     box-shadow: 0 1px 10px var(--OnActivo) inset, 0 0 8px var(--luzOn);
     border: 1px solid var(--OnActivo);
     box-shadow: 0px 0px 25px 0px var(--OnActivo);
-    background: var(--fondoOff09);    
+    background: var(--fondoOff09);
 }
