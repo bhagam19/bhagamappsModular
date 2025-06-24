@@ -1,24 +1,24 @@
 [
     {
-        "nombre": "ver-{{nameLower}}",
+        "nombre": "ver {{nameLower}}",
         "slug": "ver-{{nameLower}}",
         "descripcion": "Permiso para ver {{name}}",
         "categoria": "{{module}}"
     },
     {
-        "nombre": "crear-{{nameLower}}",
+        "nombre": "crear {{nameLower}}",
         "slug": "crear-{{nameLower}}",
         "descripcion": "Permiso para crear {{name}}",
         "categoria": "{{module}}"
     },
     {
-        "nombre": "editar-{{nameLower}}",
+        "nombre": "editar {{nameLower}}",
         "slug": "editar-{{nameLower}}",
         "descripcion": "Permiso para editar {{name}}",
         "categoria": "{{module}}"
     },
     {
-        "nombre": "eliminar-{{nameLower}}",
+        "nombre": "eliminar {{nameLower}}",
         "slug": "eliminar-{{nameLower}}",
         "descripcion": "Permiso para eliminar {{name}}",
         "categoria": "{{module}}"
