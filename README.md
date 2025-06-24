@@ -38,7 +38,7 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-⚙️ Estructura del Proyecto
+## ⚙️ Estructura del Proyecto
 ```bash
 Modules/
 ├── Users/          # Gestión de usuarios
@@ -47,10 +47,18 @@ Modules/
 ├── CrudGenerator/  # Generador automático de CRUDs
 ```
 
-📖 Documentación extendida
-Encuentra guías completas en docs/.
+## 📖 Documentación extendida
+La documentación completa se encuentra en la carpeta docs/.
+- docs/instalacion.md: Guía detallada de instalación
+- docs/estructura.md: Estructura de carpetas y módulos
+- docs/api.md: Endpoints disponibles (si aplica)
+- docs/usuarios.md: Manual de usuario final
+- docs/desarrolladores.md: Guía para nuevos desarrolladores
 
-📄 Licencia
+## 🗓️ CHANGELOG
+Consulta los cambios por versión en [CHANGELOG.md](CHANGELOG.md).
+
+## 📄 Licencia
 Este proyecto está licenciado bajo la licencia MIT.
 
-Desarrollado con Laravel + Livewire
+## Desarrollado con Laravel + Livewire
