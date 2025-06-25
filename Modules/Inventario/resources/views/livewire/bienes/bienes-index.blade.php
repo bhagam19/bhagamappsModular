@@ -120,6 +120,54 @@
         </div>
     </div>
 
+    {{-- Contador modificaciones y eliminaciones pendientes --}}
+    @php
+        use Modules\Inventario\Entities\HistorialModificacionBien;
+        use Modules\Inventario\Entities\HistorialEliminacionBien;
+
+        $totalModificaciones = HistorialModificacionBien::where('estado', 'pendiente')->count();
+        $totalEliminaciones = HistorialEliminacionBien::where('estado', 'pendiente')->count();
+
+        $hayModificaciones = $totalModificaciones > 0;
+        $hayEliminaciones = $totalEliminaciones > 0;
+
+        $btnClassModificaciones = $hayModificaciones ? 'btn-danger' : 'btn-success';
+        $btnClassEliminaciones = $hayEliminaciones ? 'btn-danger' : 'btn-success';
+
+        $mensajeModificaciones = $hayModificaciones
+            ? "Modificaciones pendientes: <span class='badge bg-warning text-dark ms-1'>{$totalModificaciones}</span>"
+            : 'No hay modificaciones pendientes';
+
+        $mensajeEliminaciones = $hayEliminaciones
+            ? "Eliminaciones pendientes: <span class='badge bg-warning text-white ms-1'>{$totalEliminaciones}</span>"
+            : 'No hay eliminaciones pendientes';
+    @endphp
+
+    {{-- Botones para movil --}}
+    {{-- Botón gestionar-historial-modificaciones-bienes (Movil) --}}
+    <div>
+        @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
+            <a href="{{ route('inventario.hmb') }}"
+                class="btn {{ $btnClassModificaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                role="button" aria-label="Ver historial de modificaciones (móvil)">
+                <i class="fas fa-bell mr-1"></i>
+                <span>{!! $mensajeModificaciones !!}</span>
+            </a>
+        @endif
+    </div>
+
+    {{-- Botón gestionar-historial-eliminaciones-bienes (Movil) --}}
+    <div>
+        @if (auth()->user()->hasPermission('gestionar-historial-eliminaciones-bienes'))
+            <a href="{{ route('inventario.heb') }}"
+                class="btn {{ $btnClassEliminaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
+                role="button" aria-label="Ver historial de eliminaciones (móvil)">
+                <i class="fas fa-bell mr-1"></i>
+                <span>{!! $mensajeEliminaciones !!}</span>
+            </a>
+        @endif
+    </div>
+
     {{-- Mostrar filtros (Movil) --}}
     <div class="d-block d-md-none mb-1">
         <button class="btn btn-outline-secondary btn-sm btn-block" type="button" data-toggle="collapse"
@@ -128,7 +176,7 @@
         </button>
     </div>
 
-    {{-- Filtros colapsable (Movil) --}}
+    {{-- Formulario Colapsable de Filtros  (Movil) --}}
     <div class="collapse d-md-none" id="filtrosMobile">
         <div class="card shadow-sm mb-1">
             <div class="card-body">
@@ -200,35 +248,19 @@
         </div>
     </div>
 
-    {{-- Contador modificaciones y eliminaciones pendientes --}}
-    @php
-        use Modules\Inventario\Entities\HistorialModificacionBien;
-        use Modules\Inventario\Entities\HistorialEliminacionBien;
-
-        $totalModificaciones = HistorialModificacionBien::where('estado', 'pendiente')->count();
-        $totalEliminaciones = HistorialEliminacionBien::where('estado', 'pendiente')->count();
-
-        $hayModificaciones = $totalModificaciones > 0;
-        $hayEliminaciones = $totalEliminaciones > 0;
-
-        $btnClassModificaciones = $hayModificaciones ? 'btn-danger' : 'btn-success';
-        $btnClassEliminaciones = $hayEliminaciones ? 'btn-danger' : 'btn-success';
-
-        $mensajeModificaciones = $hayModificaciones
-            ? "Modificaciones pendientes: <span class='badge bg-warning text-dark ms-1'>{$totalModificaciones}</span>"
-            : 'No hay modificaciones pendientes';
-
-        $mensajeEliminaciones = $hayEliminaciones
-            ? "Eliminaciones pendientes: <span class='badge bg-warning text-white ms-1'>{$totalEliminaciones}</span>"
-            : 'No hay eliminaciones pendientes';
-    @endphp
+    {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
+    @if (auth()->user()->hasPermission('crear-bienes'))
+        <div class="d-block d-md-none mb-1">
+            <button class="btn btn-primary btn-sm btn-block" type="button" wire:click="toggleFormulario">
+                {{ $mostrarFormulario ? 'Ocultar' : 'Agregar Bien' }}
+            </button>
+        </div>
+    @endif
 
     {{-- Botón para mostrar formulario Agregar Bien (Escritorio) --}}
-    {{-- Contador registro y bienes (Escritorio) --}}
     {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
     {{-- Botón gestionar-historial-eliminaciones-bienes (Escritorio) --}}
     @if (auth()->user()->hasPermission('crear-bienes'))
-
         <div
             class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center mb-1 gap-1 flex-wrap">
 
@@ -237,17 +269,6 @@
                 wire:click="toggleFormulario">
                 <i class="fas fa-plus pr-1"></i> {{ $mostrarFormulario ? 'Ocultar' : 'Agregar Bien' }}
             </button>
-
-            {{-- Contador registro y bienes (Escritorio) --}}
-            <div class="d-flex align-items-center px-1 py-1 rounded bg-light border text-muted small"
-                style="gap: 4rem; justify-content: space-between; min-width: 320px;">
-                <div class="d-flex align-items-center" style="gap: 1rem;">
-                    <span style="margin-left: 1rem;">{{ $bienes->total() }} registros</span>
-                </div>
-                <div class="d-flex align-items-center" style="gap: 1rem;">
-                    <span style="margin-left: 1rem;">{{ $this->cantidadTotalFiltrada }} total bienes</span>
-                </div>
-            </div>
 
             {{-- Botón gestionar-historial-modificaciones-bienes (Escritorio) --}}
             @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
@@ -268,39 +289,18 @@
                     <span>{!! $mensajeEliminaciones !!}</span>
                 </a>
             @endif
-        </div>
 
-        {{-- Botón gestionar-historial-modificaciones-bienes (Movil) --}}
-        <div>
-            @if (auth()->user()->hasPermission('gestionar-historial-modificaciones-bienes'))
-                <a href="{{ route('inventario.hmb') }}"
-                    class="btn {{ $btnClassModificaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
-                    role="button" aria-label="Ver historial de modificaciones (móvil)">
-                    <i class="fas fa-bell mr-1"></i>
-                    <span>{!! $mensajeModificaciones !!}</span>
-                </a>
-            @endif
-        </div>
-        {{-- Botón gestionar-historial-eliminaciones-bienes (Movil) --}}
-        <div>
-            @if (auth()->user()->hasPermission('gestionar-historial-eliminaciones-bienes'))
-                <a href="{{ route('inventario.heb') }}"
-                    class="btn {{ $btnClassEliminaciones }} btn-sm d-flex d-sm-none align-items-center justify-content-center w-100 my-2"
-                    role="button" aria-label="Ver historial de eliminaciones (móvil)">
-                    <i class="fas fa-bell mr-1"></i>
-                    <span>{!! $mensajeEliminaciones !!}</span>
-                </a>
-            @endif
-        </div>
-
-    @endif
-
-    {{-- Botón para mostrar formulario Agregar Bien (Móvil) --}}
-    @if (auth()->user()->hasPermission('crear-bienes'))
-        <div class="d-block d-md-none mb-1">
-            <button class="btn btn-primary btn-sm btn-block" type="button" wire:click="toggleFormulario">
-                {{ $mostrarFormulario ? 'Ocultar' : 'Agregar Bien' }}
-            </button>
+            {{-- Contador de registros y bienes (Escritorio) --}}
+            <div
+                class="d-flex align-items-center justify-content-between px-1 py-1 rounded bg-light border text-muted small">
+                <div>
+                    <span>{{ $bienes->total() }} registros</span>
+                </div>
+                <span class="px-1 py-1">|</span>
+                <div>
+                    <span>{{ $this->cantidadTotalFiltrada }} bienes en total</span>
+                </div>
+            </div>
         </div>
     @endif
 
@@ -463,70 +463,60 @@
         </div>
     @endif
 
+    {{-- Contador de registros y bienes (Movil) --}}
+    <div
+        class="d-flex d-lg-none align-items-center justify-content-around px-1 py-1 rounded bg-light border text-muted small">
+        <div>
+            <span>{{ $bienes->total() }} registros</span>
+        </div>
+        <span class="px-1 py-1">|</span>
+        <div>
+            <span>{{ $this->cantidadTotalFiltrada }} bienes en total</span>
+        </div>
+    </div>
+
     {{-- Paginación, Dependencias a Cargo y Cantidades --}}
-    <div class="mt-1 d-flex justify-content-between flex-wrap">
+    <div class="d-flex justify-content-between flex-wrap p-1">
 
-        {{-- Izquierda: Dependencias y Cantidades --}}
-        <div class="d-flex flex-column" style="max-width: 400px; min-width: 320px;">
+        {{-- Columna Izquierda: Paginación y Selector --}}
+        <div class="d-flex flex-column justify-content-start" style="min-width: 300px;">
+            @if ($bienes->total() >= 10)
+                {{-- Paginación (frente a Dependencias) --}}
+                <div class="overflow-auto mb-1">
+                    <div class="d-inline-block mb-0">
+                        {{ $bienes->links('pagination::bootstrap-4') }}
+                    </div>
+                </div>
 
-            {{-- Dependencias --}}
+                {{-- Selector (frente a Contador) --}}
+                <div class="d-flex align-items-center gap-2">
+                    <label class="mb-0 mr-1">Mostrar</label>
+                    <select wire:model.lazy="perPage" class="form-control form-control-sm w-auto">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span class="ml-1">registros</span>
+                </div>
+            @endif
+        </div>
+
+        {{-- Columna Derecha: Dependencias --}}
+        <div class="d-flex flex-column justify-content-end mt-1" style="max-width: 400px; min-width: 320px;">
+
+            {{-- Dependencias (frente a Paginación) --}}
             @if (!$user->hasRole('Administrador') && !$user->hasRole('Rector') && isset($dependencias) && $dependencias->count())
-                <div class="bg-light border rounded px-3 py-2 text-left shadow-sm mb-2" style="font-size: 1rem;">
-                    <div class="font-weight-bold mb-2">Dependencias a tu cargo:</div>
+                <div class="bg-light border rounded px-3 py-2 text-left shadow-sm mb-1" style="font-size: 1rem;">
+                    <div class="font-weight-bold mb-1">Dependencias a tu cargo:</div>
                     @foreach ($dependencias as $dep)
                         <div class="badge badge-custom d-block mb-1">{{ $dep->nombre }}</div>
                     @endforeach
                 </div>
-
-                {{-- Cantidades --}}
-                <div class="d-flex align-items-center px-3 py-2 rounded bg-light text-muted small"
-                    style="gap: 4rem; justify-content: flex-start;">
-                    <div>{{ $bienes->total() }} registros</div>
-                    <div>{{ $this->cantidadTotalFiltrada }} total bienes</div>
-                </div>
             @endif
 
         </div>
-
-        {{-- Contenedor con Selector (izquierda) y Destacados (derecha) --}}
-        <div class="w-100 d-flex justify-content-between align-items-center flex-wrap mb-2 gap-2">
-
-            {{-- Selector --}}
-            <div class="d-flex align-items-center mb-0 gap-2">
-                <label class="mb-0">Mostrar</label>
-                <select wire:model.lazy="perPage" class="form-control form-control-sm w-auto">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>registros</span>
-            </div>
-
-            @if ($user->hasRole('Administrador') || $user->hasRole('Rector'))
-                {{-- Bienes destacados (barra horizontal alineada a la derecha) --}}
-                <div class="d-flex align-items-center overflow-auto gap-2 mt-1">
-                    <span class="fw-bold pr-2">Destacados</span>
-                    @foreach ($bienesDestacados as $bien)
-                        <div class="d-flex align-items-center px-2 py-1 rounded border bg-white shadow-sm"
-                            style="white-space: nowrap;">
-                            <span class="text-gray-700 small me-2">{{ $bien->nombre }}:</span>
-                            <span class="text-gray-600 fw-bold small pl-2">{{ $bien->cantidad_total }}</span>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-
-        </div>
-
-        {{-- Paginación --}}
-        <div class="w-100 overflow-auto">
-            <div class="d-inline-block">
-                {{ $bienes->links('pagination::bootstrap-4') }}
-            </div>
-        </div>
-
 
     </div>
 
@@ -579,7 +569,7 @@
                             $left = 30 + $index * 150;
                             $styles = 'position: sticky; top: 0; background: white;';
                             if ($isSticky) {
-                                $styles .= " left: {$left}px; z-index: 11;";
+                                $styles .= " left: {$left}px; z-index: 1;";
                             }
                         @endphp
                         <th style="{{ $styles }}">
@@ -631,11 +621,11 @@
 
                 {{-- Fila de encabezados --}}
                 <tr class="thead-dark">
-                    <th style="position: sticky; top: 30px; left: 0; background-color: rgb(18, 48, 78); z-index: 11;">
+                    <th style="position: sticky; top: 0; left: 0; background-color: rgb(18, 48, 78); z-index: 11;">
                         Acciones
                     </th>
                     <th wire:click="sortBy('id')"
-                        style="cursor: pointer; position: sticky; top: 30px; left: 73px; background-color: rgb(18, 48, 78); z-index: 11;">
+                        style="cursor: pointer; position: sticky; top: 0; left: 73px; background-color: rgb(18, 48, 78); z-index: 11;">
                         No.
                         @if ($sortField === 'id')
                             {{ $sortDirection === 'asc' ? '▲' : '▼' }}
@@ -658,7 +648,7 @@
                             $styles =
                                 'cursor: pointer; position: sticky; top: 30px; background-color: rgb(18, 48, 78);';
                             if ($isSticky) {
-                                $styles .= " left: {$left}px; z-index: 12;";
+                                $styles .= " left: {$left}px; z-index: 1;";
                             }
                         @endphp
                         <th wire:click="sortBy('{{ $column }}')" style="{{ $styles }}">
@@ -699,7 +689,7 @@
 
                         {{-- Columna Acciones (fija) --}}
                         <td @class([
-                            'position-sticky z-50',
+                            'position-sticky z-10',
                             'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
                             'text-muted bg-dark' => $bien->eliminacionPendiente,
                         ]) style="left: 0;"
@@ -736,7 +726,7 @@
 
                         {{-- Columna No. (fija) --}}
                         <td @class([
-                            'position-sticky z-50',
+                            'position-sticky z-10',
                             'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
                             'text-muted bg-dark' => $bien->eliminacionPendiente,
                         ]) style="left: 73px;"
@@ -746,12 +736,11 @@
 
                         {{-- Columna Nombre (fija) --}}
                         <td @class([
-                            'position-sticky z-50',
+                            'position-sticky z-10',
                             'bg-white bg-opacity-90' => !$bien->eliminacionPendiente,
                             'text-muted bg-dark' => $bien->eliminacionPendiente,
                         ]) style="left: 145px;"
                             title="{{ $bien->eliminacionPendiente ? 'Eliminación pendiente de aprobación' : '' }}">
-
 
                             @if (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                 @livewire(
@@ -775,13 +764,12 @@
                             @endif
                             @php
                                 $left = 30 + $index * 150;
-                                $isSticky = $index < 1;
+                                $isSticky = $index < 0;
                             @endphp
                             <td @class([
                                 'col-separator',
-                                'position-sticky z-40 bg-white' =>
-                                    $isSticky && !$bien->eliminacionPendiente,
-                                'position-sticky z-40 bg-dark bg-opacity-75 text-light' =>
+                                'bg-white' => $isSticky && !$bien->eliminacionPendiente,
+                                'bg-dark bg-opacity-75 text-light' =>
                                     $isSticky && $bien->eliminacionPendiente,
                             ])
                                 style="{{ $isSticky ? 'left: ' . $left . 'px;' : '' }} white-space: nowrap; min-width: 150px;"
@@ -837,7 +825,7 @@
         </table>
     </div>
 
-    {{-- Vista móvil: acordeón con Alpine.js --}}
+    {{-- Tabla de Bienes (Móvil): acordeón con Alpine.js --}}
     <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
         <div id="accordionMobileBienes">
             @php
