@@ -17,7 +17,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="border rounded col-12 col-md-4 p-1 shadow-sm bg-white fw-bold">Inventario de Bienes</h5>
+            <!---<h5 class="border rounded col-12 col-md-4 p-1 shadow-sm bg-white fw-bold">Inventario de Bienes</h5>--->
             @livewire('bienes.bienes-index')
         </div>
     </div>

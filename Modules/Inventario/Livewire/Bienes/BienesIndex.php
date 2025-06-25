@@ -31,7 +31,7 @@ class BienesIndex extends Component
     public bool $verTodos = false;
 
     // --- Paginación y orden ---
-    public int $perPage = 25;
+    public int $perPage = 10;
     public string $sortField = 'id';
     public string $sortDirection = 'asc';
 
