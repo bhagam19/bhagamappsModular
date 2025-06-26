@@ -4,7 +4,7 @@ namespace Modules\Apps\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 
 class App extends Model
 {
@@ -20,7 +20,7 @@ class App extends Model
         'habilitada',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsToMany(User::class, 'app_user', 'app_id', 'user_id');
     }

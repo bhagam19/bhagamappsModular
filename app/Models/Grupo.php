@@ -11,13 +11,13 @@ class Grupo extends Model
 
     protected $fillable = ['nombre'];
 
-    // Relación con users
+    // Relación con User
     public function estudiantes()
     {
         return $this->hasMany(User::class);
     }
 
-    public function users()
+    public function User()
     {
         return $this->belongsToMany(User::class, 'grupo_user');
     }

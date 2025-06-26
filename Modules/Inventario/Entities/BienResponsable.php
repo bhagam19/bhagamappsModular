@@ -26,6 +26,6 @@ class BienResponsable extends Model
 
     public function user()
     {
-        return $this->belongsTo(\Modules\Users\Entities\User::class, 'user_id');
+        return $this->belongsTo(\Modules\User\Entities\User::class, 'user_id');
     }
 }

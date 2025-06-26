@@ -10,7 +10,7 @@ class AppSeeder extends Seeder
     public function run(): void
     {
         $apps = [
-            ["Users", "usuarios/users", "users.png", 1],
+            ["User", "usuarios/user", "users.png", 1],
             ["Inventario", "inventario/bienes", "inventario.png", 1],
             ["App", "app", "apps.png", 1],
             ["Biblioteca", "biblioteca", "biblioteca.png", 1],
@@ -29,7 +29,7 @@ class AppSeeder extends Seeder
                 'nombre' => $nombre,
                 'ruta' => '/' . $ruta,
                 'imagen' => "vendor/adminlte/dist/img/Apps/{$imagen}",
-                'user_id' => 1, 
+                'user_id' => 1,
                 'habilitada' => $habilitada,
             ]);
         }

@@ -31,8 +31,23 @@
         <form wire:submit.prevent="store" class="form-row align-items-end mb-3 bg-light p-2 rounded" novalidate>
             @foreach ($columns as $col)
                 <div class="form-group col-md-3 mb-2">
-                    <input type="text" wire:model.defer="form.{{ $col }}" placeholder="{{ ucfirst(str_replace('_', ' ', $col)) }}"
-                        class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                    @if (substr($col, -3) === '_id')
+                        <label class="small text-muted">{{ ucfirst(str_replace('_id', '', $col)) }}</label>
+                        @php
+                            $optionsVar = Str::before($col, '_id') . 'Options';
+                        @endphp
+                        <select wire:model.defer="form.{{ $col }}" class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                            <option value="">Seleccione {{ ucfirst(str_replace('_id', '', $col)) }}</option>
+                            @foreach ($$optionsVar as $option)
+                                <option value="{{ $option->id }}">
+                                    {{ $option->nombre ?? $option->nombre_completo ?? $option->descripcion ?? $option->id }}
+                                </option>
+                            @endforeach
+                        </select>
+                    @else
+                        <input type="text" wire:model.defer="form.{{ $col }}" placeholder="{{ ucfirst(str_replace('_', ' ', $col)) }}"
+                            class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                    @endif
                     @error('form.' . $col)
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -44,6 +59,7 @@
             </div>
         </form>
     @endif
+
 
     {{-- Tabla --}}
     <div class="table-responsive">

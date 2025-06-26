@@ -6,7 +6,7 @@ use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Modules\Inventario\Entities\Bien;
 
-class ActasPDF extends Component
+class ActaPDF extends Component
 {
     public Bien $bien; // Asegúrate de pasar esta propiedad desde mount()
 

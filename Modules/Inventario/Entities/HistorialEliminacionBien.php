@@ -3,7 +3,7 @@
 namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 use Modules\Inventario\Entities\{
     Bien,
     Dependencia

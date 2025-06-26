@@ -3,7 +3,7 @@
 namespace Modules\Inventario\Http\Controllers;
 
 use Modules\Inventario\Entities\Bien;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 
 use Barryvdh\Snappy\Facades\SnappyPdf;
 

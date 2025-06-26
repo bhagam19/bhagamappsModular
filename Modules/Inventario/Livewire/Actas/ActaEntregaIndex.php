@@ -3,7 +3,7 @@
 namespace Modules\Inventario\Livewire\Actas;
 
 use Livewire\Component;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 use Modules\Inventario\Entities\Bien;
 use Modules\Inventario\Livewire\Actas\ActaPrinter;
 

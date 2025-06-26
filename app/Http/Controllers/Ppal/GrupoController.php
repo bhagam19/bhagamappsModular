@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Ppal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        $grupos = Grupo::all();    
+        $grupos = Grupo::all();
         return view('admin.grupos.index', compact('grupos'));
     }
 

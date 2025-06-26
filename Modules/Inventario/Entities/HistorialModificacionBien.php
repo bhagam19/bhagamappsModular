@@ -4,7 +4,7 @@ namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 
 class HistorialModificacionBien extends Model
 {

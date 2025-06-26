@@ -16,7 +16,6 @@ class MakeCrudCommand extends Command
     public function handle()
     {
         $name = Str::studly($this->argument('name'));         // Ej: Bien
-        //$name = Str::plural(Str::snake($name));         // Ej: bienes
         $module = $this->option('module');
         $nameLower = strtolower($name); // Ej: bien
 
@@ -58,6 +57,42 @@ class MakeCrudCommand extends Command
         File::put($bladePath, $bladeContent);
         $this->info("✔ index.blade.php creado en resources/views/{$nameLower}");
 
+        // 🔹 Detectar relaciones *_id
+        $modelPath = base_path("Modules/{$module}/Entities/{$name}.php");
+        $relationNames = [];
+
+        if (File::exists($modelPath)) {
+            $modelContent = File::get($modelPath);
+
+            // Extraer $fillable
+            if (preg_match('/\$fillable\s*=\s*\[([^\]]+)\]/', $modelContent, $matches)) {
+                preg_match_all('/\'([^\']+)\'/', $matches[1], $fields);
+                $fillableFields = $fields[1] ?? [];
+
+                // Filtrar relaciones *_id
+                $relationNames = array_filter($fillableFields, fn($field) => Str::endsWith($field, '_id'));
+            }
+        }
+
+        $externalModels = ['user', 'role', 'apps'];
+
+        $relationUseModels = '';
+        $relationViewData  = '';
+        $relationFields    = '';
+
+        foreach ($relationNames as $field) {
+            $relation = Str::before($field, '_id');
+            $class = Str::studly($relation);
+            $variable = "{$relation}Options";
+
+            $moduleTarget = in_array($relation, $externalModels) ? Str::studly($relation) : $module;
+
+            $relationUseModels  .= "use Modules\\{$moduleTarget}\\Entities\\{$class};\n";
+            $relationViewData   .= "            '{$variable}' => \\Modules\\{$moduleTarget}\\Entities\\{$class}::all(),\n";
+            $relationFields     .= "        '{$field}' => 'nombre',\n";
+        }
+
+
         // 4️⃣ Generar componente Livewire NombreIndex.php
         $livewireClassPath = "{$modulePath}/Livewire/{$name}/{$name}Index.php";
         if (!File::exists(dirname($livewireClassPath))) {
@@ -68,6 +103,9 @@ class MakeCrudCommand extends Command
             'nameLower' => $nameLower,
             'module' => $module,
             'moduleLower' => $moduleLower,
+            'relationViewData' => rtrim($relationViewData), // 👈 nuevo
+            'relationUseModels' => rtrim($relationUseModels), // 👈 nuevo
+            'relationFields' => rtrim($relationFields), // 👈 nuevo
         ]);
         File::put($livewireClassPath, $livewireClass);
         $this->info("✔ Componente Livewire creado en Livewire/{$name}Index.php");
@@ -150,15 +188,13 @@ class MakeCrudCommand extends Command
             $permission['created_at'] = now();
             $permission['updated_at'] = now();
 
-            \DB::table('permissions')->updateOrInsert(
+            DB::table('permissions')->updateOrInsert(
                 ['slug' => $permission['slug']],
                 $permission
             );
         }
 
         $this->info("✔ Permisos generados en tabla 'permissions'");
-
-
         $this->info("✅ CRUD generado correctamente para [$name] en el módulo [$module]");
     }
 

@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
 
                 Gate::define('guest-only', fn($user = null) => $user === null);
 
-                Gate::define('usuarios.users', function ($user) {
+                Gate::define('usuarios.user', function ($user) {
                         return $user instanceof User
                                 && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
                 });

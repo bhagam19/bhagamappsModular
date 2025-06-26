@@ -71,7 +71,7 @@ Consulta los cambios por versión en [CHANGELOG.md](CHANGELOG.md).
 ---
 
 ## 📦 Módulos actuales
-- **Users:** Gestión de usuarios, roles y permisos.
+- **User:** Gestión de usuarios, roles y permisos.
 - **Inventario:** Gestión de bienes institucionales, ubicaciones, custodios, historial y aprobaciones.
 - **Apps:** Gestión de aplicaciones institucionales.
 - **CrudGenerator (en desarrollo):** Generación automática de CRUDs para módulos.
@@ -111,7 +111,7 @@ php artisan serve
 ## ⚙️ Estructura del Proyecto
 ```bash
 Modules/
-├── Users/          # Gestión de usuarios
+├── User/          # Gestión de usuarios
 ├── Inventario/     # Gestión de bienes
 ├── Apps/           # Aplicaciones institucionales
 ├── CrudGenerator/  # Generador automático de CRUDs

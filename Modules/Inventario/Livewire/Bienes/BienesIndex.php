@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 use Modules\Inventario\Entities\{
     Bien,
     Categoria,

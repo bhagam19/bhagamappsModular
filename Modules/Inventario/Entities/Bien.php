@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
 
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 
 class Bien extends Model
 {

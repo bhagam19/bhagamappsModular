@@ -3,7 +3,7 @@
 namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
-use Modules\Users\Models\User;
+use Modules\User\Entities\User;
 use Modules\Inventario\Entities\{
     Bien,
     Detalle,

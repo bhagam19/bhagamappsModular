@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
 use Modules\{{module}}\Entities\{{name}};
+{{relationUseModels}}
 
 class {{name}}Index extends Component
 {
@@ -19,7 +20,7 @@ class {{name}}Index extends Component
 
     // Puedes personalizar qué campo mostrar de las relaciones
     protected array $relationFields = [
-        // 'relacion_id' => 'campo', // Ejemplo: 'user_id' => 'nombre_completo'
+        {{relationFields}} // Ej: 'user_id' => 'nombre_completo'
     ];
 
     protected $rules = [
@@ -72,8 +73,10 @@ class {{name}}Index extends Component
         return view('{{moduleLower}}::livewire.{{nameLower}}.{{nameLower}}-index', [
             'items' => $items,
             'columns' => $columns,
+            {{relationViewData}} // Ej: 'userOptions' => User::all(), ...
         ]);
     }
+
 
     protected function getRelationNames()
     {

@@ -327,27 +327,27 @@ return [
         [
             'text' => 'Gestión de Accesos',
             'icon' => 'fas fa-users-cog',
-            'can' => 'usuarios.users',
+            'can' => 'usuarios.user',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
                     'icon' => 'fas fa-user text-info',
-                    'route' => 'users.users.index',
-                    'active' => ['admin/users*'],
+                    'route' => 'user.users.index',
+                    'active' => ['admin/user*'],
                     'classes' => 'text-primary font-weight-bold',
 
                 ],
                 [
                     'text' => 'Roles',
                     'icon' => 'fas fa-user-shield text-info',
-                    'route' => 'users.roles.index', // Ajusta si tienes otra ruta
+                    'route' => 'user.roles.index', // Ajusta si tienes otra ruta
                     'active' => ['admin/roles*'],
                     'classes' => 'text-primary font-weight-bold',
                 ],
                 [
                     'text' => 'Permisos',
                     'icon' => 'fas fa-key text-info',
-                    'route' => 'users.permissions.index', // Ajusta si es necesario
+                    'route' => 'user.permissions.index', // Ajusta si es necesario
                     'active' => ['admin/permissions*'],
                     'classes' => 'text-primary font-weight-bold',
                 ],
