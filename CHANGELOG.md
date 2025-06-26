@@ -2,6 +2,11 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [User-v2.0.0] - 2025-06-23
+### Changed
+- Refactor: Renombrado el módulo `Users` a `User` con nueva estructura modular.
+- Ajustes en assets y configuración del frontend para adaptarse a la nueva estructura.
+
 ## [BhagamApps-v1.2.0] y [CrudGenerator-v1.0.0] - 2025-06-23
 ### Added
 - Implementado módulo `CrudGenerator` para generación automática de CRUDs.
