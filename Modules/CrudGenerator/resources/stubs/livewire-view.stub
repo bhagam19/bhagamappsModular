@@ -60,15 +60,54 @@
         </form>
     @endif
 
+    {{-- selector de Registros por página --}}
+    <div class="d-flex justify-content-between mb-2">
+        <div>
+            <label>
+                Mostrar
+                <select wire:model.lazy="perPage" class="form-select form-select-sm d-inline w-auto mx-1">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                registros por página
+            </label>
+        </div>
+    </div>
+
+    {{-- Paginación --}}
+    <div class="mt-2">
+        {{ $items->links('pagination::bootstrap-4') }}
+    </div>
 
     {{-- Tabla --}}
     <div class="table-responsive">
         <table class="table table-bordered table-sm table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>#</th>
+                    <th wire:click="sortBy('id')" style="cursor: pointer">
+                        #
+                        @if ($sortColumn === 'id')
+                            @if ($sortDirection === 'asc')
+                                <i class="fas fa-sort-up"></i>
+                            @else
+                                <i class="fas fa-sort-down"></i>
+                            @endif
+                        @endif
+                    </th>
                     @foreach ($columns as $col)
-                        <th>{{ ucfirst(str_replace('_', ' ', $col)) }}</th>
+                        <th wire:click="sortBy('{{ $col }}')" style="cursor: pointer">
+                            {{ ucfirst(str_replace('_', ' ', $col)) }}
+                            @if ($sortColumn === $col)
+                                @if ($sortDirection === 'asc')
+                                    <i class="fas fa-sort-up"></i>
+                                @else
+                                    <i class="fas fa-sort-down"></i>
+                                @endif
+                            @endif
+                        </th>
                     @endforeach
                     <th>Acciones</th>
                 </tr>

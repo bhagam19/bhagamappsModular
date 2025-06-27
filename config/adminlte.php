@@ -355,7 +355,7 @@ return [
         ],
 
         // 📌 [crud-generator-menus] Añadir menús aquí
-                [
+        [
             'text' => 'Inventario',
             'icon' => 'fas fa-boxes',
             'submenu' => [
@@ -369,87 +369,14 @@ return [
 
                 ],
                 [
-                    'text' => 'Acta de Entrega',
-                    'icon' => 'fas fa-file-signature text-success',
+                    'text' => 'Actas de Entrega',
+                    'icon' => 'fas fa-file-signature text-info',
                     'route' => 'inventario.actas.index',
                     'active' => ['inventario/actas*'],
-                    'classes' => 'text-success font-weight-bold',
+                    'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-actas-de-entrega',
                 ],
-
-                [
-                    'text' => 'Ubicaciones',
-                    'icon' => 'fas fa-map-marker-alt text-success',
-                    'route' => '',
-                    'active' => ['inventario/ubicaciones*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-ubicaciones',
-                ],
-                [
-                    'text' => 'Dependencias',
-                    'icon' => 'fas fa-building text-info',
-                    'route' => '',
-                    'active' => ['inventario/dependencias*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-dependencias',
-                ],
-                [
-                    'text' => 'Categorías',
-                    'icon' => 'fas fa-tags text-warning',
-                    'route' => '',
-                    'active' => ['inventario/categorias*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-categorias-bienes',
-                ],
-                [
-                    'text' => 'Estado del Bien',
-                    'icon' => 'fas fa-check-circle text-success',
-                    'route' => '',
-                    'active' => ['inventario/estados*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-estados',
-                ],
-                [
-                    'text' => 'Pendientes de Aprobación',
-                    'icon' => 'fas fa-hourglass-half text-warning',
-                    'route' => '',
-                    'active' => ['inventario/aprobacion*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-pendientes-aprobacion',
-                ],
-                [
-                    'text' => 'Historial de Modificaciones',
-                    'icon' => 'fas fa-history text-secondary',
-                    'route' => '',
-                    'active' => ['inventario/historial-modificaciones*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-historial-modificaciones',
-                ],
-                [
-                    'text' => 'Historial de Ubicaciones',
-                    'icon' => 'fas fa-map-marker-alt text-success',
-                    'route' => '',
-                    'active' => ['inventario/historial-ubicaciones*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-historial-ubicaciones',
-                ],
-                [
-                    'text' => 'Responsables',
-                    'icon' => 'fas fa-user-check text-info',
-                    'route' => '',
-                    'active' => ['inventario/responsables*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-responsables',
-                ],
-                [
-                    'text' => 'Mantenimientos Programados',
-                    'icon' => 'fas fa-tools text-danger',
-                    'route' => '',
-                    'active' => ['inventario/mantenimientos*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-mantenimientos-programados',
-                ],
-            ],
+                            ],
         ],
 
 

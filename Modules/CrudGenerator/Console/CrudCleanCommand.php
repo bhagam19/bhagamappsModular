@@ -15,9 +15,9 @@ class CrudCleanCommand extends Command
 
     public function handle()
     {
-        $name = Str::studly($this->argument('name'));        // Ej: Bien
-        //$name = Str::plural(Str::snake($name));        // Ej: bienes
+        $name = Str::studly($this->argument('name')); // Ej: Bien
         $module = $this->option('module');
+        $moduleLower = strtolower($module); // Ej: inventario
         $nameLower = strtolower($name); // Ej: bien
 
         if (!$module) {
@@ -27,21 +27,38 @@ class CrudCleanCommand extends Command
 
         $modulePath = base_path("Modules/{$module}");
 
-        // 🗑 1️⃣ Eliminar carpeta de la vista Blade
+        // 🗑 1️⃣ Limpiar ruta generada en web.php
+        $routeFile = "{$modulePath}/routes/web.php";
+        if (File::exists($routeFile)) {
+            $routeContent = File::get($routeFile);
+
+            // Construimos un patrón que identifique el bloque completo
+            $pattern = "/Route::middleware\(\['web', 'auth'\]\)\s*->prefix\('{$moduleLower}'\)\s*->group\(function\s*\(\)\s*\{\s*Route::get\('{$nameLower}',[^\}]+?\}\);/m";
+
+            $newRouteContent = preg_replace($pattern, '', $routeContent);
+
+            // Limpiamos saltos de línea excesivos
+            $newRouteContent = preg_replace("/\n{2,}/", "\n\n", $newRouteContent);
+
+            File::put($routeFile, trim($newRouteContent) . "\n");
+            $this->info("✔ Ruta eliminada del archivo routes/web.php");
+        }
+
+        // 🗑 2️⃣ Eliminar carpeta de la vista Blade
         $bladeFolder = "{$modulePath}/resources/views/{$nameLower}";
         if (File::exists($bladeFolder)) {
             File::deleteDirectory($bladeFolder);
             $this->info("✔ Carpeta eliminada: views/{$nameLower}");
         }
 
-        // 🗑 2️⃣ Eliminar componente Livewire
+        // 🗑 3️⃣ Eliminar componente Livewire
         $livewireFolder = "{$modulePath}/Livewire/{$name}";
         if (File::exists($livewireFolder)) {
             File::deleteDirectory($livewireFolder);
             $this->info("✔ Carpeta eliminada: Livewire/{$name}");
         }
 
-        // 🗑 3️⃣ Eliminar carpeta de la vista Livewire
+        // 🗑 4️⃣ Eliminar carpeta de la vista Livewire
         $livewireViewFolder = "{$modulePath}/resources/views/livewire/{$nameLower}";
         if (File::exists($livewireViewFolder)) {
             File::deleteDirectory($livewireViewFolder);
@@ -62,7 +79,7 @@ class CrudCleanCommand extends Command
             $this->info("✔ Ruta eliminada del archivo routes/web.php");
         }
 
-        // 6️⃣ Limpiar menú en config/adminlte.php
+        // 5️⃣ Limpiar menú en config/adminlte.php
         $adminlteConfig = config_path('adminlte.php');
         if (File::exists($adminlteConfig)) {
             $menuContent = File::get($adminlteConfig);
@@ -77,7 +94,7 @@ class CrudCleanCommand extends Command
         }
 
 
-        // 7️⃣ Limpiar Gate en AuthServiceProvider.php
+        // 6️⃣ Limpiar Gate en AuthServiceProvider.php
         $authServiceProviderPath = app_path('Providers/AuthServiceProvider.php');
         if (File::exists($authServiceProviderPath)) {
             $authContent = File::get($authServiceProviderPath);
@@ -91,7 +108,7 @@ class CrudCleanCommand extends Command
             $this->info("✔ Gate eliminado de AuthServiceProvider.php");
         }
 
-        // 8️⃣ Eliminar permisos generados
+        // 7️⃣ Eliminar permisos generados
         try {
             DB::table('permissions')->whereIn('slug', [
                 "ver-{$nameLower}",

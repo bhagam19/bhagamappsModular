@@ -15,16 +15,19 @@ class {{name}}Index extends Component
     public $perPage = 10;
     public $mostrarFormulario = false;
 
+    public $sortColumn = 'id';
+    public $sortDirection = 'asc';
+
     // Atributos del formulario
     public $form = [];
 
     // Puedes personalizar qué campo mostrar de las relaciones
     protected array $relationFields = [
-        {{relationFields}} // Ej: 'user_id' => 'nombre_completo'
+        {{relationFields}} 
     ];
 
     protected $rules = [
-        // 'form.campo' => 'required|string|max:255', // Reemplazar por reglas reales
+        {{rules}}
     ];
 
     public function toggleFormulario()
@@ -65,9 +68,22 @@ class {{name}}Index extends Component
         return $item->$column;
     }
 
+    public function sortBy($column)
+    {
+        if ($this->sortColumn === $column) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortColumn = $column;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render()
     {
-        $items = {{name}}::with($this->getRelationNames())->paginate($this->perPage);
+        $items = {{name}}::with($this->getRelationNames())
+            ->orderBy($this->sortColumn, $this->sortDirection)
+            ->paginate($this->perPage);
+
         $columns = (new {{name}}())->getFillable();
 
         return view('{{moduleLower}}::livewire.{{nameLower}}.{{nameLower}}-index', [
