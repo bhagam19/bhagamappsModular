@@ -2,6 +2,20 @@
 
 Registro de cambios del proyecto BhagamApps.
 
+## [CrudGenerator-v1.1.0] - 2025-06-23
+### Added
+- Servicios para generar CRUD automáticamente con:
+  - Rutas web y API.
+  - Componentes Livewire dinámicos.
+  - Vistas Blade con edición inline.
+  - Ítems de menú en AdminLTE.
+  - Permisos con guardias.
+- Integración con `EditarCampoGenerico` para edición en línea.
+- Estructura de servicios orientados a generación modular.
+
+### Changed
+- Refactor del generador base para dividir responsabilidades y facilitar mantenimiento.
+
 ## [User-v2.0.0] - 2025-06-23
 ### Changed
 - Refactor: Renombrado el módulo `Users` a `User` con nueva estructura modular.
