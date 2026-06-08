@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.4] — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- **[PLAN-IMPL-008]** Plan de reconciliación de versionado y documentación
+  persistido formalmente. Estado: EJECUTADO. Riesgo residual: BAJO.
+
+---
+
 ## [v1.4.3] — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)

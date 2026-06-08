@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.4 — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Documentation
+
+- `docs/plan/PLAN-IMPL-008-Versioning-and-Documentation-Reconciliation.md` —
+  PLAN-IMPL-008 persisted. Plan de reconciliación de versionado y documentación:
+  estado EJECUTADO, resultado EXITOSO.
+
+---
+
 ## v1.4.3 — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)
