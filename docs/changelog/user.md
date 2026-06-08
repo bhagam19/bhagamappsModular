@@ -9,6 +9,23 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.1.2 — 2026-06-08
+
+### Fixed
+
+- **[IMPL-012]** Corregidos 9 slugs de permisos incorrectos en vistas Blade del módulo User.
+  `crear-users` → `crear-usuarios`; `editar-user`/`editar-users` → `editar-usuarios`;
+  `eliminar-users` → `eliminar-usuarios`. Afectaba: formulario de creación, edición
+  inline desktop y móvil, y botones de eliminación — todos invisibles a pesar de que
+  el usuario tuviera los permisos correctos.
+- **[IMPL-012]** Corregido bug crítico en `EditarRolUser.mount()`: `role_id` se
+  inicializaba con el nombre del rol (string) en lugar de la FK integer. Causaba
+  corrupción de datos al guardar (`role_id = 'Administrador'` en columna INT).
+- **[IMPL-012]** Roles cargados dinámicamente desde base de datos en
+  `editar-rol-user.blade.php`. Elimina dependencia de lista hardcodeada de 7 roles.
+
+---
+
 ## v2.1.1 — 2026-06-08
 
 ### Fixed

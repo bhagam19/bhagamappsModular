@@ -17,6 +17,24 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.8] — 2026-06-08
+
+**Módulos afectados:** User → v2.1.2
+
+### Fixed
+
+- **[IMPL-012]** Corregidos 9 slugs de permisos incorrectos en vistas Blade del módulo User.
+  `crear-users`, `editar-user`, `editar-users`, `eliminar-users` → slugs correctos según
+  `permissions.csv`. Afectaba a: formulario de creación, edición inline desktop/móvil y
+  botones de eliminación — completamente invisibles pese a que el usuario tuviera permisos.
+- **[IMPL-012]** Bug crítico en `EditarRolUser.mount()`: inicializaba `$role_id` con el
+  nombre del rol (string) causando corrupción silenciosa de la FK integer al guardar.
+  Corregido a `$user->role_id`.
+- **[IMPL-012]** Roles cargados dinámicamente desde BD en `editar-rol-user.blade.php`.
+  Eliminada lista hardcodeada de 7 opciones fijas.
+
+---
+
 ## [v1.4.7] — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)

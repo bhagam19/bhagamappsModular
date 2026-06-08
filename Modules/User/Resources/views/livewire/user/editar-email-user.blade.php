@@ -10,7 +10,7 @@
             </span>
 
             {{-- Botón visible solo en móvil --}}
-            @if (auth()->user()->hasPermission('editar-user'))
+            @if (auth()->user()->hasPermission('editar-usuarios'))
                 <button wire:click="editar" class="btn btn-sm btn-outline-primary d-md-none">
                     Editar
                 </button>

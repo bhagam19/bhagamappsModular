@@ -3,6 +3,7 @@
 namespace Modules\User\Livewire\User;
 
 use Livewire\Component;
+use Modules\User\Entities\Role;
 use Modules\User\Entities\User;
 
 class EditarRolUser extends Component
@@ -14,7 +15,7 @@ class EditarRolUser extends Component
     public function mount(User $user)
     {
         $this->user = $user;
-        $this->role_id = $user->role->nombre ?? 'Sin rol';
+        $this->role_id = $user->role_id;
         $this->editando = false;
     }
 
@@ -36,6 +37,8 @@ class EditarRolUser extends Component
 
     public function render()
     {
-        return view('user::livewire.user.editar-rol-user');
+        return view('user::livewire.user.editar-rol-user', [
+            'roles' => Role::all(),
+        ]);
     }
 }

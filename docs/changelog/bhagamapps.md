@@ -11,6 +11,23 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.8 — 2026-06-08
+
+**Módulos afectados:** User → v2.1.2
+
+### Fixed
+
+- **[IMPL-012]** Users CRUD Parity Fix: corregidos 9 slugs de permisos incorrectos
+  en vistas Blade del módulo User (`crear-users`, `editar-user`, `editar-users`,
+  `eliminar-users`). Formulario de creación, edición inline y eliminación estaban
+  completamente invisibles para usuarios con permisos válidos.
+- **[IMPL-012]** Bug crítico en `EditarRolUser`: `role_id` se inicializaba con
+  el nombre del rol (string) en lugar de la FK integer. Corregido a `$user->role_id`.
+- **[IMPL-012]** Roles cargados dinámicamente en `editar-rol-user.blade.php`
+  desde base de datos. Eliminada lista hardcodeada de 7 roles fijos.
+
+---
+
 ## v1.4.7 — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)
