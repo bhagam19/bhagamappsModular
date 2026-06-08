@@ -11,6 +11,29 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.7 — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Documentation
+
+- `docs/dg/DG-015-Ejecucion-IMPL-005-HTTPS-and-Secure-Session-Hardening.md` —
+  DG-015 persistido. Autorización de IMPL-005 HTTPS and Secure Session Hardening.
+  Trazabilidad: AUDIT-006 → PLAN-IMPL-010 → DG-015 → IMPL-005.
+- `docs/impl/IMPL-005-HTTPS-and-Secure-Session-Hardening.md` —
+  IMPL-005 persistido. Estado: SUSPENDIDA TEMPORALMENTE. Bloqueo externo:
+  error Let's Encrypt DNS SERVFAIL en CAA — requiere registro CAA en GoDaddy.
+  Diagnóstico completo documentado. Hallazgos H-001, H-002, H-004 pendientes.
+- `docs/dg/DG-016-Ejecucion-IMPL-006-SMTP-Configuration-and-Mail-Delivery.md` —
+  DG-016 persistido. Autorización de IMPL-006 SMTP Configuration and Mail Delivery.
+  Trazabilidad: AUDIT-006 → PLAN-IMPL-010 → DG-016 → IMPL-006.
+- `docs/impl/IMPL-006-SMTP-Configuration-and-Mail-Delivery.md` —
+  IMPL-006 persistido. Estado: AUTORIZADA — EN DIAGNÓSTICO. Diagnóstico inicial
+  completo: MAIL_MAILER=log, sin credenciales SMTP, Exim 4.97 disponible en
+  localhost, sin MX/SPF/DKIM en DNS. Hallazgo H-005 pendiente.
+
+---
+
 ## v1.4.6 — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)

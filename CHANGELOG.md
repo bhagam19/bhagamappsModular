@@ -17,6 +17,24 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.7] — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- **[DG-015]** Autorización formal de IMPL-005 HTTPS and Secure Session Hardening
+  persistida. Trazabilidad completa: AUDIT-006 → PLAN-IMPL-010 → DG-015 → IMPL-005.
+- **[IMPL-005]** HTTPS and Secure Session Hardening persistido. Estado: SUSPENDIDA
+  TEMPORALMENTE por bloqueo DNS/Let's Encrypt. Diagnóstico completo incluido.
+  Requiere registro CAA en GoDaddy DNS para desbloquear emisión SSL.
+- **[DG-016]** Autorización formal de IMPL-006 SMTP Configuration and Mail Delivery
+  persistida. Trazabilidad completa: AUDIT-006 → PLAN-IMPL-010 → DG-016 → IMPL-006.
+- **[IMPL-006]** SMTP Configuration and Mail Delivery persistido. Estado: EN DIAGNÓSTICO.
+  Exim 4.97 disponible localmente. Sin credenciales externas ni registros DNS de correo.
+
+---
+
 ## [v1.4.6] — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)
