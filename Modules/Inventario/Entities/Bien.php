@@ -32,6 +32,10 @@ class Bien extends Model
 
     protected $table = 'bienes';
 
+    protected $casts = [
+        'precio' => 'decimal:2',
+    ];
+
     // Relaciones
 
     public function detalle()
