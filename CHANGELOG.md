@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.2] — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- **[ADR-007]** Registro Oficial de Decisiones Estratégicas de Dirección General.
+  Establece `docs/dg/` como directorio oficial para documentos DG-XXX.
+
+---
+
 ## [v1.4.1] — 2026-06-08
 
 **Módulos afectados:** Inventario → v2.4.1, v2.4.2

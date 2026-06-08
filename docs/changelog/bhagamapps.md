@@ -11,6 +11,19 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.2 — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- `docs/adr/ADR-007-Strategic-Decisions-Registry.md` — Registro Oficial de
+  Decisiones Estratégicas de Dirección General. Establece `docs/dg/` como
+  ubicación de documentos DG-XXX (aprobaciones, repriorización, gobierno).
+- `docs/dg/` — Directorio creado y reservado para futuras decisiones DG-013 a DG-018.
+
+---
+
 ## v1.4.1 — 2026-06-08
 
 **Módulos afectados:** Inventario → v2.4.1, v2.4.2
