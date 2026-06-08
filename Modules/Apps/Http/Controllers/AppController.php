@@ -9,7 +9,6 @@ class AppController extends Controller
 {
     public function index()
     {
-        $apps = App::where('user_id', auth()->id())->get();
-        return view('apps::index', compact('apps'));
+        return view('apps::admin.index');
     }
 }

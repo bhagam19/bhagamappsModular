@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $apps = auth()->user()->apps()->wherePivot('activo', true)->where('habilitada', true)->get();
+        $apps = App::visiblesPara(auth()->user());
         return view('ppal.index', compact('apps'));
     }
 }
