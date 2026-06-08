@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.3] — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- **[AUDIT-005]** Versioning and Changelog Compliance Audit persistida formalmente.
+  Estado: CERRADA. Riesgo residual: BAJO.
+
+---
+
 ## [v1.4.2] — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)

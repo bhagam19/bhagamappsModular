@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.3 — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Documentation
+
+- `docs/audits/AUDIT-005-Versioning-and-Changelog-Compliance.md` — AUDIT-005
+  Versioning and Changelog Compliance persisted. Auditoría de cumplimiento de
+  versionado y changelogs: estado CERRADA, riesgo residual BAJO.
+
+---
+
 ## v1.4.2 — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)
