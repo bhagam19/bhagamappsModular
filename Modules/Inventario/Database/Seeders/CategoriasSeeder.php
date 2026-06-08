@@ -18,20 +18,18 @@ class CategoriasSeeder extends Seeder
         $headers = array_map("trim", str_getcsv($file->fgets()));
 
         foreach ($file as $row) {
-            foreach ($file as $row) {
 
-                if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
-                    continue;
-                }
-                $data = array_combine($headers, $row);
-
-                DB::table('categorias')->insert([
-                    //'id' => $data['id'],
-                    'nombre' => $data['nombre'],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+            if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
+                continue;
             }
+            $data = array_combine($headers, $row);
+
+            DB::table('categorias')->insert([
+                //'id' => $data['id'],
+                'nombre' => $data['nombre'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }

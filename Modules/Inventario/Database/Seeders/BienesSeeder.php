@@ -17,14 +17,13 @@ class BienesSeeder extends Seeder
         $headers = array_map("trim", str_getcsv($file->fgets()));
 
         foreach ($file as $row) {
-            foreach ($file as $row) {
 
-                if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
-                    continue;
-                }
-                $data = array_combine($headers, $row);
+            if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
+                continue;
+            }
+            $data = array_combine($headers, $row);
 
-                DB::table('bienes')->insert([
+            DB::table('bienes')->insert([
                     'id' => $data['id'],
                     'nombre' => $data['nombre'],
                     'serie' => $data['serie'],
@@ -43,7 +42,6 @@ class BienesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-            }
         }
     }
 }
