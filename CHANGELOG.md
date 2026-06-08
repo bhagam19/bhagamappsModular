@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.5] — 2026-06-08
+
+**Módulos afectados:** Core (seguridad)
+
+### Security
+
+- **[IMPL-009]** Removed 3 publicly accessible diagnostic files from `public/`:
+  `test_proc_open.php` (shell execution via `proc_open`), `test.php`, `info.php`.
+
+---
+
 ## [v1.4.4] — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)

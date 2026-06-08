@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.5 — 2026-06-08
+
+**Módulos afectados:** Core (seguridad)
+
+### Security
+
+- **[IMPL-009]** Removed publicly accessible diagnostic files from `public/`:
+  `test_proc_open.php` (ejecutaba `proc_open('ls')` sin autenticación),
+  `test.php`, `info.php`. Identified by AUDIT-006 H-003.
+
+---
+
 ## v1.4.4 — 2026-06-08
 
 **Módulos afectados:** Core (gobernanza)
