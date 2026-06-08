@@ -5,6 +5,41 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.2.0 — 2026-06-08
+
+### Security
+
+- Ruta `GET /apps/admin` protegida con middleware `permission:administrar-apps`.
+  Cualquier usuario sin ese permiso recibe 403. Antes: solo requería `auth` + `verified`.
+- Métodos Livewire `toggleHabilitada`, `abrirModalRoles`, `guardarRoles` protegidos con
+  `abort_if(! hasPermission('administrar-apps'), 403)`. Previene invocación directa por
+  usuarios sin permisos desde el cliente Livewire.
+
+### Added
+
+- Permiso `administrar-apps` (slug: `administrar-apps`, categoría: `apps`).
+  Asignado por defecto a roles Administrador y Rector.
+- `AppsPermissionSeeder` — seeder idempotente para crear el permiso en instalaciones existentes.
+  Ejecutar: `php artisan db:seed --class="Modules\Apps\database\seeders\AppsDatabaseSeeder"`.
+
+### Fixed
+
+- Migración `2026_06_08_120000_make_roles_app_id_nullable_set_null.php` (en módulo User):
+  cambia `roles.app_id` de `NOT NULL + CASCADE` a `NULLABLE + SET NULL`.
+  Elimina el riesgo de pérdida masiva de roles al eliminar una App.
+
+### Performance
+
+- `App::visiblesPara($user)` ahora cacheado 5 min por usuario con clave versionada
+  `apps.visibles.{user_id}.v{version}`. El contador `apps.cache_version` se incrementa
+  en `toggleHabilitada` y `guardarRoles`, invalidando eficientemente la caché global.
+
+### References
+
+- AUDIT-APPS-002, PLAN-APPS-002, IMPL-APPS-002
+
+---
+
 ## v1.1.0 — 2026-06-08
 
 ### Added

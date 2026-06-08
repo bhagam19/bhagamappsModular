@@ -25,3 +25,4 @@
 "24","editar aprobaciones pendientes bienes","editar-aprobaciones-pendientes-bienes","Permite modificar la información relacionada con una aprobación pendiente antes de su resolución.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "25","eliminar aprobaciones pendientes bienes","eliminar-aprobaciones-pendientes-bienes","Permite eliminar registros de aprobaciones pendientes del sistema.","aprobaciones pendientes","2025-06-08 01:58:45","2025-06-08 01:58:45"
 "26","ver actas de entrega","ver-actas-de-entrega","Permite visualizar las actas de entrega generadas en el sistema.","actas de entrega","2025-06-08 01:58:45","2025-06-08 01:58:45"
+"27","administrar apps","administrar-apps","Permite habilitar/deshabilitar aplicaciones y asignar roles desde el panel de administración de apps.","apps","2026-06-08 00:00:00","2026-06-08 00:00:00"

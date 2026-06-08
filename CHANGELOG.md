@@ -17,6 +17,30 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.5.0] — 2026-06-08
+
+**Módulos afectados:** Apps → v1.2.0, User (migración correctiva)
+
+### Security
+
+- **[IMPL-APPS-002]** Ruta `/apps/admin` protegida con middleware `permission:administrar-apps`.
+  Antes: cualquier usuario autenticado podía acceder al panel de administración de apps.
+- **[IMPL-APPS-002]** Métodos Livewire `toggleHabilitada`, `abrirModalRoles`, `guardarRoles`
+  protegidos con verificación de permisos en servidor. Cierra vector de bypass de la UI.
+- **[IMPL-APPS-002]** Permiso `administrar-apps` creado y asignado a Administrador y Rector.
+
+### Fixed
+
+- **[IMPL-APPS-002]** Migración correctiva `roles.app_id`: cambia `CASCADE DELETE` a `SET NULL`.
+  Elimina riesgo de pérdida masiva de roles al eliminar una App del catálogo (DT-001 de AUDIT-APPS-002).
+
+### Performance
+
+- **[IMPL-APPS-002]** `App::visiblesPara($user)` cacheado 5 min por usuario con versión global.
+  Reduce de 2 subqueries a 0 queries por usuario en cargas repetidas del dashboard.
+
+---
+
 ## [v1.4.8] — 2026-06-08
 
 **Módulos afectados:** User → v2.1.2

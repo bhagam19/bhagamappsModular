@@ -14,13 +14,19 @@ class AppsIndex extends Component
 
     public function toggleHabilitada(int $appId): void
     {
+        abort_if(! auth()->user()->hasPermission('administrar-apps'), 403);
+
         $app = App::findOrFail($appId);
         $app->habilitada = ! $app->habilitada;
         $app->save();
+
+        cache()->increment('apps.cache_version');
     }
 
     public function abrirModalRoles(int $appId): void
     {
+        abort_if(! auth()->user()->hasPermission('administrar-apps'), 403);
+
         $this->appEditandoId = $appId;
         $app = App::with('roles')->findOrFail($appId);
         $this->rolesSeleccionados = $app->roles->pluck('id')->toArray();
@@ -29,11 +35,15 @@ class AppsIndex extends Component
 
     public function guardarRoles(): void
     {
+        abort_if(! auth()->user()->hasPermission('administrar-apps'), 403);
+
         $app = App::findOrFail($this->appEditandoId);
         $app->roles()->sync($this->rolesSeleccionados);
         $this->modalVisible = false;
         $this->appEditandoId = null;
         $this->rolesSeleccionados = [];
+
+        cache()->increment('apps.cache_version');
     }
 
     public function cerrarModal(): void

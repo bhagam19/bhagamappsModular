@@ -13,6 +13,7 @@ class AppsDatabaseSeeder extends Seeder
     {
         $this->call([
             AppSeeder::class,
+            AppsPermissionSeeder::class,
         ]);
     }
 }
