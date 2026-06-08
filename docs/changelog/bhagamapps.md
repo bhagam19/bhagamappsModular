@@ -41,6 +41,11 @@ Changelogs de módulo:
 - `docs/impl/backups/permission_role_before_cleanup.sql` — respaldo de los 156 registros originales.
 - AUDIT-004 API Authentication Audit approved and persisted.
 
+### Data Migration
+
+- Initial inventory catalog load completed.
+- 1,420 inventory assets imported.
+
 ---
 
 ## v1.3.0 — 2026-06-08
