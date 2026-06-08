@@ -17,6 +17,25 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.1] — 2026-06-08
+
+**Módulos afectados:** Inventario → v2.4.1, v2.4.2
+
+### Fixed
+
+- **[IMPL-004]** `bienes.precio` FLOAT → DECIMAL(12,2): corrección de errores de redondeo monetario.
+
+### Added
+
+- **[IMPL-007]** Carga inicial de 1,420 bienes en producción.
+- **[IMPL-008]** Reconciliación completa de versionado y documentación (AUDIT-005).
+
+### Added (Documentation)
+
+- `IMPL-GIT-001`, `ADR-005`, `ADR-006`, `BASELINE-001`, `PMP-001`, `ROADMAP-001`, `EVIDENCE-AUDIT-005`.
+
+---
+
 ## [v1.4.0] — 2026-06-08
 
 **Módulos afectados:** Core, User → v2.1.1

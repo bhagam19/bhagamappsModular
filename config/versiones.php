@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'BhagamApps'    => '1.4.0',
+    'BhagamApps'    => '1.4.1',
     'User'          => '2.1.1',
-    'Inventario'    => '2.4.0',
+    'Inventario'    => '2.4.2',
     'Apps'          => '1.0.0',
     'CrudGenerator' => '1.1.0',
 ];

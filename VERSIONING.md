@@ -8,8 +8,8 @@ Documento oficial de la estrategia de versionado de la plataforma BhagamApps.
 
 | Componente     | Versión | Última actualización | Changelog                                    |
 |----------------|---------|----------------------|----------------------------------------------|
-| **BhagamApps** | v1.4.0  | 2026-06-08           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
-| Inventario     | v2.4.0  | 2026-06-08           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
+| **BhagamApps** | v1.4.1  | 2026-06-08           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
+| Inventario     | v2.4.2  | 2026-06-08           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
 | User           | v2.1.1  | 2026-06-08           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
 | Apps           | v1.0.0  | 2025-06-07           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |
 | CrudGenerator  | v1.1.0  | 2025-06-23           | [`docs/changelog/crudgenerator.md`](docs/changelog/crudgenerator.md) |
@@ -54,16 +54,21 @@ Al finalizar una sesión de trabajo:
 
 ---
 
-## Configuración centralizada (propuesta — ver ADR-004)
+## Configuración centralizada (ver ADR-004)
 
-La versión de referencia para la interfaz de usuario se definirá en:
+La versión de referencia para la interfaz de usuario está definida en:
 
 ```
-config/modules.php
+config/versiones.php
 ```
 
 Este archivo es la **fuente de verdad** para versiones mostradas al usuario.
 Los changelogs son la fuente de verdad para el historial de cambios.
+
+> **Nota:** La propuesta original de ADR-004 referenciaba `config/modules.php`.
+> Ese archivo corresponde a la configuración del framework `nwidart/laravel-modules`.
+> La implementación real usa `config/versiones.php`. ADR-004 fue actualizado en
+> IMPL-008 (2026-06-08) para reflejar esta realidad.
 
 Ver `docs/architecture/MODULE_VERSIONING_UI.md` para la especificación de la
 UI de visualización de versiones.

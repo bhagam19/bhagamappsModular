@@ -11,6 +11,43 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.1 — 2026-06-08
+
+**Módulos afectados:** Inventario → v2.4.1, v2.4.2
+
+### Fixed
+
+- **[IMPL-004]** `bienes.precio` migrado de `FLOAT` a `DECIMAL(12,2)` para eliminar
+  errores de redondeo en valores monetarios. Ver `docs/impl/IMPL-004.md`.
+
+### Added
+
+- **[IMPL-007]** Carga inicial del catálogo institucional de bienes: 1,420 activos
+  importados en producción. Ver `docs/impl/IMPL-007.md`.
+
+### Changed
+
+- **[IMPL-008]** Reconciliación de versionado y documentación: entradas faltantes
+  añadidas a changelogs, tags Git creados para versiones sin tag, ADR-004
+  actualizado para reflejar la implementación real. Ver `docs/impl/IMPL-008.md`.
+
+### Added (Documentation)
+
+- `docs/impl/IMPL-GIT-001.md` — recuperación del repositorio Git tras ~11 meses
+  sin control de versiones. Proyecto migrado a GitHub.
+- `docs/adr/ADR-005-Documentation-and-Repository-Governance.md` — gobernanza
+  de documentación y sincronización obligatoria con repositorio.
+- `docs/adr/ADR-006-Agent-Responsibilities-and-Delivery-Contracts.md` — contratos
+  de entrega y responsabilidades entre agentes del sistema de desarrollo.
+- `docs/architecture/BASELINE-001.md` — auditoría del estado del proyecto al
+  2026-06-08 (baseline de referencia).
+- `docs/pmp/PMP-001.md` — plan maestro del proyecto.
+- `docs/roadmap/ROADMAP-001.md` — hoja de ruta estratégica.
+- `docs/audits/EVIDENCE-AUDIT-005.md` — evidencia recopilada para AUDIT-005
+  Versioning and Changelog Compliance Audit.
+
+---
+
 ## v1.4.0 — 2026-06-08
 
 **Módulos afectados:** Core, User → v2.1.1
@@ -22,6 +59,8 @@ Changelogs de módulo:
   completo del módulo, parseado desde `docs/changelog/<modulo>.md`.
   Implementado como Blade component `<x-changelog-modal module="X" />`.
   Módulos integrados: Inventario, User, BhagamApps (ppal).
+- **[IMPL-007]** Carga inicial del catálogo de bienes: 1,420 activos importados
+  en producción. (Registrado en v1.4.1 — ver nota abajo.)
 
 ### Fixed
 
@@ -34,17 +73,12 @@ Changelogs de módulo:
 - **[IMPL-003]** Constraint `UNIQUE(role_id, permission_id)` aplicado en `permission_role`.
   Previene duplicados por re-ejecución de seeders o inserciones directas.
 
-### Documentation
+### Added (Documentation)
 
 - `docs/audits/AUDIT-003-PermissionRole-Duplicates.md` — auditoría completa previa.
 - `docs/impl/IMPL-003-PermissionRole-Cleanup.md` — proceso detallado.
 - `docs/impl/backups/permission_role_before_cleanup.sql` — respaldo de los 156 registros originales.
-- AUDIT-004 API Authentication Audit approved and persisted.
-
-### Data Migration
-
-- Initial inventory catalog load completed.
-- 1,420 inventory assets imported.
+- `docs/audits/AUDIT-004-API-Authentication.md` — auditoría de autenticación API aprobada y persistida.
 
 ---
 

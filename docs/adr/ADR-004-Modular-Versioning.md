@@ -1,6 +1,6 @@
 # ADR-004 — Versionado Modular y Consulta de Historial desde la Interfaz
 
-**Estado:** Aceptado (documentación y configuración) / Pendiente (implementación UI)
+**Estado:** Aceptado — implementación parcial (config + changelogs activos; UI pendiente FASE 3)
 **Fecha:** 2026-06-08
 **Contexto:** BhagamApps Modular — trazabilidad de cambios y transparencia con usuarios
 
@@ -53,38 +53,42 @@ Cada módulo tiene una versión `Major.Minor.Patch` independiente. La versión d
 módulo solo cambia cuando ese módulo recibe cambios. Ver `VERSIONING.md` para
 las reglas de incremento.
 
-### 3. Configuración centralizada en config/modules.php
+### 3. Configuración centralizada en config/versiones.php
+
+> **Corrección IMPL-008 (2026-06-08):** La propuesta original nombraba `config/modules.php`
+> como fuente de verdad. Ese archivo ya existe como configuración del paquete
+> `nwidart/laravel-modules` (namespace, stubs, activators) y no puede usarse para
+> versiones. La implementación real utiliza `config/versiones.php`.
 
 La **fuente de verdad de versiones para la interfaz de usuario** es:
 
 ```php
-// config/modules.php
+// config/versiones.php
 return [
-    'inventario' => [
-        'name'      => 'Inventario',
-        'version'   => '1.2.0',
-        'changelog' => 'docs/changelog/inventario.md',
-    ],
-    'user' => [
-        'name'      => 'User',
-        'version'   => '1.2.0',
-        'changelog' => 'docs/changelog/user.md',
-    ],
-    'apps' => [
-        'name'      => 'Apps',
-        'version'   => '1.0.0',
-        'changelog' => 'docs/changelog/apps.md',
-    ],
-    'crudgenerator' => [
-        'name'      => 'CrudGenerator',
-        'version'   => '1.0.0',
-        'changelog' => 'docs/changelog/crudgenerator.md',
-    ],
+    'BhagamApps'    => '1.4.1',
+    'Inventario'    => '2.4.2',
+    'User'          => '2.1.1',
+    'Apps'          => '1.0.0',
+    'CrudGenerator' => '1.1.0',
 ];
 ```
 
 Este archivo es el único lugar donde se actualiza la versión al desplegar. Las
-vistas leen `config('modules.inventario.version')`, nunca hardcodean la versión.
+vistas leen `config('versiones.Inventario')`, nunca hardcodean la versión.
+
+**Estructura futura (FASE 3):** Cuando se implemente `ChangelogParserService`,
+`config/versiones.php` se extenderá para incluir la ruta del changelog:
+
+```php
+// config/versiones.php — estructura FASE 3 (propuesta)
+return [
+    'Inventario' => [
+        'version'   => '2.4.2',
+        'changelog' => 'docs/changelog/inventario.md',
+    ],
+    // ...
+];
+```
 
 ### 4. Consulta de historial desde la interfaz
 
@@ -93,7 +97,7 @@ se presenta el historial completo de cambios parseado desde el archivo `.md`.
 
 **Flujo de datos:**
 ```
-config/modules.php → versión actual
+config/versiones.php → versión actual
 docs/changelog/<modulo>.md → historial de cambios
     ↓ parseado por ChangelogParserService
     ↓ renderizado por ModuleVersionBadge (Livewire)
@@ -120,7 +124,7 @@ qué cambió en el módulo de inventario sin necesidad de contactar al administr
 
 | Consecuencia | Mitigación |
 |---|---|
-| El archivo `config/modules.php` debe actualizarse manualmente en cada deploy | Es un archivo de una línea por módulo; el proceso es parte del workflow de deploy documentado en `VERSIONING.md` |
+| El archivo `config/versiones.php` debe actualizarse manualmente en cada deploy | Es un archivo de una línea por módulo; el proceso es parte del workflow de deploy documentado en `VERSIONING.md` |
 | El `ChangelogParserService` debe parsear Markdown sin librería externa | El formato del changelog es estricto y predecible: `## v1.2.0 — FECHA`. Se puede parsear con regex simples. |
 | Un changelog malformado rompe la UI | El parser debe ser tolerante a fallos y mostrar mensaje de error en lugar de crashear. |
 
@@ -145,9 +149,15 @@ qué cambió en el módulo de inventario sin necesidad de contactar al administr
 |---|---|
 | `docs/changelog/<modulo>.md` | ✅ Implementado |
 | `VERSIONING.md` | ✅ Implementado |
-| `config/modules.php` | ⏳ Pendiente — FASE 3 |
+| `config/versiones.php` (fuente de verdad actual) | ✅ Implementado |
 | `ChangelogParserService` | ⏳ Pendiente — FASE 3 |
 | `ModuleVersionBadge` (Livewire) | ⏳ Pendiente — FASE 3 |
 | Integración en vistas de módulos | ⏳ Pendiente — FASE 3 |
+| Migración de `config/versiones.php` a estructura extendida (FASE 3) | ⏳ Pendiente — FASE 3 |
 
 Ver `docs/architecture/MODULE_VERSIONING_UI.md` para la especificación técnica completa.
+
+> **Historial de revisiones de este ADR:**
+> - 2026-06-08 — Creación inicial.
+> - 2026-06-08 — **IMPL-008**: Corrección de referencia `config/modules.php` →
+>   `config/versiones.php`; actualización del estado de implementación.
