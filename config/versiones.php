@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'BhagamApps'    => '1.4.5',
+    'BhagamApps'    => '1.4.6',
     'User'          => '2.1.1',
     'Inventario'    => '2.4.2',
     'Apps'          => '1.0.0',

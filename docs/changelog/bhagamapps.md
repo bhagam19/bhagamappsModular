@@ -11,6 +11,19 @@ Changelogs de módulo:
 
 ---
 
+## v1.4.6 — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Documentation
+
+- `docs/plan/PLAN-IMPL-010-Production-Security-and-Infrastructure-Hardening.md` —
+  PLAN-IMPL-010 persistido. Plan de hardening de seguridad e infraestructura de
+  producción derivado de AUDIT-006: cuatro fases (IMPL-005, IMPL-006, IMPL-010,
+  IMPL-011), estado APROBADO, riesgo residual esperado BAJO.
+
+---
+
 ## v1.4.5 — 2026-06-08
 
 **Módulos afectados:** Core (seguridad)

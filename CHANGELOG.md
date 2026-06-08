@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.4.6] — 2026-06-08
+
+**Módulos afectados:** Core (gobernanza)
+
+### Added (Documentation)
+
+- **[PLAN-IMPL-010]** Plan de hardening de seguridad e infraestructura de producción
+  persistido formalmente. Cuatro fases: IMPL-005 (HTTPS), IMPL-006 (SMTP),
+  IMPL-010 (Infraestructura), IMPL-011 (Mantenimiento). Estado: APROBADO.
+
+---
+
 ## [v1.4.5] — 2026-06-08
 
 **Módulos afectados:** Core (seguridad)
