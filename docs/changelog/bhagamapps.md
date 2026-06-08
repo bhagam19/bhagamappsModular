@@ -39,6 +39,7 @@ Changelogs de módulo:
 - `docs/audits/AUDIT-003-PermissionRole-Duplicates.md` — auditoría completa previa.
 - `docs/impl/IMPL-003-PermissionRole-Cleanup.md` — proceso detallado.
 - `docs/impl/backups/permission_role_before_cleanup.sql` — respaldo de los 156 registros originales.
+- AUDIT-004 API Authentication Audit approved and persisted.
 
 ---
 
