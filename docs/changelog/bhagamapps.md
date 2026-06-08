@@ -31,18 +31,18 @@ Changelogs de módulo:
 ### Fixed
 
 - **[IMPL-004]** `bienes.precio` migrado de `FLOAT` a `DECIMAL(12,2)` para eliminar
-  errores de redondeo en valores monetarios. Ver `docs/impl/IMPL-004.md`.
+  errores de redondeo en valores monetarios. Ver `docs/impl/IMPL-004-Migración de FLOAT a DECIMAL(12,2) en bienes.precio.md`.
 
 ### Added
 
 - **[IMPL-007]** Carga inicial del catálogo institucional de bienes: 1,420 activos
-  importados en producción. Ver `docs/impl/IMPL-007.md`.
+  importados en producción. Ver `docs/impl/IMPL-007-Initial Inventory Data Load.md`.
 
 ### Changed
 
 - **[IMPL-008]** Reconciliación de versionado y documentación: entradas faltantes
   añadidas a changelogs, tags Git creados para versiones sin tag, ADR-004
-  actualizado para reflejar la implementación real. Ver `docs/impl/IMPL-008.md`.
+  actualizado para reflejar la implementación real. Ver `docs/impl/IMPL-008-Versioning and Documentation Reconciliation.md`.
 
 ### Added (Documentation)
 

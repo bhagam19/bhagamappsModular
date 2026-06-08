@@ -83,7 +83,7 @@ DESCRIBE bienes;
 
 ### A-07 — Documentación
 
-Generado este documento `IMPL-004.md`.
+Generado este documento `IMPL-004-Migración de FLOAT a DECIMAL(12,2) en bienes.precio.md`.
 
 ---
 
@@ -109,7 +109,7 @@ Esto previene cualquier imprecisión de punto flotante a nivel de PHP al leer va
 |---|---|
 | `Modules/Inventario/Database/Migrations/2026_06_08_000003_change_precio_float_to_decimal_in_bienes.php` | Creado |
 | `Modules/Inventario/Entities/Bien.php` | Modificado — cast `decimal:2` |
-| `docs/impl/IMPL-004.md` | Creado |
+| `docs/impl/IMPL-004-Migración de FLOAT a DECIMAL(12,2) en bienes.precio.md` | Creado |
 
 ---
 

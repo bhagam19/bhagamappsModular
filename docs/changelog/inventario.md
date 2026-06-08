@@ -23,7 +23,7 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 - **[IMPL-004]** `bienes.precio`: tipo de columna migrado de `FLOAT` a `DECIMAL(12,2)`.
   `FLOAT` producía errores de redondeo en valores monetarios (ej. 1200.00 → 1199.9999).
   Migración ejecutada sobre datos existentes con respaldo previo.
-  Ver `docs/impl/IMPL-004.md` y `docs/plan/PLAN-IMPL-004.md`.
+  Ver `docs/impl/IMPL-004-Migración de FLOAT a DECIMAL(12,2) en bienes.precio.md` y `docs/plan/PLAN-IMPL-004.md`.
 
 ---
 
