@@ -1,0 +1,27 @@
+:root {
+    --imagenFondo: url('../img/fondo_pastel.jpg'); /* Fondo sutil con tonos pastel */
+    --luzOn: #A3D9FF; /* Azul pastel brillante */
+    --OnActivo: #695a5a; /* Rojo pastel suave para elementos activos */
+    --OnPasivo: #534444; /* Rosa pálido para estados pasivos */
+    --Off: #D1D1D1; /* Gris claro para estados apagados */
+    --RojoOnActivo: #FF9999; /* Rojo pastel cálido para destacar */
+    --RojoOnPasivo: #FFB3B3; /* Rosa pastel suave para estados secundarios */
+    --RojoOff: #E0A6A6; /* Rosa grisáceo apagado para inactivos */
+    --fondo: #FAF3F3; /* Blanco cálido para el fondo principal */
+    --fondo01: rgba(255, 193, 193, 0.1); /* Rojo pastel translúcido */
+    --fondo03: rgba(255, 193, 193, 0.3); /* Rojo pastel translúcido medio */
+    --fondo05: rgba(255, 193, 193, 0.5); /* Rojo pastel translúcido fuerte, inactivo */
+    --fondo07: rgba(255, 193, 193, 0.7); /* Rojo pastel translúcido casi opaco */
+    --fondo09: rgba(255, 193, 193, 0.9); /* Rojo pastel translúcido opaco */
+    --fondo10: rgba(255, 193, 193, 1); /* Rojo pastel sólido brillante */
+    --fondoOff01: rgba(209, 209, 209, 0.1); /* Gris claro translúcido suave */
+    --fondoOff03: rgba(209, 209, 209, 0.3); /* Gris claro translúcido medio */
+    --fondoOff05: rgba(209, 209, 209, 0.5); /* Gris claro translúcido fuerte, inactivo */
+    --fondoOff07: rgba(209, 209, 209, 0.7); /* Gris claro translúcido casi opaco */
+    --fondoOff09: rgba(209, 209, 209, 0.9); /* Gris claro translúcido opaco */
+    --fondoOff10: rgba(209, 209, 209, 1); /* Gris claro sólido */
+    --colorPrincipal: #FFC1C1; /* Rojo pastel claro, dominante */
+    --colorSecundario: #A3D9FF; /* Azul pastel como detalle complementario */
+    --colorFondo: #FFF8F8; /* Blanco cálido ligeramente rosado */
+    --colorTexto: #333333; /* Gris oscuro para texto claro y legible */
+}

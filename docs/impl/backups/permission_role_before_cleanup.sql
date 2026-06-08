@@ -1,0 +1,176 @@
+-- ============================================================
+-- RESPALDO: tabla permission_role — antes de IMPL-003
+-- Fecha: 2026-06-08
+-- Base de datos: adolfo_bhagamappsModular
+-- Total registros: 156
+-- ============================================================
+-- Restauración:
+--   mysql -u adolfo_bdModular -p adolfo_bhagamappsModular < permission_role_before_cleanup.sql
+-- O bien, ejecutar solo los INSERT desde un cliente MySQL.
+-- ============================================================
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE `permission_role`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (2,1,18,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (3,1,23,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (4,1,9,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (5,1,20,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (6,1,15,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (7,1,11,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (8,1,6,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (9,1,2,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (10,1,24,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (11,1,16,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (12,1,12,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (13,1,7,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (14,1,3,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (15,1,25,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (16,1,17,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (17,1,13,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (18,1,8,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (19,1,4,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (20,1,26,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (21,1,22,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (22,1,14,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (23,1,19,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (24,1,21,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (25,1,10,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (26,1,5,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (27,1,1,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (28,2,18,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (29,2,23,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (30,2,9,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (31,2,20,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (32,2,15,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (33,2,11,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (34,2,6,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (35,2,2,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (36,2,24,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (37,2,16,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (38,2,12,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (39,2,7,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (40,2,3,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (41,2,25,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (42,2,17,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (43,2,13,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (44,2,8,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (45,2,4,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (46,2,26,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (47,2,22,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (48,2,14,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (49,2,19,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (50,2,21,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (51,2,10,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (52,2,5,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (53,2,1,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (54,3,14,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (55,3,15,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (56,3,16,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (57,3,17,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (58,3,18,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (59,3,19,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (60,3,20,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (61,3,21,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (62,5,14,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (63,5,15,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (64,5,16,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (65,5,17,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (66,5,18,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (67,5,19,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (68,5,20,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (69,5,21,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (70,4,14,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (71,4,15,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (72,4,16,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (73,4,17,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (74,4,18,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (75,4,19,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (76,4,20,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (77,4,21,NULL,NULL);
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (78,1,18,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (79,1,23,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (80,1,9,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (81,1,20,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (82,1,15,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (83,1,11,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (84,1,6,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (85,1,2,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (86,1,24,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (87,1,16,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (88,1,12,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (89,1,7,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (90,1,3,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (91,1,25,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (92,1,17,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (93,1,13,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (94,1,8,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (95,1,4,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (96,1,26,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (97,1,22,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (98,1,14,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (99,1,19,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (100,1,21,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (101,1,10,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (102,1,5,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (103,1,1,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (104,2,18,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (105,2,23,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (106,2,9,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (107,2,20,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (108,2,15,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (109,2,11,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (110,2,6,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (111,2,2,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (112,2,24,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (113,2,16,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (114,2,12,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (115,2,7,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (116,2,3,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (117,2,25,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (118,2,17,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (119,2,13,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (120,2,8,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (121,2,4,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (122,2,26,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (123,2,22,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (124,2,14,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (125,2,19,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (126,2,21,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (127,2,10,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (128,2,5,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (129,2,1,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (130,3,1,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (131,3,2,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (132,3,3,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (133,3,4,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (134,3,14,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (135,3,15,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (136,3,16,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (137,3,17,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (138,3,18,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (139,3,19,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (140,3,20,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (141,3,21,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (142,5,14,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (143,5,15,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (144,5,16,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (145,5,17,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (146,5,18,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (147,5,19,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (148,5,20,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (149,5,21,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (150,4,14,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (151,4,15,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (152,4,16,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (153,4,17,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (154,4,18,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (155,4,19,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (156,4,20,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+INSERT INTO `permission_role` (`id`,`role_id`,`permission_id`,`created_at`,`updated_at`) VALUES (157,4,21,'2026-06-07 12:13:20','2026-06-07 12:13:20');
+
+-- ============================================================
+-- Restaurar AUTO_INCREMENT al valor correcto
+ALTER TABLE `permission_role` AUTO_INCREMENT = 158;
+-- ============================================================

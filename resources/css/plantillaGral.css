@@ -1,0 +1,94 @@
+html {
+    font-family: var(--font);
+    letter-spacing: 0.1em;
+    background: var(--fondo);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 97vh;
+    margin: 0;
+}
+
+main {
+    position: relative;
+    top: 60px;
+    flex: 1;
+}
+
+#appsContenedorGlobal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, rgba(0, 191, 255, 0.2), rgba(30, 30, 30, 0.7));
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#appsSesionLogedIn {
+    position: relative;
+    float: right;
+    cursor: pointer;
+    color: #0B0B61;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0B0B61;
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0px 0px 5px rgba(0, 191, 255, 0.5);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+#appsSesionLogedIn:hover {
+    background: #AABAF6;
+    box-shadow: 0px 0px 5px 0px #EBEEF8;
+}
+
+.appsSesionImg {
+    width: 30px;
+    height: 30px;
+}
+
+.appsSesionImg img {
+    width: 30px;
+    height: 30px;
+}
+
+@font-face {
+    font-family: jarvis1;
+    src: url(../fonts/Computer.ttf);
+}
+
+@font-face {
+    font-family: jarvis2;
+    src: url(../fonts/Computerfont.ttf);
+}
+
+@font-face {
+    font-family: future;
+    src: url(../fonts/Future.ttf);
+}
+
+@font-face {
+    font-family: futurama;
+    src: url(../fonts/Futurama.ttf);
+}
+
+@font-face {
+    font-family: digital;
+    src: url(../fonts/Digital.ttf);
+}
+
+@font-face {
+    font-family: digitalix;
+    src: url(../fonts/digitalix.ttf);
+}

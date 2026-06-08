@@ -1,0 +1,27 @@
+:root{
+    --imagenFondo: url('../img/futurista.jpg'); /* Fondo con textura abstracta o galaxias */
+    --luzOn: #00FFFF; /* Azul cian brillante para efectos activos */
+    --OnActivo: #FFFFFF; /* Blanco puro para elementos destacados */
+    --OnPasivo: #87CEFA; /* Azul cielo para estados pasivos */
+    --Off: #483D8B; /* Azul oscuro para estados apagados */
+    --RojoOnActivo: #FF007F; /* Magenta vibrante para alertas o elementos activos */
+    --RojoOnPasivo: #D02090; /* Fucsia intenso para alertas pasivas */
+    --RojoOff: #8B008B; /* Púrpura oscuro apagado */
+    --fondo: #0F1023; /* Fondo base oscuro, como un cielo estrellado */
+    --fondo01: rgba(0, 255, 255, 0.1); /* Cian translúcido tenue */
+    --fondo03: rgba(0, 255, 255, 0.3); /* Cian translúcido medio */
+    --fondo05: rgba(0, 255, 255, 0.5); /* Cian translúcido fuerte, inactivo */
+    --fondo07: rgba(0, 255, 255, 0.7); /* Cian translúcido casi opaco */
+    --fondo09: rgba(0, 255, 255, 0.9); /* Cian translúcido opaco */
+    --fondo10: rgba(0, 255, 255, 1); /* Cian sólido brillante */
+    --fondoOff01: rgba(138, 43, 226, 0.1); /* Púrpura translúcido tenue */
+    --fondoOff03: rgba(138, 43, 226, 0.3); /* Púrpura translúcido medio */
+    --fondoOff05: rgba(138, 43, 226, 0.5); /* Púrpura translúcido fuerte, inactivo */
+    --fondoOff07: rgba(138, 43, 226, 0.7); /* Púrpura translúcido casi opaco */
+    --fondoOff09: rgba(138, 43, 226, 0.9); /* Púrpura translúcido opaco */
+    --fondoOff10: rgba(138, 43, 226, 1); /* Púrpura sólido */
+    --colorPrincipal: #00FFFF; /* Cian brillante como color principal */
+    --colorSecundario: #FF00FF; /* Magenta para resaltar detalles */
+    --colorFondo: #1A1A2E; /* Azul muy oscuro para contraste */
+    --colorTexto: #E0E0E0; /* Gris claro para mantener una buena legibilidad */
+}

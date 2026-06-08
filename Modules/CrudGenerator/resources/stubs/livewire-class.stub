@@ -1,0 +1,101 @@
+<?php
+
+namespace Modules\{{module}}\Livewire\{{name}};
+
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Support\Str;
+use Modules\{{module}}\Entities\{{name}};
+{{relationUseModels}}
+
+class {{name}}Index extends Component
+{
+    use WithPagination;
+
+    public $perPage = 10;
+    public $mostrarFormulario = false;
+
+    public $sortColumn = 'id';
+    public $sortDirection = 'asc';
+
+    // Atributos del formulario
+    public $form = [];
+
+    // Puedes personalizar qué campo mostrar de las relaciones
+    protected array $relationFields = [
+        {{relationFields}} 
+    ];
+
+    protected $rules = [
+        {{rules}}
+    ];
+
+    public function toggleFormulario()
+    {
+        $this->mostrarFormulario = !$this->mostrarFormulario;
+        if (!$this->mostrarFormulario) {
+            $this->reset('form');
+        }
+    }
+
+    public function store()
+    {
+        $this->validate();
+
+        {{name}}::create($this->form);
+
+        $this->reset('form', 'mostrarFormulario');
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: '{{name}} creado correctamente.');
+    }
+
+    public function delete($id)
+    {
+        $item = {{name}}::findOrFail($id);
+        $item->delete();
+
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: '{{name}} eliminado correctamente.');
+    }
+
+    protected function getColumnValue($item, $column)
+    {
+        if (Str::endsWith($column, '_id')) {
+            $relation = Str::before($column, '_id');
+            $field = $this->relationFields[$column] ?? 'nombre';
+            return optional($item->$relation)->$field ?? '-';
+        }
+
+        return $item->$column;
+    }
+
+    public function sortBy($column)
+    {
+        if ($this->sortColumn === $column) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortColumn = $column;
+            $this->sortDirection = 'asc';
+        }
+    }
+
+    public function render()
+    {
+        $items = {{name}}::with($this->getRelationNames())
+            ->orderBy($this->sortColumn, $this->sortDirection)
+            ->paginate($this->perPage);
+
+        $columns = (new {{name}}())->getFillable();
+
+        return view('{{moduleLower}}::livewire.{{nameLower}}.{{nameLower}}-index', [
+            'items' => $items,
+            'columns' => $columns,
+            {{relationViewData}} // Ej: 'userOptions' => User::all(), ...
+        ]);
+    }
+
+
+    protected function getRelationNames()
+    {
+        return array_map(fn($col) => Str::before($col, '_id'), array_filter((new {{name}}())->getFillable(), fn($col) => Str::endsWith($col, '_id')));
+    }
+}

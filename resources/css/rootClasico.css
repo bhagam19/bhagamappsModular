@@ -1,0 +1,33 @@
+:root {
+    --imagenFondo: url('../img/fondo_clasico.jpg'); /* Fondo neutro elegante */
+    --luzOn: #B5A642; /* Dorado clásico */
+    --OnActivo: #000000; /* Negro para texto o elementos activos */
+    --OnPasivo: #6B6B6B; /* Gris medio */
+    --Off: #A9A9A9; /* Gris claro apagado */
+    --RojoOnActivo: #8B0000; /* Rojo oscuro clásico */
+    --RojoOnPasivo: #B22222; /* Rojo ladrillo */
+    --RojoOff: #CD5C5C; /* Rojo desvanecido */
+    --fondo: #FDF5E6; /* Beige claro para fondo */
+    --fondo01: rgba(0, 0, 0, 0.1); /* Negro translúcido tenue */
+    --fondo03: rgba(0, 0, 0, 0.3); /* Negro translúcido medio */
+    --fondo05: rgba(0, 0, 0, 0.5); /* Estado inactivo */
+    --fondo07: rgba(0, 0, 0, 0.7); /* Negro translúcido fuerte */
+    --fondo09: rgba(0, 0, 0, 0.9); /* Estado activo */
+    --fondo10: rgba(0, 0, 0, 1); /* Negro sólido */
+    --fondoOff01: rgba(169, 169, 169, 0.1); /* Gris claro translúcido tenue */
+    --fondoOff03: rgba(169, 169, 169, 0.3); /* Gris translúcido medio */
+    --fondoOff05: rgba(169, 169, 169, 0.5); /* Estado inactivo */
+    --fondoOff07: rgba(169, 169, 169, 0.7); /* Gris translúcido fuerte */
+    --fondoOff09: rgba(169, 169, 169, 0.9); /* Estado activo */
+    --fondoOff10: rgba(169, 169, 169, 1); /* Gris sólido */
+    --colorPrincipal: #2F4F4F; /* Gris pizarra oscuro */
+    --colorSecundario: #8B4513; /* Marrón tierra clásico */
+    --colorFondo: #F5F5F5; /* Blanco humo para fondo */
+    --colorTexto: #000000; /* Negro para texto */
+	--font1: jarvis1;
+	--font2: jarvis2;
+	--future: future;
+	--futurama: futurama;
+	--digital:digital;
+	--digitalix:digitalix;
+}

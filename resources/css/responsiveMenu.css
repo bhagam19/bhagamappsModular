@@ -1,0 +1,40 @@
+@media screen and (max-width: 768px) {
+
+    .menuNavegacion {
+        top: -300px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;        
+        transition: all 0.3s ease;
+        background: var(--fondoOff09);
+    }
+
+    .menuNavegacion.expanded {
+        top: 105px;
+    }
+
+    .menuNavegacion.expanded .menu{
+        padding: 10px;
+    }
+
+    .menuNavegacion.expanded .menu li{
+        width: 90%;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .menuNavegacion .menu li a {
+        font-size: 4vw;
+        padding: 15px; 
+        color: var(--OnActivo);
+    }
+
+    .menuNavegacion .menu li .icon {
+        font-size: 4vw;
+    }
+
+}

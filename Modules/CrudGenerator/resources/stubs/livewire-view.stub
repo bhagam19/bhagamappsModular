@@ -1,0 +1,142 @@
+<div>
+    {{-- Mensaje de sesión --}}
+    <div x-data="{ show: false, mensaje: '', tipo: 'success' }" x-show="show" x-transition
+        class="position-fixed top-0 start-50 translate-middle-x mt-1"
+        style="z-index: 9999; width: auto; max-width: 90%;"
+        @mostrar-mensaje.window="
+            mensaje = $event.detail.mensaje; 
+            tipo = $event.detail.tipo ?? 'success'; 
+            show = true; 
+            setTimeout(() => show = false, 5000);
+        ">
+        <div :class="{
+            'alert alert-success alert-dismissible fade show': tipo === 'success',
+            'alert alert-danger alert-dismissible fade show': tipo === 'error',
+            'alert alert-warning alert-dismissible fade show': tipo === 'warning'
+        }" role="alert">
+            <span x-text="mensaje"></span>
+            <button type="button" class="btn-close" @click="show = false" aria-label="Cerrar"></button>
+        </div>
+    </div>
+
+    {{-- Botón Agregar --}}
+    <div class="mb-3">
+        <button class="btn btn-primary btn-sm d-flex align-items-center gap-1" type="button" wire:click="toggleFormulario">
+            <i class="fas fa-plus pr-1"></i> {{ $mostrarFormulario ? 'Ocultar' : 'Agregar' }}
+        </button>
+    </div>
+
+    {{-- Formulario --}}
+    @if ($mostrarFormulario)
+        <form wire:submit.prevent="store" class="form-row align-items-end mb-3 bg-light p-2 rounded" novalidate>
+            @foreach ($columns as $col)
+                <div class="form-group col-md-3 mb-2">
+                    @if (substr($col, -3) === '_id')
+                        <label class="small text-muted">{{ ucfirst(str_replace('_id', '', $col)) }}</label>
+                        @php
+                            $optionsVar = Str::before($col, '_id') . 'Options';
+                        @endphp
+                        <select wire:model.defer="form.{{ $col }}" class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                            <option value="">Seleccione {{ ucfirst(str_replace('_id', '', $col)) }}</option>
+                            @foreach ($$optionsVar as $option)
+                                <option value="{{ $option->id }}">
+                                    {{ $option->nombre ?? $option->nombre_completo ?? $option->descripcion ?? $option->id }}
+                                </option>
+                            @endforeach
+                        </select>
+                    @else
+                        <input type="text" wire:model.defer="form.{{ $col }}" placeholder="{{ ucfirst(str_replace('_', ' ', $col)) }}"
+                            class="form-control form-control-sm @error('form.' . $col) is-invalid @enderror">
+                    @endif
+                    @error('form.' . $col)
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            @endforeach
+
+            <div class="form-group col-md-auto mb-2">
+                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+            </div>
+        </form>
+    @endif
+
+    {{-- selector de Registros por página --}}
+    <div class="d-flex justify-content-between mb-2">
+        <div>
+            <label>
+                Mostrar
+                <select wire:model.lazy="perPage" class="form-select form-select-sm d-inline w-auto mx-1">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                registros por página
+            </label>
+        </div>
+    </div>
+
+    {{-- Paginación --}}
+    <div class="mt-2">
+        {{ $items->links('pagination::bootstrap-4') }}
+    </div>
+
+    {{-- Tabla --}}
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th wire:click="sortBy('id')" style="cursor: pointer">
+                        #
+                        @if ($sortColumn === 'id')
+                            @if ($sortDirection === 'asc')
+                                <i class="fas fa-sort-up"></i>
+                            @else
+                                <i class="fas fa-sort-down"></i>
+                            @endif
+                        @endif
+                    </th>
+                    @foreach ($columns as $col)
+                        <th wire:click="sortBy('{{ $col }}')" style="cursor: pointer">
+                            {{ ucfirst(str_replace('_', ' ', $col)) }}
+                            @if ($sortColumn === $col)
+                                @if ($sortDirection === 'asc')
+                                    <i class="fas fa-sort-up"></i>
+                                @else
+                                    <i class="fas fa-sort-down"></i>
+                                @endif
+                            @endif
+                        </th>
+                    @endforeach
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($items as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        @foreach ($columns as $col)
+                            <td>{{ $this->getColumnValue($item, $col) }}</td>
+                        @endforeach
+                        <td>
+                            <button wire:click="delete({{ $item->id }})" class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Está seguro de eliminar este registro?')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="{{ count($columns) + 2 }}" class="text-center text-muted">No se encontraron registros.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    {{-- Paginación --}}
+    <div class="mt-2">
+        {{ $items->links('pagination::bootstrap-4') }}
+    </div>
+</div>

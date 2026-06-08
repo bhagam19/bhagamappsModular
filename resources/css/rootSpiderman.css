@@ -1,0 +1,28 @@
+:root {
+    --imagenFondo: url('../img/spiderman.jpg'); /* Fondo con textura alusiva a telarañas o Spider-Man */
+    --luzOn: #FF0000; /* Rojo vibrante para elementos destacados activos */
+    --OnActivo: #FFFFFF; /* Blanco puro para detalles activos */
+    --OnPasivo: #87CEFA; /* Azul cielo tenue para estados pasivos */
+    --Off: #1A1A1A; /* Negro profundo para estados apagados */
+    --RojoOnActivo: #E50914; /* Rojo oscuro intenso, para alertas o estados activos */
+    --RojoOnPasivo: #FF6347; /* Rojo tomate, para alertas pasivas */
+    --RojoOff: #8B0000; /* Rojo oscuro apagado */
+    --fondo: #001F3F; /* Azul profundo para el fondo base */
+    --fondo01: rgba(255, 0, 0, 0.1); /* Rojo translúcido suave */
+    --fondo03: rgba(255, 0, 0, 0.3); /* Rojo translúcido medio */
+    --fondo05: rgba(255, 0, 0, 0.5); /* Rojo translúcido fuerte, inactivo */
+    --fondo07: rgba(255, 0, 0, 0.7); /* Rojo translúcido casi opaco */
+    --fondo09: rgba(255, 0, 0, 0.9); /* Rojo translúcido opaco */
+    --fondo10: rgba(255, 0, 0, 1); /* Rojo sólido brillante */
+    --fondoOff01: rgba(0, 0, 0, 0.1); /* Negro translúcido suave */
+    --fondoOff03: rgba(0, 0, 0, 0.3); /* Negro translúcido medio */
+    --fondoOff05: rgba(0, 0, 0, 0.5); /* Negro translúcido fuerte, inactivo */
+    --fondoOff07: rgba(0, 0, 0, 0.7); /* Negro translúcido casi opaco */
+    --fondoOff09: rgba(0, 0, 0, 0.9); /* Negro translúcido opaco */
+    --fondoOff10: rgba(0, 0, 0, 1); /* Negro sólido */
+    --colorPrincipal: #FF0000; /* Rojo vivo como color principal */
+    --colorSecundario: #001F3F; /* Azul oscuro profundo como color secundario */
+    --colorFondo: #0A0A0A; /* Negro para fondo oscuro */
+    --colorTexto: #E0E0E0; /* Gris claro para texto legible */
+    --font: 'Bangers', cursive;
+}
