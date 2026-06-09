@@ -29,6 +29,7 @@ class EditarDescripcionApp extends Component
         $this->validate(['descripcion' => 'nullable|string|max:500']);
         $this->app->descripcion = $this->descripcion ?: null;
         $this->app->save();
+        cache()->increment('apps.cache_version');
         $this->editando = false;
     }
 

@@ -29,6 +29,7 @@ class EditarRutaApp extends Component
         $this->validate(['ruta' => 'required|string|max:255']);
         $this->app->ruta = $this->ruta;
         $this->app->save();
+        cache()->increment('apps.cache_version');
         $this->editando = false;
     }
 

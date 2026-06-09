@@ -31,6 +31,7 @@ class EditarSlugApp extends Component
         ]);
         $this->app->slug = $this->slug ?: null;
         $this->app->save();
+        cache()->increment('apps.cache_version');
         $this->editando = false;
     }
 

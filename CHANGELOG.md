@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.4] — 2026-06-08
+
+### Fixed
+
+- **[IMPL-H-005]** `EditarSlugApp.guardar()` ahora invalida `apps.cache_version`
+  tras guardar. Dashboard y Sidebar reflejan el cambio de slug de forma inmediata.
+- **[IMPL-H-005]** Corrección extendida a `EditarDescripcionApp` y `EditarRutaApp`
+  (misma omisión — omitidos en la implementación original). Los 7 componentes
+  Editar* del módulo Apps ahora tienen cobertura completa de invalidación de caché.
+- Apps: v1.4.1
+
+---
+
 ## [v1.6.3] — 2026-06-08
 
 ### Removed

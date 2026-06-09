@@ -5,6 +5,18 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.4.1 — 2026-06-08
+
+### Fixed
+
+- **[IMPL-H-005 / H-005]** `EditarSlugApp.guardar()` no invalidaba `apps.cache_version`.
+  Dashboard y Sidebar podían mostrar el slug anterior hasta 300 segundos. Corregido.
+- **[IMPL-H-005]** Misma omisión detectada y corregida en `EditarDescripcionApp.guardar()`
+  y `EditarRutaApp.guardar()`. Los 7 componentes `Editar*` del módulo Apps tienen
+  ahora cobertura uniforme: `$app->save()` → `cache()->increment('apps.cache_version')`.
+
+---
+
 ## v1.4.0 — 2026-06-08
 
 ### Removed
