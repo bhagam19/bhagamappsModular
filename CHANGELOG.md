@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.5.1] — 2026-06-08
+
+**Módulos afectados:** Core (arquitectura / gobernanza)
+
+### Added (Documentation)
+
+- **[ADR-008]** Module Access and Functional Authorization Separation — decisión
+  arquitectónica oficial que formaliza la separación de tres capas: visibilidad
+  (Apps), acceso a módulos (Apps — enforcement vía IMPL-013), y autorización
+  funcional (RBAC). Define `App::visiblesPara($user)` como fuente única de verdad.
+  Establece Decisiones Pendientes DP-001 y DP-002 previas a IMPL-013.
+
+---
+
 ## [v1.5.0] — 2026-06-08
 
 **Módulos afectados:** Apps → v1.2.0, User (migración correctiva)

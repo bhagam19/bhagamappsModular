@@ -8,7 +8,7 @@ Documento oficial de la estrategia de versionado de la plataforma BhagamApps.
 
 | Componente     | Versión | Última actualización | Changelog                                    |
 |----------------|---------|----------------------|----------------------------------------------|
-| **BhagamApps** | v1.5.0  | 2026-06-08           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
+| **BhagamApps** | v1.5.1  | 2026-06-08           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
 | Inventario     | v2.4.2  | 2026-06-08           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
 | User           | v2.1.2  | 2026-06-08           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
 | Apps           | v1.2.0  | 2026-06-08           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |

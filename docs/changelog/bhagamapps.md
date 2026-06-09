@@ -11,6 +11,22 @@ Changelogs de módulo:
 
 ---
 
+## v1.5.1 — 2026-06-08
+
+**Módulos afectados:** Core (arquitectura / gobernanza)
+
+### Added (Documentation)
+
+- `docs/adr/ADR-008-Module-Access-and-Functional-Authorization-Separation.md` —
+  Decisión arquitectónica oficial que formaliza la separación entre:
+  visibilidad de módulos (Apps), acceso a módulos (Apps — enforcement pendiente)
+  y autorización funcional (RBAC personalizado). Derivado de AUDIT-APPS-003.
+  Define `App::visiblesPara($user)` como fuente oficial de verdad para visibilidad
+  y acceso. Establece DP-001 (semántica de `app_user.role_id`) y DP-002 (contrato
+  del middleware de acceso) como decisiones pendientes previas a IMPL-013.
+
+---
+
 ## v1.4.8 — 2026-06-08
 
 **Módulos afectados:** User → v2.1.2
