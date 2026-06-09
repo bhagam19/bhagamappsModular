@@ -11,6 +11,25 @@ Changelogs de módulo:
 
 ---
 
+## v1.6.4 — 2026-06-08
+
+### Fixed
+
+- **[IMPL-APPS-005C]** Dashboard: URLs de módulo ahora generadas con `url()`. En subdirectorios
+  de despliegue (`APP_URL=https://bhagamapps.com/Modular`), `href="{{ $app->ruta }}"` directo
+  producía `https://bhagamapps.com/inventario/bienes` (raíz de dominio). Corregido a
+  `href="{{ url($app->ruta) }}"` → `https://bhagamapps.com/Modular/inventario/bienes`.
+  Afectados: `apps::index.blade.php` líneas 13 (escritorio) y 46 (móvil).
+- **[IMPL-H-005]** `EditarSlugApp`, `EditarDescripcionApp`, `EditarRutaApp`: invalidación de
+  `apps.cache_version` tras `save()`. Dashboard y Sidebar reflejan cambios inmediatamente.
+- Apps: v1.4.2
+
+### References
+
+- AUDIT-APPS-005B, IMPL-APPS-005C, IMPL-H-005
+
+---
+
 ## v1.6.3 — 2026-06-08
 
 ### Removed

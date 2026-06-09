@@ -5,6 +5,18 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.4.2 — 2026-06-08
+
+### Fixed
+
+- **[IMPL-APPS-005C]** `apps::index.blade.php` líneas 13 y 46: `href="{{ $app->ruta }}"`
+  reemplazado por `href="{{ url($app->ruta) }}"`. En instalaciones desplegadas en subdirectorio
+  (`APP_URL=https://bhagamapps.com/Modular`), el path absoluto `/inventario/bienes` se resolvía
+  desde la raíz del dominio ignorando `/Modular`. El helper `url()` genera URLs absolutas
+  respetando el subdirectorio. Sidebar (`left-sidebar.blade.php`) ya usaba `url()` — no afectado.
+
+---
+
 ## v1.4.1 — 2026-06-08
 
 ### Fixed

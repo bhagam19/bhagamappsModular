@@ -21,12 +21,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ### Fixed
 
+- **[IMPL-APPS-005C]** Dashboard (`apps::index.blade.php` líneas 13 y 46): `href="{{ $app->ruta }}"`
+  reemplazado por `href="{{ url($app->ruta) }}"`. Corrige URLs que apuntaban a la raíz del dominio
+  en instalaciones con subdirectorio (`APP_URL = https://bhagamapps.com/Modular`).
+  Sidebar y menú estático no estaban afectados (ya usaban `url()`).
 - **[IMPL-H-005]** `EditarSlugApp.guardar()` ahora invalida `apps.cache_version`
   tras guardar. Dashboard y Sidebar reflejan el cambio de slug de forma inmediata.
 - **[IMPL-H-005]** Corrección extendida a `EditarDescripcionApp` y `EditarRutaApp`
   (misma omisión — omitidos en la implementación original). Los 7 componentes
   Editar* del módulo Apps ahora tienen cobertura completa de invalidación de caché.
-- Apps: v1.4.1
+- Apps: v1.4.2 | BhagamApps: v1.6.4
 
 ---
 
