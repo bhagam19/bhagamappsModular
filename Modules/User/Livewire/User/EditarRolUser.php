@@ -33,6 +33,9 @@ class EditarRolUser extends Component
         $this->user->role_id = $this->role_id;
         $this->user->save();
         $this->editando = false;
+
+        // Invalidar caché de apps visibles — el nuevo rol puede tener distinta visibilidad
+        cache()->increment('apps.cache_version');
     }
 
     public function render()

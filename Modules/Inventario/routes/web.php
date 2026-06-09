@@ -7,7 +7,7 @@ use Modules\Inventario\Http\Controllers\HebController;
 use Modules\Inventario\Http\Controllers\ActaController;
 use Modules\Inventario\Http\Controllers\ActaPDFController;
 
-Route::middleware(['web', 'auth'])->prefix('inventario')->group(function () {
+Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
 
     Route::get('/bienes', [BienController::class, 'index'])
         ->name('inventario.bienes.index')

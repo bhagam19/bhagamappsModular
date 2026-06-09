@@ -11,6 +11,36 @@ Changelogs de módulo:
 
 ---
 
+## v1.6.0 — 2026-06-08
+
+**Módulos afectados:** Apps → v1.3.0, User, Inventario, Core
+
+### Added
+
+- **[IMPL-013]** Middleware `CheckAppAccess` (`app/Http/Middleware/CheckAppAccess.php`).
+  Verifica que la app solicitada esté en `App::visiblesPara($user)` antes de servir
+  la ruta. Registrado como alias `app.access` en Kernel y bootstrap/app.php.
+- **[IMPL-013]** Enforcement de acceso a módulos via `app.access:slug` en rutas de
+  Inventario y User. URL directa a módulo sin asignación en `app_role`/`app_user`
+  retorna 403.
+- **[IMPL-013]** Menú lateral dinámico: sección "MIS MÓDULOS" en sidebar de AdminLTE
+  construida desde `App::visiblesPara(auth()->user())`. Dashboard y menú comparten
+  la misma fuente de verdad.
+- **[IMPL-013]** Gestión funcional de `app_user`: modal en `/apps/admin` para asignar
+  apps directamente a usuarios individuales con `activo = true`.
+
+### Fixed
+
+- **[IMPL-013]** Invalidación de caché al cambiar rol de usuario (`EditarRolUser::guardar()`).
+  El cambio de rol ahora incrementa `apps.cache_version`, forzando recálculo inmediato
+  de apps visibles para el usuario afectado.
+
+### References
+
+- AUDIT-APPS-003, ADR-008, IMPL-013
+
+---
+
 ## v1.5.1 — 2026-06-08
 
 **Módulos afectados:** Core (arquitectura / gobernanza)

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\User\Entities\Role;
 use Modules\User\Livewire\Permissions\PermissionsIndex; // Asegúrate de que esta ruta sea correcta
 
-Route::middleware(['web', 'auth'])->prefix('users')->group(function () {
+Route::middleware(['web', 'auth', 'app.access:user'])->prefix('users')->group(function () {
     Route::resource('users', UserController::class)->names('user.users')
         ->middleware('permission:ver-usuarios');
     Route::resource('roles', RoleController::class)->names('user.roles')

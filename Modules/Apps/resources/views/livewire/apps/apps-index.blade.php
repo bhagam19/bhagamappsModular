@@ -58,9 +58,18 @@
                             <td class="align-middle text-center">
                                 <button
                                     wire:click="abrirModalRoles({{ $app->id }})"
-                                    class="btn btn-sm btn-outline-primary"
+                                    class="btn btn-sm btn-outline-primary mb-1"
                                     title="Gestionar roles">
                                     <i class="fas fa-user-tag"></i>
+                                </button>
+                                <button
+                                    wire:click="abrirModalUsuarios({{ $app->id }})"
+                                    class="btn btn-sm btn-outline-secondary"
+                                    title="Usuarios directos ({{ $app->user->count() }})">
+                                    <i class="fas fa-user"></i>
+                                    @if($app->user->count() > 0)
+                                        <span class="badge badge-secondary ml-1">{{ $app->user->count() }}</span>
+                                    @endif
                                 </button>
                             </td>
                         </tr>
@@ -76,6 +85,55 @@
             </table>
         </div>
     </div>
+
+    {{-- Modal gestión de usuarios directos (app_user) --}}
+    @if ($modalUsuariosVisible)
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,.5);">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="fas fa-user mr-1"></i>
+                            Usuarios con acceso directo a esta aplicación
+                        </h5>
+                        <button wire:click="cerrarModalUsuarios" type="button" class="close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                        <p class="text-muted small mb-3">
+                            Los usuarios seleccionados verán esta aplicación independientemente de su rol.
+                        </p>
+                        @foreach ($users as $user)
+                            <div class="form-check mb-2">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="user_{{ $user->id }}"
+                                    wire:model="usuariosSeleccionados"
+                                    value="{{ $user->id }}">
+                                <label class="form-check-label" for="user_{{ $user->id }}">
+                                    {{ $user->apellidos }}, {{ $user->nombres }}
+                                    @if ($user->role)
+                                        <small class="text-muted">— {{ $user->role->nombre }}</small>
+                                    @endif
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button wire:click="cerrarModalUsuarios" type="button" class="btn btn-secondary">
+                            Cancelar
+                        </button>
+                        <button wire:click="guardarUsuarios" type="button" class="btn btn-primary">
+                            <i class="fas fa-save mr-1"></i>
+                            Guardar usuarios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     {{-- Modal gestión de roles --}}
     @if ($modalVisible)

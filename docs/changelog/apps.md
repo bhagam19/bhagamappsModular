@@ -5,6 +5,31 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.3.0 — 2026-06-08
+
+### Added
+
+- **[IMPL-013]** Gestión funcional de usuarios directos (`app_user`): nuevo modal en
+  `/apps/admin` para asignar y remover usuarios individualmente a una app. El modal
+  lista todos los usuarios con su rol, ordenados por apellidos. Sincronización via
+  `app->user()->sync()` con `activo = true`. Botón en columna Acciones con badge
+  de conteo de usuarios directos.
+- **[IMPL-013]** Métodos `abrirModalUsuarios`, `guardarUsuarios`, `cerrarModalUsuarios`
+  en `AppsIndex`. Siguen el mismo patrón que la gestión de roles existente.
+
+### Fixed
+
+- **[IMPL-013]** Corregida referencia `AppsController` (inexistente) → `AppController`
+  en `Modules/Apps/routes/api.php`. Las rutas API dejarán de fallar con "class not found"
+  al ser invocadas.
+
+### References
+
+- AUDIT-APPS-003, ADR-008, IMPL-013
+
+
+---
+
 ## v1.2.0 — 2026-06-08
 
 ### Security

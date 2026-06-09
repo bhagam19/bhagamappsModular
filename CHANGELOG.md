@@ -17,6 +17,27 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.0] — 2026-06-08
+
+**Módulos afectados:** Apps → v1.3.0, User, Inventario, Core
+
+### Added
+
+- **[IMPL-013]** Middleware `CheckAppAccess` — enforcement de acceso a módulos
+  via `App::visiblesPara()`. URL directa sin asignación en `app_role`/`app_user`
+  retorna 403. Aplicado en Inventario (`app.access:inventario`) y User (`app.access:user`).
+- **[IMPL-013]** Menú lateral dinámico en sidebar AdminLTE — sección "MIS MÓDULOS"
+  desde `App::visiblesPara()`. Dashboard y menú comparten misma fuente de verdad.
+- **[IMPL-013]** Gestión `app_user` — modal en `/apps/admin` para asignación directa
+  usuario → app independientemente del rol.
+
+### Fixed
+
+- **[IMPL-013]** Invalidación de caché al cambiar rol de usuario en `EditarRolUser`.
+- **[IMPL-013]** Referencia `AppsController` → `AppController` en Apps API routes.
+
+---
+
 ## [v1.5.1] — 2026-06-08
 
 **Módulos afectados:** Core (arquitectura / gobernanza)
