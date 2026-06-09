@@ -64,7 +64,7 @@ class App extends Model
                         $q->where('roles.id', $user->role_id);
                     })->orWhereHas('user', function ($q) use ($user) {
                         $q->where('users.id', $user->id)
-                          ->wherePivot('activo', true);
+                          ->where('app_user.activo', true);
                     });
                 })
                 ->orderBy('orden')

@@ -15,6 +15,15 @@ class AppsIndex extends Component
     public array $rolesSeleccionados = [];
     public array $usuariosSeleccionados = [];
 
+    // Formulario de creación
+    public string $nombre = '';
+    public string $slug = '';
+    public string $ruta = '';
+    public string $descripcion = '';
+    public string $icono = '';
+    public string $color = '';
+    public int $orden = 99;
+
     public function toggleHabilitada(int $appId): void
     {
         abort_if(! auth()->user()->hasPermission('administrar-apps'), 403);
@@ -93,6 +102,58 @@ class AppsIndex extends Component
         $this->modalUsuariosVisible = false;
         $this->appEditandoId = null;
         $this->usuariosSeleccionados = [];
+    }
+
+    // --- CRUD Aplicaciones ---
+
+    public function store(): void
+    {
+        abort_if(! auth()->user()->hasPermission('crear-apps'), 403);
+
+        $this->validate([
+            'nombre'      => 'required|string|max:255',
+            'slug'        => 'nullable|string|max:255|unique:apps,slug',
+            'ruta'        => 'required|string|max:255',
+            'descripcion' => 'nullable|string|max:500',
+            'icono'       => 'nullable|string|max:100',
+            'color'       => 'nullable|string|max:20',
+            'orden'       => 'required|integer|min:0|max:999',
+        ]);
+
+        App::create([
+            'nombre'      => $this->nombre,
+            'slug'        => $this->slug ?: null,
+            'ruta'        => $this->ruta,
+            'descripcion' => $this->descripcion ?: null,
+            'icono'       => $this->icono ?: null,
+            'color'       => $this->color ?: null,
+            'orden'       => $this->orden,
+            'habilitada'  => false,
+        ]);
+
+        session()->flash('message', 'Aplicación creada exitosamente.');
+        $this->resetInput();
+        cache()->increment('apps.cache_version');
+    }
+
+    public function delete(int $appId): void
+    {
+        abort_if(! auth()->user()->hasPermission('eliminar-apps'), 403);
+
+        App::findOrFail($appId)->delete();
+        session()->flash('message', 'Aplicación eliminada exitosamente.');
+        cache()->increment('apps.cache_version');
+    }
+
+    public function resetInput(): void
+    {
+        $this->nombre = '';
+        $this->slug = '';
+        $this->ruta = '';
+        $this->descripcion = '';
+        $this->icono = '';
+        $this->color = '';
+        $this->orden = 99;
     }
 
     public function render()
