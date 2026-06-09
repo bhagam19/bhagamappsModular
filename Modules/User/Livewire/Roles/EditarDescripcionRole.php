@@ -20,12 +20,13 @@ class EditarDescripcionRole extends Component
 
     public function editar()
     {
+        abort_if(! auth()->user()->hasPermission('editar-roles'), 403);
         $this->editando = true;
     }
 
     public function guardar()
     {
-        // Guardamos el nuevo título y desactivamos el modo edición
+        abort_if(! auth()->user()->hasPermission('editar-roles'), 403);
         $this->role->descripcion = $this->descripcion;
         $this->role->save();
         $this->editando = false;

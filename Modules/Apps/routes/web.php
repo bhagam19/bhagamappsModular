@@ -7,7 +7,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Ruta específica debe preceder al resource para evitar conflicto con {app}
     Route::get('/apps/admin', [AppController::class, 'index'])
         ->name('apps.admin.index')
-        ->middleware('permission:administrar-apps');
+        ->middleware('permission:ver-apps');
 
-    Route::resource('apps', AppController::class)->names('apps.apps');
+    Route::resource('apps', AppController::class)->names('apps.apps')
+        ->middleware('permission:ver-apps');
 });

@@ -50,6 +50,8 @@ class PermissionsIndex extends Component
 
     public function store()
     {
+        abort_if(! auth()->user()->hasPermission('crear-permisos'), 403);
+
         $categoriaFinal = $this->categoria === 'otra' ? $this->nuevaCategoria : $this->categoria;
 
         $this->validate([
@@ -87,6 +89,8 @@ class PermissionsIndex extends Component
 
     public function delete($id)
     {
+        abort_if(! auth()->user()->hasPermission('eliminar-permisos'), 403);
+
         Permission::findOrFail($id)->delete();
 
         // Reiniciar paginación para evitar mostrar página vacía

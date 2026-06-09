@@ -9,6 +9,32 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.2.0 — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-001 / H-003]** `RolesIndex.store()` ahora requiere `crear-roles`.
+  Antes: cualquier usuario con `ver-roles` podía crear roles vía Livewire wire:call.
+- **[IMPL-AUTH-001 / H-003]** `RolesIndex.delete()` ahora requiere `eliminar-roles`.
+  Antes: cualquier usuario con `ver-roles` podía eliminar roles vía Livewire wire:call.
+- **[IMPL-AUTH-001 / H-003]** `EditarNombreRole.editar()` y `guardar()` requieren
+  `editar-roles`. Incluida validación de unicidad en `guardar()`.
+- **[IMPL-AUTH-001 / H-003]** `EditarDescripcionRole.editar()` y `guardar()` requieren
+  `editar-roles`.
+- **[IMPL-AUTH-001 / H-003]** `EditarRolePermissions.save()` requiere
+  `asignar-permisos-a-roles`. Antes: cualquier usuario podía sincronizar permisos de
+  un rol invocando el método directamente.
+- **[IMPL-AUTH-001 / H-004]** `PermissionsIndex.store()` requiere `crear-permisos`.
+- **[IMPL-AUTH-001 / H-004]** `PermissionsIndex.delete()` requiere `eliminar-permisos`.
+- **[IMPL-AUTH-001 / H-004]** `EditarNombrePermission.editar()` y `guardar()` requieren
+  `editar-permisos`.
+- **[IMPL-AUTH-001 / H-004]** `EditarDescripcionPermission.editar()` y `guardar()`
+  requieren `editar-permisos`.
+- **[IMPL-AUTH-001 / H-004]** `EditarCategoriaPermission.editar()` y `guardar()`
+  requieren `editar-permisos`.
+
+---
+
 ## v2.1.2 — 2026-06-08
 
 ### Fixed

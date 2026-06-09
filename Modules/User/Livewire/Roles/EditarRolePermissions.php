@@ -27,6 +27,8 @@ class EditarRolePermissions extends Component
 
     public function save()
     {
+        abort_if(! auth()->user()->hasPermission('asignar-permisos-a-roles'), 403);
+
         $this->validate([
             'selectedPermissions' => 'array',
             'selectedPermissions.*' => 'exists:permissions,id',

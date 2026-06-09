@@ -10,8 +10,8 @@ Documento oficial de la estrategia de versionado de la plataforma BhagamApps.
 |----------------|---------|----------------------|----------------------------------------------|
 | **BhagamApps** | v1.6.0  | 2026-06-08           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
 | Inventario     | v2.4.2  | 2026-06-08           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
-| User           | v2.1.2  | 2026-06-08           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
-| Apps           | v1.3.0  | 2026-06-08           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |
+| User           | v2.2.0  | 2026-06-08           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
+| Apps           | v1.3.1  | 2026-06-08           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |
 | CrudGenerator  | v1.1.0  | 2025-06-23           | [`docs/changelog/crudgenerator.md`](docs/changelog/crudgenerator.md) |
 
 ---

@@ -20,12 +20,13 @@ class EditarNombrePermission extends Component
 
     public function editar()
     {
+        abort_if(! auth()->user()->hasPermission('editar-permisos'), 403);
         $this->editando = true;
     }
 
     public function guardar()
     {
-        // Guardamos el nuevo título y desactivamos el modo edición
+        abort_if(! auth()->user()->hasPermission('editar-permisos'), 403);
         $this->permission->nombre = $this->nombre;
         $this->permission->save();
         $this->editando = false;

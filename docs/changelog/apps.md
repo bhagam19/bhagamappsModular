@@ -5,6 +5,21 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.3.1 — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-001 / H-001]** Ruta `GET /apps` (resource index) ahora requiere
+  `permission:ver-apps`. Antes: cualquier usuario autenticado podía acceder al panel
+  de administración de apps por esta URL alternativa, omitiendo la protección de
+  `GET /apps/admin`. Corrección: `->middleware('permission:ver-apps')` agregado al
+  `Route::resource`.
+- **[IMPL-AUTH-001]** Ajuste de consistencia: ruta `GET /apps/admin` usa
+  `permission:ver-apps` (acceso de lectura al panel). Las operaciones de escritura
+  siguen protegidas por `administrar-apps` en los Livewire components.
+
+---
+
 ## v1.3.0 — 2026-06-08
 
 ### Added

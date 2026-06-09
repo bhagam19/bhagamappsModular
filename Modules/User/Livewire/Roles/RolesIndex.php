@@ -45,6 +45,8 @@ class RolesIndex extends Component
 
     public function store()
     {
+        abort_if(! auth()->user()->hasPermission('crear-roles'), 403);
+
         $this->validate([
             'nombre' => 'required|unique:roles,nombre',
             'descripcion' => 'nullable|string',
@@ -61,6 +63,8 @@ class RolesIndex extends Component
 
     public function delete($id)
     {
+        abort_if(! auth()->user()->hasPermission('eliminar-roles'), 403);
+
         Role::findOrFail($id)->delete();
         session()->flash('message', 'Rol eliminado exitosamente.');
     }

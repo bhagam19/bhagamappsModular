@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.1] — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-001]** Corregidas 3 vulnerabilidades de autorización activas (AUDIT-AUTH-001A):
+  - H-001: `GET /apps` ahora requiere `permission:ver-apps` (igual que `/apps/admin`).
+  - H-003: 5 métodos de escritura en módulo User/Roles sin protección → agregado
+    `abort_if` con permisos `crear-roles`, `editar-roles`, `eliminar-roles`,
+    `asignar-permisos-a-roles`.
+  - H-004: 5 métodos de escritura en módulo User/Permissions sin protección → agregado
+    `abort_if` con permisos `crear-permisos`, `editar-permisos`, `eliminar-permisos`.
+- Apps: v1.3.1 | User: v2.2.0
+
+---
+
 ## [v1.6.0] — 2026-06-08
 
 **Módulos afectados:** Apps → v1.3.0, User, Inventario, Core
