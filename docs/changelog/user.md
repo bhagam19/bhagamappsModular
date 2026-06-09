@@ -9,6 +9,19 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.2.1 — 2026-06-08
+
+### Added
+
+- **[IMPL-AUTH-002]** Nuevos permisos de acceso a secciones administrativas:
+  `ver-grupos` (id=33), `ver-evaluacion-docente` (id=34), `ver-biblioteca` (id=35).
+  Asignados a Administrador, Rector y Coordinador.
+- **[IMPL-AUTH-002]** Permiso `ver-usuarios` asignado a Coordinador (omisión
+  corregida — el gate `usuarios.user` ya concedía acceso a Coordinador pero el
+  seeder no lo reflejaba).
+
+---
+
 ## v2.2.0 — 2026-06-08
 
 ### Security

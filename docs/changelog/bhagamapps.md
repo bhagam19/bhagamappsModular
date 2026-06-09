@@ -11,6 +11,39 @@ Changelogs de módulo:
 
 ---
 
+## v1.6.2 — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-002]** Eliminadas 4 dependencias hardcoded de nombres de rol en Gates
+  de `AuthServiceProvider`. `usuarios.user`, `admin.grupos`, `admin.evaldoc` y
+  `admin.biblioteca` ahora delegan a `hasPermission()` en lugar de comparar
+  `$user->role->nombre` directamente.
+- **[IMPL-AUTH-002]** Creados 3 permisos stub para secciones futuras: `ver-grupos`,
+  `ver-evaluacion-docente`, `ver-biblioteca`. Asignados a Administrador, Rector y
+  Coordinador para mantener equivalencia funcional.
+- **[IMPL-AUTH-002]** `ver-usuarios` asignado a Coordinador (correctivo de omisión
+  en seeder original).
+- Import `use Modules\User\Entities\User` eliminado de `AuthServiceProvider`
+  (quedó huérfano al remover todos los `instanceof User` checks).
+
+### References
+
+- AUDIT-AUTH-001A (H-009), PLAN-AUTH-001, ADR-AUTHORIZATION-002, IMPL-AUTH-002
+
+---
+
+## v1.6.1 — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-001]** Corregidas 3 vulnerabilidades de autorización activas (AUDIT-AUTH-001A):
+  H-001 (`GET /apps` sin protección), H-003 (escritura de Roles sin abort_if),
+  H-004 (escritura de Permissions sin abort_if).
+- Apps: v1.3.1 | User: v2.2.0
+
+---
+
 ## v1.6.0 — 2026-06-08
 
 **Módulos afectados:** Apps → v1.3.0, User, Inventario, Core

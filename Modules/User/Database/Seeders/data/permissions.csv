@@ -30,3 +30,6 @@
 "30","crear apps","crear-apps","Permite registrar una nueva aplicación en el catálogo.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
 "31","editar apps","editar-apps","Permite modificar los datos de una aplicación existente.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
 "32","eliminar apps","eliminar-apps","Permite eliminar una aplicación del catálogo de forma permanente.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
+"33","ver grupos","ver-grupos","Permite acceder a la sección de administración de grupos académicos.","grupos","2026-06-08 20:23:25","2026-06-08 20:23:25"
+"34","ver evaluación docente","ver-evaluacion-docente","Permite acceder a la sección de evaluación docente.","evaluacion-docente","2026-06-08 20:23:25","2026-06-08 20:23:25"
+"35","ver biblioteca","ver-biblioteca","Permite acceder a la sección de biblioteca.","biblioteca","2026-06-08 20:23:25","2026-06-08 20:23:25"

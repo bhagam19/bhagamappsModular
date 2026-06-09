@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Modules\User\Entities\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -27,8 +26,7 @@ class AuthServiceProvider extends ServiceProvider
                 Gate::define('guest-only', fn($user = null) => $user === null);
 
                 Gate::define('usuarios.user', function ($user) {
-                        return $user instanceof User
-                                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+                        return $user->hasPermission('ver-usuarios');
                 });
 
                 // Define permisos para el módulo de inventario
@@ -78,17 +76,15 @@ class AuthServiceProvider extends ServiceProvider
                 });
 
                 Gate::define('admin.grupos', function ($user) {
-                        return $user instanceof User
-                                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+                        return $user->hasPermission('ver-grupos');
                 });
 
                 Gate::define('admin.evaldoc', function ($user) {
-                        return $user instanceof User
-                                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+                        return $user->hasPermission('ver-evaluacion-docente');
                 });
+
                 Gate::define('admin.biblioteca', function ($user) {
-                        return $user instanceof User
-                                && in_array($user->role->nombre, ['Administrador', 'Rector', 'Coordinador']);
+                        return $user->hasPermission('ver-biblioteca');
                 });
 
                 Gate::define('aprobar-cambios-bienes', function ($user) {

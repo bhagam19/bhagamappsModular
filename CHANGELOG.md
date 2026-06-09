@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.2] — 2026-06-08
+
+### Security
+
+- **[IMPL-AUTH-002]** Eliminadas 4 dependencias de nombres de rol hardcoded en Gates
+  de `AuthServiceProvider`. Gates `usuarios.user`, `admin.grupos`, `admin.evaldoc` y
+  `admin.biblioteca` ahora verifican permisos efectivos via `hasPermission()`.
+- **[IMPL-AUTH-002]** Creados permisos `ver-grupos`, `ver-evaluacion-docente` y
+  `ver-biblioteca` (ids 33–35). Asignados a Administrador, Rector y Coordinador.
+- **[IMPL-AUTH-002]** Permiso `ver-usuarios` extendido a Coordinador para mantener
+  equivalencia funcional con el gate anterior.
+- BhagamApps: v1.6.2 | User: v2.2.1
+
+---
+
 ## [v1.6.1] — 2026-06-08
 
 ### Security
