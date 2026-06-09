@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.7.0] — 2026-06-09
+
+### Removed
+
+- **[IMPL-APPS-006]** Catálogo legacy de aplicaciones depurado: 12 registros sin slug
+  (IDs 1-12) eliminados. Catálogo oficial consolidado en 12 registros únicos con slug.
+  Módulo Apps: APTO PARA BASELINE ESTABLE.
+- Apps: v1.5.0 | BhagamApps: v1.7.0
+
+---
+
 ## [v1.6.5] — 2026-06-09
 
 ### Fixed

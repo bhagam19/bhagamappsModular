@@ -5,6 +5,25 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.5.0 — 2026-06-09
+
+### Removed
+
+- **[IMPL-APPS-006]** Eliminados 12 registros legacy del catálogo de aplicaciones (IDs 1-12).
+  Estos registros correspondían al sistema anterior: sin `slug`, `habilitada=false`, `user_id=1`,
+  creados el 2026-06-07. Duplicaban nombre y ruta con el catálogo oficial (IDs 13-24).
+  La eliminación fue ejecutada vía migración `2026_06_09_200000_cleanup_legacy_apps`.
+  - `app_role`: 8 registros de pivote legacy eliminados por CASCADE.
+  - `roles.app_id`: 7 roles quedan con `app_id=NULL` por SET NULL (FK diseñada para este caso).
+
+### Fixed
+
+- **[IMPL-APPS-006]** `RoleSeeder`: corregida referencia de `App::where('nombre', 'user')`
+  a `App::where('slug', 'user')`. El seeder referenciaba el registro legacy eliminado
+  (nombre="User", ID=1) en lugar del registro oficial (slug="user", ID=16 "Usuarios").
+
+---
+
 ## v1.4.3 — 2026-06-09
 
 ### Fixed

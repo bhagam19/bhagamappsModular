@@ -11,6 +11,28 @@ Changelogs de módulo:
 
 ---
 
+## v1.7.0 — 2026-06-09
+
+### Removed
+
+- **[IMPL-APPS-006]** Catálogo de aplicaciones saneado: 12 registros legacy eliminados de
+  la tabla `apps` (IDs 1-12, sin slug, del sistema anterior). El catálogo oficial queda con
+  12 registros únicos (IDs 13-24), todos con slug definido, sin duplicados de nombre ni ruta.
+  Módulo Apps declarado **APTO PARA BASELINE ESTABLE**.
+
+### Changed
+
+- **[IMPL-APPS-006]** `User/Database/Seeders/RoleSeeder`: referencia de app por `nombre`
+  corregida a referencia por `slug` para soportar fresh installs post-cleanup.
+
+- Apps: v1.5.0 | BhagamApps: v1.7.0
+
+### References
+
+- AUDIT-APPS-006 (H-001, H-002, H-003), IMPL-APPS-006
+
+---
+
 ## v1.6.5 — 2026-06-09
 
 ### Fixed

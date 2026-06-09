@@ -12,10 +12,10 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
 
-        $app = App::where('nombre', 'user')->first();
+        $app = App::where('slug', 'user')->first();
 
         if (!$app) {
-            $this->command->error("No se encontró la aplicación con nombre 'user'. Crea la aplicación antes de correr este seeder.");
+            $this->command->error("No se encontró la aplicación con slug 'user'. Crea la aplicación antes de correr este seeder.");
             return;
         }
 
