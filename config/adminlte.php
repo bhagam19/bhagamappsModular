@@ -354,6 +354,15 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Aplicaciones',
+            'icon' => 'fas fa-th-large',
+            'can' => 'ver-apps',
+            'route' => 'apps.admin.index',
+            'active' => ['apps/admin*'],
+            'classes' => 'text-primary font-weight-bold',
+        ],
+
         // 📌 [crud-generator-menus] Añadir menús aquí
         [
             'text' => 'Inventario',

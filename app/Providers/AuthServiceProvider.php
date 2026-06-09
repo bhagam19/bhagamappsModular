@@ -99,6 +99,26 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('aprobar-pendientes-bienes');
                 });
 
+                Gate::define('administrar-apps', function ($user) {
+                        return $user->hasPermission('administrar-apps');
+                });
+
+                Gate::define('ver-apps', function ($user) {
+                        return $user->hasPermission('ver-apps');
+                });
+
+                Gate::define('crear-apps', function ($user) {
+                        return $user->hasPermission('crear-apps');
+                });
+
+                Gate::define('editar-apps', function ($user) {
+                        return $user->hasPermission('editar-apps');
+                });
+
+                Gate::define('eliminar-apps', function ($user) {
+                        return $user->hasPermission('eliminar-apps');
+                });
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }
