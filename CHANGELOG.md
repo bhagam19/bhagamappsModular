@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.3] — 2026-06-08
+
+### Removed
+
+- **[IMPL-ADR-009]** `app_user.role_id` eliminado de la base de datos. El campo no
+  participaba en ninguna lógica de autorización, visibilidad, middleware ni RBAC.
+  ADR-009 formalizó la decisión. La relación `User ↔ App` queda simplificada a
+  `(user_id, app_id, activo)`.
+- **[IMPL-ADR-009]** FK `app_user_role_id_foreign` eliminada.
+- **[IMPL-ADR-009]** DP-001 de ADR-008 cerrada. ADR-008 actualizado.
+- Apps: v1.4.0 | BhagamApps: v1.6.3
+
+---
+
 ## [v1.6.2] — 2026-06-08
 
 ### Security

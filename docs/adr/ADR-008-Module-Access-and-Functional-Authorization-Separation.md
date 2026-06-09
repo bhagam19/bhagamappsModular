@@ -192,17 +192,11 @@ para la Capa 3 (autorización funcional).
 
 ## Decisiones Pendientes
 
-### DP-001 — Semántica de `app_user.role_id`
+### DP-001 — Semántica de `app_user.role_id` ✅ RESUELTA — IMPL-ADR-009 (2026-06-08)
 
-El campo `role_id` en la tabla `app_user` existe en la migración y en el modelo, pero
-ningún código lo lee para tomar decisiones. Su propósito no está definido.
-
-**Opciones a evaluar:**
-* Convertirlo en override de rol dentro del módulo para ese usuario específico
-* Conservarlo como metadato contextual sin impacto en autorización
-* Eliminarlo para simplificar el modelo
-
-Esta decisión deberá resolverse antes de iniciar IMPL-013.
+**Decisión:** Eliminado. El campo fue removido de `app_user` mediante migración
+`2026_06_09_000003_drop_app_user_role_id.php`. ADR-009 formalizó la decisión.
+La relación `User ↔ App` queda simplificada a `(user_id, app_id, activo)`.
 
 ### DP-002 — Contrato del middleware de acceso a módulos
 

@@ -11,6 +11,24 @@ Changelogs de módulo:
 
 ---
 
+## v1.6.3 — 2026-06-08
+
+### Removed
+
+- **[IMPL-ADR-009]** `app_user.role_id` eliminado del modelo de datos. Campo sin
+  semántica funcional: no participaba en `App::visiblesPara()`, `CheckAppAccess`,
+  middleware, gates, permissions, dashboard ni sidebar.
+- **[IMPL-ADR-009]** FK `app_user_role_id_foreign → roles(id) ON DELETE SET NULL`
+  eliminada.
+- **[IMPL-ADR-009]** DP-001 de ADR-008 cerrada formalmente. La relación `User ↔ App`
+  queda reducida a `(user_id, app_id, activo)`.
+
+### References
+
+- ADR-009, AUDIT-APPS-003, AUDIT-APPS-004, ADR-008 (DP-001), IMPL-ADR-009
+
+---
+
 ## v1.6.2 — 2026-06-08
 
 ### Security

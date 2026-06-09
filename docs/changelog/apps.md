@@ -5,6 +5,20 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.4.0 — 2026-06-08
+
+### Removed
+
+- **[IMPL-ADR-009]** `app_user.role_id` eliminado del modelo de datos y de la
+  migración de la tabla `app_user`. El campo no participaba en ninguna lógica del
+  módulo Apps (ni en `visiblesPara()`, ni en `CheckAppAccess`, ni en `AppsIndex`,
+  ni en los modales de gestión de usuarios). La relación `User ↔ App` queda
+  simplificada a `(user_id, app_id, activo)`.
+- FK `app_user_role_id_foreign` eliminada.
+- DP-001 de ADR-008 resuelta y cerrada.
+
+---
+
 ## v1.3.1 — 2026-06-08
 
 ### Security
