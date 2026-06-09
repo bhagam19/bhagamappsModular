@@ -11,6 +11,21 @@ Changelogs de módulo:
 
 ---
 
+## v1.6.5 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-APPS-005F]** Módulo Apps: registro de rutas web restaurado bajo middleware group `web`.
+  `RouteServiceProvider` activado en `module.json`; `loadRoutesFrom()` eliminado de
+  `AppsServiceProvider`. Sesión, autenticación y permisos ahora funcionales en `/apps/admin`.
+- Apps: v1.4.3
+
+### References
+
+- AUDIT-APPS-005F, IMPL-APPS-005F
+
+---
+
 ## v1.6.4 — 2026-06-08
 
 ### Fixed

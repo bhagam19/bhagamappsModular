@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.6.5] — 2026-06-09
+
+### Fixed
+
+- **[IMPL-APPS-005F]** Módulo Apps: middleware group `web` restaurado para todas las rutas.
+  `RouteServiceProvider` activado en `module.json`; `loadRoutesFrom()` eliminado de
+  `AppsServiceProvider`. Resuelve fallo de autenticación en `/apps/admin`.
+- Apps: v1.4.3 | BhagamApps: v1.6.5
+
+---
+
 ## [v1.6.4] — 2026-06-08
 
 ### Fixed

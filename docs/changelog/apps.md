@@ -5,6 +5,21 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.4.3 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-APPS-005F]** Rutas del módulo Apps ahora registradas bajo el middleware group `web`.
+  `AppsServiceProvider` usaba `loadRoutesFrom()` directamente, sin envolverlas en `Route::middleware('web')`.
+  Consecuencia: `StartSession` no se ejecutaba → `Auth::check() = false` → redirección a login
+  → `RedirectIfAuthenticated` enviaba a `/Modular/` aunque el usuario tuviera permisos válidos.
+  Solución: se registra `RouteServiceProvider` en `module.json` (Opción B), que ya implementaba
+  `mapWebRoutes()` con `Route::middleware('web')`. Se elimina el `loadRoutesFrom()` redundante
+  de `AppsServiceProvider`. Las rutas `/apps` y `/apps/admin` ahora ejecutan bajo `web`,
+  `Authenticate`, `EnsureEmailIsVerified` y `CheckPermission:ver-apps`.
+
+---
+
 ## v1.4.2 — 2026-06-08
 
 ### Fixed

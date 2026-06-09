@@ -22,7 +22,6 @@ class AppsServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'apps');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->registerLivewireComponents();
         $this->commands([SyncApps::class]);
