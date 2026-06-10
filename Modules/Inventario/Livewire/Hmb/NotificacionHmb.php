@@ -21,7 +21,7 @@ class NotificacionHmb extends Notification
 
     public function via($notifiable)
     {
-        return ['mail']; // o solo 'database', según el caso
+        return ['mail', 'database'];
     }
 
     public function toMail($notifiable)
@@ -29,7 +29,7 @@ class NotificacionHmb extends Notification
         $dependencia = $this->modificacion->dependencia;
 
         $user = $dependencia?->user;
-        $nombreUser = $user ? trim("{$user->nombres} {$user->apellidos}") : 'User desconocido';
+        $nombreUser = $user ? trim("{$user->nombres} {$user->apellidos}") : 'Usuario desconocido';
         $dependenciaNombre = $dependencia?->nombre ?? 'Dependencia no encontrada';
 
         $bien = $this->modificacion->bien;
@@ -39,12 +39,11 @@ class NotificacionHmb extends Notification
         $detallesCambios = '';
 
         $selectCampos = [
-            'categoria_id' => Categoria::class,
+            'categoria_id'  => Categoria::class,
             'dependencia_id' => Dependencia::class,
         ];
 
         if ($this->modificacion->tipo_objeto === 'detalle') {
-            // Cambios en detalles (varios campos)
             $valorAnterior = json_decode($this->modificacion->valor_anterior, true) ?? [];
             $valorNuevo = json_decode($this->modificacion->valor_nuevo, true) ?? [];
 
@@ -61,15 +60,14 @@ class NotificacionHmb extends Notification
             $anterior = $this->modificacion->valor_anterior ?? 'null';
             $nuevo = $this->modificacion->valor_nuevo ?? 'null';
 
-            // Si el campo es select, buscar el nombre correspondiente
             if (array_key_exists($campo, $selectCampos)) {
                 $modelo = $selectCampos[$campo];
 
                 $anteriorNombre = $anterior !== 'null' ? $modelo::find($anterior)?->nombre ?? "(ID: {$anterior})" : 'No asignado';
-                $nuevoNombre = $nuevo !== 'null' ? $modelo::find($nuevo)?->nombre ?? "(ID: {$nuevo})" : 'No asignado';
+                $nuevoNombre    = $nuevo !== 'null' ? $modelo::find($nuevo)?->nombre ?? "(ID: {$nuevo})" : 'No asignado';
 
                 $anterior = $anteriorNombre;
-                $nuevo = $nuevoNombre;
+                $nuevo    = $nuevoNombre;
             }
 
             $detallesCambios = "- **{$nombreCampo}**: {$anterior} → {$nuevo}\n";
@@ -86,17 +84,18 @@ class NotificacionHmb extends Notification
             ->line('Por favor, ingrese al sistema para revisar y aprobar o rechazar el cambio.');
     }
 
-
-    /*
     public function toDatabase($notifiable)
     {
+        $user = $this->modificacion->dependencia?->user;
+        $nombreUser = $user ? trim("{$user->nombres} {$user->apellidos}") : 'Usuario desconocido';
+
         return [
-            'bien_id' => $this->modificacion->bien_id,
-            'campo' => $this->modificacion->campo,
+            'bien_id'        => $this->modificacion->bien_id,
+            'tipo_objeto'    => $this->modificacion->tipo_objeto,
+            'campo'          => $this->modificacion->campo,
             'valor_anterior' => $this->modificacion->valor_anterior,
-            'valor_nuevo' => $this->modificacion->valor_nuevo,
-            'user' => $this->modificacion->user->name,
+            'valor_nuevo'    => $this->modificacion->valor_nuevo,
+            'solicitado_por' => $nombreUser,
         ];
     }
-    */
 }

@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use Modules\Inventario\Entities\{
     Bien,
     HistorialModificacionBien,
+    HistorialDependenciaBien,
     Detalle,
 };
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class NotificacionesDropdown extends Component
 
     public $perPage = 10;
 
-    protected $paginationTheme = 'bootstrap'; // Cambia a 'tailwind' si usas Tailwind CSS
+    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
@@ -35,14 +36,13 @@ class NotificacionesDropdown extends Component
     {
         $cambio = HistorialModificacionBien::find($id);
 
-        $bien = Bien::with('dependencia')->find($cambio->bien_id);
-        $user = $bien->dependencia->user_id;
-
         if (!$cambio) {
             $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'El cambio no fue encontrado.');
             $this->dispatch('cambioActualizado');
             return;
         }
+
+        $bien = Bien::with('dependencia')->find($cambio->bien_id);
 
         DB::beginTransaction();
 
@@ -59,20 +59,21 @@ class NotificacionesDropdown extends Component
                     throw new \Exception("El campo '$campo' no existe en el modelo Bien.");
                 }
 
-                $valorAnterior = $bien->$campo;
                 $bien->$campo = $cambio->valor_nuevo;
                 $bien->save();
 
-                HistorialModificacionBien::create([
-                    'bien_id' => $bien->id,
-                    'tipo_objeto' => 'bien',
-                    'campo_modificado' => $campo,
-                    'valor_anterior' => $valorAnterior,
-                    'valor_nuevo' => $cambio->valor_nuevo,
-                    'user_id' => $user,               // quien hizo el cambio
-                    'aprobado_por' => auth()->id(),        // quien aprobó el cambio
-                    'fecha_modificacion' => now(),
-                ]);
+                $cambio->estado = 'aprobada';
+                $cambio->aprobado_por = auth()->id();
+                $cambio->save();
+
+                if ($campo === 'dependencia_id') {
+                    HistorialDependenciaBien::create([
+                        'bien_id'                => $bien->id,
+                        'dependencia_anterior_id' => $cambio->valor_anterior,
+                        'dependencia_nueva_id'    => $cambio->valor_nuevo,
+                        'aprobado_por'            => auth()->id(),
+                    ]);
+                }
             }
 
             if ($cambio->tipo_objeto === 'detalle') {
@@ -86,29 +87,17 @@ class NotificacionesDropdown extends Component
 
                 foreach ($datos as $campo => $valorNuevo) {
                     if (array_key_exists($campo, $detalle->getAttributes())) {
-                        $valorAnterior = $detalle->$campo;
-
-                        // Guardar en el historial de modificaciones
-                        HistorialModificacionBien::create([
-                            'bien_id' => $detalle->bien_id,
-                            'tipo_objeto' => 'detalle',
-                            'campo_modificado' => $campo,
-                            'valor_anterior' => $valorAnterior,
-                            'valor_nuevo' => $valorNuevo,
-                            'user_id' => $user,
-                            'aprobado_por' => auth()->id(),
-                            'fecha_modificacion' => now(),
-                        ]);
-
-                        // Actualizar el campo
                         $detalle->$campo = $valorNuevo;
                     }
                 }
 
                 $detalle->save();
+
+                $cambio->estado = 'aprobada';
+                $cambio->aprobado_por = auth()->id();
+                $cambio->save();
             }
 
-            $cambio->delete();
             DB::commit();
 
             $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Cambio aprobado correctamente.');
@@ -132,10 +121,11 @@ class NotificacionesDropdown extends Component
                 return;
             }
 
-            $cambio->delete();
+            $cambio->estado = 'rechazada';
+            $cambio->aprobado_por = auth()->id();
+            $cambio->save();
 
             $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Cambio rechazado correctamente.');
-
             $this->dispatch('cambioActualizado');
         } catch (\Throwable $e) {
             report($e);

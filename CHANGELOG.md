@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.4] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-NOTIF-001B]** Inventario v2.10.4: consistencia y persistencia del sistema de
+  notificaciones. Corrige eliminaciones indebidas de evidencia histórica en `aprobarCambio` y
+  `rechazarCambio` del dropdown. Activa canal `database` en `NotificacionHmb`. Contador
+  `NotificacionesIcono` ahora reacciona a eventos sin wire:poll.
+  Inventario v2.10.4 | BhagamApps v1.11.4.
+
+---
+
 ## [v1.11.3] — 2026-06-10
 
 ### Added

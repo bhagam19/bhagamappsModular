@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.4 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-NOTIF-001B]** Inventario v2.10.4: consistencia y persistencia de notificaciones.
+  Corregidas 2 eliminaciones indebidas de evidencia HMB (aprobar y rechazar desde dropdown).
+  Activado canal `database` en `NotificacionHmb`. Contador de icono reactivo sin wire:poll.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.11.3 — 2026-06-10
 
 ### Added

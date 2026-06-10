@@ -5,6 +5,43 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.4 — 2026-06-10
+
+### Fixed (IMPL-INV-NOTIF-001B — Notifications Consistency & Persistence, origen: AUDIT-INV-NOTIF-001 / IMPL-INV-NOTIF-001A)
+
+- **[NOTIF-001]** `NotificacionesDropdown::aprobarCambio()` reescrito para coincidir exactamente
+  con `HmbIndex::aprobarModificacion()` (clase canónica). Correcciones aplicadas:
+  - Eliminado `$cambio->delete()` que destruía evidencia histórica.
+  - Null-check de `$cambio` movido al inicio, antes de cualquier uso de la variable.
+  - Reemplazada creación de nuevos registros `HistorialModificacionBien` por actualización de
+    estado del registro existente: `estado='aprobada'`, `aprobado_por=auth()->id()`, `save()`.
+  - Eliminado uso de clave `campo_modificado` (inexistente; columna correcta es `campo`).
+  - Añadida creación de `HistorialDependenciaBien` cuando `campo === 'dependencia_id'`,
+    preservando trazabilidad de transferencias de dependencia.
+  - Añadido import `HistorialDependenciaBien`.
+
+- **[NOTIF-002]** `NotificacionesDropdown::rechazarCambio()` corregido. Reemplazado
+  `$cambio->delete()` por `estado='rechazada'`, `aprobado_por=auth()->id()`, `save()`.
+  El registro HMB se preserva con estado definitivo en lugar de eliminarse.
+
+- **[NOTIF-003-HMB]** `NotificacionHmb`: canal `database` activado.
+  - `via()` actualizado: `['mail', 'database']`.
+  - `toDatabase()` implementado y activado (estaba comentado con referencia incorrecta
+    a `user->name`). Corrección: nombre obtenido vía `dependencia->user->nombres/apellidos`.
+  - Tabla `notifications` confirmada existente (migración `2025_05_21_020618` ejecutada).
+
+- **[NOTIF-003-HEB]** `NotificacionHeb`: canal `database` NO activado por seguridad.
+  El `toDatabase()` comentado referencia `campo`, `valor_anterior`, `valor_nuevo` que no
+  existen en `HistorialEliminacionBien` (fillable real: `bien_id`, `dependencia_id`,
+  `user_id`, `aprobado_por`, `estado`, `motivo`). Activación requiere redefinir el
+  payload antes de habilitarse. Pendiente como deuda técnica documentada.
+
+- **[NOTIF-004]** `NotificacionesIcono`: añadido listener `#[On('cambioActualizado')]`
+  que refresca `$total` en tiempo real al aprobar o rechazar desde el dropdown.
+  Eliminada dependencia de wire:poll para actualización del contador.
+
+---
+
 ## v2.10.3 — 2026-06-10
 
 ### Added (IMPL-INV-NOTIF-001A — Notifications Quick Activation, origen: AUDIT-INV-NOTIF-001)
