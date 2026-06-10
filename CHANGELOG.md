@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.2] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-008]** Inventario: eliminación de `wire:poll` innecesario en BienesIndex, HEB y HMB.
+  Corrige error 419 PAGE EXPIRED en tabs en segundo plano (AUDIT-LIVEWIRE-419-001). Eliminado
+  listener muerto `bienCreado` de BienesIndex. Sin regresiones funcionales.
+  Inventario v2.10.2 | BhagamApps v1.11.2.
+
+---
+
 ## [v1.11.1] — 2026-06-10
 
 ### Fixed

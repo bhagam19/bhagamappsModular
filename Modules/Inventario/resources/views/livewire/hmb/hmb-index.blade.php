@@ -61,7 +61,7 @@
     </div>
 
     {{-- Tabla escritorio --}}
-    <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;" wire:poll.10s>
+    <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;">
         <table class="table table-striped table-sm table-hover w-100 mb-0">
             <thead class="thead-dark">
                 <tr>
@@ -207,7 +207,7 @@
         </div>
 
         {{-- Vista móvil --}}
-        <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.10s>
+        <div class="d-block d-md-none" x-data="{ openId: null }">
             <div id="accordionMobilePendientes">
                 @forelse($modificacionesPendientes as $modificacion)
                     @php

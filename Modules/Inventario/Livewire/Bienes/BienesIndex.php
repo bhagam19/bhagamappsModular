@@ -116,7 +116,6 @@ class BienesIndex extends Component
 
     protected $listeners = [
         'bienActualizado' => 'recargarBien',
-        'bienCreado' => '$refresh',
     ];
 
     // --- Query string para filtros ---

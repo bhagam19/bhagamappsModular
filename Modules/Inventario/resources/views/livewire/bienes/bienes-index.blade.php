@@ -521,7 +521,7 @@
     </div>
 
     {{-- Tabla para escritorio --}}
-    <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;" wire:poll.30s>
+    <div class="table-responsive d-none d-md-block" style="max-height: 600px; overflow-y: auto;">
         <table class="table table-striped table-sm table-hover w-100 mb-0">
             <thead>
                 {{-- Fila de filtros --}}
@@ -832,7 +832,7 @@
     </div>
 
     {{-- Tabla de Bienes (Móvil): acordeón con Alpine.js --}}
-    <div class="d-block d-md-none" x-data="{ openId: null }" wire:poll.30s>
+    <div class="d-block d-md-none" x-data="{ openId: null }">
         <div id="accordionMobileBienes">
             @php
                 $contador = 0;

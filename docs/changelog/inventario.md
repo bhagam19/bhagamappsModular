@@ -5,6 +5,31 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.2 — 2026-06-10
+
+### Fixed (IMPL-INV-008 — Eliminación de Polling Innecesario, origen: AUDIT-LIVEWIRE-419-001)
+
+- **[RF-001]** Eliminados 2 × `wire:poll.30s` de `bienes-index.blade.php` (desktop + mobile).
+  BienesIndex ya usa event-based updates vía `bienActualizado` → `recargarBien`; el polling
+  era redundante y el origen confirmado del 419 PAGE EXPIRED en background tabs.
+
+- **[RF-002]** Eliminados 2 × `wire:poll.10s` de `heb-index.blade.php` (desktop + mobile).
+  HEB (Historial Eliminaciones Bienes) no tiene actualizaciones en tiempo real; polling era
+  innecesario y exponía la misma vulnerabilidad de sesión.
+
+- **[RF-003]** Eliminados 2 × `wire:poll.10s` de `hmb-index.blade.php` (desktop + mobile).
+  HMB (Historial Modificaciones Bienes) usa aprobación manual; polling innecesario eliminado.
+
+- **[RF-004]** Eliminado listener muerto `'bienCreado' => '$refresh'` de `BienesIndex.php`.
+  El evento `bienCreado` no es despachado por ningún componente del módulo; listener era
+  código muerto desde el origen.
+
+**Causa raíz (AUDIT-LIVEWIRE-419-001):** `wire:poll` sin `.visible` + throttling de tabs en
+segundo plano pausa JS timers → sesión expira (`SESSION_LIFETIME=120`) → al volver al tab,
+el poll dispara con CSRF desactualizado → 419. Fix: eliminación completa de `wire:poll`.
+
+---
+
 ## v2.10.1 — 2026-06-10
 
 ### Fixed (IMPL-INV-007 — Technical Debt Cleanup, origen: AUDIT-INV-005)

@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.2 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-008]** Inventario v2.10.2: eliminación de `wire:poll` innecesario (BienesIndex,
+  HEB, HMB — 6 directivas eliminadas) y listener muerto `bienCreado`. Corrige 419 PAGE EXPIRED
+  en tabs en segundo plano identificado por AUDIT-LIVEWIRE-419-001.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.11.1 — 2026-06-10
 
 ### Fixed
