@@ -11,6 +11,15 @@ Changelogs de módulo:
 
 ---
 
+## v1.9.3 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-004]** Paquete de remediación técnica del módulo Inventario (GAP-001/002/004 de AUDIT-INV-003).
+  Inventario v2.8.1. Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.9.2 — 2026-06-09
 
 ### Added

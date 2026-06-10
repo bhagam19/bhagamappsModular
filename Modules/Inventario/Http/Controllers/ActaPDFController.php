@@ -13,8 +13,12 @@ class ActaPDFController
     {
         $user = User::findOrFail($userId);
 
-        $bienes = Bien::with(['detalle', 'estado', 'dependencia', 'user'])
-            ->where('user_id', $userId)
+        $bienes = Bien::with(['detalle', 'estado', 'dependencia'])
+            ->join('dependencias', 'bienes.dependencia_id', '=', 'dependencias.id')
+            ->where('dependencias.user_id', $userId)
+            ->orderBy('dependencias.nombre')
+            ->orderBy('bienes.nombre')
+            ->select('bienes.*')
             ->get();
 
         $nombreCompleto = mb_strtoupper($user->nombres . ' ' . $user->apellidos, 'UTF-8');

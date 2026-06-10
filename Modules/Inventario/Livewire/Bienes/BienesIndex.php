@@ -66,10 +66,9 @@ class BienesIndex extends Component
         'cantidad' => 'Cantidad',
         'detalle' => 'Detalle',
         'dependencia_id' => 'Dependencia',
-        'user_id' => 'user',
+        'user_id' => 'Coordinador',
         'categoria_id' => 'Categoría',
         'serie' => 'Serie',
-        'ubicacion_id' => 'Ubicación',
         'origen' => 'Origen',
         'fecha_adquisicion' => 'Fecha de Adquisición',
         'precio' => 'Precio',
@@ -98,7 +97,7 @@ class BienesIndex extends Component
         'estado_id',
         'mantenimiento_id',
         'almacenamiento_id',
-        'observaciones'
+        'observaciones',
     ];
     //--- Eliminación con soft delete ---
     public $bienId, $motivo, $nuevoMotivo;

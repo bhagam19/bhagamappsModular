@@ -22,8 +22,6 @@ class Bien extends Model
         'cantidad',
         'categoria_id',
         'dependencia_id',
-        'ubicacion_id',
-        'user_id',
         'almacenamiento_id',
         'estado_id',
         'mantenimiento_id',
@@ -102,7 +100,6 @@ class Bien extends Model
     {
         // Mapeo de campos a relaciones y atributos representativos
         $relaciones = [
-            'user_id'        => ['rel' => 'user',        'campo' => fn($u) => $u?->nombres . ' ' . $u?->apellidos],
             'categoria_id'      => ['rel' => 'categoria',      'campo' => fn($c) => $c?->nombre],
             'dependencia_id'    => ['rel' => 'dependencia',    'campo' => fn($d) => $d?->nombre],
             'almacenamiento_id' => ['rel' => 'almacenamiento', 'campo' => fn($a) => $a?->nombre],

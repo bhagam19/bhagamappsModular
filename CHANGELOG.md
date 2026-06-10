@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.9.3] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-004]** Remediación técnica módulo Inventario: eliminación de componente Livewire roto
+  con permisos inexistentes, corrección de query activa con columna ausente en BD, limpieza de
+  columna virtual inexistente en UI de bienes. Inventario v2.8.1.
+
+---
+
 ## [v1.9.2] — 2026-06-09
 
 ### Added

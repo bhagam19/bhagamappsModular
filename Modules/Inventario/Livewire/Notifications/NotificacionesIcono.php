@@ -17,6 +17,6 @@ class NotificacionesIcono extends Component
 
     public function render()
     {
-        return view('inventario::livewire.notifications.notificaciones-icono');
+        return view('inventario::livewire.hmb.notificaciones-icono');
     }
 }

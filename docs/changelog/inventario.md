@@ -5,6 +5,38 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.8.1 — 2026-06-10
+
+### Fixed (IMPL-INV-004 — Inventory Core Remediation Package)
+
+- **[GAP-001]** Eliminado `Livewire/Notifications/Notificaciones.php`: componente completamente roto
+  (vista inexistente, permisos `aprobar-cambios-bienes`/`rechazar-cambios-bienes` no registrados
+  en ninguna migración, funcionalidad duplicada por `HmbIndex`). 0 `AuthorizationException` posibles.
+
+- **[GAP-001]** Corregido `NotificacionesIcono.php`: path de vista corregido de
+  `livewire.notifications.notificaciones-icono` → `livewire.hmb.notificaciones-icono`.
+
+- **[GAP-002]** Eliminado `user_id` de `Bien.$fillable` y de `Bien.getDisplayValue()`:
+  la columna `bienes.user_id` nunca existió en base de datos. La relación usuario→bien
+  es exclusivamente vía `dependencias.user_id`.
+
+- **[GAP-002]** Corregido `ActaPDFController::show()`: query reescrita usando JOIN a
+  `dependencias.user_id` en lugar de `where('user_id', $userId)` (que siempre devolvía vacío).
+  Eliminado `'user'` del `with()` (relación inexistente en `Bien`).
+
+- **[GAP-004]** Eliminado `ubicacion_id` de `BienesIndex.$availableColumns`:
+  la columna `bienes.ubicacion_id` no existe en base de datos. La ubicación se accede
+  a través de `dependencia.ubicacion_id` (columna real en `dependencias`).
+
+### Decision (GAP-003 — `bienes.origen` vs catálogo `origenes`)
+
+- **Decisión arquitectónica:** mantener `bienes.origen` como campo de texto libre.
+  El catálogo `origenes` sirve como referencia administrable, no como FK.
+  La normalización completa (agregar `origen_id FK` a `bienes` con migración de datos)
+  se programa para una iteración futura como IMPL-INV-005 o posterior.
+
+---
+
 ## v2.8.0 — 2026-06-09
 
 ### Added (IMPL-INV-002A — Catalog & HEB Navigation Integration)
