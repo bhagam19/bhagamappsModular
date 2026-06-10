@@ -6,6 +6,7 @@ use Modules\Inventario\Http\Controllers\HmbController;
 use Modules\Inventario\Http\Controllers\HebController;
 use Modules\Inventario\Http\Controllers\ActaController;
 use Modules\Inventario\Http\Controllers\ActaPDFController;
+use Modules\Inventario\Http\Controllers\CatalogosController;
 
 Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
 
@@ -36,4 +37,33 @@ Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario'
     Route::get('/heb', [HebController::class, 'index'])
         ->name('inventario.heb')
         ->middleware('permission:gestionar-historial-eliminaciones-bienes');
+
+    // Catálogos maestros
+    Route::get('/catalogos/categorias', [CatalogosController::class, 'categorias'])
+        ->name('inventario.catalogos.categorias')
+        ->middleware('permission:ver-categorias');
+
+    Route::get('/catalogos/dependencias', [CatalogosController::class, 'dependencias'])
+        ->name('inventario.catalogos.dependencias')
+        ->middleware('permission:ver-dependencias');
+
+    Route::get('/catalogos/ubicaciones', [CatalogosController::class, 'ubicaciones'])
+        ->name('inventario.catalogos.ubicaciones')
+        ->middleware('permission:ver-ubicaciones');
+
+    Route::get('/catalogos/estados', [CatalogosController::class, 'estados'])
+        ->name('inventario.catalogos.estados')
+        ->middleware('permission:ver-estados');
+
+    Route::get('/catalogos/origenes', [CatalogosController::class, 'origenes'])
+        ->name('inventario.catalogos.origenes')
+        ->middleware('permission:ver-origenes');
+
+    Route::get('/catalogos/almacenamientos', [CatalogosController::class, 'almacenamientos'])
+        ->name('inventario.catalogos.almacenamientos')
+        ->middleware('permission:ver-almacenamientos');
+
+    Route::get('/catalogos/mantenimientos', [CatalogosController::class, 'mantenimientos'])
+        ->name('inventario.catalogos.mantenimientos')
+        ->middleware('permission:ver-mantenimientos');
 });

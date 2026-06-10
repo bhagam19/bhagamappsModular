@@ -11,6 +11,19 @@ Changelogs de módulo:
 
 ---
 
+## v1.8.0 — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-002]** Inventario: CRUD administrativos completos para 7 catálogos maestros
+  (Categorías, Dependencias, Ubicaciones, Estados de Bien, Orígenes, Almacenamientos, Mantenimientos).
+  28 nuevos permisos en la plataforma, nueva tabla `origenes`, 7 componentes Livewire,
+  7 rutas protegidas, 28 Gates en AuthServiceProvider.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle completo.
+- Inventario: v2.5.0 → v2.6.0 | BhagamApps: v1.7.1 → v1.8.0
+
+---
+
 ## v1.7.1 — 2026-06-09
 
 ### Fixed

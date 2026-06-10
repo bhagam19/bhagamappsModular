@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.8.0] — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-002]** Inventario: CRUD administrativos completos para los 7 catálogos maestros del módulo.
+  28 nuevos permisos en la plataforma, nueva tabla `origenes`, 7 rutas, 7 componentes Livewire.
+- Inventario: v2.6.0 | BhagamApps: v1.8.0
+
+---
+
 ## [v1.7.1] — 2026-06-09
 
 ### Fixed

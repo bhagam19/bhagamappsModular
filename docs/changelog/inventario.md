@@ -5,6 +5,36 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.6.0 — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-002 / Fase 1]** CRUD administrativo completo para los catálogos maestros del módulo.
+  Nuevas secciones con búsqueda, paginación, ordenamiento, edición inline y protección de integridad referencial antes de eliminar.
+  Catalogs implementados: **Categorías**, **Dependencias**, **Ubicaciones**, **Estados de Bien**, **Orígenes**.
+
+- **[IMPL-INV-002 / Fase 2]** CRUD administrativo para los catálogos auxiliares: **Almacenamientos**, **Mantenimientos**.
+
+- **[IMPL-INV-002]** Nuevas rutas GET bajo `/inventario/catalogos/{catalog}` protegidas por `app.access:inventario` + permiso individual `ver-{catalog}`.
+  Rutas: `/catalogos/categorias`, `/catalogos/dependencias`, `/catalogos/ubicaciones`, `/catalogos/estados`, `/catalogos/origenes`, `/catalogos/almacenamientos`, `/catalogos/mantenimientos`.
+
+- **[IMPL-INV-002]** 28 nuevos permisos en categoría `catalogos` (ver/crear/editar/eliminar × 7 catálogos).
+  Asignados: Administrador y Rector reciben los 28; Coordinador recibe solo los 7 `ver-*`.
+  Migración: `2026_06_09_000008_add_catalog_permissions`.
+
+- **[IMPL-INV-002]** Tabla `origenes` creada con columnas `nombre` y `descripcion`. Origen de bien era texto libre en `bienes.origen`.
+  El catálogo queda disponible para normalización futura.
+  Migración: `2026_06_09_000007_create_origenes_table`.
+  Modelo: `Modules/Inventario/Entities/Origen.php`.
+
+- **[IMPL-INV-002]** 7 Componentes Livewire bajo `Modules/Inventario/Livewire/Catalogos/` (auto-descubiertos por `InventarioServiceProvider`).
+  Alias: `catalogos.{catalog}-index`.
+
+- **[IMPL-INV-002]** Gates de autorización registrados en `AuthServiceProvider` para los 28 slugs nuevos,
+  habilitando uso de `@can('editar-categorias')` etc. en vistas Blade.
+
+---
+
 ## v2.5.0 — 2026-06-09
 
 ### Fixed

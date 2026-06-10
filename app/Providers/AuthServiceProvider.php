@@ -115,6 +115,19 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('eliminar-apps');
                 });
 
+                // Gates para catálogos maestros de Inventario (IMPL-INV-002)
+                foreach ([
+                        'ver-categorias','crear-categorias','editar-categorias','eliminar-categorias',
+                        'ver-dependencias','crear-dependencias','editar-dependencias','eliminar-dependencias',
+                        'ver-ubicaciones','crear-ubicaciones','editar-ubicaciones','eliminar-ubicaciones',
+                        'ver-estados','crear-estados','editar-estados','eliminar-estados',
+                        'ver-origenes','crear-origenes','editar-origenes','eliminar-origenes',
+                        'ver-almacenamientos','crear-almacenamientos','editar-almacenamientos','eliminar-almacenamientos',
+                        'ver-mantenimientos','crear-mantenimientos','editar-mantenimientos','eliminar-mantenimientos',
+                ] as $slug) {
+                        Gate::define($slug, fn($user) => $user->hasPermission($slug));
+                }
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }
