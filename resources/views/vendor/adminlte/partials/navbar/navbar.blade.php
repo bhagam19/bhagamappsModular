@@ -61,21 +61,25 @@
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
-        {{-- Notifications dropdown --}}
-        {{--
+        {{-- Notificaciones Inventario (IMPL-INV-NOTIF-001A) --}}
         @auth
             @php
                 $esAdmin = auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Rector');
             @endphp
 
             @if ($esAdmin)
-                <li class="nav-item dropdown">
-                    @livewire('hmb.notificaciones-dropdown')
+                {{-- Icono con badge contador de modificaciones pendientes — DF-002 --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('inventario.hmb') }}" title="Modificaciones pendientes">
+                        <i class="fas fa-bell"></i>
+                        @livewire('notifications.notificaciones-icono')
+                    </a>
                 </li>
-            @endif
 
+                {{-- Dropdown de aprobaciones inline HMB — DF-001 --}}
+                @livewire('notifications.notificaciones-dropdown')
+            @endif
         @endauth
-        --}}
 
         {{-- User menu link --}}
         @if (Auth::user())

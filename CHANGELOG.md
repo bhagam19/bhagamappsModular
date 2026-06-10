@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.3] — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-NOTIF-001A]** Inventario: activación de notificaciones in-app (DF-001/002/004).
+  Dropdown de aprobaciones HMB y badge contador de pendientes activados en navbar para
+  Administrador y Rector. Registro Livewire huérfano eliminado de InventarioServiceProvider.
+  Inventario v2.10.3 | BhagamApps v1.11.3.
+
+---
+
 ## [v1.11.2] — 2026-06-10
 
 ### Fixed

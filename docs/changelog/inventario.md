@@ -5,6 +5,35 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.3 — 2026-06-10
+
+### Added (IMPL-INV-NOTIF-001A — Notifications Quick Activation, origen: AUDIT-INV-NOTIF-001)
+
+- **[DF-001]** Dropdown de aprobaciones inline HMB activado en navbar.
+  Componente `NotificacionesDropdown` (`notifications.notificaciones-dropdown`) integrado en
+  `navbar.blade.php` con condicional `$esAdmin = Administrador OR Rector`. Corregido alias
+  incorrecto pre-existente (`hmb.notificaciones-dropdown` → `notifications.notificaciones-dropdown`).
+  Eliminado wrapper `<li>` redundante que envolvía el `@livewire` (el componente renderiza su
+  propio `<li class="nav-item dropdown">`). Visible solo para Administrador y Rector.
+
+- **[DF-001-FIX]** Añadido filtro `->where('estado', 'pendiente')` a `NotificacionesDropdown::render()`.
+  Sin este filtro el dropdown mostraba todos los registros HMB (aprobados, rechazados y pendientes).
+  Ahora muestra únicamente los pendientes de aprobación.
+
+- **[DF-002]** Badge contador de modificaciones pendientes activado en navbar.
+  Componente `NotificacionesIcono` (`notifications.notificaciones-icono`) integrado como
+  `<li class="nav-item">` con enlace a `/inventario/hmb`. Muestra badge `badge-warning` con
+  conteo exacto de `HistorialModificacionBien.estado='pendiente'`. Visible solo para
+  Administrador y Rector.
+
+- **[DF-004]** Eliminados dos bloques `/* */` comentados de `InventarioServiceProvider.php`:
+  - Imports comentados: `BienesIndex`, `EditarCampoBien`, `EditarDetalleBien`, `Notificaciones`,
+    `NotificacionesIcono` (supersedidos por auto-registro en loop).
+  - Registros manuales comentados incluyendo referencia huérfana a clase `Notificaciones`
+    inexistente. El auto-registro en `File::allFiles()` maneja todos los componentes.
+
+---
+
 ## v2.10.2 — 2026-06-10
 
 ### Fixed (IMPL-INV-008 — Eliminación de Polling Innecesario, origen: AUDIT-LIVEWIRE-419-001)

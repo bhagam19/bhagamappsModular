@@ -10,13 +10,6 @@ use RecursiveIteratorIterator;
 
 use Livewire\Livewire;
 use Illuminate\Support\Facades\File;
-/*
-use Modules\Inventario\Livewire\Bienes\BienesIndex;
-use Modules\Inventario\Livewire\Bienes\EditarCampoBien;
-use Modules\Inventario\Livewire\Bienes\EditarDetalleBien;
-use Modules\Inventario\Livewire\Notifications\Notificaciones;
-use Modules\Inventario\Livewire\Notifications\NotificacionesIcono;
-*/
 
 class InventarioServiceProvider extends ServiceProvider
 {
@@ -66,15 +59,7 @@ class InventarioServiceProvider extends ServiceProvider
             $alias = $folder ? $folder . '.' . $aliasName : $aliasName;
 
             Livewire::component($alias, $class);
-        } 
-
-        /*
-        Livewire::component('bienes.bienes-index', BienesIndex::class);
-        Livewire::component('bienes.editar-campo-bien', EditarCampoBien::class);
-        Livewire::component('bienes.editar-detalle-bien', EditarDetalleBien::class);
-        Livewire::component('notifications.notificaciones', Notificaciones::class);
-        Livewire::component('notifications.notificaciones-icono', NotificacionesIcono::class);
-        */
+        }
     }
 
     private function kebabCase(string $string): string

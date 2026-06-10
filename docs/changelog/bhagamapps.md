@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.3 — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-NOTIF-001A]** Inventario v2.10.3: activación de notificaciones in-app.
+  Dropdown de aprobaciones HMB + badge contador de pendientes visibles en navbar para
+  Administrador y Rector. Limpieza de referencia Livewire huérfana en ServiceProvider.
+  Cierra DF-001, DF-002, DF-004 de AUDIT-INV-NOTIF-001.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.11.2 — 2026-06-10
 
 ### Fixed

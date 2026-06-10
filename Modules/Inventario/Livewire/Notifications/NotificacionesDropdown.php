@@ -22,6 +22,7 @@ class NotificacionesDropdown extends Component
     public function render()
     {
         $modificacionesPendientes = HistorialModificacionBien::with(['bien', 'user'])
+            ->where('estado', 'pendiente')
             ->latest()
             ->paginate($this->perPage);
 
