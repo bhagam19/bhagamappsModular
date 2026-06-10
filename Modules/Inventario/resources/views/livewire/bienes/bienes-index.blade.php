@@ -792,9 +792,7 @@
                                         @endif
                                     @endif
                                 @else
-                                    @if ($column === 'ubicacion_id')
-                                        {{ $bien->dependencia->ubicacion->nombre ?? 'Sin ubicación' }}
-                                    @elseif ($column === 'user_id')
+                                    @if ($column === 'user_id')
                                         <span class="px-2 small text-muted editable-desktop d-none d-sm-inline">
                                             {{ $bien->dependencia->user->nombre_completo ?? 'Sin responsable' }}
                                         </span>

@@ -45,7 +45,7 @@ class BienesIndex extends Component
 
     // --- Campos del bien ---
     public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
-    public $categoria_id, $dependencia_id, $user_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
+    public $categoria_id, $dependencia_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
 
     // --- Campos de detalle del bien ---
     public $detalleBien = [
@@ -454,13 +454,20 @@ class BienesIndex extends Component
             $query->whereHas('dependencia', fn($q) => $q->where('user_id', $user->id));
         }
 
+        $columnasSortables = [
+            'id', 'nombre', 'cantidad', 'serie', 'origen', 'fecha_adquisicion',
+            'precio', 'categoria_id', 'dependencia_id', 'almacenamiento_id',
+            'estado_id', 'mantenimiento_id', 'observaciones', 'created_at', 'updated_at',
+        ];
+        $sortField = in_array($this->sortField, $columnasSortables) ? $this->sortField : 'id';
+
         return $query
             ->when($this->filtroUser, fn($q) => $q->whereHas('dependencia', fn($sub) => $sub->where('user_id', $this->filtroUser)))
             ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
             ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
             ->when($this->filtroNombre, fn($q) => $q->where('nombre', $this->filtroNombre))
-            ->orderBy($this->sortField, $this->sortDirection);
+            ->orderBy($sortField, $this->sortDirection);
     }
 
     public function actualizarOpcionesFiltros()

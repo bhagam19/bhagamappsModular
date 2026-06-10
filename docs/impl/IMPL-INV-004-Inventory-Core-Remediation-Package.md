@@ -267,3 +267,70 @@ grep -n "ubicacion_id" Modules/Inventario/Livewire/Bienes/BienesIndex.php
 ---
 
 *Implementado sobre commit base `998b993` — rama `main` — 2026-06-10.*
+
+---
+
+## Suplemento v2.8.2 — Validaciones residuales post-remediación
+
+**Fecha:** 2026-06-10
+**Tipo:** Correcciones residuales detectadas en auditoría post-commit
+
+Durante la revisión del commit `e4364d7` (v2.8.1) se identificaron residuos no cubiertos
+por las validaciones originales. Este suplemento los cierra.
+
+### Residuos corregidos
+
+#### Sort SQL bug — BienesIndex (V-005)
+
+`$ordenBase` incluía `user_id` y `detalle`, que no son columnas reales de la tabla `bienes`.
+Si un Admin/Rector hacía clic en el encabezado de esas columnas para ordenar, `filtrarBienesQuery()`
+ejecutaba `ORDER BY bienes.user_id` generando `QueryException`.
+
+**Fix:** Guard de allowlist `$columnasSortables` en `filtrarBienesQuery()`. Columnas no listadas
+caen a `id`.
+
+| Archivo | Cambio |
+|---|---|
+| `Livewire/Bienes/BienesIndex.php` | Allowlist `$columnasSortables` en `filtrarBienesQuery()` |
+| `Livewire/Bienes/BienesIndex.php` | Eliminada propiedad de formulario muerta `public $user_id` |
+
+#### Código muerto EditarCampoBien (V-003/V-004)
+
+`inferirTabla()` y `cargarOpciones()` tenían casos para `ubicacion_id` y `user_id`, columnas
+no pertenecientes al modelo `Bien`. Ambos son código muerto: la vista `bienes-index.blade.php`
+intercepta esas columnas antes de montar `EditarCampoBien`.
+
+| Archivo | Cambio |
+|---|---|
+| `Livewire/Bienes/EditarCampoBien.php` | Eliminados casos `ubicacion_id` y `user_id` de `inferirTabla()` y `cargarOpciones()` |
+| `Livewire/Bienes/EditarCampoBien.php` | Eliminado import `Ubicacion` (sin uso tras limpieza) |
+
+#### Blade dead code (V-004)
+
+`@if ($column === 'ubicacion_id')` en `bienes-index.blade.php` era inalcanzable: `ubicacion_id`
+nunca puede estar en `$visibleColumns` (no estaba en `$ordenBase`).
+
+| Archivo | Cambio |
+|---|---|
+| `resources/views/livewire/bienes/bienes-index.blade.php` | Eliminado bloque `@if ($column === 'ubicacion_id')` |
+
+#### Gates huérfanos AuthServiceProvider (GAP-001 cierre final)
+
+Los Gates `aprobar-cambios-bienes` y `rechazar-cambios-bienes` permanecían definidos en
+`AuthServiceProvider.php` referenciando el permiso `aprobar-pendientes-bienes`, nunca seeded.
+Con `Notificaciones.php` eliminado en v2.8.1, estos gates quedaron completamente huérfanos.
+
+| Archivo | Cambio |
+|---|---|
+| `app/Providers/AuthServiceProvider.php` | Eliminadas definiciones de Gates `aprobar-cambios-bienes` y `rechazar-cambios-bienes` |
+
+### Validaciones post-suplemento
+
+| ID | Verificación | Resultado |
+|---|---|---|
+| V-001 | 0 Gates referenciando permisos inexistentes | ✅ PASS |
+| V-002 | `ActaPDFController` genera resultados válidos | ✅ PASS (sin cambio) |
+| V-003 | 0 referencias a `bienes.user_id` en model/controllers/editores | ✅ PASS |
+| V-004 | 0 referencias a `ubicacion_id` inexistente en componentes Bienes | ✅ PASS |
+| V-005 | Sin errores de ejecución (sort guard activo) | ✅ PASS |
+| V-006 | Sin regresiones funcionales | ✅ PASS |

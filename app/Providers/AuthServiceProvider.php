@@ -87,14 +87,6 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('ver-biblioteca');
                 });
 
-                Gate::define('aprobar-cambios-bienes', function ($user) {
-                        return $user->hasPermission('aprobar-pendientes-bienes');
-                });
-
-                Gate::define('rechazar-cambios-bienes', function ($user) {
-                        return $user->hasPermission('aprobar-pendientes-bienes');
-                });
-
                 Gate::define('administrar-apps', function ($user) {
                         return $user->hasPermission('administrar-apps');
                 });

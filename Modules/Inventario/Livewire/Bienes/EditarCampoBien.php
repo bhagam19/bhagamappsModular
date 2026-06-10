@@ -11,7 +11,6 @@ use Modules\Inventario\Entities\{
     Almacenamiento,
     Mantenimiento,
     Dependencia,
-    Ubicacion,
     Categoria,
     HistorialModificacionBien
 };
@@ -59,37 +58,25 @@ class EditarCampoBien extends Component
     protected function inferirTabla(): string
     {
         return match ($this->campo) {
-            'categoria_id' => 'categorias',
-            'estado_id' => 'estados',
-            'ubicacion_id' => 'ubicaciones',
-            'dependencia_id' => 'dependencias',
-            'almacenamiento_id' => 'almacenamientos',
+            'categoria_id'     => 'categorias',
+            'estado_id'        => 'estados',
+            'dependencia_id'   => 'dependencias',
+            'almacenamiento_id'=> 'almacenamientos',
             'mantenimiento_id' => 'mantenimientos',
-            'user_id' => 'users',
-            default => 'opciones', // fallback si no se conoce
+            default            => 'opciones',
         };
     }
 
     protected function cargarOpciones(string $campo): array
     {
         return match ($campo) {
-            'categoria_id' => Categoria::orderBy('nombre')
-                ->get()
-                ->mapWithKeys(fn($c) => [$c->id => $c->nombre])
-                ->toArray(),
-            'estado_id' => Estado::pluck('nombre', 'id')->toArray(),
-            'ubicacion_id' => Ubicacion::pluck('nombre', 'id')->toArray(),
-            'dependencia_id' => Dependencia::pluck('nombre', 'id')->toArray(),
-            'almacenamiento_id' => Almacenamiento::pluck('nombre', 'id')->toArray(),
+            'categoria_id'     => Categoria::orderBy('nombre')->get()
+                ->mapWithKeys(fn($c) => [$c->id => $c->nombre])->toArray(),
+            'estado_id'        => Estado::pluck('nombre', 'id')->toArray(),
+            'dependencia_id'   => Dependencia::pluck('nombre', 'id')->toArray(),
+            'almacenamiento_id'=> Almacenamiento::pluck('nombre', 'id')->toArray(),
             'mantenimiento_id' => Mantenimiento::pluck('nombre', 'id')->toArray(),
-            'user_id' => User::orderBy('nombres')
-                ->orderBy('apellidos')
-                ->get()
-                ->mapWithKeys(function ($user) {
-                    return [$user->id => trim("{$user->nombres} {$user->apellidos}")];
-                })
-                ->toArray(),
-            default => [],
+            default            => [],
         };
     }
 

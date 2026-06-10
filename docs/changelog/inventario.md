@@ -5,6 +5,31 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.8.2 — 2026-06-10
+
+### Fixed (IMPL-INV-004 suplemento — validaciones residuales)
+
+- **[V-005]** Corregido SQL bug en `BienesIndex.filtrarBienesQuery()`: columnas virtuales `user_id`
+  y `detalle` estaban en `$ordenBase` y podían generar `ORDER BY bienes.user_id` / `ORDER BY bienes.detalle`
+  que no existen en BD. Añadido guard de allowlist `$columnasSortables`; sort de columnas no listadas
+  cae a `id`.
+
+- **[V-003]** Eliminada propiedad de formulario `public $user_id` de `BienesIndex` (nunca usada
+  en `store()`; herencia de diseño anterior sin columna BD correspondiente).
+
+- **[V-003/V-004]** Eliminados casos `user_id` y `ubicacion_id` de `EditarCampoBien.inferirTabla()`
+  y `cargarOpciones()`: código muerto, la vista intercepta ambas columnas antes de invocar el componente.
+  Eliminado import `Ubicacion` que quedaba sin uso.
+
+- **[V-004]** Eliminado bloque `@if ($column === 'ubicacion_id')` de `bienes-index.blade.php`:
+  código muerto, `ubicacion_id` nunca puede estar en `$visibleColumns`.
+
+- **[GAP-001 cierre final]** Eliminadas definiciones de Gates `aprobar-cambios-bienes` y
+  `rechazar-cambios-bienes` de `AuthServiceProvider.php`: referenciaban permiso `aprobar-pendientes-bienes`
+  no seeded en ninguna migración. `Notificaciones.php` (el único llamador) fue eliminado en v2.8.1.
+
+---
+
 ## v2.8.1 — 2026-06-10
 
 ### Fixed (IMPL-INV-004 — Inventory Core Remediation Package)

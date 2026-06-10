@@ -11,6 +11,16 @@ Changelogs de módulo:
 
 ---
 
+## v1.9.4 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-004 suplemento]** Validaciones residuales post-remediación: sort SQL bug en `BienesIndex`,
+  Gates huérfanos en `AuthServiceProvider`, código muerto en `EditarCampoBien` y vista bienes.
+  Inventario v2.8.2. Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.9.3 — 2026-06-10
 
 ### Fixed

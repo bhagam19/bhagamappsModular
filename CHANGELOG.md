@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.9.4] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-004 suplemento]** Corrección de sort SQL bug en `BienesIndex`: columnas virtuales
+  (`user_id`, `detalle`) en `$ordenBase` podían generar `orderBy` sobre columnas inexistentes en
+  `bienes`. Guard de allowlist añadido. Eliminados Gates huérfanos `aprobar-cambios-bienes` /
+  `rechazar-cambios-bienes` de `AuthServiceProvider` (permiso base nunca seeded). Limpieza de código
+  muerto en `EditarCampoBien` y vista `bienes-index`. Inventario v2.8.2.
+
+---
+
 ## [v1.9.3] — 2026-06-10
 
 ### Fixed
