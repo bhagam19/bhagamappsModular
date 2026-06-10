@@ -11,6 +11,16 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.1 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-007]** Inventario v2.10.1: limpieza de deuda técnica. 4 gates huérfanos eliminados
+  de `AuthServiceProvider`, HMB integrado al sidebar, migración duplicada eliminada.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.11.0 — 2026-06-10
 
 ### Added

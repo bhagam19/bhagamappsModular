@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.1] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INV-007]** Inventario: limpieza de deuda técnica DT-001/DT-003/DT-005 post AUDIT-INV-005.
+  Eliminados 4 gates huérfanos de `AuthServiceProvider`; HMB "Historial Modificaciones" añadido
+  al sidebar; migración duplicada eliminada de `database/migrations/`. Sin regresiones.
+  Inventario v2.10.1 | BhagamApps v1.11.1.
+
+---
+
 ## [v1.11.0] — 2026-06-10
 
 ### Added

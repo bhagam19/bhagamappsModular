@@ -5,6 +5,29 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.1 — 2026-06-10
+
+### Fixed (IMPL-INV-007 — Technical Debt Cleanup, origen: AUDIT-INV-005)
+
+- **[DT-001]** Eliminados 4 gates huérfanos de `AuthServiceProvider`: `ver-categorias-bienes`,
+  `ver-historial-modificaciones`, `ver-historial-ubicaciones`, `ver-responsables`. Ninguno tenía
+  permiso en BD ni era llamado desde rutas, Livewire o vistas. Consolidados 3 gates redundantes
+  individuales (`ver-ubicaciones`, `ver-dependencias`, `ver-estados`) ya cubiertos por el foreach
+  de IMPL-INV-002. Gates funcionales operativos: 19 confirmados.
+
+- **[DT-003]** HMB — Historial de Modificaciones de Bienes añadido al sidebar Inventario.
+  Entrada: `'route' => 'inventario.hmb'`, `'can' => 'gestionar-historial-modificaciones-bienes'`,
+  `'active' => ['inventario/hmb*']`, icono `fas fa-history`. Cobertura de navegación: 14/14.
+
+- **[DT-005]** Eliminado archivo duplicado
+  `database/migrations/2026_06_09_000001_create_bienes_responsables_table.php`.
+  La tabla `bienes_responsables` es gestionada por la migración canónica del módulo
+  (`Modules/Inventario/Database/Migrations/2026_06_09_000005_create_bienes_responsables_table.php`).
+  El archivo root nunca fue ejecutado (Pending). Borrado seguro: no afecta BD ni historial de
+  migraciones ejecutadas. `migrate:status` queda limpio.
+
+---
+
 ## v2.10.0 — 2026-06-10
 
 ### Added (IMPL-INV-006 — Mantenimientos Programados)

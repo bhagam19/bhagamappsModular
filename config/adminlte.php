@@ -449,6 +449,13 @@ return [
                     'can'    => 'gestionar-historial-eliminaciones-bienes',
                 ],
                 [
+                    'text'   => 'Historial Modificaciones',
+                    'icon'   => 'fas fa-history text-info',
+                    'route'  => 'inventario.hmb',
+                    'active' => ['inventario/hmb*'],
+                    'can'    => 'gestionar-historial-modificaciones-bienes',
+                ],
+                [
                     'text'   => 'Historial Ubicaciones',
                     'icon'   => 'fas fa-map-marked-alt text-info',
                     'route'  => 'inventario.ubicaciones.historial',

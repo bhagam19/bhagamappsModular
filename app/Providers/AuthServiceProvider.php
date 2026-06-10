@@ -29,47 +29,12 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('ver-usuarios');
                 });
 
-                // Define permisos para el módulo de inventario
+                // Gates para módulo Inventario — bienes y actas (IMPL-INV-001)
+                Gate::define('ver-bienes', fn($user) => $user->hasPermission('ver-bienes'));
+                Gate::define('ver-actas-de-entrega', fn($user) => $user->hasPermission('ver-actas-de-entrega'));
 
-                Gate::define('ver-bienes', function ($user) {
-                        return $user->hasPermission('ver-bienes');
-                });
-
-                Gate::define('ver-actas-de-entrega', function ($user) {
-                        return $user->hasPermission('ver-actas-de-entrega');
-                });
-
-                Gate::define('ver-ubicaciones', function ($user) {
-                        return $user->hasPermission('ver-ubicaciones');
-                });
-
-                Gate::define('ver-dependencias', function ($user) {
-                        return $user->hasPermission('ver-dependencias');
-                });
-
-                Gate::define('ver-categorias-bienes', function ($user) {
-                        return $user->hasPermission('ver-categorias-bienes');
-                });
-
-                Gate::define('ver-estados', function ($user) {
-                        return $user->hasPermission('ver-estados');
-                });
-
-                Gate::define('gestionar-historial-modificaciones-bienes', function ($user) {
-                        return $user->hasPermission('gestionar-historial-modificaciones-bienes');
-                });
-
-                Gate::define('ver-historial-modificaciones', function ($user) {
-                        return $user->hasPermission('ver-historial-modificaciones');
-                });
-
-                Gate::define('ver-historial-ubicaciones', function ($user) {
-                        return $user->hasPermission('ver-historial-ubicaciones');
-                });
-
-                Gate::define('ver-responsables', function ($user) {
-                        return $user->hasPermission('ver-responsables');
-                });
+                // Gate para HMB — Historial Modificaciones de Bienes (IMPL-INV-004)
+                Gate::define('gestionar-historial-modificaciones-bienes', fn($user) => $user->hasPermission('gestionar-historial-modificaciones-bienes'));
 
                 // Gates para mantenimientos programados (IMPL-INV-006)
                 foreach ([
