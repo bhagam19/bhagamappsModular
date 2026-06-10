@@ -5,6 +5,24 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.5 — 2026-06-10
+
+### Added (IMPL-INV-QA-001 — Inventory Test Foundation)
+
+- Primera suite formal de tests automatizados con PHPUnit 11.
+- 5 archivos en `tests/Feature/Inventario/`: `InventarioTestCase`, `PermissionsTest`,
+  `BienesTest`, `NotificacionesTest`, `HistorialUbicacionesTest`, `ResponsablesTest`.
+- **50 tests / 73 assertions** — todos verdes.
+- Capa de autorización: 17 tests cubren `auth`, `app.access:inventario`, permisos por rol
+  (Administrador, Rector, Coordinador) para las 5 rutas principales.
+- Regresiones documentadas protegidas: GAP-001, GAP-002, IMPL-INV-005, IMPL-INV-008,
+  IMPL-INV-NOTIF-001B (D-1 y D-6).
+- `DatabaseTransactions` (no `RefreshDatabase`) — seguro en MySQL de desarrollo.
+- Fix raíz: `APP_URL=http://localhost` en `phpunit.xml` para resolver la ruta con subfolder
+  `/Modular` que causaba 404 en todos los tests HTTP.
+
+---
+
 ## v2.10.4 — 2026-06-10
 
 ### Fixed (IMPL-INV-NOTIF-001B — Notifications Consistency & Persistence, origen: AUDIT-INV-NOTIF-001 / IMPL-INV-NOTIF-001A)

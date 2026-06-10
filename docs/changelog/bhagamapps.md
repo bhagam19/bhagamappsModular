@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.5 — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-QA-001]** Inventario v2.10.5: primera suite formal de tests automatizados.
+  50 tests / 73 assertions en PHPUnit 11. Base `InventarioTestCase` con `DatabaseTransactions`.
+  Autorización, flujos críticos y regresiones protegidas.
+  Fix raíz: `APP_URL=http://localhost` en `phpunit.xml`.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle.
+
+---
+
 ## v1.11.4 — 2026-06-10
 
 ### Fixed

@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.5] — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-QA-001]** Inventario v2.10.5: primera suite formal de tests automatizados.
+  50 tests / 73 assertions en 5 archivos Feature. Cubre autorización (17 tests),
+  flujos críticos de negocio (Bienes, Notificaciones, HistorialUbicaciones, Responsables)
+  y regresiones documentadas (GAP-001, GAP-002, IMPL-INV-005, IMPL-INV-008, IMPL-INV-NOTIF-001B).
+  Inventario v2.10.5 | BhagamApps v1.11.5.
+
+---
+
 ## [v1.11.4] — 2026-06-10
 
 ### Fixed
