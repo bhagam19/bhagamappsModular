@@ -11,6 +11,15 @@ Changelogs de módulo:
 
 ---
 
+## v1.9.1 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-003A]** Inventario v2.7.1: entrada "Responsables" añadida al menú lateral.
+  Cierre formal de IMPL-INV-003. IMPL-INV-004 autorizado.
+
+---
+
 ## v1.9.0 — 2026-06-09
 
 ### Added

@@ -385,6 +385,13 @@ return [
                     'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-actas-de-entrega',
                 ],
+                [
+                    'text'   => 'Responsables',
+                    'icon'   => 'fas fa-user-shield text-info',
+                    'route'  => 'inventario.responsables.index',
+                    'active' => ['inventario/responsables*'],
+                    'can'    => 'ver-responsables-bienes',
+                ],
                             ],
         ],
 

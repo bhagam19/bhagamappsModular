@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.9.1] — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-003A]** Inventario: entrada "Responsables" añadida al submenú lateral.
+  Cierre formal de IMPL-INV-003. Inventario v2.7.1 | BhagamApps v1.9.1.
+
+---
+
 ## [v1.9.0] — 2026-06-09
 
 ### Added

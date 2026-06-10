@@ -5,6 +5,16 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.7.1 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-003A]** Integración de navegación: entrada "Responsables" añadida al submenú de Inventario
+  en `config/adminlte.php`. Protegida con `can: 'ver-responsables-bienes'`.
+  Activa en rutas `inventario/responsables*`. Cierre formal de IMPL-INV-003.
+
+---
+
 ## v2.7.0 — 2026-06-09
 
 ### Added
