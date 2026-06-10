@@ -133,6 +133,14 @@ class AuthServiceProvider extends ServiceProvider
                 // Gate para HEB — Historial Eliminaciones de Bienes (IMPL-INV-002A)
                 Gate::define('gestionar-historial-eliminaciones-bienes', fn($user) => $user->hasPermission('gestionar-historial-eliminaciones-bienes'));
 
+                // Gates para Historial de Ubicaciones (IMPL-INV-005)
+                foreach ([
+                        'ver-historial-ubicaciones-bienes',
+                        'cambiar-ubicacion-bienes',
+                ] as $slug) {
+                        Gate::define($slug, fn($user) => $user->hasPermission($slug));
+                }
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }

@@ -8,6 +8,7 @@ use Modules\Inventario\Http\Controllers\ActaController;
 use Modules\Inventario\Http\Controllers\ActaPDFController;
 use Modules\Inventario\Http\Controllers\CatalogosController;
 use Modules\Inventario\Http\Controllers\ResponsablesController;
+use Modules\Inventario\Http\Controllers\UbicacionesHistorialController;
 
 Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
 
@@ -72,4 +73,9 @@ Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario'
     Route::get('/responsables', [ResponsablesController::class, 'index'])
         ->name('inventario.responsables.index')
         ->middleware('permission:ver-responsables-bienes');
+
+    // Historial de Ubicaciones
+    Route::get('/ubicaciones/historial', [UbicacionesHistorialController::class, 'index'])
+        ->name('inventario.ubicaciones.historial')
+        ->middleware('permission:ver-historial-ubicaciones-bienes');
 });

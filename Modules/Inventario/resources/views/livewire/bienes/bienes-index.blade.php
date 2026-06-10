@@ -800,6 +800,10 @@
                                         <span class="small">
                                             {{ $bien->responsableActual?->user?->nombre_completo ?? '—' }}
                                         </span>
+                                    @elseif ($column === 'ubicacion_actual')
+                                        <span class="small">
+                                            {{ $bien->ubicacionActual?->ubicacionDestino?->nombre ?? '—' }}
+                                        </span>
                                     @elseif (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                         @livewire(
                                             'bienes.editar-campo-bien',
@@ -958,6 +962,10 @@
                                     @elseif ($key === 'responsable')
                                         <small class="text-muted">
                                             {{ $bien->responsableActual?->user?->nombre_completo ?? '—' }}
+                                        </small>
+                                    @elseif ($key === 'ubicacion_actual')
+                                        <small class="text-muted">
+                                            {{ $bien->ubicacionActual?->ubicacionDestino?->nombre ?? '—' }}
                                         </small>
                                     @else
                                         @if (auth()->user()?->hasPermission('editar-bienes'))

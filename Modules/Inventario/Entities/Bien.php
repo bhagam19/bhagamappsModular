@@ -76,6 +76,16 @@ class Bien extends Model
         return $this->hasOne(BienResponsable::class)->whereNull('fecha_retiro')->latest('fecha_asignacion');
     }
 
+    public function historialUbicaciones()
+    {
+        return $this->hasMany(HistorialUbicacionBien::class);
+    }
+
+    public function ubicacionActual()
+    {
+        return $this->hasOne(HistorialUbicacionBien::class)->latest('fecha_movimiento');
+    }
+
     public function historialDependencias()
     {
         return $this->hasMany(HistorialDependenciaBien::class);

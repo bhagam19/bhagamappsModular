@@ -17,4 +17,9 @@ class Ubicacion extends Model
     {
         return $this->hasMany(Dependencia::class, 'ubicacion_id');
     }
+
+    public function movimientos()
+    {
+        return $this->hasMany(HistorialUbicacionBien::class, 'ubicacion_destino_id');
+    }
 }

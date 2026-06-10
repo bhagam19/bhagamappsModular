@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.10.0 — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-005]** Inventario v2.9.0: Historial de Ubicaciones — trazabilidad física completa
+  de bienes. Tabla `historial_ubicaciones_bienes`, 2 Livewire components, 2 permisos RBAC,
+  ruta `/inventario/ubicaciones/historial`, columna "Ubicación Actual" en BienesIndex.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle completo.
+
+---
+
 ## v1.9.4 — 2026-06-10
 
 ### Fixed

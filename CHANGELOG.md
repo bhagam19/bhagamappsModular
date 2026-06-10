@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.10.0] — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-005]** Inventario: Historial de Ubicaciones de Bienes — trazabilidad física completa.
+  Tabla `historial_ubicaciones_bienes`, entidad `HistorialUbicacionBien`, relaciones `ubicacionActual()`
+  e `historialUbicaciones()` en `Bien`, 2 permisos RBAC (`ver-historial-ubicaciones-bienes`,
+  `cambiar-ubicacion-bienes`), 2 componentes Livewire (`HistorialUbicacionesBien`,
+  `CambiarUbicacionBien`), ruta `/inventario/ubicaciones/historial`, columna "Ubicación Actual"
+  disponible en BienesIndex (oculta por defecto). Inventario v2.9.0 | BhagamApps v1.10.0.
+
+---
+
 ## [v1.9.4] — 2026-06-10
 
 ### Fixed

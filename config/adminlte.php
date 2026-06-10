@@ -448,6 +448,13 @@ return [
                     'active' => ['inventario/heb*'],
                     'can'    => 'gestionar-historial-eliminaciones-bienes',
                 ],
+                [
+                    'text'   => 'Historial Ubicaciones',
+                    'icon'   => 'fas fa-map-marked-alt text-info',
+                    'route'  => 'inventario.ubicaciones.historial',
+                    'active' => ['inventario/ubicaciones*'],
+                    'can'    => 'ver-historial-ubicaciones-bienes',
+                ],
                             ],
         ],
 

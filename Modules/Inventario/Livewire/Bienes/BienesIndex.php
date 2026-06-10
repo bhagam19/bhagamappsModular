@@ -78,7 +78,8 @@ class BienesIndex extends Component
         'observaciones' => 'Observaciones',
         'created_at' => 'Fecha de Creación',
         'updated_at' => 'Fecha de Actualización',
-        'responsable' => 'Custodio',
+        'responsable'     => 'Custodio',
+        'ubicacion_actual' => 'Ubicación Actual',
     ];
 
     public $visibleColumns = [];
@@ -446,6 +447,7 @@ class BienesIndex extends Component
             'mantenimiento',
             'modificacionesPendientes',
             'responsableActual.user',
+            'ubicacionActual.ubicacionDestino',
         ]);
 
         if ($user->hasRole('Coordinador') && !$this->verTodos) {

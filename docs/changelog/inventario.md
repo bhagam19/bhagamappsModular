@@ -5,6 +5,39 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.9.0 — 2026-06-10
+
+### Added (IMPL-INV-005 — Historial de Ubicaciones)
+
+- **[RF-001/RF-002/RF-003/RF-004/RF-005]** Trazabilidad física completa de bienes:
+  tabla `historial_ubicaciones_bienes` (bien_id, ubicacion_origen_id, ubicacion_destino_id,
+  user_id, fecha_movimiento, observaciones), entidad `HistorialUbicacionBien`.
+
+- **[RF-001]** Relaciones `ubicacionActual()` y `historialUbicaciones()` añadidas a `Bien`.
+  Relación `movimientos()` añadida a `Ubicacion`.
+  Columna `ubicacion_actual` disponible (oculta por defecto) en `BienesIndex` — eager loaded
+  sin N+1 via `with('ubicacionActual.ubicacionDestino')`.
+
+- **[RF-002]** Componente Livewire `HistorialUbicacionesBien` con formulario inline de cambio
+  de ubicación (RI-001: registra origen, destino, fecha, usuario; RI-002: destino validado por FK;
+  RI-003: origen derivado del último historial). Ruta `GET /inventario/ubicaciones/historial`.
+
+- **[RF-003/RF-004]** Historial inline expandible por bien: muestra origen, destino, fecha
+  movimiento, usuario responsable. Primera asignación muestra origen como "Primera asignación".
+
+- **[RF-005]** Responde: ¿Dónde está? (ubicacionActual), ¿Dónde estuvo? (historial),
+  ¿Cuándo fue movido? (fecha_movimiento), ¿Quién lo hizo? (user).
+
+- **Permisos RBAC:** `ver-historial-ubicaciones-bienes` (Admin + Rector + Coordinador ver),
+  `cambiar-ubicacion-bienes` (Admin + Rector únicamente).
+  Gates registrados en `AuthServiceProvider`.
+
+- **Sidebar:** Entrada "Historial Ubicaciones" añadida al submenú Inventario.
+
+- **Componente standalone:** `CambiarUbicacionBien` para uso independiente embebido.
+
+---
+
 ## v2.8.2 — 2026-06-10
 
 ### Fixed (IMPL-INV-004 suplemento — validaciones residuales)
