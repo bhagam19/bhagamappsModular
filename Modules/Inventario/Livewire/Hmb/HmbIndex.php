@@ -66,14 +66,13 @@ class HmbIndex extends Component
 
         logger()->info('Aprobando modificacion con ID: ' . $id);
 
-        $bien = Bien::with('dependencia')->find($modificacion->bien_id);
-        $user = $bien->dependencia->user_id;
-
         if (!$modificacion) {
             $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'La modificacion no fue encontrada.');
-            $this->dispatch('modificacionActualizado');
+            $this->dispatch('modificacionActualizada');
             return;
         }
+
+        $bien = Bien::with('dependencia')->find($modificacion->bien_id);
 
         DB::beginTransaction();
 
@@ -140,7 +139,7 @@ class HmbIndex extends Component
             DB::rollBack();
             report($e);
             $this->dispatch('mostrar-mensaje', tipo: 'error', mensaje: 'Ocurrió un error al aprobar el modificacion.');
-            $this->dispatch('modificacionActualizad');
+            $this->dispatch('modificacionActualizada');
         }
     }
 

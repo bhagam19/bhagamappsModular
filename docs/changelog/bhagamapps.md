@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.7.1 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-001]** Inventario: correcciones críticas derivadas de AUDIT-INV-001.
+  Permiso HEB creado y asignado, tabla `bienes_responsables` creada, Coordinador
+  habilitado para acceso al módulo, null check en HmbIndex corregido.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle completo.
+- Inventario: v2.5.0 | BhagamApps: v1.7.1
+
+---
+
 ## v1.7.0 — 2026-06-09
 
 ### Removed

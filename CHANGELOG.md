@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.7.1] — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-001]** Inventario: cuatro hallazgos críticos de AUDIT-INV-001 corregidos.
+  Permiso HEB creado, tabla bienes_responsables creada, Coordinador habilitado para
+  acceder al módulo Inventario, null check en HmbIndex corregido.
+- Inventario: v2.5.0 | BhagamApps: v1.7.1
+
+---
+
 ## [v1.7.0] — 2026-06-09
 
 ### Removed

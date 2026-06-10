@@ -5,6 +5,35 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.5.0 — 2026-06-09
+
+### Fixed
+
+- **[IMPL-INV-001 / H-CRIT-001]** Creado permiso `gestionar-historial-eliminaciones-bienes`
+  y asignado a Administrador y Rector. La ruta `GET /inventario/heb` exigía este permiso
+  mediante middleware pero no existía en BD — todos los roles obtenían HTTP 403.
+  Migración: `2026_06_09_000004_add_heb_permission_and_assign_roles`.
+
+- **[IMPL-INV-001 / H-CRIT-002]** Creada tabla `bienes_responsables` (Escenario A —
+  funcionalidad vigente). Modelo `BienResponsable`, relación `Bien::responsables()`,
+  permiso `asignar-responsables-a-bienes` y seeder `BienesResponsablesSeeder` existían
+  sin tabla de respaldo. Cualquier acceso a la relación generaba error SQL fatal.
+  Migración: `2026_06_09_000005_create_bienes_responsables_table`.
+  Columnas: `bien_id`, `user_id`, `observaciones`, `fecha_asignacion`, `fecha_retiro`.
+
+- **[IMPL-INV-001 / H-ALTO-001]** App `inventario` asignada al rol Coordinador en
+  `app_role`. El rol tenía permisos `ver-bienes`, `crear-bienes`, `editar-bienes` pero el
+  middleware `app.access:inventario` bloqueaba el acceso antes de evaluar permisos.
+  Migración: `2026_06_09_000006_assign_inventario_app_to_coordinador`.
+
+- **[IMPL-INV-001 / H-ALTO-002]** Corregido orden de null check en
+  `HmbIndex::aprobarModificacion()`. La variable `$modificacion` era accedida en
+  `$bien = Bien::find($modificacion->bien_id)` antes del guard `if (!$modificacion)`.
+  Corregido: null check movido al inicio del método, antes de cualquier uso.
+  También corregido typo en dispatch del catch: `modificacionActualizad` → `modificacionActualizada`.
+
+---
+
 ## v2.4.2 — 2026-06-08
 
 ### Added
