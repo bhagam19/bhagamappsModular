@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.9.2] — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-002A]** Inventario: navegación completa — 7 catálogos + HEB integrados al sidebar.
+  Gate HEB añadido a AuthServiceProvider. IMPL-INV-002 cerrado. Inventario v2.8.0 | BhagamApps v1.9.2.
+
+---
+
 ## [v1.9.1] — 2026-06-09
 
 ### Fixed

@@ -11,6 +11,15 @@ Changelogs de módulo:
 
 ---
 
+## v1.9.2 — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-002A]** Inventario v2.8.0: integración completa de navegación para 7 catálogos y HEB.
+  Gate HEB corregido. IMPL-INV-002 cerrado definitivamente.
+
+---
+
 ## v1.9.1 — 2026-06-09
 
 ### Fixed

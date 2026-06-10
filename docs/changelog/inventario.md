@@ -5,6 +5,24 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.8.0 — 2026-06-09
+
+### Added (IMPL-INV-002A — Catalog & HEB Navigation Integration)
+
+- **[IMPL-INV-002A]** Entradas de navegación añadidas al sidebar de Inventario:
+  Categorías, Dependencias, Ubicaciones, Estados, Orígenes, Almacenamientos, Mantenimientos.
+  Cada entrada protegida por `can: ver-{catalogo}` via AdminLTE.
+
+- **[IMPL-INV-002A]** Entrada "Historial Eliminaciones" (HEB) añadida al sidebar de Inventario.
+  Protegida por `can: gestionar-historial-eliminaciones-bienes`.
+
+- **[IMPL-INV-002A]** `Gate::define('gestionar-historial-eliminaciones-bienes', ...)` añadido
+  a `AuthServiceProvider` — D-002 de AUDIT-INV-NAV-001 corregido.
+
+- **IMPL-INV-002 declarado CERRADO DEFINITIVAMENTE.**
+
+---
+
 ## v2.7.1 — 2026-06-09
 
 ### Fixed
