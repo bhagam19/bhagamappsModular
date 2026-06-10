@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.9.0 — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-003]** Inventario: Gestión completa de Responsables y Custodios de bienes.
+  Nueva sección `/inventario/responsables`, flujo de asignación/transferencia/liberación,
+  historial completo inline, 4 permisos, 4 gates, columna Custodio en BienesIndex,
+  relaciones `responsableActual()` y `bienesAsignados()`.
+
+---
+
 ## v1.8.0 — 2026-06-09
 
 ### Added

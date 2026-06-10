@@ -5,6 +5,39 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.7.0 — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-003]** Gestión completa de Responsables y Custodios de bienes.
+  Nueva sección `/inventario/responsables` protegida por `permission:ver-responsables-bienes`.
+
+- **[IMPL-INV-003]** Asignación de custodio: formulario inline para seleccionar usuario, fecha y observaciones.
+  Reglas RI-001/RI-003 aplicadas — un bien solo puede tener un custodio vigente.
+
+- **[IMPL-INV-003]** Transferencia de custodio: cierra responsable anterior (registra `fecha_retiro = fecha_asignacion_nuevo`),
+  registra el nuevo responsable. Regla RI-002 garantizada.
+
+- **[IMPL-INV-003]** Liberación de custodio: acción para desvincular responsable vigente sin asignar reemplazo.
+
+- **[IMPL-INV-003]** Historial inline por bien: expande la fila del bien para mostrar el historial completo de custodios
+  con estado Vigente / Retirado.
+
+- **[IMPL-INV-003]** Filtros en ResponsablesIndex: por nombre de bien, por dependencia, por responsable vigente.
+
+- **[IMPL-INV-003]** Consulta por responsable (RF-005): filtro por usuario muestra todos los bienes asignados.
+
+- **[IMPL-INV-003]** 4 nuevos permisos (`ver/asignar/editar/transferir-responsables-bienes`) + 4 gates en AuthServiceProvider.
+  Administrador y Rector: 4/4. Coordinador: solo `ver-responsables-bienes`.
+
+- **[IMPL-INV-003]** Relación `Bien::responsableActual()` (hasOne con `whereNull('fecha_retiro')`).
+  Relación `User::bienesAsignados()` inversa.
+
+- **[IMPL-INV-003]** Columna "Custodio" disponible en BienesIndex (toggle, no visible por defecto).
+  Eager loading de `responsableActual.user` añadido a `filtrarBienesQuery()`.
+
+---
+
 ## v2.6.0 — 2026-06-09
 
 ### Added

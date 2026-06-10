@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.9.0] — 2026-06-09
+
+### Added
+
+- **[IMPL-INV-003]** Inventario: Gestión completa de Responsables y Custodios de bienes.
+  Nueva sección `/inventario/responsables`, asignación, transferencia y liberación de custodios,
+  historial completo por bien, 4 nuevos permisos, 4 gates, columna Custodio en BienesIndex.
+- Inventario: v2.7.0 | BhagamApps: v1.9.0
+
+---
+
 ## [v1.8.0] — 2026-06-09
 
 ### Added

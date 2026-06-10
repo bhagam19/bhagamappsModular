@@ -798,6 +798,10 @@
                                         <span class="px-2 small text-muted editable-desktop d-none d-sm-inline">
                                             {{ $bien->dependencia->user->nombre_completo ?? 'Sin responsable' }}
                                         </span>
+                                    @elseif ($column === 'responsable')
+                                        <span class="small">
+                                            {{ $bien->responsableActual?->user?->nombre_completo ?? '—' }}
+                                        </span>
                                     @elseif (auth()->user()?->hasPermission('editar-bienes') && !$bien->eliminacionPendiente)
                                         @livewire(
                                             'bienes.editar-campo-bien',
@@ -953,6 +957,10 @@
                                                 </small>
                                             </div>
                                         </div>
+                                    @elseif ($key === 'responsable')
+                                        <small class="text-muted">
+                                            {{ $bien->responsableActual?->user?->nombre_completo ?? '—' }}
+                                        </small>
                                     @else
                                         @if (auth()->user()?->hasPermission('editar-bienes'))
                                             @livewire(

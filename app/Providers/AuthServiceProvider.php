@@ -128,6 +128,16 @@ class AuthServiceProvider extends ServiceProvider
                         Gate::define($slug, fn($user) => $user->hasPermission($slug));
                 }
 
+                // Gates para responsables y custodios de Inventario (IMPL-INV-003)
+                foreach ([
+                        'ver-responsables-bienes',
+                        'asignar-responsables-bienes',
+                        'editar-responsables-bienes',
+                        'transferir-responsables-bienes',
+                ] as $slug) {
+                        Gate::define($slug, fn($user) => $user->hasPermission($slug));
+                }
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }

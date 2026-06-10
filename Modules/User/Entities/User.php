@@ -87,6 +87,11 @@ class User extends Authenticatable
         return $this->hasMany(Dependencia::class, 'user_id');
     }
 
+    public function bienesAsignados()
+    {
+        return $this->hasMany(\Modules\Inventario\Entities\BienResponsable::class, 'user_id')->whereNull('fecha_retiro');
+    }
+
     /**
      * Verifica si el user tiene un rol específico por nombre.
      */

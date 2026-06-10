@@ -73,6 +73,11 @@ class Bien extends Model
         return $this->hasMany(BienResponsable::class);
     }
 
+    public function responsableActual()
+    {
+        return $this->hasOne(BienResponsable::class)->whereNull('fecha_retiro')->latest('fecha_asignacion');
+    }
+
     public function historialDependencias()
     {
         return $this->hasMany(HistorialDependenciaBien::class);

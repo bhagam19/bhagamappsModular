@@ -7,6 +7,7 @@ use Modules\Inventario\Http\Controllers\HebController;
 use Modules\Inventario\Http\Controllers\ActaController;
 use Modules\Inventario\Http\Controllers\ActaPDFController;
 use Modules\Inventario\Http\Controllers\CatalogosController;
+use Modules\Inventario\Http\Controllers\ResponsablesController;
 
 Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
 
@@ -66,4 +67,9 @@ Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario'
     Route::get('/catalogos/mantenimientos', [CatalogosController::class, 'mantenimientos'])
         ->name('inventario.catalogos.mantenimientos')
         ->middleware('permission:ver-mantenimientos');
+
+    // Responsables y Custodios
+    Route::get('/responsables', [ResponsablesController::class, 'index'])
+        ->name('inventario.responsables.index')
+        ->middleware('permission:ver-responsables-bienes');
 });
