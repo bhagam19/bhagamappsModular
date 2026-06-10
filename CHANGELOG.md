@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.11.0] — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-006]** Inventario: Mantenimientos Programados de Bienes — gestión completa CRUD.
+  Entidad `MantenimientoProgramado` completada, 4 permisos RBAC, componente Livewire
+  `MantenimientosProgramadosIndex`, ruta `/inventario/mantenimientos/programados`,
+  entrada sidebar "Mantenimientos". Inventario v2.10.0 | BhagamApps v1.11.0.
+
+---
+
 ## [v1.10.0] — 2026-06-10
 
 ### Added

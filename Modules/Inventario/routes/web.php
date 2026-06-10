@@ -9,6 +9,7 @@ use Modules\Inventario\Http\Controllers\ActaPDFController;
 use Modules\Inventario\Http\Controllers\CatalogosController;
 use Modules\Inventario\Http\Controllers\ResponsablesController;
 use Modules\Inventario\Http\Controllers\UbicacionesHistorialController;
+use Modules\Inventario\Http\Controllers\MantenimientosProgramadosController;
 
 Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
 
@@ -78,4 +79,9 @@ Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario'
     Route::get('/ubicaciones/historial', [UbicacionesHistorialController::class, 'index'])
         ->name('inventario.ubicaciones.historial')
         ->middleware('permission:ver-historial-ubicaciones-bienes');
+
+    // Mantenimientos Programados
+    Route::get('/mantenimientos/programados', [MantenimientosProgramadosController::class, 'index'])
+        ->name('inventario.mantenimientos.programados')
+        ->middleware('permission:ver-mantenimientos-programados');
 });

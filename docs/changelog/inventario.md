@@ -5,6 +5,35 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.10.0 — 2026-06-10
+
+### Added (IMPL-INV-006 — Mantenimientos Programados)
+
+- **[RF-001]** Entidad `MantenimientoProgramado` completada: `$fillable` ahora incluye `user_id`,
+  `tipo`, `titulo`, `fecha_realizada`; casts de fecha; relación `user()` añadida; método `esPendiente()`.
+
+- **[RF-002]** Componente Livewire `MantenimientosProgramadosIndex` con gestión CRUD inline:
+  crear (formulario panel), editar (solo si estado=pendiente), marcar como realizado (con
+  `fecha_realizada`), cancelar. Paginación, búsqueda por nombre de bien, filtros estado/tipo,
+  ordenamiento por título/tipo/estado/fecha_programada.
+
+- **[RF-003]** Ruta `GET /inventario/mantenimientos/programados` →
+  `MantenimientosProgramadosController@index` → vista wrapping Livewire.
+  Alias: `inventario.mantenimientos.programados`.
+
+- **[RF-004]** 4 permisos RBAC: `ver-mantenimientos-programados` (Admin/Rector/Coordinador),
+  `crear-mantenimientos-programados` (Admin/Rector/Coordinador), `editar-mantenimientos-programados`
+  (Admin/Rector), `cancelar-mantenimientos-programados` (Admin/Rector).
+  Migration: `2026_06_10_000003_add_mantenimientos_programados_permissions`.
+
+- **[RF-005]** Sidebar: entrada "Mantenimientos" (`fas fa-wrench`) añadida al submenú Inventario.
+  Gates registrados en `AuthServiceProvider` (loop foreach, IMPL-INV-006).
+
+- **[RF-006]** Tabla `mantenimientos_programados` ya existía (migrada v1 2025-05-21). Esta versión
+  activa la capa funcional completa sobre infraestructura pre-existente.
+
+---
+
 ## v2.9.0 — 2026-06-10
 
 ### Added (IMPL-INV-005 — Historial de Ubicaciones)

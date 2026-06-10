@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.11.0 — 2026-06-10
+
+### Added
+
+- **[IMPL-INV-006]** Inventario v2.10.0: Mantenimientos Programados — gestión CRUD completa
+  sobre infraestructura pre-existente (`mantenimientos_programados`). Entidad completada,
+  Livewire `MantenimientosProgramadosIndex`, 4 permisos RBAC, ruta
+  `/inventario/mantenimientos/programados`, sidebar actualizado.
+  Ver [`docs/changelog/inventario.md`](inventario.md) para detalle completo.
+
+---
+
 ## v1.10.0 — 2026-06-10
 
 ### Added

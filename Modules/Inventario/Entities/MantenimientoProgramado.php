@@ -4,6 +4,7 @@ namespace Modules\Inventario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\User\Entities\User;
 
 class MantenimientoProgramado extends Model
 {
@@ -13,13 +14,32 @@ class MantenimientoProgramado extends Model
 
     protected $fillable = [
         'bien_id',
-        'fecha_programada',
+        'user_id',
+        'tipo',
+        'titulo',
         'descripcion',
-        'estado'
+        'fecha_programada',
+        'fecha_realizada',
+        'estado',
+    ];
+
+    protected $casts = [
+        'fecha_programada' => 'date',
+        'fecha_realizada'  => 'date',
     ];
 
     public function bien()
     {
         return $this->belongsTo(Bien::class, 'bien_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function esPendiente(): bool
+    {
+        return $this->estado === 'pendiente';
     }
 }

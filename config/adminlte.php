@@ -455,6 +455,13 @@ return [
                     'active' => ['inventario/ubicaciones*'],
                     'can'    => 'ver-historial-ubicaciones-bienes',
                 ],
+                [
+                    'text'   => 'Mantenimientos',
+                    'icon'   => 'fas fa-wrench text-info',
+                    'route'  => 'inventario.mantenimientos.programados',
+                    'active' => ['inventario/mantenimientos*'],
+                    'can'    => 'ver-mantenimientos-programados',
+                ],
                             ],
         ],
 

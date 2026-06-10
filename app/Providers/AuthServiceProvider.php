@@ -71,9 +71,15 @@ class AuthServiceProvider extends ServiceProvider
                         return $user->hasPermission('ver-responsables');
                 });
 
-                Gate::define('ver-mantenimientos-programados', function ($user) {
-                        return $user->hasPermission('ver-mantenimientos-programados');
-                });
+                // Gates para mantenimientos programados (IMPL-INV-006)
+                foreach ([
+                        'ver-mantenimientos-programados',
+                        'crear-mantenimientos-programados',
+                        'editar-mantenimientos-programados',
+                        'cancelar-mantenimientos-programados',
+                ] as $slug) {
+                        Gate::define($slug, fn($user) => $user->hasPermission($slug));
+                }
 
                 Gate::define('admin.grupos', function ($user) {
                         return $user->hasPermission('ver-grupos');
