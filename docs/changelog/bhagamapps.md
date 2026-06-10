@@ -11,6 +11,18 @@ Changelogs de módulo:
 
 ---
 
+## v1.12.0 — 2026-06-10
+
+### Changed
+
+- **[IMPL-CORE-BRANDING-001]** Migración de identidad institucional visible.
+  APP_NAME `BhagamApps Modular` → `IEE`. APP_URL/ASSET_URL `/Modular` → `/IEE`.
+  SESSION_PATH `/Modular` → `/IEE`. AdminLTE logo y title_prefix actualizados.
+  Footer: BhagamApps → IEE — Institución Educativa Entrerríos. Welcome title actualizado.
+  Key `IEE` agregado a `config/versiones.php`. Arquitectura, namespaces y BD sin cambios.
+
+---
+
 ## v1.11.5 — 2026-06-10
 
 ### Added

@@ -9,7 +9,7 @@
     {{-- Carga de estilos y scripts comunes --}}
     @include('dashboard_personal.css-js')
 
-    <title>@yield('title', "Bhagam's Apps")</title>
+    <title>@yield('title', "IEE — Sistema de Inventario Institucional")</title>
 </head>
 <body>
     <header>       

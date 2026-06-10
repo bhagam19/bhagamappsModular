@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.12.0] — 2026-06-10
+
+### Changed
+
+- **[IMPL-CORE-BRANDING-001]** Migración institucional de identidad visible: BhagamApps Modular → IEE
+  (Institución Educativa Entrerríos — Sistema de Inventario Institucional).
+  APP_NAME, APP_URL, ASSET_URL, SESSION_PATH, adminlte logo/título, footer y welcome actualizados.
+  Nuevo key `IEE` en `config/versiones.php`. Arquitectura interna sin modificación.
+  IEE v1.12.0 | BhagamApps v1.12.0.
+
+---
+
 ## [v1.11.5] — 2026-06-10
 
 ### Added

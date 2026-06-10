@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'BhagamApps -',
+    'title_prefix' => 'IEE -',
     'title_postfix' => '',
 
     /*
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Bhagam</b>Apps',
+    'logo' => '<b>IEE</b>',
     'logo_img' => 'vendor/adminlte/dist/img/aIcon.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
