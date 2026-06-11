@@ -621,6 +621,93 @@ es una trampa: código activo que depende de código muerto que depende de un pa
 
 ---
 
+## Suplemento — Hallazgos adicionales post-commit
+
+### DC-001S — Configuración de providers: dualidad `config/app.php` / `bootstrap/providers.php`
+
+En Laravel 11, los providers pueden registrarse en **dos lugares distintos**. Este repositorio usa ambos simultáneamente:
+
+| Provider                          | `config/app.php` | `bootstrap/providers.php` | Estado    |
+|-----------------------------------|:----------------:|:------------------------:|-----------|
+| `App\Providers\AppServiceProvider`     | ✅              | ✅                       | **DOBLE REGISTRO** |
+| `App\Providers\AuthServiceProvider`    | ✅              | ❌                       | ACTIVO    |
+| `App\Providers\EventServiceProvider`   | ✅              | ❌                       | ACTIVO    |
+| `App\Providers\RouteServiceProvider`   | ✅              | ❌                       | ACTIVO    |
+| `App\Providers\BroadcastServiceProvider` | ❌ (comentado) | ❌                      | INACTIVO  |
+| `App\Providers\FortifyServiceProvider` | ✅             | ✅                       | **DOBLE REGISTRO** |
+| `App\Providers\JetstreamServiceProvider` | ✅           | ✅                       | **DOBLE REGISTRO** |
+
+**Tres providers están registrados en ambas fuentes.** Laravel deduplica los providers en runtime, pero la duplicidad es un riesgo de mantenimiento: cambiar un provider en una fuente sin actualizar la otra puede producir comportamiento inesperado.
+
+**`BroadcastServiceProvider`**: El archivo `app/Providers/BroadcastServiceProvider.php` existe en el filesystem pero el provider está comentado en `config/app.php`. El archivo es `HUÉRFANO` — activo para el autoloader pero sin efecto en runtime.
+
+### DC-001S2 — `app/Http/Kernel.php`: código legacy en Laravel 11
+
+| Archivo               | Clasificación | Riesgo |
+|-----------------------|---------------|--------|
+| `app/Http/Kernel.php` | LEGACY        | BAJO   |
+
+En Laravel 11, `bootstrap/app.php` usa `Application::configure()->withMiddleware()` como fuente de verdad para la configuración del HTTP kernel. El archivo `app/Http/Kernel.php` que extiende `Illuminate\Foundation\Http\Kernel` es el mecanismo de Laravel 10 y anteriores.
+
+**Duplicidad confirmada**: los aliases `permission` y `app.access` están definidos en **ambos** lugares:
+
+```php
+// app/Http/Kernel.php (legacy)
+protected $middlewareAliases = [
+    'permission' => \App\Http\Middleware\CheckPermission::class,
+    'app.access'  => \App\Http\Middleware\CheckAppAccess::class,
+    ...
+];
+
+// bootstrap/app.php (activo L11)
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias([
+        'permission' => \App\Http\Middleware\CheckPermission::class,
+        'app.access'  => \App\Http\Middleware\CheckAppAccess::class,
+    ]);
+})
+```
+
+La fuente operativa real en Laravel 11 es `bootstrap/app.php`. `app/Http/Kernel.php` es código legacy que puede causar confusión pero no rompe la aplicación actualmente.
+
+### DC-007S — Riesgos adicionales
+
+#### RIESGO-007 — Doble registro de providers [BAJO]
+
+| Campo       | Valor                                                          |
+|-------------|----------------------------------------------------------------|
+| Severidad   | BAJO                                                           |
+| Tipo        | Riesgo de mantenimiento / inconsistencia de configuración      |
+| Causa raíz  | `AppServiceProvider`, `FortifyServiceProvider`, `JetstreamServiceProvider` en `config/app.php` Y `bootstrap/providers.php` |
+| Impacto     | Laravel deduplica en runtime; no produce errores actualmente. Riesgo futuro si se modifica uno sin el otro. |
+| Recomendación | **C — Refactorizar**: eliminar de `config/app.php` y usar solo `bootstrap/providers.php` (convención L11). |
+
+#### RIESGO-008 — `app/Http/Kernel.php` legacy [BAJO]
+
+| Campo       | Valor                                                          |
+|-------------|----------------------------------------------------------------|
+| Severidad   | BAJO                                                           |
+| Tipo        | Riesgo de mantenimiento / código legacy                        |
+| Causa raíz  | Laravel 10 Kernel coexiste con configuración Laravel 11 en `bootstrap/app.php` |
+| Impacto     | Sin impacto operativo actual; confusión para mantenedores sobre cuál es la fuente de verdad. |
+| Recomendación | **D — Eliminar** `app/Http/Kernel.php` una vez migrados todos los middleware al flujo L11. |
+
+### Lista de Riesgos Actualizada (completa)
+
+| ID | Descripción | Severidad | Estado en prod. | Acción recomendada |
+|----|-------------|-----------|-----------------|-------------------|
+| R-001 | Fatal error en update/reset password, profile, deleteUser | CRÍTICO | LATENTE | Corregir inmediatamente |
+| R-002 | `app/Models/User.php` → Spatie trait no instalado | CRÍTICO | ACTIVO (bloquea tests) | Eliminar archivo |
+| R-003 | Enums inexistentes en `app/Models/Inventario/Bien.php` | ALTO | Inactivo (sin rutas) | Eliminar archivo |
+| R-004 | `RolInstitucional` no existe en `SincronizarRolesYPermisosCoreAction` | ALTO | Inactivo | Eliminar archivo |
+| R-005 | `<x-admin-layout>` no existe en vistas paralelas | MEDIO | Inactivo | Eliminar vistas |
+| R-006 | Gates con slug incorrecto en `BienResponsableController` | BAJO | Inactivo (sin rutas) | Eliminar controlador |
+| R-007 | Doble registro de providers en config/app.php y bootstrap/providers.php | BAJO | Mitigado (deduplicación) | Refactorizar |
+| R-008 | `app/Http/Kernel.php` legacy en proyecto Laravel 11 | BAJO | Sin impacto | Eliminar |
+
+---
+
 *Documento generado como parte de AUDIT-CORE-DEADCODE-001.*
 *Fecha: 2026-06-11. Auditor: Claude Code (claude-sonnet-4-6).*
 *Basado en AUDIT-IEE-001 SHA: `0fc747e`.*
+*Suplemento post-commit añadido en misma sesión con hallazgos de bootstrap/app.php.*
