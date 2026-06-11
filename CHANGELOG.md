@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.13.0] — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001]** Remediación crítica de Fortify Actions y modelo User.
+  Corregidos 4 Actions (`UpdateUserPassword`, `ResetUserPassword`,
+  `UpdateUserProfileInformation`, `DeleteUser`) para usar el modelo activo
+  `Modules\User\Entities\User`. Binding de `LoginResponse` en `FortifyServiceProvider`
+  corregido. `app/Models/User.php` neutralizado (eliminadas referencias a Spatie y
+  RolSistema inexistentes). Las funciones de gestión de contraseña, perfil y cuenta
+  — antes inoperativas con HTTP 500 — son ahora funcionales.
+  IEE v1.13.0 | BhagamApps v1.13.0.
+
+---
+
 ## [v1.12.1] — 2026-06-10
 
 ### Fixed

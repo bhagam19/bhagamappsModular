@@ -11,6 +11,20 @@ Changelogs de módulo:
 
 ---
 
+## v1.13.0 — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001]** Remediación crítica de Fortify Actions y modelo User.
+  Los Fortify/Jetstream Actions ahora usan el modelo activo `Modules\User\Entities\User`.
+  `UpdateUserProfileInformation` alineado con el schema real (`nombres`, `apellidos`,
+  `userID`, `email`). Binding `LoginResponse` corregido en `FortifyServiceProvider`.
+  `app/Models/User.php` neutralizado como LEGACY (dependencias fatales eliminadas).
+  Suite de pruebas ejecuta sin fatal errors: 18 tests pasan (vs 1 antes).
+  IEE v1.13.0 | BhagamApps v1.13.0.
+
+---
+
 ## v1.12.1 — 2026-06-10
 
 ### Fixed

@@ -7,6 +7,25 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.13.0 — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001]** Remediación crítica de Fortify y modelo User.
+  Cuatro Fortify/Jetstream Actions (`UpdateUserPassword`, `ResetUserPassword`,
+  `UpdateUserProfileInformation`, `DeleteUser`) corregidos para usar
+  `Modules\User\Entities\User` (modelo activo) en lugar de `App\Models\User`.
+  `UpdateUserProfileInformation` alineado con campos reales del schema
+  (`nombres`, `apellidos`, `userID`, `email`). Binding de `LoginResponse` en
+  `FortifyServiceProvider` corregido. `app/Models/User.php` neutralizado
+  (dependencias Spatie y RolSistema eliminadas; archivo clasificado como LEGACY
+  pendiente de eliminación). Funciones de cambio de contraseña, actualización
+  de perfil, reset de contraseña y eliminación de cuenta — antes inoperativas
+  con HTTP 500 — son ahora funcionales. Suite de pruebas ejecuta sin fatal errors
+  (18 pass vs 1 antes de esta corrección).
+
+---
+
 ## v1.12.1 — 2026-06-10
 
 ### Fixed
