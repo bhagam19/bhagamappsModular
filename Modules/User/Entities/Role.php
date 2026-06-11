@@ -4,10 +4,16 @@ namespace Modules\User\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\User\Database\Factories\RoleFactory;
 
 class Role extends Model
 {
     use HasFactory;
+
+    protected static function newFactory(): RoleFactory
+    {
+        return RoleFactory::new();
+    }
 
     protected $fillable = [
         'nombre',

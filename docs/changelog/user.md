@@ -9,6 +9,22 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.2.2 — 2026-06-11
+
+### Added
+
+- **[IMPL-CORE-CLEANUP-001 Fase 2]** Factories propias para el módulo User.
+  - `Modules/User/Database/Factories/UserFactory` — genera usuarios con campos reales del schema
+    (`nombres`, `apellidos`, `userID`, `email`, `role_id`), `Hash::make('password')` compatible
+    con `BCRYPT_ROUNDS=4` de phpunit.xml, método `withPersonalTeam()` para compatibilidad con
+    pruebas Jetstream cuando Teams está desactivado.
+  - `Modules/User/Database/Factories/RoleFactory` — crea roles sin dependencia de App
+    (`app_id` nullable tras migración v2026_06_08).
+  - `Modules\User\Entities\User::newFactory()` y `Role::newFactory()` apuntan a las factories
+    del módulo.
+
+---
+
 ## v2.2.1 — 2026-06-08
 
 ### Added

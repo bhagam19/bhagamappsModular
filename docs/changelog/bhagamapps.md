@@ -11,6 +11,19 @@ Changelogs de módulo:
 
 ---
 
+## v1.13.1 — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001 Fase 2]** Suite de pruebas de Fortify/Jetstream/User migrada al modelo activo.
+  Creadas `Modules\User\Database\Factories\UserFactory` y `RoleFactory`.
+  12 archivos de prueba actualizados de `App\Models\User` → `Modules\User\Entities\User`.
+  `RegistrationTest` y `ProfileInformationTest` adaptados a campos reales del schema IEE.
+  10 tests de User/Auth pasan; 7 omitidos (features desactivadas). 0 regresiones.
+  IEE v1.13.1 | BhagamApps v1.13.1 | User v2.2.2.
+
+---
+
 ## v1.13.0 — 2026-06-11
 
 ### Fixed

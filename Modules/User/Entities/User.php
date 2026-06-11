@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\User\Database\Factories\UserFactory;
 
 use Modules\Inventario\Entities\Bien;
 use Modules\Inventario\Entities\Dependencia;
@@ -20,6 +21,11 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 
     /**
      * The attributes that are mass assignable.

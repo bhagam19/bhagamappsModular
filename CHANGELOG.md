@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.13.1] — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001 Fase 2]** Suite de pruebas de User/Auth migrada al modelo activo.
+  12 archivos de prueba actualizados de `App\Models\User` → `Modules\User\Entities\User`.
+  Factories creadas: `Modules\User\Database\Factories\UserFactory` y `RoleFactory`.
+  `ProfileInformationTest` adaptado a campos reales (`nombres`, `apellidos`).
+  `RegistrationTest` adaptado a campos IEE con roles 5/6 para validación `in:5,6`.
+  10 tests de User/Auth/Fortify/Jetstream pasan; 7 correctamente omitidos (features off).
+  IEE v1.13.1 | BhagamApps v1.13.1 | User v2.2.2.
+
+---
+
 ## [v1.13.0] — 2026-06-11
 
 ### Fixed

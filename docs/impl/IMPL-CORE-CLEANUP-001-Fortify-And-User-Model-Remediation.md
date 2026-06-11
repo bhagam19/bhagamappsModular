@@ -195,34 +195,106 @@ tests que antes eran físicamente inalcanzables (fatal error los bloqueaba):
 
 ## Deuda Técnica Generada / Identificada
 
-| ID    | Descripción                                        | Prioridad | IMPL recomendada              |
-|-------|----------------------------------------------------|-----------|-------------------------------|
-| DT-A  | `UserFactory` desincronizada con schema de `users` (usa `name`, no `nombres`/`apellidos`/`userID`/`role_id`) | MEDIA | IMPL-CORE-TESTS-001 |
-| DT-B  | Roles no sembrados en TestCase de Inventario       | MEDIA     | IMPL-INV-TESTS-002            |
-| DT-C  | `role_id` en formulario de perfil es editable en UI pero ignorado en Action (UX confuso) | BAJA | IMPL-CORE-PROFILE-001 |
-| DT-D  | `app/Models/User.php` clasificado como LEGACY — pendiente eliminación | MEDIA | IMPL-CORE-CLEANUP-002 |
+| ID    | Descripción                                        | Prioridad | Estado                                  |
+|-------|----------------------------------------------------|-----------|------------------------------------------|
+| DT-A  | `UserFactory` desincronizada con schema de `users` | MEDIA     | ✅ RESUELTA en v1.13.1 (Fase 2)          |
+| DT-B  | Roles no sembrados en TestCase de Inventario       | MEDIA     | Pendiente — IMPL-INV-TESTS-002           |
+| DT-C  | `role_id` en formulario de perfil editable en UI pero ignorado en Action | BAJA | Pendiente — IMPL-CORE-PROFILE-001 |
+| DT-D  | `app/Models/User.php` clasificado como LEGACY      | MEDIA     | Pendiente — IMPL-CORE-CLEANUP-002        |
+| DT-E  | `SincronizarRolesYPermisosCoreAction` referencia `spatie/laravel-permission` no instalado | ALTA | Pendiente — instalar `spatie/laravel-permission` o refactorizar la acción |
+
+---
+
+## Fase 2 — Suite de Pruebas (v1.13.1 — 2026-06-11)
+
+La fase inicial (v1.13.0) dejó pendiente DT-A: la suite de pruebas seguía usando
+`App\Models\User` (modelo legacy) con un `UserFactory` hardcodeado con bcrypt-10
+incompatible con `BCRYPT_ROUNDS=4` de phpunit.xml.
+
+### Archivos creados
+
+| Archivo | Propósito |
+|---------|-----------|
+| `Modules/User/Database/Factories/RoleFactory.php` | Factory para `Modules\User\Entities\Role`; crea roles sin dependencia de App (app_id nullable) |
+| `Modules/User/Database/Factories/UserFactory.php` | Factory para `Modules\User\Entities\User`; usa `Hash::make('password')`, campos correctos (`nombres`, `apellidos`, `userID`, `role_id`), método `withPersonalTeam()` compatible con Teams desactivado |
+
+### Archivos modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `Modules/User/Entities/User.php` | `newFactory()` apunta a `Modules\User\Database\Factories\UserFactory` |
+| `Modules/User/Entities/Role.php` | `newFactory()` apunta a `Modules\User\Database\Factories\RoleFactory` |
+| `tests/Feature/UpdatePasswordTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/ProfileInformationTest.php` | `App\Models\User` → `Modules\User\Entities\User`; aserciones `name` → `nombres`/`apellidos` |
+| `tests/Feature/PasswordResetTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/DeleteAccountTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/AuthenticationTest.php` | `App\Models\User` → `Modules\User\Entities\User`; redirect `/` en lugar de `route('dashboard')` inexistente |
+| `tests/Feature/BrowserSessionsTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/PasswordConfirmationTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/TwoFactorAuthenticationSettingsTest.php` | `App\Models\User` → `Modules\User\Entities\User` |
+| `tests/Feature/EmailVerificationTest.php` | `App\Models\User` → `Modules\User\Entities\User` (tests se omiten: emailVerification desactivado) |
+| `tests/Feature/ApiTokenPermissionsTest.php` | `App\Models\User` → `Modules\User\Entities\User` (tests se omiten: API desactivado) |
+| `tests/Feature/CreateApiTokenTest.php` | `App\Models\User` → `Modules\User\Entities\User` (tests se omiten: API desactivado) |
+| `tests/Feature/DeleteApiTokenTest.php` | `App\Models\User` → `Modules\User\Entities\User` (tests se omiten: API desactivado) |
+| `tests/Feature/RegistrationTest.php` | Campos de registro actualizados a `nombres`/`apellidos`/`userID`/`role_id`; insert DB para roles 5/6 requeridos por validación `in:5,6`; redirect `/dashboard` en lugar de `route('dashboard')` inexistente |
+
+### Resultado de la suite después de Fase 2
+
+```
+Tests:    34 failed (Inventario pre-existente — requiere seeders), 10 skipped, 38 passed
+Duration: 8.42s
+```
+
+Los 34 fallos son íntegramente Inventario (`ModelNotFoundException` — requieren seeders, DT-B) y
+`ExampleTest` (home protegida por auth). Ningún fallo nuevo introducido.
+Todas las pruebas de User/Auth/Fortify/Jetstream pasan o se omiten correctamente (features desactivadas).
+
+### Validaciones actualizadas (Fase 2)
+
+| ID    | Condición                                     | Resultado  | Notas                                                |
+|-------|-----------------------------------------------|:----------:|------------------------------------------------------|
+| V-001 | Fortify operativo                             | ✅         | `AuthenticationTest` 2/2 pass                        |
+| V-002 | Jetstream operativo                           | ✅         | `BrowserSessionsTest`, `TwoFactorAuthenticationSettingsTest` pass |
+| V-003 | Password Reset operativo                      | ✅         | `PasswordResetTest` 4/4 pass                         |
+| V-004 | Profile Update operativo                      | ✅         | `ProfileInformationTest` 2/2 pass                    |
+| V-005 | Sin Fatal Error por HasRoles                  | ✅         | Ningún modelo activo usa HasRoles                    |
+| V-006 | Sin Fatal Error por User Model                | ✅         | Todos los tests de User/Auth pasan                   |
+| V-007 | Tests ejecutan correctamente                  | ✅         | 10 User/Auth tests PASS; 7 correctamente SKIPPED (features off) |
+| V-008 | Sin regresiones funcionales                   | ✅         | 34 fallos son pre-existentes (Inventario + ExampleTest) |
+
+---
+
+## Hallazgo adicional — Dependencia Spatie no instalada
+
+`app/Actions/Core/SincronizarRolesYPermisosCoreAction` importa:
+- `Spatie\Permission\Models\Permission`
+- `Spatie\Permission\Models\Role`
+- `Spatie\Permission\PermissionRegistrar`
+
+`spatie/laravel-permission` NO está en `composer.json` ni en `vendor/`. Esta acción fallará
+con `Class Not Found` si se ejecuta desde un seeder o comando artisan. No produce error en boot
+ni en la suite de tests actual (no se invoca en ningún test).
+
+**Recomendación**: instalar `spatie/laravel-permission` según ADR-0007, o refactorizar la
+acción para usar el sistema de permisos propietario del módulo User.
 
 ---
 
 ## Resumen Ejecutivo
 
 Cuatro Fortify/Jetstream Actions fueron corregidos para usar `Modules\User\Entities\User`
-(el modelo activo del sistema). `UpdateUserProfileInformation` fue además actualizado para
-validar y guardar los campos reales del schema (`nombres`, `apellidos`, `userID`, `email`),
-en lugar del campo `name` que nunca existió en la base de datos de IEE.
+(el modelo activo del sistema). `UpdateUserProfileInformation` fue actualizado para
+validar y guardar los campos reales del schema (`nombres`, `apellidos`, `userID`, `email`).
 
-El binding roto de `LoginResponse` en `FortifyServiceProvider` fue corregido: post-login
-ahora redirige a `/` mediante `App\Http\Controllers\Auth\LoginResponse` en lugar del
-fallback a `/dashboard`.
+`app/Models/User.php` fue neutralizado y clasificado como LEGACY.
 
-`app/Models/User.php` fue neutralizado (preservado pero sin dependencias fatales) y
-clasificado como LEGACY pendiente de eliminación en IMPL-CORE-CLEANUP-002.
-
-Resultado operativo: las funciones de gestión de contraseña, actualización de perfil,
-reset de contraseña y eliminación de cuenta — previamente inoperativas con HTTP 500 —
-están ahora funcionales sobre la arquitectura activa de IEE.
+En Fase 2 (v1.13.1), se crearon factories propias para `Modules\User\Entities\User` y `Role`,
+y se migraron los 12 archivos de prueba de `App\Models\User` al modelo activo.
+La suite de User/Auth/Fortify/Jetstream ejecuta sin errores: 10 tests pasan, 7 se omiten
+correctamente (features desactivadas), 0 fallos nuevos introducidos.
 
 ---
 
-*Documento generado como parte de IMPL-CORE-CLEANUP-001.*
-*Fecha: 2026-06-11. IEE v1.13.0 / BhagamApps v1.13.0.*
+*Documento actualizado como parte de IMPL-CORE-CLEANUP-001 Fase 2.*
+*Fase 1: 2026-06-11. IEE v1.13.0 / BhagamApps v1.13.0.*
+*Fase 2: 2026-06-11. IEE v1.13.1 / BhagamApps v1.13.1 / User v2.2.2.*

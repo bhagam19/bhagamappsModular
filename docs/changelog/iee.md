@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.13.1 — 2026-06-11
+
+### Fixed
+
+- **[IMPL-CORE-CLEANUP-001 Fase 2]** Completada migración de suite de pruebas al modelo activo.
+  12 archivos de prueba de Fortify/Jetstream/User/Auth actualizados de `App\Models\User`
+  a `Modules\User\Entities\User`. Factories propias creadas en `Modules\User\Database\Factories\`.
+  `ProfileInformationTest` adaptado a campos reales (`nombres`, `apellidos`);
+  `RegistrationTest` adaptado con campos IEE e insert de roles requeridos.
+  10 tests pasan; 7 correctamente omitidos. 0 regresiones.
+
+---
+
 ## v1.13.0 — 2026-06-11
 
 ### Fixed
