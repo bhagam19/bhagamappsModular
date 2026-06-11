@@ -107,12 +107,20 @@ class InventarioDashboard extends Component
             ->toArray();
 
         // DASH-005: Origen de bienes
-        $origenes = DB::table('bienes')
-            ->selectRaw('CASE WHEN origen IS NULL OR origen = "" THEN "Sin origen" ELSE origen END as nombre, COUNT(*) as total')
+        // GROUP BY sobre la columna cruda (válido en ONLY_FULL_GROUP_BY);
+        // la normalización de NULL/"" a "Sin origen" se hace en PHP.
+        $rawOrigenes = DB::table('bienes')
+            ->selectRaw('origen, COUNT(*) as total')
             ->whereNull('deleted_at')
-            ->groupBy(DB::raw('CASE WHEN origen IS NULL OR origen = "" THEN "Sin origen" ELSE origen END'))
+            ->groupBy('origen')
             ->orderByDesc('total')
             ->get();
+
+        $origenes = $rawOrigenes
+            ->groupBy(fn($r) => (is_null($r->origen) || $r->origen === '') ? 'Sin origen' : $r->origen)
+            ->map(fn($group, $nombre) => (object) ['nombre' => $nombre, 'total' => $group->sum('total')])
+            ->sortByDesc('total')
+            ->values();
 
         $this->chartOrigenes = $origenes
             ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])

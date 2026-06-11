@@ -5,6 +5,16 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.11.2 — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-002 — Error 500 Dashboard)
+
+- Query DASH-005 (origen de bienes): corregida para compatibilidad con MySQL `ONLY_FULL_GROUP_BY`.
+  La expresión `GROUP BY CASE WHEN origen...` fue reemplazada por `GROUP BY origen` (columna directa)
+  con normalización de NULL/vacío a "Sin origen" en PHP.
+
+---
+
 ## v2.11.1 — 2026-06-11
 
 ### Fixed (HOTFIX-INV-DASH-001 — Integración Dashboard como página principal)

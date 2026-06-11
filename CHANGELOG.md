@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.15.2] — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-002)
+
+- Error 500 en Dashboard Ejecutivo de Inventario.
+  MySQL ONLY_FULL_GROUP_BY rechazaba `GROUP BY CASE WHEN origen...` en DASH-005.
+  Corregido: `GROUP BY origen` en SQL + normalización PHP.
+  Inventario v2.11.2 | IEE v1.15.2 | BhagamApps v1.15.2.
+
+---
+
 ## [v1.15.1] — 2026-06-11
 
 ### Fixed (HOTFIX-INV-DASH-001)
