@@ -5,6 +5,17 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.11.3 — 2026-06-11
+
+### Fixed (HOTFIX-DEP-001 — Error 500 en Catálogo Dependencias)
+
+- `DependenciasIndex::mount()` línea 40: `User::orderBy('name')->pluck('name', 'id')` fallaría
+  con `Unknown column 'name'` porque la tabla `users` usa `nombres` y `apellidos`.
+  Corregido a `get(['id','nombres','apellidos'])->mapWithKeys(fn($u) => [$u->id => trim($u->nombres.' '.$u->apellidos)])`.
+  Validado con tinker: 116 usuarios, sin excepción, orden correcto.
+
+---
+
 ## v2.11.2 — 2026-06-11
 
 ### Fixed (HOTFIX-INV-DASH-002 — Error 500 Dashboard)

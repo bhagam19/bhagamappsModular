@@ -7,6 +7,25 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.15.3 — 2026-06-11
+
+### Fixed (HOTFIX-DEP-001)
+
+- Catálogo Dependencias restaurado: Error 500 por columna `name` inexistente en `users`.
+  `DependenciasIndex::mount()` ahora usa `nombres` y `apellidos` correctamente.
+
+---
+
+## v1.15.2 — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-002)
+
+- Error 500 en Dashboard Ejecutivo de Inventario corregido.
+  MySQL `ONLY_FULL_GROUP_BY` rechazaba `GROUP BY CASE WHEN origen...` en DASH-005.
+  Fix: `GROUP BY origen` en SQL + normalización PHP de NULL/vacío a "Sin origen".
+
+---
+
 ## v1.15.1 — 2026-06-11
 
 ### Fixed (HOTFIX-INV-DASH-001)

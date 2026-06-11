@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.15.3] — 2026-06-11
+
+### Fixed (HOTFIX-DEP-001)
+
+- Error 500 en Catálogo Dependencias de Inventario.
+  `DependenciasIndex::mount()` consultaba columna `name` en `users`; corregido a `nombres`/`apellidos`.
+  Inventario v2.11.3 | IEE v1.15.3 | BhagamApps v1.15.3.
+
+---
+
 ## [v1.15.2] — 2026-06-11
 
 ### Fixed (HOTFIX-INV-DASH-002)

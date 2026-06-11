@@ -37,7 +37,10 @@ class DependenciasIndex extends Component
     {
         abort_unless(auth()->user()?->hasPermission('ver-dependencias'), 403);
         $this->ubicaciones = Ubicacion::orderBy('nombre')->pluck('nombre', 'id')->toArray();
-        $this->usuarios    = User::orderBy('name')->pluck('name', 'id')->toArray();
+        $this->usuarios    = User::orderBy('nombres')
+            ->get(['id', 'nombres', 'apellidos'])
+            ->mapWithKeys(fn($u) => [$u->id => trim($u->nombres . ' ' . $u->apellidos)])
+            ->toArray();
     }
 
     public function updatingBusqueda(): void

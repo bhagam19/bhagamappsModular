@@ -4,34 +4,41 @@ namespace Modules\Inventario\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use League\Csv\Reader;
-use SplFileObject;
 
 class DependenciasSeeder extends Seeder
 {
     public function run(): void
     {
+        $path = __DIR__ . '/data/dependencias.csv';
 
-        $file = new SplFileObject(__DIR__ . '/data/dependencias.csv');
-        $file->setFlags(SplFileObject::READ_CSV);
+        $handle = fopen($path, 'r');
 
-        $headers = array_map("trim", str_getcsv($file->fgets()));
+        // Primera línea: encabezados
+        $headers = array_map('trim', fgetcsv($handle));
 
-        foreach ($file as $row) {
+        DB::transaction(function () use ($handle, $headers) {
+            while (($row = fgetcsv($handle)) !== false) {
+                if (count($row) < count($headers)) {
+                    continue;
+                }
 
-            if (count($row) < 2 || empty($row[0]) || $row[0] === $headers[0]) {
-                continue;
+                $data = array_combine($headers, $row);
+
+                // updateOrCreate preserva IDs y es idempotente.
+                // El id es crítico: bienes.dependencia_id lo referencia.
+                DB::table('dependencias')->updateOrInsert(
+                    ['id' => (int) $data['id']],
+                    [
+                        'nombre'       => trim($data['nombre']),
+                        'ubicacion_id' => (int) $data['ubicacion_id'],
+                        'user_id'      => (int) $data['usuario_id'],
+                        'created_at'   => $data['created_at'],
+                        'updated_at'   => $data['updated_at'],
+                    ]
+                );
             }
-            $data = array_combine($headers, $row);
+        });
 
-            DB::table('dependencias')->insert([
-                //'id' => $data['id'],
-                'nombre' => $data['nombre'],
-                'ubicacion_id' => $data['ubicacion_id'],
-                'user_id' => $data['usuario_id'],
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        fclose($handle);
     }
 }
