@@ -5,6 +5,26 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.11.0 — 2026-06-11
+
+### Added (IMPL-INV-DASH-001 — Dashboard Ejecutivo Inventario IEE)
+
+- Dashboard ejecutivo institucional en página principal `/inventario`.
+- DASH-001: Tarjetas KPI con Total Bienes, Dependencias, Responsables, Categorías, Bienes Activos, Bajas, Mantenimientos Pendientes y Realizados.
+- DASH-002: Gráfica doughnut de distribución de bienes por categoría con porcentajes (Chart.js 4).
+- DASH-003: Gráfica de barras horizontales con top 10 dependencias por cantidad de bienes.
+- DASH-004: Gráfica pie de distribución de bienes por estado del inventario.
+- DASH-005: Gráfica doughnut de origen de bienes; advertencia institucional si datos sin normalizar.
+- DASH-006: Panel de últimos movimientos (modificaciones, cambios de ubicación, eliminaciones aprobadas — últimos 10 cada uno) con tabs.
+- DASH-007: Panel de alertas (mantenimientos vencidos, bienes sin responsable/ubicación, info incompleta, solicitudes pendientes).
+- DASH-008: Accesos rápidos a todos los módulos del inventario.
+- DASH-009: Indicadores de calidad de datos con barras de progreso e índice general.
+- DASH-010: Diseño completamente responsive (Bootstrap 4 col-*) para desktop, tablet y móvil.
+- Livewire component `Dashboard/InventarioDashboard.php` con consultas 100% agregadas (sin N+1).
+- Ruta `GET /inventario` con nombre `inventario.dashboard`.
+
+---
+
 ## v2.10.5 — 2026-06-10
 
 ### Added (IMPL-INV-QA-001 — Inventory Test Foundation)

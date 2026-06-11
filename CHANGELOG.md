@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.15.0] — 2026-06-11
+
+### Added (IMPL-INV-DASH-001)
+
+- Dashboard Ejecutivo de Inventario IEE.
+  Página principal de `/inventario` convertida en tablero ejecutivo institucional.
+  KPIs, gráficas Chart.js (categorías, dependencias, estado, origen), alertas,
+  accesos rápidos e indicadores de calidad de datos.
+  Livewire 3 + Alpine.js. Consultas 100% agregadas, sin N+1. Responsive AdminLTE.
+  Inventario v2.11.0 | IEE v1.15.0 | BhagamApps v1.15.0.
+
+---
+
 ## [v1.14.1] — 2026-06-11
 
 ### Fixed

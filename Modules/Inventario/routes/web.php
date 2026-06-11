@@ -10,8 +10,13 @@ use Modules\Inventario\Http\Controllers\CatalogosController;
 use Modules\Inventario\Http\Controllers\ResponsablesController;
 use Modules\Inventario\Http\Controllers\UbicacionesHistorialController;
 use Modules\Inventario\Http\Controllers\MantenimientosProgramadosController;
+use Modules\Inventario\Http\Controllers\InventarioController;
 
 Route::middleware(['web', 'auth', 'app.access:inventario'])->prefix('inventario')->group(function () {
+
+    // Dashboard ejecutivo — página principal del módulo
+    Route::get('/', [InventarioController::class, 'dashboard'])
+        ->name('inventario.dashboard');
 
     Route::get('/bienes', [BienController::class, 'index'])
         ->name('inventario.bienes.index')

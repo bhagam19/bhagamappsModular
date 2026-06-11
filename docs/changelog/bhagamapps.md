@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.15.0 — 2026-06-11
+
+### Added
+
+- Dashboard Ejecutivo de Inventario IEE (IMPL-INV-DASH-001).
+  Livewire component con consultas agregadas, Chart.js 4 vía CDN,
+  KPIs, gráficas, alertas, accesos rápidos y calidad de datos.
+  Ver detalle en `docs/changelog/inventario.md` v2.11.0.
+
+---
+
 ## v1.14.1 — 2026-06-11
 
 ### Fixed

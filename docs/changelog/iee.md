@@ -7,6 +7,17 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.15.0 — 2026-06-11
+
+### Added (IMPL-INV-DASH-001)
+
+- Dashboard Ejecutivo de Inventario IEE en página principal del módulo.
+  Rector, Administrador, Coordinadores y Responsables acceden al tablero institucional
+  con KPIs, gráficas de distribución, alertas operativas, accesos rápidos
+  e indicadores de calidad de datos al ingresar a Inventario.
+
+---
+
 ## v1.14.1 — 2026-06-11
 
 ### Fixed
