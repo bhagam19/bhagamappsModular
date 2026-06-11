@@ -7,6 +7,17 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.12.1 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INFRA-001]** URL pública del producto migrada a `/iee`.
+  Symlink `/iee` creado en servidor; `/Modular` coexiste durante transición.
+  `APP_URL`, `ASSET_URL` y `SESSION_PATH` actualizados. La URL canónica del producto
+  es ahora `http://bhagamapps.com/iee`.
+
+---
+
 ## v1.12.0 — 2026-06-10
 
 ### Changed

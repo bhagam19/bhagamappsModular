@@ -11,6 +11,16 @@ Changelogs de módulo:
 
 ---
 
+## v1.12.1 — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INFRA-001]** Alias público `/iee` creado en servidor como symlink paralelo a `/Modular`.
+  `APP_URL`, `ASSET_URL` y `SESSION_PATH` migrados a `/iee`. `/Modular` permanece operativo
+  durante período de transición. Assets, login, rutas protegidas e inventario validados bajo `/iee`.
+
+---
+
 ## v1.12.0 — 2026-06-10
 
 ### Changed

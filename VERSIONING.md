@@ -8,8 +8,8 @@ Documento oficial de la estrategia de versionado de la plataforma BhagamApps.
 
 | Componente     | Versión | Última actualización | Changelog                                    |
 |----------------|---------|----------------------|----------------------------------------------|
-| **IEE**        | v1.12.0 | 2026-06-10           | [`docs/changelog/iee.md`](docs/changelog/iee.md)               |
-| **BhagamApps** | v1.12.0 | 2026-06-10           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
+| **IEE**        | v1.12.1 | 2026-06-10           | [`docs/changelog/iee.md`](docs/changelog/iee.md)               |
+| **BhagamApps** | v1.12.1 | 2026-06-10           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
 | Inventario     | v2.10.5 | 2026-06-10           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
 | User           | v2.2.1  | 2026-06-08           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
 | Apps           | v1.5.0  | 2026-06-09           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |

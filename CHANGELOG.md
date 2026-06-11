@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.12.1] — 2026-06-10
+
+### Fixed
+
+- **[IMPL-INFRA-001]** Migración de alias público `/Modular` → `/iee`.
+  Creado symlink `/iee` en `public_html/public/` apuntando al mismo destino que `/Modular`.
+  Actualizado `APP_URL`, `ASSET_URL` y `SESSION_PATH` a `/iee` en producción.
+  `/Modular` se mantiene operativo en paralelo durante transición.
+  IEE v1.12.1 | BhagamApps v1.12.1.
+
+---
+
 ## [v1.12.0] — 2026-06-10
 
 ### Changed
