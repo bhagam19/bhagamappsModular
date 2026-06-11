@@ -11,6 +11,16 @@ Changelogs de módulo:
 
 ---
 
+## v1.16.0 — 2026-06-11
+
+### Added (IMPL-USERS-002)
+
+- Módulo User: búsqueda reactiva, filtros por rol y estado, ordenamiento por columnas en `UserIndex`.
+  `UserIndex::render()` con LEFT JOIN + filtros encadenados + sort dinámico.
+  User v2.4.0 | IEE v1.16.0 | BhagamApps v1.16.0.
+
+---
+
 ## v1.15.3 — 2026-06-11
 
 ### Fixed (HOTFIX-DEP-001)

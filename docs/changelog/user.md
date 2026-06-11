@@ -5,6 +5,23 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.4.0 — 2026-06-11
+
+### Added (IMPL-USERS-002 — Búsqueda, Filtros y Ordenamiento de Usuarios)
+
+- Búsqueda reactiva (`wire:model.live.debounce.300ms`) en nombres, apellidos y email. Sin botón.
+- Filtro por rol: select reactivo que filtra por `role_id`. Opciones dinámicas desde BD.
+- Filtro por estado: Todos / Activos / Bloqueados sobre columna `bloqueado`.
+- Ordenamiento por columnas: ID, Nombres, Apellidos, No. Documento, Rol, Email, Estado, Creación.
+  Toggle asc/desc con ícono visual en cada encabezado.
+- Filtros persistentes durante paginación, ordenamiento y navegación Livewire.
+- Columna `Estado` añadida a la tabla (badge Activo/Bloqueado) — visible por defecto.
+- Columna `Creación` disponible en toggle de columnas.
+- Vista móvil (acordeón): badge de estado y rol en cabecera de cada card.
+- `$rolesDisponibles` cargado en `mount()` — elimina query dentro de Blade.
+
+---
+
 ## v2.3.0 — 2026-06-11
 
 ### Added

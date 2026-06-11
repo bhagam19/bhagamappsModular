@@ -7,6 +7,16 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.16.0 — 2026-06-11
+
+### Added (IMPL-USERS-002)
+
+- Gestión de usuarios modernizada: búsqueda reactiva por nombre/apellido/email,
+  filtros por rol y estado, y ordenamiento por todas las columnas.
+  Flujo de creación y edición sin cambios.
+
+---
+
 ## v1.15.3 — 2026-06-11
 
 ### Fixed (HOTFIX-DEP-001)

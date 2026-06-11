@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.16.0] — 2026-06-11
+
+### Added (IMPL-USERS-002)
+
+- Módulo User: búsqueda reactiva, filtros por rol/estado y ordenamiento por columnas en gestión de usuarios.
+  User v2.4.0 | IEE v1.16.0 | BhagamApps v1.16.0.
+
+---
+
 ## [v1.15.3] — 2026-06-11
 
 ### Fixed (HOTFIX-DEP-001)
