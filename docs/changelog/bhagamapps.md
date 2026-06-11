@@ -11,6 +11,15 @@ Changelogs de módulo:
 
 ---
 
+## v1.15.1 — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-001)
+
+- Integración de puntos de entrada al Dashboard Ejecutivo de Inventario:
+  menú sidebar, Apps y tabla `apps` en BD apuntan ahora a `/inventario` (dashboard).
+
+---
+
 ## v1.15.0 — 2026-06-11
 
 ### Added

@@ -24,7 +24,7 @@ class AppSeeder extends Seeder
             [
                 'nombre'      => 'Inventario',
                 'slug'        => 'inventario',
-                'ruta'        => '/inventario/bienes',
+                'ruta'        => '/inventario',
                 'descripcion' => 'Inventario de bienes institucionales.',
                 'imagen'      => 'vendor/adminlte/dist/img/Apps/inventario.png',
                 'icono'       => 'fas fa-boxes',

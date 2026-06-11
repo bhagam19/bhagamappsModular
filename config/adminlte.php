@@ -365,17 +365,25 @@ return [
 
         // 📌 [crud-generator-menus] Añadir menús aquí
         [
-            'text' => 'Inventario',
-            'icon' => 'fas fa-boxes',
+            'text'   => 'Inventario',
+            'icon'   => 'fas fa-boxes',
+            'route'  => 'inventario.dashboard',
+            'active' => ['inventario'],
             'submenu' => [
+                [
+                    'text'    => 'Dashboard',
+                    'icon'    => 'fas fa-tachometer-alt text-success',
+                    'route'   => 'inventario.dashboard',
+                    'active'  => ['inventario'],
+                    'classes' => 'font-weight-bold',
+                ],
                 [
                     'text' => 'Bienes',
                     'icon' => 'fas fa-box text-info',
                     'route' => 'inventario.bienes.index',
-                    'active' => ['inventario/bienes*'], // activa también para actas
+                    'active' => ['inventario/bienes*'],
                     'classes' => 'text-primary font-weight-bold',
                     'can' => 'ver-bienes',
-
                 ],
                 [
                     'text' => 'Actas de Entrega',

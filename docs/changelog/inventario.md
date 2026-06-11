@@ -5,6 +5,16 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.11.1 — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-001 — Integración Dashboard como página principal)
+
+- Sidebar "Inventario": ítem padre apunta ahora a `inventario.dashboard`; "Dashboard" añadido como primer ítem del submenu.
+- `AppSeeder.php`: ruta de Inventario corregida de `/inventario/bienes` a `/inventario`.
+- Tabla `apps` en BD: migración actualiza `ruta` para slug=inventario a `/inventario`.
+
+---
+
 ## v2.11.0 — 2026-06-11
 
 ### Added (IMPL-INV-DASH-001 — Dashboard Ejecutivo Inventario IEE)

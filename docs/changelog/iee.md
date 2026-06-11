@@ -7,6 +7,14 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.15.1 — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-001)
+
+- Menú lateral y Apps corregidos para abrir el Dashboard Ejecutivo de Inventario como página inicial del módulo.
+
+---
+
 ## v1.15.0 — 2026-06-11
 
 ### Added (IMPL-INV-DASH-001)

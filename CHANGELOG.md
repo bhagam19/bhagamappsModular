@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.15.1] — 2026-06-11
+
+### Fixed (HOTFIX-INV-DASH-001)
+
+- Menú sidebar, Apps y tabla `apps` en BD apuntan ahora a `/inventario` (dashboard ejecutivo).
+  Inventario v2.11.1 | IEE v1.15.1 | BhagamApps v1.15.1.
+
+---
+
 ## [v1.15.0] — 2026-06-11
 
 ### Added (IMPL-INV-DASH-001)
