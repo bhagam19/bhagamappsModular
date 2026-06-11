@@ -5,6 +5,16 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.4.1 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-003 — FatalError en mount())
+
+- `UserIndex::mount()`: eliminado `: void` del signature.
+  IMPL-USERS-002 añadió esta anotación de tipo pero `mount()` tiene `return redirect()`
+  condicional — PHP lanza `A void function must not return a value` como FatalError.
+
+---
+
 ## v2.4.0 — 2026-06-11
 
 ### Added (IMPL-USERS-002 — Búsqueda, Filtros y Ordenamiento de Usuarios)

@@ -42,7 +42,7 @@ class UserIndex extends Component
 
     public $visibleColumns = ['id', 'nombres', 'apellidos', 'rol', 'email', 'estado'];
 
-    public function mount(): void
+    public function mount()
     {
         if (!auth()->user()->hasPermission('ver-usuarios')) {
             return redirect()->route('ppal.index');

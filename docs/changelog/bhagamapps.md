@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.16.1 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-003)
+
+- Error 500 inmediato en `/users/users` tras IMPL-USERS-002.
+  `UserIndex::mount(): void` con `return redirect()` dispara FatalError en PHP.
+  Corregido: eliminado `: void` del signature.
+  User v2.4.1 | IEE v1.16.1 | BhagamApps v1.16.1.
+
+---
+
 ## v1.16.0 — 2026-06-11
 
 ### Added (IMPL-USERS-002)

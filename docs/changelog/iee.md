@@ -7,6 +7,15 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.16.1 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-003)
+
+- Error 500 en gestión de usuarios corregido.
+  `UserIndex::mount(): void` declarado incorrectamente; eliminado `: void`.
+
+---
+
 ## v1.16.0 — 2026-06-11
 
 ### Added (IMPL-USERS-002)
