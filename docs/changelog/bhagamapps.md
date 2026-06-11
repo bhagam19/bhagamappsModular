@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.14.1 — 2026-06-11
+
+### Fixed
+
+- **[HOTFIX-RBAC-001]** Tabla `app_role` vacía por CASCADE en `cleanup_legacy_apps`.
+  Migración `2026_06_11_200000_assign_app_roles_rbac_recovery` en módulo Apps restaura
+  la matriz roles↔apps de forma dinámica (por slug/nombre, sin IDs fijos).
+  Corrección aplica a Rector, Administrador, Coordinador, Auxiliar y Docente.
+
+---
+
 ## v1.14.0 — 2026-06-11
 
 ### Added

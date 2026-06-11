@@ -13,8 +13,8 @@ class BienesResponsablesSeeder extends Seeder
             DB::table('bienes_responsables')->insert([
                 'bien_id' => $i,
                 'user_id' => 1,
-                'fecha_inicio' => now()->subMonths(2),
-                'fecha_fin' => now(), // o null si aún es responsable
+                'fecha_asignacion' => now()->subMonths(2)->toDateString(),
+                'fecha_retiro' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

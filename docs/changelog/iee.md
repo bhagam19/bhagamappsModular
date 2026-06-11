@@ -7,6 +7,16 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.14.1 — 2026-06-11
+
+### Fixed
+
+- **[HOTFIX-RBAC-001]** Restaurado el acceso a todos los módulos tras restauración de datos.
+  El rector y demás roles recibían 403 al ingresar a Usuarios e Inventario por pérdida de vínculos
+  en `app_role`. Corregido con migración de recuperación RBAC. Sin regresiones funcionales.
+
+---
+
 ## v1.14.0 — 2026-06-11
 
 ### Added

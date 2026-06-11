@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.14.1] — 2026-06-11
+
+### Fixed
+
+- **[HOTFIX-RBAC-001]** Recuperación de acceso RBAC tras restauración de datos.
+  La tabla `app_role` quedó vacía por CASCADE al ejecutar `cleanup_legacy_apps` y los seeders
+  no la repoblaron. Todos los roles perdieron acceso a las apps, causando 403 en todas las rutas.
+  Migración `2026_06_11_200000_assign_app_roles_rbac_recovery` restaura la matriz completa
+  (Rector+Admin→user/inventario/apps; Coordinador→user/inventario; Auxiliar+Docente→inventario).
+  Apps v1.5.1 | IEE v1.14.1 | BhagamApps v1.14.1.
+
+---
+
 ## [v1.14.0] — 2026-06-11
 
 ### Added

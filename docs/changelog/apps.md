@@ -5,6 +5,20 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.5.1 — 2026-06-11
+
+### Fixed
+
+- **[HOTFIX-RBAC-001]** Migración `2026_06_11_200000_assign_app_roles_rbac_recovery`.
+  Restaura la tabla `app_role` que quedó vacía tras la migración `cleanup_legacy_apps` (CASCADE).
+  El `AppSeeder` no puebla `app_role` y la migración `assign_inventario_app_to_coordinador`
+  no encontró apps con slug al momento de ejecutarse. Matriz de acceso restaurada:
+  - Rector / Administrador → `user`, `inventario`, `apps`
+  - Coordinador → `user`, `inventario`
+  - Auxiliar / Docente → `inventario`
+
+---
+
 ## v1.5.0 — 2026-06-09
 
 ### Removed
