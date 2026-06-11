@@ -26,6 +26,9 @@ use Modules\User\Livewire\Permissions\EditarNombrePermission;
 use Modules\User\Livewire\Permissions\EditarDescripcionPermission;
 use Modules\User\Livewire\Permissions\EditarCategoriaPermission;
 
+use Modules\User\Livewire\Password\GestionPasswordUser;
+use Modules\User\Livewire\Password\GestionEstadoUser;
+
 class UserServiceProvider extends ServiceProvider
 {
     use PathNamespace;
@@ -68,6 +71,9 @@ class UserServiceProvider extends ServiceProvider
         Livewire::component('permissions.editar-nombre-permission', EditarNombrePermission::class);
         Livewire::component('permissions.editar-descripcion-permission', EditarDescripcionPermission::class);
         Livewire::component('permissions.editar-categoria-permission', EditarCategoriaPermission::class);
+
+        Livewire::component('user.gestion-password-user', GestionPasswordUser::class);
+        Livewire::component('user.gestion-estado-user', GestionEstadoUser::class);
     }
 
     /**

@@ -3,6 +3,30 @@
 Historial de cambios del módulo User.
 Módulo: `Modules/User` — Rutas: `/user/*`
 
+---
+
+## v2.3.0 — 2026-06-11
+
+### Added
+
+- **[IMPL-USERS-001]** Administración institucional de contraseñas y estados de usuario.
+  - `GestionPasswordUser` Livewire: restablece contraseña (Hash::make), genera contraseña
+    aleatoria, opción de forzar cambio al siguiente ingreso.
+  - `GestionEstadoUser` Livewire: bloquea/desbloquea cuentas de usuario.
+  - `CheckForzarCambioPassword` middleware en grupo web: intercepta solicitudes y redirige
+    a `/user/profile` cuando el flag `forzar_cambio_password` está activo.
+  - `UpdateUserPassword` limpia `forzar_cambio_password` tras cambio exitoso.
+  - `FortifyServiceProvider::authenticateUsing` impide autenticación de usuarios bloqueados.
+  - Tabla `auditoria_passwords` con acciones: `password_reset`, `password_forced`,
+    `user_blocked`, `user_unblocked` — `usuario_afectado_id`, `administrador_id`, `fecha_hora`.
+  - Columnas `bloqueado` (bool, default false) y `forzar_cambio_password` (bool, default false)
+    en tabla `users`.
+  - 4 nuevos permisos: `ver-administracion-passwords`, `restablecer-passwords`,
+    `bloquear-usuarios`, `desbloquear-usuarios`. Asignados a Administrador y Rector.
+  - Componentes integrados en `UserIndex` (desktop + móvil), visibles según permisos.
+  - Suite de pruebas `PasswordAdminTest` (8 tests, V-001 → V-008): todos PASS.
+  - 15 tests previos sin regresiones.
+
 > **Nota:** El módulo se llamaba `Users` hasta v1.1.1. En v2.0.0 fue renombrado
 > a `User` con nueva estructura modular. Las entradas anteriores a v2.0.0 se
 > conservan bajo el nombre histórico `Users` para fidelidad con el historial.

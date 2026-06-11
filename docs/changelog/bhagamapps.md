@@ -11,6 +11,19 @@ Changelogs de módulo:
 
 ---
 
+## v1.14.0 — 2026-06-11
+
+### Added
+
+- **[IMPL-USERS-001]** Administración institucional de contraseñas y estados de usuario.
+  Restablecimiento administrativo, forzado de cambio, bloqueo/desbloqueo de cuentas
+  y auditoría completa de acciones. Fortify extendido con `authenticateUsing` para
+  bloqueo de cuentas. Middleware `CheckForzarCambioPassword` en el grupo web.
+  4 nuevos permisos asignados a Administrador y Rector.
+  IEE v1.14.0 | BhagamApps v1.14.0 | User v2.3.0.
+
+---
+
 ## v1.13.1 — 2026-06-11
 
 ### Fixed

@@ -38,7 +38,9 @@ class User extends Authenticatable
         'userID',
         'email',
         'password',
-        'role_id', // ← ahora se utiliza esta columna en lugar de 'rol'
+        'role_id',
+        'bloqueado',
+        'forzar_cambio_password',
     ];
 
     /**
@@ -59,7 +61,9 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at'       => 'datetime',
+        'bloqueado'               => 'boolean',
+        'forzar_cambio_password'  => 'boolean',
     ];
 
     /**

@@ -215,7 +215,13 @@
                             @endif
                         @endif
 
-                        <td>
+                        <td class="d-flex flex-wrap gap-1 align-items-center">
+                            @if (auth()->user()->hasPermission('restablecer-passwords'))
+                                @livewire('user.gestion-password-user', ['user' => $user], key('pass-' . $user->id))
+                            @endif
+                            @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
+                                @livewire('user.gestion-estado-user', ['user' => $user], key('estado-' . $user->id))
+                            @endif
                             @if (auth()->user()->hasPermission('eliminar-usuarios'))
                                 <button wire:click="delete({{ $user->id }})" class="btn btn-sm btn-danger"
                                     onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
@@ -246,13 +252,21 @@
                         onkeydown="if(event.key === 'Enter' || event.key === ' ') { $('#collapse{{ $user->id }}').collapse('toggle'); event.preventDefault(); }">
                         <span>{{ $user->id }}. {{ $user->nombres }} {{ $user->apellidos }}</span>
 
-                        @if (auth()->user()->hasPermission('eliminar-usuarios'))
-                            <button wire:click.stop="delete({{ $user->id }})" class="btn btn-sm btn-danger ml-auto"
-                                onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
-                                aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
-                                Eliminar
-                            </button>
-                        @endif
+                        <div class="ml-auto d-flex gap-1">
+                            @if (auth()->user()->hasPermission('restablecer-passwords'))
+                                @livewire('user.gestion-password-user', ['user' => $user], key('mpass-' . $user->id))
+                            @endif
+                            @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
+                                @livewire('user.gestion-estado-user', ['user' => $user], key('mestado-' . $user->id))
+                            @endif
+                            @if (auth()->user()->hasPermission('eliminar-usuarios'))
+                                <button wire:click.stop="delete({{ $user->id }})" class="btn btn-sm btn-danger"
+                                    onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
+                                    aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
+                                    Eliminar
+                                </button>
+                            @endif
+                        </div>
                     </div>
 
                     <div id="collapse{{ $user->id }}" class="collapse"

@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.14.0] — 2026-06-11
+
+### Added
+
+- **[IMPL-USERS-001]** Administración institucional de contraseñas y estados de usuario.
+  `GestionPasswordUser` y `GestionEstadoUser` Livewire integrados en `UserIndex`.
+  Fortify extendido con `authenticateUsing` para bloqueo de cuentas.
+  Middleware `CheckForzarCambioPassword` en grupo web para forzado de cambio.
+  Tabla `auditoria_passwords` con 4 tipos de acción. 4 nuevos permisos RBAC.
+  8 tests V-001→V-008 todos PASS. 15 tests previos sin regresiones.
+  IEE v1.14.0 | BhagamApps v1.14.0 | User v2.3.0.
+
+---
+
 ## [v1.13.1] — 2026-06-11
 
 ### Fixed

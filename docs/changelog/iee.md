@@ -7,6 +7,17 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.14.0 — 2026-06-11
+
+### Added
+
+- **[IMPL-USERS-001]** Los administradores e institución ahora pueden gestionar contraseñas
+  y estados de cuentas sin acceso directo a la base de datos.
+  Restablecimiento de contraseña con confirmación visual, opción de forzar cambio al siguiente
+  ingreso, bloqueo y desbloqueo de cuentas, y auditoría completa de todas las acciones.
+
+---
+
 ## v1.13.1 — 2026-06-11
 
 ### Fixed

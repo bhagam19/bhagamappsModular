@@ -33,3 +33,7 @@
 "33","ver grupos","ver-grupos","Permite acceder a la sección de administración de grupos académicos.","grupos","2026-06-08 20:23:25","2026-06-08 20:23:25"
 "34","ver evaluación docente","ver-evaluacion-docente","Permite acceder a la sección de evaluación docente.","evaluacion-docente","2026-06-08 20:23:25","2026-06-08 20:23:25"
 "35","ver biblioteca","ver-biblioteca","Permite acceder a la sección de biblioteca.","biblioteca","2026-06-08 20:23:25","2026-06-08 20:23:25"
+"36","ver administración de contraseñas","ver-administracion-passwords","Permite acceder al panel de administración de contraseñas de usuarios.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
+"37","restablecer contraseñas","restablecer-passwords","Permite restablecer la contraseña de cualquier usuario.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
+"38","bloquear usuarios","bloquear-usuarios","Permite bloquear una cuenta de usuario para impedir su autenticación.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
+"39","desbloquear usuarios","desbloquear-usuarios","Permite desbloquear una cuenta de usuario previamente bloqueada.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
