@@ -736,40 +736,43 @@
             </div>
             <div class="card-body">
                 @if(count($chartCategorias) > 0)
-                    <div wire:ignore>
-                        <canvas id="chartCategorias" style="max-height:280px;"></canvas>
-                    </div>
-                    @script
-                    <script>
-                    (function () {
-                        var labels = @json(collect($chartCategorias)->pluck('nombre'));
-                        var data   = @json(collect($chartCategorias)->pluck('total'));
-                        var total  = data.reduce(function (a, b) { return a + b; }, 0);
-                        var colors = ['#4dc9f6','#f67019','#f53794','#537bc4','#acc236','#166a8f','#00a950','#58595b','#8549ba','#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4'];
-                        new Chart(document.getElementById('chartCategorias').getContext('2d'), {
-                            type: 'doughnut',
-                            data: {
-                                labels: labels,
-                                datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: { position: 'right', labels: { font: { size: 11 } } },
-                                    tooltip: {
-                                        callbacks: {
-                                            label: function (ctx) {
-                                                var pct = total > 0 ? ((ctx.raw / total) * 100).toFixed(1) : 0;
-                                                return ' ' + ctx.label + ': ' + ctx.raw + ' (' + pct + '%)';
+                    <div
+                        wire:ignore
+                        x-data='{
+                            chart: null,
+                            init() {
+                                var labels = @json(collect($chartCategorias)->pluck("nombre"));
+                                var data   = @json(collect($chartCategorias)->pluck("total"));
+                                var total  = data.reduce(function (a, b) { return a + b; }, 0);
+                                var colors = ["#4dc9f6","#f67019","#f53794","#537bc4","#acc236","#166a8f","#00a950","#58595b","#8549ba","#e6194b","#3cb44b","#ffe119","#4363d8","#f58231","#911eb4"];
+                                var ctx = this.$el.querySelector("#chartCategorias").getContext("2d");
+                                this.chart = new Chart(ctx, {
+                                    type: "doughnut",
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: { position: "right", labels: { font: { size: 11 } } },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: function (ctx) {
+                                                        var pct = total > 0 ? ((ctx.raw / total) * 100).toFixed(1) : 0;
+                                                        return " " + ctx.label + ": " + ctx.raw + " (" + pct + "%)";
+                                                    }
+                                                }
                                             }
                                         }
                                     }
-                                }
+                                });
                             }
-                        });
-                    })();
-                    </script>
-                    @endscript
+                        }'
+                        x-init="init()"
+                    >
+                        <canvas id="chartCategorias" style="max-height:280px;"></canvas>
+                    </div>
                     <div class="mt-2">
                         <small class="text-muted">
                             Total: <strong>{{ array_sum(array_column($chartCategorias, 'total')) }}</strong> bienes en
@@ -793,36 +796,39 @@
             </div>
             <div class="card-body">
                 @if(count($chartDependencias) > 0)
-                    <div wire:ignore>
+                    <div
+                        wire:ignore
+                        x-data='{
+                            chart: null,
+                            init() {
+                                var labels = @json(collect($chartDependencias)->pluck("nombre"));
+                                var data   = @json(collect($chartDependencias)->pluck("total"));
+                                var ctx    = this.$el.querySelector("#chartDependencias").getContext("2d");
+                                this.chart = new Chart(ctx, {
+                                    type: "bar",
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: "Bienes",
+                                            data: data,
+                                            backgroundColor: "rgba(102,16,242,0.65)",
+                                            borderColor: "rgba(102,16,242,1)",
+                                            borderWidth: 1,
+                                        }]
+                                    },
+                                    options: {
+                                        indexAxis: "y",
+                                        responsive: true,
+                                        plugins: { legend: { display: false } },
+                                        scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }
+                                    }
+                                });
+                            }
+                        }'
+                        x-init="init()"
+                    >
                         <canvas id="chartDependencias" style="max-height:280px;"></canvas>
                     </div>
-                    @script
-                    <script>
-                    (function () {
-                        var labels = @json(collect($chartDependencias)->pluck('nombre'));
-                        var data   = @json(collect($chartDependencias)->pluck('total'));
-                        new Chart(document.getElementById('chartDependencias').getContext('2d'), {
-                            type: 'bar',
-                            data: {
-                                labels: labels,
-                                datasets: [{
-                                    label: 'Bienes',
-                                    data: data,
-                                    backgroundColor: 'rgba(102,16,242,0.65)',
-                                    borderColor: 'rgba(102,16,242,1)',
-                                    borderWidth: 1,
-                                }]
-                            },
-                            options: {
-                                indexAxis: 'y',
-                                responsive: true,
-                                plugins: { legend: { display: false } },
-                                scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }
-                            }
-                        });
-                    })();
-                    </script>
-                    @endscript
                 @else
                     <p class="text-muted text-center py-4"><i class="fas fa-info-circle mr-1"></i>Sin datos de dependencias disponibles.</p>
                 @endif
@@ -845,40 +851,43 @@
             </div>
             <div class="card-body">
                 @if(count($chartOrigenes) > 0)
-                    <div wire:ignore>
-                        <canvas id="chartOrigenes" style="max-height:280px;"></canvas>
-                    </div>
-                    @script
-                    <script>
-                    (function () {
-                        var labels = @json(collect($chartOrigenes)->pluck('nombre'));
-                        var data   = @json(collect($chartOrigenes)->pluck('total'));
-                        var total  = data.reduce(function (a, b) { return a + b; }, 0);
-                        var colors = ['#6c757d','#007bff','#fd7e14','#20c997','#e83e8c','#6610f2','#17a2b8','#ffc107','#28a745','#dc3545','#343a40','#f8f9fa','#6f42c1','#e83e8c','#17a2b8'];
-                        new Chart(document.getElementById('chartOrigenes').getContext('2d'), {
-                            type: 'doughnut',
-                            data: {
-                                labels: labels,
-                                datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: { position: 'right', labels: { font: { size: 11 } } },
-                                    tooltip: {
-                                        callbacks: {
-                                            label: function (ctx) {
-                                                var pct = total > 0 ? ((ctx.raw / total) * 100).toFixed(1) : 0;
-                                                return ' ' + ctx.label + ': ' + ctx.raw + ' (' + pct + '%)';
+                    <div
+                        wire:ignore
+                        x-data='{
+                            chart: null,
+                            init() {
+                                var labels = @json(collect($chartOrigenes)->pluck("nombre"));
+                                var data   = @json(collect($chartOrigenes)->pluck("total"));
+                                var total  = data.reduce(function (a, b) { return a + b; }, 0);
+                                var colors = ["#6c757d","#007bff","#fd7e14","#20c997","#e83e8c","#6610f2","#17a2b8","#ffc107","#28a745","#dc3545","#343a40","#f8f9fa","#6f42c1","#e83e8c","#17a2b8"];
+                                var ctx    = this.$el.querySelector("#chartOrigenes").getContext("2d");
+                                this.chart = new Chart(ctx, {
+                                    type: "doughnut",
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: { position: "right", labels: { font: { size: 11 } } },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: function (ctx) {
+                                                        var pct = total > 0 ? ((ctx.raw / total) * 100).toFixed(1) : 0;
+                                                        return " " + ctx.label + ": " + ctx.raw + " (" + pct + "%)";
+                                                    }
+                                                }
                                             }
                                         }
                                     }
-                                }
+                                });
                             }
-                        });
-                    })();
-                    </script>
-                    @endscript
+                        }'
+                        x-init="init()"
+                    >
+                        <canvas id="chartOrigenes" style="max-height:280px;"></canvas>
+                    </div>
                     <div class="mt-2">
                         <small class="text-muted">
                             <strong>{{ number_format($countConOrigen) }}</strong> bienes con origen conocido ·
