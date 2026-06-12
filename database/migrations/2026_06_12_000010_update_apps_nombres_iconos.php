@@ -7,10 +7,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // "Usuarios" → "Gestión de Acceso" con ícono de control de acceso
+        // "Usuarios" → "Gestión de Acceso" con ícono de control de acceso y ruta correcta
         DB::table('apps')->where('id', 1)->update([
             'nombre' => 'Gestión de Acceso',
             'icono'  => 'fas fa-user-shield',
+            'ruta'   => '/users/users',
         ]);
 
         // "Aplicaciones" → ícono más representativo de lanzador de apps
@@ -24,6 +25,7 @@ return new class extends Migration
         DB::table('apps')->where('id', 1)->update([
             'nombre' => 'Usuarios',
             'icono'  => 'fas fa-users',
+            'ruta'   => '/user',
         ]);
 
         DB::table('apps')->where('id', 3)->update([
