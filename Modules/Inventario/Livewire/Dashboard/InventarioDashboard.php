@@ -151,15 +151,22 @@ class InventarioDashboard extends Component
             ->where('fecha_programada', '<', now()->toDateString())
             ->count();
 
+        // DASHREL-001/002: un bien tiene responsable si dependencia.user_id existe (NOT NULL)
+        // o si tiene registro directo en bienes_responsables. Solo está "sin responsable"
+        // si carece de dependencia_id Y de registro en bienes_responsables.
         $this->alertSinResponsable = DB::table('bienes')
             ->whereNull('deleted_at')
+            ->whereNull('dependencia_id')
             ->whereNotIn('id', function ($q) {
                 $q->select('bien_id')->from('bienes_responsables')->whereNull('fecha_retiro');
             })
             ->count();
 
+        // DASHREL-002: un bien tiene ubicación si tiene dependencia_id (dependencias.ubicacion_id
+        // es NOT NULL) o registro en historial_ubicaciones_bienes. Sin ubicación solo si ambos faltan.
         $this->alertSinUbicacion = DB::table('bienes')
             ->whereNull('deleted_at')
+            ->whereNull('dependencia_id')
             ->whereNotIn('id', function ($q) {
                 $q->select('bien_id')->from('historial_ubicaciones_bienes');
             })
@@ -185,17 +192,25 @@ class InventarioDashboard extends Component
             return;
         }
 
+        // DASHREL-001: con responsable = dependencia asignada (user_id NOT NULL) OR bienes_responsables activo
         $this->countConResponsable = DB::table('bienes')
             ->whereNull('deleted_at')
-            ->whereIn('id', function ($q) {
-                $q->select('bien_id')->from('bienes_responsables')->whereNull('fecha_retiro');
+            ->where(function ($q) {
+                $q->whereNotNull('dependencia_id')
+                  ->orWhereIn('id', function ($sub) {
+                      $sub->select('bien_id')->from('bienes_responsables')->whereNull('fecha_retiro');
+                  });
             })
             ->count();
 
+        // DASHREL-002: con ubicación = dependencia asignada (ubicacion_id NOT NULL) OR historial_ubicaciones_bienes
         $this->countConUbicacion = DB::table('bienes')
             ->whereNull('deleted_at')
-            ->whereIn('id', function ($q) {
-                $q->select('bien_id')->from('historial_ubicaciones_bienes');
+            ->where(function ($q) {
+                $q->whereNotNull('dependencia_id')
+                  ->orWhereIn('id', function ($sub) {
+                      $sub->select('bien_id')->from('historial_ubicaciones_bienes');
+                  });
             })
             ->count();
 
