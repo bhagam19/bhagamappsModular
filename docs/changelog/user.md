@@ -5,6 +5,28 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.4.3 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-006 — Corrección definitiva 419 en búsqueda/filtros/ordenamiento)
+
+- **Causa raíz**: snapshot Livewire de `UserIndex` superaba el límite de 16,383 bytes
+  del buffer POST de PHP. Con perPage=25 y 14 componentes hijos por usuario (7 desktop +
+  7 móvil duplicados), el cuerpo POST alcanzaba ~17,900 bytes. PHP descartaba todo el cuerpo,
+  el token CSRF quedaba ilegible, y Laravel retornaba HTTP 419.
+- `user-index.blade.php`: reemplazados los 5 `@livewire('user.editar-*-user')` del cuerpo
+  del acordeón móvil con display estático (HTML puro). Los hijos por usuario pasan de 14 a 9
+  (máximo con todos los permisos activos). Con perPage=25: 225 hijos → cuerpo ~12,850 bytes
+  → margen de 3,533 bytes bajo el umbral de 16,383.
+- `user-index.blade.php`: eliminadas opciones perPage=50 y perPage=100 del selector.
+  Con 9 hijos/usuario, perPage=50 generaría 450 hijos → cuerpo ~21 KB → también produciría 419.
+- `UserIndex.php`: `updatingPerPage()` renombrado a `updatedPerPage()` con validación
+  `in_array($this->perPage, [10, 25])` para bloquear valores inválidos vía URL directa.
+- Funcionalidad preservada: búsqueda reactiva, filtros por rol y estado, ordenamiento
+  por todas las columnas, edición inline desktop, gestión de contraseñas y estado en
+  desktop y móvil. Documentado en HOTFIX-USERS-006-Correccion-Definitiva-419-Livewire.md.
+
+---
+
 ## v2.4.2 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-004 — Error 419 en búsqueda/filtros/ordenamiento)

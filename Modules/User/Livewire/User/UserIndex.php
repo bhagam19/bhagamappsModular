@@ -50,8 +50,14 @@ class UserIndex extends Component
         $this->rolesDisponibles = Role::orderBy('nombre')->pluck('nombre', 'id')->toArray();
     }
 
-    // USR-005: resetPage en cada cambio de filtro para mantener consistencia
-    public function updatingPerPage(): void      { $this->resetPage(); }
+    // USR-005: resetPage en cada cambio de filtro; limitar perPage a valores seguros (< 16 KB snapshot)
+    public function updatedPerPage(): void
+    {
+        if (!in_array($this->perPage, [10, 25])) {
+            $this->perPage = 25;
+        }
+        $this->resetPage();
+    }
     public function updatingBusqueda(): void     { $this->resetPage(); }
     public function updatingFiltroRol(): void    { $this->resetPage(); }
     public function updatingFiltroEstado(): void { $this->resetPage(); }

@@ -133,8 +133,6 @@
             <select wire:model.live="perPage" id="perPage" class="form-control form-control-sm" style="width:auto;">
                 <option value="10">10</option>
                 <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
             </select>
             <span class="ml-2">registros</span>
         </div>
@@ -387,23 +385,23 @@
                         <div class="card-body p-2">
                             <div class="mb-2">
                                 <strong>Nombres:</strong>
-                                @livewire('user.editar-nombres-user', ['user' => $user], key('mobile-nombres-' . $user->id))
+                                <span>{{ $user->nombres }}</span>
                             </div>
                             <div class="mb-2">
                                 <strong>Apellidos:</strong>
-                                @livewire('user.editar-apellidos-user', ['user' => $user], key('mobile-apellidos-' . $user->id))
+                                <span>{{ $user->apellidos }}</span>
                             </div>
                             <div class="mb-2">
                                 <strong>Documento:</strong>
-                                @livewire('user.editar-userID-user', ['user' => $user], key('mobile-userID-' . $user->id))
+                                <span>{{ $user->userID }}</span>
                             </div>
                             <div class="mb-2">
                                 <strong>Rol:</strong>
-                                @livewire('user.editar-rol-user', ['user' => $user], key('mobile-rol-' . $user->id))
+                                <span>{{ $user->role->nombre ?? '—' }}</span>
                             </div>
                             <div class="mb-2">
                                 <strong>Email:</strong>
-                                @livewire('user.editar-email-user', ['user' => $user], key('mobile-email-' . $user->id))
+                                <span>{{ $user->email }}</span>
                             </div>
                             <div class="mb-2">
                                 <strong>Creado:</strong>

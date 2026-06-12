@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.16.3 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-006)
+
+- Error 419 al ordenar, buscar y filtrar en `/iee/users/users` corregido definitivamente.
+  La causa era un snapshot Livewire de `UserIndex` mayor a 16,383 bytes que PHP descartaba
+  por falta de directorio temporal escribible. Corrección: componentes Livewire duplicados
+  en vista móvil reemplazados con HTML estático; opciones perPage=50/100 eliminadas del
+  selector; validación server-side de perPage en `updatedPerPage()`.
+  Ver `docs/impl/HOTFIX-USERS-006-Correccion-Definitiva-419-Livewire.md`.
+
+---
+
 ## v1.16.2 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-004)
