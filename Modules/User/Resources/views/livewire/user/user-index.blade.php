@@ -256,7 +256,7 @@
             </thead>
             <tbody>
                 @forelse($users as $user)
-                    <tr>
+                    <tr wire:key="row-{{ $user->id }}">
                         <td class="align-middle">{{ $user->id }}</td>
 
                         @if (in_array('nombres', $visibleColumns))
@@ -348,7 +348,7 @@
     <div class="d-block d-md-none">
         <div id="accordionMobile">
             @forelse ($users as $user)
-                <div class="card mb-2">
+                <div class="card mb-2" wire:key="card-{{ $user->id }}">
                     <div class="card-header p-2 d-flex align-items-center"
                         id="heading{{ $user->id }}"
                         data-toggle="collapse" data-target="#collapse{{ $user->id }}"

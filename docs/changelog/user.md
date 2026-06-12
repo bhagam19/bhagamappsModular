@@ -5,6 +5,23 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.4.4 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-007 — Integridad del listado de usuarios)
+
+- **Causa raíz**: ausencia de `wire:key` en los elementos raíz de los `@forelse` que
+  iteran usuarios. Livewire 3 aplicaba morfología posicional a las `<tr>` y `.card`.
+  Al cambiar el ordenamiento, morph no podía identificar filas por usuario — creaba
+  componentes hijo con snapshot JS nulo, causando filas visualmente faltantes y
+  `ErrorException: Trying to access array offset on null` en `HandleComponents.php:88`
+  al interactuar con esas filas.
+- `user-index.blade.php`: añadido `wire:key="row-{{ $user->id }}"` en el `<tr>` de
+  la tabla desktop y `wire:key="card-{{ $user->id }}"` en el `.card` del acordeón móvil.
+  Morph ahora identifica cada fila por ID de usuario y las mueve/crea/elimina correctamente.
+- Verificado: 116 usuarios, sin duplicados, todas las páginas cubiertas (USRINT-001→005).
+
+---
+
 ## v2.4.3 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-006 — Corrección definitiva 419 en búsqueda/filtros/ordenamiento)

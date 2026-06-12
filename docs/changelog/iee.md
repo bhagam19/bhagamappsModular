@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.16.4 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-007)
+
+- Listado de usuarios incompleto al ordenar corregido.
+  Causa: `wire:key` faltante en los loops `@forelse`, provocando que Livewire 3 usara
+  morfología posicional y corrompiera snapshots de componentes hijo al cambiar el sort.
+  Corrección: `wire:key="row-{id}"` en `<tr>` y `wire:key="card-{id}"` en `.card`.
+  También resuelto: `ErrorException: Trying to access array offset on null`
+  en `HandleComponents.php:88` que ocurría al interactuar con filas afectadas.
+
+---
+
 ## v1.16.3 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-006)
