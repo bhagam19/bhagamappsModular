@@ -141,5 +141,5 @@ Registrado como DT-MENU-001 para evaluación futura.
 ## SHA verificable
 
 ```
-[registrado tras commit]
+0b2cada feat(core): IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual (MENU-001→010)
 ```
