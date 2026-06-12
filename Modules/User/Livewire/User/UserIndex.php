@@ -91,7 +91,7 @@ class UserIndex extends Component
 
         return view('user::livewire.user.user-index', [
             'users' => $query->paginate($this->perPage),
-        ])->layout('layouts.app');
+        ]);
     }
 
     public function toggleColumn($column): void

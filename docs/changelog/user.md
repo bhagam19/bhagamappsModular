@@ -5,6 +5,21 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.4.2 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-004 — Error 419 en búsqueda/filtros/ordenamiento)
+
+- **Causa raíz diagnosticada**: el 419 es sesión expirada, no un fallo de CSRF en código.
+  Livewire muestra "This page has expired" cuando la sesión del navegador expira o fue
+  corrompida. El servidor retorna HTTP 200 para todas las peticiones con sesión válida.
+- `UserIndex::render()`: eliminado `->layout('layouts.app')`. Para componentes anidados
+  `->layout()` es un no-op (solo aplica en full-page components via `__invoke()`).
+- `CheckForzarCambioPassword`: corregido `'livewire/'` → `'livewire'` en la lista de rutas
+  permitidas. La entrada anterior generaba patrón `'livewire//*'` que nunca coincidía con
+  `livewire/update`, bloqueando peticiones Livewire de usuarios con `forzar_cambio_password`.
+
+---
+
 ## v2.4.1 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-003 — FatalError en mount())

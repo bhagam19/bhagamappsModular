@@ -18,7 +18,7 @@ class CheckForzarCambioPassword
                 'user/profile',
                 'user/password',
                 'user/profile-photo',
-                'livewire/',
+                'livewire',
             ];
 
             foreach ($allowed as $prefix) {

@@ -7,6 +7,18 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.16.2 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-004)
+
+- Diagnóstico de Error 419 en búsqueda/filtros/ordenamiento de usuarios completado.
+  Causa: sesión de navegador expirada (SESSION_LIFETIME=120 min). El servidor procesa
+  correctamente todas las peticiones Livewire con sesión válida (HTTP 200).
+  Corrección en código: `->layout('layouts.app')` eliminado de `UserIndex::render()`;
+  middleware `CheckForzarCambioPassword` corregido para permitir rutas `livewire/*`.
+
+---
+
 ## v1.16.1 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-003)

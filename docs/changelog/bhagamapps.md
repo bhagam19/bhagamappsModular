@@ -11,6 +11,17 @@ Changelogs de módulo:
 
 ---
 
+## v1.16.2 — 2026-06-11
+
+### Fixed (HOTFIX-USERS-004)
+
+- Error 419 en usuarios diagnosticado: causa raíz es sesión expirada (comportamiento estándar
+  de Livewire cuando `SESSION_LIFETIME=120 min` se supera con la página abierta).
+  Dos correcciones de código: `UserIndex::render()` sin `->layout()` en componente anidado;
+  `CheckForzarCambioPassword` middleware corregido para patrón `livewire/*`.
+
+---
+
 ## v1.16.1 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-003)
