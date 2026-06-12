@@ -249,5 +249,5 @@ Bienes nuevos: solo tienen `origen_id`. `origen` queda NULL.
 ## SHA verificable
 
 ```
-[registrado tras commit]
+0d409d7 feat(inventario): IMPL-INV-012 — Catálogo de Orígenes y Normalización (ORIG-001→011)
 ```
