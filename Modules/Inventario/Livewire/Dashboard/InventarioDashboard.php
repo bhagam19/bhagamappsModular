@@ -151,19 +151,14 @@ class InventarioDashboard extends Component
             ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])
             ->toArray();
 
-        // DASH-005: Origen de bienes — normaliza NULL / "" / "-" a "Sin origen"
-        $rawOrigenes = DB::table('bienes')
-            ->selectRaw('origen, COUNT(*) as total')
-            ->whereNull('deleted_at')
-            ->groupBy('origen')
+        // DASH-005 (IMPL-INV-012): Origen de bienes — usa catálogo normalizado origen_id
+        $this->chartOrigenes = DB::table('bienes')
+            ->join('origenes', 'bienes.origen_id', '=', 'origenes.id')
+            ->selectRaw('origenes.nombre, COUNT(bienes.id) as total')
+            ->whereNull('bienes.deleted_at')
+            ->groupBy('origenes.id', 'origenes.nombre')
             ->orderByDesc('total')
-            ->get();
-
-        $this->chartOrigenes = $rawOrigenes
-            ->groupBy(fn($r) => (is_null($r->origen) || $r->origen === '' || $r->origen === '-') ? 'Sin origen' : $r->origen)
-            ->map(fn($group, $nombre) => (object) ['nombre' => $nombre, 'total' => $group->sum('total')])
-            ->sortByDesc('total')
-            ->values()
+            ->get()
             ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])
             ->toArray();
     }
@@ -236,9 +231,10 @@ class InventarioDashboard extends Component
 
         $this->countConCategoria = Bien::whereNotNull('categoria_id')->count();
         $this->countConEstado    = Bien::whereNotNull('estado_id')->count();
-        $this->countConOrigen    = Bien::whereNotNull('origen')
-            ->where('origen', '!=', '')
-            ->where('origen', '!=', '-')
+        // IMPL-INV-012: con origen = tiene origen_id asignado (excluye "Sin origen")
+        $sinOrigenId = DB::table('origenes')->where('nombre', 'Sin origen')->value('id');
+        $this->countConOrigen = Bien::whereNotNull('origen_id')
+            ->when($sinOrigenId, fn($q) => $q->where('origen_id', '!=', $sinOrigenId))
             ->count();
 
         $t = $this->totalBienes;

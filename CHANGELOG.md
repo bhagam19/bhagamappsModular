@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.19.0] — 2026-06-12
+
+### Added (IMPL-INV-012 — Catálogo de Orígenes)
+
+- Catálogo institucional de 11 orígenes + migración automática de 1,420 bienes.
+  FK `bienes.origen_id` oficial; `bienes.origen` legacy conservado.
+  Inventario v2.15.0 | IEE v1.20.0.
+
+---
+
 ## [v1.18.0] — 2026-06-12
 
 ### Added (IMPL-INV-011 — Búsqueda Facetada de Bienes)

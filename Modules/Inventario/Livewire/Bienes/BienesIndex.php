@@ -16,6 +16,7 @@ use Modules\Inventario\Entities\{
     Almacenamiento,
     Estado,
     Mantenimiento,
+    Origen,
     HistorialEliminacionBien,
     Detalle
 };
@@ -43,14 +44,13 @@ class BienesIndex extends Component
 
     // --- Filtros ---
     public $nombreSeleccionado = '', $nombreNuevo = '';
-    public $origenSeleccionado = '', $origenNuevo = '';
-    // listaNombresBienes y listaOrigenesBienes se computan en render() — no van al snapshot
+    // listaNombresBienes se computa en render() — no va al snapshot
     public $filtroNombre, $filtroUser, $filtroCategoria, $filtroDependencia, $filtroEstado;
     public string $filtroOrigen = '';
     public string $filtroResponsable = '';
 
     // --- Campos del bien ---
-    public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
+    public $nombre, $detalle, $serie, $origen_id, $fecha_adquisicion, $precio, $cantidad;
     public $categoria_id, $dependencia_id, $almacenamiento_id, $estado_id, $mantenimiento_id, $observaciones;
 
     // --- Campos de detalle del bien ---
@@ -64,7 +64,7 @@ class BienesIndex extends Component
     ];
 
     // --- Catálogos cargados (para formulario crear-bien) ---
-    public $categorias, $dependencias, $users, $estados, $almacenamientos, $mantenimientos;
+    public $categorias, $dependencias, $users, $estados, $almacenamientos, $mantenimientos, $origenes;
 
     // --- Columnas de tabla ---
     public $availableColumns = [
@@ -75,7 +75,7 @@ class BienesIndex extends Component
         'user_id' => 'Coordinador',
         'categoria_id' => 'Categoría',
         'serie' => 'Serie',
-        'origen' => 'Origen',
+        'origen_id' => 'Origen',
         'fecha_adquisicion' => 'Fecha de Adquisición',
         'precio' => 'Precio',
         'estado_id' => 'Estado',
@@ -98,7 +98,7 @@ class BienesIndex extends Component
         'categoria_id',
         'dependencia_id',
         'user_id',
-        'origen',
+        'origen_id',
         'fecha_adquisicion',
         'precio',
         'estado_id',
@@ -195,28 +195,27 @@ class BienesIndex extends Component
         // Validación del bien
         $this->validate([
             'nombreSeleccionado' => 'required|string|max:100',
-            'nombreNuevo' => 'nullable|string|max:100',
-            'detalle' => 'nullable|string|max:400',
-            'serie' => 'nullable|string|max:40',
-            'origenSeleccionado' => 'required|string|max:100',
-            'origenNuevo' => 'nullable|string|max:100',
-            'fecha_adquisicion' => 'nullable|date',
-            'precio' => 'nullable|numeric',
-            'cantidad' => 'nullable|integer',
-            'categoria_id' => 'nullable|exists:categorias,id',
-            'dependencia_id' => 'nullable|exists:dependencias,id',
-            'almacenamiento_id' => 'nullable|exists:almacenamientos,id',
-            'estado_id' => 'nullable|exists:estados,id',
-            'mantenimiento_id' => 'nullable|exists:mantenimientos,id',
-            'observaciones' => 'nullable|string|max:255',
+            'nombreNuevo'        => 'nullable|string|max:100',
+            'detalle'            => 'nullable|string|max:400',
+            'serie'              => 'nullable|string|max:40',
+            'origen_id'          => 'required|exists:origenes,id',
+            'fecha_adquisicion'  => 'nullable|date',
+            'precio'             => 'nullable|numeric',
+            'cantidad'           => 'nullable|integer',
+            'categoria_id'       => 'nullable|exists:categorias,id',
+            'dependencia_id'     => 'nullable|exists:dependencias,id',
+            'almacenamiento_id'  => 'nullable|exists:almacenamientos,id',
+            'estado_id'          => 'nullable|exists:estados,id',
+            'mantenimiento_id'   => 'nullable|exists:mantenimientos,id',
+            'observaciones'      => 'nullable|string|max:255',
 
             // Validación de los detalles
             'detalleBien.car_especial' => 'nullable|string|max:255',
-            'detalleBien.marca' => 'nullable|string|max:100',
-            'detalleBien.color' => 'nullable|string|max:50',
-            'detalleBien.tamano' => 'nullable|string|max:50',
-            'detalleBien.material' => 'nullable|string|max:100',
-            'detalleBien.otra' => 'nullable|string|max:255',
+            'detalleBien.marca'        => 'nullable|string|max:100',
+            'detalleBien.color'        => 'nullable|string|max:50',
+            'detalleBien.tamano'       => 'nullable|string|max:50',
+            'detalleBien.material'     => 'nullable|string|max:100',
+            'detalleBien.otra'         => 'nullable|string|max:255',
         ]);
 
         // Obtener el nombre final
@@ -229,30 +228,20 @@ class BienesIndex extends Component
             return;
         }
 
-        // Obtener el origen final
-        $origenFinal = $this->origenSeleccionado === 'otro'
-            ? trim($this->origenNuevo)
-            : $this->origenSeleccionado;
-
-        if (empty($origenFinal)) {
-            $this->addError('origenSeleccionado', 'Debe seleccionar o ingresar un origen.');
-            return;
-        }
-
-        // Crear el bien
+        // Crear el bien con origen_id (catálogo normalizado)
         $bien = Bien::create([
-            'nombre' => $nombreFinal,
-            'serie' => $this->serie,
-            'origen' => $origenFinal,
-            'fecha_adquisicion' => $this->fecha_adquisicion,
-            'precio' => $this->precio,
-            'cantidad' => $this->cantidad,
-            'categoria_id' => $this->categoria_id,
-            'dependencia_id' => $this->dependencia_id,
-            'almacenamiento_id' => $this->almacenamiento_id,
-            'estado_id' => $this->estado_id,
+            'nombre'           => $nombreFinal,
+            'serie'            => $this->serie,
+            'origen_id'        => $this->origen_id,
+            'fecha_adquisicion'=> $this->fecha_adquisicion,
+            'precio'           => $this->precio,
+            'cantidad'         => $this->cantidad,
+            'categoria_id'     => $this->categoria_id,
+            'dependencia_id'   => $this->dependencia_id,
+            'almacenamiento_id'=> $this->almacenamiento_id,
+            'estado_id'        => $this->estado_id,
             'mantenimiento_id' => $this->mantenimiento_id,
-            'observaciones' => $this->observaciones,
+            'observaciones'    => $this->observaciones,
         ]);
 
         logger("Bien creado con ID: " . $bien->id);
@@ -387,8 +376,7 @@ class BienesIndex extends Component
             [
                 'nombreSeleccionado',
                 'nombreNuevo',
-                'origenSeleccionado',
-                'origenNuevo',
+                'origen_id',
                 'serie',
                 'fecha_adquisicion',
                 'precio',
@@ -425,6 +413,7 @@ class BienesIndex extends Component
         $this->estados       = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
         $this->mantenimientos   = Mantenimiento::whereIn('id', $bienes->pluck('mantenimiento_id')->unique())->get();
         $this->almacenamientos  = Almacenamiento::whereIn('id', $bienes->pluck('almacenamiento_id')->unique())->get();
+        $this->origenes      = Origen::where('activo', true)->orderBy('nombre')->get();
     }
 
     private function queryBienesBase()
@@ -445,7 +434,7 @@ class BienesIndex extends Component
                     $inner->where('bienes.id', 'like', $b)
                         ->orWhere('bienes.nombre', 'like', $b)
                         ->orWhere('bienes.serie', 'like', $b)
-                        ->orWhere('bienes.origen', 'like', $b)
+                        ->orWhereHas('origenCatalogo', fn($o) => $o->where('nombre', 'like', $b))
                         ->orWhere('bienes.observaciones', 'like', $b)
                         ->orWhereHas('categoria', fn($c) => $c->where('nombre', 'like', $b))
                         ->orWhereHas('dependencia', fn($d) => $d->where('nombre', 'like', $b))
@@ -469,7 +458,7 @@ class BienesIndex extends Component
             ->when($this->filtroCategoria, fn($q) => $q->where('bienes.categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('bienes.dependencia_id', $this->filtroDependencia))
             ->when($this->filtroEstado, fn($q) => $q->where('bienes.estado_id', $this->filtroEstado))
-            ->when($this->filtroOrigen !== '', fn($q) => $q->where('bienes.origen', $this->filtroOrigen))
+            ->when($this->filtroOrigen !== '', fn($q) => $q->where('bienes.origen_id', $this->filtroOrigen))
             ->when($this->filtroResponsable !== '', fn($q) => $q->whereHas(
                 'responsableActual',
                 fn($r) => $r->where('user_id', $this->filtroResponsable)
@@ -480,7 +469,7 @@ class BienesIndex extends Component
     private function filtrarBienesQuery()
     {
         $columnasSortables = [
-            'id', 'nombre', 'cantidad', 'serie', 'origen', 'fecha_adquisicion',
+            'id', 'nombre', 'cantidad', 'serie', 'fecha_adquisicion',
             'precio', 'categoria_id', 'dependencia_id', 'almacenamiento_id',
             'estado_id', 'mantenimiento_id', 'observaciones', 'created_at', 'updated_at',
         ];
@@ -494,6 +483,7 @@ class BienesIndex extends Component
                 'almacenamiento',
                 'estado',
                 'mantenimiento',
+                'origenCatalogo',
                 'modificacionesPendientes',
                 'responsableActual.user',
                 'ubicacionActual.ubicacionDestino',
@@ -536,11 +526,10 @@ class BienesIndex extends Component
             ->get();
 
         $facetOrigenes = (clone $base)
-            ->whereNotNull('bienes.origen')
-            ->where('bienes.origen', '!=', '')
-            ->selectRaw('bienes.origen as origen, COUNT(bienes.id) as total')
-            ->groupBy('bienes.origen')
-            ->orderBy('bienes.origen')
+            ->join('origenes', 'bienes.origen_id', '=', 'origenes.id')
+            ->selectRaw('origenes.id, origenes.nombre, COUNT(bienes.id) as total')
+            ->groupBy('origenes.id', 'origenes.nombre')
+            ->orderBy('origenes.nombre')
             ->get();
 
         $facetResponsables = (clone $base)
@@ -645,17 +634,10 @@ class BienesIndex extends Component
         // Facetas — calculadas frescas en cada render, NO van al snapshot
         $facetas = $this->computarFacetas();
 
-        // Catálogos del formulario crear-bien — solo se calculan cuando el form está visible
+        // Catálogo de nombres — solo se calcula cuando el form está visible
         $listaNombresBienes = [];
-        $listaOrigenesBienes = [];
         if ($this->mostrarFormulario) {
             $listaNombresBienes = Bien::pluck('nombre')
-                ->unique()
-                ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
-                ->values()
-                ->toArray();
-            $listaOrigenesBienes = Bien::pluck('origen')
-                ->filter()
                 ->unique()
                 ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
                 ->values()
@@ -666,7 +648,6 @@ class BienesIndex extends Component
             'bienes'             => $bienes,
             'camposPendientes'   => $camposPendientes,
             'listaNombresBienes' => $listaNombresBienes,
-            'listaOrigenesBienes' => $listaOrigenesBienes,
         ], $facetas));
     }
 }

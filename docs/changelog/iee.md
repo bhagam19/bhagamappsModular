@@ -7,6 +7,17 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.20.0 — 2026-06-12
+
+### Added (IMPL-INV-012 — Catálogo de Orígenes)
+
+- Los orígenes de bienes ahora están normalizados en un catálogo institucional administrable.
+  Los 1,420 bienes existentes fueron clasificados automáticamente en 11 categorías.
+  El formulario de creación usa un select del catálogo. El dashboard y los filtros facetados
+  reflejan los orígenes normalizados. Inventario v2.15.0.
+
+---
+
 ## v1.19.0 — 2026-06-12
 
 ### Added (IMPL-INV-011 — Búsqueda Facetada de Bienes)

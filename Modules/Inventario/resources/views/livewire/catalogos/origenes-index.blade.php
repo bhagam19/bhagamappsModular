@@ -101,7 +101,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th style="width:60px">ID</th>
-                    <th style="width:30%">
+                    <th style="width:28%">
                         <a href="#" wire:click.prevent="sortBy('nombre')" class="text-white text-decoration-none">
                             Nombre
                             @if($sortField === 'nombre')
@@ -112,6 +112,7 @@
                         </a>
                     </th>
                     <th>Descripción</th>
+                    <th style="width:80px" class="text-center">Activo</th>
                     <th style="width:130px" class="text-center">Acciones</th>
                 </tr>
             </thead>
@@ -131,6 +132,7 @@
                                 placeholder="Descripción (opcional)">
                             @error('editDescripcion')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </td>
+                        <td class="text-center align-middle">—</td>
                         <td class="text-center align-middle">
                             <button wire:click="guardar" class="btn btn-success btn-xs mr-1">
                                 <i class="fas fa-check"></i>
@@ -141,10 +143,23 @@
                         </td>
                     </tr>
                     @else
-                    <tr>
+                    <tr @class(['table-secondary text-muted' => !$item->activo])>
                         <td class="align-middle">{{ $item->id }}</td>
                         <td class="align-middle">{{ $item->nombre }}</td>
                         <td class="align-middle text-muted">{{ $item->descripcion ?? '—' }}</td>
+                        <td class="text-center align-middle">
+                            @can('editar-origenes')
+                            <button wire:click="toggleActivo({{ $item->id }})"
+                                class="btn btn-xs {{ $item->activo ? 'btn-success' : 'btn-secondary' }}"
+                                title="{{ $item->activo ? 'Activo — clic para desactivar' : 'Inactivo — clic para activar' }}">
+                                <i class="fas fa-{{ $item->activo ? 'check' : 'times' }}"></i>
+                            </button>
+                            @else
+                            <span class="badge badge-{{ $item->activo ? 'success' : 'secondary' }}">
+                                {{ $item->activo ? 'Sí' : 'No' }}
+                            </span>
+                            @endcan
+                        </td>
                         <td class="text-center align-middle">
                             @can('editar-origenes')
                             <button wire:click="editar({{ $item->id }})" class="btn btn-primary btn-xs mr-1" title="Editar">

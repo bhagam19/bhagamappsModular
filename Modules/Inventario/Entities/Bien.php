@@ -17,6 +17,7 @@ class Bien extends Model
         'nombre',
         'serie',
         'origen',
+        'origen_id',
         'fecha_adquisicion',
         'precio',
         'cantidad',
@@ -66,6 +67,11 @@ class Bien extends Model
         return $this->belongsTo(Mantenimiento::class, 'mantenimiento_id');
     }
 
+    public function origenCatalogo()
+    {
+        return $this->belongsTo(Origen::class, 'origen_id');
+    }
+
     public function responsables()
     {
         return $this->hasMany(BienResponsable::class);
@@ -110,11 +116,12 @@ class Bien extends Model
     {
         // Mapeo de campos a relaciones y atributos representativos
         $relaciones = [
-            'categoria_id'      => ['rel' => 'categoria',      'campo' => fn($c) => $c?->nombre],
-            'dependencia_id'    => ['rel' => 'dependencia',    'campo' => fn($d) => $d?->nombre],
-            'almacenamiento_id' => ['rel' => 'almacenamiento', 'campo' => fn($a) => $a?->nombre],
-            'estado_id'         => ['rel' => 'estado',         'campo' => fn($e) => $e?->nombre],
-            'mantenimiento_id'  => ['rel' => 'mantenimiento',  'campo' => fn($m) => $m?->nombre],
+            'categoria_id'      => ['rel' => 'categoria',       'campo' => fn($c) => $c?->nombre],
+            'dependencia_id'    => ['rel' => 'dependencia',     'campo' => fn($d) => $d?->nombre],
+            'almacenamiento_id' => ['rel' => 'almacenamiento',  'campo' => fn($a) => $a?->nombre],
+            'estado_id'         => ['rel' => 'estado',          'campo' => fn($e) => $e?->nombre],
+            'mantenimiento_id'  => ['rel' => 'mantenimiento',   'campo' => fn($m) => $m?->nombre],
+            'origen_id'         => ['rel' => 'origenCatalogo',  'campo' => fn($o) => $o?->nombre],
         ];
 
         // Si es un campo de relación, retorna el valor representativo

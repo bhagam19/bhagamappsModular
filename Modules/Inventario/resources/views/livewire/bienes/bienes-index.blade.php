@@ -249,7 +249,7 @@
                             <select wire:model.live="filtroOrigen" class="form-control">
                                 <option value="">Todos los orígenes</option>
                                 @foreach ($facetOrigenes as $orig)
-                                    <option value="{{ $orig->origen }}">{{ $orig->origen }} ({{ $orig->total }})</option>
+                                    <option value="{{ $orig->id }}">{{ $orig->nombre }} ({{ $orig->total }})</option>
                                 @endforeach
                             </select>
                         </div>
@@ -341,29 +341,20 @@
                     style="background-color: #d7e7ff;" novalidate>
                     @php
                         $fields = [
-                            ['model' => 'nombre', 'placeholder' => 'Nombre del bien', 'type' => 'text'],
-                            ['model' => 'cantidad', 'placeholder' => 'Cantidad', 'type' => 'number'],
-                            ['model' => 'serie', 'placeholder' => 'N/Serial (Si Aplica)', 'type' => 'text'],
-                            ['model' => 'origen', 'placeholder' => 'Origen', 'type' => 'text'],
-                            ['model' => 'fecha_adquisicion', 'placeholder' => 'Fecha adquisición', 'type' => 'date'],
-                            ['model' => 'precio', 'placeholder' => 'Precio', 'type' => 'number'],
-                            ['model' => 'observaciones', 'placeholder' => 'Observaciones', 'type' => 'text'],
+                            ['model' => 'nombre',           'placeholder' => 'Nombre del bien',    'type' => 'text'],
+                            ['model' => 'cantidad',         'placeholder' => 'Cantidad',           'type' => 'number'],
+                            ['model' => 'serie',            'placeholder' => 'N/Serial (Si Aplica)','type' => 'text'],
+                            ['model' => 'fecha_adquisicion','placeholder' => 'Fecha adquisición',  'type' => 'date'],
+                            ['model' => 'precio',           'placeholder' => 'Precio',             'type' => 'number'],
+                            ['model' => 'observaciones',    'placeholder' => 'Observaciones',      'type' => 'text'],
                         ];
 
                         $selectFields = [
-                            ['model' => 'categoria_id', 'label' => 'Categoría', 'options' => $categorias ?? []],
-                            ['model' => 'dependencia_id', 'label' => 'Dependencia', 'options' => $dependencias ?? []],
-                            [
-                                'model' => 'almacenamiento_id',
-                                'label' => 'Almacenamiento',
-                                'options' => $almacenamientos ?? [],
-                            ],
-                            ['model' => 'estado_id', 'label' => 'Estado', 'options' => $estados ?? []],
-                            [
-                                'model' => 'mantenimiento_id',
-                                'label' => 'Mantenimiento',
-                                'options' => $mantenimientos ?? [],
-                            ],
+                            ['model' => 'categoria_id',    'label' => 'Categoría',     'options' => $categorias    ?? []],
+                            ['model' => 'dependencia_id',  'label' => 'Dependencia',   'options' => $dependencias  ?? []],
+                            ['model' => 'almacenamiento_id','label'=> 'Almacenamiento','options' => $almacenamientos ?? []],
+                            ['model' => 'estado_id',       'label' => 'Estado',        'options' => $estados       ?? []],
+                            ['model' => 'mantenimiento_id','label' => 'Mantenimiento', 'options' => $mantenimientos ?? []],
                         ];
 
                         $detalleFields = [
@@ -404,37 +395,24 @@
                         </div>
                     @endif
 
-                    {{-- Campo especial: Origen del bien con Select + “Otro” --}}
-                    <div class="form-group col-md-2 mb-1">
-                        <label class="small text-muted">Origen del bien</label>
-                        <select wire:model.lazy="origenSeleccionado"
-                            class="form-control form-control-sm @error('origenSeleccionado') is-invalid @enderror">
-                            <option value="">Origen del Bien</option>
-                            <option value="otro">Otro (No está en lista)</option>
-                            @foreach ($listaOrigenesBienes as $origen)
-                                <option value="{{ $origen }}">{{ $origen }}</option>
+                    {{-- Campo especial: Origen del bien desde catálogo --}}
+                    <div class=”form-group col-md-2 mb-1”>
+                        <label class=”small text-muted”>Origen del bien <span class=”text-danger”>*</span></label>
+                        <select wire:model=”origen_id”
+                            class=”form-control form-control-sm @error('origen_id') is-invalid @enderror”>
+                            <option value=””>— Seleccionar origen —</option>
+                            @foreach ($origenes as $orig)
+                                <option value=”{{ $orig->id }}”>{{ $orig->nombre }}</option>
                             @endforeach
                         </select>
-                        @error('origenSeleccionado')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        @error('origen_id')
+                            <div class=”invalid-feedback”>{{ $message }}</div>
                         @enderror
                     </div>
 
-                    {{-- Input para nuevo origen, visible solo si se selecciona “otro” --}}
-                    @if ($origenSeleccionado === 'otro')
-                        <div class="form-group col-md-2 mb-1">
-                            <label class="small text-muted bg-warning rounded pl-1 pr-1">Nuevo origen</label>
-                            <input type="text" wire:model="origenNuevo" placeholder="Ingrese nuevo origen"
-                                class="form-control bg-warning form-control-sm @error('origenNuevo') is-invalid @enderror">
-                            @error('origenNuevo')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    @endif
-
                     {{-- Campos individuales --}}
                     @foreach ($fields as $field)
-                        @if ($field['model'] === 'nombre' || $field['model'] === 'origen')
+                        @if ($field['model'] === 'nombre')
                             @continue
                         @endif
                         <div class="form-group col-md-2 mb-1">
@@ -631,11 +609,11 @@
                                     </select>
                                 @break
 
-                                @case('origen')
+                                @case('origen_id')
                                     <select wire:model.live="filtroOrigen" class="form-control form-control-sm">
                                         <option value="">Todos</option>
                                         @foreach ($facetOrigenes as $orig)
-                                            <option value="{{ $orig->origen }}">{{ $orig->origen }} ({{ $orig->total }})</option>
+                                            <option value="{{ $orig->id }}">{{ $orig->nombre }} ({{ $orig->total }})</option>
                                         @endforeach
                                     </select>
                                 @break

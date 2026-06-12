@@ -5,6 +5,29 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.15.0 — 2026-06-12
+
+### Added (IMPL-INV-012 — Catálogo de Orígenes y Normalización)
+
+- **Catálogo de orígenes** con 11 entradas institucionales: Sin origen, Institucional,
+  Municipio, SEDUCA, MEN, Donación, Comodato, Compra, Proyecto, Transferencia, Otro.
+- **`bienes.origen_id`** nueva FK al catálogo — campo oficial para todos los flujos nuevos.
+  `bienes.origen` (varchar legacy) se conserva sin modificar para historial.
+- **Migración automática** de todos los 1,420 bienes existentes: 27 valores string distintos
+  clasificados en el catálogo sin pérdida de datos (100% de bienes con origen_id asignado).
+- **CRUD Orígenes** actualizado: columna `activo` con toggle on/off; filas inactivas visibles
+  con fondo gris; solo orígenes activos disponibles en el formulario de creación.
+- **Formulario crear bien**: campo origen ahora es select del catálogo (no más texto libre).
+- **Edición inline `origen_id`**: `EditarCampoBien` detecta `_id` → select de catálogo.
+- **Filtros facetados**: `facetOrigenes` usa JOIN con tabla `origenes` — muestra nombres del
+  catálogo con conteos, no strings raw.
+- **Dashboard** actualizado: gráfica de orígenes y calidad de datos usan `origen_id`.
+- **Reporte de excepciones**: `docs/data/origenes-no-clasificados.md` — 30 bienes con
+  clasificación ambigua documentados para revisión del administrador.
+- Ver `docs/impl/IMPL-INV-012-Catalogo-Origenes-Y-Normalizacion.md`.
+
+---
+
 ## v2.14.0 — 2026-06-12
 
 ### Added (IMPL-INV-011 — Búsqueda Facetada para Bienes)

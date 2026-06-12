@@ -12,6 +12,7 @@ use Modules\Inventario\Entities\{
     Mantenimiento,
     Dependencia,
     Categoria,
+    Origen,
     HistorialModificacionBien
 };
 use Modules\Inventario\Livewire\Hmb\NotificacionHmb;
@@ -63,6 +64,7 @@ class EditarCampoBien extends Component
             'dependencia_id'   => 'dependencias',
             'almacenamiento_id'=> 'almacenamientos',
             'mantenimiento_id' => 'mantenimientos',
+            'origen_id'        => 'origenes',
             default            => 'opciones',
         };
     }
@@ -76,6 +78,8 @@ class EditarCampoBien extends Component
             'dependencia_id'   => Dependencia::pluck('nombre', 'id')->toArray(),
             'almacenamiento_id'=> Almacenamiento::pluck('nombre', 'id')->toArray(),
             'mantenimiento_id' => Mantenimiento::pluck('nombre', 'id')->toArray(),
+            'origen_id'        => Origen::where('activo', true)->orderBy('nombre')
+                ->pluck('nombre', 'id')->toArray(),
             default            => [],
         };
     }

@@ -63,11 +63,24 @@ class OrigenesIndex extends Component
             'nuevoNombre'      => 'required|string|max:255|unique:origenes,nombre',
             'nuevaDescripcion' => 'nullable|string|max:500',
         ]);
-        Origen::create(['nombre' => $this->nuevoNombre, 'descripcion' => $this->nuevaDescripcion ?: null]);
+        Origen::create([
+            'nombre'      => $this->nuevoNombre,
+            'descripcion' => $this->nuevaDescripcion ?: null,
+            'activo'      => true,
+        ]);
         $this->creando = false;
         $this->nuevoNombre = '';
         $this->nuevaDescripcion = '';
         $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Origen creado correctamente.');
+    }
+
+    public function toggleActivo(int $id): void
+    {
+        abort_unless(auth()->user()?->hasPermission('editar-origenes'), 403);
+        $origen = Origen::findOrFail($id);
+        $origen->update(['activo' => ! $origen->activo]);
+        $estado = $origen->activo ? 'activado' : 'desactivado';
+        $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: "Origen \"{$origen->nombre}\" {$estado}.");
     }
 
     public function cancelarCreacion(): void
