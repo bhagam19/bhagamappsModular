@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.18.0] — 2026-06-12
+
+### Added (IMPL-INV-011 — Búsqueda Facetada de Bienes)
+
+- Filtros facetados dinámicos en el listado de bienes: 6 facetas con conteos en tiempo real,
+  calculadas via GROUP BY sin N+1. Inventario v2.14.0 | IEE v1.19.0.
+
+---
+
 ## [v1.17.1] — 2026-06-12
 
 ### Fixed (HOTFIX-INV-010 — Error 419 Bienes)

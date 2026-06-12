@@ -200,59 +200,67 @@
 
                 {{-- Filtros adicionales --}}
                 <div class="d-flex flex-wrap gap-1 align-items-end mb-1">
-                    <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.live="filtroUser" class="form-control">
-                            <option value="">Todos los coordinadores</option>
-                            @foreach ($users as $opcionUser)
-                                <option value="{{ $opcionUser->id }}">{{ $opcionUser->nombres }}
-                                    {{ $opcionUser->apellidos }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if ($facetCoordinadores->isNotEmpty())
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroUser" class="form-control">
+                                <option value="">Todos los coordinadores</option>
+                                @foreach ($facetCoordinadores as $coord)
+                                    <option value="{{ $coord->id }}">{{ $coord->nombres }} {{ $coord->apellidos }} ({{ $coord->total }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-                    <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.live="filtroCategoria" class="form-control">
-                            <option value="">Todas las categorías</option>
-                            @foreach ($categorias as $categoria)
-                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if ($facetCategorias->isNotEmpty())
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroCategoria" class="form-control">
+                                <option value="">Todas las categorías</option>
+                                @foreach ($facetCategorias as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->nombre }} ({{ $cat->total }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-                    <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.live="filtroDependencia" class="form-control">
-                            <option value="">Todas las dependencias</option>
-                            @foreach ($dependencias as $dep)
-                                <option value="{{ $dep->id }}">{{ $dep->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if ($facetDependencias->isNotEmpty())
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroDependencia" class="form-control">
+                                <option value="">Todas las dependencias</option>
+                                @foreach ($facetDependencias as $dep)
+                                    <option value="{{ $dep->id }}">{{ $dep->nombre }} ({{ $dep->total }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-                    <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.live="filtroEstado" class="form-control">
-                            <option value="">Todos los estados</option>
-                            @foreach ($estados as $estado)
-                                <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if ($facetEstados->isNotEmpty())
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroEstado" class="form-control">
+                                <option value="">Todos los estados</option>
+                                @foreach ($facetEstados as $est)
+                                    <option value="{{ $est->id }}">{{ $est->nombre }} ({{ $est->total }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-                    <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.live="filtroOrigen" class="form-control">
-                            <option value="">Todos los orígenes</option>
-                            @foreach ($origenesCatalogo as $origen)
-                                <option value="{{ $origen }}">{{ $origen }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if ($facetOrigenes->isNotEmpty())
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroOrigen" class="form-control">
+                                <option value="">Todos los orígenes</option>
+                                @foreach ($facetOrigenes as $orig)
+                                    <option value="{{ $orig->origen }}">{{ $orig->origen }} ({{ $orig->total }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
-                    @if ($responsablesCatalogo && count($responsablesCatalogo))
+                    @if ($facetResponsables->isNotEmpty())
                         <div class="flex-fill" style="min-width: 200px;">
                             <select wire:model.live="filtroResponsable" class="form-control">
                                 <option value="">Todos los custodios</option>
-                                @foreach ($responsablesCatalogo as $resp)
-                                    <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }}</option>
+                                @foreach ($facetResponsables as $resp)
+                                    <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }} ({{ $resp->total }})</option>
                                 @endforeach
                             </select>
                         </div>
@@ -590,9 +598,8 @@
                                 @case('user_id')
                                     <select wire:model.live="filtroUser" class="form-control form-control-sm">
                                         <option value="">Todos</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">
-                                                {{ $user->nombres }} {{ $user->apellidos }}</option>
+                                        @foreach ($facetCoordinadores as $coord)
+                                            <option value="{{ $coord->id }}">{{ $coord->nombres }} {{ $coord->apellidos }} ({{ $coord->total }})</option>
                                         @endforeach
                                     </select>
                                 @break
@@ -600,8 +607,8 @@
                                 @case('categoria_id')
                                     <select wire:model.live="filtroCategoria" class="form-control form-control-sm">
                                         <option value="">Todas</option>
-                                        @foreach ($categorias as $categoria)
-                                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                        @foreach ($facetCategorias as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->nombre }} ({{ $cat->total }})</option>
                                         @endforeach
                                     </select>
                                 @break
@@ -609,8 +616,8 @@
                                 @case('dependencia_id')
                                     <select wire:model.live="filtroDependencia" class="form-control form-control-sm">
                                         <option value="">Todas</option>
-                                        @foreach ($dependencias as $dep)
-                                            <option value="{{ $dep->id }}">{{ $dep->nombre }}</option>
+                                        @foreach ($facetDependencias as $dep)
+                                            <option value="{{ $dep->id }}">{{ $dep->nombre }} ({{ $dep->total }})</option>
                                         @endforeach
                                     </select>
                                 @break
@@ -618,8 +625,8 @@
                                 @case('estado_id')
                                     <select wire:model.live="filtroEstado" class="form-control form-control-sm">
                                         <option value="">Todos</option>
-                                        @foreach ($estados as $estado)
-                                            <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                        @foreach ($facetEstados as $est)
+                                            <option value="{{ $est->id }}">{{ $est->nombre }} ({{ $est->total }})</option>
                                         @endforeach
                                     </select>
                                 @break
@@ -627,18 +634,18 @@
                                 @case('origen')
                                     <select wire:model.live="filtroOrigen" class="form-control form-control-sm">
                                         <option value="">Todos</option>
-                                        @foreach ($origenesCatalogo as $orig)
-                                            <option value="{{ $orig }}">{{ $orig }}</option>
+                                        @foreach ($facetOrigenes as $orig)
+                                            <option value="{{ $orig->origen }}">{{ $orig->origen }} ({{ $orig->total }})</option>
                                         @endforeach
                                     </select>
                                 @break
 
                                 @case('responsable')
-                                    @if ($responsablesCatalogo && count($responsablesCatalogo))
+                                    @if ($facetResponsables->isNotEmpty())
                                         <select wire:model.live="filtroResponsable" class="form-control form-control-sm">
                                             <option value="">Todos</option>
-                                            @foreach ($responsablesCatalogo as $resp)
-                                                <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }}</option>
+                                            @foreach ($facetResponsables as $resp)
+                                                <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }} ({{ $resp->total }})</option>
                                             @endforeach
                                         </select>
                                     @else

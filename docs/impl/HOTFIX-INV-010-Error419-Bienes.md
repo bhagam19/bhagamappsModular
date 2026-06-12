@@ -4,7 +4,7 @@
 **Módulo:** Inventario — BienesIndex
 **Severidad:** CRÍTICA
 **Estado:** RESUELTO
-**SHA commit:** (ver al final)
+**SHA commit:** `0dc4a5c`
 
 ---
 
@@ -162,5 +162,5 @@ paginación si se quiere evitar el 419:
 ## SHA verificable
 
 ```
-(ver git log --oneline -1)
+0dc4a5c fix(inventario): HOTFIX-INV-010 — Error 419 en búsqueda reactiva de bienes
 ```

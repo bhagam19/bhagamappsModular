@@ -7,6 +7,18 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.19.0 — 2026-06-12
+
+### Added (IMPL-INV-011 — Búsqueda Facetada de Bienes)
+
+- Los filtros del listado de bienes ahora muestran solo las opciones disponibles en el
+  resultado actual, con conteos `Nombre (N)`. Al seleccionar un filtro, todos los demás
+  se actualizan automáticamente reflejando la nueva distribución de resultados.
+  Implementado con 6 facetas (Coordinador, Categoría, Dependencia, Estado, Origen, Custodio)
+  calculadas via GROUP BY en BD. Inventario v2.14.0.
+
+---
+
 ## v1.18.1 — 2026-06-12
 
 ### Fixed (HOTFIX-INV-010 — Error 419 en Búsqueda/Filtros de Bienes)

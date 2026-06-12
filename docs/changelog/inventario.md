@@ -5,6 +5,28 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.14.0 — 2026-06-12
+
+### Added (IMPL-INV-011 — Búsqueda Facetada para Bienes)
+
+- **Filtros facetados dinámicos** en el listado de bienes: cada dropdown de filtro muestra
+  únicamente los valores presentes en el conjunto de resultados actual, con conteo de ítems
+  `Nombre (N)`. Al cambiar cualquier filtro, los demás se recalculan automáticamente.
+- **6 facetas**: Coordinador, Categoría, Dependencia, Estado, Origen, Custodio.
+- **Sin N+1**: 6 queries GROUP BY via `clone` del builder base — un query por faceta.
+- **Sin impacto al snapshot**: facetas calculadas en `render()` como view data (no propiedades
+  públicas). El POST se mantiene dentro del límite de 16,383 bytes.
+- **`queryBienesBase()`** nuevo método privado: fuente canónica de role scoping + filtros
+  activos, sin eager loads ni orderBy. Reutilizado por `filtrarBienesQuery()`,
+  `computarFacetas()` y `getCantidadTotalFiltradaProperty()`.
+- **`actualizarOpcionesFiltros()`** eliminado: reemplazado completamente por facetas en render.
+  El formulario de creación mantiene sus catálogos completos desde `cargarCatalogos()`.
+- Filtros desaparecen cuando no hay opciones (`@if ($facetXxx->isNotEmpty())`).
+- "Todos/Todas" siempre como primera opción.
+- Ver `docs/impl/IMPL-INV-011-Busqueda-Facetada.md`.
+
+---
+
 ## v2.13.1 — 2026-06-12
 
 ### Fixed (HOTFIX-INV-010 — Error 419 en Búsqueda Reactiva de Bienes)

@@ -63,10 +63,8 @@ class BienesIndex extends Component
         'otra' => null,
     ];
 
-    // --- Catálogos cargados ---
+    // --- Catálogos cargados (para formulario crear-bien) ---
     public $categorias, $dependencias, $users, $estados, $almacenamientos, $mantenimientos;
-    public $origenesCatalogo = [];
-    public $responsablesCatalogo = [];
 
     // --- Columnas de tabla ---
     public $availableColumns = [
@@ -422,68 +420,23 @@ class BienesIndex extends Component
 
         $bienes = Bien::whereIn('dependencia_id', $dependenciasIds)->get();
 
-        $bienesIds = $bienes->pluck('id');
-
-        $this->users = User::whereIn(
-            'id',
-            Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())
-                ->pluck('user_id')->unique()
-        )->orderBy('nombres')->orderBy('apellidos')->get();
-
         $this->categorias    = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
         $this->dependencias  = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
         $this->estados       = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
         $this->mantenimientos   = Mantenimiento::whereIn('id', $bienes->pluck('mantenimiento_id')->unique())->get();
         $this->almacenamientos  = Almacenamiento::whereIn('id', $bienes->pluck('almacenamiento_id')->unique())->get();
-
-        $this->origenesCatalogo = Bien::whereIn('dependencia_id', $dependenciasIds)
-            ->whereNotNull('origen')
-            ->where('origen', '!=', '')
-            ->distinct()
-            ->orderBy('origen')
-            ->pluck('origen')
-            ->toArray();
-
-        $responsablesIds = \Modules\Inventario\Entities\BienResponsable::whereIn('bien_id', $bienesIds)
-            ->whereNull('fecha_retiro')
-            ->whereNotNull('user_id')
-            ->distinct()
-            ->pluck('user_id');
-
-        $this->responsablesCatalogo = User::whereIn('id', $responsablesIds)
-            ->orderBy('nombres')
-            ->orderBy('apellidos')
-            ->get();
     }
 
-    private function filtrarBienesQuery()
+    private function queryBienesBase()
     {
         $user = auth()->user();
-
-        $query = Bien::with([
-            'detalle',
-            'categoria',
-            'dependencia.user',
-            'almacenamiento',
-            'estado',
-            'mantenimiento',
-            'modificacionesPendientes',
-            'responsableActual.user',
-            'ubicacionActual.ubicacionDestino',
-        ]);
+        $query = Bien::query();
 
         if ($user->hasRole('Coordinador') && !$this->verTodos) {
             $query->whereHas('dependencia', fn($q) => $q->where('user_id', $user->id));
         } elseif (!$user->hasRole('Administrador') && !$user->hasRole('Rector')) {
             $query->whereHas('dependencia', fn($q) => $q->where('user_id', $user->id));
         }
-
-        $columnasSortables = [
-            'id', 'nombre', 'cantidad', 'serie', 'origen', 'fecha_adquisicion',
-            'precio', 'categoria_id', 'dependencia_id', 'almacenamiento_id',
-            'estado_id', 'mantenimiento_id', 'observaciones', 'created_at', 'updated_at',
-        ];
-        $sortField = in_array($this->sortField, $columnasSortables) ? $this->sortField : 'id';
 
         return $query
             ->when($this->busqueda !== '', function ($q) {
@@ -513,56 +466,108 @@ class BienesIndex extends Component
                 });
             })
             ->when($this->filtroUser, fn($q) => $q->whereHas('dependencia', fn($sub) => $sub->where('user_id', $this->filtroUser)))
-            ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
-            ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
-            ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
-            ->when($this->filtroOrigen !== '', fn($q) => $q->where('origen', $this->filtroOrigen))
+            ->when($this->filtroCategoria, fn($q) => $q->where('bienes.categoria_id', $this->filtroCategoria))
+            ->when($this->filtroDependencia, fn($q) => $q->where('bienes.dependencia_id', $this->filtroDependencia))
+            ->when($this->filtroEstado, fn($q) => $q->where('bienes.estado_id', $this->filtroEstado))
+            ->when($this->filtroOrigen !== '', fn($q) => $q->where('bienes.origen', $this->filtroOrigen))
             ->when($this->filtroResponsable !== '', fn($q) => $q->whereHas(
                 'responsableActual',
                 fn($r) => $r->where('user_id', $this->filtroResponsable)
             ))
-            ->when($this->filtroNombre, fn($q) => $q->where('nombre', $this->filtroNombre))
+            ->when($this->filtroNombre, fn($q) => $q->where('bienes.nombre', $this->filtroNombre));
+    }
+
+    private function filtrarBienesQuery()
+    {
+        $columnasSortables = [
+            'id', 'nombre', 'cantidad', 'serie', 'origen', 'fecha_adquisicion',
+            'precio', 'categoria_id', 'dependencia_id', 'almacenamiento_id',
+            'estado_id', 'mantenimiento_id', 'observaciones', 'created_at', 'updated_at',
+        ];
+        $sortField = in_array($this->sortField, $columnasSortables) ? $this->sortField : 'id';
+
+        return $this->queryBienesBase()
+            ->with([
+                'detalle',
+                'categoria',
+                'dependencia.user',
+                'almacenamiento',
+                'estado',
+                'mantenimiento',
+                'modificacionesPendientes',
+                'responsableActual.user',
+                'ubicacionActual.ubicacionDestino',
+            ])
             ->orderBy($sortField, $this->sortDirection);
     }
 
-    public function actualizarOpcionesFiltros(): void
+    private function computarFacetas(): array
     {
-        $bienes = $this->filtrarBienesQuery()->get();
+        $base = $this->queryBienesBase();
 
-        $bienesIds = $bienes->pluck('id');
-
-        $this->users = User::whereIn(
-            'id',
-            Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())
-                ->pluck('user_id')->unique()
-        )->orderBy('nombres')->orderBy('apellidos')->get();
-
-        $this->categorias   = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
-        $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
-        $this->estados      = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
-
-        $this->origenesCatalogo = $bienes->pluck('origen')
-            ->filter()
-            ->unique()
-            ->sort()
-            ->values()
-            ->toArray();
-
-        $responsablesIds = \Modules\Inventario\Entities\BienResponsable::whereIn('bien_id', $bienesIds)
-            ->whereNull('fecha_retiro')
-            ->whereNotNull('user_id')
-            ->distinct()
-            ->pluck('user_id');
-
-        $this->responsablesCatalogo = User::whereIn('id', $responsablesIds)
-            ->orderBy('nombres')
-            ->orderBy('apellidos')
+        $facetCategorias = (clone $base)
+            ->join('categorias', 'bienes.categoria_id', '=', 'categorias.id')
+            ->selectRaw('categorias.id, categorias.nombre, COUNT(bienes.id) as total')
+            ->groupBy('categorias.id', 'categorias.nombre')
+            ->orderBy('categorias.nombre')
             ->get();
+
+        $facetDependencias = (clone $base)
+            ->join('dependencias', 'bienes.dependencia_id', '=', 'dependencias.id')
+            ->selectRaw('dependencias.id, dependencias.nombre, COUNT(bienes.id) as total')
+            ->groupBy('dependencias.id', 'dependencias.nombre')
+            ->orderBy('dependencias.nombre')
+            ->get();
+
+        $facetCoordinadores = (clone $base)
+            ->join('dependencias as dep_coord', 'bienes.dependencia_id', '=', 'dep_coord.id')
+            ->join('users', 'dep_coord.user_id', '=', 'users.id')
+            ->selectRaw('users.id, users.nombres, users.apellidos, COUNT(bienes.id) as total')
+            ->groupBy('users.id', 'users.nombres', 'users.apellidos')
+            ->orderBy('users.nombres')
+            ->orderBy('users.apellidos')
+            ->get();
+
+        $facetEstados = (clone $base)
+            ->join('estados', 'bienes.estado_id', '=', 'estados.id')
+            ->selectRaw('estados.id, estados.nombre, COUNT(bienes.id) as total')
+            ->groupBy('estados.id', 'estados.nombre')
+            ->orderBy('estados.nombre')
+            ->get();
+
+        $facetOrigenes = (clone $base)
+            ->whereNotNull('bienes.origen')
+            ->where('bienes.origen', '!=', '')
+            ->selectRaw('bienes.origen as origen, COUNT(bienes.id) as total')
+            ->groupBy('bienes.origen')
+            ->orderBy('bienes.origen')
+            ->get();
+
+        $facetResponsables = (clone $base)
+            ->join('bienes_responsables', function ($join) {
+                $join->on('bienes.id', '=', 'bienes_responsables.bien_id')
+                     ->whereNull('bienes_responsables.fecha_retiro');
+            })
+            ->join('users as resp_users', 'bienes_responsables.user_id', '=', 'resp_users.id')
+            ->selectRaw('resp_users.id, resp_users.nombres, resp_users.apellidos, COUNT(DISTINCT bienes.id) as total')
+            ->groupBy('resp_users.id', 'resp_users.nombres', 'resp_users.apellidos')
+            ->orderBy('resp_users.nombres')
+            ->orderBy('resp_users.apellidos')
+            ->get();
+
+        return compact(
+            'facetCategorias',
+            'facetDependencias',
+            'facetCoordinadores',
+            'facetEstados',
+            'facetOrigenes',
+            'facetResponsables'
+        );
     }
 
     public function getCantidadTotalFiltradaProperty()
     {
-        return $this->filtrarBienesQuery()->sum('cantidad');
+        return $this->queryBienesBase()->sum('cantidad');
     }
 
     // ------------------ Interacción con tabla ------------------ //
@@ -606,7 +611,6 @@ class BienesIndex extends Component
             'filtroResponsable',
         ]);
         $this->resetPage();
-        $this->cargarCatalogos();
     }
 
     // ------------------ Reactividad de filtros ------------------ //
@@ -619,11 +623,6 @@ class BienesIndex extends Component
     public function updatingFiltroNombre(): void     { $this->resetPage(); }
     public function updatingFiltroOrigen(): void     { $this->resetPage(); }
     public function updatingFiltroResponsable(): void { $this->resetPage(); }
-
-    public function updatedFiltroUser(): void        { $this->actualizarOpcionesFiltros(); }
-    public function updatedFiltroCategoria(): void   { $this->actualizarOpcionesFiltros(); }
-    public function updatedFiltroDependencia(): void { $this->actualizarOpcionesFiltros(); }
-    public function updatedFiltroEstado(): void      { $this->actualizarOpcionesFiltros(); }
 
     public function buscar(): void { $this->resetPage(); }
     public $forceRender = 0;
@@ -643,9 +642,8 @@ class BienesIndex extends Component
             $bien->id => $bien->camposPendientes()
         ]);
 
-        // Catálogos de filtro — calculados frescos, NO van al snapshot
-        $origenesCatalogo     = $this->origenesCatalogo;
-        $responsablesCatalogo = $this->responsablesCatalogo;
+        // Facetas — calculadas frescas en cada render, NO van al snapshot
+        $facetas = $this->computarFacetas();
 
         // Catálogos del formulario crear-bien — solo se calculan cuando el form está visible
         $listaNombresBienes = [];
@@ -664,13 +662,11 @@ class BienesIndex extends Component
                 ->toArray();
         }
 
-        return view('inventario::livewire.bienes.bienes-index', [
-            'bienes'               => $bienes,
-            'camposPendientes'     => $camposPendientes,
-            'origenesCatalogo'     => $origenesCatalogo,
-            'responsablesCatalogo' => $responsablesCatalogo,
-            'listaNombresBienes'   => $listaNombresBienes,
-            'listaOrigenesBienes'  => $listaOrigenesBienes,
-        ]);
+        return view('inventario::livewire.bienes.bienes-index', array_merge([
+            'bienes'             => $bienes,
+            'camposPendientes'   => $camposPendientes,
+            'listaNombresBienes' => $listaNombresBienes,
+            'listaOrigenesBienes' => $listaOrigenesBienes,
+        ], $facetas));
     }
 }
