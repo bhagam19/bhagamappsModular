@@ -20,25 +20,6 @@
                 @endif>
                 {{-- Configured sidebar links --}}
                 @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item')
-
-                {{-- Mis Módulos — fuente: App::visiblesPara($user) --}}
-                @auth
-                    @php
-                        $appsNavLateral = \Modules\Apps\Entities\App::visiblesPara(auth()->user());
-                    @endphp
-                    @if($appsNavLateral->isNotEmpty())
-                        <li class="nav-header">MIS MÓDULOS</li>
-                        @foreach($appsNavLateral as $appNav)
-                            <li class="nav-item">
-                                <a href="{{ url($appNav->ruta) }}"
-                                   class="nav-link {{ request()->is(ltrim($appNav->ruta, '/') . '*') ? 'active' : '' }}">
-                                    <i class="{{ $appNav->icono ?? 'fas fa-cube' }} nav-icon"></i>
-                                    <p>{{ $appNav->nombre }}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    @endif
-                @endauth
             </ul>
         </nav>
     </div>
