@@ -5,9 +5,11 @@ namespace Modules\User\Livewire\Password;
 use Livewire\Component;
 use Modules\User\Entities\AuditoriaPassword;
 use Modules\User\Entities\User;
+use Modules\User\Traits\ProteccionAdminPrincipal;
 
 class GestionEstadoUser extends Component
 {
+    use ProteccionAdminPrincipal;
     public User $user;
 
     public function mount(User $user): void
@@ -18,6 +20,7 @@ class GestionEstadoUser extends Component
     public function bloquear(): void
     {
         abort_unless(auth()->user()->hasPermission('bloquear-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_bloquear_admin_principal');
 
         $this->user->update(['bloqueado' => true]);
 
@@ -35,6 +38,7 @@ class GestionEstadoUser extends Component
     public function desbloquear(): void
     {
         abort_unless(auth()->user()->hasPermission('desbloquear-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_desbloquear_admin_principal');
 
         $this->user->update(['bloqueado' => false]);
 

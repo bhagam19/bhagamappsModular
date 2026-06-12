@@ -41,6 +41,7 @@ class User extends Authenticatable
         'role_id',
         'bloqueado',
         'forzar_cambio_password',
+        'es_principal',
     ];
 
     /**
@@ -64,6 +65,7 @@ class User extends Authenticatable
         'email_verified_at'       => 'datetime',
         'bloqueado'               => 'boolean',
         'forzar_cambio_password'  => 'boolean',
+        'es_principal'            => 'boolean',
     ];
 
     /**
@@ -78,6 +80,11 @@ class User extends Authenticatable
     /**
      * Retorna el nombre completo del user.
      */
+    public function isAdminPrincipal(): bool
+    {
+        return (bool) $this->es_principal;
+    }
+
     public function getNombreCompletoAttribute()
     {
         return $this->nombres . ' ' . $this->apellidos;

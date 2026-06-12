@@ -260,7 +260,7 @@
                         <td class="align-middle">{{ $user->id }}</td>
 
                         @if (in_array('nombres', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-usuarios') && !$user->isAdminPrincipal())
                                 <td>@livewire('user.editar-nombres-user', ['user' => $user], key('nombres-' . $user->id))</td>
                             @else
                                 <td class="align-middle">{{ $user->nombres }}</td>
@@ -268,7 +268,7 @@
                         @endif
 
                         @if (in_array('apellidos', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-usuarios') && !$user->isAdminPrincipal())
                                 <td>@livewire('user.editar-apellidos-user', ['user' => $user], key('apellidos-' . $user->id))</td>
                             @else
                                 <td class="align-middle">{{ $user->apellidos }}</td>
@@ -276,7 +276,7 @@
                         @endif
 
                         @if (in_array('userID', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-usuarios') && !$user->isAdminPrincipal())
                                 <td>@livewire('user.editar-userID-user', ['user' => $user], key('userID-' . $user->id))</td>
                             @else
                                 <td class="align-middle">{{ $user->userID }}</td>
@@ -284,7 +284,7 @@
                         @endif
 
                         @if (in_array('rol', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-usuarios') && !$user->isAdminPrincipal())
                                 <td>@livewire('user.editar-rol-user', ['user' => $user], key('role-' . $user->id))</td>
                             @else
                                 <td class="align-middle">{{ $user->role->nombre ?? '—' }}</td>
@@ -292,7 +292,7 @@
                         @endif
 
                         @if (in_array('email', $visibleColumns))
-                            @if (auth()->user()?->hasPermission('editar-usuarios'))
+                            @if (auth()->user()?->hasPermission('editar-usuarios') && !$user->isAdminPrincipal())
                                 <td>@livewire('user.editar-email-user', ['user' => $user], key('email-' . $user->id))</td>
                             @else
                                 <td class="align-middle">{{ $user->email }}</td>
@@ -317,18 +317,23 @@
 
                         <td class="align-middle">
                             <div class="d-flex flex-wrap gap-1 align-items-center">
-                                @if (auth()->user()->hasPermission('restablecer-passwords'))
-                                    @livewire('user.gestion-password-user', ['user' => $user], key('pass-' . $user->id))
-                                @endif
-                                @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
-                                    @livewire('user.gestion-estado-user', ['user' => $user], key('estado-' . $user->id))
-                                @endif
-                                @if (auth()->user()->hasPermission('eliminar-usuarios'))
-                                    <button wire:click="delete({{ $user->id }})" class="btn btn-sm btn-danger"
-                                        onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
-                                        aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
-                                        Eliminar
-                                    </button>
+                                @if ($user->isAdminPrincipal())
+                                    <span class="badge badge-dark">Administrador Principal</span>
+                                    <span class="badge badge-warning">Protegido</span>
+                                @else
+                                    @if (auth()->user()->hasPermission('restablecer-passwords'))
+                                        @livewire('user.gestion-password-user', ['user' => $user], key('pass-' . $user->id))
+                                    @endif
+                                    @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
+                                        @livewire('user.gestion-estado-user', ['user' => $user], key('estado-' . $user->id))
+                                    @endif
+                                    @if (auth()->user()->hasPermission('eliminar-usuarios'))
+                                        <button wire:click="delete({{ $user->id }})" class="btn btn-sm btn-danger"
+                                            onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
+                                            aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
+                                            Eliminar
+                                        </button>
+                                    @endif
                                 @endif
                             </div>
                         </td>
@@ -357,6 +362,9 @@
                         onkeydown="if(event.key === 'Enter' || event.key === ' ') { $('#collapse{{ $user->id }}').collapse('toggle'); event.preventDefault(); }">
                         <div>
                             <span class="font-weight-bold">{{ $user->id }}. {{ $user->nombres }} {{ $user->apellidos }}</span>
+                            @if ($user->isAdminPrincipal())
+                                <span class="badge badge-dark ml-1">Administrador Principal</span>
+                            @endif
                             <br>
                             <small class="text-muted">{{ $user->role->nombre ?? '—' }}</small>
                             <span class="ml-2 badge {{ $user->bloqueado ? 'badge-danger' : 'badge-success' }} badge-sm">
@@ -364,18 +372,22 @@
                             </span>
                         </div>
                         <div class="ml-auto d-flex gap-1">
-                            @if (auth()->user()->hasPermission('restablecer-passwords'))
-                                @livewire('user.gestion-password-user', ['user' => $user], key('mpass-' . $user->id))
-                            @endif
-                            @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
-                                @livewire('user.gestion-estado-user', ['user' => $user], key('mestado-' . $user->id))
-                            @endif
-                            @if (auth()->user()->hasPermission('eliminar-usuarios'))
-                                <button wire:click.stop="delete({{ $user->id }})" class="btn btn-sm btn-danger"
-                                    onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
-                                    aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
-                                    Eliminar
-                                </button>
+                            @if ($user->isAdminPrincipal())
+                                <span class="badge badge-warning">Protegido</span>
+                            @else
+                                @if (auth()->user()->hasPermission('restablecer-passwords'))
+                                    @livewire('user.gestion-password-user', ['user' => $user], key('mpass-' . $user->id))
+                                @endif
+                                @if (auth()->user()->hasPermission('bloquear-usuarios') || auth()->user()->hasPermission('desbloquear-usuarios'))
+                                    @livewire('user.gestion-estado-user', ['user' => $user], key('mestado-' . $user->id))
+                                @endif
+                                @if (auth()->user()->hasPermission('eliminar-usuarios'))
+                                    <button wire:click.stop="delete({{ $user->id }})" class="btn btn-sm btn-danger"
+                                        onclick="confirm('¿Confirma eliminar?') || event.stopImmediatePropagation()"
+                                        aria-label="Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }}">
+                                        Eliminar
+                                    </button>
+                                @endif
                             @endif
                         </div>
                     </div>

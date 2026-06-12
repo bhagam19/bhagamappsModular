@@ -4,31 +4,33 @@ namespace Modules\User\Livewire\User;
 
 use Livewire\Component;
 use Modules\User\Entities\User;
+use Modules\User\Traits\ProteccionAdminPrincipal;
 
 class EditarNombresUser extends Component
 {
+    use ProteccionAdminPrincipal;
+
     public User $user;
     public $nombres;
     public $editando = false;
 
     public function mount(User $user)
     {
-        $this->user = $user;
+        $this->user    = $user;
         $this->nombres = $user->nombres;
-        $this->editando = false;
     }
 
     public function editar()
     {
-        if (!auth()->user()?->hasPermission('editar-usuarios')) {
-            abort(403);
-        }
+        abort_unless(auth()->user()?->hasPermission('editar-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_editar_admin_principal');
         $this->editando = true;
     }
 
     public function guardar()
     {
-        // Guardamos el nuevo título y desactivamos el modo edición
+        abort_unless(auth()->user()?->hasPermission('editar-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_editar_admin_principal');
         $this->user->nombres = $this->nombres;
         $this->user->save();
         $this->editando = false;

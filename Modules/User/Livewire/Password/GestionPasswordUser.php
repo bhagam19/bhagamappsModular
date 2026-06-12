@@ -7,9 +7,11 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\User\Entities\AuditoriaPassword;
 use Modules\User\Entities\User;
+use Modules\User\Traits\ProteccionAdminPrincipal;
 
 class GestionPasswordUser extends Component
 {
+    use ProteccionAdminPrincipal;
     public User $user;
 
     public string $nuevaPassword    = '';
@@ -21,6 +23,7 @@ class GestionPasswordUser extends Component
     public function mount(User $user): void
     {
         abort_unless(auth()->user()->hasPermission('restablecer-passwords'), 403);
+        $this->verificarNoEsAdminPrincipal($user, 'intento_restablecer_password_admin_principal');
 
         $this->user = $user;
     }
@@ -34,6 +37,7 @@ class GestionPasswordUser extends Component
     public function restablecer(): void
     {
         abort_unless(auth()->user()->hasPermission('restablecer-passwords'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_restablecer_password_admin_principal');
 
         $this->validate([
             'nuevaPassword' => [

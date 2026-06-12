@@ -6,10 +6,11 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\User\Entities\User;
 use Modules\User\Entities\Role;
+use Modules\User\Traits\ProteccionAdminPrincipal;
 
 class UserIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, ProteccionAdminPrincipal;
 
     // Campos del formulario de creación
     public $nombres, $apellidos, $userID, $role_id, $email, $password;
@@ -153,7 +154,10 @@ class UserIndex extends Component
             return;
         }
 
-        User::findOrFail($id)->delete();
+        $target = User::findOrFail($id);
+        $this->verificarNoEsAdminPrincipal($target, 'intento_eliminar_admin_principal');
+
+        $target->delete();
         session()->flash('message', 'Usuario eliminado exitosamente.');
     }
 

@@ -4,9 +4,11 @@ namespace Modules\User\Livewire\User;
 
 use Livewire\Component;
 use Modules\User\Entities\User;
+use Modules\User\Traits\ProteccionAdminPrincipal;
 
 class EditarUserIDUser extends Component
 {
+    use ProteccionAdminPrincipal;
     public User $user;
     public $userID;
     public $editando = false;
@@ -20,15 +22,15 @@ class EditarUserIDUser extends Component
 
     public function editar()
     {
-        if (!auth()->user()?->hasPermission('editar-usuarios')) {
-            abort(403);
-        }
+        abort_unless(auth()->user()?->hasPermission('editar-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_editar_admin_principal');
         $this->editando = true;
     }
 
     public function guardar()
     {
         abort_unless(auth()->user()?->hasPermission('editar-usuarios'), 403);
+        $this->verificarNoEsAdminPrincipal($this->user, 'intento_editar_admin_principal');
         $this->user->userID = $this->userID;
         $this->user->save();
         $this->editando = false;
