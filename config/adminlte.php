@@ -313,63 +313,71 @@ return [
             'text' => 'Iniciar Sesión',
             'url'  => 'login',
             'icon' => 'fas fa-sign-in-alt',
-            'topnav_right' => true, // Para moverlo a la derecha
+            'topnav_right' => true,
             'can' => 'guest-only',
         ],
 
         // Sidebar items
         [
-            'text' => 'Inicio',
+            'text'  => 'Inicio',
             'route' => 'ppal.index',
-            'icon' => 'fas fa-fw fa-tachometer-alt',
+            'icon'  => 'fas fa-fw fa-tachometer-alt',
         ],
 
+        ['header' => 'MIS MÓDULOS'],
+
+        // Gestión de Acceso
         [
-            'text' => 'Gestión de Accesos',
-            'icon' => 'fas fa-users-cog',
-            'can' => 'usuarios.user',
+            'text'    => 'Gestión de Acceso',
+            'icon'    => 'fas fa-users-cog',
+            'can'     => 'usuarios.user',
             'submenu' => [
                 [
-                    'text' => 'Usuarios',
-                    'icon' => 'fas fa-user text-info',
-                    'route' => 'user.users.index',
-                    'active' => ['admin/user*'],
-                    'classes' => 'text-primary font-weight-bold',
-
-                ],
-                [
-                    'text' => 'Roles',
-                    'icon' => 'fas fa-user-shield text-info',
-                    'route' => 'user.roles.index', // Ajusta si tienes otra ruta
-                    'active' => ['admin/roles*'],
+                    'text'    => 'Usuarios',
+                    'icon'    => 'fas fa-user text-info',
+                    'route'   => 'user.users.index',
+                    'active'  => ['users/users*'],
                     'classes' => 'text-primary font-weight-bold',
                 ],
                 [
-                    'text' => 'Permisos',
-                    'icon' => 'fas fa-key text-info',
-                    'route' => 'user.permissions.index', // Ajusta si es necesario
-                    'active' => ['admin/permissions*'],
+                    'text'    => 'Roles',
+                    'icon'    => 'fas fa-user-shield text-info',
+                    'route'   => 'user.roles.index',
+                    'active'  => ['users/roles*'],
                     'classes' => 'text-primary font-weight-bold',
+                    'can'     => 'ver-roles',
+                ],
+                [
+                    'text'    => 'Permisos',
+                    'icon'    => 'fas fa-key text-info',
+                    'route'   => 'user.permissions.index',
+                    'active'  => ['users/permissions*'],
+                    'classes' => 'text-primary font-weight-bold',
+                    'can'     => 'ver-permisos',
                 ],
             ],
         ],
 
+        // Aplicaciones
         [
-            'text' => 'Aplicaciones',
-            'icon' => 'fas fa-th-large',
-            'can' => 'ver-apps',
-            'route' => 'apps.admin.index',
-            'active' => ['apps/admin*'],
+            'text'    => 'Aplicaciones',
+            'icon'    => 'fas fa-th-large',
+            'can'     => 'ver-apps',
+            'route'   => 'apps.admin.index',
+            'active'  => ['apps/admin*'],
             'classes' => 'text-primary font-weight-bold',
         ],
 
         // 📌 [crud-generator-menus] Añadir menús aquí
+
+        // Inventario
         [
-            'text'   => 'Inventario',
-            'icon'   => 'fas fa-boxes',
-            'route'  => 'inventario.dashboard',
-            'active' => ['inventario'],
+            'text'    => 'Inventario',
+            'icon'    => 'fas fa-boxes',
+            'route'   => 'inventario.dashboard',
+            'active'  => ['inventario*'],
             'submenu' => [
+                // Fijos primero: Dashboard y Bienes
                 [
                     'text'    => 'Dashboard',
                     'icon'    => 'fas fa-tachometer-alt text-success',
@@ -378,27 +386,28 @@ return [
                     'classes' => 'font-weight-bold',
                 ],
                 [
-                    'text' => 'Bienes',
-                    'icon' => 'fas fa-box text-info',
-                    'route' => 'inventario.bienes.index',
-                    'active' => ['inventario/bienes*'],
+                    'text'    => 'Bienes',
+                    'icon'    => 'fas fa-box text-info',
+                    'route'   => 'inventario.bienes.index',
+                    'active'  => ['inventario/bienes*'],
                     'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-bienes',
+                    'can'     => 'ver-bienes',
+                ],
+                // Alfabético
+                [
+                    'text'    => 'Actas de Entrega',
+                    'icon'    => 'fas fa-file-signature text-info',
+                    'route'   => 'inventario.actas.index',
+                    'active'  => ['inventario/actas*'],
+                    'classes' => 'text-primary font-weight-bold',
+                    'can'     => 'ver-actas-de-entrega',
                 ],
                 [
-                    'text' => 'Actas de Entrega',
-                    'icon' => 'fas fa-file-signature text-info',
-                    'route' => 'inventario.actas.index',
-                    'active' => ['inventario/actas*'],
-                    'classes' => 'text-primary font-weight-bold',
-                    'can' => 'ver-actas-de-entrega',
-                ],
-                [
-                    'text'   => 'Responsables',
-                    'icon'   => 'fas fa-user-shield text-info',
-                    'route'  => 'inventario.responsables.index',
-                    'active' => ['inventario/responsables*'],
-                    'can'    => 'ver-responsables-bienes',
+                    'text'   => 'Almacenamientos',
+                    'icon'   => 'fas fa-warehouse text-info',
+                    'route'  => 'inventario.catalogos.almacenamientos',
+                    'active' => ['inventario/catalogos/almacenamientos*'],
+                    'can'    => 'ver-almacenamientos',
                 ],
                 [
                     'text'   => 'Categorías',
@@ -415,39 +424,11 @@ return [
                     'can'    => 'ver-dependencias',
                 ],
                 [
-                    'text'   => 'Ubicaciones',
-                    'icon'   => 'fas fa-map-marker-alt text-info',
-                    'route'  => 'inventario.catalogos.ubicaciones',
-                    'active' => ['inventario/catalogos/ubicaciones*'],
-                    'can'    => 'ver-ubicaciones',
-                ],
-                [
                     'text'   => 'Estados',
                     'icon'   => 'fas fa-toggle-on text-info',
                     'route'  => 'inventario.catalogos.estados',
                     'active' => ['inventario/catalogos/estados*'],
                     'can'    => 'ver-estados',
-                ],
-                [
-                    'text'   => 'Orígenes',
-                    'icon'   => 'fas fa-flag text-info',
-                    'route'  => 'inventario.catalogos.origenes',
-                    'active' => ['inventario/catalogos/origenes*'],
-                    'can'    => 'ver-origenes',
-                ],
-                [
-                    'text'   => 'Almacenamientos',
-                    'icon'   => 'fas fa-warehouse text-info',
-                    'route'  => 'inventario.catalogos.almacenamientos',
-                    'active' => ['inventario/catalogos/almacenamientos*'],
-                    'can'    => 'ver-almacenamientos',
-                ],
-                [
-                    'text'   => 'Mantenimientos',
-                    'icon'   => 'fas fa-tools text-info',
-                    'route'  => 'inventario.catalogos.mantenimientos',
-                    'active' => ['inventario/catalogos/mantenimientos*'],
-                    'can'    => 'ver-mantenimientos',
                 ],
                 [
                     'text'   => 'Historial Eliminaciones',
@@ -472,84 +453,41 @@ return [
                 ],
                 [
                     'text'   => 'Mantenimientos',
+                    'icon'   => 'fas fa-tools text-info',
+                    'route'  => 'inventario.catalogos.mantenimientos',
+                    'active' => ['inventario/catalogos/mantenimientos*'],
+                    'can'    => 'ver-mantenimientos',
+                ],
+                [
+                    'text'   => 'Mantenimientos Programados',
                     'icon'   => 'fas fa-wrench text-info',
                     'route'  => 'inventario.mantenimientos.programados',
                     'active' => ['inventario/mantenimientos*'],
                     'can'    => 'ver-mantenimientos-programados',
                 ],
-                            ],
-        ],
-
-
-        [
-            'text' => 'Grupos',
-            'icon' => 'fas fa-layer-group',
-            'can' => 'admin.grupos',
-            'submenu' => [
                 [
-                    'text' => 'Ver Grupos',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-chalkboard',
+                    'text'   => 'Orígenes',
+                    'icon'   => 'fas fa-flag text-info',
+                    'route'  => 'inventario.catalogos.origenes',
+                    'active' => ['inventario/catalogos/origenes*'],
+                    'can'    => 'ver-origenes',
                 ],
                 [
-                    'text' => 'Asignar a Docentes',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-user-tie',
+                    'text'   => 'Responsables',
+                    'icon'   => 'fas fa-user-shield text-info',
+                    'route'  => 'inventario.responsables.index',
+                    'active' => ['inventario/responsables*'],
+                    'can'    => 'ver-responsables-bienes',
                 ],
                 [
-                    'text' => 'Asignar a Estudiantes',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-user-graduate',
+                    'text'   => 'Ubicaciones',
+                    'icon'   => 'fas fa-map-marker-alt text-info',
+                    'route'  => 'inventario.catalogos.ubicaciones',
+                    'active' => ['inventario/catalogos/ubicaciones*'],
+                    'can'    => 'ver-ubicaciones',
                 ],
             ],
         ],
-
-        [
-            'text' => 'Evaluación Docente',
-            'icon' => 'fas fa-poll',
-            'can' => 'admin.evaldoc',
-            'submenu' => [
-                [
-                    'text' => 'Encuestas',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-poll-h',
-                ],
-                [
-                    'text' => 'Preguntas',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-question-circle',
-                ],
-                [
-                    'text' => 'Respuestas',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-user-check',
-                ],
-                [
-                    'text' => 'Resultados',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-chart-pie',
-                ],
-            ],
-        ],
-
-        [
-            'text' => 'Biblioteca',
-            'icon' => 'fas fa-book',
-            'can' => 'admin.biblioteca',
-            'submenu' => [
-                [
-                    'text' => 'Libros',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-book-open',
-                ],
-                [
-                    'text' => 'Préstamos',
-                    'route' => '', // <-- tu ruta aquí
-                    'icon' => 'fas fa-hand-holding',
-                ],
-            ],
-        ],
-
 
     ],
 

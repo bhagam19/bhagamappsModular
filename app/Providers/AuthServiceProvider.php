@@ -112,6 +112,10 @@ class AuthServiceProvider extends ServiceProvider
                         Gate::define($slug, fn($user) => $user->hasPermission($slug));
                 }
 
+                // Gates para User module — RBAC visual menú (IMPL-CORE-MENU-001)
+                Gate::define('ver-roles', fn($user) => $user->hasPermission('ver-roles'));
+                Gate::define('ver-permisos', fn($user) => $user->hasPermission('ver-permisos'));
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }

@@ -7,6 +7,18 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.21.0 — 2026-06-12
+
+### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)
+
+- La navegación lateral ahora refleja la arquitectura funcional de IEE.
+  Todos los módulos quedan bajo el encabezado **Mis Módulos**.
+  El acceso a Roles y Permisos solo aparece para usuarios con los permisos correspondientes.
+  Los ítems de Inventario están en orden alfabético. Los módulos sin implementar
+  (Grupos, Evaluación Docente, Biblioteca) fueron eliminados de la navegación. BhagamApps v1.20.0.
+
+---
+
 ## v1.20.0 — 2026-06-12
 
 ### Added (IMPL-INV-012 — Catálogo de Orígenes)

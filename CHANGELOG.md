@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.20.0] — 2026-06-12
+
+### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)
+
+- Menú lateral reorganizado: contenedor "Mis Módulos", Gestión de Acceso con RBAC visual
+  individual para Roles/Permisos, Inventario en orden alfabético, módulos placeholder eliminados.
+  BhagamApps v1.20.0 | IEE v1.21.0.
+
+---
+
 ## [v1.19.0] — 2026-06-12
 
 ### Added (IMPL-INV-012 — Catálogo de Orígenes)

@@ -11,6 +11,24 @@ Changelogs de módulo:
 
 ---
 
+## v1.20.0 — 2026-06-12
+
+### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)
+
+- Navegación lateral completamente reorganizada bajo el contenedor **Mis Módulos**.
+- **Gestión de Acceso** (antes "Gestión de Accesos") agrupa Usuarios, Roles y Permisos.
+  Roles y Permisos ahora tienen control de visibilidad individual por permiso
+  (`ver-roles`, `ver-permisos`) — solo visible para roles que los posean.
+- **Inventario**: ítems ordenados alfabéticamente después de Dashboard y Bienes.
+  "Mantenimientos Programados" renombrado (antes era un duplicado de "Mantenimientos").
+- **Módulos no implementados eliminados**: Grupos, Evaluación Docente, Biblioteca
+  retirados completamente de la navegación.
+- `active` patterns del módulo User corregidos (`users/users*`, `users/roles*`,
+  `users/permissions*` en lugar de los incorrectos `admin/*`).
+- Dos nuevos gates en `AuthServiceProvider`: `ver-roles` y `ver-permisos`.
+
+---
+
 ## v1.16.2 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-004)
