@@ -7,6 +7,16 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.18.1 — 2026-06-12
+
+### Fixed (HOTFIX-INV-010 — Error 419 en Búsqueda/Filtros de Bienes)
+
+- Búsqueda reactiva, filtros y ordenamiento en `/inventario/bienes` ya no producen
+  error 419. El acordeón móvil usa HTML estático y los catálogos de nombres ya no
+  se serializan en el snapshot de Livewire. Inventario v2.13.1.
+
+---
+
 ## v1.18.0 — 2026-06-12
 
 ### Added (IMPL-INV-009 — Buscador Inteligente de Bienes)

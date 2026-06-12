@@ -5,6 +5,24 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.13.1 — 2026-06-12
+
+### Fixed (HOTFIX-INV-010 — Error 419 en Búsqueda Reactiva de Bienes)
+
+- **Causa raíz:** cuerpo POST Livewire superaba 16,383 bytes (límite PHP-FPM).
+  Dos fuentes: 12 hijos Livewire duplicados en el acordeón móvil (25 total/bien × 10 = 250)
+  y `$listaNombresBienes` (260 nombres = 3,397 bytes) como propiedad pública serializada en
+  cada snapshot.
+- **Fix 1:** Acordeón móvil ahora usa HTML estático — los `editar-campo-bien` y
+  `editar-detalle-bien` solo se instancian en la tabla de escritorio (13/bien).
+  Modificaciones pendientes muestran indicador visual en móvil.
+- **Fix 2:** `$listaNombresBienes` y `$listaOrigenesBienes` eliminadas del snapshot.
+  Ahora se computan en `render()` como view data, solo cuando el formulario está visible.
+- **Resultado:** POST estimado en ~8,630 bytes — 47% bajo el límite. Búsqueda, filtros
+  y ordenamiento reactivos funcionan sin 419.
+
+---
+
 ## v2.13.0 — 2026-06-12
 
 ### Added (IMPL-INV-009 — Buscador Inteligente y Gestión Avanzada de Bienes)

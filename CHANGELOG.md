@@ -17,6 +17,15 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.17.1] — 2026-06-12
+
+### Fixed (HOTFIX-INV-010 — Error 419 Bienes)
+
+- 419 en búsqueda/filtros de Inventario resuelto: hijos Livewire móvil eliminados,
+  `$listaNombresBienes` sacado del snapshot. Inventario v2.13.1 | IEE v1.18.1.
+
+---
+
 ## [v1.17.0] — 2026-06-12
 
 ### Added (IMPL-INV-009 — Buscador Inteligente de Bienes)

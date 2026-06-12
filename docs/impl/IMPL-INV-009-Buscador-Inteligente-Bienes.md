@@ -3,7 +3,7 @@
 **Fecha:** 2026-06-12
 **Módulo:** Inventario — BienesIndex
 **Versión:** Inventario v2.13.0 / IEE v1.18.0
-**SHA:** (ver al final)
+**SHA:** `90b0efc`
 **Estado:** COMPLETADO
 
 ---
@@ -210,6 +210,6 @@ config/versiones.php
 
 ## SHA verificable
 
-```bash
-git log --oneline -1
+```
+90b0efc feat(inventario): IMPL-INV-009 — Buscador Inteligente y Gestión Avanzada de Bienes
 ```

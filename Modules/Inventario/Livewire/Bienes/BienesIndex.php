@@ -42,8 +42,9 @@ class BienesIndex extends Component
     public string $busqueda = '';
 
     // --- Filtros ---
-    public $nombreSeleccionado = '', $nombreNuevo = '', $listaNombresBienes = [];
-    public $origenSeleccionado = '', $origenNuevo = '', $listaOrigenesBienes = [];
+    public $nombreSeleccionado = '', $nombreNuevo = '';
+    public $origenSeleccionado = '', $origenNuevo = '';
+    // listaNombresBienes y listaOrigenesBienes se computan en render() — no van al snapshot
     public $filtroNombre, $filtroUser, $filtroCategoria, $filtroDependencia, $filtroEstado;
     public string $filtroOrigen = '';
     public string $filtroResponsable = '';
@@ -149,16 +150,6 @@ class BienesIndex extends Component
 
         $this->visibleColumns = $this->ordenBase;
         $this->cargarCatalogos();
-        $this->listaNombresBienes = Bien::pluck('nombre')
-            ->unique()
-            ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
-            ->values()
-            ->toArray();
-        $this->listaOrigenesBienes = Bien::pluck('origen')
-            ->unique()
-            ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
-            ->values()
-            ->toArray();
     }
 
     public function cargarBienesDestacados()
@@ -652,11 +643,34 @@ class BienesIndex extends Component
             $bien->id => $bien->camposPendientes()
         ]);
 
+        // Catálogos de filtro — calculados frescos, NO van al snapshot
+        $origenesCatalogo     = $this->origenesCatalogo;
+        $responsablesCatalogo = $this->responsablesCatalogo;
+
+        // Catálogos del formulario crear-bien — solo se calculan cuando el form está visible
+        $listaNombresBienes = [];
+        $listaOrigenesBienes = [];
+        if ($this->mostrarFormulario) {
+            $listaNombresBienes = Bien::pluck('nombre')
+                ->unique()
+                ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
+                ->values()
+                ->toArray();
+            $listaOrigenesBienes = Bien::pluck('origen')
+                ->filter()
+                ->unique()
+                ->sort(fn($a, $b) => strnatcasecmp($this->normalizarTexto($a), $this->normalizarTexto($b)))
+                ->values()
+                ->toArray();
+        }
+
         return view('inventario::livewire.bienes.bienes-index', [
             'bienes'               => $bienes,
             'camposPendientes'     => $camposPendientes,
-            'origenesCatalogo'     => $this->origenesCatalogo,
-            'responsablesCatalogo' => $this->responsablesCatalogo,
+            'origenesCatalogo'     => $origenesCatalogo,
+            'responsablesCatalogo' => $responsablesCatalogo,
+            'listaNombresBienes'   => $listaNombresBienes,
+            'listaOrigenesBienes'  => $listaOrigenesBienes,
         ]);
     }
 }

@@ -957,65 +957,49 @@
                         </div>
                     </div>
 
-                    {{-- Cuerpo del acordeón --}}
-                    {{-- ⚠️ SOLO se renderiza el contenido si NO tiene eliminación pendiente --}}
+                    {{-- Cuerpo del acordeón — HTML estático (sin hijos Livewire) --}}
+                    {{-- Los componentes editar-campo-bien solo están en la tabla desktop --}}
+                    {{-- para mantener el snapshot bajo 16 KB (patrón HOTFIX-USERS-006) --}}
                     @unless ($bien->eliminacionPendiente)
                         <div class="card-body p-2" :class="{ 'd-none': openId !== {{ $bien->id }} }">
                             @foreach ($availableColumns as $key => $label)
                                 @continue(!in_array($key, $visibleColumns) || empty($key))
 
-                                <div class="mb-0">
+                                <div class="mb-0 py-1 border-bottom border-light">
+                                    <small class="text-muted font-weight-bold">{{ $label }}:</small>
+
                                     @if ($key === 'detalle')
-                                        @if (auth()->user()?->hasPermission('editar-bienes'))
-                                            @livewire('bienes.editar-detalle-bien', ['bienId' => $bien->id], key('editar-detalle-bien-' . $bien->id))
+                                        @if ($bien->detalle)
+                                            <small class="d-block text-dark">
+                                                @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
+                                                    @if (!empty($bien->detalle->$attr))
+                                                        {{ $bien->detalle->$attr }}@if (!$loop->last) | @endif
+                                                    @endif
+                                                @endforeach
+                                            </small>
                                         @else
-                                            @if ($bien->detalle)
-                                                <small class="d-block mt-1 text-muted">
-                                                    @foreach (['car_especial', 'marca', 'color', 'tamano', 'material', 'otra'] as $attr)
-                                                        @if (!empty($bien->detalle->$attr))
-                                                            {{ $bien->detalle->$attr }} |
-                                                        @endif
-                                                    @endforeach
-                                                </small>
-                                            @else
-                                                <span class="text-muted fst-italic">Sin detalles</span>
-                                            @endif
+                                            <small class="text-muted fst-italic d-block">Sin detalles</small>
                                         @endif
                                     @elseif ($key === 'user_id')
-                                        <div
-                                            class="d-flex align-items-center justify-content-between flex-nowrap w-100 py-0 overflow-hidden">
-                                            <div class="text-truncate me-2" style="white-space: nowrap;">
-                                                <span
-                                                    class="badge badge-light border border-primary text-muted small px-2 py-1 d-sm-none">
-                                                    {{ $label }}:
-                                                </span>
-                                                <small class="mt-1 text-muted">
-                                                    {{ $bien->dependencia->user->nombre_completo ?? 'Sin responsable' }}
-                                                </small>
-                                            </div>
-                                        </div>
+                                        <small class="d-block text-dark">
+                                            {{ $bien->dependencia->user->nombre_completo ?? '—' }}
+                                        </small>
                                     @elseif ($key === 'responsable')
-                                        <small class="text-muted">
+                                        <small class="d-block text-dark">
                                             {{ $bien->responsableActual?->user?->nombre_completo ?? '—' }}
                                         </small>
                                     @elseif ($key === 'ubicacion_actual')
-                                        <small class="text-muted">
+                                        <small class="d-block text-dark">
                                             {{ $bien->ubicacionActual?->ubicacionDestino?->nombre ?? '—' }}
                                         </small>
                                     @else
-                                        @if (auth()->user()?->hasPermission('editar-bienes'))
-                                            @livewire(
-                                                'bienes.editar-campo-bien',
-                                                [
-                                                    'bienId' => $bien->id,
-                                                    'campo' => $key,
-                                                    'camposPendientes' => $camposPendientes,
-                                                ],
-                                                key("mobile-bien-{$bien->id}-{$key}")
-                                            )
-                                        @else
+                                        @php $pending = in_array($key, $camposPendientes[$bien->id] ?? []); @endphp
+                                        <small @class(['d-block text-dark', 'text-warning font-weight-bold' => $pending])>
                                             {{ $bien->getDisplayValue($key) ?? '—' }}
-                                        @endif
+                                            @if ($pending)
+                                                <i class="fas fa-hourglass-half ml-1" title="Modificación pendiente"></i>
+                                            @endif
+                                        </small>
                                     @endif
                                 </div>
                             @endforeach
