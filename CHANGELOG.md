@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.17.0] — 2026-06-12
+
+### Added (IMPL-INV-009 — Buscador Inteligente de Bienes)
+
+- Búsqueda global reactiva en el módulo Inventario: 11 campos simultáneos, debounce 300ms,
+  sin botón de búsqueda. Filtros nuevos de Origen y Custodio. `wire:key` en loops.
+  Inventario v2.13.0 | IEE v1.18.0.
+
+---
+
 ## [v1.16.1] — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-003)

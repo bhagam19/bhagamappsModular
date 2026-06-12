@@ -3,8 +3,7 @@
     @php
         $user = auth()->user();
 
-        $bienesOrdenados =
-            $user->hasRole('Administrador') || $user->hasRole('Rector') ? $bienes : $bienes->sortBy('nombre');
+        $bienesOrdenados = $bienes;
 
         $contador = 0;
         $ocultarUser = !$user->hasRole('Administrador') && !$user->hasRole('Rector');
@@ -191,17 +190,19 @@
                     </div>
                 @endif
 
-                {{-- Barra superior: Buscar --}}
+                {{-- Búsqueda global reactiva --}}
                 <div class="mb-1">
-                    <input type="text" wire:model.lazy="filtroNombre" class="form-control"
-                        placeholder="🔍 Buscar por nombre...">
+                    <input type="text"
+                           wire:model.live.debounce.300ms="busqueda"
+                           class="form-control"
+                           placeholder="🔍 Buscar por ID, nombre, serial, marca, categoría, dependencia...">
                 </div>
 
                 {{-- Filtros adicionales --}}
                 <div class="d-flex flex-wrap gap-1 align-items-end mb-1">
                     <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.lazy="filtroUser" class="form-control">
-                            <option value="">Filtrar por usuario</option>
+                        <select wire:model.live="filtroUser" class="form-control">
+                            <option value="">Todos los coordinadores</option>
                             @foreach ($users as $opcionUser)
                                 <option value="{{ $opcionUser->id }}">{{ $opcionUser->nombres }}
                                     {{ $opcionUser->apellidos }}
@@ -211,8 +212,8 @@
                     </div>
 
                     <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.lazy="filtroCategoria" class="form-control">
-                            <option value="">Filtrar por categoría</option>
+                        <select wire:model.live="filtroCategoria" class="form-control">
+                            <option value="">Todas las categorías</option>
                             @foreach ($categorias as $categoria)
                                 <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                             @endforeach
@@ -220,8 +221,8 @@
                     </div>
 
                     <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.lazy="filtroDependencia" class="form-control">
-                            <option value="">Filtrar por dependencia</option>
+                        <select wire:model.live="filtroDependencia" class="form-control">
+                            <option value="">Todas las dependencias</option>
                             @foreach ($dependencias as $dep)
                                 <option value="{{ $dep->id }}">{{ $dep->nombre }}</option>
                             @endforeach
@@ -229,13 +230,33 @@
                     </div>
 
                     <div class="flex-fill" style="min-width: 200px;">
-                        <select wire:model.lazy="filtroEstado" class="form-control">
-                            <option value="">Filtrar por estado</option>
+                        <select wire:model.live="filtroEstado" class="form-control">
+                            <option value="">Todos los estados</option>
                             @foreach ($estados as $estado)
                                 <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="flex-fill" style="min-width: 200px;">
+                        <select wire:model.live="filtroOrigen" class="form-control">
+                            <option value="">Todos los orígenes</option>
+                            @foreach ($origenesCatalogo as $origen)
+                                <option value="{{ $origen }}">{{ $origen }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    @if ($responsablesCatalogo && count($responsablesCatalogo))
+                        <div class="flex-fill" style="min-width: 200px;">
+                            <select wire:model.live="filtroResponsable" class="form-control">
+                                <option value="">Todos los custodios</option>
+                                @foreach ($responsablesCatalogo as $resp)
+                                    <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
                     <div class="mt-1">
                         <button wire:click="limpiarFiltros" class="btn btn-outline-secondary btn-sm">
@@ -542,21 +563,13 @@
                         </div>
                     </th>
 
-                    {{-- Filtro por nombre --}}
+                    {{-- Búsqueda global --}}
                     <th
-                        style="position: sticky; top: 0; left: 145px; background: white; z-index: 11; min-width: 250px;">
-                        <div class="d-flex align-items-center gap-2">
-                            <select wire:model.lazy="filtroNombre" class="form-control form-control-sm">
-                                <option value="">Filtrar por bien</option>
-                                @foreach ($listaNombresBienes as $nombre)
-                                    <option value="{{ $nombre }}">{{ $nombre }}</option>
-                                @endforeach
-                            </select>
-
-                            <button wire:click="$refresh" class="btn btn-sm btn-primary" title="Buscar">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+                        style="position: sticky; top: 0; left: 145px; background: white; z-index: 11; min-width: 280px;">
+                        <input type="text"
+                               wire:model.live.debounce.300ms="busqueda"
+                               class="form-control form-control-sm"
+                               placeholder="🔍 Buscar ID, nombre, serial, marca, categoría...">
                     </th>
 
                     {{-- Resto de filtros basados en columnas --}}
@@ -575,7 +588,7 @@
                         <th style="{{ $styles }}">
                             @switch($column)
                                 @case('user_id')
-                                    <select wire:model.lazy="filtroUser" class="form-control form-control-sm">
+                                    <select wire:model.live="filtroUser" class="form-control form-control-sm">
                                         <option value="">Todos</option>
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}">
@@ -585,7 +598,7 @@
                                 @break
 
                                 @case('categoria_id')
-                                    <select wire:model.lazy="filtroCategoria" class="form-control form-control-sm">
+                                    <select wire:model.live="filtroCategoria" class="form-control form-control-sm">
                                         <option value="">Todas</option>
                                         @foreach ($categorias as $categoria)
                                             <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
@@ -594,7 +607,7 @@
                                 @break
 
                                 @case('dependencia_id')
-                                    <select wire:model.lazy="filtroDependencia" class="form-control form-control-sm">
+                                    <select wire:model.live="filtroDependencia" class="form-control form-control-sm">
                                         <option value="">Todas</option>
                                         @foreach ($dependencias as $dep)
                                             <option value="{{ $dep->id }}">{{ $dep->nombre }}</option>
@@ -603,12 +616,34 @@
                                 @break
 
                                 @case('estado_id')
-                                    <select wire:model.lazy="filtroEstado" class="form-control form-control-sm">
+                                    <select wire:model.live="filtroEstado" class="form-control form-control-sm">
                                         <option value="">Todos</option>
                                         @foreach ($estados as $estado)
                                             <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
                                         @endforeach
                                     </select>
+                                @break
+
+                                @case('origen')
+                                    <select wire:model.live="filtroOrigen" class="form-control form-control-sm">
+                                        <option value="">Todos</option>
+                                        @foreach ($origenesCatalogo as $orig)
+                                            <option value="{{ $orig }}">{{ $orig }}</option>
+                                        @endforeach
+                                    </select>
+                                @break
+
+                                @case('responsable')
+                                    @if ($responsablesCatalogo && count($responsablesCatalogo))
+                                        <select wire:model.live="filtroResponsable" class="form-control form-control-sm">
+                                            <option value="">Todos</option>
+                                            @foreach ($responsablesCatalogo as $resp)
+                                                <option value="{{ $resp->id }}">{{ $resp->nombres }} {{ $resp->apellidos }}</option>
+                                            @endforeach
+                                        </select>
+                                    @else
+                                        &nbsp;
+                                    @endif
                                 @break
 
                                 @default
@@ -685,7 +720,7 @@
                         }
                     @endphp
 
-                    <tr class="transition-colors hover:bg-blue-100 {{ $rowClass }}">
+                    <tr wire:key="bien-row-{{ $bien->id }}" class="transition-colors hover:bg-blue-100 {{ $rowClass }}">
 
                         {{-- Columna Acciones (fija) --}}
                         <td @class([
@@ -862,7 +897,7 @@
                     $toggleOpen = "{$isOpen} ? openId = null : openId = {$bien->id}";
                 @endphp
 
-                <div class="card mb-2 "
+                <div wire:key="bien-card-{{ $bien->id }}" class="card mb-2"
                     @if ($bien->eliminacionPendiente) title="Eliminación pendiente de aprobación" @endif>
 
                     {{-- Encabezado --}}

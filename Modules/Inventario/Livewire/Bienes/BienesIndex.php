@@ -38,10 +38,15 @@ class BienesIndex extends Component
     // --- Bienes destacados ---
     public $bienesDestacados = [];
 
+    // --- Búsqueda global ---
+    public string $busqueda = '';
+
     // --- Filtros ---
     public $nombreSeleccionado = '', $nombreNuevo = '', $listaNombresBienes = [];
     public $origenSeleccionado = '', $origenNuevo = '', $listaOrigenesBienes = [];
     public $filtroNombre, $filtroUser, $filtroCategoria, $filtroDependencia, $filtroEstado;
+    public string $filtroOrigen = '';
+    public string $filtroResponsable = '';
 
     // --- Campos del bien ---
     public $nombre, $detalle, $serie, $origen, $fecha_adquisicion, $precio, $cantidad;
@@ -59,6 +64,8 @@ class BienesIndex extends Component
 
     // --- Catálogos cargados ---
     public $categorias, $dependencias, $users, $estados, $almacenamientos, $mantenimientos;
+    public $origenesCatalogo = [];
+    public $responsablesCatalogo = [];
 
     // --- Columnas de tabla ---
     public $availableColumns = [
@@ -120,12 +127,16 @@ class BienesIndex extends Component
 
     // --- Query string para filtros ---
     protected $queryString = [
-        'perPage' => ['except' => 25],
-        'filtroDependencia' => ['except' => null],
-        'filtrouser' => ['except' => null],
-        'filtroCategoria' => ['except' => null],
-        'filtroEstado' => ['except' => null],
-        'filtroNombre' => ['except' => null],
+        'busqueda'        => ['except' => ''],
+        'perPage'         => ['except' => 25],
+        'filtroCategoria' => ['except' => ''],
+        'filtroDependencia' => ['except' => ''],
+        'filtroEstado'    => ['except' => ''],
+        'filtroOrigen'    => ['except' => ''],
+        'filtroResponsable' => ['except' => ''],
+        'filtroUser'      => ['except' => ''],
+        'sortField'       => ['except' => 'id'],
+        'sortDirection'   => ['except' => 'asc'],
     ];
 
     // ------------------ Ciclo de vida ------------------ //
@@ -420,17 +431,38 @@ class BienesIndex extends Component
 
         $bienes = Bien::whereIn('dependencia_id', $dependenciasIds)->get();
 
+        $bienesIds = $bienes->pluck('id');
+
         $this->users = User::whereIn(
             'id',
             Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())
                 ->pluck('user_id')->unique()
         )->orderBy('nombres')->orderBy('apellidos')->get();
 
-        $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
-        $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
-        $this->estados = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
-        $this->mantenimientos = Mantenimiento::whereIn('id', $bienes->pluck('mantenimiento_id')->unique())->get();
-        $this->almacenamientos = Almacenamiento::whereIn('id', $bienes->pluck('almacenamiento_id')->unique())->get();
+        $this->categorias    = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
+        $this->dependencias  = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
+        $this->estados       = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
+        $this->mantenimientos   = Mantenimiento::whereIn('id', $bienes->pluck('mantenimiento_id')->unique())->get();
+        $this->almacenamientos  = Almacenamiento::whereIn('id', $bienes->pluck('almacenamiento_id')->unique())->get();
+
+        $this->origenesCatalogo = Bien::whereIn('dependencia_id', $dependenciasIds)
+            ->whereNotNull('origen')
+            ->where('origen', '!=', '')
+            ->distinct()
+            ->orderBy('origen')
+            ->pluck('origen')
+            ->toArray();
+
+        $responsablesIds = \Modules\Inventario\Entities\BienResponsable::whereIn('bien_id', $bienesIds)
+            ->whereNull('fecha_retiro')
+            ->whereNotNull('user_id')
+            ->distinct()
+            ->pluck('user_id');
+
+        $this->responsablesCatalogo = User::whereIn('id', $responsablesIds)
+            ->orderBy('nombres')
+            ->orderBy('apellidos')
+            ->get();
     }
 
     private function filtrarBienesQuery()
@@ -463,17 +495,50 @@ class BienesIndex extends Component
         $sortField = in_array($this->sortField, $columnasSortables) ? $this->sortField : 'id';
 
         return $query
+            ->when($this->busqueda !== '', function ($q) {
+                $b = '%' . $this->busqueda . '%';
+                $q->where(function ($inner) use ($b) {
+                    $inner->where('bienes.id', 'like', $b)
+                        ->orWhere('bienes.nombre', 'like', $b)
+                        ->orWhere('bienes.serie', 'like', $b)
+                        ->orWhere('bienes.origen', 'like', $b)
+                        ->orWhere('bienes.observaciones', 'like', $b)
+                        ->orWhereHas('categoria', fn($c) => $c->where('nombre', 'like', $b))
+                        ->orWhereHas('dependencia', fn($d) => $d->where('nombre', 'like', $b))
+                        ->orWhereHas('estado', fn($e) => $e->where('nombre', 'like', $b))
+                        ->orWhereHas('detalle', fn($d) => $d
+                            ->where('marca', 'like', $b)
+                            ->orWhere('car_especial', 'like', $b)
+                            ->orWhere('color', 'like', $b)
+                            ->orWhere('material', 'like', $b)
+                            ->orWhere('tamano', 'like', $b)
+                            ->orWhere('otra', 'like', $b))
+                        ->orWhereHas('dependencia.user', fn($u) => $u
+                            ->where('nombres', 'like', $b)
+                            ->orWhere('apellidos', 'like', $b))
+                        ->orWhereHas('responsableActual.user', fn($u) => $u
+                            ->where('nombres', 'like', $b)
+                            ->orWhere('apellidos', 'like', $b));
+                });
+            })
             ->when($this->filtroUser, fn($q) => $q->whereHas('dependencia', fn($sub) => $sub->where('user_id', $this->filtroUser)))
             ->when($this->filtroCategoria, fn($q) => $q->where('categoria_id', $this->filtroCategoria))
             ->when($this->filtroDependencia, fn($q) => $q->where('dependencia_id', $this->filtroDependencia))
             ->when($this->filtroEstado, fn($q) => $q->where('estado_id', $this->filtroEstado))
+            ->when($this->filtroOrigen !== '', fn($q) => $q->where('origen', $this->filtroOrigen))
+            ->when($this->filtroResponsable !== '', fn($q) => $q->whereHas(
+                'responsableActual',
+                fn($r) => $r->where('user_id', $this->filtroResponsable)
+            ))
             ->when($this->filtroNombre, fn($q) => $q->where('nombre', $this->filtroNombre))
             ->orderBy($sortField, $this->sortDirection);
     }
 
-    public function actualizarOpcionesFiltros()
+    public function actualizarOpcionesFiltros(): void
     {
         $bienes = $this->filtrarBienesQuery()->get();
+
+        $bienesIds = $bienes->pluck('id');
 
         $this->users = User::whereIn(
             'id',
@@ -481,16 +546,27 @@ class BienesIndex extends Component
                 ->pluck('user_id')->unique()
         )->orderBy('nombres')->orderBy('apellidos')->get();
 
-        $this->categorias = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
+        $this->categorias   = Categoria::whereIn('id', $bienes->pluck('categoria_id')->unique())->orderBy('nombre')->get();
         $this->dependencias = Dependencia::whereIn('id', $bienes->pluck('dependencia_id')->unique())->orderBy('nombre')->get();
-        $this->estados = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
+        $this->estados      = Estado::whereIn('id', $bienes->pluck('estado_id')->unique())->get();
 
-        foreach (['user', 'categoria', 'dependencia', 'estado'] as $campo) {
-            $filtro = "filtro" . ucfirst($campo);
-            if ($this->$filtro && !$this->{Str::plural($campo)}->pluck('id')->contains($this->$filtro)) {
-                $this->$filtro = null;
-            }
-        }
+        $this->origenesCatalogo = $bienes->pluck('origen')
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values()
+            ->toArray();
+
+        $responsablesIds = \Modules\Inventario\Entities\BienResponsable::whereIn('bien_id', $bienesIds)
+            ->whereNull('fecha_retiro')
+            ->whereNotNull('user_id')
+            ->distinct()
+            ->pluck('user_id');
+
+        $this->responsablesCatalogo = User::whereIn('id', $responsablesIds)
+            ->orderBy('nombres')
+            ->orderBy('apellidos')
+            ->get();
     }
 
     public function getCantidadTotalFiltradaProperty()
@@ -529,11 +605,14 @@ class BienesIndex extends Component
     public function limpiarFiltros()
     {
         $this->reset([
+            'busqueda',
             'filtroUser',
             'filtroCategoria',
             'filtroDependencia',
             'filtroEstado',
-            'filtroNombre'
+            'filtroNombre',
+            'filtroOrigen',
+            'filtroResponsable',
         ]);
         $this->resetPage();
         $this->cargarCatalogos();
@@ -541,34 +620,21 @@ class BienesIndex extends Component
 
     // ------------------ Reactividad de filtros ------------------ //
 
-    public function updatedFiltroUser()
-    {
-        $this->resetPage();
-        $this->actualizarOpcionesFiltros();
-    }
-    public function updatedFiltroCategoria()
-    {
-        $this->resetPage();
-        $this->actualizarOpcionesFiltros();
-    }
-    public function updatedFiltroDependencia()
-    {
-        $this->resetPage();
-        $this->actualizarOpcionesFiltros();
-    }
-    public function updatedFiltroEstado()
-    {
-        $this->resetPage();
-        $this->actualizarOpcionesFiltros();
-    }
-    public function updatedFiltroNombre()
-    {
-        $this->resetPage();
-    }
-    public function buscar()
-    {
-        $this->resetPage();
-    }
+    public function updatingBusqueda(): void         { $this->resetPage(); }
+    public function updatingFiltroUser(): void       { $this->resetPage(); }
+    public function updatingFiltroCategoria(): void  { $this->resetPage(); }
+    public function updatingFiltroDependencia(): void { $this->resetPage(); }
+    public function updatingFiltroEstado(): void     { $this->resetPage(); }
+    public function updatingFiltroNombre(): void     { $this->resetPage(); }
+    public function updatingFiltroOrigen(): void     { $this->resetPage(); }
+    public function updatingFiltroResponsable(): void { $this->resetPage(); }
+
+    public function updatedFiltroUser(): void        { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroCategoria(): void   { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroDependencia(): void { $this->actualizarOpcionesFiltros(); }
+    public function updatedFiltroEstado(): void      { $this->actualizarOpcionesFiltros(); }
+
+    public function buscar(): void { $this->resetPage(); }
     public $forceRender = 0;
     public function recargarBien()
     {
@@ -587,8 +653,10 @@ class BienesIndex extends Component
         ]);
 
         return view('inventario::livewire.bienes.bienes-index', [
-            'bienes' => $bienes,
-            'camposPendientes' => $camposPendientes,
+            'bienes'               => $bienes,
+            'camposPendientes'     => $camposPendientes,
+            'origenesCatalogo'     => $this->origenesCatalogo,
+            'responsablesCatalogo' => $this->responsablesCatalogo,
         ]);
     }
 }

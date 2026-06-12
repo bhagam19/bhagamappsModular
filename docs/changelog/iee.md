@@ -7,6 +7,21 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.18.0 — 2026-06-12
+
+### Added (IMPL-INV-009 — Buscador Inteligente de Bienes)
+
+- **Búsqueda global reactiva** en el listado de bienes: busca simultáneamente por ID,
+  nombre, serial, marca, categoría, dependencia, estado, origen, custodio, coordinador y
+  más campos de detalle. Sin botón de búsqueda — reactivo con debounce 300ms.
+- **Filtros nuevos**: Origen y Custodio (responsable actual) disponibles en escritorio y móvil.
+- **Filtros reactivos**: todos los selects de filtro son ahora reactivos automáticos (sin blur).
+- **Persistencia**: búsqueda, filtros, ordenamiento y paginación se conservan en la URL.
+- **Correcciones de calidad**: `wire:key` en todos los loops de bienes, ordenamiento del
+  servidor respetado para todos los roles.
+
+---
+
 ## v1.17.0 — 2026-06-11
 
 ### Added / Fixed (IMPL-INV-DASH-002 — Optimización Dashboard Ejecutivo Inventario)

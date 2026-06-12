@@ -5,6 +5,34 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.13.0 — 2026-06-12
+
+### Added (IMPL-INV-009 — Buscador Inteligente y Gestión Avanzada de Bienes)
+
+- **INV-002**: Búsqueda global reactiva (`wire:model.live.debounce.300ms`) sobre ID, nombre,
+  serie, origen, observaciones, categoría, dependencia, estado, marca, car_especial, color,
+  material, tamano, otra (via detalle), coordinador y custodio. Sin botón Buscar.
+- **INV-003**: Filtros `filtroOrigen` y `filtroResponsable` añadidos. Todos los selects de
+  filtro migrados de `wire:model.lazy` → `wire:model.live` para reactividad automática.
+  Catálogos de orígenes y custodios calculados desde el scope del usuario autenticado.
+- **INV-005**: `$queryString` ampliado con `busqueda`, `filtroOrigen`, `filtroResponsable`,
+  `sortField`, `sortDirection`. Typo `'filtrouser'` corregido a `'filtroUser'`.
+- **INV-006**: Búsqueda usa `whereHas` (subqueries EXISTS) — sin duplicados, sin omisiones.
+- **INV-007**: `wire:key="bien-row-{id}"` en `<tr>` escritorio y `wire:key="bien-card-{id}"`
+  en `<div class="card">` móvil. Previene bugs de morfología posicional de Livewire.
+- **INV-008**: Sin N+1 nuevos introducidos. `origenesCatalogo` y `responsablesCatalogo`
+  se cargan una sola vez en `mount()` y se actualizan en `actualizarOpcionesFiltros()`.
+- **INV-009**: Móvil y escritorio actualizados con nuevos filtros. Acordeón, edición inline
+  y subcomponentes preservados intactos.
+
+### Fixed
+
+- `$bienesOrdenados` ya no aplica `sortBy('nombre')` en Blade para no-admins — el
+  ordenamiento lo controla exclusivamente el servidor (bug que anulaba sort del usuario).
+- `$queryString` typo `'filtrouser'` → `'filtroUser'`.
+
+---
+
 ## v2.12.0 — 2026-06-11
 
 ### Added / Fixed (IMPL-INV-DASH-002 — Optimización Dashboard Ejecutivo)
