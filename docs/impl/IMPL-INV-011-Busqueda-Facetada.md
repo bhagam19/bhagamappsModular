@@ -156,4 +156,6 @@ después de que `actualizarOpcionesFiltros()` lo filtrara. Con facetas en render
 
 ## SHA verificable
 
-Registrado tras commit del bloque IMPL-INV-011.
+```
+faf78ab feat(inventario): IMPL-INV-011 — Búsqueda Facetada para Bienes (FACET-001→010)
+```
