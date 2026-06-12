@@ -18,7 +18,7 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
-     DASH-013: ACCESOS RÁPIDOS (al tope)
+     DASH-013: ACCESOS RÁPIDOS
 ══════════════════════════════════════════════════════════════════ --}}
 <div class="row mb-1">
     <div class="col-12">
@@ -159,16 +159,97 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
-     DASH-017: RESUMEN EJECUTIVO + DASH-007: ALERTAS
+     DASH-026: TABLERO EJECUTIVO — ESTADO DEL INVENTARIO
+══════════════════════════════════════════════════════════════════ --}}
+<div class="row">
+    <div class="col-12 mb-3">
+        <div class="card card-outline card-success shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-pie mr-2 text-success"></i>Estado del Inventario
+                </h5>
+                <div class="card-tools">
+                    <span class="badge badge-secondary text-xs">Tablero ejecutivo de ciclo de vida</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach($estadoEjecutivo as $ei => $estado)
+                        <div class="col-12 col-sm-6 col-md-3 mb-3" wire:key="estado-exec-{{ $ei }}">
+                            <div class="card shadow-sm border-{{ $estado['color'] }} h-100" style="border-left: 4px solid; border-left-color: inherit;">
+                                <div class="card-body text-center py-3">
+                                    <div class="mb-1">
+                                        <i class="fas {{ $estado['icon'] }} fa-2x text-{{ $estado['color'] }}"></i>
+                                    </div>
+                                    <div class="h3 mb-0 font-weight-bold text-{{ $estado['color'] }}">
+                                        {{ number_format($estado['total']) }}
+                                    </div>
+                                    @if($estado['pct'] !== null)
+                                        <div class="text-muted small">{{ $estado['pct'] }}%</div>
+                                        <div class="progress mt-2" style="height:6px;">
+                                            <div class="progress-bar bg-{{ $estado['color'] }}"
+                                                 style="width:{{ min(100, $estado['pct']) }}%"></div>
+                                        </div>
+                                    @else
+                                        <div class="text-muted small">&nbsp;</div>
+                                    @endif
+                                    <div class="small font-weight-bold mt-1">{{ $estado['label'] }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- Condición física como barra complementaria --}}
+                @if(count($chartCondicion) > 0)
+                    <div class="border-top pt-3 mt-1">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="small font-weight-bold text-muted">
+                                <i class="fas fa-flag mr-1"></i>Condición física de bienes activos
+                            </span>
+                            <small class="text-muted">{{ number_format($totalBienes) }} bienes</small>
+                        </div>
+                        <div class="d-flex flex-wrap" style="gap:0.5rem;">
+                            @php
+                                $condColors = ['Nuevo' => 'success', 'Bueno' => 'primary', 'Regular' => 'warning', 'Malo' => 'danger', 'Sin estado' => 'secondary'];
+                            @endphp
+                            @foreach($chartCondicion as $ci => $cond)
+                                @php
+                                    $cColor = $condColors[$cond['nombre']] ?? 'secondary';
+                                    $cPct   = $totalBienes > 0 ? round($cond['total'] / $totalBienes * 100, 1) : 0;
+                                @endphp
+                                <div class="d-flex align-items-center" wire:key="condicion-{{ $ci }}" style="min-width:120px; flex:1;">
+                                    <span class="badge badge-{{ $cColor }} mr-2" style="min-width:14px; height:14px; border-radius:50%; padding:0;"></span>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <small class="font-weight-bold">{{ $cond['nombre'] }}</small>
+                                            <small class="text-muted">{{ number_format($cond['total']) }} ({{ $cPct }}%)</small>
+                                        </div>
+                                        <div class="progress" style="height:5px;">
+                                            <div class="progress-bar bg-{{ $cColor }}" style="width:{{ $cPct }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- ══════════════════════════════════════════════════════════════════
+     DASH-027: INDICADORES DE GESTIÓN + DASH-007: ALERTAS
 ══════════════════════════════════════════════════════════════════ --}}
 <div class="row">
 
-    {{-- Resumen Ejecutivo --}}
+    {{-- Indicadores de gestión --}}
     <div class="col-12 col-md-8 mb-3">
         <div class="card card-outline card-info shadow-sm h-100">
             <div class="card-header">
                 <h5 class="card-title mb-0">
-                    <i class="fas fa-clipboard-list mr-2 text-info"></i>Resumen Ejecutivo
+                    <i class="fas fa-tachometer-alt mr-2 text-info"></i>Indicadores de Gestión
                 </h5>
             </div>
             <div class="card-body">
@@ -198,8 +279,8 @@
                                 <div class="text-muted small">Dependencia con más bienes</div>
                                 <div class="font-weight-bold">
                                     @if(count($chartDependencias) > 0)
-                                        {{ $chartDependencias[0]['nombre'] }}
-                                        <span class="text-muted font-weight-normal small">({{ number_format($chartDependencias[0]['total']) }} bienes)</span>
+                                        <span title="{{ $chartDependencias[0]['nombre'] }}">{{ Str::limit($chartDependencias[0]['nombre'], 30) }}</span>
+                                        <span class="text-muted font-weight-normal small">({{ number_format($chartDependencias[0]['total']) }})</span>
                                     @else
                                         <span class="text-muted">—</span>
                                     @endif
@@ -216,7 +297,7 @@
                                 <div class="font-weight-bold">
                                     @if(count($topResponsables) > 0)
                                         {{ $topResponsables[0]['nombre'] }}
-                                        <span class="text-muted font-weight-normal small">({{ $topResponsables[0]['total'] }} bienes)</span>
+                                        <span class="text-muted font-weight-normal small">({{ $topResponsables[0]['total'] }} · {{ $topResponsables[0]['pct'] }}%)</span>
                                     @else
                                         <span class="text-muted">Sin responsable asignado</span>
                                     @endif
@@ -227,7 +308,27 @@
 
                     <div class="col-12 col-sm-6 mb-3">
                         <div class="d-flex align-items-start">
-                            <span class="badge {{ $alertSolicitudesPendientes > 0 ? 'badge-warning' : 'badge-success' }} badge-pill mr-2 mt-1" style="min-width:22px;">4</span>
+                            <span class="badge badge-info badge-pill mr-2 mt-1" style="min-width:22px;">4</span>
+                            <div>
+                                <div class="text-muted small">Tipo de bien predominante</div>
+                                <div class="font-weight-bold">
+                                    @if(count($chartCondicion) > 0)
+                                        {{ $chartCondicion[0]['nombre'] }}
+                                        <span class="text-muted font-weight-normal small">
+                                            ({{ number_format($chartCondicion[0]['total']) }} bienes ·
+                                            {{ $totalBienes > 0 ? round($chartCondicion[0]['total'] / $totalBienes * 100, 1) : 0 }}%)
+                                        </span>
+                                    @else
+                                        <span class="text-muted">—</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <span class="badge {{ $alertSolicitudesPendientes > 0 ? 'badge-warning' : 'badge-success' }} badge-pill mr-2 mt-1" style="min-width:22px;">5</span>
                             <div>
                                 <div class="text-muted small">Solicitudes pendientes</div>
                                 <div class="font-weight-bold {{ $alertSolicitudesPendientes > 0 ? 'text-warning' : 'text-success' }}">
@@ -239,22 +340,13 @@
 
                     <div class="col-12 col-sm-6 mb-3">
                         <div class="d-flex align-items-start">
-                            <span class="badge {{ $totalMantPendientes > 0 ? 'badge-warning' : 'badge-success' }} badge-pill mr-2 mt-1" style="min-width:22px;">5</span>
+                            <span class="badge {{ $totalMantPendientes > 0 ? 'badge-warning' : 'badge-success' }} badge-pill mr-2 mt-1" style="min-width:22px;">6</span>
                             <div>
-                                <div class="text-muted small">Mantenimientos pendientes</div>
-                                <div class="font-weight-bold {{ $totalMantPendientes > 0 ? 'text-warning' : 'text-success' }}">
-                                    {{ $totalMantPendientes }}
+                                <div class="text-muted small">Bienes en mantenimiento</div>
+                                <div class="font-weight-bold {{ $totalBienesEnMant > 0 ? 'text-warning' : 'text-success' }}">
+                                    {{ number_format($totalBienesEnMant) }}
+                                    <span class="text-muted font-weight-normal small">({{ $totalMantPendientes }} órdenes pendientes)</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 mb-3">
-                        <div class="d-flex align-items-start">
-                            <span class="badge badge-secondary badge-pill mr-2 mt-1" style="min-width:22px;">6</span>
-                            <div>
-                                <div class="text-muted small">Mantenimientos realizados</div>
-                                <div class="font-weight-bold">{{ $totalMantRealizados }}</div>
                             </div>
                         </div>
                     </div>
@@ -315,7 +407,262 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
-     DASH-014: CALIDAD DE DATOS (cerca de KPIs, con conteos y pctConOrigen)
+     DASH-022/023: BIENES ESTRATÉGICOS
+     Clasificación: keyword en nombre del bien (portátil, video beam, etc.)
+══════════════════════════════════════════════════════════════════ --}}
+<div class="row">
+    <div class="col-12 mb-3">
+        <div class="card card-outline card-info shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-star mr-2 text-info"></i>Bienes Estratégicos
+                </h5>
+                <div class="card-tools">
+                    <span class="badge badge-secondary text-xs">Clasificación por descripción del bien</span>
+                </div>
+            </div>
+            <div class="card-body">
+                @if(count($bienesEstrategicos) > 0 && $totalBienes > 0)
+                    <div class="row">
+                        @foreach($bienesEstrategicos as $bei => $be)
+                            @if($be['total'] > 0)
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3" wire:key="be-{{ $bei }}">
+                                    <div class="d-flex align-items-center p-2 rounded border">
+                                        <span class="badge badge-pill badge-secondary mr-2" style="min-width:22px; font-size:0.7rem;">{{ $bei + 1 }}</span>
+                                        <i class="fas {{ $be['icon'] }} text-{{ $be['color'] }} mr-2" style="font-size:1.2rem; width:20px; text-align:center;"></i>
+                                        <div class="flex-grow-1 min-width-0">
+                                            <div class="d-flex justify-content-between align-items-baseline">
+                                                <span class="small font-weight-bold text-truncate">{{ $be['label'] }}</span>
+                                                <span class="ml-1 small text-muted text-nowrap">{{ number_format($be['total']) }} · {{ $be['pct'] }}%</span>
+                                            </div>
+                                            <div class="progress mt-1" style="height:5px;">
+                                                <div class="progress-bar bg-{{ $be['color'] }}" style="width:{{ min(100, $be['pct'] * 5) }}%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    @php
+                        $totalEstrategicos = collect($bienesEstrategicos)->sum('total');
+                        $pctEstrategicos   = $totalBienes > 0 ? round($totalEstrategicos / $totalBienes * 100, 1) : 0;
+                    @endphp
+                    <div class="border-top pt-2 mt-1">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Los bienes estratégicos representan <strong>{{ $pctEstrategicos }}%</strong> del inventario total
+                            ({{ number_format($totalEstrategicos) }} de {{ number_format($totalBienes) }} bienes).
+                            Clasificación basada en palabras clave en el nombre del bien.
+                        </small>
+                    </div>
+                @else
+                    <p class="text-muted text-center py-3 small">
+                        <i class="fas fa-info-circle mr-1"></i>Sin bienes estratégicos identificados.
+                    </p>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- ══════════════════════════════════════════════════════════════════
+     DASH-028: GRUPOS INSTITUCIONALES + DASH-029: RANKING TECNOLÓGICO
+══════════════════════════════════════════════════════════════════ --}}
+<div class="row">
+
+    {{-- DASH-028: Grupos Institucionales --}}
+    <div class="col-12 col-md-7 mb-3">
+        <div class="card card-outline card-primary shadow-sm h-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-layer-group mr-2 text-primary"></i>Grupos Institucionales
+                </h5>
+                <div class="card-tools">
+                    <span class="badge badge-secondary text-xs">Clasificación por categoría</span>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                @if(count($gruposInstitucionales) > 0)
+                    <table class="table table-sm table-hover mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="pl-3" style="width:36px;">#</th>
+                                <th>Grupo</th>
+                                <th class="text-right">Bienes</th>
+                                <th class="text-right pr-3" style="width:60px;">%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($gruposInstitucionales as $gi => $grupo)
+                                <tr wire:key="grupo-inst-{{ $gi }}">
+                                    <td class="pl-3 text-muted small">{{ $gi + 1 }}</td>
+                                    <td class="small">
+                                        <i class="fas {{ $grupo['icon'] }} text-{{ $grupo['color'] }} mr-1"></i>
+                                        {{ $grupo['label'] }}
+                                    </td>
+                                    <td class="text-right small font-weight-bold">{{ number_format($grupo['total']) }}</td>
+                                    <td class="text-right pr-3">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <small class="text-muted mr-1">{{ $grupo['pct'] }}%</small>
+                                            <div class="progress" style="width:40px; height:6px;">
+                                                <div class="progress-bar bg-{{ $grupo['color'] }}" style="width:{{ $grupo['pct'] }}%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="text-muted text-center py-4 small"><i class="fas fa-info-circle mr-1"></i>Sin datos.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    {{-- DASH-029: Inventario Tecnológico --}}
+    <div class="col-12 col-md-5 mb-3">
+        <div class="card card-outline card-cyan shadow-sm h-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-microchip mr-2 text-cyan"></i>Inventario Tecnológico
+                </h5>
+                <div class="card-tools">
+                    <span class="badge badge-secondary text-xs">Top bienes TIC</span>
+                </div>
+            </div>
+            <div class="card-body">
+                @php
+                    $ticItems = collect($bienesEstrategicos)->filter(fn($b) =>
+                        in_array($b['label'], ['Portátiles','Computadores','Video Beam','Impresoras','Televisores','Tablets','UPS','Switch / Red','Servidores'])
+                        && $b['total'] > 0
+                    )->values();
+                    $totalTic = $ticItems->sum('total');
+                    $pctTic   = $totalBienes > 0 ? round($totalTic / $totalBienes * 100, 1) : 0;
+                @endphp
+                @if($ticItems->count() > 0)
+                    @foreach($ticItems as $ti => $tic)
+                        <div class="d-flex align-items-center mb-2" wire:key="tic-{{ $ti }}">
+                            <i class="fas {{ $tic['icon'] }} text-{{ $tic['color'] }} mr-2" style="width:16px; text-align:center;"></i>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between">
+                                    <span class="small font-weight-bold">{{ $tic['label'] }}</span>
+                                    <span class="small text-muted">{{ number_format($tic['total']) }} ({{ $tic['pct'] }}%)</span>
+                                </div>
+                                <div class="progress" style="height:5px;">
+                                    <div class="progress-bar bg-{{ $tic['color'] }}" style="width:{{ min(100, $tic['pct'] * 5) }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="border-top pt-2 mt-1 text-center">
+                        <span class="badge badge-info">
+                            Total TIC: {{ number_format($totalTic) }} bienes · {{ $pctTic }}% del inventario
+                        </span>
+                    </div>
+                @else
+                    <p class="text-muted text-center py-3 small">
+                        <i class="fas fa-info-circle mr-1"></i>Sin bienes tecnológicos identificados.
+                    </p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{-- ══════════════════════════════════════════════════════════════════
+     DASH-024/025: TOP DEPENDENCIAS + TOP RESPONSABLES
+══════════════════════════════════════════════════════════════════ --}}
+<div class="row">
+
+    {{-- DASH-024: Top 10 Dependencias con responsable --}}
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card card-outline card-purple shadow-sm h-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-sitemap mr-2 text-purple"></i>Top 10 Dependencias
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                @if(count($chartDependencias) > 0)
+                    <table class="table table-sm table-hover mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="pl-3" style="width:28px;">#</th>
+                                <th>Dependencia</th>
+                                <th>Responsable</th>
+                                <th class="text-right">Bienes</th>
+                                <th class="text-right pr-3">%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($chartDependencias as $di => $dep)
+                                <tr wire:key="top-dep-{{ $di }}">
+                                    <td class="pl-3 text-muted small">{{ $di + 1 }}</td>
+                                    <td class="small" style="max-width:140px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
+                                        title="{{ $dep['nombre'] }}">{{ $dep['nombre'] }}</td>
+                                    <td class="small text-muted" style="max-width:120px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
+                                        title="{{ $dep['responsable'] }}">{{ $dep['responsable'] }}</td>
+                                    <td class="text-right small font-weight-bold">{{ number_format($dep['total']) }}</td>
+                                    <td class="text-right pr-3 small text-muted">
+                                        {{ $totalBienes > 0 ? number_format($dep['total'] / $totalBienes * 100, 1) : '0.0' }}%
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="text-muted text-center py-4 small"><i class="fas fa-info-circle mr-1"></i>Sin datos.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    {{-- DASH-025: Top 10 Responsables con porcentaje --}}
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card card-outline card-teal shadow-sm h-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-user-check mr-2 text-teal"></i>Top 10 Responsables
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                @if(count($topResponsables) > 0)
+                    <table class="table table-sm table-hover mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="pl-3" style="width:28px;">#</th>
+                                <th>Responsable</th>
+                                <th class="text-right">Bienes</th>
+                                <th class="text-right pr-3">%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($topResponsables as $ri => $resp)
+                                <tr wire:key="top-resp-{{ $ri }}">
+                                    <td class="pl-3 text-muted small">{{ $ri + 1 }}</td>
+                                    <td class="small">{{ $resp['nombre'] }}</td>
+                                    <td class="text-right small font-weight-bold">{{ number_format($resp['total']) }}</td>
+                                    <td class="text-right pr-3 small text-muted">{{ $resp['pct'] }}%</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="text-muted text-center py-4 small">
+                        <i class="fas fa-info-circle mr-1"></i>Sin responsables con bienes asignados.
+                    </p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{-- ══════════════════════════════════════════════════════════════════
+     DASH-014: CALIDAD DE DATOS
 ══════════════════════════════════════════════════════════════════ --}}
 <div class="row">
     <div class="col-12 mb-3">
@@ -372,89 +719,6 @@
             </div>
         </div>
     </div>
-</div>
-
-{{-- ══════════════════════════════════════════════════════════════════
-     DASH-015/016: TOP 10 DEPENDENCIAS + TOP 10 RESPONSABLES
-══════════════════════════════════════════════════════════════════ --}}
-<div class="row">
-
-    {{-- DASH-015: Top 10 Dependencias --}}
-    <div class="col-12 col-md-6 mb-3">
-        <div class="card card-outline card-purple shadow-sm h-100">
-            <div class="card-header">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-sitemap mr-2 text-purple"></i>Top 10 Dependencias
-                </h5>
-            </div>
-            <div class="card-body p-0">
-                @if(count($chartDependencias) > 0)
-                    <table class="table table-sm table-hover mb-0">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="pl-3" style="width:32px;">#</th>
-                                <th>Dependencia</th>
-                                <th class="text-right">Bienes</th>
-                                <th class="text-right pr-3">%</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($chartDependencias as $di => $dep)
-                                <tr wire:key="top-dep-{{ $di }}">
-                                    <td class="pl-3 text-muted small">{{ $di + 1 }}</td>
-                                    <td class="small">{{ $dep['nombre'] }}</td>
-                                    <td class="text-right small font-weight-bold">{{ number_format($dep['total']) }}</td>
-                                    <td class="text-right pr-3 small text-muted">
-                                        {{ $totalBienes > 0 ? number_format($dep['total'] / $totalBienes * 100, 1) : '0.0' }}%
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <p class="text-muted text-center py-4 small"><i class="fas fa-info-circle mr-1"></i>Sin datos.</p>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    {{-- DASH-016: Top 10 Responsables --}}
-    <div class="col-12 col-md-6 mb-3">
-        <div class="card card-outline card-teal shadow-sm h-100">
-            <div class="card-header">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-user-check mr-2 text-teal"></i>Top 10 Responsables
-                </h5>
-            </div>
-            <div class="card-body p-0">
-                @if(count($topResponsables) > 0)
-                    <table class="table table-sm table-hover mb-0">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="pl-3" style="width:32px;">#</th>
-                                <th>Responsable</th>
-                                <th class="text-right pr-3">Bienes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($topResponsables as $ri => $resp)
-                                <tr wire:key="top-resp-{{ $ri }}">
-                                    <td class="pl-3 text-muted small">{{ $ri + 1 }}</td>
-                                    <td class="small">{{ $resp['nombre'] }}</td>
-                                    <td class="text-right pr-3 small font-weight-bold">{{ number_format($resp['total']) }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <p class="text-muted text-center py-4 small">
-                        <i class="fas fa-info-circle mr-1"></i>Sin responsables con bienes asignados.
-                    </p>
-                @endif
-            </div>
-        </div>
-    </div>
-
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
@@ -575,65 +839,9 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
-     DASH-004/005: GRÁFICAS — FILA 2
+     DASH-005: ORIGEN DE LOS BIENES
 ══════════════════════════════════════════════════════════════════ --}}
 <div class="row">
-
-    {{-- DASH-004: Estado del Inventario --}}
-    <div class="col-12 col-md-6 mb-3">
-        <div class="card card-outline card-success shadow-sm h-100">
-            <div class="card-header">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-chart-pie mr-2 text-success"></i>Estado del Inventario
-                </h5>
-            </div>
-            <div class="card-body">
-                @if(count($chartEstados) > 0)
-                    <div
-                        wire:ignore
-                        x-data="{
-                            chart: null,
-                            init() {
-                                const labels = @json(collect($chartEstados)->pluck('nombre'));
-                                const data   = @json(collect($chartEstados)->pluck('total'));
-                                const total  = data.reduce((a, b) => a + b, 0);
-                                const colors = ['#28a745','#ffc107','#dc3545','#17a2b8','#6c757d','#fd7e14','#6610f2'];
-                                const ctx    = this.$el.querySelector('#chartEstados').getContext('2d');
-                                this.chart = new Chart(ctx, {
-                                    type: 'pie',
-                                    data: {
-                                        labels: labels,
-                                        datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        plugins: {
-                                            legend: { position: 'right', labels: { font: { size: 11 } } },
-                                            tooltip: {
-                                                callbacks: {
-                                                    label: (ctx) => {
-                                                        const pct = total > 0 ? ((ctx.raw / total) * 100).toFixed(1) : 0;
-                                                        return ` ${ctx.label}: ${ctx.raw} (${pct}%)`;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                        }"
-                        x-init="init()"
-                    >
-                        <canvas id="chartEstados" style="max-height:280px;"></canvas>
-                    </div>
-                @else
-                    <p class="text-muted text-center py-4"><i class="fas fa-info-circle mr-1"></i>Sin datos de estados disponibles.</p>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    {{-- DASH-005: Origen de los Bienes (DASH-012: condición corregida) --}}
     <div class="col-12 col-md-6 mb-3">
         <div class="card card-outline card-warning shadow-sm h-100">
             <div class="card-header">
@@ -693,10 +901,58 @@
         </div>
     </div>
 
+    {{-- Concentración del inventario (top 10 dependencias) --}}
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card card-outline card-secondary shadow-sm h-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-compress-alt mr-2 text-secondary"></i>Concentración del Inventario
+                </h5>
+                <div class="card-tools">
+                    <span class="badge badge-secondary text-xs">Top 10 dependencias</span>
+                </div>
+            </div>
+            <div class="card-body">
+                @if($totalBienes > 0 && count($chartDependencias) > 0)
+                    @php
+                        $top10Total = collect($chartDependencias)->sum('total');
+                        $pctConcentracion = round($top10Total / $totalBienes * 100, 1);
+                        $pctRestante = 100 - $pctConcentracion;
+                    @endphp
+                    <div class="text-center mb-3">
+                        <div class="h2 font-weight-bold text-secondary mb-0">{{ $pctConcentracion }}%</div>
+                        <div class="text-muted small">del inventario en las 10 principales dependencias</div>
+                        <div class="text-muted small">({{ number_format($top10Total) }} de {{ number_format($totalBienes) }} bienes)</div>
+                    </div>
+                    <div class="progress mb-3" style="height:16px; border-radius:8px;">
+                        <div class="progress-bar bg-secondary" style="width:{{ $pctConcentracion }}%; border-radius:8px 0 0 8px;">
+                            <small>Top 10</small>
+                        </div>
+                        <div class="progress-bar bg-light text-dark" style="width:{{ $pctRestante }}%; border-radius:0 8px 8px 0;">
+                            <small>Resto</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted small">
+                        <span><i class="fas fa-circle text-secondary mr-1"></i>Top 10: {{ number_format($top10Total) }} bienes ({{ $pctConcentracion }}%)</span>
+                        <span><i class="fas fa-circle text-light mr-1" style="border:1px solid #dee2e6; border-radius:50%;"></i>Resto: {{ number_format($totalBienes - $top10Total) }} ({{ $pctRestante }}%)</span>
+                    </div>
+                    <div class="border-top pt-2 mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Una concentración mayor al 80% en pocas dependencias puede indicar necesidad de redistribución.
+                        </small>
+                    </div>
+                @else
+                    <p class="text-muted text-center py-4 small"><i class="fas fa-info-circle mr-1"></i>Sin datos suficientes.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {{-- ══════════════════════════════════════════════════════════════════
-     DASH-006: ÚLTIMOS MOVIMIENTOS (con wire:key — DASH-020)
+     DASH-006: ÚLTIMOS MOVIMIENTOS
 ══════════════════════════════════════════════════════════════════ --}}
 <div class="row">
     <div class="col-12 mb-3">
