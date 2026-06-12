@@ -7,6 +7,18 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.17.0 — 2026-06-11
+
+### Added / Fixed (IMPL-INV-DASH-002 — Optimización Dashboard Ejecutivo Inventario)
+
+- Dashboard ejecutivo de Inventario optimizado con 10 mejoras funcionales y visuales (DASH-011→020).
+  KPIs con porcentajes, gráfica de origen corregida, Accesos Rápidos al tope, Calidad de Datos
+  ampliada (5 indicadores + conteos absolutos), Top 10 Dependencias, Top 10 Responsables,
+  Resumen Ejecutivo y `wire:key` en todos los loops para morfología Livewire correcta.
+  Ver `docs/impl/IMPL-INV-DASH-002-Optimizacion-Dashboard-Ejecutivo.md`.
+
+---
+
 ## v1.16.4 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-007)

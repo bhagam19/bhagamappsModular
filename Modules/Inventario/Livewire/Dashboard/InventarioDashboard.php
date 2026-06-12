@@ -14,27 +14,30 @@ use Modules\Inventario\Entities\{
     HistorialModificacionBien,
     HistorialUbicacionBien,
     HistorialEliminacionBien,
-    BienResponsable,
 };
 
 class InventarioDashboard extends Component
 {
     // DASH-001: KPIs
-    public int $totalBienes           = 0;
-    public int $totalDependencias     = 0;
-    public int $totalResponsables     = 0;
-    public int $totalCategorias       = 0;
-    public int $totalBienesActivos    = 0;
-    public int $totalBajas            = 0;
-    public int $totalMantPendientes   = 0;
-    public int $totalMantRealizados   = 0;
+    public int $totalBienes         = 0;
+    public int $totalDependencias   = 0;
+    public int $totalResponsables   = 0;
+    public int $totalCategorias     = 0;
+    public int $totalBienesActivos  = 0;
+    public int $totalBajas          = 0;
+    public int $totalMantPendientes = 0;
+    public int $totalMantRealizados = 0;
+
+    // DASH-011: Porcentajes KPI
+    public int   $pctActivos        = 0;
+    public int   $pctBajas          = 0;
+    public float $pctMantPendientes = 0.0;
 
     // DASH-002/003/004/005: Datos para gráficas
     public array $chartCategorias   = [];
     public array $chartDependencias = [];
     public array $chartEstados      = [];
     public array $chartOrigenes     = [];
-    public bool  $origenesNormalizados = false;
 
     // DASH-007: Alertas
     public int $alertMantVencidos          = 0;
@@ -43,11 +46,20 @@ class InventarioDashboard extends Component
     public int $alertInfoIncompleta        = 0;
     public int $alertSolicitudesPendientes = 0;
 
-    // DASH-009: Calidad de datos
-    public int $pctConResponsable = 0;
-    public int $pctConUbicacion   = 0;
-    public int $pctConCategoria   = 0;
-    public int $pctConEstado      = 0;
+    // DASH-009/014: Calidad de datos
+    public int $pctConResponsable   = 0;
+    public int $pctConUbicacion     = 0;
+    public int $pctConCategoria     = 0;
+    public int $pctConEstado        = 0;
+    public int $pctConOrigen        = 0;
+    public int $countConResponsable = 0;
+    public int $countConUbicacion   = 0;
+    public int $countConCategoria   = 0;
+    public int $countConEstado      = 0;
+    public int $countConOrigen      = 0;
+
+    // DASH-016: Top Responsables
+    public array $topResponsables = [];
 
     public function mount(): void
     {
@@ -55,19 +67,29 @@ class InventarioDashboard extends Component
         $this->cargarGraficas();
         $this->cargarAlertas();
         $this->cargarCalidadDatos();
+        $this->cargarTopResponsables();
     }
 
     private function cargarKpis(): void
     {
         $this->totalBienes         = Bien::count();
         $this->totalDependencias   = Dependencia::count();
-        $this->totalResponsables   = Dependencia::whereNotNull('user_id')
-            ->distinct('user_id')->count('user_id');
+        $this->totalResponsables   = DB::table('bienes_responsables')
+            ->whereNull('fecha_retiro')
+            ->distinct('user_id')
+            ->count('user_id');
         $this->totalCategorias     = Categoria::count();
         $this->totalBienesActivos  = $this->totalBienes;
         $this->totalBajas          = Bien::onlyTrashed()->count();
         $this->totalMantPendientes = MantenimientoProgramado::where('estado', 'pendiente')->count();
         $this->totalMantRealizados = MantenimientoProgramado::where('estado', 'realizado')->count();
+
+        $totalCiclo              = $this->totalBienesActivos + $this->totalBajas;
+        $this->pctActivos        = $totalCiclo > 0 ? (int) round($this->totalBienesActivos / $totalCiclo * 100) : 100;
+        $this->pctBajas          = $totalCiclo > 0 ? (int) round($this->totalBajas / $totalCiclo * 100) : 0;
+        $this->pctMantPendientes = $this->totalBienes > 0
+            ? round($this->totalMantPendientes / $this->totalBienes * 100, 1)
+            : 0.0;
     }
 
     private function cargarGraficas(): void
@@ -106,9 +128,7 @@ class InventarioDashboard extends Component
             ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])
             ->toArray();
 
-        // DASH-005: Origen de bienes
-        // GROUP BY sobre la columna cruda (válido en ONLY_FULL_GROUP_BY);
-        // la normalización de NULL/"" a "Sin origen" se hace en PHP.
+        // DASH-005: Origen de bienes — normaliza NULL / "" / "-" a "Sin origen"
         $rawOrigenes = DB::table('bienes')
             ->selectRaw('origen, COUNT(*) as total')
             ->whereNull('deleted_at')
@@ -116,19 +136,13 @@ class InventarioDashboard extends Component
             ->orderByDesc('total')
             ->get();
 
-        $origenes = $rawOrigenes
-            ->groupBy(fn($r) => (is_null($r->origen) || $r->origen === '') ? 'Sin origen' : $r->origen)
+        $this->chartOrigenes = $rawOrigenes
+            ->groupBy(fn($r) => (is_null($r->origen) || $r->origen === '' || $r->origen === '-') ? 'Sin origen' : $r->origen)
             ->map(fn($group, $nombre) => (object) ['nombre' => $nombre, 'total' => $group->sum('total')])
             ->sortByDesc('total')
-            ->values();
-
-        $this->chartOrigenes = $origenes
+            ->values()
             ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])
             ->toArray();
-
-        $this->origenesNormalizados = $origenes
-            ->filter(fn($o) => $o->nombre !== 'Sin origen')
-            ->count() >= 2;
     }
 
     private function cargarAlertas(): void
@@ -171,27 +185,47 @@ class InventarioDashboard extends Component
             return;
         }
 
-        $conResponsable = DB::table('bienes')
+        $this->countConResponsable = DB::table('bienes')
             ->whereNull('deleted_at')
             ->whereIn('id', function ($q) {
                 $q->select('bien_id')->from('bienes_responsables')->whereNull('fecha_retiro');
             })
             ->count();
 
-        $conUbicacion = DB::table('bienes')
+        $this->countConUbicacion = DB::table('bienes')
             ->whereNull('deleted_at')
             ->whereIn('id', function ($q) {
                 $q->select('bien_id')->from('historial_ubicaciones_bienes');
             })
             ->count();
 
-        $conCategoria = Bien::whereNotNull('categoria_id')->count();
-        $conEstado    = Bien::whereNotNull('estado_id')->count();
+        $this->countConCategoria = Bien::whereNotNull('categoria_id')->count();
+        $this->countConEstado    = Bien::whereNotNull('estado_id')->count();
+        $this->countConOrigen    = Bien::whereNotNull('origen')
+            ->where('origen', '!=', '')
+            ->where('origen', '!=', '-')
+            ->count();
 
-        $this->pctConResponsable = (int) round($conResponsable / $this->totalBienes * 100);
-        $this->pctConUbicacion   = (int) round($conUbicacion / $this->totalBienes * 100);
-        $this->pctConCategoria   = (int) round($conCategoria / $this->totalBienes * 100);
-        $this->pctConEstado      = (int) round($conEstado / $this->totalBienes * 100);
+        $t = $this->totalBienes;
+        $this->pctConResponsable = (int) round($this->countConResponsable / $t * 100);
+        $this->pctConUbicacion   = (int) round($this->countConUbicacion / $t * 100);
+        $this->pctConCategoria   = (int) round($this->countConCategoria / $t * 100);
+        $this->pctConEstado      = (int) round($this->countConEstado / $t * 100);
+        $this->pctConOrigen      = (int) round($this->countConOrigen / $t * 100);
+    }
+
+    private function cargarTopResponsables(): void
+    {
+        $this->topResponsables = DB::table('bienes_responsables')
+            ->join('users', 'bienes_responsables.user_id', '=', 'users.id')
+            ->selectRaw("CONCAT(users.nombres, ' ', users.apellidos) as nombre, COUNT(bienes_responsables.bien_id) as total")
+            ->whereNull('bienes_responsables.fecha_retiro')
+            ->groupBy('bienes_responsables.user_id', 'users.nombres', 'users.apellidos')
+            ->orderByDesc('total')
+            ->limit(10)
+            ->get()
+            ->map(fn($r) => ['nombre' => $r->nombre, 'total' => (int) $r->total])
+            ->toArray();
     }
 
     public function render(): View

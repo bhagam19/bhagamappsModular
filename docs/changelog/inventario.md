@@ -5,6 +5,35 @@ Módulo: `Modules/Inventario` — Rutas: `/inventario/*`
 
 ---
 
+## v2.12.0 — 2026-06-11
+
+### Added / Fixed (IMPL-INV-DASH-002 — Optimización Dashboard Ejecutivo)
+
+- **DASH-011**: Porcentajes en KPIs de Fila 2. `$pctActivos`, `$pctBajas`, `$pctMantPendientes`
+  calculados en `cargarKpis()`. Bienes Activos muestra `1,420 (100%)`; Mantenimientos Pendientes `4 (0.3%)`.
+- **DASH-012**: Gráfica Origen corregida. Origen `"-"` normalizado a `"Sin origen"` (junto a NULL y `""`).
+  Condición `$origenesNormalizados` eliminada; gráfica muestra siempre que haya datos (`count > 0`).
+  Ahora muestra "Sin origen: 883" y 26 orígenes conocidos en lugar de ocultar la gráfica.
+- **DASH-013**: Accesos Rápidos movido al tope del dashboard (Encabezado → Accesos → KPIs → ...).
+- **DASH-014**: Calidad de Datos movido cerca de KPIs. Nuevo indicador `pctConOrigen` (38% — 537/1,420).
+  Barras muestran conteo absoluto `N / 1,420` + porcentaje. Índice general ahora promedia 5 indicadores.
+- **DASH-015**: Top 10 Dependencias — tabla con ranking, nombre, cantidad y porcentaje del total.
+  Reutiliza `$chartDependencias` (ya top-10 ordenado desc).
+- **DASH-016**: Top 10 Responsables — nueva query sobre `bienes_responsables JOIN users`.
+  `$topResponsables` array con nombre completo y cantidad de bienes. `cargarTopResponsables()` agregado.
+- **DASH-017**: Resumen Ejecutivo — bloque con 6 indicadores clave: categoría predominante,
+  dependencia con más bienes, responsable top, solicitudes pendientes, mantenimientos pendientes y realizados.
+- **DASH-018**: Validación responsive — estructura Bootstrap 4 mantenida. Nuevas secciones usan
+  `col-12 col-md-*` para responsividad correcta en móvil, tableta y escritorio.
+- **DASH-019**: Sin N+1. Todas las queries en `mount()` usan `selectRaw/groupBy/join/limit`.
+  `render()` mantiene `with(['bien:id,nombre'])` eager loading para historial.
+- **DASH-020**: `wire:key` agregado a todos los loops: accesos rápidos, top dependencias,
+  top responsables, calidad de datos, modificaciones, ubicaciones, eliminaciones.
+- `totalResponsables` corregido: ahora usa `bienes_responsables WHERE fecha_retiro IS NULL`
+  en lugar de `dependencias.user_id` (métricas correctas del módulo).
+
+---
+
 ## v2.11.3 — 2026-06-11
 
 ### Fixed (HOTFIX-DEP-001 — Error 500 en Catálogo Dependencias)
