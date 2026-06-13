@@ -370,6 +370,22 @@ return [
 
         // 📌 [crud-generator-menus] Añadir menús aquí
 
+        // Administración del Sistema (IMPL-INFRA-BACKUP-002) — solo Administrador Principal
+        [
+            'text'    => 'Administración del Sistema',
+            'icon'    => 'fas fa-server',
+            'can'     => 'ver-backups',
+            'submenu' => [
+                [
+                    'text'    => 'Backups',
+                    'icon'    => 'fas fa-database text-secondary',
+                    'route'   => 'admin.backups.index',
+                    'active'  => ['admin/backups*'],
+                    'classes' => 'font-weight-bold',
+                ],
+            ],
+        ],
+
         // Inventario
         [
             'text'    => 'Inventario',

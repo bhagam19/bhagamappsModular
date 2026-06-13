@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.0 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)
+
+- IEE ahora tiene un Centro de Administración de Backups accesible desde el panel web,
+  sin necesidad de SSH. El Administrador Principal puede ver el estado del sistema de
+  respaldo, listar todos los respaldos disponibles con sus metadatos (versiones, conteos
+  por tabla), ver fichas técnicas individuales, descargar ZIPs y generar respaldos
+  manuales con un solo clic. Alertas visuales por antigüedad: verde (<24h),
+  amarillo (>24h), rojo (>48h). BhagamApps v1.22.0.
+
+---
+
 ## v1.22.0 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)

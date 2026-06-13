@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.0] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)
+
+- Nuevo módulo `AdminSistema` v1.0.0: Centro de Administración de Backups accesible
+  desde la interfaz web sin necesidad de SSH. Dashboard con KPIs de estado, listado
+  de respaldos, ficha técnica, descarga ZIP y generación manual con Job.
+  Visible únicamente para el Administrador Principal. IEE v1.23.0.
+
+---
+
 ## [v1.21.0] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)

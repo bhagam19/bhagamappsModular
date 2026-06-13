@@ -2,5 +2,6 @@
     "User": true,
     "Inventario": true,
     "Apps": true,
-    "CrudGenerator": true
+    "CrudGenerator": true,
+    "AdminSistema": true
 }

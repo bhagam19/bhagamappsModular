@@ -116,6 +116,15 @@ class AuthServiceProvider extends ServiceProvider
                 Gate::define('ver-roles', fn($user) => $user->hasPermission('ver-roles'));
                 Gate::define('ver-permisos', fn($user) => $user->hasPermission('ver-permisos'));
 
+                // Gates para AdminSistema — Centro de Administración de Backups (IMPL-INFRA-BACKUP-002)
+                foreach ([
+                        'ver-backups',
+                        'generar-backups',
+                        'descargar-backups',
+                ] as $slug) {
+                        Gate::define($slug, fn($user) => $user->hasPermission($slug));
+                }
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }

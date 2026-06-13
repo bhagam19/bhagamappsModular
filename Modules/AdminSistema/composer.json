@@ -1,0 +1,28 @@
+{
+    "name": "nwidart/adminsistema",
+    "description": "Centro de Administración del Sistema — BhagamApps",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AdminSistema\\": "modules/",
+            "Modules\\AdminSistema\\Database\\Factories\\": "database/factories/",
+            "Modules\\AdminSistema\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\AdminSistema\\Tests\\": "tests/"
+        }
+    }
+}

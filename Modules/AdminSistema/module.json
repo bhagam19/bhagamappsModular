@@ -1,0 +1,14 @@
+{
+    "name": "AdminSistema",
+    "alias": "adminsistema",
+    "description": "Centro de Administración del Sistema — Backups institucionales",
+    "keywords": ["admin", "backups", "sistema"],
+    "priority": 0,
+    "providers": [
+        "Modules\\AdminSistema\\Providers\\AdminSistemaServiceProvider"
+    ],
+    "paths": {
+        "migrations": "Database/Migrations"
+    },
+    "files": []
+}

@@ -11,6 +11,25 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.0 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)
+
+- Nuevo módulo nWidart `AdminSistema` v1.0.0 con ServiceProvider, RouteServiceProvider
+  y auto-registro de Livewire (patrón Inventario).
+- 3 permisos nuevos (`ver-backups`, `generar-backups`, `descargar-backups`) en categoría
+  `admin-sistema`, asignados exclusivamente al rol Administrador.
+- App `admin-sistema` registrada en tabla `apps` con `app_role` → Administrador (Capa 1).
+  Middleware `app.access:admin-sistema` en rutas (Capa 2). Permisos específicos (Capa 3).
+- `BackupReaderService`: lectura del filesystem `backups/` sin tocar la BD.
+- `GenerarBackupJob implements ShouldQueue`: despacha `backup:export-seeders` vía Job.
+  Compatible con queue async sin cambios de código.
+- 3 Gates en `AuthServiceProvider` para filtro de menú AdminLTE.
+- Menú: `MIS MÓDULOS → Administración del Sistema → Backups` (visible solo con `ver-backups`).
+- IEE v1.23.0.
+
+---
+
 ## v1.21.0 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)
