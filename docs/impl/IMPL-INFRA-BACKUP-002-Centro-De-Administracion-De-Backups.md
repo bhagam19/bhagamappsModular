@@ -194,3 +194,13 @@ MIS MÓDULOS
   Para operación async, cambiar a `QUEUE_CONNECTION=database` y ejecutar `php artisan queue:work`.
 - Los respaldos se leen desde `backups/` en `base_path()`, nunca desde la BD.
 - La descarga ZIP sirve el archivo directamente desde el servidor — archivos de ~55 KB.
+
+---
+
+## SHA verificable
+
+| Campo | Valor |
+|-------|-------|
+| SHA   | `10bdebdc6bab0c4d0e0222d814af50d36b86a114` |
+| Commit | `feat(infra): IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups` |
+| Fecha  | 2026-06-13 |
