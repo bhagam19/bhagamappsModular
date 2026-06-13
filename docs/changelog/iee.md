@@ -7,6 +7,22 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.7 — 2026-06-13
+
+### Fixed (HOTFIX-BACKUP-002 — Botón "Generar Respaldo" en contexto web)
+
+- El botón "Generar Respaldo" del Centro de Administración de Backups fallaba con
+  "The Process class relies on proc_open, which is not available on your PHP installation"
+  cuando `proc_open` está deshabilitado en el servidor web (hosting compartido).
+  El backup local se completaba antes del error, pero la excepción de Drive lo
+  reportaba como fallo en la UI.
+- Corrección: Drive ahora usa la API nativa de Google (JWT RS256 + cURL) cuando
+  `proc_open` no está disponible. Si no hay credenciales configuradas, Drive se omite
+  silenciosamente sin bloquear la generación local. "Generar Respaldo" ahora
+  siempre completa y muestra "Respaldo generado exitosamente." BhagamApps v1.22.7.
+
+---
+
 ## v1.23.6 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)

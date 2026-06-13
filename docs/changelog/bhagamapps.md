@@ -11,6 +11,28 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.7 — 2026-06-13
+
+### Fixed (HOTFIX-BACKUP-002 — proc_open deshabilitado en contexto web PHP)
+
+- **`DriveService`** (`Modules/AdminSistema/Services/DriveService.php`) — reescrito:
+  - `subirZip()`: detección automática de método disponible en tiempo de ejecución.
+    Prioridad: `proc_open` → rclone (CLI/cron); `curl_exec+openssl_sign` → API nativa
+    Google Drive v3 (web PHP); ninguno → retorno silencioso `['exito'=>false]`.
+  - `subirConApiNativa()` nuevo: JWT RS256 con `openssl_sign()`, POST a
+    `oauth2.googleapis.com/token`, upload multipart a `googleapis.com/upload/drive/v3/files`.
+    Sin `proc_open`. Disponible en contexto web.
+  - `subirConRclone()`: try-catch en ambas llamadas `Process::run()` (defensa en profundidad).
+  - Sin SA_JSON configurado: retorno silencioso sin log ni excepción.
+  - `httpPost()` nuevo: wrapper cURL puro (no Process, no proc_open).
+- **`BackupExportSeeders`** (`app/Console/Commands/BackupExportSeeders.php`):
+  `uploadToDrive()` protegida con try-catch como cinturón de seguridad.
+  Drive falla → warn + comment; comando retorna SUCCESS. Job no lanza.
+- **`BackupSyncDrive`** (`app/Console/Commands/BackupSyncDrive.php`):
+  `estadoConexion()` nuevo estado `sin-soporte` manejado junto a `sin-rclone`.
+
+---
+
 ## v1.22.6 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)

@@ -17,6 +17,29 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.7] — 2026-06-13
+
+### Fixed (HOTFIX-BACKUP-002 — Drive desacoplado de generación local)
+
+- **Causa raíz:** `DriveService::subirConRclone()` llamaba `Process::env()->run()` que
+  requiere `proc_open`. Con `QUEUE_CONNECTION=sync`, `GenerarBackupJob` corre en el
+  contexto web donde `proc_open` está deshabilitado → excepción bloqueaba la generación
+  del backup aunque el ZIP local ya estaba completo.
+- **`DriveService`** reescrito con detección automática de método:
+  `proc_open` disponible → rclone; `curl_exec + openssl_sign` disponibles → API nativa
+  Google Drive v3 con JWT RS256 (sin proc_open, funciona en web PHP);
+  ninguno disponible → retorno silencioso sin excepción.
+- **`subirConApiNativa()`**: JWT RS256 firmado con `openssl_sign()` → POST OAuth2 →
+  upload multipart vía `curl_exec`. Sin dependencia de rclone ni proc_open.
+- **`subirConRclone()`**: ambos `Process::run()` envueltos en try-catch adicional.
+- **`BackupExportSeeders::uploadToDrive()`**: try-catch como cinturón de seguridad.
+  Drive falla → `$this->warn()` + comment → `handle()` retorna SUCCESS.
+  `GenerarBackupJob` no lanza. UI muestra "Respaldo generado exitosamente."
+- **`BackupSyncDrive`**: maneja nuevo estado `sin-soporte`.
+- PHP lint limpio en los 3 archivos. Dry-run verifica sin errores. IEE v1.23.7.
+
+---
+
 ## [v1.22.6] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)
