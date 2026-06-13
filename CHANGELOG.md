@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.1] — 2026-06-13
+
+### Added (AUDIT-BACKUP-001 — Backup Restore Readiness Assessment)
+
+- Auditoría de restaurabilidad del sistema de respaldo institucional completada.
+  14 hallazgos identificados (2 CRÍTICO, 4 ALTO, 4 MEDIO, 4 BAJO).
+  Clasificación: C — REQUIERE CORRECCIONES ANTES DE IMPLEMENTAR RESTAURACIÓN.
+  Informe completo en `docs/audits/AUDIT-BACKUP-001-Backup-Restore-Readiness-Assessment.md`.
+
+---
+
 ## [v1.22.0] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)

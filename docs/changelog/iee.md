@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.1 — 2026-06-13
+
+### Added (AUDIT-BACKUP-001 — Auditoría de Restaurabilidad de Respaldos)
+
+- Auditada la restaurabilidad completa de los respaldos institucionales.
+  Resultado: el sistema puede recuperarse parcialmente en restore manual (≈4h operador técnico)
+  pero requiere 6 correcciones de código antes de implementar restauración automatizada.
+  La información institucional crítica (bienes, usuarios, dependencias) es 95% recuperable.
+  El RBAC visual (apps visibles por rol) y los orígenes de bienes no se restauran automáticamente.
+  BhagamApps v1.22.1.
+
+---
+
 ## v1.23.0 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)

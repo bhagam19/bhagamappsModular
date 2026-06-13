@@ -11,6 +11,28 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.1 — 2026-06-13
+
+### Added (AUDIT-BACKUP-001 — Backup Restore Readiness Assessment)
+
+- Auditoría exhaustiva de la restaurabilidad del sistema de backup institucional.
+  Análisis de 9 áreas: inventario de tablas, compatibilidad CSV↔seeder, integridad
+  referencial, idempotencia, simulación de restore, tablas no respaldadas, validación
+  de metadata, clasificación y plan de remediación.
+- **Hallazgos críticos identificados:**
+  - `HistorialModificacionesBienesSeeder` falla con SQL error por columna `campo_modificado`
+    (real: `campo`) y `dependencia_id` NOT NULL omitido.
+  - `app_role` (10 registros) sin seeder → dashboard vacío tras restore.
+  - `CategoriasSeeder` no preserva IDs (riesgo latente en restauraciones parciales).
+  - `BienesSeeder` omite `origen_id` → 1.420 bienes con NULL.
+  - `UserSeeder` no restaura `bloqueado`, `forzar_cambio_password`, `es_principal`.
+  - Seeder data/ desactualizada: 38 permisos (prod: 77), 103 permission_role (prod: 164).
+- **Clasificación:** C — REQUIERE CORRECCIONES ANTES DE IMPLEMENTAR RESTAURACIÓN.
+- Informe completo: `docs/audits/AUDIT-BACKUP-001-Backup-Restore-Readiness-Assessment.md`.
+- Prerrequisito para IMPL-INFRA-BACKUP-003 y IMPL-INFRA-BACKUP-004.
+
+---
+
 ## v1.22.0 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-002 — Centro de Administración de Backups)
