@@ -53,5 +53,10 @@ Modules/*/vendor/
 # Archivos generados
 /stats/
 
+# Backups institucionales (IMPL-INFRA-BACKUP-001)
+# El directorio /backups/ está trackeado (tiene .gitkeep), pero su contenido NO.
+/backups/????-??-??/
+/backups/IEE-*.zip
+
 # Caché de bootstrap (auto-generado por php artisan optimize — contiene paths absolutos del servidor)
 /bootstrap/cache/

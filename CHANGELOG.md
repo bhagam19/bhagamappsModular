@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.21.0] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)
+
+- Comando `php artisan backup:export-seeders`: exporta 23 tablas a CSV,
+  genera metadata.json con versiones y conteos, comprime a ZIP, aplica retención
+  30 daily / 12 monthly, sube a Google Drive via rclone (SA o remote pre-configurado).
+  Schedule: diariamente 02:00. BhagamApps v1.21.0 | IEE v1.22.0.
+
+---
+
 ## [v1.20.1] — 2026-06-12
 
 ### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca disabled)

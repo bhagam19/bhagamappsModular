@@ -11,6 +11,25 @@ Changelogs de módulo:
 
 ---
 
+## v1.21.0 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)
+
+- Nuevo comando `php artisan backup:export-seeders` en `app/Console/Commands/`.
+- Exporta 23 tablas (3,439 registros en producción) a CSV en `backups/YYYY-MM-DD/`.
+- Genera `metadata.json` con versiones IEE/BhagamApps y conteos por tabla.
+- Crea `IEE-YYYY-MM-DD.zip` (55 KB comprimido) con PHP `ZipArchive`.
+- Política de retención automática: 30 diarios + 12 mensuales.
+- Integración Google Drive via rclone v1.71.2: soporta Service Account (credenciales
+  en `.env`) y remote pre-configurado. Variables: `BACKUP_GDRIVE_SA_JSON`,
+  `BACKUP_GDRIVE_FOLDER_ID`, `BACKUP_RCLONE_REMOTE`.
+- Schedule automático: `dailyAt('02:00')` con log en `storage/logs/backup.log`.
+- Documentación completa en `docs/impl/IMPL-INFRA-BACKUP-001-Backups-Institucionales.md`
+  y `docs/operations/BACKUP-RESTORE-GUIDE.md`.
+- IEE v1.22.0.
+
+---
+
 ## v1.20.1 — 2026-06-12
 
 ### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca disabled)

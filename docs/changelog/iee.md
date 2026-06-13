@@ -7,6 +7,18 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.22.0 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional)
+
+- IEE ahora tiene respaldo automático diario de todos sus datos institucionales.
+  El comando `backup:export-seeders` exporta 23 tablas (bienes, usuarios, permisos, etc.)
+  a CSV, genera un ZIP comprimido con metadata de versión y lo sube a Google Drive.
+  La política de retención mantiene 30 respaldos diarios y 12 mensuales.
+  Guía de restauración en `docs/operations/BACKUP-RESTORE-GUIDE.md`. BhagamApps v1.21.0.
+
+---
+
 ## v1.21.1 — 2026-06-12
 
 ### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca)

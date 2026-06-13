@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'IEE'           => '1.21.1',
-    'BhagamApps'    => '1.20.1',
+    'IEE'           => '1.22.0',
+    'BhagamApps'    => '1.21.0',
     'User'          => '2.5.1',
     'Inventario'    => '2.15.1',
     'Apps'          => '1.5.2',

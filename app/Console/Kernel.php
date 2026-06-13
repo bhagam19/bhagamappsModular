@@ -12,7 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Backup diario a las 02:00 (IMPL-INFRA-BACKUP-001)
+        $schedule->command('backup:export-seeders')
+            ->dailyAt('02:00')
+            ->withoutOverlapping()
+            ->appendOutputTo(storage_path('logs/backup.log'));
     }
 
     /**
