@@ -7,6 +7,20 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.5 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot)
+
+- IEE ahora tiene restauración automatizada completa desde un Snapshot Institucional ZIP.
+  El comando `php artisan backup:restore-from-zip --file=backups/IEE-YYYY-MM-DD.zip`
+  valida el respaldo, sincroniza los datos con los seeders, ejecuta la restauración
+  en una transacción de base de datos con rollback automático, valida los conteos
+  post-restauración y registra la operación en un log de auditoría. El DR completo
+  (Disaster Recovery) ahora requiere: `php artisan migrate` seguido de
+  `php artisan backup:restore-from-zip`. GAP-DR-001 cerrado. BhagamApps v1.22.5.
+
+---
+
 ## v1.23.4 — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)

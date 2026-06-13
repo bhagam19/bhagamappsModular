@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.5] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot)
+
+- `backup:restore-from-zip --file=backups/IEE-YYYY-MM-DD.zip` implementado.
+  Valida el ZIP (RESTORE-002), lee metadata (RESTORE-003), extrae a temp (RESTORE-004),
+  sincroniza 12 CSV a `Seeders/data/` (RESTORE-005), ejecuta `InstitutionalRestoreSeeder`
+  en `DB::transaction()` con rollback automático (RESTORE-006+007), valida conteos
+  post-restauración vs metadata.json (RESTORE-008), registra auditoría en
+  `storage/logs/restore.log` (RESTORE-009). Opción `--dry-run` para simular sin tocar
+  la BD. Opción `--force` para uso en scripts. GAP-DR-001 cerrado. IEE v1.23.5.
+
+---
+
 ## [v1.22.4] — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)

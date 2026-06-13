@@ -11,6 +11,30 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.5 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot Institucional)
+
+- **`backup:restore-from-zip`** (`app/Console/Commands/BackupRestoreFromZip.php`):
+  nuevo comando Artisan que restaura la BD institucional completa desde un ZIP.
+- **RESTORE-002**: Valida ZIP con `ZipArchive` — existencia, legibilidad, presencia de `metadata.json`.
+- **RESTORE-003**: Lee metadata interna del ZIP y la muestra en consola (versiones, conteos).
+- **RESTORE-004**: Extrae el ZIP a `storage/app/restore-temp/{YmdHis}/`.
+- **RESTORE-005**: Copia 12 CSV del ZIP a `Modules/*/Database/Seeders/data/`:
+  `permissions`, `permission_role`, `app_role`, `users`, `bienes`, `categorias`,
+  `dependencias`, `detalles`, `origenes`, `historial_modificaciones_bienes`,
+  `bienes_responsables`, `mantenimientos_programados`.
+- **RESTORE-006+007**: Ejecuta `InstitutionalRestoreSeeder` dentro de `DB::transaction()`.
+  Rollback automático por excepción. Cleanup de temp en bloque `finally`.
+- **RESTORE-008**: Validación post-restauración: `DB::table()->count()` vs `metadata.conteos`.
+  Omite tablas sin seeder (`permission_user`, `auditoria_passwords`, historiales vacíos).
+- **RESTORE-009**: Registra auditoría JSON en `storage/logs/restore.log` (LOCK_EX).
+- **Opciones**: `--dry-run` (simula sin tocar BD), `--force` (omite confirmación interactiva).
+- **GAP-DR-001 cerrado**. La plataforma ahora puede restaurarse desde un Snapshot ZIP
+  con un único comando en cualquier instalación limpia con esquema migrado.
+
+---
+
 ## v1.22.4 — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)
