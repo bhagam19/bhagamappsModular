@@ -28,6 +28,7 @@ class BienesSeeder extends Seeder
                     'nombre' => $data['nombre'],
                     'serie' => $data['serie'],
                     'origen' => $data['origen'],
+                    'origen_id' => (($data['origen_id'] ?? '') !== '' && ($data['origen_id'] ?? '') !== 'NULL') ? ($data['origen_id'] ?? null) : null,
                     'fecha_adquisicion' => (in_array($data['fecha_adquisicion'], ['0000-00-00', '', 'NULL'], true) || is_null($data['fecha_adquisicion']))
                         ? '2003-02-20'
                         : $data['fecha_adquisicion'],

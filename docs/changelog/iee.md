@@ -7,6 +7,21 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.2 — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003A — Remediación de Restaurabilidad de Respaldos)
+
+- El sistema de respaldo institucional ahora puede restaurarse de forma completa y
+  automatizada. Seis correcciones críticas: el historial de modificaciones se restaura
+  desde el CSV del respaldo (no datos ficticios). Las asignaciones de apps por rol
+  (app_role) se restauran completamente, por lo que el dashboard vuelve a ser funcional
+  al instante tras restore. Las categorías preservan sus IDs evitando relaciones incorrectas.
+  Los orígenes de bienes se restauran desde CSV. Los 1.420 bienes recuperan su clasificación
+  de origen. Los estados de seguridad de usuarios (bloqueado, forzar cambio de contraseña,
+  usuario principal) se restauran del backup. BhagamApps v1.22.2.
+
+---
+
 ## v1.23.1 — 2026-06-13
 
 ### Added (AUDIT-BACKUP-001 — Auditoría de Restaurabilidad de Respaldos)

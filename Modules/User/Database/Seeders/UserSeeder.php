@@ -63,6 +63,9 @@ class UserSeeder extends Seeder
                 'current_team_id' => null,
                 'profile_photo_path' => null,
                 'remember_token' => Str::random(10),
+                'bloqueado' => (int) ($data['bloqueado'] ?? 0),
+                'forzar_cambio_password' => (int) ($data['forzar_cambio_password'] ?? 0),
+                'es_principal' => (int) ($data['es_principal'] ?? 0),
             ]);
         }
     }

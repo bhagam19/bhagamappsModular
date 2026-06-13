@@ -11,6 +11,36 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.2 — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003A — Backup Restore Readiness Remediation)
+
+- **FIX-001 — HistorialModificacionesBienesSeeder**: Reescritura completa. Elimina faker
+  y columnas inexistentes (`campo_modificado`, `user_id`, `fecha_modificacion`). Ahora lee
+  `data/historial_modificaciones_bienes.csv` con columnas exactas del esquema
+  (`campo`, `dependencia_id` NOT NULL, etc.). Salta graciosamente si el CSV no existe.
+- **FIX-002 — AppRoleSeeder** (nuevo): Lee `data/app_role.csv`. Verifica existencia de
+  app_id y role_id antes de insertar (omite filas cuya app aún no existe, p.ej.
+  `admin-sistema` que se crea en su propio seeder). `insertOrIgnore` para idempotencia.
+  Registrado al final de `UserDatabaseSeeder`.
+- **FIX-003 — CategoriasSeeder**: Descomentada la línea `'id' => $data['id']`.
+  IDs de categorías siempre preservados; elimina el riesgo de FK mismatch en restores parciales.
+- **FIX-004 — BienesSeeder**: Agrega `origen_id` al insert con null coalescing (`?? null`)
+  para compatibilidad con CSVs de desarrollo sin esa columna. Los 1.420 bienes restauran
+  correctamente su relación con el catálogo de orígenes.
+- **FIX-005 — OrigenesSeeder** (nuevo): Lee `data/origenes.csv`. Usa `updateOrInsert` por
+  id (idempotente aunque la migración `populate_origenes` ya haya insertado los registros).
+  Registrado en `InventarioDatabaseSeeder` **antes** de `BienesSeeder`.
+- **FIX-006 — UserSeeder**: Restaura `bloqueado`, `forzar_cambio_password`, `es_principal`
+  con null coalescing (default 0 si el CSV de desarrollo no tiene esas columnas).
+- **CSVs de referencia** añadidos a `data/`: `historial_modificaciones_bienes.csv`,
+  `origenes.csv` (Inventario) y `app_role.csv` (User) — copias del backup 2026-06-13.
+- **Dictamen:** Hallazgos R-001 a R-006 de AUDIT-BACKUP-001 completamente resueltos.
+  Sistema listo para IMPL-INFRA-BACKUP-004 (Restauración automatizada).
+- IEE v1.23.2.
+
+---
+
 ## v1.22.1 — 2026-06-13
 
 ### Added (AUDIT-BACKUP-001 — Backup Restore Readiness Assessment)

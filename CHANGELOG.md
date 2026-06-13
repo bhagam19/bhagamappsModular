@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.2] — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003A — Backup Restore Readiness Remediation)
+
+- Resueltos los 6 hallazgos bloqueantes de AUDIT-BACKUP-001 (2 CRÍTICO + 4 ALTO).
+  `HistorialModificacionesBienesSeeder` reescrito con columnas correctas del esquema real.
+  Nuevo `AppRoleSeeder` en User module restaura las 10 asignaciones app→rol.
+  `CategoriasSeeder` preserva IDs explícitamente. `BienesSeeder` restaura `origen_id`.
+  Nuevo `OrigenesSeeder` con `updateOrInsert`. `UserSeeder` restaura campos de seguridad.
+  IEE v1.23.2. Prerrequisito de IMPL-INFRA-BACKUP-004 cumplido.
+
+---
+
 ## [v1.22.1] — 2026-06-13
 
 ### Added (AUDIT-BACKUP-001 — Backup Restore Readiness Assessment)

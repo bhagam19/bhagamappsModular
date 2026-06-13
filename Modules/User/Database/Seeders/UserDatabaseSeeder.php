@@ -15,7 +15,8 @@ class UserDatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            Permission_RoleSeeder::class
+            Permission_RoleSeeder::class,
+            AppRoleSeeder::class,
         ]);
     }
 }

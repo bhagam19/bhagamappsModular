@@ -25,7 +25,7 @@ class CategoriasSeeder extends Seeder
             $data = array_combine($headers, $row);
 
             DB::table('categorias')->insert([
-                //'id' => $data['id'],
+                'id' => $data['id'],
                 'nombre' => $data['nombre'],
                 'created_at' => now(),
                 'updated_at' => now(),

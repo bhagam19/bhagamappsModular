@@ -1,0 +1,12 @@
+id,bien_id,tipo_objeto,campo,valor_anterior,valor_nuevo,dependencia_id,estado,aprobado_por,created_at,updated_at
+1,1,bien,cantidad,1,2,1,aprobada,54,"2026-06-11 16:28:25","2026-06-11 20:44:06"
+2,1,detalle,detalle,"{""marca"":""""}","{""marca"":""gato""}",1,aprobada,54,"2026-06-11 16:30:29","2026-06-11 20:44:01"
+3,1,bien,categoria_id,1,20,1,rechazada,54,"2026-06-11 16:30:37","2026-06-11 20:43:56"
+4,1,bien,dependencia_id,1,2,1,rechazada,54,"2026-06-11 16:30:45","2026-06-11 20:43:49"
+5,1,bien,precio,0.00,100000,1,aprobada,54,"2026-06-11 16:32:00","2026-06-11 20:43:43"
+6,1,bien,estado_id,2,3,1,aprobada,54,"2026-06-11 16:32:06","2026-06-11 20:43:39"
+7,1,bien,mantenimiento_id,1,2,1,aprobada,54,"2026-06-11 16:32:11","2026-06-11 20:43:33"
+8,1,bien,almacenamiento_id,1,2,1,aprobada,54,"2026-06-11 16:32:17","2026-06-11 20:43:28"
+9,1,bien,observaciones,,"Una observacion",1,aprobada,54,"2026-06-11 16:32:27","2026-06-11 20:43:08"
+10,1,bien,fecha_adquisicion,1990-01-01,2025-06-04,1,aprobada,54,"2026-06-11 16:32:46","2026-06-11 20:43:15"
+11,1,bien,origen,-,Institucional,1,rechazada,54,"2026-06-11 16:32:55","2026-06-11 20:42:56"

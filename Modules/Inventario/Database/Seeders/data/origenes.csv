@@ -1,0 +1,12 @@
+id,nombre,descripcion,activo,created_at,updated_at
+1,"Sin origen","Bienes sin clasificar o con origen desconocido",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+2,Institucional,"Adquiridos con recursos propios de la institución",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+3,Municipio,"Aportados por el municipio de Entrerríos",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+4,SEDUCA,"Provenientes de la Secretaría de Educación",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+5,MEN,"Provenientes del Ministerio de Educación Nacional",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+6,Donación,"Recibidos como donación de cualquier entidad o persona",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+7,Comodato,"Bienes en préstamo o de propiedad de terceros",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+8,Compra,"Adquiridos por compra directa",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+9,Proyecto,"Obtenidos mediante proyectos institucionales",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+10,Transferencia,"Transferidos de otra entidad educativa o pública",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"
+11,Otro,"Origen no categorizable en las opciones anteriores",1,"2026-06-12 08:45:49","2026-06-12 08:45:49"

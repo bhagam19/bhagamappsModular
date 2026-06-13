@@ -16,6 +16,7 @@ class InventarioDatabaseSeeder extends Seeder
             MantenimientosSeeder::class,
             UbicacionesSeeder::class,
             DependenciasSeeder::class,
+            OrigenesSeeder::class,
             BienesSeeder::class,
             DetallesSeeder::class,
             HistorialModificacionesBienesSeeder::class,
