@@ -1,117 +1,118 @@
-"id","nombres","apellidos","userID","email","email_verified_at","password","two_factor_secret","two_factor_recovery_codes","two_factor_confirmed_at","remember_token","role_id","current_team_id","profile_photo_path","created_at","updated_at"
-"1","Teresita Marleny","Pérez Peña ","21714513","tmperezp@entrerrios.edu.co","2025-06-08 01:58:45","$2y$12$XTfEHHvPI7ZjQsZZhRz/AOe49QwyDlFotbxmR1asY5zG2ofXA5b9G",NULL,NULL,NULL,"FLt087kooK","5",NULL,NULL,NULL,NULL
-"2","Isabel Cristina","Tobón Rojas","43634714","ictobonr@entrerrios.edu.co","2025-06-08 01:58:45","$2y$12$97wnVbXZemyR5YE9qQXVgOO6hRyStCIghVVs0Vrusaod0tT7QmMfK",NULL,NULL,NULL,"FG5TNbKFbU","5",NULL,NULL,NULL,NULL
-"3","Ángela María","Pérez Restrepo","21714453","amperezr@entrerrios.edu.co","2025-06-08 01:58:45","$2y$12$fXz.zWfhAVrX7I.PTaoxLO22GXvq95vXevJKvbDjbAh6kHe8.NM9e",NULL,NULL,NULL,"bw7dLRIsPw","5",NULL,NULL,NULL,NULL
-"4","Gladys Eugenia","Arango Arango ","21713910","gearangoa@entrerrios.edu.co","2025-06-08 01:58:45","$2y$12$5jsxqRHQ.L9zYwtNTJeTyeA96dhQhzPSSQMZSh6DOi17M59Z7swaa",NULL,NULL,NULL,"0Q3PHT6bzz","5",NULL,NULL,NULL,NULL
-"5","Cielo Nelsin ","Carvajal López","32276450","cncarvajall@entrerrios.edu.co","2025-06-08 01:58:46","$2y$12$.RWZ3bbhqkdrjmoHZiuNK.QT4FT7uyFWwP/B9/23415u/6xED1tna",NULL,NULL,NULL,"EotxvUB26V","5",NULL,NULL,NULL,NULL
-"6","Beatriz Eugenia","López Pino ","32277506","belopezp@entrerrios.edu.co","2025-06-08 01:58:46","$2y$12$xYiQXFcmq9Ss1ogJpvhhtOTGeVXOqNyNIi.jlAlvZS8ZyiskhUzPe",NULL,NULL,NULL,"6RVY2awlEv","5",NULL,NULL,NULL,NULL
-"7","Luis Alberto","Moreno Henao","15483504","lamorenoh@entrerrios.edu.co","2025-06-08 01:58:46","$2y$12$U4hVO4kDWwZHRUE3vqO53.YAtzbveGNPxuQhcQcET1ATs8vulBR.C",NULL,NULL,NULL,"fsYHlhw8qp","5",NULL,NULL,NULL,NULL
-"8","Irma Lucía","Medina Arango ","43760828","ilmedinaa@entrerrios.edu.co","2025-06-08 01:58:46","$2y$12$ZhFSnXZB.XYOOyetIx5aUub/.qBcvbdSDLLr.e9X7CIjAKQeBJz/K",NULL,NULL,NULL,"EF27qjlFKH","5",NULL,NULL,NULL,NULL
-"9","Claudia Magdalena ","Osorio Builes ","21715063","cmosoriob@entrerrios.edu.co","2025-06-08 01:58:46","$2y$12$ykCgm16hx3b6mkWdy1xeSOvdfHoTBoHqy4p7B8D8NqxN9CZtdJPi.",NULL,NULL,NULL,"8BjHI5fAdI","5",NULL,NULL,NULL,NULL
-"10","Ángela María","Salazar Echavarría","32228815","amsalazare@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$X/0oH1FSlnrJz2ONEc03RusFCAcru9dwrh8stFG9dmr6yCt2traEG",NULL,NULL,NULL,"orPVHEvUeR","5",NULL,NULL,NULL,NULL
-"11","Silvia Irene","Tamayo Correa ","24398628","sitamayoc@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$ZQs/XBZ0.kJdDpfR1sI/guh.l/nTCxmBMPP37GNmO74dEsEmJ/6KG",NULL,NULL,NULL,"ZPL0oKkGOG","5",NULL,NULL,NULL,NULL
-"12","Diana María","Londoño Pérez ","43362960","dmlondonop@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$I4o3PeqUkLH2Qy8FWDvBnO768WBB8Me0bQv8V0ZB/z23OH.TFtlGu",NULL,NULL,NULL,"MbL1YsLe7R","5",NULL,NULL,NULL,NULL
-"13","Jorge Ignacio ","Betancur Ruiz ","1044502519","jibetancurr@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$Ia1gwpLvLP8NBhBG18c2QevtZE7AUAm6g0K1/Rm.SNLEeyj2hc6Hu",NULL,NULL,NULL,"RRqG8LzEDh","5",NULL,NULL,NULL,NULL
-"14","Olga Luz ","Giraldo Tobón ","32555080","olgiraldot@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$XNYandEJ3mYMXAWFLaiN0.zEyxKk5CRImtURLuvda9PnyjeMEHFsS",NULL,NULL,NULL,"16himYha66","5",NULL,NULL,NULL,NULL
-"15","Patricia Del Socorro","Gil Lopera ","32323443","pdsgill@entrerrios.edu.co","2025-06-08 01:58:47","$2y$12$EE5V2I/Z14sn1TghLJSSReMrgbG9cWMFcTzlY4D4JekJmWUJpoCeW",NULL,NULL,NULL,"SzTcg0vtnN","5",NULL,NULL,NULL,NULL
-"16","Gloria Emilse","Sanmartín Restrepo ","43344582","gesanmartinr@entrerrios.edu.co","2025-06-08 01:58:48","$2y$12$.AhnGTi3LZOnpUAKR6WEvOGid0VJSUdHM/j3PpNANfqWxTqEu/C3S",NULL,NULL,NULL,"GemwoKkRVb","5",NULL,NULL,NULL,NULL
-"17","Guillermo","Mosquera Cabrera ","12021698","gmosquerac@entrerrios.edu.co","2025-06-08 01:58:48","$2y$12$Li0iVaaFU2CzW9vLjexqKu64G1HW6LriQEKeS3CMeJAWcjZMuoH7G",NULL,NULL,NULL,"jOXiG3KacM","5",NULL,NULL,NULL,NULL
-"18","Carlos Alberto","Hincapié Patiño","98468624","cahincapiep@entrerrios.edu.co","2025-06-08 01:58:48","$2y$12$7bCbiQwJY1LgZCk/3EvmD.TXBPF114Yh/2dGOf0QeVKJMv1JFO6Hy",NULL,NULL,NULL,"RKXTWiwMB1","5",NULL,NULL,NULL,NULL
-"19","Dany Alejandro","Osorio Gil","98636197","daosoriog@entrerrios.edu.co","2025-06-08 01:58:48","$2y$12$LtPYrflYkJFq8eotDNGYTuKJYS0BiPbxhdpfnL1symNPAhfh56w/u",NULL,NULL,NULL,"A0fpxLL0K3","5",NULL,NULL,NULL,NULL
-"20","Leidy Susana","Aceros Cardozo","63561749","lsacerosc@entrerrios.edu.co","2025-06-08 01:58:48","$2y$12$2U.VGS7jm01p2QW7Gma7hOL9yqLOH0V4VHgVUB6PzfZr9772rUmH2",NULL,NULL,NULL,"kxyW0RSfKv","5",NULL,NULL,NULL,NULL
-"21","Jahn Christian","Moreno Meza ","98396892","jcmorenom@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$FIvJSatm4Yz6CQ6jpMNKPuE5U4GT5u.nJcCyo4vwRKSKJR9oLIyxu",NULL,NULL,NULL,"JtFij7TeLv","5",NULL,NULL,NULL,NULL
-"22","Carlos Arturo","Vallejo Restrepo","70975470","cavallejor@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$9zWszTeNxLKNZ7kqmUlSkOqMpjC/Y/o/PlHOir.xN4exfjbCjX4gi",NULL,NULL,NULL,"Pn9ZML9uWi","5",NULL,NULL,NULL,NULL
-"23","Shirley Hasblady","Márquez Ángel ","43142967","shmarqueza@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$Qya71K4X0VT2IeoD1EUAPexnSD1srjCZhc5cUO3sHElTWgiFWMO26",NULL,NULL,NULL,"tPdMfsKMJZ","5",NULL,NULL,NULL,NULL
-"24","Katherine","Giraldo Zuluaga ","1026138979","kgiraldoz@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$D/bFvKt8bCf/iH01seyD1eizWx5ALYpETd7KkduVymuF.sKHW.pR2",NULL,NULL,NULL,"w8bNntFTHL","5",NULL,NULL,NULL,NULL
-"25","Eliana Isabel ","Cardona Cortés ","1036637682","eicardonac@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$QRYQYT30Z4HudG3mBVFm2uBVsAdo8tzPpp7Z31qGjMwQ21YKqwQLu",NULL,NULL,NULL,"sxAwNi99oc","5",NULL,NULL,NULL,NULL
-"26","William ","Romaña Palacios ","11798220","wromanap@entrerrios.edu.co","2025-06-08 01:58:49","$2y$12$qWLdJZoPfOJqdAv7h0fiF..Ngi.dfI/ec/GVK6RqVvqQMuaMaERGa",NULL,NULL,NULL,"AuKuEZLmYx","5",NULL,NULL,NULL,NULL
-"27","Yuly Rocio ","Piedrahita Velasco","34316399","yrpiedrahitav@entrerrios.edu.co","2025-06-08 01:58:50","$2y$12$vw3V2R196cDC7h9kMoMIhek6LAyuoifyiMhFPNedDVIS7B17BXOeO",NULL,NULL,NULL,"jGPjvXy5nz","5",NULL,NULL,NULL,NULL
-"28","José Celedonio","Montoya Urrego","8005118","jcmontoyau@entrerrios.edu.co","2025-06-08 01:58:50","$2y$12$jp892ZRyNh95p1uOZiupzOjoUco.QgUa.N6xro28FfALYEppP6DTS",NULL,NULL,NULL,"RrImPvUZzB","5",NULL,NULL,NULL,NULL
-"29","Daniel Humberto ","Martínez Suárez","1032070334","dhmartinezs@entrerrios.edu.co","2025-06-08 01:58:50","$2y$12$U19FvPnAUbyi8XDp7xuNIeQFjqN2lfwyac0bk6rxgA29cYm8sQK0.",NULL,NULL,NULL,"izfZwQ2ahv","5",NULL,NULL,NULL,NULL
-"30","Mónica Soraya ","Marín Ortiz","43579902","msmarino@entrerrios.edu.co","2025-06-08 01:58:50","$2y$12$uGqxalFIegYR/izolKdeeOD4HlFN.1ylTBGC93Zdvjl8is191Ksba",NULL,NULL,NULL,"k0QTFW4bdP","5",NULL,NULL,NULL,NULL
-"31","José Gregorio","EchavarríaOcampo","71784650","jgechavarriao@entrerrios.edu.co","2025-06-08 01:58:50","$2y$12$9sZTwGZkqre9X.4FroUZOeKAHN1a.e8dzsXJ0Qmn8.Sj2iQJqZwDe",NULL,NULL,NULL,"TVemyUgQ3K","5",NULL,NULL,NULL,NULL
-"32","Wilson","Ríos Rios","73135461","wriosr@entrerrios.edu.co","2025-06-08 01:58:51","$2y$12$rqaBj9Jeev.rfIzk/D8XJ.lN5Q6XVYdraf6HiyRVUjwbWCa8p3cqG",NULL,NULL,NULL,"IqEbgYi3ti","5",NULL,NULL,NULL,NULL
-"33","Arcadio ","Ocampo Flórez","71717547","aocampof@entrerrios.edu.co","2025-06-08 01:58:51","$2y$12$beYmhtXATFBGCpQjj.pGJeHaWZAHnbA4WgpVlfHWHHaRkg7NfUN4e",NULL,NULL,NULL,"rAcJIptOsN","5",NULL,NULL,NULL,NULL
-"34","Diego Luis","Medina Santana ","98572464","dlmedinas@entrerrios.edu.co","2025-06-08 01:58:51","$2y$12$6e5Yv6L5AmlRnH9D8grVAeMYMWWlwK.752lj1fLbl/inxdQ6HTMEi",NULL,NULL,NULL,"te2GzHibsU","5",NULL,NULL,NULL,NULL
-"35","Javier Enrique","Cordoba Rivas","11812068","jecordobar@entrerrios.edu.co","2025-06-08 01:58:51","$2y$12$LUc97e8MxwPeeFoDTks1uOb20Cm9OXWcA8Y6sFM51qIB1ZbkVkCPe",NULL,NULL,NULL,"1LRQeQ8jgR","5",NULL,NULL,NULL,NULL
-"36","Dubán Darío ","Duque Avendaño","98493240","ddduquea@entrerrios.edu.co","2025-06-08 01:58:51","$2y$12$n0kmG8srKlb3rZd5cN/2DuMjXrbxgLGfXahZmvwDw4hGRbZgAh9be",NULL,NULL,NULL,"N2RBSvPSKa","5",NULL,NULL,NULL,NULL
-"37","Giovani Humberto","Escobar Arismendi","15509745","ghescobara@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$8ax/Q6.J.ZW2l8vy21SQxum/BRlekREMa4JVIFXMXuhfFfJDMw56G",NULL,NULL,NULL,"yVdoOHBsgc","5",NULL,NULL,NULL,NULL
-"38","Francisco Javier","León Sandoval ","79606063","fjleons@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$Jfdxtq5RDOzZJTqs0IZ0RepdGtnchj1MUBVnmW7Lh5VGRW3RveZ5W",NULL,NULL,NULL,"ODr5CKA9aM","5",NULL,NULL,NULL,NULL
-"39","Lina María","Lopera Betancur ","1035830293","lmloperab@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$U1WqI5Qj.SWeNJcA4pNHBOHyHboj0Y4oJxM5YbN8hSL2issbUgyH2",NULL,NULL,NULL,"ra0svfQeoa","5",NULL,NULL,NULL,NULL
-"40","Lina Marcela ","Medina Lopez","1013597927","lmmedinal@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$X3SI2mB9hqc8z8LJcdMcHuqXWyud.7bR5ZsPV1E8JJmD.3SINaANi",NULL,NULL,NULL,"nAJfV7BeLt","5",NULL,NULL,NULL,NULL
-"41","Luis Abel","Torres Ibargüen","11936847","latorresi@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$WykRR4ofSQHAICp26RkWaeaX4SNVp6IoDdvDE/c1sxxPqWrme/fWu",NULL,NULL,NULL,"mXMEX4mnSZ","5",NULL,NULL,NULL,NULL
-"42","Gloria Nodier","Tamayo Zapata","43360528","gntamayoz@entrerrios.edu.co","2025-06-08 01:58:52","$2y$12$qoPSZfsbV4CxDtAWue1l8uHxYIrKlBGVBHEMw10MQP97kNheltSxC",NULL,NULL,NULL,"tp0wJ54RaC","5",NULL,NULL,NULL,NULL
-"43","Katherine","Carvajal Ceballos","1040326270","kcarvajalc@entrerrios.edu.co","2025-06-08 01:58:53","$2y$12$0zSYe4aIJm1kVISrnc6DqefJ9.kGxDIk/NnFLHX/UkY5ICWyBS0q2",NULL,NULL,NULL,"U3N5KynP1u","4",NULL,NULL,NULL,NULL
-"44","Lorena","Aguirre Estrada","42782144","laguirree@entrerrios.edu.co","2025-06-08 01:58:53","$2y$12$iPp4VR1TdVMMvIZzaJCd6.GQQx7y2hRohZw6M8ln0qpXJgAcTPRCy",NULL,NULL,NULL,"oOq7C88hdC","4",NULL,NULL,NULL,NULL
-"45","Carmen Elena","Monsalve Monsalve","21470793","cemonsalvem@entrerrios.edu.co","2025-06-08 01:58:53","$2y$12$GlrTiMQAFCtlJvwLA6I0aeY72sw/YptAp8dEtrDXVXYb3C5A8F1ka",NULL,NULL,NULL,"KPB8AGmnx3","4",NULL,NULL,NULL,NULL
-"46","Olga Lucía","Monsalve Monsalve","21715127","olmonsalvem@entrerrios.edu.co","2025-06-08 01:58:53","$2y$12$NeaQIE.cKFlyPkpPDsq8RuaU9cIj8zoUBVaRrd7mmlKSQuWA1Se8i",NULL,NULL,NULL,"oexbY34FAf","4",NULL,NULL,NULL,NULL
-"47","Xiomara ","Vásquez Ruiz","1035831101","xvasquezr@entrerrios.edu.co","2025-06-08 01:58:53","$2y$12$Rd.QvMoEBKtF3xxcZBZLWu1h9.qo0IZZ9tZVbt0aXFYFx7zEQ7rVC",NULL,NULL,NULL,"EMdw1dWmIM","4",NULL,NULL,NULL,NULL
-"48","Luis Alberto","Osorio Castaño","71670846","laosorioc@entrerrios.edu.co","2025-06-08 01:58:54","$2y$12$YnndDauGnIwL3okaxYQhv.AXOHYJuJWUIpwYjSSl0o51mSRQ7kFQW",NULL,NULL,NULL,"dDmsFF38rC","4",NULL,NULL,NULL,NULL
-"49","Yeny Alejandra","Ruiz Pérez","1035832399","yaruizp@entrerrios.edu.co","2025-06-08 01:58:54","$2y$12$Ks4vCcz0qzOS1MK5H9VH6OqXSiuTfjkxz8X5tCdAuAivvqwwbO/ba",NULL,NULL,NULL,"C6GUqkyBA3","4",NULL,NULL,NULL,NULL
-"50","Leidy Diana","Pérez Martínez","43365654","ldperezm@entrerrios.edu.co","2025-06-08 01:58:54","$2y$12$zYaDHlRSRlWaEUUYykrWT.UBUwI0N0Dss71UXnZOe/WGxpsK9yr66",NULL,NULL,NULL,"UbwVawGa7Z","5",NULL,NULL,NULL,NULL
-"51","Claudia Milena","Ortega Roldán ","32229308","cmortegar@entrerrios.edu.co","2025-06-08 01:58:54","$2y$12$BU6xkNWD0GEbs/SEQVozJu4KRQuxjiSAzDxg8VrHrJy6F8N1s411e",NULL,NULL,NULL,"B2UV2rTYx4","5",NULL,NULL,NULL,NULL
-"52","Omaira","Quitian Infante ","37926145","oquitiani@entrerrios.edu.co","2025-06-08 01:58:54","$2y$12$CtcWyVYR6k4tWkVwMycYGuva99hxlODqJdlWjayqRxlLjkRWhaSqi",NULL,NULL,NULL,"YesWVxP1tR","3",NULL,NULL,NULL,NULL
-"53","Luis Fernando","Ochoa Muñoz","71655142","lfochoam@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$idpUyLk8TF38w0i6NkvkWuKYR.oS5KinpltEKgYOAkuoj1Jt0fUI2",NULL,NULL,NULL,"9al2M6MhwB","3",NULL,NULL,NULL,NULL
-"54","Adolfo León ","Ruiz Hernández","71379517","rectoriaiee@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$i9ZqtFRSO67F9.O79czv7uEuzgSZbg/WcdtQ4WU8xlwQd5mQAAYqe",NULL,NULL,NULL,"iArMfkrwPC","2",NULL,NULL,NULL,NULL
-"55","María Ofelia","Barrera Jaramillo","43360172","mobarreraj@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$RcV.B7KndSuKG.FHDGCPrusQXb0iK0dQ3a8wk1OJKgQ97jnxdbqzi",NULL,NULL,NULL,"On5pGJp85b","4",NULL,NULL,NULL,NULL
-"56","Juan Camilo","García Gaviria","1044101756","jcgarciag@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$A.M5tafHLlLP0nH6AAaT8.XHzfeWrQKtEANUm4d0NmH4ZecLN9kja",NULL,NULL,NULL,"USEI5qo1Fr","5",NULL,NULL,NULL,NULL
-"57","Karen Susana","Velásquez Vargas","1000564359","ksvelasquezv@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$l.mVAlUD9yiopdpahDXm.e9OZJKEVIyN/IpmIGni167DBgGQOrFKi",NULL,NULL,NULL,"iurcOaVKln","5",NULL,NULL,NULL,NULL
-"58","Maria Eugenia","Ruiz","43342108","meruiz@entrerrios.edu.co","2025-06-08 01:58:55","$2y$12$HCvd9sJRbt18UC/MT5nIIuAw4POX9b0abFseXYi2W/QMDrNKM2Py.",NULL,NULL,NULL,"A12gq1rY06","4",NULL,NULL,NULL,NULL
-"59","Miguel Antonio","Peña Cicua","457999","mapenac@entrerrios.edu.co","2025-06-08 01:58:56","$2y$12$WNjgR4hCbuM1M/KDFaz3OeOh4KWsWldzQ3fRtDZqa1DNpBFNY67hO",NULL,NULL,NULL,"JGlcCuiWjt","4",NULL,NULL,NULL,NULL
-"60","Olga Cecilia","Uribe Londoño","42868854","ocuribel@entrerrios.edu.co","2025-06-08 01:58:56","$2y$12$oX1uAhjonZAvuPZIdtx7ueL2.8mJY7BgfjF8bd1YwxqAlyuIZDJ5m",NULL,NULL,NULL,"oAqOIpsRUT","5",NULL,NULL,NULL,NULL
-"61","Rubén Darío","Zapata Lotero","70813215","rdzapatal@entrerrios.edu.co","2025-06-08 01:58:56","$2y$12$wesQefCPuVOkPKOJmoigKOOF/jkbUxNUBy0rHJwji9s8wtWUp4ZcO",NULL,NULL,NULL,"Aop3ebKgXr","5",NULL,NULL,NULL,NULL
-"62","Nicolás","Pérez Echavarría","1036620666","npereze@entrerrios.edu.co","2025-06-08 01:58:56","$2y$12$W5oLx/3ul7RlCEbgVG2EwO2EDWJ1GxtKYTpW1Jk9ucCFp8Re4yo5e",NULL,NULL,NULL,"KXmFBDZ4ez","5",NULL,NULL,NULL,NULL
-"63","Carlos Absalón","Arias Gerena","1014201973","caariasg@entrerrios.edu.co","2025-06-08 01:58:56","$2y$12$0m2.Qjy3PM.bUPfXuxd3GeKBu9h9jqtSj1EvFtpxe.iwAhYtjT9VC",NULL,NULL,NULL,"I0sZjhpwUI","5",NULL,NULL,NULL,NULL
-"64","Jakcson","Sánchez Moreno","11812084","jsanchezm@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$kVs/Wu7WCerst8DpcZko0eoWucnepFWn7CDVVclkbE/nvyxhM3/Sm",NULL,NULL,NULL,"cDA4A9BZtd","5",NULL,NULL,NULL,NULL
-"65","Verónica Marcela","Tobón Múnera","1035830931","vmtobonm@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$EQDaVve9C0vS6dbKr3ih..2jItjb.tN3qr4/PHUPqTyaDcSw.niT.",NULL,NULL,NULL,"ShyZKkhZyd","5",NULL,NULL,NULL,NULL
-"66","Yesny Aidé","Vásquez Mosquera","43117442","yavasquezm@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$2xL0aPHDDSq2inhFpkrz9OD1pND64TJSijTWlORT1ROFrH0n3q6cG",NULL,NULL,NULL,"qv18JkWtWJ","5",NULL,NULL,NULL,NULL
-"67","Luz Adriana","Londoño Builes","21715420","lalondonob@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$87tfh5dIS4wOQQNhc4dctujP.OwwQANgQxb/YxlptMdWB/bksoDJC",NULL,NULL,NULL,"m2Fw0XxpEo","5",NULL,NULL,NULL,NULL
-"68","Yahaira","Lemos Rodríguez","35546799","ylemosr@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$mhiKi1rhk65ic/BPUkf7kuKrsQPvYF/CknxxbdXcadJcfVhsf9k1W",NULL,NULL,NULL,"2SQqQptRSI","5",NULL,NULL,NULL,NULL
-"69","Camilo Esteban","Pineda Vásquez","8434706","cepinedav@entrerrios.edu.co","2025-06-08 01:58:57","$2y$12$G4Fb3dQhnnAttyt0go09..hyI5ixAqsU2yqPJAkHdHJR27VwJLTKu",NULL,NULL,NULL,"ChWx3Bb97U","4",NULL,NULL,NULL,NULL
-"70","Andrés David","Escobar Zapata","71339991","adescobarz@entrerrios.edu.co","2025-06-08 01:58:58","$2y$12$IlenIHnxmzW7qaAvxy.FDuEbCORKe9zzpvJAMmocwjWdSBcZ78YvK",NULL,NULL,NULL,"THypTjrgkc","3",NULL,NULL,NULL,NULL
-"73","Katerin Nayibe","Uribe Monsalve","1034987245","knuribem@entrerrios.edu.co","2025-06-08 01:58:58","$2y$12$8fhf3xp5oAG6fDvfdEH4ZeVV95SlsoX.twBMo4SCypQ3Hs1F.Mrfy",NULL,NULL,NULL,"pHa9JNwhow","4",NULL,NULL,NULL,NULL
-"74","Jorge Andrés","Rodríguez Toro","98568338","jarodriguezt@entrerrios.edu.co","2025-06-08 01:58:58","$2y$12$BnSu.O1x1U/kLsJlufwGA.BKSJ6mLWgkEpzphbTT65Od2sQkTOJre",NULL,NULL,NULL,"HaxWRLj9dW","5",NULL,NULL,NULL,NULL
-"75","Lácides Alberto","Serpa Paternina","98656071","laserpap@entrerrios.edu.co","2025-06-08 01:58:58","$2y$12$84vAxPHmXp5gsfB6HD.MT.AsGWV1bK4pBVeicRl3kFdAxrePQaTcG",NULL,NULL,NULL,"RQKJnvVp85","5",NULL,NULL,NULL,NULL
-"76","Luz Mery","Murcia Machado","1088325622","lmmurciam@entrerrios.edu.co","2025-06-08 01:58:58","$2y$12$LXH5QFLY5TsnYkMGm7yX3.4dOW0NgHGlEfQSjCHr4j8QdkyeX8ETa",NULL,NULL,NULL,"Sf5XEVhciI","5",NULL,NULL,NULL,NULL
-"77","Yuly Andrea","Durango Flórez","1128483419","yadurangof@entrerrios.edu.co","2025-06-08 01:58:59","$2y$12$hZoOYz4.pWoonD4NpjrmWu0Kwka/Szh6QffZz2j1j6z2bh.1syZNy",NULL,NULL,NULL,"kj1yrTNYWU","5",NULL,NULL,NULL,NULL
-"78","Leidy Diana","Uribe Betancur","1035830025","lduribeb@entrerrios.edu.co","2025-06-08 01:58:59","$2y$12$xURhWHHPNJnBnS8xhcFkb.QjcA2QvDCdHkitgw00M8RRtfhhHQXq.",NULL,NULL,NULL,"1ucyKlnShb","4",NULL,NULL,NULL,NULL
-"79","Catalina","Cardona Echeverry","1042706259","ccardonae@entrerrios.edu.co","2025-06-08 01:58:59","$2y$12$CovZGBsejbDUBmJNdcgvk.prEzUpPoEIUwrGHXXVKY5TBSuo6SIIO",NULL,NULL,NULL,"XrzTbQGDs1","5",NULL,NULL,NULL,NULL
-"80","Leidy Yohana","Múnera Londoño","1040323460","lymuneral@entrerrios.edu.co","2025-06-08 01:58:59","$2y$12$A0M8PC.DYC1IHadEJW87l.lj3ILwrCCrQwvAZffnKWfhx81AH1zp2",NULL,NULL,NULL,"OP2s2KOrCY","5",NULL,NULL,NULL,NULL
-"81","Gabriel Ernesto","Gil Preciado","3469724","gegilp@entrerrios.edu.co","2025-06-08 01:58:59","$2y$12$zycIpRcdfCbO1rlFNQrB.uT2.q/LYv/7fhHkZ38f96eC9MwRGhMH.",NULL,NULL,NULL,"q8U2mvPHli","5",NULL,NULL,NULL,NULL
-"82","Jakeline","Perea Cuesta","1077462627","jpereac@entrerrios.edu.co","2025-06-08 01:59:00","$2y$12$ZnfIZh3s7ueVkHCgjOeS2eXVpp.3GNQKtA72BYoqmdiSGc9lwzGyC",NULL,NULL,NULL,"fTbk3xvp2j","5",NULL,NULL,NULL,NULL
-"83","Sebastián","Monsalve Monsalve","1007242962","smonsalvem@entrerrios.edu.co","2025-06-08 01:59:00","$2y$12$eM7Xt9ZYKU5zhew/i47MQ.i5Zgxe58L/lW8EeHnvsQnz6yTqH4qpa",NULL,NULL,NULL,"6EFrRC2NEz","4",NULL,NULL,NULL,NULL
-"84","Mildre Yoana","Areiza Jaramillo","1023801794","myareizaj@entrerrios.edu.co","2025-06-08 01:59:00","$2y$12$8voMsf3Hy0Gp1ys8jDjVeeNcekApkl0cS9jQZl1OUMoyJRcfFanKe",NULL,NULL,NULL,"1DfUOqEQwQ","4",NULL,NULL,NULL,NULL
-"85","Katerine","Palacios Palacios","1077463523","kpalaciosp@entrerrios.edu.co","2025-06-08 01:59:00","$2y$12$MyXtzcfN987NbLXP.gHcJ.rEsY9mSEtfmq1gHGmULNHrsVaGf6mei",NULL,NULL,NULL,"XKdsKIc3Af","5",NULL,NULL,NULL,NULL
-"86","Maryori María","Mantilla Olaya","1026132228","mmmantillao@entrerrios.edu.co","2025-06-08 01:59:00","$2y$12$FuiNxzt7E88KQfuqoHDfVORujFYNnicUPbb0eyJb4T7r/pLW.gUYa",NULL,NULL,NULL,"mVFxIHodAz","4",NULL,NULL,NULL,NULL
-"87","Gladys","Coordinadora","1","gcoordinadora@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$viy7Kq4XApbg1f.beq1Z4e6jbixrL8GoaO4TTeMngNZT9HANJN8Oq",NULL,NULL,NULL,"0XNMa8xhXL","4",NULL,NULL,NULL,NULL
-"88","Claudia","Moreno","2","cmoreno@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$GWDxexaziNzQIU731cca1emtI5Wy1HC0vrrXLRHACAfHiGbC9VK5S",NULL,NULL,NULL,"WskBzzz8zb","4",NULL,NULL,NULL,NULL
-"89","Consejo","Familias","3","cfamilias@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$y3UFRxPvBcK4MrF9Raodu.7bStTdB8arG/PYy9TP9DngG/h3b7Geu",NULL,NULL,NULL,"biLFYbaTSO","4",NULL,NULL,NULL,NULL
-"90","Juan Camilo","Arboleda Carmona","1033654172","jcarboledac@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$zQbL71TSOO/cIaHAHpe75uIp0gn/V9Pb1HfTjMtCz6XuPvpgbjZV.",NULL,NULL,NULL,"zyFf9AMd0x","5",NULL,NULL,NULL,NULL
-"91","Valeria","Lebrun Llano","1036669498","vlebrunl@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$ouHGTM3PIhXTJzlQfuUnGubjdYFBXE.iDBJgwRAEjC6Wh/VE0aqca",NULL,NULL,NULL,"CkZhmMToeS","5",NULL,NULL,NULL,NULL
-"92","Aida Marcela","Castaño Brand","32564789","amcastanob@entrerrios.edu.co","2025-06-08 01:59:01","$2y$12$r/kqgliPg6xUjxTIq3wPbOXFDgmnMGwVR1hnmU8ZtlvOOHnbmkqFi",NULL,NULL,NULL,"yI8PjdHtwf","5",NULL,NULL,NULL,NULL
-"93","Lorena Liceth","Vélez Tamayo","1035831401","llvelezt@entrerrios.edu.co","2025-06-08 01:59:02","$2y$12$YKRLR35BVM4KjEeDcbvOxuHfktHpDOBJN9YGmKM3Rp/2W.8iJHVkq",NULL,NULL,NULL,"BHauwy8bqN","4",NULL,NULL,NULL,NULL
-"94","Sonia Amparo","Gallego Villa","21714469","sagallegov@entrerrios.edu.co","2025-06-08 01:59:02","$2y$12$Zx51r//77OK71ZWq28K3/O3zz502T2KUsLpI7ZIdQCVlrp.lXTmWG",NULL,NULL,NULL,"pc73wjfy4H","4",NULL,NULL,NULL,NULL
-"95","Javier Mauricio","Vélez Hernández","1037659708","jmvelezh@entrerrios.edu.co","2025-06-08 01:59:02","$2y$12$T23qMSuVdrm8U4hRrCiFf.W1lvC7U3cJLmJWT2qbRgePjHJiW4AcW",NULL,NULL,NULL,"MaJpxU7EW4","5",NULL,NULL,NULL,NULL
-"96","Manuel Orlando","Pérez Luna","15646704","moperezl@entrerrios.edu.co","2025-06-08 01:59:02","$2y$12$g1.Yj6em1RSoxxR4zX5Zc.ISvix4AEgZ.2qDMlZhZIbRqUrKdXY6S",NULL,NULL,NULL,"9UeJCqaqfw","5",NULL,NULL,NULL,NULL
-"97","Julian David","Trochez Solarte","1061737389","jdtrochezs@entrerrios.edu.co","2025-06-08 01:59:02","$2y$12$C9vyFB8W5DCxesi5cc7LKuqRClC54aSi5XN5fzdaI8TZWxca/Ucz2",NULL,NULL,NULL,"oRqt20pFtx","5",NULL,NULL,NULL,NULL
-"98","Luz Mery","Monsalve Monsalve","21714954","lmmonsalvem@entrerrios.edu.co","2025-06-08 01:59:03","$2y$12$wKBHGLA/2jO/Y8MS7CrohOpK/g59glvRgl5jOXABAuFX70d0Qe97i",NULL,NULL,NULL,"fnKuU4PkM9","4",NULL,NULL,NULL,NULL
-"99","Maynlee Xiomara","Pineda Romero","1049634320","mxpinedar@entrerrios.edu.co","2025-06-08 01:59:03","$2y$12$TdPp6OE.auooD2DHttk69OSm6reCKFdnjlICUQ2hOXXVKeEvPKQza",NULL,NULL,NULL,"jhdE88a2go","5",NULL,NULL,NULL,NULL
-"100","Elia Ennid","Granda","43591558","eegranda@entrerrios.edu.co","2025-06-08 01:59:03","$2y$12$GYhowlLPpdCA1hOTVEXugOkQmtNqUxLN9gJcl.g9qX/9PdvGmZdTe",NULL,NULL,NULL,"fhhLNqbdpu","5",NULL,NULL,NULL,NULL
-"101","Nidia Omaira","Herrera Espinosa","32228303","noherrerae@entrerrios.edu.co","2025-06-08 01:59:03","$2y$12$GP5GidL33Bg1xxqou4C7u.c95UgxZU/DC5XHyjZKFpHFWiZ8gWLXO",NULL,NULL,NULL,"HZAMLvp3uN","3",NULL,NULL,NULL,NULL
-"102","Bibiana Marcela","Restrepo Monsalve","1035831462","bmrestrepom@entrerrios.edu.co","2025-06-08 01:59:03","$2y$12$T9af0ESJprlfHbUKBxluZ.Mlkr.vNlfX50nY1SUQliG4rbjYmirTG",NULL,NULL,NULL,"v8uSmQ9fEq","4",NULL,NULL,NULL,NULL
-"103","Ana Cristina","Restrepo Ortiz","43752407","acrestrepoo@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$nPrz.MR7IvTM0/pZBUXg4uGPQiCh1uPI2xelvMGaqAACjO8h6dcte",NULL,NULL,NULL,"XYJuhUM7Qw","4",NULL,NULL,NULL,NULL
-"104","Tatiana","Chica Cuartas","1128444797","tchicac@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$35rccPJG4BOXpXfhzQiTVuOzBofYQDgWYezLOOJOvBt3h/oQnHcQ6",NULL,NULL,NULL,"XkvYkb4JDN","4",NULL,NULL,NULL,NULL
-"105","Nelson Adil","Martínez Vergara","15325399","namartinezv@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$.pli.OVSqt.XkISUHCrLcuCLPnBRDk1yiWuDEW6oQJpMVMb0VO9li",NULL,NULL,NULL,"9KCa6YHQ65","5",NULL,NULL,NULL,NULL
-"106","Francisco Andrés","Monsalve Saraz","15513393","famonsalves@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$QXa5.NalIkMBOnzfHnEX.eA2eM.xoahObS5zKwT5zkHnqcUF9fNJ.",NULL,NULL,NULL,"4QdAvm3n0z","5",NULL,NULL,NULL,NULL
-"107","Juan Manuel","Cardona Arroyave","98545438","jmcardonaa@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$bFnkGc6ZbwfiICXZ3Y0s3.klDBPx.8fagOIGZYHzK7kCdHMD4YCBK",NULL,NULL,NULL,"VBg6WE5xZl","5",NULL,NULL,NULL,NULL
-"108","John Sady","Betancur Henao","1038868137","jsbetancurh@entrerrios.edu.co","2025-06-08 01:59:04","$2y$12$twpi7vniYDDk0yINpL3l.OHMuXNfOikJlFSWIZWatQhQ2aE2VElSS",NULL,NULL,NULL,"TPbrQ4VLd2","4",NULL,NULL,NULL,NULL
-"109","Erika Paola","Londoño Castro","1035831260","eplondonoc@entrerrios.edu.co","2025-06-08 01:59:05","$2y$12$xOHNzHbjbLY3UxTl1cWVy.8rfziGBieqR9m3hy22KaGnyEqSM0D1e",NULL,NULL,NULL,"JLHfa7AvkH","4",NULL,NULL,NULL,NULL
-"110","Carlos Andrés","Ordoñez Arroyave","15273975","caordoneza@entrerrios.edu.co","2025-06-08 01:59:05","$2y$12$fEi.kt42aRc3gRd7X1fQxubpN.m/s14Jt7bkuF5TdgdQfD8dnK79G",NULL,NULL,NULL,"Tww7YmV36K","4",NULL,NULL,NULL,NULL
-"111","David Antonio","Arango Valencia","71737846","daarangov@entrerrios.edu.co","2025-06-08 01:59:05","$2y$12$TrLGqgMBlyk5zrdloG3wreXvTsSRAHlx6RyJLHkKtSogpwNIYRRRK",NULL,NULL,NULL,"EcI5FeN4Ot","5",NULL,NULL,NULL,NULL
-"112","Francisco José","Perea Quintero","1076384385","fjpereaq@entrerrios.edu.co","2025-06-08 01:59:05","$2y$12$KcLIYD36ZAm4cuNtBtrAZurAVgS2JLEC12ij8uHsrllgEJVGUHy/S",NULL,NULL,NULL,"P5xcm8g0ey","5",NULL,NULL,NULL,NULL
-"113","Pedro Antonio","Pérez Meza","92551649","paperezm@entrerrios.edu.co","2025-06-08 01:59:05","$2y$12$/0jzGATqjQd/y7SIaM9F4uzZiS9jKgEsRJRLjdvDNNDBehSAMYNei",NULL,NULL,NULL,"vtwfT3l5pP","5",NULL,NULL,NULL,NULL
-"114","María Berenice","Ramírez Vassco","43528888","mbramirezv@entrerrios.edu.co","2025-06-08 01:59:06","$2y$12$h.b2BKXMSH.NzxhE2w9br.jKQ.JIRExoMoMDNLRT412vpM6hiGi/i",NULL,NULL,NULL,"KbfdGM67kS","5",NULL,NULL,NULL,NULL
-"115","Dorian Rodrigo","Ruiz Hernández","71481707","dorianrodrigo@gmail.com","2025-06-08 01:59:06","$2y$12$cVFKxNQbjn.yvsApDH7Vxuo/7eB99DEZL0RC9c4e3PhPj6HVIoeMe",NULL,NULL,NULL,"AP8OM3DZTTcCiRWI7P4vPYDKFj42hBjJBowmOgFHFwOLW6J91ojfS2FNulBD","3",NULL,NULL,NULL,"2025-06-08 01:59:06"
-"116","Doris De Las Misericordias","Elorza Chavarría","32563490","dmelorzac@entrerrios.edu.co",NULL,"$2y$12$lVMeW3RJ1cPXMyWimVDHY.EKVSXaAP0r6qPqJPoM0XlAD5yLgUUCC",NULL,NULL,NULL,NULL,"5",NULL,NULL,"2025-06-09 17:48:25","2025-06-09 17:48:25"
-"117","Luz Elena","Colorado Lopez","39454570","lecoloradol@entrerrios.edu.co",NULL,"$2y$12$XMBqF09nzs2gKRnRPjGXCuBVB70HBJBVEqRNe0zHRTDMXAi/l4.7i",NULL,NULL,NULL,NULL,"5",NULL,NULL,"2025-06-09 17:50:04","2025-06-09 17:50:04"
-"118","Cecilia Stefania","Rivas Valencia","1045511181","csrivasv@entrerrios.edu.co",NULL,"$2y$12$yar4GZmuU.A/6FbqDUwWXeP7OZ6rC/P7NE0bgVEqZLT6rydzgl7y2",NULL,NULL,NULL,"e68yWqvDodXsEba2CSpBOyOtvGTqvH5p87BwBLNUBv4roin7IXsvFl2RoYuJ","5",NULL,NULL,"2025-06-13 14:50:16","2025-06-13 14:50:16"
+id,nombres,apellidos,userID,email,email_verified_at,password,two_factor_secret,two_factor_recovery_codes,two_factor_confirmed_at,remember_token,role_id,current_team_id,profile_photo_path,bloqueado,forzar_cambio_password,es_principal,created_at,updated_at
+1,"Teresita Marleny","Pérez Peña ",21714513,tmperezp@entrerrios.edu.co,"2026-06-11 10:56:50",$2y$12$UPP3XuLBFhLqrhMkEmGGau0G9ZLoYwYVL5Y4fRBBh1dyhHUoZkwsa,,,,FkJ16yhJ5Q,5,,,0,0,0,,
+2,"Isabel Cristina","Tobón Rojas",43634714,ictobonr@entrerrios.edu.co,"2026-06-11 10:56:50",$2y$12$dzPHS9zQ1PKiOqcEoHB3OOcwqFvE7nKMgqNQVd/3ZAEQIyVu1Ru2y,,,,qDXGLBhr0W,5,,,0,0,0,,
+3,"Ángela María","Pérez Restrepo",21714453,amperezr@entrerrios.edu.co,"2026-06-11 10:56:50",$2y$12$XPU5ylPk/cMSWhx.T09GIOaSAOL2InYtxTrt/gp/WMVHDMnzgAlHa,,,,8vBibgzwe5,5,,,0,0,0,,
+4,"Gladys Eugenia","Arango Arango ",21713910,gearangoa@entrerrios.edu.co,"2026-06-11 10:56:51",$2y$12$rVzjt53kntecEAOEI1QqUO6CXvoMCfu608c.imjBEeEP.fJnSeGzK,,,,M9Gecn5khi,5,,,0,0,0,,
+5,"Cielo Nelsin ","Carvajal López",32276450,cncarvajall@entrerrios.edu.co,"2026-06-11 10:56:51",$2y$12$gIOgGAdrXcCOvazecDdo0ODh7EIWmo3glgzZ3gIr08E0LkeKqbHMO,,,,VmlNJKhyBd,5,,,0,0,0,,
+6,"Beatriz Eugenia","López Pino ",32277506,belopezp@entrerrios.edu.co,"2026-06-11 10:56:51",$2y$12$MOome8l9wvCS0N4stXCfouf3xMuV8NK./RozTAxJyPcR9wJMeR5qm,,,,ayhzB9P08I,5,,,0,0,0,,
+7,"Luis Alberto","Moreno Henao",15483504,lamorenoh@entrerrios.edu.co,"2026-06-11 10:56:52",$2y$12$I.7vl5r8EMjU6XIeIjEbHeIBXulmVOyqES4Yp4A1uo0FtY45lnDoa,,,,wOtCGYZzWv,5,,,0,0,0,,
+8,"Irma Lucía","Medina Arango ",43760828,ilmedinaa@entrerrios.edu.co,"2026-06-11 10:56:52",$2y$12$RWK.wExIS7hj0TGRM1HVD.d62p8pG/NreFFw4CdgzetObNVSrON9u,,,,cVe19XXfev,5,,,0,0,0,,
+9,"Claudia Magdalena ","Osorio Builes ",21715063,cmosoriob@entrerrios.edu.co,"2026-06-11 10:56:52",$2y$12$1zJW.eTZ8qZ5fGFudGDdf.11XOlD8URliSc8oQzS5zuvCoZqJcV5O,,,,U8avBsRFdz,5,,,0,0,0,,
+10,"Ángela María","Salazar Echavarría",32228815,amsalazare@entrerrios.edu.co,"2026-06-11 10:56:53",$2y$12$jkx/WHlPmli2TD3U7.GlnuJ4M2Awl0JFptaet6e3lVq4DXed.nJju,,,,5XoMbWfJo9,5,,,0,0,0,,
+11,"Silvia Irene","Tamayo Correa ",24398628,sitamayoc@entrerrios.edu.co,"2026-06-11 10:56:53",$2y$12$WqRnp9JqHCPuzZH1I2DNZuT3vrfLwzwyhC7aGvZ6hV6XdUN2ckeZ.,,,,uP2xsIkkxW,5,,,0,0,0,,
+12,"Diana María","Londoño Pérez ",43362960,dmlondonop@entrerrios.edu.co,"2026-06-11 10:56:53",$2y$12$fQF8SV0V7yaS1R.9dSymhus0wprCR8hkNZdsZX/qXq.rEIgCDVnFS,,,,l2bnNK3Oug,5,,,0,0,0,,
+13,"Jorge Ignacio ","Betancur Ruiz ",1044502519,jibetancurr@entrerrios.edu.co,"2026-06-11 10:56:53",$2y$12$n6ttutaQG1w7NoZ7A/gjF.YI1vj.qhVIRSjbisghRex2S8UkqE79K,,,,ZmfTgqKsmx,5,,,0,0,0,,
+14,"Olga Luz ","Giraldo Tobón ",32555080,olgiraldot@entrerrios.edu.co,"2026-06-11 10:56:54",$2y$12$jAQ36FUftHg8uJFXIyipE.9BW0aCJUCoGvWhCOsbQbF/pFMEeN0H.,,,,cAXvhaWfSz,5,,,0,0,0,,
+15,"Patricia Del Socorro","Gil Lopera ",32323443,pdsgill@entrerrios.edu.co,"2026-06-11 10:56:54",$2y$12$PXiGC./9MJtKZVzCZfxPKucXX5EYFZVgi7mX1ex.6sN8eoxvUDGQq,,,,9AV1ZHKfIu,5,,,0,0,0,,
+16,"Gloria Emilse","Sanmartín Restrepo ",43344582,gesanmartinr@entrerrios.edu.co,"2026-06-11 10:56:54",$2y$12$HgZs2lFVyHuEN0jP8dRNxu85qpkR6pOZWV9WidwGsxsYuOf2dSQ3u,,,,9IIBYsHVis,5,,,0,0,0,,
+17,Guillermo,"Mosquera Cabrera ",12021698,gmosquerac@entrerrios.edu.co,"2026-06-11 10:56:54",$2y$12$I0iYiyQXfl44.LvNldjPWe298YzNuyKK5/YH4VsEYkWjMLmY9NVXm,,,,Zed3KD9Nng,5,,,0,0,0,,
+18,"Carlos Alberto","Hincapié Patiño",98468624,cahincapiep@entrerrios.edu.co,"2026-06-11 10:56:55",$2y$12$FzXteNna/Zk000DcM0pWsOBuvVchGZqRUb5ugGm36sZTAWOO1Gg7S,,,,Ssr3KUXwXk,5,,,0,0,0,,
+19,"Dany Alejandro","Osorio Gil",98636197,daosoriog@entrerrios.edu.co,"2026-06-11 10:56:55",$2y$12$emU30s68VLW5Ud.rS3g1b.JHwAjcGDOkgBnggPQYxRnX.ntIXwH7y,,,,xbqucwWidq,5,,,0,0,0,,
+20,"Leidy Susana","Aceros Cardozo",63561749,lsacerosc@entrerrios.edu.co,"2026-06-11 10:56:55",$2y$12$2u27F.xZj4Hg.IUoeyrqi.4E.u0YVznshyPjwZZgFGFrq8Iycg4VC,,,,LhAQw4IpWg,5,,,0,0,0,,
+21,"Jahn Christian","Moreno Meza ",98396892,jcmorenom@entrerrios.edu.co,"2026-06-11 10:56:55",$2y$12$NxEd.DLjr0Q2WQ4cq/jSVewEcGNJrxY6GjfZOAfKvJD4UHV1w.4h2,,,,4Ni6s4mv9s,5,,,0,0,0,,
+22,"Carlos Arturo","Vallejo Restrepo",70975470,cavallejor@entrerrios.edu.co,"2026-06-11 10:56:56",$2y$12$cNORWk0NaGUOg30mCLYC3OrUdbgux5WVAAk.5em4ZDre4Rx42F0/e,,,,CnCU2fyhmT,5,,,0,0,0,,
+23,"Shirley Hasblady","Márquez Ángel ",43142967,shmarqueza@entrerrios.edu.co,"2026-06-11 10:56:56",$2y$12$ZOj8tvjLG56CVyVYo6fPueV6BEAAupVosoVIFB5dU7ssuGkDCacJ6,,,,ML9Fx8JCRo,5,,,0,0,0,,
+24,Katherine,"Giraldo Zuluaga ",1026138979,kgiraldoz@entrerrios.edu.co,"2026-06-11 10:56:56",$2y$12$z/3WfX0szSMHP1NMB5Vx2.dx/fytQNlbygHuJInRjhIntz1tij0xK,,,,BAgA64Eg42,5,,,0,0,0,,
+25,"Eliana Isabel ","Cardona Cortés ",1036637682,eicardonac@entrerrios.edu.co,"2026-06-11 10:56:57",$2y$12$n7ax319GUFlpOM48QqhiVuDUDZBgGOVZPiESbTsXyKGCvmjjO9vt6,,,,jRiKBcTlCe,5,,,0,0,0,,
+26,"William ","Romaña Palacios ",11798220,wromanap@entrerrios.edu.co,"2026-06-11 10:56:57",$2y$12$.nmQqzEZT3lbfxyWs5BXr.z2ESyTKbvLWWxGRMRUG10Jdb6pi7lra,,,,fMaNWbW9O1,5,,,0,0,0,,
+27,"Yuly Rocio ","Piedrahita Velasco",34316399,yrpiedrahitav@entrerrios.edu.co,"2026-06-11 10:56:57",$2y$12$w3iVHb49cdJYX5/wO1Eea.IVHTBaPCt1NzLN7lbhAacJFfabRSmDe,,,,GvsHr1umds,5,,,0,0,0,,
+28,"José Celedonio","Montoya Urrego",8005118,jcmontoyau@entrerrios.edu.co,"2026-06-11 10:56:57",$2y$12$Y06GCd0.w7atjDefHTTgP.lJOnCAzxV0IGkKyIn4l7Ojeuco6eu2K,,,,kflFbj2Yop,5,,,0,0,0,,
+29,"Daniel Humberto ","Martínez Suárez",1032070334,dhmartinezs@entrerrios.edu.co,"2026-06-11 10:56:58",$2y$12$/mRBwM8/Nv7okywTFrvJwObsxDFpn5ojqlO2iUyu0E8vv6kP9.6I2,,,,oiJlJGp9Wv,5,,,0,0,0,,
+30,"Mónica Soraya ","Marín Ortiz",43579902,msmarino@entrerrios.edu.co,"2026-06-11 10:56:58",$2y$12$2i8Hqk9Yid3i0j6ymqavC.ysCOGn/rLpT2Sj0G70hWtl21zPFW7LC,,,,ncgJAPD3N0,5,,,0,0,0,,
+31,"José Gregorio",EchavarríaOcampo,71784650,jgechavarriao@entrerrios.edu.co,"2026-06-11 10:56:58",$2y$12$7NA8sbLebBHOMzOWFN.xnuJrrEq8w/qBOz.fcCTKnxRIF3W6Kygi.,,,,xhGt281LAn,5,,,0,0,0,,
+32,Wilson,"Ríos Rios",73135461,wriosr@entrerrios.edu.co,"2026-06-11 10:56:59",$2y$12$1o5NPvncuG5TZa7pkwYEiu.97cjYrPJ7vYeLQdzK/Jl8Sp6/HT29u,,,,vvTltXpNMu,5,,,0,0,0,,
+33,"Arcadio ","Ocampo Flórez",71717547,aocampof@entrerrios.edu.co,"2026-06-11 10:56:59",$2y$12$ZrP5eSV02CCxddtup57hyeaemYe5rpJA2yn1T55qRBmY14i5xFG5O,,,,K6qWaYPqNU,5,,,0,0,0,,
+34,"Diego Luis","Medina Santana ",98572464,dlmedinas@entrerrios.edu.co,"2026-06-11 10:56:59",$2y$12$izDD/feVnhplAB/qvkFzHuq8rZpRIi2Y35/GXMjAZO852FibnG8Iq,,,,N2cT4rrl8n,5,,,0,0,0,,
+35,"Javier Enrique","Cordoba Rivas",11812068,jecordobar@entrerrios.edu.co,"2026-06-11 10:57:00",$2y$12$tT9aj0e5dDFGJPW66FpvPumY1hTGFZqY1PhNrDKiQQEQDhJ.jAe76,,,,adlymNK5Mo,5,,,0,0,0,,
+36,"Dubán Darío ","Duque Avendaño",98493240,ddduquea@entrerrios.edu.co,"2026-06-11 10:57:01",$2y$12$jfjTvNnfql2D9c4ClyXpz.P71bHzCwLDZ/bmxuvjnPBY6cKxGk5F.,,,,r2G7esGPnJ,5,,,0,0,0,,
+37,"Giovani Humberto","Escobar Arismendi",15509745,ghescobara@entrerrios.edu.co,"2026-06-11 10:57:01",$2y$12$qOGA1G.3wHaMSc/gys9LHu4yLhEAqt8qZz0yHVy1ev9r4UmdI6.b2,,,,lPlYCPLKP5,5,,,0,0,0,,
+38,"Francisco Javier","León Sandoval ",79606063,fjleons@entrerrios.edu.co,"2026-06-11 10:57:01",$2y$12$aUF5tVbmnBpXKdPeQNTqJeCQjMl92nqUACd55RAD9atkNaHNR1P0O,,,,Ac5WMITKsV,5,,,0,0,0,,
+39,"Lina María","Lopera Betancur ",1035830293,lmloperab@entrerrios.edu.co,"2026-06-11 10:57:01",$2y$12$X5aypo0q9RZSREA.fqbkB.Silt.4n4B/tJELSDF1JFItO7EkwrG/a,,,,QWOqCUqkql,5,,,0,0,0,,
+40,"Lina Marcela ","Medina Lopez",1013597927,lmmedinal@entrerrios.edu.co,"2026-06-11 10:57:02",$2y$12$O2IigX51nDsUdtQbGp.DMOZdLGyrQ7iN/qUUB8TaDu3gjdt1bJSIK,,,,tUp76denQ8,5,,,0,0,0,,
+41,"Luis Abel","Torres Ibargüen",11936847,latorresi@entrerrios.edu.co,"2026-06-11 10:57:02",$2y$12$yJZULl3LN4XJ3csXkQIMyeptnHRLqBCcA7Aa0yiBw93bfnJh2L6Ii,,,,p3IYlCoaWU,5,,,0,0,0,,
+42,"Gloria Nodier","Tamayo Zapata",43360528,gntamayoz@entrerrios.edu.co,"2026-06-11 10:57:02",$2y$12$Ggt/zEIMRXRjc51WjEv.HOJlefj/y69BtUtqLQxzEMqc0p3gYe/hG,,,,tS2sgHGn9S,5,,,0,0,0,,
+43,Katherine,"Carvajal Ceballos",1040326270,kcarvajalc@entrerrios.edu.co,"2026-06-11 10:57:03",$2y$12$nPO5wmHYzPCpV/z2UJ6C6uA6ZdxdsIzns9TJiQO0SZh31BZNbxDmW,,,,cr0JYWRrEm,4,,,0,0,0,,
+44,Lorena,"Aguirre Estrada",42782144,laguirree@entrerrios.edu.co,"2026-06-11 10:57:03",$2y$12$m1aMeTsB1mmu2YEGm6uqQuxw5hY8IHnEP.1TK3agiJA6FAPo9gfcG,,,,bfAgtsmstz,4,,,0,0,0,,
+45,"Carmen Elena","Monsalve Monsalve",21470793,cemonsalvem@entrerrios.edu.co,"2026-06-11 10:57:03",$2y$12$OulO1/mPze6a06Lq0yR5Juwsh6oIOEPuYFbkt/qum3CvsdecGVoSi,,,,i7vAvdbJAd,4,,,0,0,0,,
+46,"Olga Lucía","Monsalve Monsalve",21715127,olmonsalvem@entrerrios.edu.co,"2026-06-11 10:57:03",$2y$12$HOJErR31gYP4G5q9bsbrT.qLy/sMxiZTJM/7gSX8ZzpseSYyajRSi,,,,7lVtdKes2p,4,,,0,0,0,,
+47,"Xiomara ","Vásquez Ruiz",1035831101,xvasquezr@entrerrios.edu.co,"2026-06-11 10:57:04",$2y$12$w5Jxaty7Frj6Het.X9kcOO33s78gpKnC/Qm0pnbHZIeVR7vJUwiKq,,,,YoEuGQEszp,4,,,0,0,0,,
+48,"Luis Alberto","Osorio Castaño",71670846,laosorioc@entrerrios.edu.co,"2026-06-11 10:57:04",$2y$12$l7OqAC0y5J9N/ds1SPIz2eQNMPuphIgmDnylxKgp.BeK8nPFwOiki,,,,mv12qYSlEC,4,,,0,0,0,,
+49,"Yeny Alejandra","Ruiz Pérez",1035832399,yaruizp@entrerrios.edu.co,"2026-06-11 10:57:04",$2y$12$BqcAYL37HbyLYPk4jigyTexZt0RyJ.VOT826UrYiZzkg7G/.v94Cu,,,,SMK2ADFRpl,4,,,0,0,0,,
+50,"Leidy Diana","Pérez Martínez",43365654,ldperezm@entrerrios.edu.co,"2026-06-11 10:57:04",$2y$12$P8JINydD/7AHWYiXELIu3.7Mbe27R5ab2s9g84xpMCGuytwjRAzl6,,,,5Ga90Nf6L8,5,,,0,0,0,,
+51,"Claudia Milena","Ortega Roldán ",32229308,cmortegar@entrerrios.edu.co,"2026-06-11 10:57:05",$2y$12$4a5PqmHDEg9eI0NamSJsbe1faKaLrJq9b7JGS5kBtOajhPalXnrle,,,,Xui4WDXBnj,5,,,0,0,0,,
+52,Omaira,"Quitian Infante ",37926145,oquitiani@entrerrios.edu.co,"2026-06-11 10:57:05",$2y$12$oTd69lMG/Y48qj9Jv02UU.8vASFklDbxdHYuGb.uj8FrmiAThni.a,,,,BB36GtLACF,3,,,0,0,0,,
+53,"Luis Fernando","Ochoa Muñoz",71655142,lfochoam@entrerrios.edu.co,"2026-06-11 10:57:05",$2y$12$hDCRQirob6khS0LPAbM1ZOPQtLoLTQEfHcWYTxXZA4CVeCeS0dt4y,,,,UjwnS2wzsK,3,,,0,0,0,,
+54,"Adolfo León ","Ruiz Hernández",71379517,bhagam19@gmail.com,"2026-06-11 10:57:06",$2y$12$TbDknGiyZmE1hXjiSwII.eSdPD6FP26Yit3v1tdIFhJX2ceDZEb4y,,,,54aBG9lZH3,1,,,0,0,1,,"2026-06-11 18:46:33"
+55,"María Ofelia","Barrera Jaramillo",43360172,mobarreraj@entrerrios.edu.co,"2026-06-11 10:57:06",$2y$12$M8iGGeif9y9HP9cYr0kPpetGjmCpd3Mj/mFTYnwGGAUVMZn/rupQ.,,,,95FTiP31i4,4,,,0,0,0,,
+56,"Juan Camilo","García Gaviria",1044101756,jcgarciag@entrerrios.edu.co,"2026-06-11 10:57:06",$2y$12$hsg0MseEjKc1dNq5ttzz2OAO/rXUV1tbjvZloqIqsuSxV694qinU2,,,,LdJmYiaOWy,5,,,0,0,0,,
+57,"Karen Susana","Velásquez Vargas",1000564359,ksvelasquezv@entrerrios.edu.co,"2026-06-11 10:57:06",$2y$12$mAl1zVPmfelI1Vo2uqiq/eUQXwpjHBJuwM/PcPhKnV/jgA/kFB.Hq,,,,jHPf6Vrouu,5,,,0,0,0,,
+58,"Maria Eugenia",Ruiz,43342108,meruiz@entrerrios.edu.co,"2026-06-11 10:57:07",$2y$12$JxhuZtZcenPCRqqyQCrSk.I.quLlD5bg8MU81u7ysEdLPFpvaG/CO,,,,TLykEW5VbA,4,,,0,0,0,,
+59,"Miguel Antonio","Peña Cicua",457999,mapenac@entrerrios.edu.co,"2026-06-11 10:57:07",$2y$12$Q8KN/hAsem.TSAiFngyLK..vb8HEB8sSMXcJk9xJvUjdtdt2z9eOS,,,,5Nr2dj8eM2,4,,,0,0,0,,
+60,"Olga Cecilia","Uribe Londoño",42868854,ocuribel@entrerrios.edu.co,"2026-06-11 10:57:07",$2y$12$xhCA2LXW6FiFXw7tqNPKOOCioYEY0QpovKerChvL8SAWJ/rwdTWwW,,,,6Zejw0WttV,5,,,0,0,0,,
+61,"Rubén Darío","Zapata Lotero",70813215,rdzapatal@entrerrios.edu.co,"2026-06-11 10:57:07",$2y$12$1q1w3kjL4IC1ncTom6wMTe.nWHpCg8.u6aSohC2hGPihKHkL9AOBO,,,,V13UxM2lLA,5,,,0,0,0,,
+62,Nicolás,"Pérez Echavarría",1036620666,npereze@entrerrios.edu.co,"2026-06-11 10:57:08",$2y$12$m54PwTxdKvZm6ynFwpWDh.6MaOYzlIYs8numutwvahxEqMlg9.Y4a,,,,OjSugHP3fJ,5,,,0,0,0,,
+63,"Carlos Absalón","Arias Gerena",1014201973,caariasg@entrerrios.edu.co,"2026-06-11 10:57:08",$2y$12$FMm2j7DQfswuuqCBsQa4.uD6NTWUl.L/gFLmV1XRIbVRUrIWtvNwG,,,,PMmHHGpMZi,5,,,0,0,0,,
+64,Jakcson,"Sánchez Moreno",11812084,jsanchezm@entrerrios.edu.co,"2026-06-11 10:57:08",$2y$12$cG0OKfrT1xk2tgwsUO4x2.Wc2FT.y7Qg/wut52Bf/Br9AyJrv/TG2,,,,KPnvzdXFw3,5,,,0,0,0,,
+65,"Verónica Marcela","Tobón Múnera",1035830931,vmtobonm@entrerrios.edu.co,"2026-06-11 10:57:09",$2y$12$.9JN8xvQBCcTnCOFxj8P1uJYBj6f.qs41CML/9R8QM0apr/tS.rI.,,,,48tCezhYE0,5,,,0,0,0,,
+66,"Yesny Aidé","Vásquez Mosquera",43117442,yavasquezm@entrerrios.edu.co,"2026-06-11 10:57:09",$2y$12$//31V1mkyA5M3g/PB619t.s41YyxvBNp9xOkJLj3ayMLCDjrG7.ge,,,,GhOOXYQiQy,5,,,0,0,0,,
+67,"Luz Adriana","Londoño Builes",21715420,lalondonob@entrerrios.edu.co,"2026-06-11 10:57:09",$2y$12$.T9M/stRFVZsDp462sDsQu67gpWAW9vhDmMaq3b04wfVlI.jlvXdS,,,,3byoS1ZmRt,5,,,0,0,0,,
+68,Yahaira,"Lemos Rodríguez",35546799,ylemosr@entrerrios.edu.co,"2026-06-11 10:57:09",$2y$12$Y/bIExZq0Der9tL1qCzvtOJpygu.J345rVponmfgTqvg8dMZ2cLQy,,,,Ii2SteaLmQ,5,,,0,0,0,,
+69,"Camilo Esteban","Pineda Vásquez",8434706,cepinedav@entrerrios.edu.co,"2026-06-11 10:57:10",$2y$12$uWHQq5D44gl8/Z0wu4GJweJy4mnOBXmR.8gFCDvzI0TOIG3llre3C,,,,bYAPhWvtA9,4,,,1,0,0,,"2026-06-12 04:58:25"
+70,"Andrés David","Escobar Zapata",71339991,adescobarz@entrerrios.edu.co,"2026-06-11 10:57:10",$2y$12$UuKUetb0fmHsn4/3PGjbH.5FBMz9iSduh4mzC9J2yTtVKytwaoyHu,,,,XBjbucMmkJ,3,,,0,0,0,,
+73,"Katerin Nayibe","Uribe Monsalve",1034987245,knuribem@entrerrios.edu.co,"2026-06-11 10:57:10",$2y$12$AAtdV0REKyYCOTVXO84aa.neQhp8hWgFFsIt8iEvX23P0axZKniwm,,,,dbSBWcRfUS,4,,,1,0,0,,"2026-06-12 04:58:50"
+74,"Jorge Andrés","Rodríguez Toro",98568338,jarodriguezt@entrerrios.edu.co,"2026-06-11 10:57:11",$2y$12$/rJ41iqV/DDP6HHFcrzPrueysorjwnvvsZNT8De8Zg6JHedLENEn.,,,,QuCjm5Xley,5,,,0,0,0,,
+75,"Lácides Alberto","Serpa Paternina",98656071,laserpap@entrerrios.edu.co,"2026-06-11 10:57:11",$2y$12$nbTy0UfwP9/8OeDwMx7zAu9CaAC4KC6j/uZWz9xk.J43KFzHG6Zg.,,,,hOOyF2OQyI,5,,,0,0,0,,
+76,"Luz Mery","Murcia Machado",1088325622,lmmurciam@entrerrios.edu.co,"2026-06-11 10:57:11",$2y$12$jCnU8GceaEeXEuwB3bb9MeyWBu.nZZhahM6ZOzeo8mZkioC/UPU1a,,,,k5PcDRPzUC,5,,,0,0,0,,
+77,"Yuly Andrea","Durango Flórez",1128483419,yadurangof@entrerrios.edu.co,"2026-06-11 10:57:11",$2y$12$n1EO0tgm6fSIZL45ePJgf.AwGfZfqAXdFpRqqCN0cI8/7.wCdGhR.,,,,p97Es0HnHK,5,,,0,0,0,,
+78,"Leidy Diana","Uribe Betancur",1035830025,lduribeb@entrerrios.edu.co,"2026-06-11 10:57:12",$2y$12$wIoNJ2/xif6vDDyDQTLj/.98t2BaW559fhyWGmuLXt5lxd3NZo5wi,,,,ZBEBcqHpAu,4,,,0,0,0,,
+79,Catalina,"Cardona Echeverry",1042706259,ccardonae@entrerrios.edu.co,"2026-06-11 10:57:12",$2y$12$Ur6F8rwMpXZA5QR6LRyS4.Jks6p5SzHoagucqVCI6u.ZFEOB2Nsqm,,,,5WD5N2sieS,5,,,0,0,0,,
+80,"Leidy Yohana","Múnera Londoño",1040323460,lymuneral@entrerrios.edu.co,"2026-06-11 10:57:12",$2y$12$fquQQ5Kwe0FUYthkbyKtxe9EbcPy.aC.dlMSqoi93RfqXysomXLMq,,,,Fo1PPnT4do,5,,,0,0,0,,
+81,"Gabriel Ernesto","Gil Preciado",3469724,gegilp@entrerrios.edu.co,"2026-06-11 10:57:12",$2y$12$3LH8IdA5LhLQJ.9BiVLIN.XjTtgHQrFJMrYTIkjK8ksJaK5MtRmxm,,,,SU3g43MdPT,5,,,0,0,0,,
+82,Jakeline,"Perea Cuesta",1077462627,jpereac@entrerrios.edu.co,"2026-06-11 10:57:13",$2y$12$E4LSmgBnw1TrjGcNq5/Ul.IInQ5icAwxC30YcagUfAWn.oPzlYSeu,,,,1OVidMGysL,5,,,0,0,0,,
+83,Sebastián,"Monsalve Monsalve",1007242962,smonsalvem@entrerrios.edu.co,"2026-06-11 10:57:13",$2y$12$KBmLVzxBFJhDbLzK.5sTuu3stpKfVnS0QFyeFSoS/i5hryFkWf42.,,,,bAIOQ6W8ES,4,,,0,0,0,,
+84,"Mildre Yoana","Areiza Jaramillo",1023801794,myareizaj@entrerrios.edu.co,"2026-06-11 10:57:13",$2y$12$Z59YeAjomxthMdVZDSlbOuzIlsWEjcyxClpzZvN/Tlgtf/kloDvhm,,,,7A8y5SKpro,4,,,0,0,0,,
+85,Katerine,"Palacios Palacios",1077463523,kpalaciosp@entrerrios.edu.co,"2026-06-11 10:57:13",$2y$12$emOpiBctSGomheWsAWuDKu6m4YKREHfTxSIUmcSIukpEJiUU2ORL6,,,,3I2OYrn4O5,5,,,0,0,0,,
+86,"Maryori María","Mantilla Olaya",1026132228,mmmantillao@entrerrios.edu.co,"2026-06-11 10:57:14",$2y$12$EdDqGAYxkif67K/P9UEWpu4YdH5l3ukfcnubLMfW8TlS3e8UblKdm,,,,AYNxnKIJM8,4,,,0,0,0,,
+87,Gladys,Coordinadora,1,gcoordinadora@entrerrios.edu.co,"2026-06-11 10:57:14",$2y$12$Jr9vCnVF1OXfkj5lKgOFRukqbkM57Tt6XPG.8tkqe9vOnHp522n2O,,,,EQOTyjP6WR,4,,,0,0,0,,
+88,Claudia,Moreno,2,cmoreno@entrerrios.edu.co,"2026-06-11 10:57:14",$2y$12$/dBf3W2S.Oo0GMNG0DKkROkRRZ7Dd6FMMphI6khC3Jwqn09StzPJi,,,,5mC6VjwlZG,4,,,0,0,0,,
+89,Consejo,Familias,3,cfamilias@entrerrios.edu.co,"2026-06-11 10:57:15",$2y$12$mLTOUvfXTUS7N4lbVvYkGuF8jn4t7pfmQKY9YZNhKD6herZrcpH5q,,,,X3wCwZQZ7Z,4,,,0,0,0,,
+90,"Juan Camilo","Arboleda Carmona",1033654172,jcarboledac@entrerrios.edu.co,"2026-06-11 10:57:15",$2y$12$4OBzF5PVKvct4B2/lE2B3uPmNxr2/4J6uV8grB1TgSZGW.UeDQ4TK,,,,xH06S42oCA,5,,,0,0,0,,
+91,Valeria,"Lebrun Llano",1036669498,vlebrunl@entrerrios.edu.co,"2026-06-11 10:57:15",$2y$12$eR8RHOkqBWharP00McXDtuaD7gHj.gFW1AtfS9PklUVs80L/zfTha,,,,PE2edRGhVn,5,,,0,0,0,,
+92,"Aida Marcela","Castaño Brand",32564789,amcastanob@entrerrios.edu.co,"2026-06-11 10:57:15",$2y$12$Tt7EfZvS37e8kA4.jFF3SuSqhMaQ3CZcgo/PR0t2bGg.evZBQ3Aqq,,,,dGgLgdfYyI,5,,,0,0,0,,
+93,"Lorena Liceth","Vélez Tamayo",1035831401,llvelezt@entrerrios.edu.co,"2026-06-11 10:57:16",$2y$12$o6B8qRP8iB0Egu9y3i98a.Kf1RAhGj9XxwlqwtrkZNfw6Mkobe3o2,,,,fYYKZ0I7pf,4,,,0,0,0,,
+94,"Sonia Amparo","Gallego Villa",21714469,sagallegov@entrerrios.edu.co,"2026-06-11 10:57:16",$2y$12$zGJVV277CogUWih84PSMqOL0OcKPFPccmF9.7vPELUn6QXOC2/sCy,,,,2duITatC8g,4,,,0,0,0,,
+95,"Javier Mauricio","Vélez Hernández",1037659708,jmvelezh@entrerrios.edu.co,"2026-06-11 10:57:16",$2y$12$722gU1XEEkyDmKMMVTVdiuCjJCJAWtlZvybFRqMCbQqYpHLXVCfqW,,,,4eXNo0y1vM,5,,,0,0,0,,
+96,"Manuel Orlando","Pérez Luna",15646704,moperezl@entrerrios.edu.co,"2026-06-11 10:57:16",$2y$12$GmVPZCZ1jHcupiRH4KtN.OfTixnmIcNOeo8nZ9c9.wkpBZVpwdxme,,,,Uk2mdg5amv,5,,,0,0,0,,
+97,"Julian David","Trochez Solarte",1061737389,jdtrochezs@entrerrios.edu.co,"2026-06-11 10:57:17",$2y$12$aQQqHjNPpOUxWUHf2hxY2eybRIAG7JmJx31XoXvBup25JO78byv2u,,,,BFtYeSeSzS,5,,,0,0,0,,
+98,"Luz Mery","Monsalve Monsalve",21714954,lmmonsalvem@entrerrios.edu.co,"2026-06-11 10:57:17",$2y$12$idDgOVprp2u6N2nmXv.GWeSVoN2YH7Ozc12KsNuT2zk79PYLnTr7a,,,,gxHp4tNLIa,4,,,0,0,0,,
+99,"Maynlee Xiomara","Pineda Romero",1049634320,mxpinedar@entrerrios.edu.co,"2026-06-11 10:57:17",$2y$12$t482KqA/N0PDjWKoadHyreTpOXZCoibg7Uq3O.E97CmTdBr1Lb4P.,,,,8pcWZdKVNk,5,,,0,0,0,,
+100,"Elia Ennid",Granda,43591558,eegranda@entrerrios.edu.co,"2026-06-11 10:57:17",$2y$12$A6pVk9klZTVwlg353VGAM.5aMQrefl5Yg5EAeTrrrwS1sUaolFXju,,,,tcMmk8Ik4H,5,,,0,0,0,,
+101,"Nidia Omaira","Herrera Espinosa",32228303,noherrerae@entrerrios.edu.co,"2026-06-11 10:57:18",$2y$12$Wsp3ntn/qh0Tl3isME9XN.Iwop1udv93/FXbIyZde7skOCT3ZOJle,,,,whwe1QydS3,3,,,0,0,0,,
+102,"Bibiana Marcela","Restrepo Monsalve",1035831462,bmrestrepom@entrerrios.edu.co,"2026-06-11 10:57:18",$2y$12$nSN9lm.ceY9foI16cGwBweWhwrcGohzOTWOk9QIHLjkdRlnmNMC/i,,,,srSFocfgtz,4,,,0,0,0,,
+103,"Ana Cristina","Restrepo Ortiz",43752407,acrestrepoo@entrerrios.edu.co,"2026-06-11 10:57:18",$2y$12$F3SUgcFrnfuqBi33/iwS6OIqYk4rf4zQqBojDpnxb38RFFbMmuCyq,,,,jzLV6DsNQg,4,,,0,0,0,,
+104,Tatiana,"Chica Cuartas",1128444797,tchicac@entrerrios.edu.co,"2026-06-11 10:57:19",$2y$12$OFKwbQ8U8Ztwd9ie2BMosOjAqT5F3payPuX8iUhz/UB2nOuDyw0wG,,,,LMDeOGN1EF,4,,,0,0,0,,
+105,"Nelson Adil","Martínez Vergara",15325399,namartinezv@entrerrios.edu.co,"2026-06-11 10:57:19",$2y$12$Qfp2CST8ggVLO2gJ0w9dC.pqkkRjQixR/Gf/6lErjLPSuYI3YLLi2,,,,3r3PvG0L4m,5,,,0,0,0,,
+106,"Francisco Andrés","Monsalve Saraz",15513393,famonsalves@entrerrios.edu.co,"2026-06-11 10:57:19",$2y$12$hgLu2CQUjLxpWyOR0K2ouOXINEk.KsiCOB0MnAIKHBucDg7G2tMoO,,,,pNbgbeSni2,5,,,0,0,0,,
+107,"Juan Manuel","Cardona Arroyave",98545438,jmcardonaa@entrerrios.edu.co,"2026-06-11 10:57:19",$2y$12$zeTF.mJHwEnZ6zyUxdU.s.bzNXgXK7t1xZDBtxIEdYHWuKdFarJym,,,,9t2gOYmvbP,5,,,0,0,0,,
+108,"John Sady","Betancur Henao",1038868137,jsbetancurh@entrerrios.edu.co,"2026-06-11 10:57:20",$2y$12$dMc0y7ImI9OiWdD3F1PZ7OiJHbCPVFeFJTi3IsOWlZJn4Wfc9O6nK,,,,hmImGKpWBk,4,,,0,0,0,,
+109,"Erika Paola","Londoño Castro",1035831260,eplondonoc@entrerrios.edu.co,"2026-06-11 10:57:20",$2y$12$swsLaAbmVTDen7W6Wun/9uO1Mx3Add0zjJJbbj6H0xlgaUrI1IzWq,,,,IgnvaMoUcB,4,,,0,0,0,,
+110,"Carlos Andrés","Ordoñez Arroyave",15273975,caordoneza@entrerrios.edu.co,"2026-06-11 10:57:20",$2y$12$3EJaSsk70OdcemFrwQ05BeqGhh.xoLHTZ1EECa1uVzCVrtf3FvuEe,,,,mysa7d0Nws,4,,,0,0,0,,
+111,"David Antonio","Arango Valencia",71737846,daarangov@entrerrios.edu.co,"2026-06-11 10:57:20",$2y$12$cYUKwpRB7sEesv.AKlwgDeNfsRpXIyctf3molDiQqeZrQH/i5tZhi,,,,D0CxCNA5rR,5,,,0,0,0,,
+112,"Francisco José","Perea Quintero",1076384385,fjpereaq@entrerrios.edu.co,"2026-06-11 10:57:21",$2y$12$2KDRkMbXELj.8Ax3Jet.nOT9J8HrQkgMVgMM7oWsIvOqn37wv6rtq,,,,Ia7rn2ZzLF,5,,,0,0,0,,
+113,"Pedro Antonio","Pérez Meza",92551649,paperezm@entrerrios.edu.co,"2026-06-11 10:57:21",$2y$12$q3.FzVxVbmmorU4A39qu7.A6lR/o5YqtEFu7CrSBckbAeSBDgPkDK,,,,vWvO43QOOF,5,,,0,0,0,,
+114,"María Berenice","Ramírez Vassco",43528888,mbramirezv@entrerrios.edu.co,"2026-06-11 10:57:21",$2y$12$gvjOr.5DCHfwjt5jwX/Ziewa2emeBR4IJ07nrsaw7JoG3SgdtLHr6,,,,s4iTNeRJ6z,5,,,0,0,0,,
+115,"Dorian Rodrigo","Ruiz Hernández",71481707,dorianrodrigo@gmail.com,"2026-06-11 10:57:22",$2y$12$agYc0a68cDf7BHcZiWMmcuLgA.O8aJjy0HI8eFqE8PZ3JxgvjsAoO,,,,lQ2IoOjR2h,3,,,0,0,0,,
+116,"Doris De Las Misericordias","Elorza Chavarría",32563490,dmelorzac@entrerrios.edu.co,"2026-06-11 10:57:22",$2y$12$VNuOHMPCrpOQXAQpkQPb7OTgAnNJkHRvIynaNrG6fNvXlm0HT9kJS,,,,mlYqcJD39H,5,,,0,0,0,,
+117,"Luz Elena","Colorado Lopez",39454570,lecoloradol@entrerrios.edu.co,"2026-06-11 10:57:22",$2y$12$QVlCR5EdSDu/PgM4MPJTEeJ4FJQwiDnem8fqAgUFj/5mstWXfPuHC,,,,EuLBoXkgKd,5,,,0,0,0,,
+118,"Cecilia Stefania","Rivas Valencia",1045511181,csrivasv@entrerrios.edu.co,"2026-06-11 10:57:22",$2y$12$ANII1Pivq.Y1/vrmhNhzCeFobuPlGhGvl1A.piAlBDzJ1Y5gz3PTK,,,,OvqgAHCNko,5,,,0,0,0,,
+119,"Claudia Marcela ","Zapata Aristizabal",32229114,rectoriaiee@entrerrios.edu.co,,$2y$12$BRg.0UowJbsJbffYjAflfuPae9zHwPXUh6z5ssYiInBvcmvhFk8Eq,,,,,2,,,0,0,0,"2026-06-12 04:34:21","2026-06-12 10:38:14"

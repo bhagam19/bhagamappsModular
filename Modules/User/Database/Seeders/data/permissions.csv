@@ -1,39 +1,81 @@
-"id","nombre","slug","descripcion","categoria","created_at","updated_at"
-"1","ver usuarios","ver-usuarios","Permite visualizar la lista de todos los usuarios registrados en el sistema.","usuarios","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"2","crear usuarios","crear-usuarios","Permite registrar un nuevo usuario en el sistema.","usuarios","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"3","editar usuarios","editar-usuarios","Permite modificar la información de un usuario existente.","usuarios","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"4","eliminar usuarios","eliminar-usuarios","Permite eliminar usuarios del sistema de forma permanente.","usuarios","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"5","ver roles","ver-roles","Permite visualizar todos los roles existentes y sus respectivos permisos.","roles","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"6","crear roles","crear-roles","Permite crear nuevos roles con un conjunto de permisos definidos.","roles","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"7","editar roles","editar-roles","Permite modificar el nombre o los permisos de un rol existente.","roles","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"8","eliminar roles","eliminar-roles","Permite eliminar un rol del sistema, siempre que no esté en uso.","roles","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"9","asignar permisos a roles","asignar-permisos-a-roles","Permite asignar o revocar permisos a los distintos roles del sistema.","roles","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"10","ver permisos","ver-permisos","Permite consultar la lista completa de permisos disponibles en el sistema.","permisos","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"11","crear permisos","crear-permisos","Permite registrar un nuevo permiso en el sistema.","permisos","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"12","editar permisos","editar-permisos","Permite modificar el nombre, descripción o categoría de un permiso.","permisos","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"13","eliminar permisos","eliminar-permisos","Permite eliminar un permiso del sistema permanentemente.","permisos","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"14","ver bienes","ver-bienes","Permite visualizar la lista de todos los bienes registrados en el sistema.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"15","crear bienes","crear-bienes","Permite registrar un nuevo bien en el sistema.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"16","editar bienes","editar-bienes","Permite modificar la información de un bien existente.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"17","eliminar bienes","eliminar-bienes","Permite eliminar bienes del sistema de forma permanente.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"18","aprobar bienes","aprobar-bienes","Permite aprobar o rechazar bienes que están pendientes de revisión.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"19","ver historial bienes","ver-historial-bienes","Permite consultar el historial de modificaciones y ubicaciones de los bienes.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"20","asignar responsables a bienes","asignar-responsables-a-bienes","Permite asignar o cambiar los custodios o responsables de un bien.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"21","ver imagenes de bienes","ver-imagenes-de-bienes","Permite visualizar la galería de imágenes asociadas a un bien.","bienes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"22","ver aprobaciones pendientes bienes","gestionar-historial-modificaciones-bienes","Permite visualizar la lista de bienes o modificaciones que están pendientes de aprobación.","aprobaciones pendientes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"23","aprobar pendientes bienes","aprobar-pendientes-bienes","Permite aprobar o rechazar las modificaciones o nuevos bienes que están pendientes.","aprobaciones pendientes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"24","editar aprobaciones pendientes bienes","editar-aprobaciones-pendientes-bienes","Permite modificar la información relacionada con una aprobación pendiente antes de su resolución.","aprobaciones pendientes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"25","eliminar aprobaciones pendientes bienes","eliminar-aprobaciones-pendientes-bienes","Permite eliminar registros de aprobaciones pendientes del sistema.","aprobaciones pendientes","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"26","ver actas de entrega","ver-actas-de-entrega","Permite visualizar las actas de entrega generadas en el sistema.","actas de entrega","2026-06-07 12:09:02","2026-06-07 12:09:02"
-"28","administrar apps","administrar-apps","Permite habilitar/deshabilitar aplicaciones y asignar roles desde el panel de administración de apps.","apps","2026-06-08 19:39:51","2026-06-08 19:39:51"
-"29","ver apps","ver-apps","Permite acceder al panel de administración de aplicaciones.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"30","crear apps","crear-apps","Permite registrar una nueva aplicación en el catálogo.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"31","editar apps","editar-apps","Permite modificar los datos de una aplicación existente.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"32","eliminar apps","eliminar-apps","Permite eliminar una aplicación del catálogo de forma permanente.","apps","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"33","ver grupos","ver-grupos","Permite acceder a la sección de administración de grupos académicos.","grupos","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"34","ver evaluación docente","ver-evaluacion-docente","Permite acceder a la sección de evaluación docente.","evaluacion-docente","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"35","ver biblioteca","ver-biblioteca","Permite acceder a la sección de biblioteca.","biblioteca","2026-06-08 20:23:25","2026-06-08 20:23:25"
-"36","ver administración de contraseñas","ver-administracion-passwords","Permite acceder al panel de administración de contraseñas de usuarios.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
-"37","restablecer contraseñas","restablecer-passwords","Permite restablecer la contraseña de cualquier usuario.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
-"38","bloquear usuarios","bloquear-usuarios","Permite bloquear una cuenta de usuario para impedir su autenticación.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
-"39","desbloquear usuarios","desbloquear-usuarios","Permite desbloquear una cuenta de usuario previamente bloqueada.","administracion-passwords","2026-06-11 10:00:00","2026-06-11 10:00:00"
+id,nombre,slug,descripcion,categoria,created_at,updated_at
+1,"ver apps",ver-apps,"Permite acceder al panel de administración de aplicaciones.",apps,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+2,"crear apps",crear-apps,"Permite registrar una nueva aplicación en el catálogo.",apps,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+3,"editar apps",editar-apps,"Permite modificar los datos de una aplicación existente.",apps,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+4,"eliminar apps",eliminar-apps,"Permite eliminar una aplicación del catálogo de forma permanente.",apps,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+5,"ver grupos",ver-grupos,"Permite acceder a la sección de administración de grupos académicos.",grupos,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+6,"ver evaluación docente",ver-evaluacion-docente,"Permite acceder a la sección de evaluación docente.",evaluacion-docente,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+7,"ver biblioteca",ver-biblioteca,"Permite acceder a la sección de biblioteca.",biblioteca,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+8,"gestionar historial eliminaciones bienes",gestionar-historial-eliminaciones-bienes,"Permite ver y gestionar las solicitudes de eliminación de bienes pendientes de aprobación.","aprobaciones pendientes","2026-06-11 10:04:24","2026-06-11 10:04:24"
+9,"Ver Categorías",ver-categorias,"Ver catálogo de categorías",catalogos,,
+10,"Crear Categorías",crear-categorias,"Crear nuevas categorías",catalogos,,
+11,"Editar Categorías",editar-categorias,"Editar categorías existentes",catalogos,,
+12,"Eliminar Categorías",eliminar-categorias,"Eliminar categorías del sistema",catalogos,,
+13,"Ver Dependencias",ver-dependencias,"Ver catálogo de dependencias",catalogos,,
+14,"Crear Dependencias",crear-dependencias,"Crear nuevas dependencias",catalogos,,
+15,"Editar Dependencias",editar-dependencias,"Editar dependencias existentes",catalogos,,
+16,"Eliminar Dependencias",eliminar-dependencias,"Eliminar dependencias del sistema",catalogos,,
+17,"Ver Ubicaciones",ver-ubicaciones,"Ver catálogo de ubicaciones",catalogos,,
+18,"Crear Ubicaciones",crear-ubicaciones,"Crear nuevas ubicaciones",catalogos,,
+19,"Editar Ubicaciones",editar-ubicaciones,"Editar ubicaciones existentes",catalogos,,
+20,"Eliminar Ubicaciones",eliminar-ubicaciones,"Eliminar ubicaciones del sistema",catalogos,,
+21,"Ver Estados de Bien",ver-estados,"Ver catálogo de estados de bien",catalogos,,
+22,"Crear Estados de Bien",crear-estados,"Crear nuevos estados de bien",catalogos,,
+23,"Editar Estados de Bien",editar-estados,"Editar estados de bien existentes",catalogos,,
+24,"Eliminar Estados de Bien",eliminar-estados,"Eliminar estados de bien del sistema",catalogos,,
+25,"Ver Orígenes",ver-origenes,"Ver catálogo de orígenes de bien",catalogos,,
+26,"Crear Orígenes",crear-origenes,"Crear nuevos orígenes de bien",catalogos,,
+27,"Editar Orígenes",editar-origenes,"Editar orígenes de bien existentes",catalogos,,
+28,"Eliminar Orígenes",eliminar-origenes,"Eliminar orígenes de bien del sistema",catalogos,,
+29,"Ver Almacenamientos",ver-almacenamientos,"Ver catálogo de almacenamientos",catalogos,,
+30,"Crear Almacenamientos",crear-almacenamientos,"Crear nuevos almacenamientos",catalogos,,
+31,"Editar Almacenamientos",editar-almacenamientos,"Editar almacenamientos existentes",catalogos,,
+32,"Eliminar Almacenamientos",eliminar-almacenamientos,"Eliminar almacenamientos del sistema",catalogos,,
+33,"Ver Mantenimientos",ver-mantenimientos,"Ver catálogo de tipos de mantenimiento",catalogos,,
+34,"Crear Mantenimientos",crear-mantenimientos,"Crear nuevos tipos de mantenimiento",catalogos,,
+35,"Editar Mantenimientos",editar-mantenimientos,"Editar tipos de mantenimiento existentes",catalogos,,
+36,"Eliminar Mantenimientos",eliminar-mantenimientos,"Eliminar tipos de mantenimiento",catalogos,,
+37,"Ver Responsables de Bienes",ver-responsables-bienes,,responsables,,
+38,"Asignar Custodio a Bien",asignar-responsables-bienes,,responsables,,
+39,"Editar Responsables de Bienes",editar-responsables-bienes,,responsables,,
+40,"Transferir Responsables de Bienes",transferir-responsables-bienes,,responsables,,
+41,"Ver Historial de Ubicaciones de Bienes",ver-historial-ubicaciones-bienes,,ubicaciones,,
+42,"Cambiar Ubicación de Bienes",cambiar-ubicacion-bienes,,ubicaciones,,
+43,"Ver Mantenimientos Programados de Bienes",ver-mantenimientos-programados,,mantenimientos,,
+44,"Crear/Programar Mantenimientos de Bienes",crear-mantenimientos-programados,,mantenimientos,,
+45,"Editar Mantenimientos Programados de Bienes",editar-mantenimientos-programados,,mantenimientos,,
+46,"Completar/Cancelar Mantenimientos de Bienes",cancelar-mantenimientos-programados,,mantenimientos,,
+47,"ver administración de contraseñas",ver-administracion-passwords,"Permite acceder al panel de administración de contraseñas de usuarios.",administracion-passwords,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+48,"restablecer contraseñas",restablecer-passwords,"Permite restablecer la contraseña de cualquier usuario.",administracion-passwords,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+49,"bloquear usuarios",bloquear-usuarios,"Permite bloquear una cuenta de usuario para impedir su autenticación.",administracion-passwords,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+50,"desbloquear usuarios",desbloquear-usuarios,"Permite desbloquear una cuenta de usuario previamente bloqueada.",administracion-passwords,"2026-06-11 10:04:24","2026-06-11 10:04:24"
+51,"administrar apps",administrar-apps,"Permite habilitar/deshabilitar aplicaciones y asignar roles desde el panel de administración de apps.",apps,"2026-06-11 10:55:58","2026-06-11 10:55:58"
+52,"ver usuarios",ver-usuarios,"Permite visualizar la lista de todos los usuarios registrados en el sistema.",usuarios,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+53,"crear usuarios",crear-usuarios,"Permite registrar un nuevo usuario en el sistema.",usuarios,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+54,"editar usuarios",editar-usuarios,"Permite modificar la información de un usuario existente.",usuarios,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+55,"eliminar usuarios",eliminar-usuarios,"Permite eliminar usuarios del sistema de forma permanente.",usuarios,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+56,"ver roles",ver-roles,"Permite visualizar todos los roles existentes y sus respectivos permisos.",roles,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+57,"crear roles",crear-roles,"Permite crear nuevos roles con un conjunto de permisos definidos.",roles,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+58,"editar roles",editar-roles,"Permite modificar el nombre o los permisos de un rol existente.",roles,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+59,"eliminar roles",eliminar-roles,"Permite eliminar un rol del sistema, siempre que no esté en uso.",roles,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+60,"asignar permisos a roles",asignar-permisos-a-roles,"Permite asignar o revocar permisos a los distintos roles del sistema.",roles,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+61,"ver permisos",ver-permisos,"Permite consultar la lista completa de permisos disponibles en el sistema.",permisos,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+62,"crear permisos",crear-permisos,"Permite registrar un nuevo permiso en el sistema.",permisos,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+63,"editar permisos",editar-permisos,"Permite modificar el nombre, descripción o categoría de un permiso.",permisos,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+64,"eliminar permisos",eliminar-permisos,"Permite eliminar un permiso del sistema permanentemente.",permisos,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+65,"ver bienes",ver-bienes,"Permite visualizar la lista de todos los bienes registrados en el sistema.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+66,"crear bienes",crear-bienes,"Permite registrar un nuevo bien en el sistema.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+67,"editar bienes",editar-bienes,"Permite modificar la información de un bien existente.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+68,"eliminar bienes",eliminar-bienes,"Permite eliminar bienes del sistema de forma permanente.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+69,"aprobar bienes",aprobar-bienes,"Permite aprobar o rechazar bienes que están pendientes de revisión.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+70,"ver historial bienes",ver-historial-bienes,"Permite consultar el historial de modificaciones y ubicaciones de los bienes.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+71,"asignar responsables a bienes",asignar-responsables-a-bienes,"Permite asignar o cambiar los custodios o responsables de un bien.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+72,"ver imagenes de bienes",ver-imagenes-de-bienes,"Permite visualizar la galería de imágenes asociadas a un bien.",bienes,"2026-06-11 10:56:02","2026-06-11 10:56:02"
+73,"ver aprobaciones pendientes bienes",gestionar-historial-modificaciones-bienes,"Permite visualizar la lista de bienes o modificaciones que están pendientes de aprobación.","aprobaciones pendientes","2026-06-11 10:56:02","2026-06-11 10:56:02"
+74,"aprobar pendientes bienes",aprobar-pendientes-bienes,"Permite aprobar o rechazar las modificaciones o nuevos bienes que están pendientes.","aprobaciones pendientes","2026-06-11 10:56:02","2026-06-11 10:56:02"
+75,"editar aprobaciones pendientes bienes",editar-aprobaciones-pendientes-bienes,"Permite modificar la información relacionada con una aprobación pendiente antes de su resolución.","aprobaciones pendientes","2026-06-11 10:56:02","2026-06-11 10:56:02"
+76,"eliminar aprobaciones pendientes bienes",eliminar-aprobaciones-pendientes-bienes,"Permite eliminar registros de aprobaciones pendientes del sistema.","aprobaciones pendientes","2026-06-11 10:56:02","2026-06-11 10:56:02"
+77,"ver actas de entrega",ver-actas-de-entrega,"Permite visualizar las actas de entrega generadas en el sistema.","actas de entrega","2026-06-11 10:56:02","2026-06-11 10:56:02"
+79,"ver backups",ver-backups,"Permite ver el listado de respaldos y sus detalles.",admin-sistema,"2026-06-13 10:33:04","2026-06-13 10:33:04"
+80,"generar backups",generar-backups,"Permite generar un respaldo manual del sistema.",admin-sistema,"2026-06-13 10:33:04","2026-06-13 10:33:04"
+81,"descargar backups",descargar-backups,"Permite descargar el archivo ZIP de un respaldo.",admin-sistema,"2026-06-13 10:33:04","2026-06-13 10:33:04"
