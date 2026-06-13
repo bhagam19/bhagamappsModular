@@ -121,9 +121,16 @@ class AuthServiceProvider extends ServiceProvider
                         'ver-backups',
                         'generar-backups',
                         'descargar-backups',
+                        'ver-backup-drive',
+                        'sincronizar-backup-drive',
                 ] as $slug) {
                         Gate::define($slug, fn($user) => $user->hasPermission($slug));
                 }
+
+                // RESTORE-WEB-005/009: restaurar requiere permiso + es_principal (IMPL-INFRA-BACKUP-006)
+                Gate::define('restaurar-backups', fn($user) =>
+                    $user->hasPermission('restaurar-backups') && $user->isAdminPrincipal()
+                );
 
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }

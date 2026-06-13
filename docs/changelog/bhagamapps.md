@@ -11,6 +11,41 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.9 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-006 — Restaurar Snapshot desde CAB)
+
+- **`RestaurarBackup`** (`Modules/AdminSistema/Livewire/Backups/RestaurarBackup.php`):
+  componente Livewire con máquina de 4 estados (listado → vista-previa → confirmar → resultado).
+  - `mount()`: autorización con `hasPermission('restaurar-backups') + isAdminPrincipal()`.
+  - `seleccionar()`: valida fecha y existencia del ZIP antes de transicionar.
+  - `irAConfirmar()`: requiere confirmación previa en vista-previa.
+  - `ejecutarRestauracion()`: verifica `confirmacion === 'RESTAURAR'`, llama
+    `Artisan::call('backup:restore-from-zip', ['--file' => ..., '--force' => true])`,
+    captura salida con `Artisan::output()`.
+  - `registrarAuditoria()`: escribe JSONL en `restore.log` con usuario y resultado.
+  - Seguridad: `abort(403)` si usuario no es principal o no tiene permiso; ZIP validado
+    por ruta y existencia antes de ejecutar; nunca acepta archivos externos.
+- **`RestaurarController`** (`Modules/AdminSistema/Http/Controllers/RestaurarController.php`):
+  verificación de `isAdminPrincipal()` en capa de controlador (defensa en profundidad).
+- **Ruta** (`Modules/AdminSistema/Routes/web.php`):
+  `GET /admin/backups/restaurar` con middleware `permission:restaurar-backups`,
+  registrada ANTES de `/{fecha}` para evitar conflicto.
+- **Gate** (`app/Providers/AuthServiceProvider.php`):
+  `Gate::define('restaurar-backups', fn($user) => hasPermission() && isAdminPrincipal())`.
+  Controla menú, `@can()` en Blade, y acceso a ruta en una sola definición.
+- **Seeder** (`Modules/AdminSistema/Database/Seeders/AdminSistemaSeeder.php`):
+  permiso `restaurar-backups` (id=84) añadido, asignado al rol Administrador.
+- **CSVs de datos** actualizados: `permissions.csv` + `permission_role.csv` en
+  `Modules/User/Database/Seeders/data/` para reflejar el nuevo permiso en installs limpias.
+- **Menú AdminLTE** (`config/adminlte.php`): ítem "Restaurar" con `can:restaurar-backups`,
+  visible solo al Administrador Principal.
+- **Vistas**: `backups/restaurar.blade.php` (wrapper) +
+  `livewire/backups/restaurar-backup.blade.php` (4 estados responsivos, confirmación
+  con validación visual inline, output en bloque `<pre>` terminal).
+
+---
+
 ## v1.22.8 — 2026-06-13
 
 ### Added (AUDIT-BACKUP-004 — Backup Generation & CAB Operational Validation)

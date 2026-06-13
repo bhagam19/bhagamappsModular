@@ -40,6 +40,13 @@ class AdminSistemaSeeder extends Seeder
             'descripcion' => 'Permite ejecutar una sincronización manual del último respaldo a Google Drive.',
             'categoria'   => 'admin-sistema',
         ],
+        // RESTORE-WEB-009: solo asignado a Administrador; Gate exige además es_principal=true
+        [
+            'slug'        => 'restaurar-backups',
+            'nombre'      => 'restaurar backups',
+            'descripcion' => 'Permite restaurar la base de datos institucional desde un Snapshot ZIP. Requiere es_principal = true.',
+            'categoria'   => 'admin-sistema',
+        ],
     ];
 
     public function run(): void

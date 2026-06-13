@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.9] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-006 — Restauración de Snapshot Institucional desde CAB)
+
+- Nueva sección "Restaurar" en Administración del Sistema → Backups, accesible exclusivamente
+  al Administrador Principal (`es_principal = true` + permiso `restaurar-backups`).
+  Flujo de 4 estados: listado de respaldos → vista previa del snapshot → doble confirmación
+  (debe escribir `RESTAURAR`) → resultado con salida completa del proceso.
+  Reutiliza `backup:restore-from-zip` via `Artisan::call()` (RESTORE-WEB-006).
+  Auditoría JSONL en `storage/logs/restore.log` con usuario, snapshot y resultado (RESTORE-WEB-007).
+  Gate `restaurar-backups` exige `hasPermission()` + `isAdminPrincipal()` (RESTORE-WEB-005/009).
+  IEE v1.23.9 / BhagamApps v1.22.9.
+
+---
+
 ## [v1.22.8] — 2026-06-13
 
 ### Added (AUDIT-BACKUP-004 — Backup Generation & CAB Operational Validation)

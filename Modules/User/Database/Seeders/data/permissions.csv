@@ -81,3 +81,4 @@ id,nombre,slug,descripcion,categoria,created_at,updated_at
 81,"descargar backups",descargar-backups,"Permite descargar el archivo ZIP de un respaldo.",admin-sistema,"2026-06-13 10:33:04","2026-06-13 10:33:04"
 82,"ver backup drive",ver-backup-drive,"Permite ver el estado y el historial de sincronización con Google Drive.",admin-sistema,"2026-06-13 13:30:00","2026-06-13 13:30:00"
 83,"sincronizar backup drive",sincronizar-backup-drive,"Permite ejecutar una sincronización manual del último respaldo a Google Drive.",admin-sistema,"2026-06-13 13:30:00","2026-06-13 13:30:00"
+84,"restaurar backups",restaurar-backups,"Permite restaurar la base de datos institucional desde un Snapshot ZIP. Requiere es_principal = true.",admin-sistema,"2026-06-13 17:54:40","2026-06-13 17:54:40"

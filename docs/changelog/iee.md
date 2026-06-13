@@ -7,6 +7,23 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.9 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-006 — Restauración desde CAB — cierre del ciclo DR)
+
+- El Centro de Administración de Backups incluye ahora la sección "Restaurar".
+  Desde Administración del Sistema → Backups → Restaurar, el Administrador Principal
+  puede restaurar cualquier Snapshot Institucional disponible en el servidor sin acceso SSH.
+  El flujo requiere: seleccionar un Snapshot del listado, revisar la vista previa (usuarios,
+  bienes, dependencias, versiones, fecha), y escribir exactamente `RESTAURAR` para habilitar
+  la ejecución. La restauración usa el mismo motor que el comando CLI auditado.
+  El resultado (exitoso o fallido) se muestra con la salida completa del proceso.
+  Cada restauración queda registrada en `storage/logs/restore.log` con fecha, usuario,
+  snapshot y resultado. Permiso RBAC `restaurar-backups` (id=84) asignado al rol Administrador;
+  el Gate adicionalmente exige `es_principal = true`. BhagamApps v1.22.9.
+
+---
+
 ## v1.23.8 — 2026-06-13
 
 ### Added (AUDIT-BACKUP-004 — Validación operativa completa del CAB post-hotfix)
