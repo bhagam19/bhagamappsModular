@@ -320,5 +320,5 @@ temporalmente FK checks. Los seeders de inicialización (carga inicial) no se mo
 ## SHA verificable
 
 ```
-[pending] feat(infra): IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional
+8380fc9 feat(infra): IMPL-INFRA-BACKUP-001 — Sistema de Respaldo Institucional
 ```
