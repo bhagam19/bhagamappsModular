@@ -7,6 +7,23 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.6 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)
+
+- El Centro de Administración de Backups ahora incluye integración completa con
+  Google Drive. El estado de sincronización (Configurado / Sin credenciales / Sin rclone)
+  es visible en el dashboard. El Administrador puede sincronizar manualmente el último
+  respaldo a Drive con un clic. El historial de las últimas sincronizaciones muestra fecha,
+  ZIP, tamaño local vs. Drive y resultado (OK/ERROR). Alertas visuales si Drive lleva
+  más de 24h (amarilla) o 48h (roja) sin sincronización exitosa. Cada subida automática
+  se verifica: el sistema confirma que el archivo existe en Drive y que el tamaño coincide.
+  Dos nuevos permisos RBAC: `ver-backup-drive` y `sincronizar-backup-drive`, asignados
+  solo al Administrador. La activación completa requiere configurar BACKUP_GDRIVE_SA_JSON
+  en .env con una Service Account de Google. BhagamApps v1.22.6.
+
+---
+
 ## v1.23.5 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot)

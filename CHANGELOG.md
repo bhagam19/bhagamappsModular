@@ -17,6 +17,26 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.6] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)
+
+- `DriveService` centraliza toda la lógica Drive: upload, verificación post-subida,
+  log de historial JSONL, alertas. `backup:export-seeders` ahora delega a `DriveService`.
+- `backup:sync-drive [--file=] [--dry-run]`: sincronización manual del último ZIP
+  (o de un ZIP específico) a Google Drive. Sin regenerar backup.
+- `SincronizarDriveJob` + método `sincronizarDrive()` en `BackupDashboard` para
+  dispatch desde la UI CAB.
+- Dashboard CAB ampliado: tarjeta Estado Drive (DRIVE-003), última sync / carpeta /
+  conteo backups (DRIVE-004), botón "Sincronizar ahora" (DRIVE-005), historial de
+  5 últimas sincronizaciones (DRIVE-007), alerta amarilla/roja si Drive pendiente
+  (DRIVE-008), fila Estado General Local+Drive (DRIVE-010).
+- Permisos `ver-backup-drive` (id=82) y `sincronizar-backup-drive` (id=83) creados,
+  asignados exclusivamente a Administrador (role_id=1). PHP lint limpio, 0 regresiones.
+  IEE v1.23.6. DRIVE activo en producción desde que se configure BACKUP_GDRIVE_SA_JSON.
+
+---
+
 ## [v1.22.5] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot)

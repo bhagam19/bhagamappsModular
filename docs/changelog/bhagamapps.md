@@ -11,6 +11,40 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.6 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-005 — Google Drive Integration & Monitoring)
+
+- **`DriveService`** (`Modules/AdminSistema/Services/DriveService.php`):
+  servicio centralizado para toda la lógica Drive. Reemplaza la lógica inline
+  de `uploadToDrive()` en `BackupExportSeeders`.
+  - `estadoConexion()` — detecta sin-rclone / sin-credenciales / configurado (sin red)
+  - `subirZip()` — rclone copy vía `Process::env()->run()`, llama a `verificarEnDrive()`
+  - `verificarEnDrive()` — `rclone ls {remote}:{dest}/{zip}` post-subida (DRIVE-006)
+  - `registrarSync()` — escribe JSONL en `storage/logs/drive-sync.log` (DRIVE-007)
+  - `ultimaSync()`, `historial()`, `conteoBackupsDrive()` — lectura del log
+  - `estadoAlerta()` — verde/amarillo/rojo basado en última sync exitosa (DRIVE-008)
+- **`backup:sync-drive`** (`app/Console/Commands/BackupSyncDrive.php`):
+  nuevo comando para sincronización manual. Con `--file=` para ZIP específico,
+  auto-detecta el último ZIP si se omite. Opción `--dry-run`. (DRIVE-005)
+- **`SincronizarDriveJob`** (`Modules/AdminSistema/Jobs/SincronizarDriveJob.php`):
+  job para dispatch desde Livewire. Timeout 120s. (DRIVE-005)
+- **`BackupExportSeeders`**: `uploadToDrive()` simplificado a 8 líneas, delega
+  a `DriveService::subirZip()`. Import `Process` eliminado del exportador. (DRIVE-002)
+- **`BackupDashboard`**: nuevas props Drive + `sincronizarDrive()` + `cargarDatos()`
+  ampliado con las 5 llamadas Drive. (DRIVE-003/004/005)
+- **`backup-dashboard.blade.php`**: sección Drive completa — fila Local+Drive
+  (DRIVE-010), tarjeta Estado Drive con info sync (DRIVE-003/004), botón
+  "Sincronizar ahora" con loading (DRIVE-005), tabla historial 5 últimas
+  sincronizaciones (DRIVE-007), alerta amarilla/roja si pendiente (DRIVE-008).
+- **`AdminSistemaSeeder`**: +2 permisos `ver-backup-drive` (id=82) y
+  `sincronizar-backup-drive` (id=83), asignados a Administrador. (DRIVE-009)
+- **`permissions.csv`**: 81→83 filas. **`permission_role.csv`**: 168→170 filas.
+- **DRIVE-001**: Auditoría completada. rclone v1.71.2 instalado, BACKUP_GDRIVE_SA_JSON
+  vacío → estado `sin-credenciales`. Motor listo; configurar SA_JSON para activar.
+
+---
+
 ## v1.22.5 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-004 — Restauración Automatizada desde Snapshot Institucional)
