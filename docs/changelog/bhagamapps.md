@@ -11,6 +11,26 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.4 — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)
+
+- **GAP-DR-002**: `BienesResponsablesSeeder` reescrito con `fgetcsv` + `updateOrInsert`.
+  Registrado en `InventarioDatabaseSeeder` (posición: post-`DetallesSeeder`).
+  `data/bienes_responsables.csv` creado (10 registros del ZIP).
+- **GAP-DR-003**: `MantenimientosProgramadosSeeder` reescrito. Faker eliminado completamente.
+  `data/mantenimientos_programados.csv` creado (10 registros del ZIP).
+- **GAP-DR-005**: `AppSeeder` incluye `admin-sistema` (12ª app). `updateOrCreate` idempotente
+  respecto a `AdminSistemaSeeder`. CAB operativo post-restore sin pasos adicionales.
+- **HARDENING-001**: `User/Seeders/data/` sincronizado: permissions 38→80 (+42),
+  permission_role 104→167 (+63), app_role 10→11 (+1 admin-sistema), users 116→117 (+1).
+- **GAP-DR-009**: `database/seeders/InstitutionalRestoreSeeder.php` creado.
+  Orquestador oficial de 5 etapas: Apps → RBAC → AdminSistema → Inventario → caché.
+  Comando: `php artisan db:seed --class=Database\\Seeders\\InstitutionalRestoreSeeder`.
+  Prerrequisito de IMPL-INFRA-BACKUP-004 cumplido.
+
+---
+
 ## v1.22.3 — 2026-06-13
 
 ### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification + HOTFIX-BACKUP-001)

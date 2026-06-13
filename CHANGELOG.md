@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.4] — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)
+
+- Cerrados 4 gaps bloqueantes de AUDIT-BACKUP-002. GAP-DR-002: `BienesResponsablesSeeder`
+  eliminó dummy y ahora lee `data/bienes_responsables.csv`. GAP-DR-003:
+  `MantenimientosProgramadosSeeder` eliminó Faker y lee CSV real. GAP-DR-005:
+  `AppSeeder` incluye `admin-sistema` — CAB operativo post-restore. GAP-DR-009:
+  `InstitutionalRestoreSeeder` creado como orquestador oficial de 5 etapas.
+  HARDENING-001: `data/*.csv` sincronizados con producción (permisos: 38→80,
+  permission_role: 104→167, app_role: 10→11, users: 116→117). PHP lint limpio.
+  Sin regresiones. IEE v1.23.4. Prerrequisitos de IMPL-INFRA-BACKUP-004 cumplidos.
+
+---
+
 ## [v1.22.3] — 2026-06-13
 
 ### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification)

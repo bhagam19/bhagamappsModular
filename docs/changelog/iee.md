@@ -7,6 +7,22 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.4 — 2026-06-13
+
+### Fixed (IMPL-INFRA-BACKUP-003B — Disaster Recovery Hardening)
+
+- Cerrados los 4 gaps bloqueantes de AUDIT-BACKUP-002. Las asignaciones de
+  responsables de bienes (10 registros) y los mantenimientos programados
+  (10 registros) ahora se restauran exactamente desde el snapshot ZIP,
+  sin datos ficticios. El Centro de Administración de Backups permanece
+  operativo después de un restore — `admin-sistema` ahora está incluido
+  en el catálogo base de apps. La restauración institucional tiene un
+  orquestador oficial con orden canónico de 5 etapas. Los datos de permisos
+  y RBAC en el seeder están sincronizados con producción (80 permisos, 167
+  asignaciones). Lista para IMPL-INFRA-BACKUP-004. BhagamApps v1.22.4.
+
+---
+
 ## v1.23.3 — 2026-06-13
 
 ### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification)
