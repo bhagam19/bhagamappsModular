@@ -131,6 +131,17 @@ class AppSeeder extends Seeder
                 'orden'       => 16,
                 'habilitada'  => false,
             ],
+            [
+                'nombre'      => 'Administración del Sistema',
+                'slug'        => 'admin-sistema',
+                'ruta'        => '/admin/backups',
+                'descripcion' => 'Centro de administración del sistema: backups, monitoreo y configuración.',
+                'imagen'      => 'vendor/adminlte/dist/img/Apps/apps.png',
+                'icono'       => 'fas fa-server',
+                'color'       => '#6c757d',
+                'orden'       => 0,
+                'habilitada'  => true,
+            ],
         ];
 
         foreach ($apps as $data) {
