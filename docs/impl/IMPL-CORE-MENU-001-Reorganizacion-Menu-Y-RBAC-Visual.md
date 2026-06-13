@@ -157,5 +157,5 @@ Gaps identificados post-implementación inicial:
 
 ```
 0b2cada feat(core): IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual (MENU-001→010)
-[pending] feat(core): IMPL-CORE-MENU-001 completion — RBAC Rector + AppSeeder Biblioteca (v1.21.1)
+d50e531 feat(core): IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca disabled (V-008/V-009)
 ```
