@@ -5,6 +5,17 @@ Módulo: `Modules/Apps` — Rutas: `/apps/*`
 
 ---
 
+## v1.5.2 — 2026-06-12
+
+### Fixed (IMPL-CORE-MENU-001 completion — Biblioteca disabled)
+
+- **AppSeeder**: `Biblioteca` cambiada de `habilitada: true` a `habilitada: false`.
+  El módulo Biblioteca no está implementado; con `habilitada: true` podía aparecer
+  en la pantalla principal si se asignaba a un rol vía `App::visiblesPara()`.
+  Cierra MENU-008 del IMPL-CORE-MENU-001.
+
+---
+
 ## v1.5.1 — 2026-06-11
 
 ### Fixed

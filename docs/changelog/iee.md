@@ -7,6 +7,17 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.21.1 — 2026-06-12
+
+### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca)
+
+- La Rectoría ya no ve las secciones de Roles ni Permisos en el menú lateral.
+  El RoleSeeder excluye correctamente las categorías `roles` y `permisos` del rol Rector.
+  Biblioteca deshabilitada en el catálogo de apps (`habilitada: false`) — no puede
+  aparecer en la pantalla principal vía `App::visiblesPara()`. BhagamApps v1.20.1.
+
+---
+
 ## v1.21.0 — 2026-06-12
 
 ### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)

@@ -17,6 +17,16 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.20.1] — 2026-06-12
+
+### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca disabled)
+
+- RBAC Rectoría corregido: RoleSeeder excluye categorías `roles` y `permisos` del rol Rector
+  (V-008, V-009). Biblioteca deshabilitada en AppSeeder (`habilitada: false`).
+  User v2.5.1 | Apps v1.5.2 | IEE v1.21.1.
+
+---
+
 ## [v1.20.0] — 2026-06-12
 
 ### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)

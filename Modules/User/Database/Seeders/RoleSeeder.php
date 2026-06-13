@@ -43,11 +43,16 @@ class RoleSeeder extends Seeder
         $docente = Role::where('nombre', 'Docente')->where('app_id', $app->id)->first();
         $auxiliar = Role::where('nombre', 'Auxiliar')->where('app_id', $app->id)->first();
 
-        // Asignar permisos si existen
-        $permisos = Permission::pluck('id');
-        if ($permisos->isNotEmpty()) {
-            $admin->permissions()->sync($permisos);
-            $rector->permissions()->sync($permisos);
+        // Administrador: acceso completo
+        $permisosAdmin = Permission::pluck('id');
+        if ($permisosAdmin->isNotEmpty() && $admin) {
+            $admin->permissions()->sync($permisosAdmin);
+        }
+
+        // Rector: acceso completo excepto gestión de roles y permisos (MENU-004 / V-008 / V-009)
+        $permisosRector = Permission::whereNotIn('categoria', ['roles', 'permisos'])->pluck('id');
+        if ($permisosRector->isNotEmpty() && $rector) {
+            $rector->permissions()->sync($permisosRector);
         }
 
         // Permisos categoría 'user' y 'bienes' para coordinador

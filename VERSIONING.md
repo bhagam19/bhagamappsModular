@@ -8,11 +8,11 @@ Documento oficial de la estrategia de versionado de la plataforma BhagamApps.
 
 | Componente     | Versión | Última actualización | Changelog                                    |
 |----------------|---------|----------------------|----------------------------------------------|
-| **IEE**        | v1.21.0 | 2026-06-12           | [`docs/changelog/iee.md`](docs/changelog/iee.md)               |
-| **BhagamApps** | v1.20.0 | 2026-06-12           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
-| Inventario     | v2.15.0 | 2026-06-12           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
-| User           | v2.4.4  | 2026-06-11           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
-| Apps           | v1.5.1  | 2026-06-11           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |
+| **IEE**        | v1.21.1 | 2026-06-12           | [`docs/changelog/iee.md`](docs/changelog/iee.md)               |
+| **BhagamApps** | v1.20.1 | 2026-06-12           | [`docs/changelog/bhagamapps.md`](docs/changelog/bhagamapps.md) |
+| Inventario     | v2.15.1 | 2026-06-12           | [`docs/changelog/inventario.md`](docs/changelog/inventario.md) |
+| User           | v2.5.1  | 2026-06-12           | [`docs/changelog/user.md`](docs/changelog/user.md)             |
+| Apps           | v1.5.2  | 2026-06-12           | [`docs/changelog/apps.md`](docs/changelog/apps.md)             |
 | CrudGenerator  | v1.1.0  | 2025-06-23           | [`docs/changelog/crudgenerator.md`](docs/changelog/crudgenerator.md) |
 
 ---

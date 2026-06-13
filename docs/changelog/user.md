@@ -5,6 +5,35 @@ Módulo: `Modules/User` — Rutas: `/user/*`
 
 ---
 
+## v2.5.1 — 2026-06-12
+
+### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector)
+
+- **RoleSeeder**: Rector ya no recibe permisos de categorías `roles` ni `permisos`.
+  `Permission::whereNotIn('categoria', ['roles', 'permisos'])` como fuente para el sync
+  del Rector. Rector mantiene acceso a usuarios, bienes, inventario, apps y administración
+  de contraseñas, pero no puede ver/crear/editar/eliminar Roles ni Permisos.
+  Cierra V-008 y V-009 del IMPL-CORE-MENU-001.
+
+---
+
+## v2.5.0 — 2026-06-12
+
+### Added (IMPL-RBAC-002 — Jerarquía Institucional y Protección del Administrador Principal)
+
+- Columna `es_principal` (boolean, default false) en tabla `users`. Migración marca
+  automáticamente al primer Administrador como principal.
+- Método `isAdminPrincipal()` en entidad `User`.
+- Trait `ProteccionAdminPrincipal`: centraliza protección con registro en
+  `auditoria_passwords` y abort 403.
+- Protección backend en 8 componentes Livewire: UserIndex, EditarNombresUser,
+  EditarApellidosUser, EditarEmailUser, EditarUserIDUser, EditarRolUser,
+  GestionPasswordUser, GestionEstadoUser.
+- Protección visual en `user-index.blade.php`: Admin Principal con badges
+  `Administrador Principal` y `Protegido`; campos de edición en modo solo-lectura.
+
+---
+
 ## v2.4.4 — 2026-06-11
 
 ### Fixed (HOTFIX-USERS-007 — Integridad del listado de usuarios)

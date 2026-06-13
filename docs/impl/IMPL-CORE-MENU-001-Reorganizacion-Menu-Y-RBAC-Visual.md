@@ -1,9 +1,9 @@
 # IMPL-CORE-MENU-001 — Reorganización Definitiva del Menú y RBAC Visual
 
 **Fecha:** 2026-06-12
-**Módulo:** Core — `config/adminlte.php`, `app/Providers/AuthServiceProvider.php`
-**Versión:** BhagamApps v1.20.0 · IEE v1.21.0
-**Estado:** IMPLEMENTADO
+**Módulo:** Core — `config/adminlte.php`, `app/Providers/AuthServiceProvider.php`, `RoleSeeder.php`, `AppSeeder.php`
+**Versión:** BhagamApps v1.20.1 · IEE v1.21.1 · User v2.5.1 · Apps v1.5.2
+**Estado:** COMPLETADO
 
 ---
 
@@ -105,9 +105,11 @@ Inicio
 | Gate / Rol | Administrador | Rectoría | Coordinación | Auxiliar |
 |---|---|---|---|---|
 | `usuarios.user` (Gestión de Acceso) | SI | SI | NO | NO |
-| `ver-roles` (Roles) | SI | SI | NO | NO |
-| `ver-permisos` (Permisos) | SI | SI | NO | NO |
+| `ver-roles` (Roles) | SI | **NO** | NO | NO |
+| `ver-permisos` (Permisos) | SI | **NO** | NO | NO |
 | `ver-bienes` (Bienes) | SI | SI | SI | SI |
+
+> Rector no tiene los permisos de categoría `roles` ni `permisos` en el RoleSeeder (fix IMPL-CORE-MENU-001 completion v1.21.1).
 
 ---
 
@@ -122,9 +124,11 @@ Inicio
 | V-005 | Apps ocultas/placeholder eliminadas | ✓ Grupos, Eval. Docente, Biblioteca eliminados |
 | V-006 | RBAC visual Roles/Permisos | ✓ Gates ver-roles, ver-permisos operativos |
 | V-007 | App::visiblesPara() respetado | ✓ Aplicaciones sigue con `can: ver-apps` |
-| V-008 | Sin enlaces rotos | ✓ Todas las rutas verificadas con `route:list` |
-| V-009 | Sin errores 403 inesperados | ✓ active patterns corregidos a `users/*` |
-| V-010 | Sin regresiones | ✓ Sintaxis PHP verificada en ambos archivos |
+| V-008 | Rectoría no ve Roles | ✓ RoleSeeder excluye categoría `roles` del Rector |
+| V-009 | Rectoría no ve Permisos | ✓ RoleSeeder excluye categoría `permisos` del Rector |
+| V-010 | Biblioteca eliminada de navegación | ✓ AppSeeder `habilitada: false` + no presente en sidebar |
+| V-011 | Sin enlaces rotos | ✓ Todas las rutas verificadas con `route:list` |
+| V-012 | Sin regresiones | ✓ Sintaxis PHP verificada en archivos modificados |
 
 ---
 
@@ -138,8 +142,20 @@ Registrado como DT-MENU-001 para evaluación futura.
 
 ---
 
+## Cambios de Completación (v1.21.1 — 2026-06-12)
+
+Gaps identificados post-implementación inicial:
+
+| Archivo | Gap | Corrección |
+|---|---|---|
+| `Modules/User/Database/Seeders/RoleSeeder.php` | Rector recibía ALL permisos incluyendo `ver-roles` y `ver-permisos` | `whereNotIn('categoria', ['roles', 'permisos'])` para Rector |
+| `Modules/Apps/database/seeders/AppSeeder.php` | Biblioteca `habilitada: true` (podía aparecer en app cards si se asignaba a un rol) | `habilitada: false` |
+
+---
+
 ## SHA verificable
 
 ```
 0b2cada feat(core): IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual (MENU-001→010)
+[pending] feat(core): IMPL-CORE-MENU-001 completion — RBAC Rector + AppSeeder Biblioteca (v1.21.1)
 ```

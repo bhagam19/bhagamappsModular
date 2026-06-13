@@ -11,6 +11,20 @@ Changelogs de módulo:
 
 ---
 
+## v1.20.1 — 2026-06-12
+
+### Fixed (IMPL-CORE-MENU-001 completion — RBAC Rector + Biblioteca disabled)
+
+- **RoleSeeder**: Rector ya no recibe permisos de categorías `roles` ni `permisos`
+  (`whereNotIn(['roles', 'permisos'])`). Cierra V-008 (Rector no ve Roles) y V-009
+  (Rector no ve Permisos) del IMPL-CORE-MENU-001.
+- **AppSeeder**: Biblioteca cambiada a `habilitada: false`. Elimina la posibilidad de que
+  aparezca en la página principal via `App::visiblesPara()` si se asigna accidentalmente
+  a un rol. Cierra MENU-008 (apps no implementadas eliminadas de navegación).
+- User v2.5.1 | Apps v1.5.2 | IEE v1.21.1.
+
+---
+
 ## v1.20.0 — 2026-06-12
 
 ### Added (IMPL-CORE-MENU-001 — Reorganización Menú y RBAC Visual)

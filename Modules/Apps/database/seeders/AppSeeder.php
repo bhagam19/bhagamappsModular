@@ -52,7 +52,7 @@ class AppSeeder extends Seeder
                 'icono'       => 'fas fa-book',
                 'color'       => '#fd7e14',
                 'orden'       => 4,
-                'habilitada'  => true,
+                'habilitada'  => false,
             ],
             [
                 'nombre'      => 'SINAI vs SIMAT',
