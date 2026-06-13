@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Schema;
 use ZipArchive;
 
@@ -335,41 +336,34 @@ class BackupExportSeeders extends Command
             return;
         }
 
-        // Si hay credenciales de Service Account en env, pasarlas como env vars a rclone.
+        // Credenciales de Service Account vía variables de entorno de rclone.
         // Rclone soporta: RCLONE_CONFIG_{REMOTE}_{OPTION}=valor
-        // Ver: docs/operations/BACKUP-RESTORE-GUIDE.md § Configuración Google Drive
-        $envPrefix  = 'RCLONE_CONFIG_' . strtoupper(str_replace('-', '_', $remote)) . '_';
-        $saJson     = env('BACKUP_GDRIVE_SA_JSON', '');
-        $folderId   = env('BACKUP_GDRIVE_FOLDER_ID', '');
+        $envPrefix = 'RCLONE_CONFIG_' . strtoupper(str_replace('-', '_', $remote)) . '_';
+        $saJson    = env('BACKUP_GDRIVE_SA_JSON', '');
+        $folderId  = env('BACKUP_GDRIVE_FOLDER_ID', '');
 
         $rcloneEnv = [];
         if ($saJson) {
-            $rcloneEnv[$envPrefix . 'TYPE']                           = 'drive';
-            $rcloneEnv[$envPrefix . 'SCOPE']                          = 'drive.file';
-            $rcloneEnv[$envPrefix . 'SERVICE_ACCOUNT_CREDENTIALS']    = $saJson;
+            $rcloneEnv[$envPrefix . 'TYPE']                        = 'drive';
+            $rcloneEnv[$envPrefix . 'SCOPE']                       = 'drive.file';
+            $rcloneEnv[$envPrefix . 'SERVICE_ACCOUNT_CREDENTIALS'] = $saJson;
             if ($folderId) {
                 $rcloneEnv[$envPrefix . 'ROOT_FOLDER_ID'] = $folderId;
             }
         }
 
-        $envStr = '';
-        foreach ($rcloneEnv as $key => $val) {
-            $envStr .= escapeshellarg($key) . '=' . escapeshellarg($val) . ' ';
-        }
+        $result = Process::env($rcloneEnv)->run([
+            $rcloneBin, 'copy',
+            $this->zipPath,
+            $remoteDest,
+            '--stats', '0',
+        ]);
 
-        $cmd = ($envStr ? "env {$envStr}" : '')
-            . escapeshellarg($rcloneBin) . ' copy '
-            . escapeshellarg($this->zipPath) . ' '
-            . escapeshellarg($remoteDest)
-            . ' --stats 0 2>&1';
-
-        exec($cmd, $output, $exitCode);
-
-        if ($exitCode === 0) {
+        if ($result->successful()) {
             $this->line("  ✓ Subido a Drive: {$remoteDest}/{$this->zipName}");
         } else {
-            $errorMsg = implode(' | ', array_filter($output));
-            $this->error("  ✗ Error Drive (código {$exitCode}): {$errorMsg}");
+            $errorMsg = trim($result->output() . ' ' . $result->errorOutput());
+            $this->error("  ✗ Error Drive (código {$result->exitCode()}): {$errorMsg}");
             $this->warn('  → El ZIP local está disponible en: backups/' . $this->zipName);
         }
     }
