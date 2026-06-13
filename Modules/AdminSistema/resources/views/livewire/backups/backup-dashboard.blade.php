@@ -110,6 +110,204 @@
         </div>
     </div>
 
+    {{-- ── DRIVE-010: Estado general (Local + Drive) ─────────────────────── --}}
+    <div class="row mt-1 mb-3">
+        {{-- Backup Local --}}
+        <div class="col-md-6">
+            <div class="info-box mb-0">
+                <span class="info-box-icon bg-{{ $ultimoBackup ? ($alerta === 'verde' ? 'success' : ($alerta === 'amarillo' ? 'warning' : 'danger')) : 'danger' }} elevation-1">
+                    <i class="fas fa-server"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Respaldo Local</span>
+                    @if ($ultimoBackup)
+                        <span class="info-box-number text-{{ $alerta === 'verde' ? 'success' : ($alerta === 'amarillo' ? 'warning' : 'danger') }}" style="font-size:0.95rem;">
+                            <i class="fas fa-check-circle mr-1"></i>Disponible
+                        </span>
+                        <span class="progress-description">{{ $ultimoBackup['fecha'] }} — {{ $ultimoBackup['meta']['total_registros'] ?? '—' }} registros</span>
+                    @else
+                        <span class="info-box-number text-danger" style="font-size:0.95rem;">
+                            <i class="fas fa-times-circle mr-1"></i>Sin respaldo
+                        </span>
+                        <span class="progress-description">Genera un respaldo primero</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        {{-- Backup Drive --}}
+        <div class="col-md-6">
+            @php
+                $driveColorBox = match($estadoDrive['color'] ?? 'secondary') {
+                    'success' => ($alertaDrive === 'verde' ? 'success' : ($alertaDrive === 'amarillo' ? 'warning' : 'danger')),
+                    'warning' => 'warning',
+                    'danger'  => 'danger',
+                    default   => 'secondary',
+                };
+            @endphp
+            <div class="info-box mb-0">
+                <span class="info-box-icon bg-{{ $driveColorBox }} elevation-1">
+                    <i class="fab fa-google-drive"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Google Drive</span>
+                    @if (($estadoDrive['estado'] ?? '') === 'configurado')
+                        @if ($ultimaSync && ($ultimaSync['resultado'] ?? '') === 'OK')
+                            <span class="info-box-number text-{{ $alertaDrive === 'verde' ? 'success' : ($alertaDrive === 'amarillo' ? 'warning' : 'danger') }}" style="font-size:0.95rem;">
+                                <i class="fas fa-check-circle mr-1"></i>Sincronizado
+                            </span>
+                            <span class="progress-description">{{ $ultimaSync['fecha'] }}</span>
+                        @elseif ($ultimaSync)
+                            <span class="info-box-number text-danger" style="font-size:0.95rem;">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>Último sync con error
+                            </span>
+                            <span class="progress-description">{{ $ultimaSync['fecha'] }}</span>
+                        @else
+                            <span class="info-box-number text-warning" style="font-size:0.95rem;">
+                                <i class="fas fa-clock mr-1"></i>Pendiente de sync
+                            </span>
+                            <span class="progress-description">Sincroniza manualmente para verificar</span>
+                        @endif
+                    @elseif (($estadoDrive['estado'] ?? '') === 'sin-credenciales')
+                        <span class="info-box-number text-warning" style="font-size:0.95rem;">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>Sin credenciales
+                        </span>
+                        <span class="progress-description">Configura BACKUP_GDRIVE_SA_JSON en .env</span>
+                    @else
+                        <span class="info-box-number text-danger" style="font-size:0.95rem;">
+                            <i class="fas fa-times-circle mr-1"></i>{{ $estadoDrive['etiqueta'] ?? 'No disponible' }}
+                        </span>
+                        <span class="progress-description">{{ $estadoDrive['mensaje'] ?? '' }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- ── DRIVE-003/004: Tarjeta estado Drive ────────────────────────────── --}}
+    @canany(['ver-backup-drive', 'sincronizar-backup-drive'])
+    <div class="card card-outline card-{{ $estadoDrive['color'] ?? 'secondary' }} mb-4">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="{{ $estadoDrive['icono'] ?? 'fab fa-google-drive' }} mr-2"></i>
+                Google Drive
+                <span class="badge badge-{{ $estadoDrive['color'] ?? 'secondary' }} ml-2">{{ $estadoDrive['etiqueta'] ?? '—' }}</span>
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {{-- Info de configuración / última sync --}}
+                <div class="col-md-6">
+                    <p class="text-muted mb-1"><strong>Carpeta destino:</strong>
+                        {{ $estadoDrive['carpeta'] ?: '—' }}
+                    </p>
+                    <p class="text-muted mb-1"><strong>Última sincronización:</strong>
+                        @if ($ultimaSync)
+                            {{ $ultimaSync['fecha'] }}
+                            <span class="badge badge-{{ ($ultimaSync['resultado'] ?? '') === 'OK' ? 'success' : 'danger' }} ml-1">
+                                {{ $ultimaSync['resultado'] ?? '—' }}
+                            </span>
+                        @else
+                            <span class="text-muted">Sin registros</span>
+                        @endif
+                    </p>
+                    <p class="text-muted mb-1"><strong>Backups detectados en Drive:</strong>
+                        {{ $conteoBackupsDrive > 0 ? $conteoBackupsDrive : '—' }}
+                    </p>
+                    @if ($ultimaSync)
+                        <p class="text-muted mb-0"><strong>Último backup sincronizado:</strong>
+                            {{ $ultimaSync['backup'] ?? '—' }}
+                            @if (($ultimaSync['size_remote'] ?? 0) > 0)
+                                ({{ round($ultimaSync['size_remote'] / 1024, 1) }} KB en Drive)
+                            @endif
+                        </p>
+                    @endif
+                </div>
+
+                {{-- DRIVE-005: Sincronización manual --}}
+                <div class="col-md-6 d-flex align-items-center">
+                    @can('sincronizar-backup-drive')
+                    <div class="w-100">
+                        @if ($mensajeDrive)
+                            <div class="alert alert-{{ $estadoMensajeDrive }} alert-sm py-1 mb-2">
+                                <i class="fas fa-{{ $estadoMensajeDrive === 'success' ? 'check' : 'exclamation-triangle' }} mr-1"></i>
+                                {{ $mensajeDrive }}
+                            </div>
+                        @endif
+                        <button
+                            wire:click="sincronizarDrive"
+                            wire:loading.attr="disabled"
+                            class="btn btn-outline-{{ $estadoDrive['color'] ?? 'secondary' }} btn-sm"
+                            @if ($sincronizando || ($estadoDrive['estado'] ?? '') === 'sin-rclone') disabled @endif
+                        >
+                            <span wire:loading.remove wire:target="sincronizarDrive">
+                                <i class="fab fa-google-drive mr-1"></i> Sincronizar ahora
+                            </span>
+                            <span wire:loading wire:target="sincronizarDrive">
+                                <i class="fas fa-spinner fa-spin mr-1"></i> Sincronizando...
+                            </span>
+                        </button>
+                        @if (($estadoDrive['estado'] ?? '') !== 'configurado')
+                            <p class="text-muted text-sm mt-1 mb-0">
+                                <i class="fas fa-info-circle mr-1"></i>{{ $estadoDrive['mensaje'] ?? '' }}
+                            </p>
+                        @endif
+                    </div>
+                    @endcan
+                </div>
+            </div>
+        </div>
+
+        {{-- DRIVE-007: Historial de sincronizaciones --}}
+        @if (count($historialDrive) > 0)
+        <div class="card-footer p-0">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Backup</th>
+                            <th>Local</th>
+                            <th>Drive</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($historialDrive as $sync)
+                        <tr>
+                            <td>{{ $sync['fecha'] }}</td>
+                            <td class="text-monospace" style="font-size:0.8rem;">{{ $sync['backup'] }}</td>
+                            <td>{{ $sync['size_local'] > 0 ? round($sync['size_local']/1024,1).' KB' : '—' }}</td>
+                            <td>{{ $sync['size_remote'] > 0 ? round($sync['size_remote']/1024,1).' KB' : '—' }}</td>
+                            <td>
+                                <span class="badge badge-{{ ($sync['resultado'] ?? '') === 'OK' ? 'success' : 'danger' }}">
+                                    {{ $sync['resultado'] ?? '—' }}
+                                </span>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @endif
+    </div>
+    @endcanany
+
+    {{-- ── DRIVE-008: Alerta Drive pendiente ──────────────────────────────── --}}
+    @if (($estadoDrive['estado'] ?? '') === 'configurado' && $alertaDrive !== 'verde')
+        @php
+            $driveAlertClass = $alertaDrive === 'amarillo' ? 'alert-warning' : 'alert-danger';
+            $driveAlertIcon  = $alertaDrive === 'amarillo' ? 'fas fa-exclamation-triangle' : 'fas fa-times-circle';
+            $driveAlertText  = $alertaDrive === 'amarillo'
+                ? 'Advertencia Drive — Más de 24 horas sin sincronización exitosa con Google Drive.'
+                : 'Crítico Drive — Más de 48 horas sin sincronización exitosa con Google Drive.';
+        @endphp
+        <div class="alert {{ $driveAlertClass }}">
+            <i class="{{ $driveAlertIcon }} mr-2"></i>{{ $driveAlertText }}
+        </div>
+    @endif
+
     {{-- ── Generación manual ────────────────────────────────────────────── --}}
     @can('generar-backups')
     <div class="card card-outline card-primary mb-4">

@@ -28,6 +28,18 @@ class AdminSistemaSeeder extends Seeder
             'descripcion' => 'Permite descargar el archivo ZIP de un respaldo.',
             'categoria'   => 'admin-sistema',
         ],
+        [
+            'slug'        => 'ver-backup-drive',
+            'nombre'      => 'ver backup drive',
+            'descripcion' => 'Permite ver el estado y el historial de sincronización con Google Drive.',
+            'categoria'   => 'admin-sistema',
+        ],
+        [
+            'slug'        => 'sincronizar-backup-drive',
+            'nombre'      => 'sincronizar backup drive',
+            'descripcion' => 'Permite ejecutar una sincronización manual del último respaldo a Google Drive.',
+            'categoria'   => 'admin-sistema',
+        ],
     ];
 
     public function run(): void
