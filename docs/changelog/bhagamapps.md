@@ -11,6 +11,25 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.3 — 2026-06-13
+
+### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification + HOTFIX-BACKUP-001)
+
+- **AUDIT-BACKUP-002**: Certificación DR del primer snapshot institucional real.
+  Dictamen **B — CERTIFICADO CON AJUSTES MENORES**. ZIP íntegro, 3.447 registros,
+  0 FK huérfanas. 9 gaps identificados: 2 seeders críticos con datos ficticios
+  (`BienesResponsablesSeeder`, `MantenimientosProgramadosSeeder`), drift de
+  `data/*.csv` vs producción (+42 permisos, +63 asignaciones), ausencia de
+  `admin-sistema` en `AppSeeder`, falta de orquestador `backup:restore-from-zip`.
+  Informe: `docs/audits/AUDIT-BACKUP-002-Disaster-Recovery-Certification.md`.
+
+- **HOTFIX-BACKUP-001**: Eliminado `exec()` de `BackupExportSeeders::uploadToDrive()`.
+  Causa raíz: `exec()` deshabilitado en contexto web con `QUEUE_CONNECTION=sync`.
+  Fix: `Process::env($rcloneEnv)->run([...])` — Laravel 11 Process facade.
+  Sin dependencias de shell, sin riesgo de inyección, testeable. SHA: `1908465`.
+
+---
+
 ## v1.22.2 — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003A — Backup Restore Readiness Remediation)

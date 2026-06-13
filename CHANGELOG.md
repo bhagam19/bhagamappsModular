@@ -17,6 +17,22 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.3] — 2026-06-13
+
+### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification)
+
+- Certificación DR del Snapshot Institucional `IEE-2026-06-13.zip` completada.
+  Resultado: **B — CERTIFICADO CON AJUSTES MENORES**. ZIP íntegro: 24 archivos,
+  3.447 registros, 23/23 tablas, 0 FK huérfanas. Cobertura funcional post-DR: ~85%.
+  9 gaps identificados (2 CRÍTICO, 4 ALTO, 2 MEDIO, 1 BAJO). P1: crear
+  `backup:restore-from-zip`, corregir `BienesResponsablesSeeder` y
+  `MantenimientosProgramadosSeeder`. IEE v1.23.3. BhagamApps v1.22.3.
+  Informe: `docs/audits/AUDIT-BACKUP-002-Disaster-Recovery-Certification.md`.
+  HOTFIX-BACKUP-001 también incluido: `exec()` reemplazado por `Process facade`
+  en `BackupExportSeeders::uploadToDrive()`.
+
+---
+
 ## [v1.22.2] — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003A — Backup Restore Readiness Remediation)

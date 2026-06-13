@@ -7,6 +7,21 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.3 — 2026-06-13
+
+### Security / Audit (AUDIT-BACKUP-002 — Disaster Recovery Certification)
+
+- Certificación DR formal del Snapshot Institucional completada contra respaldo real
+  `IEE-2026-06-13.zip`. Dictamen: **B — CERTIFICADO CON AJUSTES MENORES**.
+  El respaldo contiene el 100% de la información crítica (1.420 bienes, 135 dependencias,
+  117 usuarios, RBAC completo) con integridad referencial perfecta (0 FK huérfanas).
+  Cobertura funcional post-DR sin correcciones: ~85%. 9 gaps identificados con
+  plan de remediación. Producción permanece intacta. BhagamApps v1.22.3.
+  HOTFIX-BACKUP-001: `exec()` eliminado de `BackupExportSeeders` — reemplazado por
+  `Process::env()->run()`. La generación de respaldos desde el CAB ya no falla.
+
+---
+
 ## v1.23.2 — 2026-06-13
 
 ### Fixed (IMPL-INFRA-BACKUP-003A — Remediación de Restaurabilidad de Respaldos)
