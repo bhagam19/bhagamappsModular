@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.8] — 2026-06-13
+
+### Added (AUDIT-BACKUP-004 — Backup Generation & CAB Operational Validation)
+
+- Auditoría operativa completa del flujo CAB post HOTFIX-BACKUP-002. 10 controles (CAB-001
+  a CAB-010) aprobados. Confirma que el botón "Generar Respaldo" genera ZIP local sin
+  dependencia de Drive, la descarga funciona sin SSH, Drive queda desacoplado, y la
+  plataforma queda lista para IMPL-INFRA-BACKUP-006 (restauración desde UI web).
+  IEE v1.23.8 / BhagamApps v1.22.8.
+
+---
+
 ## [v1.22.7] — 2026-06-13
 
 ### Fixed (HOTFIX-BACKUP-002 — Drive desacoplado de generación local)

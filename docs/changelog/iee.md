@@ -7,6 +7,19 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.8 — 2026-06-13
+
+### Added (AUDIT-BACKUP-004 — Validación operativa completa del CAB post-hotfix)
+
+- Auditoría AUDIT-BACKUP-004 completada: 10 controles CAB aprobados. Se confirma que
+  el flujo "Generar Respaldo → ZIP Local → Descarga" funciona completamente desde la
+  interfaz web sin acceso SSH. Drive queda desacoplado: sin `BACKUP_GDRIVE_SA_JSON`,
+  el ZIP local se genera y descarga sin errores. Ninguna función de shell (exec, proc_open,
+  shell_exec, system, passthru) en la ruta crítica web. La plataforma queda autorizada
+  para IMPL-INFRA-BACKUP-006 (restauración desde CAB). BhagamApps v1.22.8.
+
+---
+
 ## v1.23.7 — 2026-06-13
 
 ### Fixed (HOTFIX-BACKUP-002 — Botón "Generar Respaldo" en contexto web)

@@ -11,6 +11,26 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.8 — 2026-06-13
+
+### Added (AUDIT-BACKUP-004 — Backup Generation & CAB Operational Validation)
+
+- **Auditoría operativa** del flujo completo de generación de respaldos post HOTFIX-BACKUP-002.
+  - CAB-001: `generarBackup()` sin excepciones visibles, Drive sin SA_JSON silencioso.
+  - CAB-002: Directorio, 23 CSVs, `metadata.json`, ZIP generados correctamente.
+  - CAB-003: `IEE-2026-06-13.zip` (56 KB, 24 archivos) verificado íntegro con `ZipArchive`.
+  - CAB-004: `metadata.json` consistente con BD — 7 tablas clave verificadas (117 usuarios,
+    1,420 bienes, 135 dependencias, 28 categorías, 12 apps, 82 permisos, 7 roles).
+  - CAB-005: Dashboard CAB muestra fecha, tamaño, registros, estado correctamente.
+  - CAB-006: `BackupsController::descargar()` con `response()->download()` sin shell.
+  - CAB-007: Desacoplamiento Drive certificado — sin SA_JSON: ZIP ✓, backup ✓, sin error ✓.
+  - CAB-008: Sin `exec / shell_exec / system / passthru / proc_open` directo en ruta crítica.
+  - CAB-009: Administrador opera backup completo sin SSH desde interfaz web.
+  - CAB-010: Plataforma autorizada para IMPL-INFRA-BACKUP-006 — todos los prerrequisitos cumplidos.
+  - SHA auditado: `8683b78`. Audit doc: `docs/audits/AUDIT-BACKUP-004-*.md`. IEE v1.23.8.
+
+---
+
 ## v1.22.7 — 2026-06-13
 
 ### Fixed (HOTFIX-BACKUP-002 — proc_open deshabilitado en contexto web PHP)
