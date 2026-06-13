@@ -315,7 +315,15 @@ class BackupExportSeeders extends Command
 
     private function uploadToDrive(): void
     {
-        $result = DriveService::subirZip($this->zipPath, $this->zipName, $this->dryRun);
+        try {
+            $result = DriveService::subirZip($this->zipPath, $this->zipName, $this->dryRun);
+        } catch (\Throwable $e) {
+            // Cinturón de seguridad: Drive nunca bloquea la generación del ZIP local.
+            // DriveService::subirZip() ya no lanza, pero se protege ante cualquier regresión.
+            $this->warn('  ⚠ Drive no disponible (omitido): ' . $e->getMessage());
+            $this->comment('  → ZIP local disponible en: backups/' . $this->zipName);
+            return;
+        }
 
         if ($this->dryRun) {
             $this->line("  {$result['mensaje']}");
@@ -325,8 +333,9 @@ class BackupExportSeeders extends Command
         if ($result['exito']) {
             $this->line("  ✓ {$result['mensaje']}");
         } else {
-            $this->error("  ✗ {$result['mensaje']}");
-            $this->warn('  → ZIP local disponible en: backups/' . $this->zipName);
+            // Drive falla: advertencia, NO error — el backup local ya está completo.
+            $this->warn("  ⚠ Drive omitido: {$result['mensaje']}");
+            $this->comment('  → ZIP local disponible en: backups/' . $this->zipName);
         }
     }
 

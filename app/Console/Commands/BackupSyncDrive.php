@@ -27,8 +27,8 @@ class BackupSyncDrive extends Command
         $estado = DriveService::estadoConexion();
         $this->line("  Estado Drive: {$estado['etiqueta']} — {$estado['mensaje']}");
 
-        if ($estado['estado'] === 'sin-rclone') {
-            $this->error('  ✗ No se puede sincronizar sin rclone.');
+        if (in_array($estado['estado'], ['sin-rclone', 'sin-soporte'])) {
+            $this->error("  ✗ {$estado['mensaje']}");
             return self::FAILURE;
         }
 
