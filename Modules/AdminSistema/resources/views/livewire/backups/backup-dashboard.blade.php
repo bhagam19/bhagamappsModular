@@ -308,6 +308,39 @@
         </div>
     @endif
 
+    {{-- ── Acciones de recuperación (solo AdminPrincipal) ─────────────── --}}
+    @canany(['restaurar-backups', 'importar-snapshot-backup'])
+    <div class="card card-outline card-warning mb-4">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-life-ring mr-2 text-warning"></i>Recuperación y Restauración
+            </h3>
+        </div>
+        <div class="card-body">
+            <p class="text-muted mb-3">
+                Opciones exclusivas del Administrador Principal para recuperar datos
+                desde un Snapshot existente o desde un archivo ZIP externo (Drive).
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                @can('restaurar-backups')
+                <a href="{{ route('admin.backups.restaurar') }}"
+                   class="btn btn-warning mr-2 mb-2">
+                    <i class="fas fa-undo-alt mr-1"></i>
+                    Restaurar desde Snapshot local
+                </a>
+                @endcan
+                @can('importar-snapshot-backup')
+                <a href="{{ route('admin.backups.importar') }}"
+                   class="btn btn-outline-info mb-2">
+                    <i class="fas fa-file-import mr-1"></i>
+                    Importar Snapshot externo (Drive)
+                </a>
+                @endcan
+            </div>
+        </div>
+    </div>
+    @endcanany
+
     {{-- ── Generación manual ────────────────────────────────────────────── --}}
     @can('generar-backups')
     <div class="card card-outline card-primary mb-4">
@@ -388,7 +421,7 @@
                                             <span class="badge badge-warning">Sin metadata</span>
                                         @endif
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-right text-nowrap">
                                         <a href="{{ route('admin.backups.detalle', $backup['fecha']) }}"
                                            class="btn btn-xs btn-outline-info mr-1"
                                            title="Ver detalle">
@@ -396,9 +429,16 @@
                                         </a>
                                         @can('descargar-backups')
                                         <a href="{{ route('admin.backups.descargar', $backup['fecha']) }}"
-                                           class="btn btn-xs btn-outline-success"
+                                           class="btn btn-xs btn-outline-success mr-1"
                                            title="Descargar ZIP">
                                             <i class="fas fa-download"></i>
+                                        </a>
+                                        @endcan
+                                        @can('restaurar-backups')
+                                        <a href="{{ route('admin.backups.restaurar') }}"
+                                           class="btn btn-xs btn-warning"
+                                           title="Restaurar desde este Snapshot">
+                                            <i class="fas fa-undo-alt"></i>
                                         </a>
                                         @endcan
                                     </td>
