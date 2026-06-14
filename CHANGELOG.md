@@ -17,6 +17,24 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.11] — 2026-06-13
+
+### Added (IMPL-ACTIVITYLOG-001 — Módulo Global de Auditoría Institucional)
+
+- Nuevo módulo `Modules/ActivityLog` como infraestructura de auditoría transversal.
+  Sin dependencias externas (sin spatie/activitylog). Tabla `activity_logs` con
+  índices compuestos para 100k+ registros. Servicio estático `ActivityLogger::log()`
+  y helper global `activity_log()` con captura de IP, user-agent y usuario autenticado.
+  Integraciones completadas: Users (crear, editar, eliminar, bloquear, desbloquear,
+  asignar-rol), Inventario (crear bien, editar campo, eliminar bien, aprobar cambio,
+  rechazar cambio), Backups (generar, descargar, restaurar, importar), RBAC (asignar
+  permisos a roles). Pantalla administrativa con filtros (usuario, módulo, acción,
+  fecha) + paginación + dashboard rápido (acciones hoy, semana, últimos eventos).
+  Permiso `ver-activity-log` (id=86) solo para AdminPrincipal. IEE v1.23.11 /
+  BhagamApps v1.22.11.
+
+---
+
 ## [v1.22.10] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-007 — Importación y Restauración de Snapshot Externo desde CAB)

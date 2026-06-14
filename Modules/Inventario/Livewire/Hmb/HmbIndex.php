@@ -4,6 +4,7 @@ namespace Modules\Inventario\Livewire\Hmb;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\Inventario\Entities\{
     Bien,
     HistorialModificacionBien,
@@ -133,6 +134,13 @@ class HmbIndex extends Component
 
             DB::commit();
 
+            ActivityLogger::log(
+                modulo:      'Inventario',
+                accion:      'aprobar',
+                descripcion: "Modificación aprobada en Bien ID {$modificacion->bien_id} — campo: {$modificacion->campo}",
+                tipoObjeto:  'Bien',
+                objetoId:    $modificacion->bien_id,
+            );
             $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Modificacion aprobada correctamente.');
             $this->dispatch('modificacionActualizada');
         } catch (\Throwable $e) {
@@ -158,6 +166,13 @@ class HmbIndex extends Component
             $modificacion->aprobado_por = auth()->id();
             $modificacion->save();
 
+            ActivityLogger::log(
+                modulo:      'Inventario',
+                accion:      'rechazar',
+                descripcion: "Modificación rechazada en Bien ID {$modificacion->bien_id} — campo: {$modificacion->campo}",
+                tipoObjeto:  'Bien',
+                objetoId:    $modificacion->bien_id,
+            );
             $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'Modificacion rechazada correctamente.');
 
             $this->dispatch('modificacionActualizada');

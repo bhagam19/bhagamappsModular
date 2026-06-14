@@ -4,6 +4,7 @@ namespace Modules\User\Livewire\User;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\User\Entities\User;
 use Modules\User\Entities\Role;
 use Modules\User\Traits\ProteccionAdminPrincipal;
@@ -143,6 +144,12 @@ class UserIndex extends Component
             'password'  => bcrypt($this->password),
         ]);
 
+        ActivityLogger::log(
+            modulo:      'Users',
+            accion:      'crear',
+            descripcion: "Usuario creado: {$this->email}",
+            tipoObjeto:  'Usuario',
+        );
         session()->flash('message', 'Usuario creado exitosamente.');
         $this->resetInput();
     }
@@ -157,6 +164,13 @@ class UserIndex extends Component
         $target = User::findOrFail($id);
         $this->verificarNoEsAdminPrincipal($target, 'intento_eliminar_admin_principal');
 
+        ActivityLogger::log(
+            modulo:      'Users',
+            accion:      'eliminar',
+            descripcion: "Usuario eliminado: {$target->email} ({$target->nombres} {$target->apellidos})",
+            tipoObjeto:  'Usuario',
+            objetoId:    $target->id,
+        );
         $target->delete();
         session()->flash('message', 'Usuario eliminado exitosamente.');
     }

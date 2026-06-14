@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\AdminSistema\Services\BackupReaderService;
 
 class RestaurarBackup extends Component
@@ -108,6 +109,13 @@ class RestaurarBackup extends Component
             $this->exito
                 ? 'EXITOSA desde CAB (exit=0)'
                 : "FALLIDA desde CAB (exit={$exitCode})"
+        );
+        ActivityLogger::log(
+            modulo:      'Backups',
+            accion:      'restaurar',
+            descripcion: ($this->exito ? 'Restauración exitosa' : 'Restauración fallida') . ": IEE-{$this->fechaSeleccionada}.zip",
+            tipoObjeto:  'Snapshot',
+            datosNuevos: ['exito' => $this->exito, 'origen' => 'CAB-WEB'],
         );
     }
 

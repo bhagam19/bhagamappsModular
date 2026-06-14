@@ -1,0 +1,21 @@
+{
+    "name": "bhagamapps/activity-log",
+    "description": "Módulo global de auditoría institucional — BhagamApps",
+    "authors": [
+        {
+            "name": "BhagamApps",
+            "email": "bhagam19@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ActivityLog\\": "./"
+        }
+    }
+}

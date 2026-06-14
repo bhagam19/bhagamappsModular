@@ -4,6 +4,7 @@ namespace Modules\AdminSistema\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BackupsController extends Controller
@@ -37,6 +38,13 @@ class BackupsController extends Controller
         if (!file_exists($zipPath)) {
             abort(404, 'El respaldo no existe.');
         }
+
+        ActivityLogger::log(
+            modulo:      'Backups',
+            accion:      'descargar',
+            descripcion: "Snapshot descargado: IEE-{$fecha}.zip",
+            tipoObjeto:  'Snapshot',
+        );
 
         return response()->download($zipPath);
     }

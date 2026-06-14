@@ -5,6 +5,7 @@ namespace Modules\AdminSistema\Livewire\Backups;
 use Livewire\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\AdminSistema\Jobs\GenerarBackupJob;
 use Modules\AdminSistema\Jobs\SincronizarDriveJob;
 use Modules\AdminSistema\Services\BackupReaderService;
@@ -50,6 +51,12 @@ class BackupDashboard extends Component
             dispatch(new GenerarBackupJob());
             $this->mensaje       = 'Respaldo generado exitosamente.';
             $this->estadoMensaje = 'success';
+            ActivityLogger::log(
+                modulo:      'Backups',
+                accion:      'generar',
+                descripcion: 'Respaldo institucional generado desde CAB',
+                tipoObjeto:  'Snapshot',
+            );
         } catch (\Throwable $e) {
             $this->mensaje       = 'Error al generar el respaldo: ' . $e->getMessage();
             $this->estadoMensaje = 'danger';

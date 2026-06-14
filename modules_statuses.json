@@ -3,5 +3,6 @@
     "Inventario": true,
     "Apps": true,
     "CrudGenerator": true,
-    "AdminSistema": true
+    "AdminSistema": true,
+    "ActivityLog": true
 }

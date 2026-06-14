@@ -7,6 +7,22 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.11 — 2026-06-13
+
+### Added (IMPL-ACTIVITYLOG-001 — Auditoría institucional transversal)
+
+- La plataforma IEE dispone ahora de un registro de auditoría institucional completo.
+  Desde Administración del Sistema → Activity Log, el Administrador Principal puede
+  ver quién hizo qué, cuándo y sobre qué objeto, con filtros por usuario, módulo,
+  acción y rango de fechas. El log registra automáticamente: creación, edición,
+  eliminación y bloqueo de usuarios; creación, edición y eliminación de bienes;
+  aprobación y rechazo de cambios en inventario; generación, descarga, restauración
+  e importación de Snapshots; y cambios en permisos de roles. Cada registro incluye
+  IP, descripción, y snapshot de datos anteriores/nuevos cuando aplica.
+  Sin paquetes externos — implementación propia. BhagamApps v1.22.11.
+
+---
+
 ## v1.23.10 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-007 — Importar Snapshot externo — DR completo sin SSH)

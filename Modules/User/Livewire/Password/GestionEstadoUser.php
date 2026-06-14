@@ -3,6 +3,7 @@
 namespace Modules\User\Livewire\Password;
 
 use Livewire\Component;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\User\Entities\AuditoriaPassword;
 use Modules\User\Entities\User;
 use Modules\User\Traits\ProteccionAdminPrincipal;
@@ -32,6 +33,13 @@ class GestionEstadoUser extends Component
         ]);
 
         $this->user->refresh();
+        ActivityLogger::log(
+            modulo:      'Users',
+            accion:      'bloquear',
+            descripcion: "Usuario bloqueado: {$this->user->email} ({$this->user->nombres} {$this->user->apellidos})",
+            tipoObjeto:  'Usuario',
+            objetoId:    $this->user->id,
+        );
         session()->flash('message', "Usuario {$this->user->nombres} bloqueado.");
     }
 
@@ -50,6 +58,13 @@ class GestionEstadoUser extends Component
         ]);
 
         $this->user->refresh();
+        ActivityLogger::log(
+            modulo:      'Users',
+            accion:      'desbloquear',
+            descripcion: "Usuario desbloqueado: {$this->user->email} ({$this->user->nombres} {$this->user->apellidos})",
+            tipoObjeto:  'Usuario',
+            objetoId:    $this->user->id,
+        );
         session()->flash('message', "Usuario {$this->user->nombres} desbloqueado.");
     }
 

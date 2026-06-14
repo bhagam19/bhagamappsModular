@@ -3,6 +3,7 @@
 namespace Modules\User\Livewire\Roles;
 
 use Livewire\Component;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\User\Entities\Role;
 use Modules\User\Entities\Permission;
 
@@ -35,6 +36,14 @@ class EditarRolePermissions extends Component
         ]);
 
         $this->role->permissions()->sync($this->selectedPermissions);
+        ActivityLogger::log(
+            modulo:      'RBAC',
+            accion:      'asignar-permiso',
+            descripcion: "Permisos actualizados para rol '{$this->role->nombre}' (" . count($this->selectedPermissions) . " permisos)",
+            tipoObjeto:  'Rol',
+            objetoId:    $this->role->id,
+            datosNuevos: ['permission_ids' => $this->selectedPermissions],
+        );
         session()->flash('message', 'Permisos actualizados correctamente.');
         return redirect()->route('user.roles.index');
     }

@@ -11,6 +11,46 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.11 — 2026-06-13
+
+### Added (IMPL-ACTIVITYLOG-001 — Módulo Global de Auditoría Institucional)
+
+- **`Modules/ActivityLog`**: nuevo módulo nWidart de infraestructura transversal.
+  - **Migración** `2026_06_13_000001_create_activity_logs_table`:
+    tabla `activity_logs` con campos `user_id`, `modulo`, `tipo_objeto`, `objeto_id`,
+    `accion`, `descripcion`, `datos_anteriores` (JSON), `datos_nuevos` (JSON),
+    `ip_address`, `user_agent`, `created_at` (sin `updated_at`).
+    Índices: `modulo`, `accion`, `user_id`, `created_at`, compuestos
+    `[modulo, accion, created_at]` y `[user_id, created_at]` para 100k+ registros.
+  - **`ActivityLogger`** (`Services/ActivityLogger.php`): servicio estático con
+    `log(modulo, accion, descripcion, tipoObjeto?, objetoId?, datosAnteriores?, datosNuevos?)`.
+    Captura automática de usuario autenticado, IP y user-agent. Excepción silenciosa
+    (nunca interrumpe el flujo principal).
+  - **`activity_log()`** (`helpers.php`): función global cargada en `register()` del
+    ServiceProvider. Alias idéntico a `ActivityLogger::log()`.
+  - **`ActivityLogIndex`** (`Livewire/ActivityLogIndex.php`): componente con
+    `WithPagination`, filtros reactivos (usuario, módulo, acción, desde, hasta),
+    paginación (25/50/100), dashboard rápido (acciones hoy, semana, total, últimos 5).
+  - **Ruta**: `GET /admin/activity-log` con middleware `permission:ver-activity-log`.
+  - **Gate** (`app/Providers/AuthServiceProvider.php`):
+    `Gate::define('ver-activity-log', fn($user) => hasPermission() && isAdminPrincipal())`.
+  - **Permiso** `ver-activity-log` (id=86): seeder + CSVs actualizados.
+  - **Menú AdminLTE**: ítem "Activity Log" con `can:ver-activity-log`.
+- **Integraciones** (`ActivityLogger::log()` insertado en):
+  - `UserIndex::store()` → `crear` · `UserIndex::delete()` → `eliminar`
+  - `EditarRolUser::guardar()` → `asignar-rol` (con datos anteriores/nuevos)
+  - `GestionEstadoUser::bloquear()` → `bloquear` · `::desbloquear()` → `desbloquear`
+  - `BienesIndex::store()` → `crear` · `::solicitarEliminacion()` → `eliminar`
+  - `EditarCampoBien::actualizar()` → `editar` (con datos anteriores/nuevos del campo)
+  - `HmbIndex::aprobarModificacion()` → `aprobar` · `::rechazarModificacion()` → `rechazar`
+  - `BackupDashboard::generarBackup()` → `generar`
+  - `BackupsController::descargar()` → `descargar`
+  - `RestaurarBackup::ejecutarRestauracion()` → `restaurar`
+  - `ImportarSnapshot::ejecutarRestauracion()` → `importar`
+  - `EditarRolePermissions::save()` → `asignar-permiso`
+
+---
+
 ## v1.22.10 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-007 — Importación y Restauración de Snapshot Externo)

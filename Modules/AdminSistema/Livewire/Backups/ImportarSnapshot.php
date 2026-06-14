@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Modules\ActivityLog\Services\ActivityLogger;
 use ZipArchive;
 
 class ImportarSnapshot extends Component
@@ -165,6 +166,13 @@ class ImportarSnapshot extends Component
             $this->exito
                 ? 'EXITOSA desde CAB — snapshot importado externo (exit=0)'
                 : "FALLIDA desde CAB — snapshot importado externo (exit={$exitCode})"
+        );
+        ActivityLogger::log(
+            modulo:      'Backups',
+            accion:      'importar',
+            descripcion: ($this->exito ? 'Importación exitosa' : 'Importación fallida') . ": {$this->nombreArchivo}",
+            tipoObjeto:  'Snapshot',
+            datosNuevos: ['exito' => $this->exito, 'origen' => 'CAB-WEB-IMPORT'],
         );
 
         // SNAP-008: eliminar el archivo importado tras la restauración

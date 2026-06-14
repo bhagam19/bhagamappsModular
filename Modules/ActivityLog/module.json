@@ -1,0 +1,14 @@
+{
+    "name": "ActivityLog",
+    "alias": "activitylog",
+    "description": "Módulo global de auditoría institucional transversal",
+    "keywords": ["auditoria", "activity", "log", "institucional"],
+    "priority": 0,
+    "providers": [
+        "Modules\\ActivityLog\\Providers\\ActivityLogServiceProvider"
+    ],
+    "paths": {
+        "migrations": "Database/Migrations"
+    },
+    "files": []
+}

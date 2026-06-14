@@ -399,6 +399,13 @@ return [
                     'can'     => 'importar-snapshot-backup',
                     'classes' => 'font-weight-bold',
                 ],
+                [
+                    'text'    => 'Activity Log',
+                    'icon'    => 'fas fa-history text-secondary',
+                    'route'   => 'admin.activity-log.index',
+                    'active'  => ['admin/activity-log'],
+                    'can'     => 'ver-activity-log',
+                ],
             ],
         ],
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Notification;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Modules\ActivityLog\Services\ActivityLogger;
 
 use Modules\User\Entities\User;
 use Modules\Inventario\Entities\{
@@ -254,6 +255,13 @@ class BienesIndex extends Component
             ));
         }
 
+        ActivityLogger::log(
+            modulo:      'Inventario',
+            accion:      'crear',
+            descripcion: "Bien creado: {$bien->nombre} (ID: {$bien->id})",
+            tipoObjeto:  'Bien',
+            objetoId:    $bien->id,
+        );
         session()->flash('message', 'Bien creado exitosamente.');
         $this->resetInput();
         $this->mostrarFormulario = false;
@@ -327,6 +335,13 @@ class BienesIndex extends Component
             // Aplicar soft delete al bien
             $bien->delete();
 
+            ActivityLogger::log(
+                modulo:      'Inventario',
+                accion:      'eliminar',
+                descripcion: "Bien eliminado: {$bien->nombre} (ID: {$bien->id}) — Motivo: {$motivoFinal}",
+                tipoObjeto:  'Bien',
+                objetoId:    $bien->id,
+            );
             $this->dispatch('mostrar-mensaje', tipo: 'success', mensaje: 'El bien fue eliminado correctamente.');
             $this->dispatch('cerrar-modal-eliminar-bien');
             return;

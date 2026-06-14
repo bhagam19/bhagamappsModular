@@ -4,6 +4,7 @@ namespace Modules\Inventario\Livewire\Bienes;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Notification;
+use Modules\ActivityLog\Services\ActivityLogger;
 use Modules\User\Entities\User;
 use Modules\Inventario\Entities\{
     Bien,
@@ -129,6 +130,15 @@ class EditarCampoBien extends Component
             }
 
             $this->bien->save();
+            ActivityLogger::log(
+                modulo:          'Inventario',
+                accion:          'editar',
+                descripcion:     "Campo '{$this->campo}' actualizado en Bien ID {$this->bien->id} ({$this->bien->nombre})",
+                tipoObjeto:      'Bien',
+                objetoId:        $this->bien->id,
+                datosAnteriores: [$this->campo => $valorActual],
+                datosNuevos:     [$this->campo => $this->valor],
+            );
             $this->valor = $this->bien->{$this->campo};
             $this->editando = false;
             $this->dispatch('bienActualizado');

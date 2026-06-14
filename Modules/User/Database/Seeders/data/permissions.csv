@@ -83,3 +83,4 @@ id,nombre,slug,descripcion,categoria,created_at,updated_at
 83,"sincronizar backup drive",sincronizar-backup-drive,"Permite ejecutar una sincronización manual del último respaldo a Google Drive.",admin-sistema,"2026-06-13 13:30:00","2026-06-13 13:30:00"
 84,"restaurar backups",restaurar-backups,"Permite restaurar la base de datos institucional desde un Snapshot ZIP. Requiere es_principal = true.",admin-sistema,"2026-06-13 17:54:40","2026-06-13 17:54:40"
 85,"importar snapshot backup",importar-snapshot-backup,"Permite cargar y restaurar un Snapshot ZIP externo (ej: descargado desde Drive). Requiere es_principal = true.",admin-sistema,"2026-06-13 20:30:02","2026-06-13 20:30:02"
+86,"ver activity log",ver-activity-log,"Permite ver el registro de auditoría institucional. Requiere es_principal = true.",admin-sistema,"2026-06-13 20:52:12","2026-06-13 20:52:12"

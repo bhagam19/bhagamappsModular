@@ -137,6 +137,11 @@ class AuthServiceProvider extends ServiceProvider
                     $user->hasPermission('importar-snapshot-backup') && $user->isAdminPrincipal()
                 );
 
+                // LOG-011: ver activity log solo para AdminPrincipal (IMPL-ACTIVITYLOG-001)
+                Gate::define('ver-activity-log', fn($user) =>
+                    $user->hasPermission('ver-activity-log') && $user->isAdminPrincipal()
+                );
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }
