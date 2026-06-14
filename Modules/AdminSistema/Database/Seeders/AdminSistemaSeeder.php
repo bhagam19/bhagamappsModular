@@ -47,6 +47,13 @@ class AdminSistemaSeeder extends Seeder
             'descripcion' => 'Permite restaurar la base de datos institucional desde un Snapshot ZIP. Requiere es_principal = true.',
             'categoria'   => 'admin-sistema',
         ],
+        // SNAP-002: solo asignado a Administrador; Gate exige además es_principal=true
+        [
+            'slug'        => 'importar-snapshot-backup',
+            'nombre'      => 'importar snapshot backup',
+            'descripcion' => 'Permite cargar y restaurar un Snapshot ZIP externo (ej: descargado desde Drive). Requiere es_principal = true.',
+            'categoria'   => 'admin-sistema',
+        ],
     ];
 
     public function run(): void

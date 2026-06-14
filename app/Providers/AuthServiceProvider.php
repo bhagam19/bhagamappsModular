@@ -132,6 +132,11 @@ class AuthServiceProvider extends ServiceProvider
                     $user->hasPermission('restaurar-backups') && $user->isAdminPrincipal()
                 );
 
+                // SNAP-002: importar snapshot externo requiere permiso + es_principal (IMPL-INFRA-BACKUP-007)
+                Gate::define('importar-snapshot-backup', fn($user) =>
+                    $user->hasPermission('importar-snapshot-backup') && $user->isAdminPrincipal()
+                );
+
                 // 📌 [crud-generator-gates] Añadir gates aquí
 }
 }

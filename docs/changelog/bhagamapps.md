@@ -11,6 +11,51 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.10 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-007 — Importación y Restauración de Snapshot Externo)
+
+- **`ImportarSnapshot`** (`Modules/AdminSistema/Livewire/Backups/ImportarSnapshot.php`):
+  componente Livewire con `WithFileUploads`, máquina de 4 estados
+  (subir → vista-previa → confirmar → resultado).
+  - `cargarYValidar()`: valida `['required','file','mimes:zip','max:51200']`, almacena en
+    `storage/app/imported-snapshots/SNAP-{ts}-{rand}.zip`, verifica estructura interna del
+    ZIP con `ZipArchive` (presencia de `metadata.json` + CSVs mínimos), lee metadata,
+    renombra a `IEE-{fecha}-imported.zip`.
+  - `ejecutarRestauracion()`: verifica `trim($confirmacion) === 'RESTAURAR'`, llama
+    `Artisan::call('backup:restore-from-zip', ['--file' => $rutaImportada, '--force' => true])`,
+    captura `Artisan::output()`.
+  - `registrarAuditoria()`: JSONL en `restore.log` con `'origen' => 'CAB-WEB-IMPORT'`,
+    `usuario_id`, `usuario`, `backup`, `version_iee`, `total_registros`, `tamano_bytes`.
+  - `limpiarImportacionesAntiguas()`: en `mount()`, borra archivos en `imported-snapshots/`
+    con más de 24 horas para evitar acumulación.
+  - `limpiarImportada()`: elimina el ZIP importado tras restauración o cancelación.
+  - Constante `CSV_MINIMOS`: `['users.csv', 'bienes.csv', 'categorias.csv',
+    'dependencias.csv', 'permissions.csv']` — validados en estructura del ZIP.
+  - Seguridad: `abort(403)` si usuario no es principal o no tiene permiso; validación de
+    estructura ZIP antes de cualquier acción; archivos temporales con nombre aleatorio.
+- **`ImportarSnapshotController`**
+  (`Modules/AdminSistema/Http/Controllers/ImportarSnapshotController.php`):
+  verificación de `isAdminPrincipal()` en capa de controlador (defensa en profundidad).
+- **Ruta** (`Modules/AdminSistema/Routes/web.php`):
+  `GET /admin/backups/importar` con middleware `permission:importar-snapshot-backup`,
+  registrada ANTES de `/{fecha}` para evitar conflicto de ruta.
+- **Gate** (`app/Providers/AuthServiceProvider.php`):
+  `Gate::define('importar-snapshot-backup', fn($user) => hasPermission() && isAdminPrincipal())`.
+- **Seeder** (`Modules/AdminSistema/Database/Seeders/AdminSistemaSeeder.php`):
+  permiso `importar-snapshot-backup` (id=85) añadido, asignado al rol Administrador.
+- **CSVs de datos** actualizados: `permissions.csv` (id=85) + `permission_role.csv` (id=186)
+  en `Modules/User/Database/Seeders/data/` para reflejar el nuevo permiso en installs limpias.
+- **Menú AdminLTE** (`config/adminlte.php`): ítem "Importar Snapshot" con
+  `can:importar-snapshot-backup`, visible solo al Administrador Principal.
+- **Vistas**: `backups/importar.blade.php` (wrapper) +
+  `livewire/backups/importar-snapshot.blade.php` (4 estados: upload con progreso,
+  ficha del snapshot, confirmación con validación inline, terminal de salida).
+- **DR completado**: la combinación GitHub clone + migrations + upload ZIP desde Drive
+  es suficiente para restaurar completamente la plataforma en un servidor nuevo.
+
+---
+
 ## v1.22.9 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-006 — Restaurar Snapshot desde CAB)

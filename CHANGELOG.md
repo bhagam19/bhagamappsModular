@@ -17,6 +17,24 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.10] — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-007 — Importación y Restauración de Snapshot Externo desde CAB)
+
+- Nueva sección "Importar Snapshot" en Administración del Sistema → Backups, accesible
+  exclusivamente al Administrador Principal (`es_principal = true` + permiso
+  `importar-snapshot-backup`). Permite subir un ZIP externo (descargado desde Google Drive
+  u otro origen), validar su estructura, revisar una vista previa completa del contenido
+  y ejecutar la restauración con doble confirmación (`RESTAURAR`). Cierra el ciclo de
+  Disaster Recovery: instalación nueva + GitHub + migraciones + ZIP de Drive = plataforma
+  restaurada sin acceso SSH al servidor original.
+  Componente `ImportarSnapshot` con `WithFileUploads`, máquina de 4 estados
+  (subir → vista-previa → confirmar → resultado). JSONL en `restore.log` con
+  `origen: CAB-WEB-IMPORT`. Gate `importar-snapshot-backup` exige `hasPermission() +
+  isAdminPrincipal()`. IEE v1.23.10 / BhagamApps v1.22.10.
+
+---
+
 ## [v1.22.9] — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-006 — Restauración de Snapshot Institucional desde CAB)

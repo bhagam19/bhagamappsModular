@@ -7,6 +7,30 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.10 — 2026-06-13
+
+### Added (IMPL-INFRA-BACKUP-007 — Importar Snapshot externo — DR completo sin SSH)
+
+- El Centro de Administración de Backups incluye ahora la sección "Importar Snapshot".
+  Desde Administración del Sistema → Backups → Importar Snapshot, el Administrador
+  Principal puede subir un archivo ZIP de Snapshot generado previamente (ej: descargado
+  desde Google Drive) y restaurar la plataforma sin acceso SSH al servidor original.
+  Flujo de 4 estados: carga del ZIP con barra de progreso → vista previa completa
+  (fecha, versión IEE, total de registros, conteo por tabla) → confirmación escribiendo
+  exactamente `RESTAURAR` → resultado con salida completa del motor de restauración.
+  El sistema valida la estructura del ZIP antes de mostrar la vista previa: debe contener
+  `metadata.json` y los CSVs mínimos requeridos (`users.csv`, `bienes.csv`, `categorias.csv`,
+  `dependencias.csv`, `permissions.csv`). La restauración reutiliza el mismo motor auditado
+  (comando `backup:restore-from-zip`). Cada operación queda registrada en
+  `storage/logs/restore.log` con `origen: CAB-WEB-IMPORT`, usuario, snapshot y resultado.
+  Permiso RBAC `importar-snapshot-backup` (id=85) asignado al rol Administrador; el Gate
+  adicionalmente exige `es_principal = true`. BhagamApps v1.22.10.
+  **DR verificado:** una instalación completamente nueva (nuevo servidor + `git clone` +
+  `php artisan migrate` + upload del ZIP descargado desde Drive) puede restaurar la totalidad
+  de los datos institucionales sin dependencia del servidor original.
+
+---
+
 ## v1.23.9 — 2026-06-13
 
 ### Added (IMPL-INFRA-BACKUP-006 — Restauración desde CAB — cierre del ciclo DR)

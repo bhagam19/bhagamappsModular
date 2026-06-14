@@ -391,6 +391,14 @@ return [
                     'can'     => 'restaurar-backups',
                     'classes' => 'font-weight-bold',
                 ],
+                [
+                    'text'    => 'Importar Snapshot',
+                    'icon'    => 'fas fa-file-import text-info',
+                    'route'   => 'admin.backups.importar',
+                    'active'  => ['admin/backups/importar'],
+                    'can'     => 'importar-snapshot-backup',
+                    'classes' => 'font-weight-bold',
+                ],
             ],
         ],
 
