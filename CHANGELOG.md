@@ -17,6 +17,22 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.22.12] — 2026-06-13
+
+### Added (AUDIT-BACKUP-005 — Certificación de Integridad Total del Snapshot Institucional)
+
+- Auditoría de solo lectura sobre el snapshot `IEE-2026-06-13.zip`. 10 controles
+  ejecutados (SNAP-AUDIT-001 a 010). Resultado: 23/33 tablas exportadas, cobertura
+  de datos institucionales del 99.6%, integridad referencial perfecta (0 huérfanos en
+  11 relaciones), todos los campos críticos de seguridad presentes. Hallazgos:
+  2 permisos post-backup (ids 85/86) ausentes del ZIP (procedimiento de remediación
+  documentado), `activity_logs` no incluida en export (mejora pendiente).
+  Dictamen: **APTO PARA RESTAURACIÓN — 97% de confianza.**
+  Documento: `docs/audits/AUDIT-BACKUP-005-Certificacion-De-Integridad-Total-Del-Snapshot-Institucional.md`.
+  IEE v1.23.12 / BhagamApps v1.22.12.
+
+---
+
 ## [v1.22.11] — 2026-06-13
 
 ### Added (IMPL-ACTIVITYLOG-001 — Módulo Global de Auditoría Institucional)

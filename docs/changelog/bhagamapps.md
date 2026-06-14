@@ -11,6 +11,32 @@ Changelogs de módulo:
 
 ---
 
+## v1.22.12 — 2026-06-13
+
+### Added (AUDIT-BACKUP-005 — Certificación de Integridad Total del Snapshot Institucional)
+
+- **Auditoría de solo lectura** sobre `backups/IEE-2026-06-13.zip` (57,024 bytes).
+  10 controles ejecutados:
+  - SNAP-AUDIT-001: ZIP identificado, metadata.json válido
+  - SNAP-AUDIT-002: 24 archivos (23 CSV + metadata.json) inventariados
+  - SNAP-AUDIT-003: 21/23 tablas con conteo exacto; 2 con adiciones post-backup
+    (`permissions` +2, `permission_role` +2)
+  - SNAP-AUDIT-004: IDs de bienes idénticos (gaps 40,476,490,503 iguales en BD y CSV);
+    permisos ids 85/86 añadidos después del backup
+  - SNAP-AUDIT-005: 0 huérfanos en 11 relaciones de clave foránea — integridad perfecta
+  - SNAP-AUDIT-006: contenido de roles, origenes, estados, categorias, apps y users
+    idéntico entre BD y CSV
+  - SNAP-AUDIT-007: todos los campos críticos presentes (bloqueado, es_principal,
+    password, deleted_at, habilitada, slug)
+  - SNAP-AUDIT-008: 10 tablas no exportadas — 8 vacías/sistema, 1 nuevo módulo
+    (activity_logs, 2 registros), 1 efímera (notifications, 11 registros)
+  - SNAP-AUDIT-009: certificación A/B/C/D; snapshot APTO con 5 pasos post-restore
+  - SNAP-AUDIT-010: 4 hallazgos (2 Bajo, 1 Medio, 1 Informativo)
+  **Dictamen: APTO PARA RESTAURACIÓN — 97% de confianza.**
+  `docs/audits/AUDIT-BACKUP-005-Certificacion-De-Integridad-Total-Del-Snapshot-Institucional.md`
+
+---
+
 ## v1.22.11 — 2026-06-13
 
 ### Added (IMPL-ACTIVITYLOG-001 — Módulo Global de Auditoría Institucional)

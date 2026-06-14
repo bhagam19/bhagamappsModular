@@ -7,6 +7,21 @@ La plataforma técnica subyacente se documenta en [`docs/changelog/bhagamapps.md
 
 ---
 
+## v1.23.12 — 2026-06-13
+
+### Added (AUDIT-BACKUP-005 — Certificación de Integridad Total del Snapshot Institucional)
+
+- Ejecutada auditoría de integridad completa sobre el snapshot `IEE-2026-06-13.zip`
+  (57,024 bytes, generado el 2026-06-13 18:55:15). Resultado: los datos institucionales
+  críticos — 1,420 bienes, 117 usuarios, 135 dependencias, 28 categorías, 7 roles,
+  12 apps, configuración RBAC completa — están íntegros en el snapshot con integridad
+  referencial perfecta. Cobertura de datos institucionales: 99.6%.
+  El Snapshot es APTO PARA RESTAURACIÓN con confianza del 97%.
+  Procedimiento de remediación post-restore documentado (2 permisos creados
+  después del backup deben insertarse manualmente). BhagamApps v1.22.12.
+
+---
+
 ## v1.23.11 — 2026-06-13
 
 ### Added (IMPL-ACTIVITYLOG-001 — Auditoría institucional transversal)
