@@ -31,7 +31,7 @@ class DependenciasSeeder extends Seeder
                     [
                         'nombre'       => trim($data['nombre']),
                         'ubicacion_id' => (int) $data['ubicacion_id'],
-                        'user_id'      => (int) $data['usuario_id'],
+                        'user_id'      => (int) $data['user_id'],
                         'created_at'   => $data['created_at'],
                         'updated_at'   => $data['updated_at'],
                     ]

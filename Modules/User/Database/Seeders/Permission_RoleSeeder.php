@@ -10,6 +10,7 @@ class Permission_RoleSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('permission_role')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/permission_role.csv');
         $file->setFlags(SplFileObject::READ_CSV);

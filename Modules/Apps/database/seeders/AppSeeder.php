@@ -3,25 +3,32 @@
 namespace Modules\Apps\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\Apps\Entities\App;
 
 class AppSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('apps')->delete();
+
         $apps = [
             [
-                'nombre'      => 'Usuarios',
+                'id'          => 1,
+                'nombre'      => 'Gestión de Acceso',
                 'slug'        => 'user',
-                'ruta'        => '/user',
+                'ruta'        => '/users/users',
                 'descripcion' => 'Gestión de usuarios, roles y permisos.',
                 'imagen'      => 'vendor/adminlte/dist/img/Apps/users.png',
-                'icono'       => 'fas fa-users',
+                'icono'       => 'fas fa-user-shield',
                 'color'       => '#3a3f8c',
                 'orden'       => 1,
                 'habilitada'  => true,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 2,
                 'nombre'      => 'Inventario',
                 'slug'        => 'inventario',
                 'ruta'        => '/inventario',
@@ -31,19 +38,25 @@ class AppSeeder extends Seeder
                 'color'       => '#28a745',
                 'orden'       => 2,
                 'habilitada'  => true,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 3,
                 'nombre'      => 'Aplicaciones',
                 'slug'        => 'apps',
                 'ruta'        => '/apps/admin',
                 'descripcion' => 'Administración del catálogo de aplicaciones.',
                 'imagen'      => 'vendor/adminlte/dist/img/Apps/apps.png',
-                'icono'       => 'fas fa-th-large',
+                'icono'       => 'fas fa-rocket',
                 'color'       => '#6610f2',
                 'orden'       => 3,
-                'habilitada'  => true,
+                'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 4,
                 'nombre'      => 'Biblioteca',
                 'slug'        => 'biblioteca',
                 'ruta'        => '/biblioteca',
@@ -52,9 +65,12 @@ class AppSeeder extends Seeder
                 'icono'       => 'fas fa-book',
                 'color'       => '#fd7e14',
                 'orden'       => 4,
-                'habilitada'  => false,
+                'habilitada'  => true,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 5,
                 'nombre'      => 'SINAI vs SIMAT',
                 'slug'        => 'sinai-vs-simat',
                 'ruta'        => '/SvS',
@@ -64,8 +80,11 @@ class AppSeeder extends Seeder
                 'color'       => '#17a2b8',
                 'orden'       => 10,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 6,
                 'nombre'      => 'Planeador',
                 'slug'        => 'planeador',
                 'ruta'        => '/planeador',
@@ -75,8 +94,11 @@ class AppSeeder extends Seeder
                 'color'       => '#20c997',
                 'orden'       => 11,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 7,
                 'nombre'      => 'EduInclusiva',
                 'slug'        => 'edu-inclusiva',
                 'ruta'        => '/eduInclusiva',
@@ -86,8 +108,11 @@ class AppSeeder extends Seeder
                 'color'       => '#e83e8c',
                 'orden'       => 12,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 8,
                 'nombre'      => 'CTE',
                 'slug'        => 'cte',
                 'ruta'        => '/cte',
@@ -97,8 +122,11 @@ class AppSeeder extends Seeder
                 'color'       => '#6c757d',
                 'orden'       => 13,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 9,
                 'nombre'      => 'Creador de Exámenes',
                 'slug'        => 'creador-examenes',
                 'ruta'        => '/creadorExamenes',
@@ -108,8 +136,11 @@ class AppSeeder extends Seeder
                 'color'       => '#007bff',
                 'orden'       => 14,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 10,
                 'nombre'      => 'Préstamo Tabletas',
                 'slug'        => 'prestamo-tabletas',
                 'ruta'        => '/prestamoTabletas',
@@ -119,8 +150,11 @@ class AppSeeder extends Seeder
                 'color'       => '#343a40',
                 'orden'       => 15,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 11,
                 'nombre'      => 'Evaluar para Avanzar',
                 'slug'        => 'evaluar-para-avanzar',
                 'ruta'        => '/evaluarParaAvanzar',
@@ -130,8 +164,11 @@ class AppSeeder extends Seeder
                 'color'       => '#ffc107',
                 'orden'       => 16,
                 'habilitada'  => false,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
+                'id'          => 12,
                 'nombre'      => 'Administración del Sistema',
                 'slug'        => 'admin-sistema',
                 'ruta'        => '/admin/backups',
@@ -141,14 +178,13 @@ class AppSeeder extends Seeder
                 'color'       => '#6c757d',
                 'orden'       => 0,
                 'habilitada'  => true,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
         ];
 
         foreach ($apps as $data) {
-            App::updateOrCreate(
-                ['slug' => $data['slug']],
-                $data
-            );
+            DB::table('apps')->insert($data);
         }
     }
 }

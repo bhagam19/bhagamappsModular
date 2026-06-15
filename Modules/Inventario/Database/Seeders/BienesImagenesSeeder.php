@@ -10,6 +10,8 @@ class BienesImagenesSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('bienes_imagenes')->delete();
+
         $faker = Faker::create();
 
         foreach (range(1, 10) as $i) {

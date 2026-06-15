@@ -11,6 +11,7 @@ class DetallesSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('detalles')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/detalles.csv');
         $file->setFlags(SplFileObject::READ_CSV);

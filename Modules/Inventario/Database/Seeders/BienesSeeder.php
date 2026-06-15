@@ -10,6 +10,7 @@ class BienesSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('bienes')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/bienes.csv');
         $file->setFlags(SplFileObject::READ_CSV);

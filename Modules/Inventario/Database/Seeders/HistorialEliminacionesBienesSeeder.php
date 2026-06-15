@@ -25,6 +25,8 @@ class HistorialEliminacionesBienesSeeder extends Seeder
     /*******  0f5ca49b-bdf8-4ffa-939f-dd300a05b903  *******/
     public function run(): void
     {
+        DB::table('historial_eliminaciones_bienes')->delete();
+
         $faker = Faker::create();
 
         foreach (range(1, 10) as $i) {

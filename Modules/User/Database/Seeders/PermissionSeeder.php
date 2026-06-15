@@ -10,6 +10,7 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('permissions')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/permissions.csv');
         $file->setFlags(SplFileObject::READ_CSV);
@@ -24,7 +25,7 @@ class PermissionSeeder extends Seeder
             $data = array_combine($headers, $row);
 
             DB::table('permissions')->insert([
-                //'id' => $data['id'],
+                'id' => $data['id'],
                 'nombre' => $data['nombre'],
                 'slug' => $data['slug'],
                 'descripcion' => $data['descripcion'],

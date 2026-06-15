@@ -9,6 +9,7 @@ class AlmacenamientosSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('almacenamientos')->delete();
         DB::table('almacenamientos')->insert([
             [
                 'id' => 1,

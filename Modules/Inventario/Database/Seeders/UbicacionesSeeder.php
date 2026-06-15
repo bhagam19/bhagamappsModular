@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 class UbicacionesSeeder extends Seeder
 {
     public function run(): void
-    {       
-        
+    {
+        DB::table('ubicaciones')->delete();
         DB::table('ubicaciones')->insert([
             [
                 'id' => 1,

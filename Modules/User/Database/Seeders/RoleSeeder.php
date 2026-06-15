@@ -3,6 +3,7 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Modules\User\Entities\Role;
 use Modules\User\Entities\Permission;
 use Modules\Apps\Entities\App;
@@ -19,27 +20,22 @@ class RoleSeeder extends Seeder
             return;
         }
 
-        $roles = [
-            ['nombre' => 'Administrador', 'descripcion' => 'Usuario con acceso completo al sistema.'],
-            ['nombre' => 'Rector', 'descripcion' => 'Orienta todos los procesos en general.'],
-            ['nombre' => 'Coordinador', 'descripcion' => 'Supervisa procesos académicos o administrativos.'],
-            ['nombre' => 'Auxiliar', 'descripcion' => 'Apoya todos los procesos académicos o administrativos.'],
-            ['nombre' => 'Docente', 'descripcion' => 'Encargado de impartir clases y evaluar a los estudiantes.'],
-            ['nombre' => 'Estudiante', 'descripcion' => 'Usuario que accede a contenidos y actividades académicas.'],
-            ['nombre' => 'Invitado', 'descripcion' => 'Acceso limitado para pruebas o demostraciones.'],
-        ];
+        DB::table('roles')->delete();
 
-        foreach ($roles as $rolData) {
-            $rol = Role::updateOrCreate(
-                ['nombre' => $rolData['nombre'], 'app_id' => $app->id],
-                ['descripcion' => $rolData['descripcion']]
-            );
-        }
+        DB::table('roles')->insert([
+            ['id' => 1, 'nombre' => 'Administrador', 'descripcion' => 'Usuario con acceso completo al sistema.',            'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 2, 'nombre' => 'Rectoría',      'descripcion' => 'Orienta todos los procesos en general.',            'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 3, 'nombre' => 'Coordinación',  'descripcion' => 'Supervisa procesos académicos o administrativos.',  'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 4, 'nombre' => 'Auxiliar',      'descripcion' => 'Apoya todos los procesos académicos o administrativos.', 'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 5, 'nombre' => 'Docente',       'descripcion' => 'Encargado de impartir clases y evaluar a los estudiantes.', 'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 6, 'nombre' => 'Estudiante',    'descripcion' => 'Usuario que accede a contenidos y actividades académicas.', 'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 7, 'nombre' => 'Invitado',      'descripcion' => 'Acceso limitado para pruebas o demostraciones.',   'app_id' => $app->id, 'created_at' => now(), 'updated_at' => now()],
+        ]);
 
         // Obtener los roles ya creados (con app_id)
         $admin = Role::where('nombre', 'Administrador')->where('app_id', $app->id)->first();
-        $rector = Role::where('nombre', 'Rector')->where('app_id', $app->id)->first();
-        $coordinador = Role::where('nombre', 'Coordinador')->where('app_id', $app->id)->first();
+        $rector = Role::where('nombre', 'Rectoría')->where('app_id', $app->id)->first();
+        $coordinador = Role::where('nombre', 'Coordinación')->where('app_id', $app->id)->first();
         $docente = Role::where('nombre', 'Docente')->where('app_id', $app->id)->first();
         $auxiliar = Role::where('nombre', 'Auxiliar')->where('app_id', $app->id)->first();
 

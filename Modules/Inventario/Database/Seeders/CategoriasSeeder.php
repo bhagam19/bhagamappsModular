@@ -11,6 +11,7 @@ class CategoriasSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('categorias')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/categorias.csv');
         $file->setFlags(SplFileObject::READ_CSV);

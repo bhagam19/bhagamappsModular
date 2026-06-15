@@ -11,6 +11,7 @@ class MantenimientosSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('mantenimientos')->delete();
         DB::table('mantenimientos')->insert([
             [
                 'id' => 1,

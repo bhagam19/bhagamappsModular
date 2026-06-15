@@ -11,6 +11,7 @@ class EstadosSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('estados')->delete();
         DB::table('estados')->insert([
             [
                 'id' => 1,

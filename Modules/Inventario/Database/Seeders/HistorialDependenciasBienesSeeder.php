@@ -11,6 +11,8 @@ class HistorialDependenciasBienesSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('historial_dependencias_bienes')->delete();
+
         $faker = Faker::create();
 
         foreach (range(1, 10) as $i) {

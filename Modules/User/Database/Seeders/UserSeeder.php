@@ -17,10 +17,12 @@ class UserSeeder extends Seeder
         $roles = Role::pluck('id', 'nombre')->toArray(); // ['Administrador' => 1, 'Rector' => 2, ...]
 
         // Verificamos que existan los roles necesarios
-        if (!isset($roles['Rector']) || !isset($roles['Coordinador'])) {
-            $this->command->error('Faltan los roles "Rector" y/o "Coordinador". Ejecuta primero RoleSeeder.');
+        if (!isset($roles['Rectoría']) || !isset($roles['Coordinación'])) {
+            $this->command->error('Faltan los roles "Rectoría" y/o "Coordinación". Ejecuta primero RoleSeeder.');
             return;
         }
+
+        DB::table('users')->delete();
 
         $file = new SplFileObject(__DIR__ . '/data/users.csv');
         $file->setFlags(SplFileObject::READ_CSV);
