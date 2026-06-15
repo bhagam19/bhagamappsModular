@@ -17,6 +17,48 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.23.0] — 2026-06-14
+
+### Added (IMPL-CORE-002 Sprint 0 — Compatibilidad Arquitectónica APPSisGOE)
+
+- **CORE-000.1 — Spatie Permission instalado:** `spatie/laravel-permission ^6.25` agregado
+  a `composer.json`. Configuración publicada en `config/permission.php` con `teams=false`
+  (ADR-003 §4). Migración publicada en `database/migrations/2026_06_14_185235_create_permission_tables.php`
+  con guarda `Schema::hasTable()` para coexistencia segura con tablas legacy durante
+  transición CORE-002.
+
+- **CORE-000.2 — RolInstitucional enum creado:** `app/Auth/RolInstitucional.php` con
+  7 roles fijos de la IEE colombiana (Administrador, Rector, Coordinador, Auxiliar,
+  Docente, Estudiante, Invitado). Resuelve BLOCKER-002 del IMPLEMENTATION-READINESS-REPORT.
+  `SincronizarRolesYPermisosCoreAction` ahora puede cargar sin error.
+
+- **CORE-000.3 — Dependencias cross-módulo eliminadas:** `Modules/User/Entities/User.php`
+  saneado — eliminadas 2 importaciones ilegales (`Modules\Inventario\Entities\Bien`,
+  `Modules\Inventario\Entities\Dependencia`) y 3 métodos cross-módulo (`bienes()`,
+  `bienesAsignados()`, `dependencias()`). Cumple ARCH-001 PRINC-03 Desacoplamiento
+  Horizontal.
+
+- **CORE-000.4 — roles.app_id analizado:** FK circular `roles → apps` ya nullable
+  (migración `2026_06_08`). Todos los 7 roles tienen `app_id=1`. Auto-resuelve en
+  CORE-002 cuando Spatie reemplaza tabla `roles`.
+
+- **Documentación:** `docs/implementation/IMPLEMENTATION-READINESS-REPORT.md` (324 líneas),
+  `docs/implementation/CORE-FOUNDATION-IMPLEMENTATION-PLAN.md` (764 líneas),
+  `docs/implementation/IMPLEMENTATION-BACKLOG-CORE-FOUNDATION.md` (801 líneas).
+  Reporte de Sprint 0: `docs/implementation/IMPL-CORE-002-REPORT.md`.
+
+### Changed
+
+- `Modules/User/Entities/User.php` — eliminadas relaciones cross-módulo ilegales
+  (`bienes`, `bienesAsignados`, `dependencias`). Relación `apps()` mantenida (intra-CORE).
+
+### Fixed
+
+- Migración Spatie ahora es idempotente vía `Schema::hasTable()` — previene conflicto
+  con tabla legacy `permissions` durante `migrate:fresh` en suite de pruebas.
+
+---
+
 ## [v1.22.12] — 2026-06-13
 
 ### Added (AUDIT-BACKUP-005 — Certificación de Integridad Total del Snapshot Institucional)

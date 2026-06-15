@@ -9,9 +9,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\User\Database\Factories\UserFactory;
-
-use Modules\Inventario\Entities\Bien;
-use Modules\Inventario\Entities\Dependencia;
 use Modules\Apps\Entities\App;
 
 class User extends Authenticatable
@@ -99,16 +96,6 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public function dependencias()
-    {
-        return $this->hasMany(Dependencia::class, 'user_id');
-    }
-
-    public function bienesAsignados()
-    {
-        return $this->hasMany(\Modules\Inventario\Entities\BienResponsable::class, 'user_id')->whereNull('fecha_retiro');
-    }
-
     /**
      * Verifica si el user tiene un rol específico por nombre.
      */
@@ -156,11 +143,6 @@ class User extends Authenticatable
         return $this->avatar
             ? asset('storage/' . $this->avatar)
             : asset('images/default-avatar.png');
-    }
-
-    public function bienes()
-    {
-        return $this->hasMany(Bien::class, 'user_id');
     }
 
     public function apps()
