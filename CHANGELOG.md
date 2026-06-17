@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.32.0] — 2026-06-16
+
+### Added (ADR-GESTION-DATA-001 — Resolución de Hallazgos del Modelo de Datos Institucional)
+
+- **ADR-GESTION-DATA-001:** Incorporado `docs/adr/ADR-GESTION-DATA-001.md` — Resolución de
+  Hallazgos del Modelo de Datos Institucional. Resuelve 6 hallazgos sobre DDOM-GESTION-DATA-001:
+  (1) Relación N:M Meta↔Indicador (tabla meta_indicador), (2) componente_responsables,
+  (3) objetivo_responsables, (4) Evidencias polimórficas (evidenciable_type/id),
+  (5) Seguimientos separados por nivel (indicadores/metas/actividades/tareas),
+  (6) Hallazgos multi-componente DIFERIDOS (YAGNI). Precede a IMPL-GESTION-CORE-001.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.31.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-DATA-001 — Modelo de Datos Institucional)
