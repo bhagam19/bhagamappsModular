@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Ppal\HomeController;
+use App\Http\Controllers\Ppal\GestionInstitucionalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('inicio');
+    Route::get('/gestion-institucional', [GestionInstitucionalController::class, 'arbol'])->name('gestion.arbol');
 });
 
 

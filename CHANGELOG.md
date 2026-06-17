@@ -17,6 +17,25 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.35.0] — 2026-06-16
+
+### Added (IMPL-GESTION-CORE-001 — Infraestructura Institucional Base)
+
+- **Migraciones CORE:** `gestiones`, `procesos`, `componentes` con SoftDeletes, índices
+  únicos en `codigo` y FK entre tablas. 9 permisos `gestion-institucional` creados y
+  asignados al rol Administrador.
+- **Modelos Eloquent:** `App\Models\Gestion`, `Proceso`, `Componente` con relaciones
+  `hasMany`/`belongsTo` y SoftDeletes.
+- **Seeders Guía 34:** `GestionesSeeder` (4), `ProcesosSeeder` (19), `ComponentesSeeder` (89).
+  Total: 112 registros institucionales cargados.
+- **Vista jerárquica:** ruta `/gestion-institucional` → árbol expandible Gestión → Proceso
+  → Componente. `GestionInstitucionalController` + `gestion/arbol.blade.php`.
+- **Auditoría:** `docs/audits/AUDIT-GESTION-CORE-001.md` — 6 QA verificados, todos PASS.
+- **Documento incorporado:** `docs/impl/IMPL-GESTION-CORE-001.md`.
+- **Fase 1 de ROADMAP-GESTION-001 completada.**
+
+---
+
 ## [v1.34.0] — 2026-06-16
 
 ### Added (PLAN-GESTION-CORE-001 — Plan de Implementación de la Infraestructura Institucional Base)
