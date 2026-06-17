@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.40.0] — 2026-06-17
+
+### Added (AUDIT-GESTION-PLAN-001 — Auditoría Integral del Modelo de Planeación Institucional)
+
+- **AUDIT-GESTION-PLAN-001:** Incorporado `docs/audits/AUDIT-GESTION-PLAN-001.md` —
+  Auditoría Integral del Modelo de Planeación Institucional. Tipo: Auditoría de
+  Arquitectura, Modelo de Datos y Consistencia Funcional. Define 10 validaciones
+  obligatorias (AUD-001 a AUD-010): cobertura de procesos, objetivos, metas e indicadores;
+  coherencia arquitectónica y operativa; integración con componentes, módulos, Dashboard y
+  Gantt. Alcance: DDOM-GESTION-001/002/003/OBJ-001/META-001/IND-001, DDOM-GESTION-DATA-001,
+  ADR-GESTION-DATA-001/PLAN-001/OPS-001, ROADMAP-GESTION-001, PLAN-GESTION-PLAN-001/CORE-001.
+  Estado: AUTORIZADA — PENDIENTE DE EJECUCIÓN.
+
+---
+
 ## [v1.39.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-IND-001 — Catálogo Institucional de Indicadores)
