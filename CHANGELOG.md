@@ -17,6 +17,24 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.50.0] — 2026-06-17
+
+### Added (PLAN-PORTABILIDAD-ASG-001 — Plan Maestro de Portabilidad APPSisGOE)
+
+- **PLAN-PORTABILIDAD-ASG-001:** Incorporado `docs/plan/PLAN-PORTABILIDAD-ASG-001.md` —
+  Plan Maestro de Portabilidad de 79 artefactos APPSisGOE desde bhagamappsModular hacia
+  public_html. 7 fases aprobadas: MP-01 clasificación → MP-02 documental → MP-03 datos →
+  MP-04 operativo → MP-05 código → MP-06 seguridad → MP-07 ejecución. Principio rector:
+  la instancia oficial nunca se adapta al origen.
+- **ANALYSIS-PORTABILIDAD-ASG-001:** Creado `docs/analysis/ANALYSIS-PORTABILIDAD-ASG-001.md` —
+  Matriz completa de portabilidad. 79 artefactos clasificados: 30 Categoría A (reutilización
+  directa), 20 Categoría B (adaptación), 3 Categoría C (reimplementación Spatie), 26 Categoría D
+  (descarte). Hallazgos críticos: indicadores con FK a meta vs componente (relación estructuralmente
+  diferente), RBAC Spatie vs slug-based, layouts x-app-layout vs x-admin-layout. 5 riesgos
+  identificados. Cronograma en 8 pasos con dependencias explícitas.
+
+---
+
 ## [v1.49.0] — 2026-06-17
 
 ### Added (ADR-MIGRACION-ASG-001 — Resolución de Bloqueantes de Portabilidad APPSisGOE)
