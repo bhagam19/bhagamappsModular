@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.31.0] — 2026-06-16
+
+### Added (DDOM-GESTION-DATA-001 — Modelo de Datos Institucional)
+
+- **DDOM-GESTION-DATA-001:** Incorporado `docs/ddom/DDOM-GESTION-DATA-001.md` — Modelo de
+  Datos Institucional. Define entidades CORE: gestiones, procesos, componentes, objetivos,
+  metas, indicadores, seguimientos_indicadores, actividades, tareas, actividad_responsables,
+  evidencias, metricas_operativas, indicador_metrica, hallazgos, hallazgo_objetivo.
+  Establece cardinalidades oficiales, SoftDeletes, auditoría y convención de códigos.
+  Depende de DDOM-GESTION-001 a 006. Base para migraciones, Eloquent, Dashboard, ADR-GESTION-DATA-001.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.30.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-006 — Modelo Operativo Institucional)
