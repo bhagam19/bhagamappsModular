@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.34.0] — 2026-06-16
+
+### Added (PLAN-GESTION-CORE-001 — Plan de Implementación de la Infraestructura Institucional Base)
+
+- **PLAN-GESTION-CORE-001:** Incorporado `docs/plan/PLAN-GESTION-CORE-001.md` — Plan de
+  Implementación de la Infraestructura Institucional Base (ROADMAP-GESTION-001 Fase 1).
+  Define entregables IMPL-GESTION-CORE-001 a 005 (migraciones, modelos, seeders, permisos,
+  vista jerárquica). Tablas: gestiones, procesos, componentes con SoftDeletes. 4 Reglas de
+  Integridad, 6 Criterios de Aceptación. Estado: APROBADO — LISTO PARA IMPLEMENTACIÓN.
+  Autoriza IMPL-GESTION-CORE-001.
+
+---
+
 ## [v1.33.0] — 2026-06-16
 
 ### Added (ROADMAP-GESTION-001 — Roadmap de Implementación del CORE Institucional)
