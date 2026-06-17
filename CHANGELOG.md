@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.30.0] — 2026-06-16
+
+### Added (DDOM-GESTION-006 — Modelo Operativo Institucional)
+
+- **DDOM-GESTION-006:** Incorporado `docs/ddom/DDOM-GESTION-006.md` — Modelo Operativo
+  Institucional. Transforma arquitectura conceptual en modelo funcional implementable.
+  Define Hallazgos→Objetivos→Metas→Indicadores→Actividades→Tareas→Seguimientos→Resultados.
+  Establece Actividades (RN-ACT-001/002), Tareas, Responsables, Evidencias, fórmulas de
+  Avance por nivel, estados, Vista Árbol, Vista Gantt y Dashboard Ejecutivo.
+  Depende de DDOM-GESTION-001 a 005A. Base para Diseño CORE, UI y ROADMAP-GESTION-001.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.29.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-005A — Matriz de Cobertura Institucional)
