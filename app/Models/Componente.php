@@ -29,4 +29,9 @@ class Componente extends Model
     {
         return $this->hasMany(Indicador::class)->orderBy('codigo');
     }
+
+    public function actividades()
+    {
+        return $this->hasMany(Actividad::class)->orderBy('codigo');
+    }
 }

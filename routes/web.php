@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Ppal\HomeController;
 use App\Http\Controllers\Ppal\GestionInstitucionalController;
 use App\Http\Controllers\Ppal\PlaneacionController;
+use App\Http\Controllers\Ppal\OperacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,12 @@ Route::middleware([
     Route::get('/', [HomeController::class, 'index'])->name('inicio');
     Route::get('/gestion-institucional', [GestionInstitucionalController::class, 'arbol'])->name('gestion.arbol');
     Route::get('/planeacion', [PlaneacionController::class, 'index'])->name('planeacion.index');
+
+    Route::get('/operacion', [OperacionController::class, 'index'])->name('operacion.index');
+    Route::post('/operacion/actividades', [OperacionController::class, 'storeActividad'])->name('operacion.actividades.store');
+    Route::put('/operacion/actividades/{actividad}', [OperacionController::class, 'updateActividad'])->name('operacion.actividades.update');
+    Route::post('/operacion/actividades/{actividad}/tareas', [OperacionController::class, 'storeTarea'])->name('operacion.tareas.store');
+    Route::put('/operacion/tareas/{tarea}', [OperacionController::class, 'updateTarea'])->name('operacion.tareas.update');
 });
 
 

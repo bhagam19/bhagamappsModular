@@ -35,4 +35,9 @@ class Meta extends Model
     {
         return $this->belongsToMany(Indicador::class, 'meta_indicador');
     }
+
+    public function actividades()
+    {
+        return $this->hasMany(Actividad::class)->orderBy('codigo');
+    }
 }

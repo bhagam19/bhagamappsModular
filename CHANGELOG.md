@@ -17,6 +17,32 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.47.0] — 2026-06-17
+
+### Added (IMPL-GESTION-OPS-001 — Fase 3 Operación Institucional)
+
+- **Migraciones:** `actividades` (meta_id, componente_id, estado string, avance_manual,
+  avance_calculado, fechas, SoftDeletes), `tareas` (actividad_id, responsable_tipo,
+  responsable_id, estado string, avance unsignedTinyInteger, fechas, SoftDeletes),
+  permisos `operacion-institucional`. 3 migraciones ejecutadas en producción.
+- **Modelos:** `Actividad` (belongsTo Meta+Componente, hasMany Tareas, calcularAvance()),
+  `Tarea` (belongsTo Actividad, responsable() polimórfico, nombre_responsable accessor).
+  Namespace obligatorio: `Modules\User\Entities\User`. Modelos `Meta` y `Componente`
+  actualizados con `hasMany(Actividad::class)`.
+- **Permisos:** 5 permisos categoría `operacion-institucional` (ver-operacion,
+  crear/editar-actividades, crear/editar-tareas) asignados a Administrador.
+- **Controlador:** `OperacionController` — 5 métodos: index, storeActividad,
+  updateActividad, storeTarea, updateTarea. Recalcula avance_calculado tras
+  create/update de tareas.
+- **Vista PMV:** ruta `/operacion` con árbol Meta→Actividad→Tarea expandible. Formularios
+  inline para crear/editar actividades y tareas. Selector dinámico de responsable
+  (usuario/rol/dependencia) vía AlpineJS. Barras de avance y chips de estado.
+- **Rutas:** 5 rutas registradas bajo middleware auth:sanctum.
+- **Auditoría:** AUDIT-GESTION-OPS-002 — 9/9 QA PASS. Fase 3 certificada.
+- **Cadena completa:** Gestión→Proceso→Componente→Objetivo→Meta→Actividad→Tarea→Responsable.
+
+---
+
 ## [v1.46.0] — 2026-06-17
 
 ### Added (AUDIT-GESTION-OPS-001 — Auditoría Previa a la Implementación de Operación Institucional)
