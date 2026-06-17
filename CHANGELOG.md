@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.41.0] — 2026-06-17
+
+### Added (AUDIT-GESTION-PLAN-001 — Ejecución y Resultados)
+
+- **AUDIT-GESTION-PLAN-001:** Ejecutada auditoría integral del Modelo de Planeación
+  Institucional. Veredicto: APROBADO CON AJUSTES. 10 validaciones ejecutadas (AUD-001 a
+  AUD-010): 3 PASS, 3 PASS CONDICIONAL, 2 PARCIAL, 1 PARCIAL, 1 PASS CONDICIONAL.
+  Hallazgos: 3 críticos (H-C-01/02/03 — mapeo Meta/Indicador/meta_indicador sin documento),
+  3 altos, 3 medios, 3 bajos. Prerrequisito bloqueante para IMPL-GESTION-PLAN-001:
+  DDOM-GESTION-MAP-001. Estado final: EN ESPERA DE DDOM-GESTION-MAP-001.
+
+---
+
 ## [v1.40.0] — 2026-06-17
 
 ### Added (AUDIT-GESTION-PLAN-001 — Auditoría Integral del Modelo de Planeación Institucional)
