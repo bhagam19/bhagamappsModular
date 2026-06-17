@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.28.0] — 2026-06-16
+
+### Added (DDOM-GESTION-005 — Matriz de Integración de Módulos y Componentes Institucionales)
+
+- **DDOM-GESTION-005:** Incorporado `docs/ddom/DDOM-GESTION-005.md` — Matriz de Integración
+  de Módulos y Componentes Institucionales. Formaliza relación Módulo→Métrica→Componente→
+  Indicador→Meta→Objetivo→Proceso→Gestión. Mapea componentes GAF-02-03/04/05/06/07 e
+  impacto de Inventario y Comunidad Educativa. Establece Inventario y Comunidad Educativa
+  como primeros proveedores oficiales de métricas del CORE. Depende de DDOM-001/002/003/004.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.27.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-004 — Modelo de Fuentes de Datos y Métricas Operativas)
