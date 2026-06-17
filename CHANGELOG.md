@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.45.0] — 2026-06-17
+
+### Added (ADR-GESTION-OPS-002 — Modelo de Responsables Operativos)
+
+- **ADR-GESTION-OPS-002:** Incorporado `docs/adr/ADR-GESTION-OPS-002.md` — Modelo de
+  Responsables Operativos. Adopta Alternativa C (Responsable Polimórfico Simplificado):
+  campos `responsable_tipo` (usuario | rol | dependencia) + `responsable_id` en la tabla
+  tareas. Las actividades no tienen responsable directo; la responsabilidad se asigna a
+  nivel de tarea. Una sola responsable por tarea (equipos diferidos). Compatible con
+  Users Module, Dependencias, Planeación, Inventario, Dashboard y Gantt. Impacto
+  obligatorio sobre IMPL-GESTION-OPS-001, AUDIT-GESTION-OPS-001 y Gantt Institucional.
+  Resuelve H-A-01 de AUDIT-GESTION-PLAN-001. Estado: APROBADO — VIGENTE.
+
+---
+
 ## [v1.44.0] — 2026-06-17
 
 ### Added (PLAN-GESTION-OPS-001 — Plan de Implementación de Operación Institucional)
