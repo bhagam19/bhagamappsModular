@@ -17,6 +17,27 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.43.0] — 2026-06-17
+
+### Added (IMPL-GESTION-PLAN-001 — Fase 2 Planeación Institucional)
+
+- **Migraciones:** `objetivos`, `metas`, `indicadores`, `meta_indicador`, permisos de
+  planeación. 5 migraciones ejecutadas correctamente en producción.
+- **Modelos:** `Objetivo` (belongsTo Proceso, hasMany Metas), `Meta` (belongsTo Objetivo +
+  Componente, belongsToMany Indicadores), `Indicador` (belongsTo Componente, belongsToMany
+  Metas). Modelos `Proceso` y `Componente` actualizados con nuevas relaciones.
+- **Seeders:** 19 objetivos base (DDOM-GESTION-OBJ-001), 40 metas base
+  (DDOM-GESTION-META-001), 25 indicadores base (DDOM-GESTION-IND-001), 42 relaciones
+  meta_indicador (DDOM-GESTION-MAP-001). Cadena Gestión→Proceso→Objetivo→Meta↔Indicador
+  completamente poblada.
+- **Permisos:** 7 permisos categoría `planeacion-institucional` asignados a Administrador.
+- **Vista PMV:** ruta `/planeacion` con árbol jerárquico expandible (AlpineJS + Tailwind).
+- **Auditoría:** AUDIT-GESTION-PLAN-002 — 6/6 QA PASS. Fase 2 certificada.
+- **QA:** QA-001 PASS (19 obj), QA-002 PASS (40 metas reales), QA-003 PASS (25 ind),
+  QA-004 PASS (42 relaciones), QA-005 PASS (0 metas sin componente), QA-006 PASS.
+
+---
+
 ## [v1.42.0] — 2026-06-17
 
 ### Added (DDOM-GESTION-MAP-001 — Matriz Oficial de Trazabilidad Institucional)

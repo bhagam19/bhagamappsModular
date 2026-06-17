@@ -24,4 +24,9 @@ class Proceso extends Model
     {
         return $this->hasMany(Componente::class)->orderBy('orden');
     }
+
+    public function objetivos()
+    {
+        return $this->hasMany(Objetivo::class)->orderBy('codigo');
+    }
 }

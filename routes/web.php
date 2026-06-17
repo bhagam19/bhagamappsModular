@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Ppal\HomeController;
 use App\Http\Controllers\Ppal\GestionInstitucionalController;
+use App\Http\Controllers\Ppal\PlaneacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('inicio');
     Route::get('/gestion-institucional', [GestionInstitucionalController::class, 'arbol'])->name('gestion.arbol');
+    Route::get('/planeacion', [PlaneacionController::class, 'index'])->name('planeacion.index');
 });
 
 

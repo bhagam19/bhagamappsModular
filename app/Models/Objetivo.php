@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Componente extends Model
+class Objetivo extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'componentes';
+    protected $table = 'objetivos';
 
-    protected $fillable = ['proceso_id', 'codigo', 'nombre', 'descripcion', 'orden', 'activo'];
+    protected $fillable = ['proceso_id', 'codigo', 'nombre', 'descripcion', 'activo'];
 
     protected $casts = ['activo' => 'boolean'];
 
@@ -23,10 +23,5 @@ class Componente extends Model
     public function metas()
     {
         return $this->hasMany(Meta::class)->orderBy('codigo');
-    }
-
-    public function indicadores()
-    {
-        return $this->hasMany(Indicador::class)->orderBy('codigo');
     }
 }
