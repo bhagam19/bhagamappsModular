@@ -17,6 +17,17 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.24.0] — 2026-06-16
+
+### Added (DDOM-GESTION-001 — Modelo Institucional Guía 34)
+
+- **DDOM-GESTION-001:** Incorporado `docs/ddom/DDOM-GESTION-001.md` — Modelo Institucional
+  de Gestión, Procesos y Componentes basado en la Guía 34 del MEN. Define las cuatro gestiones
+  CORE obligatorias para toda la plataforma (GD, GA, GAF, GC) con sus procesos y componentes.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.23.0] — 2026-06-14
 
 ### Added (IMPL-CORE-002 Sprint 0 — Compatibilidad Arquitectónica APPSisGOE)
