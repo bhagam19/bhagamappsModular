@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.39.0] — 2026-06-16
+
+### Added (DDOM-GESTION-IND-001 — Catálogo Institucional de Indicadores)
+
+- **DDOM-GESTION-IND-001:** Incorporado `docs/ddom/DDOM-GESTION-IND-001.md` — Catálogo
+  Institucional de Indicadores. Define 25 indicadores base clasificados en IND-DIR (5),
+  IND-ACA (7), IND-ADM (7), IND-COM (6). Cobertura 19/19 objetivos y 42/42 metas.
+  Indicadores reutilizables vía relación meta_indicador. Fuentes: Inventario, Comunidad
+  Educativa, Académico, Convivencia, Planeación, Talento Humano, Financiero, Manual.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA EL SISTEMA DE INDICADORES INSTITUCIONALES.
+
+---
+
 ## [v1.38.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-META-001 — Catálogo Base de Metas Institucionales)
