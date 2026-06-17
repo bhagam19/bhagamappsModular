@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.44.0] — 2026-06-17
+
+### Added (PLAN-GESTION-OPS-001 — Plan de Implementación de Operación Institucional)
+
+- **PLAN-GESTION-OPS-001:** Incorporado `docs/plan/PLAN-GESTION-OPS-001.md` — Plan de
+  Implementación de Operación Institucional (Fase 3). Define el modelo Meta→Actividad→
+  Tarea→Responsable como capa operativa. 5 OE definidos, entidades previstas (actividades,
+  tareas, responsables) con campos preliminares incluyendo fecha_inicio/fin y avance para
+  soporte futuro del Gantt. 3 riesgos identificados (R-001/002/003), 4 criterios de éxito
+  (CE-001/004). Excluye: Dashboard, Gantt, PMI, Alertas, Notificaciones. Entregable
+  posterior: IMPL-GESTION-OPS-001. Estado: APROBADO — AUTORIZADO POR PMO.
+
+---
+
 ## [v1.43.0] — 2026-06-17
 
 ### Added (IMPL-GESTION-PLAN-001 — Fase 2 Planeación Institucional)
