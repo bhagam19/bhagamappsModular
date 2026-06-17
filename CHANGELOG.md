@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.26.0] — 2026-06-16
+
+### Added (DDOM-GESTION-003 — Modelo de Objetivos, Metas, Indicadores y Seguimientos)
+
+- **DDOM-GESTION-003:** Incorporado `docs/ddom/DDOM-GESTION-003.md` — Modelo de Objetivos,
+  Metas, Indicadores y Seguimientos. Define el ciclo Autoevaluación → Hallazgos → Objetivos →
+  Metas → Indicadores → Seguimientos. Establece Reglas de Negocio RN-OBJ, RN-META, RN-IND,
+  tipos de seguimiento (Manual/Automático), estados y frecuencias. Depende de DDOM-GESTION-001
+  y DDOM-GESTION-002. Base para DDOM-GESTION-004/005/006.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.25.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-002 — Modelo Institucional Oficial APPSisGOE)
