@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.33.0] — 2026-06-16
+
+### Added (ROADMAP-GESTION-001 — Roadmap de Implementación del CORE Institucional)
+
+- **ROADMAP-GESTION-001:** Incorporado `docs/roadmap/ROADMAP-GESTION-001.md` — Roadmap de
+  Implementación del CORE Institucional. Define 9 fases: (1) Infraestructura Base,
+  (2) Planeación, (3) Operación, (4) Seguimiento, (5) Métricas Operativas, (6) Vista Jerárquica,
+  (7) Gantt, (8) Dashboard, (9) Planeación Completa. Estado actual: Arquitectura 95%,
+  Documentación 95%, Modelo de Datos 90%, Implementación CORE 0%. Prioridad inmediata: Fase 1.
+  Base para IMPL-GESTION-CORE-001 y ROADMAP-GENERAL-APPSISGOE.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA LA PLANIFICACIÓN DEL CORE INSTITUCIONAL.
+
+---
+
 ## [v1.32.0] — 2026-06-16
 
 ### Added (ADR-GESTION-DATA-001 — Resolución de Hallazgos del Modelo de Datos Institucional)
