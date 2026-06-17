@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.49.0] — 2026-06-17
+
+### Added (ADR-MIGRACION-ASG-001 — Resolución de Bloqueantes de Portabilidad APPSisGOE)
+
+- **ADR-MIGRACION-ASG-001:** Incorporado `docs/adr/ADR-MIGRACION-ASG-001.md` — Decisión
+  arquitectónica que resuelve los dos bloqueantes críticos identificados en AUDIT-MIGRACION-ASG-001
+  para la portabilidad hacia `/public_html`. B-001 (incompatibilidad de schema): Alternativa B —
+  conservar schema oficial de APPSisGOE, adaptar artefactos migrados. B-002 (ausencia de
+  Dependencia): Alternativa B — `responsable_tipo` restringido a `usuario|rol`, Dependencias
+  diferidas a ADR independiente. Estrategia de portabilidad aprobada en 7 fases (MP-01 a MP-07):
+  documental → tablas nuevas → modelos → RBAC Spatie → controladores → rutas → vistas.
+
+---
+
 ## [v1.48.0] — 2026-06-17
 
 ### Added (PLAN-GESTION-DASH-001 — Plan de Implementación del Dashboard Ejecutivo Institucional)
