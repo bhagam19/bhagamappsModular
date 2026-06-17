@@ -17,6 +17,18 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.38.0] — 2026-06-16
+
+### Added (DDOM-GESTION-META-001 — Catálogo Base de Metas Institucionales)
+
+- **DDOM-GESTION-META-001:** Incorporado `docs/ddom/DDOM-GESTION-META-001.md` — Catálogo
+  Base de Metas Institucionales. Define 42 metas base asociadas a los 19 objetivos de
+  DDOM-GESTION-OBJ-001 (cobertura 100%). Metas SMART, referenciales y ajustables por
+  institución. Base para Indicadores, Actividades, Seguimientos, Dashboard y Gantt.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA EL CATÁLOGO INSTITUCIONAL DE METAS BASE.
+
+---
+
 ## [v1.37.0] — 2026-06-16
 
 ### Added (ADR-GESTION-OPS-001 — Modelo Operativo Institucional)
