@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.27.0] — 2026-06-16
+
+### Added (DDOM-GESTION-004 — Modelo de Fuentes de Datos y Métricas Operativas)
+
+- **DDOM-GESTION-004:** Incorporado `docs/ddom/DDOM-GESTION-004.md` — Modelo de Fuentes de
+  Datos y Métricas Operativas. Define el flujo Módulo → Métricas Operativas → Componente →
+  Indicadores. Establece Fuentes Institucionales Iniciales (Inventario, Comunidad Educativa,
+  Académico, Convivencia, Planeación), relación N:M Métrica↔Indicador, y Reglas de Negocio
+  RN-DAT-001 a RN-DAT-005. Depende de DDOM-001/002/003. Base para Dashboard Institucional.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.26.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-003 — Modelo de Objetivos, Metas, Indicadores y Seguimientos)
