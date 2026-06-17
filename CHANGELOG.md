@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.36.0] — 2026-06-16
+
+### Added (DDOM-GESTION-OBJ-001 — Catálogo Base de Objetivos Institucionales)
+
+- **DDOM-GESTION-OBJ-001:** Incorporado `docs/ddom/DDOM-GESTION-OBJ-001.md` — Catálogo
+  Base de Objetivos Institucionales. Define un objetivo base por cada proceso Guía 34
+  (19 de 19, cobertura 100%) bajo estructura Verbo+Objeto+Condición de Calidad.
+  Orientadores, editables y ajustables por cada institución. Serán cargados mediante
+  ObjetivosSeeder en IMPL-GESTION-PLAN-001.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA EL SEEDER DE OBJETIVOS INSTITUCIONALES.
+
+---
+
 ## [v1.35.0] — 2026-06-16
 
 ### Added (IMPL-GESTION-CORE-001 — Infraestructura Institucional Base)
