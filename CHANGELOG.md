@@ -17,6 +17,23 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.48.0] — 2026-06-17
+
+### Added (PLAN-GESTION-DASH-001 — Plan de Implementación del Dashboard Ejecutivo Institucional)
+
+- **PLAN-GESTION-DASH-001:** Incorporado `docs/plan/PLAN-GESTION-DASH-001.md` — Plan de
+  Implementación del Dashboard Ejecutivo Institucional (Fase 4). 5 principios
+  arquitectónicos (consumidor de datos, no propietario; solo analítico; opera con datos
+  parciales). 6 OE definidos. 7 KPIs obligatorios (cumplimiento global, metas/actividades/
+  tareas completadas, indicadores en riesgo, objetivos con retraso, top 10 responsables).
+  Semaforización oficial: Verde ≥80%, Amarillo ≥60%, Rojo <60%. 6 Widgets PMV.
+  Filtros por gestión/proceso/componente/responsable. Stack: Laravel Blade + AdminLTE +
+  Chart.js. 7 criterios QA (QA-DASH-001/007). 2 riesgos identificados. Excluye: Gantt,
+  PMI, Planes de Mejoramiento, Notificaciones, IA. Entregable posterior: IMPL-GESTION-DASH-001.
+  Estado: APROBADO — AUTORIZADO POR PMO.
+
+---
+
 ## [v1.47.0] — 2026-06-17
 
 ### Added (IMPL-GESTION-OPS-001 — Fase 3 Operación Institucional)
