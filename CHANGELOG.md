@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.46.0] — 2026-06-17
+
+### Added (AUDIT-GESTION-OPS-001 — Auditoría Previa a la Implementación de Operación Institucional)
+
+- **AUDIT-GESTION-OPS-001:** Incorporado `docs/audits/AUDIT-GESTION-OPS-001.md` — Auditoría
+  Técnica de Pre-Implementación Fase 3. 8 validaciones obligatorias (AUD-OPS-001 a
+  AUD-OPS-008): integridad de metas, componentes e indicadores; compatibilidad de
+  responsables (users/roles/dependencias), relaciones Meta→Actividad→Tarea, permisos
+  operativos, seguimiento (estado/avance/fechas) y Gantt futuro. Veredicto posible:
+  APROBADO / APROBADO CON AJUSTES / NO APROBADO. Restricciones: solo auditar, sin
+  modificar código ni ejecutar migraciones. Estado: AUTORIZADA — PENDIENTE DE EJECUCIÓN.
+
+---
+
 ## [v1.45.0] — 2026-06-17
 
 ### Added (ADR-GESTION-OPS-002 — Modelo de Responsables Operativos)
