@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.25.0] — 2026-06-16
+
+### Added (DDOM-GESTION-002 — Modelo Institucional Oficial APPSisGOE)
+
+- **DDOM-GESTION-002:** Incorporado `docs/ddom/DDOM-GESTION-002.md` — Modelo Institucional
+  Oficial APPSisGOE. Formaliza la arquitectura conceptual de integración de módulos bajo la
+  estructura CORE (Gestión → Proceso → Componentes). Define responsabilidades del CORE y módulos,
+  regla de integración por Métricas Operativas, Metas, Indicadores y Seguimientos.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE. Complementa DDOM-GESTION-001.
+  Base para DDOM-GESTION-003/004/005/006.
+
+---
+
 ## [v1.24.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-001 — Modelo Institucional Guía 34)
