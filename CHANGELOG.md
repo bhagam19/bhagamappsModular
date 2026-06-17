@@ -17,6 +17,19 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.29.0] — 2026-06-16
+
+### Added (DDOM-GESTION-005A — Matriz de Cobertura Institucional)
+
+- **DDOM-GESTION-005A:** Incorporado `docs/ddom/DDOM-GESTION-005A.md` — Matriz de Cobertura
+  Institucional. Evalúa cobertura por niveles (0-3) sobre las cuatro gestiones Guía 34.
+  Resultado consolidado: Directiva 8%, Académica 15%, Administrativa y Financiera 35%,
+  Comunidad 45% — Global 26%. Identifica brecha arquitectura (90%) vs cobertura funcional (26%).
+  Define prioridades Roadmap: Planeación, Calidad, Deserción, Académico.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA TODO APPSisGOE.
+
+---
+
 ## [v1.28.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-005 — Matriz de Integración de Módulos y Componentes Institucionales)
