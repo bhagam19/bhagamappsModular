@@ -17,6 +17,20 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.37.0] — 2026-06-16
+
+### Added (ADR-GESTION-OPS-001 — Modelo Operativo Institucional)
+
+- **ADR-GESTION-OPS-001:** Incorporado `docs/adr/ADR-GESTION-OPS-001.md` — Modelo Operativo
+  Institucional: Relación entre Metas, Actividades, Tareas y Responsables. Formaliza la
+  capa de ejecución institucional Meta→Actividades→Tareas→Responsables. Define que el Gantt
+  Institucional se construirá sobre Actividades y Tareas (no sobre objetivos/metas/indicadores).
+  Establece 3 métodos de avance de metas (indicadores, actividades, híbrido).
+  Referencia obligatoria para DDOM-GESTION-ACT-001, IMPL-GESTION-PLAN-001 e IMPL-GESTION-OPS-001.
+  Estado: APROBADA — VIGENTE — OBLIGATORIA PARA TODO EL MODELO OPERATIVO INSTITUCIONAL.
+
+---
+
 ## [v1.36.0] — 2026-06-16
 
 ### Added (DDOM-GESTION-OBJ-001 — Catálogo Base de Objetivos Institucionales)
