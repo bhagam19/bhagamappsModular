@@ -17,6 +17,21 @@ Versionado: [SemVer](https://semver.org/lang/es/) — ver [`VERSIONING.md`](VERS
 
 ---
 
+## [v1.42.0] — 2026-06-17
+
+### Added (DDOM-GESTION-MAP-001 — Matriz Oficial de Trazabilidad Institucional)
+
+- **DDOM-GESTION-MAP-001:** Incorporado `docs/ddom/DDOM-GESTION-MAP-001.md` — Matriz
+  Oficial de Trazabilidad Institucional. Define el mapeo oficial Componente → Meta →
+  Indicador para las 40 metas y 25 indicadores base. Cubre 22 componentes institucionales
+  distribuidos en las 4 gestiones (GD, GA, GAF, GC). Resuelve hallazgos críticos
+  H-C-01 (Meta→Componente), H-C-02 (Indicador→Componente) y H-C-03 (Meta↔Indicador)
+  identificados en AUDIT-GESTION-PLAN-001. Constituye la referencia oficial para
+  MetasSeeder, IndicadoresSeeder y MetaIndicadorSeeder de IMPL-GESTION-PLAN-001.
+  Estado: APROBADO — VIGENTE — OBLIGATORIO PARA LA IMPLEMENTACIÓN DE LA FASE 2.
+
+---
+
 ## [v1.41.0] — 2026-06-17
 
 ### Added (AUDIT-GESTION-PLAN-001 — Ejecución y Resultados)
